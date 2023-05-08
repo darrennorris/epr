@@ -9,9 +9,15 @@ book:
     - index.qmd
     - preface.qmd
     - intro.qmd
+    - part: escala-met.qmd
+      chapters:
+      - escala.qmd
+      - metricas.qmd
     - part: codigo-R.qmd
       chapters:
-        - summary.qmd
+        - codigo-livro.qmd
+        - codigo-raster.qmd
+        - codigo-vector.qmd
     - references.qmd
   cover-image: cover.png
 
