@@ -1,0 +1,9 @@
+--- 
+title: "Ecologia de Paisagens com R"
+author: "Darren Norris"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+# Down the rabbit-hole
+
