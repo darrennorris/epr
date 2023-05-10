@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introdução | Ecologia de Paisagens com R</title>
+  <meta name="description" content="Introdução | Ecologia de Paisagens com R" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introdução | Ecologia de Paisagens com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introdução | Ecologia de Paisagens com R" />
+  
+  
+  
+
+<meta name="author" content="Darren Norris" />
+
+
+<meta name="date" content="2023-05-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="prefácio-à-primeira-edição.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">epr</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Apresentação</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindos</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i>Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="prefácio-à-primeira-edição.html"><a href="prefácio-à-primeira-edição.html"><i class="fa fa-check"></i>Prefácio à primeira edição</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>Introdução</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-vai-aprender"><i class="fa fa-check"></i>O que você vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#como-este-livro-está-organizado"><i class="fa fa-check"></i>Como este livro está organizado</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-não-vai-aprender"><i class="fa fa-check"></i>O que você não vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-universo-arrumado---tidyverse"><i class="fa fa-check"></i>O universo arrumado - tidyverse</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#outros-pacotes"><i class="fa fa-check"></i>Outros pacotes</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia de Paisagens com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introdução" class="section level1 unnumbered hasAnchor">
+<h1>Introdução<a href="introdução.html#introdução" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Ecologia da Paisagem é uma disciplina empolgante que permite transformar dados brutos em compreensão, insight e conhecimento.</p>
+<div id="o-que-você-vai-aprender" class="section level2 unnumbered hasAnchor">
+<h2>O que você vai aprender<a href="introdução.html#o-que-você-vai-aprender" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ecologia da Paisagem é um campo vasto e não há como dominar tudo lendo um único livro.
+Este livro visa fornecer uma base sólida nas ferramentas mais importantes e conhecimento suficiente para encontrar os recursos para aprender mais quando necessário. Um modelo das etapas de um projeto típico de Ecologia da Paisagem se parece com…..</p>
+</div>
+<div id="como-este-livro-está-organizado" class="section level2 unnumbered hasAnchor">
+<h2>Como este livro está organizado<a href="introdução.html#como-este-livro-está-organizado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A descrição anterior das ferramentas da Ecologia da Paisagem é organizada aproximadamente de acordo com a ordem em que você as usa em uma análise (embora, é claro, você as itere várias vezes).
+Em nossa experiência, no entanto, aprender a importar e organizar os dados primeiro não é o ideal, porque 80% do tempo é rotineiro e chato e, nos outros 20% do tempo, é estranho e frustrante.
+Esse é um péssimo lugar para começar a aprender um novo assunto!
+Em vez disso, começaremos com a visualização e transformação dos dados que já foram importados e organizados.
+Dessa forma, quando você ingerir e organizar seus próprios dados, sua motivação permanecerá alta porque você sabe que a dor vale o esforço.</p>
+<p>Dentro de cada capítulo, tentamos aderir a um padrão consistente: comece com alguns exemplos motivadores para que você possa ver o quadro geral e depois mergulhe nos detalhes.
+Cada seção do livro é combinada com exercícios para ajudá-lo a praticar o que aprendeu.
+Embora possa ser tentador pular os exercícios, não há melhor maneira de aprender do que praticar em problemas reais.</p>
+</div>
+<div id="o-que-você-não-vai-aprender" class="section level2 unnumbered hasAnchor">
+<h2>O que você não vai aprender<a href="introdução.html#o-que-você-não-vai-aprender" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="prerequisites" class="section level2 unnumbered hasAnchor">
+<h2>Prerequisites<a href="introdução.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Fizemos algumas suposições sobre o que você já sabe para aproveitar ao máximo este livro.
+Você deve ser geralmente alfabetizado numericamente, e com conhecimento previsa de ecologia, geoprocessamento e uso de sistemas de informação geografica.</p>
+<p>Você precisa de quatro coisas para executar o código deste livro: R, RStudio, uma coleção de pacotes R chamada <strong>tidyverse</strong> e um punhado de outros pacotes.
+Os pacotes são as unidades fundamentais do código R reproduzível.
+Eles incluem funções reutilizáveis, documentação que descreve como usá-los e dados de amostra.</p>
+<div id="r" class="section level3 unnumbered hasAnchor">
+<h3>R<a href="introdução.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para fazer o download do R, acesse CRAN, a <strong>c</strong>omprehensive <strong>R</strong> <strong>a</strong>rchive <strong>n</strong>network, <a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>.
+Uma nova versão principal do R é lançada uma vez por ano e há 2 a 3 versões secundárias a cada ano.
+É uma boa ideia atualizar regularmente.
+A atualização pode ser um pouco complicada, especialmente para as versões principais que exigem a reinstalação de todos os seus pacotes, mas adiar só piora as coisas.
+Recomendamos R 4.2.0 ou posterior para este livro.</p>
+</div>
+<div id="rstudio" class="section level3 unnumbered hasAnchor">
+<h3>RStudio<a href="introdução.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio é um ambiente de desenvolvimento integrado, ou IDE, para programação R, que você pode baixar em <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>.
+O RStudio é atualizado algumas vezes por ano e avisa automaticamente quando uma nova versão é lançada, para que não haja necessidade de verificar novamente.
+É uma boa ideia atualizar regularmente para aproveitar os melhores e mais recentes recursos.
+Para este livro, certifique-se de ter pelo menos o RStudio 2022.02.0.</p>
+</div>
+<div id="o-universo-arrumado---tidyverse" class="section level3 unnumbered hasAnchor">
+<h3>O universo arrumado - tidyverse<a href="introdução.html#o-universo-arrumado---tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Você também precisará instalar alguns pacotes do R.
+Um <strong>pacote</strong> do R é uma coleção de funções, dados e documentação que estende os recursos do R base.
+O uso de pacotes é a chave para o uso bem-sucedido do R.
+A maioria dos pacotes que você aprenderá neste livro faz parte do chamado tidyverse.
+Todos os pacotes no tidyverse compartilham uma filosofia comum de programação de dados e R e são projetados para trabalhar juntos.</p>
+<p>Você pode instalar o tidyverse completo com uma única linha de código:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introdução.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>No seu computador, digite essa linha de código no console e pressione enter para executá-lo.
+R irá baixar os pacotes do CRAN e instalá-los em seu computador.</p>
+<p>Você não poderá usar as funções, objetos ou arquivos de ajuda em um pacote até carregá-lo com <code>library()</code>.
+Depois de instalar um pacote, você pode carregá-lo usando a função <code>library()</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introdução.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Isso diz a você que o tidyverse carrega nove pacotes: dplyr, forcats, ggplot2, lubridate, purrr, readr, stringr, tibble, alignr.
+Eles são considerados o <strong>núcleo</strong> do tidyverse porque você os usará em quase todas as análises.</p>
+<p>Os pacotes no tidyverse mudam com bastante frequência.
+Você pode ver se há atualizações disponíveis executando <code>tidyverse_update()</code>.</p>
+</div>
+<div id="outros-pacotes" class="section level3 unnumbered hasAnchor">
+<h3>Outros pacotes<a href="introdução.html#outros-pacotes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existem muitos outros pacotes excelentes que não fazem parte do tidyverse porque resolvem problemas em um domínio diferente ou são projetados com um conjunto diferente de princípios subjacentes.
+Isso não os torna melhores ou piores, apenas diferentes.
+Em outras palavras, o complemento do tidyverse não é o universo bagunçado, mas muitos outros universos de pacotes inter-relacionados.
+Ao lidar com mais projetos de Ecologia da Paisagem com R, você aprenderá novos pacotes e novas formas de pensar sobre os dados.</p>
+<p>Usaremos outras pacotes de fora do tidyverse neste livro.
+Por exemplo, usaremos os seguintes pacotes porque eles fornecem conjuntos de funcões e dados interessantes para trabalharmos no processo de aprendizado de R:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introdução.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;sp&quot;</span>, <span class="st">&quot;sf&quot;</span>,<span class="st">&quot;raster&quot;</span>, <span class="st">&quot;mapview&quot;</span>,<span class="st">&quot;tmap&quot;</span>, </span>
+<span id="cb3-2"><a href="introdução.html#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;terra&quot;</span>, <span class="st">&quot;kableExtra&quot;</span>, <span class="st">&quot;landscapemetrics&quot;</span>))</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prefácio-à-primeira-edição.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darrennorris/epr/edit/main/03-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/darrennorris/epr/blob/main/03-intro.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
