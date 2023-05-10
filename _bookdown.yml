@@ -3,6 +3,10 @@ output_dir: docs
 delete_merged_file: true
 edit: https://github.com/darrennorris/epr/edit/main/%s
 view: https://github.com/darrennorris/epr/blob/main/%s
+lang: pt-BR
 language:
   ui:
-    chapter_name: "Chap "
+    chapter_name: "Chapter "
+  label:
+    fig: "Figura "
+    tab: "Tabela "
