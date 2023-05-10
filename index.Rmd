@@ -3,6 +3,7 @@ title: "Ecologia de Paisagens com R"
 author: "Darren Norris"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+bibliography: references.bib
 ---
 
 # (PART) Apresentação {-}

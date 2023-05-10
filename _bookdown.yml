@@ -6,7 +6,13 @@ view: https://github.com/darrennorris/epr/blob/main/%s
 lang: pt-BR
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Capítulo "
   label:
     fig: "Figura "
     tab: "Tabela "
+
+---
+
+bibliography: references.bib
+
+---
