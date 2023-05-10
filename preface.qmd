@@ -1,9 +1,0 @@
-# Prefácio à primeira edição {.unnumbered}
-
-Há quem diga que a velocidade com que a tecnologia e a ciência avançam tende a tornar livros e manuais sobre métodos rapidamente obsoletos. A evolução dos computadores pessoais e a ampliação do acesso a estes e à Internet têm transformado o jeito como aprendemos e ensinamos. 
-
-Portanto, um livro aberto e disponível livremente que as pessoas possam compartilhar e contribuir torna-se uma opção cada vez mais relevante.
-
-O conteudo e organização dos capítulos esta separado em partes.
-
-O primeiro grupo – que inclui dos capítulos x ao y, inclui os aspectos mais gerais da estrutura do livro, seus objetivos e sobre o funcionamento da linguagem R. No segundo grupo de capítulos (do x ao y), temos contato com análises específicas e atualmente usadas em Ecologia da Paisasgem, incluindo ....

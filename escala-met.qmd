@@ -1,3 +1,0 @@
-# Escala e metricas {#sec-escala-met-intro .unnumbered}
-
-Objetivo não é de apresentar grandes detalhes sobre os cálculos/métodos estatísticas ou os funções no R. 
