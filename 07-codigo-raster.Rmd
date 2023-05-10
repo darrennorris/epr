@@ -1,3 +1,6 @@
+
+\newpage{}
+
 # Primeiros passos com uma raster
 
 Uma raster é um matriz de valores com coordenadas geográficos. Cada pixel de uma raster representa uma região geográfica, e o valor do pixel representa uma característica dessa região (mais sobre [dados raster](https://docs.qgis.org/3.22/pt_BR/docs/gentle_gis_introduction/raster_data.html)).

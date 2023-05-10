@@ -1,3 +1,6 @@
+
+\newpage{}
+
 # Prefácio à primeira edição {.unnumbered}
 
 Há quem diga que a velocidade com que a tecnologia e a ciência avançam tende a tornar livros e manuais sobre métodos rapidamente obsoletos. A evolução dos computadores pessoais e a ampliação do acesso a estes e à Internet têm transformado o jeito como aprendemos e ensinamos. 

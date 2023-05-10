@@ -1,3 +1,6 @@
+
+\newpage{}
+
 # Introdução {.unnumbered}
 
 Ecologia da Paisagem é uma disciplina empolgante que permite transformar dados brutos em compreensão, insight e conhecimento.
