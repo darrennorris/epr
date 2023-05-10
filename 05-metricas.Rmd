@@ -414,7 +414,7 @@ amostras_metrica %>%
 #### Faça um gráfico
 
 
-```{r, insert-fig-logo, echo=FALSE, message=FALSE, warning=FALSE, out.width="65%", out.height="65%", fig.align="center"}
+```{r, met-fig-logo, echo=FALSE, message=FALSE, warning=FALSE, out.width="65%", out.height="65%", fig.align="center"}
 knitr::include_graphics("www/logo_gg_lsm.png")
 
 
@@ -518,7 +518,7 @@ A principal vantagem do modelo não linear sobre o linear é que 1) sua
 escolha está associada à conhecimento prévio sobre a relação a ser modelada e 2) geralmente apresenta interpretação prática para os parâmetros. Em modelos não-linear dados observados de uma variável resposta são descritos por uma função de uma ou mais variáveis explicativas que é não linear seus parâmetros. Assim como nos modelos lineares o objetivo é identificar e estabelecer a relação entre variáveis explicativas e resposta. Entretanto, enquanto os modelos lineares definem, em geral, relações empíricas/teoricas, os modelos não-lineares são, em grande parte das vezes, motivados pelo conhecimento do tipo de relação entre as variáveis. Desta forma, as aplicações surgem nas diversas áreas onde relações físicas, biológicas, cinéticas, químicas, fisiológicas, dentre outras, são estabelecidas por funções não lineares que devem ter coeficientes (parâmetros) identificados (estimados) a partir de dados observados, dados experimentais e/ou dados simulados.
 
 Como as mudanças na estrutura da paisagem caracterizam-se por serem não-lineares, para desenvolver análises estatísticas robustos pode (i) aplicar uma transformação (por exemplo, "log") ou (ii) adotar modelos não-lineares. 
-```{r create-fig-comp, echo=FALSE, message=FALSE, warning=FALSE}
+```{r met-create-fig-comp, echo=FALSE, message=FALSE, warning=FALSE}
 amostras_metrica %>% 
   filter(class==1) %>%
   ggplot(aes(x=(2*raio)/1000, y=value)) + 
@@ -573,7 +573,7 @@ invisible(dev.off())
 ```
 
 
-```{r insert-fig-comp, echo=FALSE, message=FALSE, warning=FALSE, out.width="98%", out.height="98%", fig.cap="Comparação de padrões lineares e não-lineares."}
+```{r met-insert-fig-comp2, echo=FALSE, message=FALSE, warning=FALSE, out.width="98%", out.height="98%", fig.cap="Comparação de padrões lineares e não-lineares."}
 knitr::include_graphics("figures/fig_comp_linear.png")
 ```
 
@@ -592,7 +592,7 @@ Aqui mostraremos como incluir cálculos de diferentes métricas de paisagem ao m
 
 
 
-```{r insert-fig-buffmetrics, fig.cap="Ilustração da determinação de métricas da paisagem diferentes ao redor de um ponto. Exemplo com a estrutura da paisagem representado com trés caracteristicas (A) Área central, (B) Borda e (C) Vizinho mais próximo. O habitat de interesse (classe) é isolado. Um buffer (linha tracejada) é colocado ao redor de um ponto (amarela) e as métricas calculadas. E em seguida o processo é repetido em diferentes extensões.", echo=FALSE, warning=FALSE, message=FALSE}
+```{r met-insert-fig-buffmetrics, fig.cap="Ilustração da determinação de métricas da paisagem diferentes ao redor de um ponto. Exemplo com a estrutura da paisagem representado com trés caracteristicas (A) Área central, (B) Borda e (C) Vizinho mais próximo. O habitat de interesse (classe) é isolado. Um buffer (linha tracejada) é colocado ao redor de um ponto (amarela) e as métricas calculadas. E em seguida o processo é repetido em diferentes extensões.", echo=FALSE, warning=FALSE, message=FALSE}
 ragg <- aggregate(buffer.forest1.16000m, fact=5, fun="median")
 ragg_forest <- ragg
 # Com valor de NA
@@ -804,7 +804,7 @@ head(amostras_metricas, n=10) %>%
 
 Agorta, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2. Para ajudar na visualização incluímos quais métricas são para composição e configuração e nomes que são mais fáceis de entender.
 
-```{r insert-fig-multiplemetrics, message=FALSE, warning=FALSE}
+```{r met-insert-fig-multiplemetrics, message=FALSE, warning=FALSE}
 metricas_composicao <- c("pland", "ed", "cpland")
 # arrumar dados
 amostras_metricas %>% 

@@ -1,4 +1,4 @@
-book_filename: "bookdownproj"
+book_filename: "epr"
 output_dir: docs
 delete_merged_file: true
 edit: https://github.com/darrennorris/epr/edit/main/%s
@@ -10,9 +10,3 @@ language:
   label:
     fig: "Figura "
     tab: "Tabela "
-
----
-
-bibliography: references.bib
-
----
