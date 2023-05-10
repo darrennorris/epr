@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Primeiros passos com uma raster | Ecologia de Paisagens com R</title>
+  <meta name="description" content="Capítulo 3 Primeiros passos com uma raster | Ecologia de Paisagens com R" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Primeiros passos com uma raster | Ecologia de Paisagens com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Primeiros passos com uma raster | Ecologia de Paisagens com R" />
+  
+  
+  
+
+<meta name="author" content="Darren Norris" />
+
+
+<meta name="date" content="2023-05-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="codigo-no-livro.html"/>
+<link rel="next" href="primeiros-passos-com-vector.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">epr</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Apresentação</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindos</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i>Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="prefácio-à-primeira-edição.html"><a href="prefácio-à-primeira-edição.html"><i class="fa fa-check"></i>Prefácio à primeira edição</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>Introdução</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-vai-aprender"><i class="fa fa-check"></i>O que você vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#como-este-livro-está-organizado"><i class="fa fa-check"></i>Como este livro está organizado</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-não-vai-aprender"><i class="fa fa-check"></i>O que você não vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-universo-arrumado---tidyverse"><i class="fa fa-check"></i>O universo arrumado - tidyverse</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#outros-pacotes"><i class="fa fa-check"></i>Outros pacotes</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Escala e métricas</b></span></li>
+<li class="chapter" data-level="1" data-path="escala.html"><a href="escala.html"><i class="fa fa-check"></i><b>1</b> Escala</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="escala.html"><a href="escala.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="escala.html"><a href="escala.html#escala-breve-definação"><i class="fa fa-check"></i><b>1.1.1</b> Escala: breve definação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="escala.html"><a href="escala.html#pacotes-e-dados"><i class="fa fa-check"></i><b>1.2</b> Pacotes e dados</a></li>
+<li class="chapter" data-level="1.3" data-path="escala.html"><a href="escala.html#alterando-a-resolução"><i class="fa fa-check"></i><b>1.3</b> Alterando a resolução</a></li>
+<li class="chapter" data-level="1.4" data-path="escala.html"><a href="escala.html#escala-espacial-e-desenho-amostral"><i class="fa fa-check"></i><b>1.4</b> Escala espacial e desenho amostral</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-vectores"><i class="fa fa-check"></i><b>1.4.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="1.4.2" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-vector"><i class="fa fa-check"></i><b>1.4.2</b> Visualizar os arquivos (camadas vector)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-raster"><i class="fa fa-check"></i><b>1.4.3</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-raster-e-vector"><i class="fa fa-check"></i><b>1.4.4</b> Visualizar os arquivos (camadas raster e vector)</a></li>
+<li class="chapter" data-level="1.4.5" data-path="escala.html"><a href="escala.html#reclassificação"><i class="fa fa-check"></i><b>1.4.5</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="escala.html"><a href="escala.html#comparação-multiescala"><i class="fa fa-check"></i><b>1.5</b> Comparação multiescala</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="escala.html"><a href="escala.html#pergunta-3"><i class="fa fa-check"></i><b>1.5.1</b> Pergunta 3</a></li>
+<li class="chapter" data-level="1.5.2" data-path="escala.html"><a href="escala.html#pergunta-4"><i class="fa fa-check"></i><b>1.5.2</b> Pergunta 4</a></li>
+<li class="chapter" data-level="1.5.3" data-path="escala.html"><a href="escala.html#pergunta-5"><i class="fa fa-check"></i><b>1.5.3</b> Pergunta 5</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="escala.html"><a href="escala.html#próximos-passos-repetindo-para-muitas-amostras."><i class="fa fa-check"></i><b>1.6</b> Próximos passos: repetindo para muitas amostras.</a></li>
+</ul></li>
+<li class="part"><span><b>III R: Codigo</b></span></li>
+<li class="chapter" data-level="2" data-path="codigo-no-livro.html"><a href="codigo-no-livro.html"><i class="fa fa-check"></i><b>2</b> Codigo no livro</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="codigo-no-livro.html"><a href="codigo-no-livro.html#organização-do-codigo-no-livro"><i class="fa fa-check"></i><b>2.1</b> Organização do codigo no livro</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="primeiros-passos-com-uma-raster.html"><a href="primeiros-passos-com-uma-raster.html"><i class="fa fa-check"></i><b>3</b> Primeiros passos com uma raster</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="primeiros-passos-com-uma-raster.html"><a href="primeiros-passos-com-uma-raster.html#obter-e-carregar-dados-raster-1"><i class="fa fa-check"></i><b>3.0.1</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="3.0.2" data-path="primeiros-passos-com-uma-raster.html"><a href="primeiros-passos-com-uma-raster.html#reclassificação-1"><i class="fa fa-check"></i><b>3.0.2</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html"><i class="fa fa-check"></i><b>4</b> Primeiros passos com vector</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#obter-e-carregar-dados-vectores-1"><i class="fa fa-check"></i><b>4.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="4.2" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#visualizar-os-arquivos-camadas-vector-1"><i class="fa fa-check"></i><b>4.2</b> Visualizar os arquivos (camadas vector)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia de Paisagens com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="primeiros-passos-com-uma-raster" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Primeiros passos com uma raster<a href="primeiros-passos-com-uma-raster.html#primeiros-passos-com-uma-raster" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Uma raster é um matriz de valores com coordenadas geográficos. Cada pixel de uma raster representa uma região geográfica, e o valor do pixel representa uma característica dessa região (mais sobre <a href="https://docs.qgis.org/3.22/pt_BR/docs/gentle_gis_introduction/raster_data.html">dados raster</a>).</p>
+<p>Em geral é necessário baixar alguns pacotes para que possamos fazer as nossas análises. Precisamos os seguintes pacotes, que deve esta instalado antes:</p>
+<ul>
+<li><a href="https://www.tidyverse.org/">tidyverse</a>,</li>
+<li><a href="https://rspatial.org/terra/pkg/index.html">terra</a>,</li>
+<li><a href="https://r-spatial.github.io/sf/">sf</a>,</li>
+<li><a href="https://r-spatial.github.io/mapview/">mapview</a>,</li>
+<li><a href="https://r-tmap.github.io/tmap-book/">tmap</a>.</li>
+</ul>
+<p>Carregar pacotes:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="primeiros-passos-com-uma-raster.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-2"><a href="primeiros-passos-com-uma-raster.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb48-3"><a href="primeiros-passos-com-uma-raster.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb48-4"><a href="primeiros-passos-com-uma-raster.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb48-5"><a href="primeiros-passos-com-uma-raster.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
+<p>Inicialmente iremos gerar uma raster representando uma paisagem bem simples, de 6 por 6 pixels. Você já deve saber que pixel é a unidade básica de uma imagem (lembra da camera do seu celular, 10Mb ou algo assim?!). Vocês devem ter visto sobre pixels e resolução no mesmo em aulas de geoprocessamento. Aqui podemos tratar o pixel como a resolução. Vamos dizer que temos um pixel de 10 metros (res=10 no bloco de código), ou seja, uma quadrado de 10 por 10m, sendo essa, a menor unidade mapeável. Assim sendo, a resolução tambem tem ligação com escala cartográfica!</p>
+<p>Vamos gerar e plotar uma paisagem simples em 4 passos. Primeiramente, a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">rast</span> cria um objeto do tipo raster. E depois a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">values</span> atribui valores, e na sequencia vamos visualisar os valores com <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">plot</span> e <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">text</span> .</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="primeiros-passos-com-uma-raster.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Função &quot;rast&quot; gera a paisagem virtual (paisagem simulado)</span></span>
+<span id="cb49-2"><a href="primeiros-passos-com-uma-raster.html#cb49-2" aria-hidden="true" tabindex="-1"></a>pai_sim <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">ncols=</span><span class="dv">6</span>, <span class="at">nrows=</span><span class="dv">6</span>, </span>
+<span id="cb49-3"><a href="primeiros-passos-com-uma-raster.html#cb49-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmin=</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">60</span>, </span>
+<span id="cb49-4"><a href="primeiros-passos-com-uma-raster.html#cb49-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">60</span>, </span>
+<span id="cb49-5"><a href="primeiros-passos-com-uma-raster.html#cb49-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">res=</span><span class="dv">10</span>) </span>
+<span id="cb49-6"><a href="primeiros-passos-com-uma-raster.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">#E essa atribui valores (&quot;values&quot;) para os pixels criados acima</span></span>
+<span id="cb49-7"><a href="primeiros-passos-com-uma-raster.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(pai_sim) <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb49-8"><a href="primeiros-passos-com-uma-raster.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pai_sim) <span class="co">#Essa plota</span></span>
+<span id="cb49-9"><a href="primeiros-passos-com-uma-raster.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pai_sim) <span class="co">#Essa coloca os valores dos pixels</span></span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
+<img src="bookdownproj_files/figure-html/unnamed-chunk-38-1.png" alt="Paisagem simples de 36 pixels." width="384" />
+<p class="caption">
+Figura 3.1: Paisagem simples de 36 pixels.
+</p>
+</div>
+<P style="page-break-before: always">
+<div id="obter-e-carregar-dados-raster-1" class="section level3 hasAnchor" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> Obter e carregar dados (raster)<a href="primeiros-passos-com-uma-raster.html#obter-e-carregar-dados-raster-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mais uma vez vamos aproveitar os dados de MapBiomas. Agora baixar arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato “.tif”, tamanho 3.3 MB). Link: <a href="https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif" target="_blank">https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif</a> . Lembrando-se de salvar o arquivo (“utm_cover_AP_rio_2020.tif”) em um local conhecido no seu computador. Agora avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo “utm_cover_AP_rio_2020.tif”:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="primeiros-passos-com-uma-raster.html#cb50-1" aria-hidden="true" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
+<p>O código abaixo vai carregar os dados e criar o objeto “mapbiomas_2020”.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="primeiros-passos-com-uma-raster.html#cb51-1" aria-hidden="true" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
+<p><br></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="reclassificação-1" class="section level3 hasAnchor" number="3.0.2">
+<h3><span class="header-section-number">3.0.2</span> Reclassificação<a href="primeiros-passos-com-uma-raster.html#reclassificação-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><br></p>
+<p>Para simplificar nossa avaliação de escala, reclassificamos a camada mapbiomas_2020 em uma camada binária de floresta/não-floresta. Essa tarefa de geoprocessamento pode ser realizada anteriormente usando SIG (<a href="https://docs.qgis.org/3.22/pt_BR/docs/training_manual/rasters/terrain_analysis.html#moderate-fa-reclassifying-the-raster">QGIS</a>). Aqui vamos reclassificar as categorias de cobertura da terra (agrupando diferentes áreas de cobertura florestal tipos) usando alguns comandos genéricos do R para criar uma nova camada com a cobertura de floresta em toda a região de estudo. Para isso, criamos um mapa do mesmo resolução e extensão, e então podemos redefinir os valores do mapa. Neste caso, queremos agrupar a cobertura da terra categorias 3 e 4 (Formação Florestal e Formação Savânica, respectivamente).</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="primeiros-passos-com-uma-raster.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
+<span id="cb52-2"><a href="primeiros-passos-com-uma-raster.html#cb52-2" aria-hidden="true" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
+<span id="cb52-3"><a href="primeiros-passos-com-uma-raster.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
+<span id="cb52-4"><a href="primeiros-passos-com-uma-raster.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb52-5"><a href="primeiros-passos-com-uma-raster.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
+<span id="cb52-6"><a href="primeiros-passos-com-uma-raster.html#cb52-6" aria-hidden="true" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<div style="page-break-after: always;"></div>
+<p>Vizualizar para verificar.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="primeiros-passos-com-uma-raster.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb53-2"><a href="primeiros-passos-com-uma-raster.html#cb53-2" aria-hidden="true" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb53-3"><a href="primeiros-passos-com-uma-raster.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb53-4"><a href="primeiros-passos-com-uma-raster.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb53-5"><a href="primeiros-passos-com-uma-raster.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb53-6"><a href="primeiros-passos-com-uma-raster.html#cb53-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
+<span id="cb53-7"><a href="primeiros-passos-com-uma-raster.html#cb53-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb53-8"><a href="primeiros-passos-com-uma-raster.html#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb53-9"><a href="primeiros-passos-com-uma-raster.html#cb53-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-10"><a href="primeiros-passos-com-uma-raster.html#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb53-11"><a href="primeiros-passos-com-uma-raster.html#cb53-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb53-12"><a href="primeiros-passos-com-uma-raster.html#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
+<p class="caption">
+Figura 3.2: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio.
+</p>
+</div>
+<P style="page-break-before: always">
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="codigo-no-livro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primeiros-passos-com-vector.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darrennorris/epr/edit/main/06-codigo-raster.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/darrennorris/epr/blob/main/06-codigo-raster.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
