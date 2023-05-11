@@ -4,6 +4,10 @@ author: "Darren Norris"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 bibliography: references.bib
+url: 'https\://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html/' 
+cover-image: cover.jpg # relative to index
+description: "This is a minimal example."
+github-repo: darrennorris/epr
 ---
 
 \newpage{}
