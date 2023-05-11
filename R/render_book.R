@@ -1,6 +1,8 @@
 # bookdown
 bookdown::render_book("index.Rmd")
-bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 # check
 browseURL("docs/index.html")
+# pdf
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+
 # quarto::quarto_render()

@@ -4,7 +4,9 @@ bibliography: references.bib
 
 \newpage{}
 
-# (PART) Escala e métricas {-}
+# (PART) Escala e padrões {-}
+
+\newpage{}
 
 # Escala
 

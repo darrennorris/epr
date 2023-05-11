@@ -128,7 +128,7 @@ floresta_2020[mapbiomas_2020==3 | mapbiomas_2020==4] <- 1
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-rin <- "data/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif"
+rin <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\raster\\mapbiomas_AP_utm_rio\\utm_cover_AP_rio_2020.tif"
 mapbiomas_2020 <- rast(rin)
 # Reclassificação - 
 # Criar uma nova camada de floresta (novo objeto de raster copiando mapbiomas_2020, 
@@ -179,7 +179,7 @@ No exemplo, usamos `r kableExtra::text_spec("%>%", bold = TRUE)`, que estabelece
 Primeiramente carregamos os dados e em seguida converter (reprojeção) as coordenadas para o mesmo sistema de referência que o arquivo raster (com a função st_transform). 
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, results='hide'}
-meuSIG <- "data/rivers.gpkg"
+meuSIG <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
 fs <- file.size(meuSIG)/(1024^2)
 # pontos cada 5 km
 rsm_31976 <- sf::st_read(meuSIG, layer = "midpoints") %>% 
