@@ -19,7 +19,9 @@ urlcolor: blue
 
 # Bem-vindos {.unnumbered}
 
+
 <img align="right" src="cover.jpg" width="300" style="margin-top: 20px">
+
 
 Este é um trabalho em andamento do 1ª edição:  
 
