@@ -23,8 +23,7 @@ urlcolor: blue
 <img align="right" src="cover.jpg" width="300" style="margin-top: 20px">
 
 
-Este é um trabalho em andamento do 1ª edição:  
-
+Este é um trabalho em andamento do 1ª edição:
 **"Ecologia de Paisagens com R"**.
 
 Este é um material introdutório destinado principalmente a estudantes de graduação e cursos de pós-graduação em ecologia e áreas correlatas.
