@@ -2,7 +2,7 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">epr</a></li>
       after: |
@@ -11,4 +11,3 @@ bookdown::gitbook:
 bookdown::pdf_document2: 
  includes:
       in_header: preamble.txe
- always_allow_html: true   
