@@ -3,6 +3,35 @@
 
 # (PART) R: Codigo {-}
 
+Organize following: 
+https://jakubnowosad.com/posts/2020-05-26-intro-to-landscape-ecology/
+
+https://youtu.be/dCTOGDnDuvM  at 28 minutes
+Attribute data operations
+- Vector attribute subsetting, aggrergatyion and joins
+- Creating new vector attributes
+- Raster subsetting
+- Summarizing raster objects
+
+Spatial data operations
+- Spatial subsetting
+- Topological relations
+- Spatial joining
+- 
+- zonal raster operations
+
+Geometry operations
+- on vector
+- on raster
+- Vector-raster interactions
+
+Coordinate reference systems
+- Understaning map projections
+- Reprojecting spatial data
+- Modifying map projections
+
+
+
 # Codigo no livro
 
 
