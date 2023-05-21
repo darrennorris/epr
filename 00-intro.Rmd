@@ -9,6 +9,16 @@ Ecologia da Paisagem é uma disciplina empolgante que permite transformar dados 
 Ecologia da Paisagem é um campo vasto e não há como dominar tudo lendo um único livro.
 Este livro visa fornecer uma base sólida nas ferramentas mais importantes e conhecimento suficiente para encontrar os recursos para aprender mais quando necessário. Um modelo das etapas de um projeto típico de Ecologia da Paisagem se parece com.....
 
+
+Six key steps for functional landscape analyses of habitat
+change https://doi.org/10.1007/s10980-020-01048-y 
+- Acknowledge ecological theory and conceptual paradigms
+- Evaluate the fit of available data
+- Assess the three facets of the scale concept
+- Recognize different sampling designs
+- Use proper conceptual models
+- Measure meaningful raster characteristics
+
 ## Como este livro está organizado {.unnumbered}
 A descrição anterior das ferramentas da Ecologia da Paisagem é organizada aproximadamente de acordo com a ordem em que você as usa em uma análise (embora, é claro, você as itere várias vezes).
 Em nossa experiência, no entanto, aprender a importar e organizar os dados primeiro não é o ideal, porque 80% do tempo é rotineiro e chato e, nos outros 20% do tempo, é estranho e frustrante.
@@ -22,6 +32,7 @@ Embora possa ser tentador pular os exercícios, não há melhor maneira de apren
 
 ## O que você não vai aprender {.unnumbered}
 
+Base teorica pra tras os conceitos e calculos. O foco é sobre a aplicação, e isso não preciso avanços teoricas. Incluimos referencias para que é possivel obter maior detalhes sobre os conceitos e teorias ecologicos e caluclos usados na Ecologia da Paisagem.
 
 ## Prerequisites {.unnumbered}
 Fizemos algumas suposições sobre o que você já sabe para aproveitar ao máximo este livro.
