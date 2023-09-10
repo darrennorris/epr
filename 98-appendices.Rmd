@@ -1,17 +1,13 @@
+# (APPENDIX) Apêndice {-} 
 
-\newpage{}
-
-# Appendices {.unnumbered}
-
-
-## Annexo 1
+# Annexo 1
 
 Exemplos de código R usado para 
 -   baixar Mapbiomas, 
 -   recortar para uma região de interesse
 -   plotar com legenda
 
-```{r packages-needed}
+```{r packages-needed, echo=TRUE, eval=FALSE}
 library(plyr)
 library(tidyverse)
 library(terra)
@@ -20,7 +16,7 @@ library(readxl)
 library(tmap)
 ```
 
-### Download mapbiomas cover
+## Download mapbiomas cover
 Site: https://brasil.mapbiomas.org/colecoes-mapbiomas/. 
 Any zeros are NA (NODATA). http://forum.mapbiomas.ecostage.com.br/t/pixels-com-valor-zero/170/5 . 
 And "27" “Não observado”. No exemplo os arquivos vai ficar no working directory.
@@ -64,7 +60,7 @@ lapply(alist[21:30], get_mapbiomas)
 lapply(alist[31:37], get_mapbiomas)
 ```
 
-### Crop mapbiomas cover
+## Crop mapbiomas cover
 
 Identify all tif files in a folder.
 ```{r list-tif, echo=TRUE, eval=FALSE}
@@ -161,7 +157,7 @@ plyr::a_ply(df_muni_tif, .margins = 1,
             .fun = crop_proj)
 ```
 
-### Plot with legend
+## Plot with legend
 Combine all years into multi layer raster.
 ```{r combine-years, echo=TRUE, eval=FALSE}
 infolder_rio <- "E:/mapbiomas/AP_utm_rio"
