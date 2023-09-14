@@ -36,11 +36,11 @@ rio_ag <- aggregate(subset(rio_85a22, c(1, 38)), fact=5, fun="modal")
 
 load beach coordinates and make polygon
 ```{r load-beach, combine-years, echo=TRUE, eval=FALSE}
-beachfile <- "C:\\Users\\user\\Documents\\rbooks\\epr\\data\\vector\\beaches.GPKG"
+beachfile <- "data/vector/beaches.GPKG"
 beach <- st_read(beachfile, layer = "nesting_beaches3395") |> 
   st_transform(31976)
 # make sure is same
-st_crs(beach) <- crs(rio_ag)
+st_crs(beach) <- crs(rio_85a22)
 # buffer
 buff_500 <- st_buffer(beach, dist=500) %>% 
   mutate(buff_dist = 500, 
@@ -83,6 +83,12 @@ unique(rcrio_ag)
 plot(rcrio_ag)
 # ok apply to all
 rcrio_ag <- classify(rio_85a22, m)
+# pode demorar uns minutos.
+rcrio <- classify(rio_85a22, m)
+
+writeRaster(rcrio, "rcutm_cover_AP_rio_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
 ```
 
 
@@ -107,11 +113,41 @@ tm_shape(rcrio_ag) +
 
 Calculate metrics.
 ```{r calculate-metrics, echo=TRUE, eval=FALSE}
-# proportion of buffers
+# proportion of buffers. Not efficient.
 metricas_anos <- sample_lsm(landscape = rcrio_ag, 
                             y = buff_500,
                            plot_id = data.frame(buff_500)[, 'aid'],
                              what = "lsm_c_pland")
+
+# Simple function to calculate proportion of class.
+# Using plyr to run for each point
+dfbeach <- data.frame(beach[, c('aid','id_praia')])
+
+class_prop <- function(x, adist = 500, 
+                       rfile = "data/raster/mapbiomas/rcutm_cover_AP_rio_85a22.tif"){
+  inpoint <- x
+  mypoint <- sf::st_as_sf(inpoint)
+  myid <- paste(x$id_praia, adist, sep="_")
+  
+   mypoly <- sf::st_union(sf::st_buffer(mypoint, dist=500)) 
+   myexent <- terra::ext(terra::vect(mypoly)) 
+   rin <- rfile
+   rbig <- terra::rast(rin)
+   #Crop
+  rcrop <- terra::crop(rbig, myexent, snap="out")
+  rm("rbig") 
+  res <- sample_lsm(landscape = rcrop, 
+             y = mypoint, 
+             size = adist, 
+             plot_id = myid, 
+             what = "lsm_c_pland")
+  outres <- data.frame(res)
+  #clear temporary files
+  terra::tmpFiles(current =TRUE, remove = TRUE) 
+  outres
+}
+# this seems to be much faster and uses less memory.
+mymetrics <- plyr::ddply(dfbeach[1:5, ], .(aid), .fun=class_prop)
 
 
 ```
