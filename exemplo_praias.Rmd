@@ -123,32 +123,89 @@ metricas_anos <- sample_lsm(landscape = rcrio_ag,
 # Using plyr to run for each point
 dfbeach <- data.frame(beach[, c('aid','id_praia')])
 
-class_prop <- function(x, adist = 500, 
+class_prop <- function(x, adist = 10000, 
                        rfile = "data/raster/mapbiomas/rcutm_cover_AP_rio_85a22.tif"){
   inpoint <- x
   mypoint <- sf::st_as_sf(inpoint)
   myid <- paste(x$id_praia, adist, sep="_")
   
-   mypoly <- sf::st_union(sf::st_buffer(mypoint, dist=500)) 
+   mypoly <- sf::st_union(sf::st_buffer(mypoint, dist=adist)) 
    myexent <- terra::ext(terra::vect(mypoly)) 
    rin <- rfile
    rbig <- terra::rast(rin)
    #Crop
   rcrop <- terra::crop(rbig, myexent, snap="out")
   rm("rbig") 
+  rm("mypoly") 
   res <- sample_lsm(landscape = rcrop, 
              y = mypoint, 
              size = adist, 
              plot_id = myid, 
              what = "lsm_c_pland")
+  # try this to be quicker
+  #res <- lsm_c_pland(landscape = rcrop
+  #           )
   outres <- data.frame(res)
   #clear temporary files
   terra::tmpFiles(current =TRUE, remove = TRUE) 
   outres
 }
 # this seems to be much faster and uses less memory.
-mymetrics <- plyr::ddply(dfbeach[1:5, ], .(aid), .fun=class_prop)
+# 18:00. Finished withiin 30 minutes.
+mymetrics_500 <- plyr::ddply(dfbeach, .(aid), .fun=class_prop)
+# 18:40 finished by 2036
+mymetrics_10000 <- plyr::ddply(dfbeach, .(aid), .fun=class_prop)
 
+```
 
+Tidy up.
+```{r tidy-data, echo=TRUE, eval=FALSE}
+# add year
+bind_rows(mymetrics_500, mymetrics_10000) |>
+    dplyr::mutate(value = round(value,2), 
+         ano = case_when(layer==1 ~1985, 
+                         layer==2~1986, 
+                         layer==3~1987, 
+                         layer==4 ~1988, 
+                         layer==5~1989, 
+                         layer==6~1990,
+                         layer==7~1991, 
+                         layer==8~1992,
+                         layer==9~1993, 
+                         layer==10~1994,
+                         layer==11~1995, 
+                         layer==12~1996,
+                         layer==13~1997, 
+                         layer==14~1998,
+                         layer==15~1999, 
+                         layer==16~2000, 
+                         layer==17~2001, 
+                         layer==18~2002, 
+                         layer==19~2003, 
+                         layer==20~2004, 
+                         layer==21~2005, 
+                         layer==22~2006, 
+                         layer==23~2007, 
+                         layer==24~2008, 
+                         layer==25~2009, 
+                         layer==26~2010, 
+                         layer==27~2011, 
+                         layer==28~2012, 
+                         layer==29~2013, 
+                         layer==30~2014, 
+                         layer==31~2015, 
+                         layer==32~2016, 
+                         layer==33~2017, 
+                         layer==34~2018, 
+                         layer==35~2019, 
+                         layer==36~2020, 
+                         layer==37~2021, 
+                         layer==38~2022)) -> mymetrics
+
+```
+
+Export.
+```{r export-metrics, echo=TRUE, eval=FALSE}
+write.csv(mymetrics, "mapbiomas_beaches.csv", row.names = FALSE)
 ```
 
