@@ -1,0 +1,118 @@
+
+# 
+
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+library(plyr)
+library(tidyverse)
+library(terra)
+library(sf)
+library(readxl)
+library(tmap)
+library(landscapemetrics)
+```
+
+
+Area of interest - format extent for use by terra.
+```{r make-extent, echo=TRUE, eval=FALSE}
+#extent from 50 km arouund river upstream of cachoeira caldeirao
+meuSIG <- file.choose()
+#"C:\\Users\\Darren\\Documents\\gisdata\\vector\\rivers.GPKG"
+# "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+rsl <- st_read(meuSIG, layer = "centerline")
+rsl_50km <- st_union(st_buffer(rsl, dist=50000))
+myexent <- ext(vect(rsl_50km)) 
+```
+
+
+Load raster
+```{r load-raster, combine-years, echo=TRUE, eval=FALSE}
+rio_85a22 <- rast("data/raster/mapbiomas/utm_cover_AP_rio_85a22.tif")
+# smaller sample for code testing
+rio_ag <- aggregate(subset(rio_85a22, c(1, 38)), fact=5, fun="modal")
+
+
+```
+
+load beach coordinates and make polygon
+```{r load-beach, combine-years, echo=TRUE, eval=FALSE}
+beachfile <- "C:\\Users\\user\\Documents\\rbooks\\epr\\data\\vector\\beaches.GPKG"
+beach <- st_read(beachfile, layer = "nesting_beaches3395") |> 
+  st_transform(31976)
+# make sure is same
+st_crs(beach) <- crs(rio_ag)
+# buffer
+buff_500 <- st_buffer(beach, dist=500) %>% 
+  mutate(buff_dist = 500, 
+         tipo = "buffer", 
+         area_m2 = st_area(geom), 
+         area_km2 = as.numeric(st_area(geom))/1000000)  |>
+  mutate(aid = paste(id_praia, buff_dist, sep="_")) |>
+  dplyr::select(aid, id_praia, buff_dist, tipo, area_m2, area_km2)
+
+buff_10km <- st_buffer(beach, dist=10000) %>% 
+  mutate(buff_dist = 10000, 
+         tipo = "buffer", 
+         area_m2 = st_area(geom), 
+         area_km2 = as.numeric(st_area(geom))/1000000)  |> 
+   mutate(aid = paste(id_praia, buff_dist, sep="_")) |>
+  dplyr::select(aid, id_praia, buff_dist, tipo, area_m2, area_km2)
+
+bind_rows(buff_500, buff_10km) |> 
+  mutate(aid = paste(id_praia, buff_dist, sep="_")) -> buff
+length(unique(buff$aid)) # 766
+```
+
+reclassify 
+```{r reclass,  echo=TRUE, eval=FALSE}
+# legend 
+#"C:\\Users\\user\\Documents\\rbooks\\epr\\data\\raster\\mapbiomas\\legend\\Codigos-da-legenda-colecao-8.csv"
+maplegend <- read.csv2("data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv")
+# two column matrix ("is", "becomes").
+class_anthro <- c(14, 15, 18, 19,39, 20, 40, 62, 41, 36, 46, 47, 35, 48, 9, 21,24,30, 31)
+new_anthro <- rep(14, length(class_anthro))
+class_water <- c(26, 33)
+new_water <- rep(26, length(class_water))
+class_forest <- c(1,3,4,6,49)
+new_forest <- rep(1, length(class_forest))
+dfclass <- data.frame(old = c(class_anthro, class_water, class_forest), 
+                new = c(new_anthro, new_water, new_forest))
+m <- as.matrix(dfclass)
+rcrio_ag <- classify(rio_ag, m)
+unique(rcrio_ag)
+plot(rcrio_ag)
+# ok apply to all
+rcrio_ag <- classify(rio_85a22, m)
+```
+
+
+Plot to check.
+```{r plot-years, echo=TRUE, eval=FALSE}
+class_vals <- maplegend$Class_ID
+class_color <- maplegend$Color
+names(class_color) <-  maplegend$Class_ID
+#labels
+my_label <- ifelse(maplegend$Descricao =="Agropecuária", "Antropico", 
+                   maplegend$Descricao)
+names(my_label) <- maplegend$Class_ID
+
+# Plot to check
+tm_shape(rcrio_ag) +
+  tm_raster(style = "cat", palette = class_color, labels = my_label, title="") + 
+  tm_scale_bar(breaks = c(0, 10), text.size = 1, 
+               position=c("left", "top")) +
+  tm_facets()
+
+```
+
+Calculate metrics.
+```{r calculate-metrics, echo=TRUE, eval=FALSE}
+# proportion of buffers
+metricas_anos <- sample_lsm(landscape = rcrio_ag, 
+                            y = buff_500,
+                           plot_id = data.frame(buff_500)[, 'aid'],
+                             what = "lsm_c_pland")
+
+
+```
+
