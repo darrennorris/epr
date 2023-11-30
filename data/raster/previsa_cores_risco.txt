@@ -1,0 +1,8 @@
+# Arquivo de exportação de Mapa de Cores gerado pelo QGIS
+INTERPOLATION:INTERPOLATED
+0,255,255,255,255,0,0000
+0.0025,119,26,174,255,Muito Baixo
+0.01,248,195,113,255,Baixo
+0.03,245,157,51,255,Moderado
+0.08,248,75,75,255,Alto
+1,194,11,11,255,Muito Alto

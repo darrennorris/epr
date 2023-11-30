@@ -1,0 +1,355 @@
+
+# Annexo 2
+
+Exemplos de código R usado para 
+Geoprocessing to calculate forest cover, then distances to humans and water.
+-   simulate species occurences
+-   model species distribution
+-   species richness and diversity of simulated species
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+library(plyr)
+library(tidyverse)
+library(terra)
+library(geodata)
+library(sf)
+library(readxl)
+library(tmap)
+```
+
+Use Mapbiomas to get map of anthropogenic class across Amapa state.
+Aggregated to be compatiable with 
+Imazon PrevisIA áreas sob risco de desmatamento na Amazônia: https://previsia.org.br/
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+# to calculate:
+# distance to risk of future deforestation
+# distance to open water (mapbiomas)
+# distance to human (mapbiomas)
+# amazon and cerrado (mapbiomas)
+previsia_22 <- rast("data/raster/previsia_2022.tif")
+# replace NA's by zero so have continuous cover across land
+# NA include water which cannot be deforestated
+previsia_22[is.na(previsia_22[])] <- 0 
+crs(previsia_22)
+
+
+# crop to Amapa
+#extent from municiapality boundary
+longname <- "data/vector/brazil_ninestate/ninestate_poly.shp"
+sf_states <- sf::st_read(longname) |> 
+  filter(SIGLA_UF == "AP") |> 
+  st_transform(terra::crs(previsia_22))
+ap_1km <- st_union(st_buffer(sf_states, dist=1000))
+previsia_22_ap <- crop(previsia_22, vect(ap_1km), mask = TRUE, 
+                       snap="out")
+names(previsia_22_ap) <- "risco"
+
+# Plot to check
+tm_shape(previsia_22_ap) +
+  tm_raster(style = "pretty", palette = rev(viridis::viridis(6))) + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "bottom")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("left","top"), legend.bg.color="white")
+
+
+```
+
+Now reclassify.
+```{r reclass-previsia}
+
+#reclassify binary (0 = no risk (<0.001), 1 = risk (>=0.001))
+m <- c(0, 0.005, 0,
+       0.005, 1, 1)
+rclmat <- matrix(m, ncol=3, byrow=TRUE)
+previsia_22_ap_risk <- classify(previsia_22_ap, rclmat, include.lowest=TRUE)
+# plot to check
+tm_shape(previsia_22_ap_risk) +
+  tm_raster(style = "cat") + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "bottom")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("left","top"), legend.bg.color="white")
+```
+
+Calculate distances
+```{r distance-previsia}
+
+d_risk <- distance(previsia_22_ap_risk, target=0) 
+names(d_risk) <- "risk_dist_m"
+# plot to check
+tm_shape(d_risk/1000) +
+  tm_raster(palette = rev(viridis::viridis(100)), 
+            n=100, legend.show = FALSE) + 
+  #  tm_raster(palette = rev(viridis::viridis(10)), 
+  #          n=10) +
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "top")) +
+tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
+```
+
+Mapbiomas.
+```{r mapbiomas-amapa}
+# distance to open water (mapbiomas)
+# distance to human (mapbiomas)
+# amazon and cerrado (mapbiomas)
+
+# load and crop mapbiomas
+mapbiomas_22 <- rast("E:\\mapbiomas\\brasil_coverage_2022.tif")
+ap_1km |> 
+  st_transform(crs(ap_1km)) -> ap_1km_4326 
+# crop to Amapa
+mapbiomas_22_ap <- crop(mapbiomas_22, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+rm("mapbiomas_22")
+
+```
+
+Mapbiomas Human (should use modal for 3 years to make more reliable).
+```{r mapbiomas-human}
+
+# legend 
+#"C:\\Users\\user\\Documents\\rbooks\\epr\\data\\raster\\mapbiomas\\legend\\Codigos-da-legenda-colecao-8.csv"
+maplegend <- read.csv2("data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv")
+# two column matrix ("is", "becomes").
+# Split anthro into two so can remove anomolus points 
+# in middle of forest
+class_anthro <- c(14, 15, 18, 19,39, 20, 40, 62, 41, 36, 46, 47, 35, 48, 9, 21,31)
+new_anthro <- rep(14, length(class_anthro))
+# 24 = urban, 30 = mining
+class_anthro_strong <- c(24,30)
+new_anthro_strong <- rep(24, length(class_anthro_strong))
+class_water <- c(26, 33)
+new_water <- rep(26, length(class_water))
+dfclass <- data.frame(old = c(class_anthro, class_anthro_strong,
+                              class_water), 
+                      new = c(new_anthro, new_anthro_strong, 
+                              new_water))
+m <- as.matrix(dfclass)
+# ok apply to all
+mapbiomas_22_ap_reclass <- classify(mapbiomas_22_ap, m)
+unique(mapbiomas_22_ap_reclass)
+
+# Reclassificação - 
+# Criar uma nova camada de floresta (novo objeto de raster copiando mapbiomas_2022, 
+# assim para ter os mesmos coordenados, resolução e extensão)
+human_2022 <- mapbiomas_22_ap_reclass
+# Todos os pixels com valor de 0
+values(human_2022) <- 0
+# Atualizar com valor de 1 quando pixels originais são de antropico
+human_2022[mapbiomas_22_ap_reclass==14] <- 1 
+unique(human_2022)
+# strong human
+human_strong_2022 <- mapbiomas_22_ap_reclass
+# Todos os pixels com valor de 0
+values(human_strong_2022) <- 0
+# Atualizar com valor de 1 quando pixels originais são de antropico
+human_strong_2022[mapbiomas_22_ap_reclass==24] <- 1 
+unique(human_strong_2022)
+
+same.crs(human_2022, previsia_22_ap_risk) # TRUE
+rs_human_2022 <- resample(human_2022, previsia_22_ap_risk, 
+                          method = "near")
+rs_human_2022 <- crop(rs_human_2022, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+rs_human_strong_2022 <- resample(human_strong_2022,
+                              previsia_22_ap_risk, 
+                          method = "max")
+rs_human_strong_2022 <- crop(rs_human_strong_2022,
+                             vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+
+tmp <- rs_human_2022 + rs_human_strong_2022
+rs_human_final <- tmp
+values(rs_human_final) <- 0
+# Atualizar com valor de 1 quando pixels originais são de antropico
+rs_human_final[tmp==1 | tmp == 2] <- 1
+# crop to Amapa
+rs_human_final <- crop(rs_human_final, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+# Plot to check
+tm_shape(rs_human_final) +
+  tm_raster(style = "cat") + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "bottom")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("left","top"), legend.bg.color="white")
+
+# Now calculate distance
+d_human <- distance(rs_human_final, target=0) 
+names(d_human) <- "human_dist_m"
+# plot to check
+tm_shape(d_human/10000) +
+  tm_raster(palette = rev(viridis::viridis(100)), 
+            n=100, legend.show = FALSE) + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "top")) +
+tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
+
+```
+
+
+Most dominant forest types.
+```{r forest-cover}
+
+forest <- mapbiomas_22_ap
+values(forest) <- 0
+# Atualizar com valor de 3 quando pixels originais são de floresta
+forest[mapbiomas_22_ap==3] <- 3 # Formação Florestal
+forest[mapbiomas_22_ap==4] <- 4 # Formação Savânica
+forest[mapbiomas_22_ap==6] <- 6 # Floresta Alagável
+rs_forest <- resample(forest,
+                              previsia_22_ap_risk, 
+                          method = "near")
+# crop to Amapa
+rs_forest <- crop(rs_forest, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+names(rs_forest) <- "forest"
+```
+
+
+
+Compare so far.
+```{r human-risk}
+all <- c(d_human, d_risk)
+# plot to check. Previsa better.
+tm_shape(all) +
+  tm_raster(palette = rev(viridis::viridis(100)), 
+            n=100, legend.show = FALSE) + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "top")) +
+tm_layout(legend.position = c("left","bottom"), legend.bg.color="white") + 
+  tm_facets()
+```
+
+Water need to include drainage - here using OSM
+```{r water-distance}
+riverosm <- read_sf("data/vector/osm_ap_rios.shp") |> 
+  st_transform(terra::crs(previsia_22))
+
+river_c <- crop(vect(riverosm), vect(ap_1km))
+river_ap <- st_buffer(st_as_sf(river_c), dist=50)
+river_ap$aval <- 1
+r <- rast(previsia_22_ap_risk)
+rivers_2022 <- rasterize(vect(river_ap), r, "aval", fun="max", 
+                         touches = TRUE)
+rivers_2022[is.na(rivers_2022[])] <- 0 
+# crop to Amapa
+rivers_2022 <- crop(rivers_2022, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+rs_rivers_2022 <- resample(rivers_2022, previsia_22_ap_risk, 
+                          method = "near")
+rs_rivers_2022 <- crop(rs_rivers_2022, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+# Mapbiomas water
+water_2022 <- mapbiomas_22_ap_reclass 
+values(water_2022) <- 0
+# Atualizar com valor de 1 quando pixels originais são de agua
+water_2022[mapbiomas_22_ap_reclass==26] <- 1 
+unique(water_2022)
+
+same.crs(water_2022, previsia_22_ap_risk) # TRUE
+rs_water_2022 <- resample(water_2022, previsia_22_ap_risk, 
+                          method = "near")
+rs_water_2022 <- crop(rs_water_2022, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+
+tmp <- rs_water_2022 + rs_rivers_2022
+rs_water_final <- tmp
+values(rs_water_final) <- 0
+# Atualizar com valor de 1 quando pixels originais são de antropico
+rs_water_final[tmp==1 | tmp == 2] <- 1
+# crop to Amapa
+rs_water_final <- crop(rs_water_final, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+
+# Plot to check
+tm_shape(rs_water_final) +
+  tm_raster(style = "cat") + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "bottom")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("left","top"), legend.bg.color="white")
+
+# calculate distance to river
+# Now calculate distance
+d_water <- distance(rs_water_final, target=0) 
+names(d_water) <- "water_dist_m"
+# plot to check
+tm_shape(d_water/10000) +
+  tm_raster(palette = rev(viridis::viridis(100)), 
+            n=100, legend.show = FALSE) + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "top")) +
+tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
+
+```
+
+
+Export.
+```{r export-dist}
+all <- c(d_human, d_risk, d_water, rs_forest)
+writeRaster(all, "data/raster/dist.tif", 
+              gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+```
+
+```{r}
+atest <- rast("data/raster/dist.tif")
+
+```
+
+Hillshade example.
+```{r hillshade-example}
+
+alt = geodata::elevation_30s(country='CHE', path="data/raster")
+slope = terrain(alt, "slope")
+aspect = terrain(alt, "aspect")
+hill = shade(slope, aspect, angle=30, direction=270)
+plot(hill, col=grey(0:100/100), legend=FALSE, main='Switzerland')
+plot(alt, col=rainbow(25, alpha=0.45), add=TRUE)
+
+tm_shape(hill) +
+ tm_raster(palette = gray(0:100 / 100), n = 100, legend.show = FALSE)  +
+  tm_shape(alt) +
+  tm_raster(alpha = 0.5, palette = terrain.colors(25),
+            legend.show = FALSE)
+
+```
+
+Species occurence example
+```{r sp-occurence}
+# Not enough records - only one for each!
+paon <- sp_occurrence(genus= "Panthera", species="onca", 
+                      ext=vect(ap_1km), geo=TRUE, removeZeros=TRUE,
+                      download=TRUE, ntries=5, nrecs=300) |> 
+  filter(country=="Brazil")
+
+ateles <- sp_occurrence(genus= "Ateles", 
+                      ext=vect(ap_1km), geo=TRUE, removeZeros=TRUE,
+                      download=TRUE, ntries=5, nrecs=300) |> 
+  filter(country=="Brazil")
+
+
+```
+
