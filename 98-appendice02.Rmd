@@ -2,10 +2,9 @@
 # Annexo 2
 
 Exemplos de código R usado para 
-Geoprocessing to calculate forest cover, then distances to humans and water.
--   simulate species occurences
--   model species distribution
--   species richness and diversity of simulated species
+Geoprocessing to calculate variables for landscape modelling.
+Forest cover, distances to humans, distances to water etc.
+
 
 ```{r packages-needed, echo=TRUE, eval=FALSE}
 library(plyr)
@@ -15,6 +14,10 @@ library(geodata)
 library(sf)
 library(readxl)
 library(tmap)
+library(nngeo)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
 ```
 
 Use Mapbiomas to get map of anthropogenic class across Amapa state.
@@ -23,16 +26,16 @@ Imazon PrevisIA áreas sob risco de desmatamento na Amazônia: https://previsia.
 
 ```{r packages-needed, echo=TRUE, eval=FALSE}
 # to calculate:
-# distance to risk of future deforestation
+# distance to risk of future deforestation (previsa)
 # distance to open water (mapbiomas)
-# distance to human (mapbiomas)
+# distance to human use (mapbiomas)
+# distance to human residence (ibge)
 # amazon and cerrado (mapbiomas)
 previsia_22 <- rast("data/raster/previsia_2022.tif")
 # replace NA's by zero so have continuous cover across land
 # NA include water which cannot be deforestated
 previsia_22[is.na(previsia_22[])] <- 0 
 crs(previsia_22)
-
 
 # crop to Amapa
 #extent from municiapality boundary
@@ -41,6 +44,18 @@ sf_states <- sf::st_read(longname) |>
   filter(SIGLA_UF == "AP") |> 
   st_transform(terra::crs(previsia_22))
 ap_1km <- st_union(st_buffer(sf_states, dist=1000))
+ap_1km |> 
+  st_transform(crs(ap_1km)) -> ap_1km_4326
+#crop coastline
+brazil <- ne_countries(country = "Brazil", scale = 10,
+                             returnclass = "sf")
+# crop to Amapa (just mainland, excludes islands)
+ap_close <- crop(vect(ap_1km_4326), vect(brazil))
+ap_poly <- st_cast(st_as_sf(ap_close), "POLYGON")
+ap_poly$area_km2 <- as.numeric(st_area(ap_poly))/1000000
+ap_poly |> 
+  filter(area_km2 > 140000) -> ap_crop
+ 
 previsia_22_ap <- crop(previsia_22, vect(ap_1km), mask = TRUE, 
                        snap="out")
 names(previsia_22_ap) <- "risco"
@@ -104,8 +119,6 @@ Mapbiomas.
 
 # load and crop mapbiomas
 mapbiomas_22 <- rast("E:\\mapbiomas\\brasil_coverage_2022.tif")
-ap_1km |> 
-  st_transform(crs(ap_1km)) -> ap_1km_4326 
 # crop to Amapa
 mapbiomas_22_ap <- crop(mapbiomas_22, vect(ap_1km_4326), 
                         mask = TRUE, snap="out")
@@ -201,6 +214,71 @@ tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
 
 ```
 
+Strong human - urban and mining. Integrate mapbiomas and IBGE.
+Need to include at least all municipality capitals.
+```{r strong-human}
+
+#Mapbiomas. No. Includes a mix of classes.
+urban_2022 <- mapbiomas_22_ap_reclass
+# Todos os pixels com valor de 0
+values(urban_2022) <- 0
+# Atualizar com valor de 1 quando pixels originais são de antropico
+urban_2022[mapbiomas_22_ap_reclass==24] <- 1 
+urban_2022 <- resample(human_2022, previsia_22_ap_risk, 
+                          method = "near")
+
+urban_2022 <- crop(urban_2022, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+urban_2022 <- crop(urban_2022, vect(brazil), 
+                        mask = TRUE, snap="out")
+
+#IBGE 
+ibge_file <- "E:\\IBGE\\bc250\\bc250_2021_11_18\\bc250_2021_11_18.gpkg"
+st_layers(ibge_file)
+# permanent human habitation - 
+# lml_aglomerado_rural_p, lml_cidade_p, 
+# lml_vila_p, # lml_area_densamente_edificada_a
+aglomerado <- st_read(ibge_file, layer = "lml_aglomerado_rural_p") |> 
+  st_transform(4326) |> 
+  st_intersection(ap_crop) |> st_buffer(1000) |> st_union() |> 
+  st_make_valid()
+cidade <- st_read(ibge_file, layer = "lml_cidade_p") |> 
+  st_transform(4326) |> 
+  st_intersection(ap_crop) |> st_buffer(1000) |> st_union() |> 
+  st_make_valid() 
+vila <- st_read(ibge_file, layer = "lml_vila_p") |> 
+  st_transform(4326) |> 
+  st_intersection(ap_crop) |> st_buffer(1000) |> st_union() |> 
+  st_make_valid()
+edif <- st_read(ibge_file, layer = "lml_area_densamente_edificada_a") |> 
+  st_make_valid() |>
+  st_transform(4326) |> st_intersection(ap_crop) |> st_union() |> 
+  st_make_valid()
+# union
+aglomerado |> 
+  st_union(cidade) |> st_make_valid() |>
+  st_union(vila) |> st_make_valid() |> st_union(edif) |> 
+  st_make_valid()-> sf_human
+
+# to sf
+d <- data.frame(avalue = 1)
+d$geom = sf_human
+sf_human = st_as_sf(d, crs=4326)
+
+# rastreize and distances
+r <- rast(previsia_22_ap_risk)
+human_2021 <- rasterize(vect(sf_human), r, "avalue", fun="max", 
+                         touches = TRUE)
+human_2021[is.na(human_2021[])] <- 0
+human_2021 <- crop(human_2021, vect(ap_1km_4326), mask=TRUE, snap="out")
+# Now calculate distance
+d_resident <- distance(human_2021, target=0) 
+d_resident <- crop(d_resident, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+names(d_resident) <- "resident_dist_m"
+
+```
+
 
 Most dominant forest types.
 ```{r forest-cover}
@@ -208,9 +286,10 @@ Most dominant forest types.
 forest <- mapbiomas_22_ap
 values(forest) <- 0
 # Atualizar com valor de 3 quando pixels originais são de floresta
-forest[mapbiomas_22_ap==3] <- 3 # Formação Florestal
-forest[mapbiomas_22_ap==4] <- 4 # Formação Savânica
-forest[mapbiomas_22_ap==6] <- 6 # Floresta Alagável
+# Reclassified to represent a dry to wet gradient
+forest[mapbiomas_22_ap==3] <- 2 # Formação Florestal
+forest[mapbiomas_22_ap==4] <- 1 # Formação Savânica
+forest[mapbiomas_22_ap==6] <- 3 # Floresta Alagável
 rs_forest <- resample(forest,
                               previsia_22_ap_risk, 
                           method = "near")
@@ -218,25 +297,48 @@ rs_forest <- resample(forest,
 rs_forest <- crop(rs_forest, vect(ap_1km_4326), 
                         mask = TRUE, snap="out")
 names(rs_forest) <- "forest"
+
+# layer with just forest formation (Ombrofilia - Guyana ecotone)
+floresta <- mapbiomas_22_ap
+values(floresta) <- 0
+# Atualizar com valor de 3 quando pixels originais são de floresta
+floresta[mapbiomas_22_ap==3] <- 3 # Formação Florestal
+rs_floresta <- resample(floresta,
+                              previsia_22_ap_risk, 
+                          method = "near")
+# crop to Amapa
+rs_floresta <- crop(rs_floresta, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+
+names(rs_floresta) <- "floresta"
+
 ```
 
+Now biomass and forest height.
+```{r biomass_forest}
+bfile <- "E:\\Avitabile_AGB_Map\\Avitabile_AGB_Map\\Avitabile_AGB_Map.tif"
+hfile <- "E:\\Forest_height_2019_SAM.tif"
+rast(bfile) |> 
+  crop(vect(ap_1km_4326)) -> biomass_ap
+biomass_ap[is.na(biomass_ap[])] <- 1 
+biomass_ap <- crop(biomass_ap, vect(ap_1km_4326), 
+                        mask = TRUE, snap="out")
+rs_biomass <- resample(biomass_ap,
+                              previsia_22_ap_risk, 
+                          method = "bilinear")
+names(rs_biomass) <- "biomass"
+same.crs(rast(hfile), vect(ap_1km_4326)) # TRUE
+rast(hfile) |>
+  crop(vect(ap_1km_4326), mask = TRUE, snap="out") -> height_ap
+# correct errors
+height_ap[height_ap>90] <- 0
+rs_height <- resample(height_ap,
+                              previsia_22_ap, 
+                          method = "bilinear")
+names(rs_height) <- "height"
 
-
-Compare so far.
-```{r human-risk}
-all <- c(d_human, d_risk)
-# plot to check. Previsa better.
-tm_shape(all) +
-  tm_raster(palette = rev(viridis::viridis(100)), 
-            n=100, legend.show = FALSE) + 
-tm_shape(ap_1km) + 
-  tm_borders(col="black") + 
-tm_compass(position=c("left", "top")) +
-tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
-             position=c("left", "top")) +
-tm_layout(legend.position = c("left","bottom"), legend.bg.color="white") + 
-  tm_facets()
 ```
+
 
 Water need to include drainage - here using OSM
 ```{r water-distance}
@@ -309,7 +411,11 @@ tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
 
 Export.
 ```{r export-dist}
-all <- c(d_human, d_risk, d_water, rs_forest)
+all <- c(d_human, d_risk, d_resident, 
+         d_water, rs_forest, rs_floresta, 
+         rs_biomass, rs_height
+         )
+all <- crop(all, vect(ap_crop), mask=TRUE, snap = "out")
 writeRaster(all, "data/raster/dist.tif", 
               gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
 ```
@@ -318,6 +424,121 @@ writeRaster(all, "data/raster/dist.tif",
 atest <- rast("data/raster/dist.tif")
 
 ```
+
+Now crop to study area.
+Run across beaches and interviews.
+Load data (beaches Lua) and interviews (Michalski interviews)...
+```{r load-data}
+#extent from 50 km arouund river upstream of cachoeira caldeirao
+meuSIG <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+rsl <- st_read(meuSIG, layer = "centerline")
+
+interview_file <- "C:\\Users\\user\\Documents\\Articles\\2022_Michalski_interview\\analysis\\Interviews_2011_2015_alldata_106interviewsdn.xlsx"
+interviews <- read_excel(interview_file, col_types = c("numeric", "numeric", "text", "numeric", "text", "numeric", "numeric", 
+                                                                         "numeric", "numeric", "text", "numeric", 
+                                                                         "date", "numeric", "numeric", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "text", "numeric", "numeric", 
+                                                                         "text", "text", "numeric", "text", 
+                                                                         "numeric", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "numeric", "text", "text", "text", 
+                                                                         "text", "text", "text", "numeric", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "numeric", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "numeric", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "text", "text", "text", "text", 
+                                                                         "text", "numeric", "text", "text", 
+                                                                         "text", "text", "text", "text"))
+
+```
+
+Make extents.
+```{r make-extents}
+rsl_50km <- st_union(st_buffer(rsl, dist=50000)) |> 
+  st_make_valid()
+myexent_rsl <- ext(vect(rsl_50km))
+
+interviews_4326 <- st_as_sf(x = interviews,                         
+               coords = c("Longitude", "Latitude"),
+               crs = 4326)
+int_50km <- st_union(st_buffer(interviews_4326, dist=50000)) |> 
+  st_make_valid()
+myexent_int <- ext(vect(int_50km)) 
+
+int <- st_union(rsl_50km, int_50km)|> 
+  st_make_valid()
+myexent_final <- ext(vect(int))
+
+area_crop <- crop(vect(brazil), vect(int))
+
+area_poly <- st_cast(st_as_sf(area_crop), "POLYGON")
+area_poly$area_m2 <- as.numeric(st_area(area_poly))
+area_poly |> 
+  filter(area_m2 > 37773416684) -> area_crop
+  
+```
+
+
+Crop and export.
+```{r new-crop}
+newarea <- crop(atest, vect(area_crop), mask=TRUE)
+#export
+writeRaster(newarea, "data/raster/dist_area.tif", 
+              gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+
+```
+
+
+Sample points.
+```{r sample-points}
+# 185 * 204 km approx
+units::set_units(st_area(area_crop), "km2") #37773.42 [km^2]
+point_sample <- st_sample(area_crop, size=4000, type="regular")
+d <- data.frame(aid = 1:length(point_sample))
+d$geom = point_sample
+sf_points = st_as_sf(d, crs=4326)
+```
+
+Plot to check. Not working!!!
+```{r check-sample-points}
+
+tm_shape(d_human/10000) +
+  tm_raster(palette = rev(viridis::viridis(100)), 
+            n=100, legend.show = FALSE) + 
+tm_shape(ap_1km) + 
+  tm_borders(col="black") + 
+tm_shape(sf_points) + 
+  tm_dots(col="black") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 100, 200), text.size = 0.5, 
+             position=c("left", "top")) +
+tm_layout(legend.position = c("left","bottom"), legend.bg.color="white")
+
+```
+
+Check distances between points.
+```{r point-distances}
+# 3125.68
+nngeo::st_nn(sf_points, sf_points, k = 2, returnDist = T)
+```
+
+Extract values from raster layers.
+```{r extract-values}
+sf_points |> 
+  bind_cols(extract(newarea, vect(sf_points))) -> sf_points
+```
+
+Export.
+```{r}
+write_sf(sf_points, "data/vector/sample_points.shp")
+```
+
 
 Hillshade example.
 ```{r hillshade-example}
