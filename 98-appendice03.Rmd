@@ -381,26 +381,123 @@ writeRaster(species, "data/raster/species_area.tif",
 
 Sample species by points - extract buffer 5 km - ? how many points?
 If enough sample 10 at random and use as abundances.?
-Use function!!!
+Use function!!! Species by species - make fuunction to do this.
 ```{r species-sample-points}
-PA.points.wide <- sampleOccurrences(pa.wide,
+PA.points.sppA <- sampleOccurrences(pa.ptbr,
                                n = 1200,
                                type = "presence-absence", 
                                detection.probability = 0.8)
-PA.points.wide$sample.points
+PA.points.sppB <- sampleOccurrences(pa.lolo,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.6)
+PA.points.sppC <- sampleOccurrences(pa.ceth,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.7)
+PA.points.sppD <- sampleOccurrences(pa.lepa,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.6)
+PA.points.sppE <- sampleOccurrences(pa.paon,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.5)
+PA.points.sppF <- sampleOccurrences(pa.at,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.7)
+PA.points.sppG <- sampleOccurrences(pa.ceap,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.9)
+PA.points.sppH <- sampleOccurrences(pa.wide,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.8)
+PA.points.sppI <- sampleOccurrences(pa.wide,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.7)
+PA.points.sppJ <- sampleOccurrences(pa.wide,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.5)
+PA.points.sppK <- sampleOccurrences(random.spp01,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.8)
+PA.points.sppL <- sampleOccurrences(random.spp02,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.8)
+PA.points.sppM <- sampleOccurrences(random.spp03,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.8)
+PA.points.sppN <- sampleOccurrences(random.spp04,
+                               n = 1200,
+                               type = "presence-absence", 
+                               detection.probability = 0.8)
+
 ```
+
+Bind together.
+```{r bind-species-points}
+bind_rows( 
+  PA.points.sppA$sample.points |> mutate(sp = "sppA"), 
+  PA.points.sppB$sample.points |> mutate(sp = "sppB"), 
+  PA.points.sppC$sample.points |> mutate(sp = "sppC"), 
+  PA.points.sppD$sample.points |> mutate(sp = "sppD"), 
+  PA.points.sppE$sample.points |> mutate(sp = "sppE"), 
+  PA.points.sppF$sample.points |> mutate(sp = "sppF"), 
+  PA.points.sppG$sample.points |> mutate(sp = "sppG"), 
+  PA.points.sppH$sample.points |> mutate(sp = "sppH"), 
+  PA.points.sppI$sample.points |> mutate(sp = "sppI"), 
+  PA.points.sppJ$sample.points |> mutate(sp = "sppJ"), 
+  PA.points.sppK$sample.points |> mutate(sp = "sppK"), 
+  PA.points.sppL$sample.points |> mutate(sp = "sppL"), 
+  PA.points.sppM$sample.points |> mutate(sp = "sppM"),
+  PA.points.sppN$sample.points |> mutate(sp = "sppN")
+  ) -> species_points
+
+```
+
 
 Test to see how many across interview samples.
 ```{r count-interview-samples}
 int_5km <- st_buffer(interviews_4326[, "aid"], 5000)
-sample_4326 <- st_as_sf(x = PA.points.wide$sample.points,           
+# Function to count species abundances around interviews.
+extract_counts <- function(x){
+dfin <- x
+sample_area <- int_5km
+sample_4326 <- st_as_sf(x = dfin,           
                coords = c("x", "y"),
                crs = 4326)
-int_sample <- lengths(st_intersects(int_5km, sample_4326))
-int_presence <- lengths(st_intersects(int_5km, sample_4326 |> 
+int_sample <- lengths(st_intersects(sample_area, sample_4326))
+int_presence <- lengths(st_intersects(sample_area, sample_4326 |> 
                                         filter(Observed==1)))
-int_5km$int_pres <- lengths(st_intersects(int_5km, sample_4326 |> 
+sample_area$int_pres <- lengths(st_intersects(sample_area, sample_4326 |> 
                                         filter(Observed==1)))
-plot(int_5km[, "int_pres"])
+sample_area |> 
+  data.frame() |> 
+  select(aid, int_pres) -> dfout
+dfout
+}
+
+species_counts <- plyr::ddply(species_points, .(sp), 
+                              .fun = extract_counts)
+#join interview and counts
+interviews |> 
+  select(aid, Latitude, Longitude, Habitat_WWF) |>
+  left_join(species_counts) -> interview_counts
+
+```
+
+Export results
+```{r export-species-counts}
+
+write.csv(interview_counts, "data/interview_counts.csv", 
+          row.names = FALSE)
 ```
 
