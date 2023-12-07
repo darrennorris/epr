@@ -1,0 +1,186 @@
+
+# Annexo 2
+
+-   simulate species occurences
+-   model species distribution
+-   species richness and diversity of simulated species
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+library(plyr)
+library(tidyverse)
+library(terra)
+library(geodata)
+library(sf)
+library(readxl)
+library(tmap)
+library(vegan)
+library(mgcv)
+```
+
+Test relationships of simulated species.
+
+Load data (made in 98-appendice03.Rmd and 98-appendice03.Rmd).
+```{r load-data}
+# Sample points with environmental gradient values
+sf_points <- sf::st_read("data/vector/sample_points.shp")
+# Study area
+newarea <- rast("data/raster/dist_area.tif")
+# Species counts
+interview_counts <- read.csv("data/interview_counts.csv")
+interview_file <- "C:\\Users\\user\\Documents\\Articles\\2022_Michalski_interview\\analysis\\Interviews_2011_2015_alldata_106interviewsdn.xlsx"
+interviews <- read_excel(interview_file, col_types = c("numeric", "numeric", "text", "numeric", "text", "numeric", "numeric",             "numeric", "numeric", "text", "numeric",                             "date", "numeric", "numeric", "text",                                "text", "text", "text", "text", "text",                                "text", "text", "numeric", "numeric",                                "text", "text", "numeric", "text",                                "numeric", "text", "text", "text",                                  "text", "text", "text", "text", "text",                              "numeric", "text", "text", "text",                                    "text", "text", "text", "numeric",                                   "text", "text", "text", "text", "text",                               "numeric", "text", "text", "text", 
+"text", "text", "text", "text", "text", "text", "text", "text", 
+"text", "text",  "text", "text", "text", "text", "text",  
+"numeric", "text", "text", "text",                                     "text", "text", "text", "text", "text",                                  "text", "text", "text", "text", "text",                                 "text", "text", "text", "text", "text",                                "text", "numeric", "text", "text",                                    "text", "text", "text", "text"))
+
+# Landscape metrics
+mfile <- "C:\\Users\\user\\Documents\\Articles\\2022_Michalski_interview\\analysis\\metric_medians.csv"
+metrics_int <- read.csv(mfile, as.is = TRUE)
+```
+
+Make environmental dataframe with forest metrics.
+```{r add-forest-metrics}
+# Join metrics to interviews
+metrics_int |> 
+  filter(year_group != 1986, class == 1) |> 
+  mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |>
+  pivot_wider(id_cols = c(aid, year_group, class, Description), 
+              names_from = buff_metric, 
+              values_from = value_median) |> 
+  mutate(cpland_1 = replace_na(cpland_1, 0), 
+         cpland_10 = replace_na(cpland_10, 0), 
+         pland_1 = replace_na(pland_1, 0), 
+         pland_10 = replace_na(pland_10, 0)) -> tmp
+
+interviews |> 
+  select(aid, Year, Latitude, Longitude, Habitat_WWF) |> 
+  left_join(tmp, 
+            join_by(aid, Year == year_group)) |> 
+  data.frame() -> interview_metrics
+```
+
+Community dataframe.
+```{r species-data}
+interview_counts |> 
+  pivot_wider(id_cols = c(aid), names_from = sp, 
+              values_from = int_pres, values_fill = 0) |> 
+  data.frame() -> interview_counts_wide
+row.names(interview_counts_wide) <- interview_counts_wide$aid
+interview_counts_wide <- interview_counts_wide[, -1]
+```
+
+Check species rank abundance curve to see if looks like a real community.
+```{r rank-abundance}
+interview_counts |> 
+  filter(int_pres > 0) |>
+  group_by(sp) |> 
+  summarise(abundance = sum(int_pres), 
+            site_count = length(unique(aid)), 
+         site_prop = length(unique(aid)) / 106) |> 
+  ungroup() |> 
+    # number of sites , proportion of sites......
+  mutate(rank_abund = rank(abundance)) -> species_summary
+  
+  species_summary |>
+  ggplot(aes(x=rank_abund, y=abundance)) + 
+  geom_point() + 
+  geom_smooth(method="gam", 
+              method.args = list(family = poisson()))
+```
+
+Compare diversity.
+```{r species-diversity}
+interview_metrics$sp_number <- specnumber(interview_counts_wide)
+interview_metrics$sp_h <- diversity(interview_counts_wide, index = "shannon")
+
+interview_metrics |> 
+  ggplot(aes(x=cpland_10, y=sp_number)) + 
+    geom_point(aes(colour=Habitat_WWF)) + 
+  geom_smooth(aes(fill= Habitat_WWF, colour = Habitat_WWF), 
+              method="gam", 
+              method.args = list(family = poisson()))
+
+interview_metrics |> 
+  ggplot(aes(x=pland_1, y=sp_h)) + 
+    geom_point(aes(colour=Habitat_WWF)) + 
+  geom_smooth(aes(fill= Habitat_WWF, colour = Habitat_WWF), 
+              method="gam", 
+              method.args = list(family = tw()))
+```
+
+Compare community.
+
+
+Compare species.
+```{r compare-species}
+metrics_int |> 
+  filter(year_group != 1986, class == 1) |> 
+  mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
+    filter(buff_metric %in% c("cpland_1", "cpland_10")) |>
+left_join(interview_counts |> 
+            left_join(interviews |> 
+  select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
+  join_by(aid, year_group==Year)) |> 
+  filter(!is.na(int_pres)) |> 
+  select(aid, buff_metric, buff_dist_km, 
+         value_median, sp, int_pres) |> 
+  ggplot(aes(x=value_median, y = int_pres)) + 
+      geom_jitter(height=0.1, width=1, alpha=0.4) + 
+  #geom_smooth(aes(fill= Habitat_WWF, colour = Habitat_WWF), 
+  geom_smooth(method="glm", 
+              method.args = list(family = poisson()), 
+              se = FALSE) + 
+  facet_grid(sp~buff_dist_km) + 
+  labs(x = "floresta (%)", y = "abundância") -> fig_sp01
+
+#export
+png("figures/fig_sp01.png", bg = "white", type = c("cairo"), 
+    width=5, height=20, units = "in", res = 600)
+fig_sp01
+dev.off()
+
+metrics_int |> 
+  filter(year_group != 1986, class == 1) |> 
+  mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
+    filter(buff_metric %in% c("cpland_1", "cpland_10")) |>
+left_join(interview_counts |> 
+            left_join(interviews |> 
+  select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
+  join_by(aid, year_group==Year)) |> 
+  filter(!is.na(int_pres)) |> 
+  select(aid, Latitude, Longitude, Habitat_WWF, 
+         metric, buff_dist_km, buff_metric, value_median,  
+         sp, int_pres) |> 
+  mutate(pa = ifelse(int_pres>0,1,0)) -> species_interviews
+
+species_interviews |>  
+  ggplot(aes(x=value_median, y = pa)) + 
+      geom_jitter(width=5, height=0.05, alpha=0.4) + 
+  geom_hline(yintercept = 0.5, linetype="dashed") +
+  geom_smooth(method="glm", 
+              method.args = list(family = binomial()), 
+              se = FALSE) + 
+  facet_grid(sp~buff_dist_km) + 
+  scale_y_continuous("presença (probabilidade)", 
+                     c(0,1), breaks = c(0,0.2,0.4,0.6,0.8,1.0)) +
+  labs(x = "floresta (%)") -> fig_sp01_pa
+
+#export
+png("figures/fig_sp01_pa.png", bg = "white", type = c("cairo"), 
+    width=5, height=20, units = "in", res = 600)
+fig_sp01_pa
+dev.off()
+  
+```
+
+
+Export results
+```{r export-species-results}
+species_interviews |> 
+  rename(sp_name = sp, 
+         sp_ab = int_pres, 
+         sp_pa = pa) |>
+write.csv("data/species_interviews.csv", 
+          row.names = FALSE)
+```
+

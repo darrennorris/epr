@@ -452,13 +452,14 @@ bind_rows(
   PA.points.sppE$sample.points |> mutate(sp = "sppE"), 
   PA.points.sppF$sample.points |> mutate(sp = "sppF"), 
   PA.points.sppG$sample.points |> mutate(sp = "sppG"), 
-  PA.points.sppH$sample.points |> mutate(sp = "sppH"), 
-  PA.points.sppI$sample.points |> mutate(sp = "sppI"), 
-  PA.points.sppJ$sample.points |> mutate(sp = "sppJ"), 
-  PA.points.sppK$sample.points |> mutate(sp = "sppK"), 
-  PA.points.sppL$sample.points |> mutate(sp = "sppL"), 
-  PA.points.sppM$sample.points |> mutate(sp = "sppM"),
-  PA.points.sppN$sample.points |> mutate(sp = "sppN")
+  #dont use as all have very similar pattern
+  #PA.points.sppH$sample.points |> mutate(sp = "sppH"), 
+  #PA.points.sppI$sample.points |> mutate(sp = "sppI"), 
+  #PA.points.sppJ$sample.points |> mutate(sp = "sppJ"), 
+  PA.points.sppK$sample.points |> mutate(sp = "sppH"), 
+  PA.points.sppL$sample.points |> mutate(sp = "sppI"), 
+  PA.points.sppM$sample.points |> mutate(sp = "sppJ"),
+  PA.points.sppN$sample.points |> mutate(sp = "sppK")
   ) -> species_points
 
 ```
