@@ -149,7 +149,7 @@ left_join(interview_counts |>
   join_by(aid, year_group==Year)) |> 
   filter(!is.na(int_pres)) |> 
   select(aid, Latitude, Longitude, Habitat_WWF, 
-         metric, buff_dist_km, buff_metric, value_median,  
+         Description, metric, buff_dist_km, buff_metric, value_median,  
          sp, int_pres) |> 
   mutate(pa = ifelse(int_pres>0,1,0)) -> species_interviews
 
@@ -177,7 +177,8 @@ dev.off()
 Export results
 ```{r export-species-results}
 species_interviews |> 
-  rename(sp_name = sp, 
+  rename(class_description = Description, 
+         sp_name = sp, 
          sp_ab = int_pres, 
          sp_pa = pa) |>
 write.csv("data/species_interviews.csv", 
