@@ -19,7 +19,7 @@ library(mgcv)
 
 Test relationships of simulated species.
 
-Load data (made in 98-appendice03.Rmd and 98-appendice03.Rmd).
+Load data (made in 98-appendice02.Rmd and 98-appendice03.Rmd).
 ```{r load-data}
 # Sample points with environmental gradient values
 sf_points <- sf::st_read("data/vector/sample_points.shp")
@@ -116,7 +116,7 @@ Compare species.
 metrics_int |> 
   filter(year_group != 1986, class == 1) |> 
   mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
-    filter(buff_metric %in% c("cpland_1", "cpland_10")) |>
+    filter(buff_metric %in% c("cpland_0.25", "cpland_0.5", "cpland_1", "cpland_10")) |>
 left_join(interview_counts |> 
             left_join(interviews |> 
   select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
@@ -135,14 +135,14 @@ left_join(interview_counts |>
 
 #export
 png("figures/fig_sp01.png", bg = "white", type = c("cairo"), 
-    width=5, height=20, units = "in", res = 600)
+    width=11, height=20, units = "in", res = 600)
 fig_sp01
 dev.off()
 
 metrics_int |> 
   filter(year_group != 1986, class == 1) |> 
   mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
-    filter(buff_metric %in% c("cpland_1", "cpland_10")) |>
+    filter(buff_metric %in% c("cpland_0.25","cpland_0.5", "cpland_1", "cpland_10")) |>
 left_join(interview_counts |> 
             left_join(interviews |> 
   select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
@@ -167,7 +167,7 @@ species_interviews |>
 
 #export
 png("figures/fig_sp01_pa.png", bg = "white", type = c("cairo"), 
-    width=5, height=20, units = "in", res = 600)
+    width=11, height=20, units = "in", res = 600)
 fig_sp01_pa
 dev.off()
   
