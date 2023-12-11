@@ -104,3 +104,5 @@ fig:plot-ramostra
 fig:unnamed-chunk-2
 fig:unnamed-chunk-17
 fig:unnamed-chunk-21
+fig:unnamed-chunk-16
+pergunta-6-1

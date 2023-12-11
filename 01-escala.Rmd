@@ -95,7 +95,7 @@ Plotar para verificar.
 plot(ramostra)
 ```
 
-Podemos também verificar informações sobre o raster (metadados) rodando o nome do objeto:
+Podemos também verificar informações sobre o raster (metadados) - simplesmente rodando o nome do objeto:
 
 ```{r run-name}
 ramostra
@@ -134,7 +134,17 @@ Para entender o que os valores (3, 12, 33) representam no mundo real precisamos 
 
 Olhando a legenda ([Cod_Class_legenda_Col6_MapBiomas_BR.pdf](https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Cod_Class_legenda_Col6_MapBiomas_BR.pdf)), sabemos que "3", "12" e "33" representem cobertura de "Formação Florestal", "Formação Campestre", e "Rio, Lago e Oceano". Então podemos fazer um mapa mostrando tais informações.
 
-Daqui pra frente vamos aproveitar uma forma mais elegante de apresentar mapas e gráficos. Isso seria atraves a função "ggplot" (pacote [ggplot2](https://ggplot2.tidyverse.org/)), que faz parte do "tidyverse". Mais exemplos no [R cookbook](http://www.cookbook-r.com/Graphs/) : http://www.cookbook-r.com/Graphs/ .
+Daqui pra frente vamos aproveitar uma forma mais elegante de apresentar mapas e gráficos. Isso seria atraves funçoes em 2 pacotes:
+
+-   [tmap](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html) é utilizado para gerar mapas temáticos
+
+-   [ggplot2](https://ggplot2.tidyverse.org/), que faz parte do "tidyverse", e é utilizado para produção de gráficos, e pode representar dados geoespacias. 
+
+
+Exemplos : 
+[Pacotes ggplot2 e tmap](https://www.youtube.com/watch?v=OYON-VzPFmw )
+
+Mais exemplos sobre o uso de [ggplot2](https://ggplot2.tidyverse.org/) no [R cookbook](http://www.cookbook-r.com/Graphs/) : http://www.cookbook-r.com/Graphs/ .
 
 E com mais exemplos de mapas e dados espaciais no R: [sf e ggplot2](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html) : https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
 
@@ -153,19 +163,19 @@ classe_cores <- c("#006400", "#B8AF4F", "#0000FF")
 Agora podemos fazer o mapa com as classes e os cores seguindo o padrão recomendado pela MapBiomas para Coleção 6.
 
 ```{r, dpi=300, fig.width =5, fig.height = 4, out.height="400px", out.width="500px", fig.cap="Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
-# Passo necessario para mostrar os valores
-ramostra_df <- as.data.frame(ramostra, xy = TRUE)
 
-ggplot(ramostra_df, aes(x=x, y=y)) +
-  geom_raster(aes(fill = factor(mapbiomas_2020))) +
-  scale_fill_manual("classe", 
-                      values = classe_cores, 
-                    labels = classe_legenda) + 
-  coord_equal() +
-  geom_text(data = ramostra_df, aes(x = x, y = y, 
-                label = mapbiomas_2020)) + 
-  theme(legend.position="top") + 
-  guides(fill=guide_legend(nrow=2,byrow=TRUE))
+tm_shape(ramostra) + 
+  tm_raster(style = "cat", 
+            palette = c("3" = "#006400", "12" ="#B8AF4F", 
+                        "33"= "#0000FF"), legend.show = FALSE) + 
+  tm_grid(labels.format = list(big.mark = "")) +
+  tm_add_legend(type = "fill", labels = classe_legenda,
+    col = classe_cores, title = "Classe") + 
+tm_compass(position = c("right", "bottom")) +
+tm_scale_bar(breaks = c(0, 0.05, 0.1), text.size = 1, 
+             text.color = "white", position=c("right", "bottom")) + 
+tm_layout(legend.position = c("right","top"),legend.bg.color = "white")
+
 
 ```
 
@@ -177,48 +187,27 @@ Alterando a resolução serve como exemplo mostrando como os passos/etapas/cálc
 
 Alterando a resolução às vezes seria necessário, por exemplo, quando preciso padronizar dados/imagens oriundos de fontes diferentes com resoluções diferentes e/ou para reduzir a complexidade da modelagem. Lembrando - em cada nível de resolução, são observáveis processos e padrões que não podem necessariamente ser inferidos daqueles abaixo ou acima.
 
-Agora iremos degradar a resolução desses dados, ou seja, iremos alterar o tamanho dos pixels. Como exemplo, iremos juntar (agregar) 3 pixels em um único pixel. Como você acha que podemos fazer isso? Quais valores esse pixel que vai substituir os 3 originais deve ter? Existem diversas maneiras de se fazer isso, uma das formas é através da média.
+Agora iremos degradar a resolução desses dados, ou seja, iremos alterar o tamanho dos pixels. Como exemplo, iremos juntar (agregar) 3 pixels em um único pixel. Como você acha que podemos fazer isso? Quais valores esse pixel que vai substituir os 3 originais deve ter? Existem diversas maneiras de se fazer isso, como por exemplo através a média ou valor modal (valor mais comum). O valor mais comum da área, é particularmente adequado quando temos um mapa categórico, como por exemplo a classificação do MapBiomas. Segue exemplo de codigo para agregar com a média e o valor mais frequente (modal).
 
 ```{r}
+# Média
 ramostra_media<-aggregate(ramostra, fact=3, fun="mean")
 ramostra_media <- resample(ramostra, ramostra_media)
-```
 
-Visualizar. Os valores calculados pela função não fazem sentido para uma classificação categórica.
-
-```{r, dpi=300, fig.width =5, fig.height = 4, out.height="200px", out.width="250px", fig.cap="Agregação errado para dados categóricos. Uso da média cria valores categóricos errados e impossíveis."}
-# Tidy
-as.data.frame(ramostra_media, xy = TRUE) %>% 
-  mutate(mapbiomas_2020 = round(mapbiomas_2020,1)) -> ramostra_media_df
-# Plot
-ggplot(ramostra_media_df, aes(x=x, y=y)) +
-  geom_raster(aes(fill = factor(mapbiomas_2020))) +
-  scale_fill_discrete("valor") + 
-  coord_equal() + 
-  geom_text(data = ramostra_media_df, aes(x = x, y = y, 
-                label = mapbiomas_2020)) 
-
-```
-
-<br> Outra opção é utilizar o valor mais comum da área, o que é particularmente adequado quando temos um mapa categórico, como por exemplo floresta/não-floresta. Segue exemplo com o valor mais frequente (modal).
-
-```{r}
+# Modal
 ramostra_modal<- aggregate(ramostra, fact=3, fun="modal")
 ramostra_modal <- resample(ramostra, ramostra_modal, method="near")
 ```
 
-Visualizar. Os valores calculados pela função são consistentes com o original e fazem sentido.
 
-```{r, dpi=300, fig.width =5, fig.height = 4, out.height="400px", out.width="500px", fig.cap="Agregação pela mais frequente."}
-# Tidy
-ramostra_modal_df <- as.data.frame(ramostra_modal, xy = TRUE) 
-# Plot
-ggplot(ramostra_modal_df, aes(x=x, y=y)) +
-  geom_raster(aes(fill = factor(mapbiomas_2020))) +
-  scale_fill_manual("classe", values = classe_cores) + 
-  coord_equal() + 
-geom_text(data=ramostra_modal_df, aes(x=x, y=y, label=mapbiomas_2020))
-```
+#### Pergunta 2
+
+`r kableExtra::text_spec("Utilizando as funções disponíveis no pacote tmap, crie mapas temáticos dos objetos ramostra_media e ramostra_modal. Inclua cópias do seu código e mapas na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e mapas.", color = "blue", bold = TRUE)`
+
+------------------------------------------------------------------------
+
+Visualizar os resultados apresentados em Figura 1.4. Os valores calculados pela média não fazem sentido para uma classificação categórica.
+Os valores calculados pela modal são consistentes com o original e fazem sentido.
 
 \newpage
 
@@ -249,9 +238,9 @@ sf_grids %>%
 
 ```
 
-#### Pergunta 2
+#### Pergunta 3
 
-`r kableExtra::text_spec("Confira o codigo e os resultados obtidos anteriormente, quando mudamos a resolução da ratser ramostra (por exemplo figuras 5.1, 5.2 e 5.3). Explique o que aconteceu. Como e porque moudou os valores em cada caso (média e modal)?", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec("Confira o codigo e os resultados obtidos anteriormente, quando mudamos a resolução da ratser ramostra (por exemplo figura 1.4). Explique o que aconteceu. Como e porque moudou os valores em cada caso (média e modal)?", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
@@ -272,20 +261,18 @@ O objetivo é criar buffers circulares de diferentes extensões ao redor dos sit
 #| eval: TRUE
 #| message: FALSE
 #| warning: FALSE
-meuSIG <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+meuSIG <- system.file("vector/rivers.gpkg", package = "eprdados")
 fs <- file.size(meuSIG)/(1024^2)
 ```
 
-Precisamos carregar os dados para rios e pontos de amostragem. Baixar arquivo (vector) com os dados (formato "GPKG", tamanho `r round(fs,1)` MB). Este arquivo contém diferentes camadas vetoriais usadas para avaliar impactos de barragens hidroelétricas em tracajas ([@bárcenas-garcía2022]) e ariranhas ([@raffo2022]).
+Precisamos carregar os dados para rios e pontos de amostragem (arquivo tipo vector, formato "GPKG", tamanho `r round(fs,1)` MB). Este arquivo contém diferentes camadas vetoriais usadas para avaliar impactos de barragens hidroelétricas em tracajas [@bárcenas-garcía2022] e ariranhas [@raffo2022].
 
 Mais sobre [dados vetoriais](https://docs.qgis.org/3.22/pt_BR/docs/gentle_gis_introduction/vector_data.html). O formato aberto [GeoPackage](https://www.geopackage.org/) é um contêiner que permite armazenar dados SIG (feições/camadas) em um único arquivo. Por exemplo, um arquivo GeoPackage pode conter vários dados (dados vetoriais e raster) em diferentes sistemas de coordenadas. Todos esses recursos permitem que você compartilhe dados facilmente e evite a duplicação de arquivos.
 
-Baixar o arquivo Link: [https://github.com/darrennorris/gisdata/blob/master/inst/vector/rivers.gpkg](https://github.com/darrennorris/gisdata/blob/master/inst/vector/rivers.gpkg){target="_blank"} . Lembrando-se de salvar o arquivo ("rivers.gpkg") em um local conhecido no seu computador.
-
-O formato "GPKG" e diferente de "tif" (raster), o processo de importação é, portanto, diferente. Primeira, avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo "rivers.GPKG":
+O formato "GPKG" é diferente de "tif" (raster), o processo de importação é, portanto com funções diferentes. Primeira, avisar R sobre onde ficar o arquivo. O código abaixo vai fazer isso:
 
 ```{r echo=TRUE, eval=FALSE}
-meuSIG <- file.choose()
+meuSIG <- system.file("vector/rivers.gpkg", package = "eprdados")
 ```
 
 Agora vamos olhar o que tem no arquivo. Depois que voces rodar o codigo `r kableExtra::text_spec( "st_layers(meuSIG)", background = "#d3d3d3", bold = TRUE)`, o resultado mostra que o arquivo rivers.GPKG inclui camadas diferentes com pontos ("Point"), linhas ("Line String") e polígonos ("Polygon"). Alem disso, a coluna "crs_name" mostrar que a sistema de coordenadas é geográfica (WGS84, (EPSG: 4326)\[https://epsg.io/4326\], e é diferente do arquivo raster:
@@ -332,26 +319,25 @@ mapview(rsl, zcol = "rio")
 ### Obter e carregar dados (raster)
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-meuSIGr <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\raster\\mapbiomas_AP_utm_rio\\utm_cover_AP_rio_2020.tif"
+meuSIGr <- system.file("raster/utm_cover_AP_rio_2020.tif", 
+                       package = "eprdados")
 fs2 <- file.size(meuSIGr)/(1024^2)
+mapbiomas_2020 <- rast(meuSIGr)
 ```
 
-Mais uma vez vamos aproveitar os dados de MapBiomas. Agora baixar arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato ".tif", tamanho `r round(fs2,1)` MB). Link: [https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif](https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif){target="_blank"} . Lembrando-se de salvar o arquivo ("utm_cover_AP_rio_2020.tif") em um local conhecido no seu computador. Agora avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo "utm_cover_AP_rio_2020.tif":
+Mais uma vez vamos aproveitar os dados de MapBiomas. Agora um arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato ".tif", tamanho `r round(fs2,1)` MB).O código abaixo vai carregar os dados e criar o objeto "mapbiomas_2020":
 
 ```{r echo=TRUE, eval=FALSE}
-meuSIGr <- file.choose()
-```
-
-O código abaixo vai carregar os dados e criar o objeto "mapbiomas_2020".
-
-```{r }
+meuSIGr <- system.file("raster/utm_cover_AP_rio_2020.tif", 
+                       package = "eprdados")
+# carregar
 mapbiomas_2020 <- rast(meuSIGr)
-
 ```
+
 
 ### Visualizar os arquivos (camadas raster e vector)
 
-Visualizar para verificar. É possível de visualizar camadas de raster e vetor juntos com funcões no pacote Tmap (https://r-tmap.github.io/tmap-book/index.html).
+Visualizar para verificar. É possível de visualizar camadas de raster e vetor juntos com funcões no pacote tmap (https://r-tmap.github.io/tmap-book/index.html).
 
 ```{r fig.width=5, fig.height=5, fig.cap="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
 # Passo necessario para agilizar o processamento
@@ -452,7 +438,7 @@ tm_scale_bar(breaks = c(0, 0.5, 1), text.size = 1,
 tm_layout(legend.position = c("right","top"), legend.bg.color = "white")
 ```
 
-### Pergunta 3
+### Pergunta 4
 
 `r kableExtra::text_spec("Qual é a extensão em número de pixels desse recorte (buffer.forest1.1km)?", color = "blue", bold = TRUE)`
 
@@ -621,13 +607,13 @@ tmap_arrange(fig_250m, fig_500m, fig_1000m, fig_2000m, fig_4000m, nrow=1)
 -   raio 2000 m = 502.6 hectares de floresta
 -   raio 4000 m = 3351.0 hectares de floresta
 
-### Pergunta 4
+### Pergunta 5
 
 `r kableExtra::text_spec("Usando os valores listadas acima de raio e área de floresta para os diferentes buffers circulares, calcule a proporção de floresta em cada uma das diferentes extensões de buffer. Apresente 1) os resultados incluindo cálculos. 2) um gráfico com valores de extensão no eixo x e proporção da floresta no eixo y. 3) Em menos de 200 palavras apresente a sua interpretação do gráfico.", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
-### Pergunta 5
+### Pergunta 6
 
 `r kableExtra::text_spec("A modelagem multiescala quantifica as condições do ambiente em múltiplas escalas alterando o resolução ou a extensão da análise e, em seguida, avaliando qual das escalas consideradas  explica melhor um padrão ou processo. Escolha 1 espécie aquático e 1 espécie terrestre que ocorram na região a montante das hidrelétricas no Rio Araguari. Com base nas diferenças entre extensões (indicados no exemplo anterior) e as características funcionais das espécies (por exemplo área de vida), escolher as extensões mais adequadas para um estudo multiescala de cada espécie.", color = "blue", bold = TRUE)`
 
