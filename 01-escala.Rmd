@@ -82,7 +82,7 @@ Para carregar um arquivo raster trabalhamos com o pacote [terra](https://CRAN.R-
 
 ```{r load-ramostra, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
 # arquivo no pacote "eprdados"
-arquivo <- system.file("raster", "amostra_mapbiomas_2020.tif", 
+arquivo <- system.file("raster/amostra_mapbiomas_2020.tif", 
                        package = "eprdados")
 # carregar
 ramostra <- rast(arquivo)
