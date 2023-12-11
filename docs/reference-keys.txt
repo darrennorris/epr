@@ -95,3 +95,12 @@ fig:unnamed-chunk-27
 fig:unnamed-chunk-29
 pacotes-1
 dados-2
+fig:unnamed-chunk-1
+fig:unnamed-chunk-5
+fig:unnamed-chunk-15
+fig:unnamed-chunk-20
+fig:unnamed-chunk-22
+fig:plot-ramostra
+fig:unnamed-chunk-2
+fig:unnamed-chunk-17
+fig:unnamed-chunk-21
