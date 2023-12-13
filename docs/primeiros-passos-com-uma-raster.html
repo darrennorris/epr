@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 5 Primeiros passos com uma raster | Ecologia de Paisagens com R</title>
   <meta name="description" content="This is a minimal example." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 5 Primeiros passos com uma raster | Ecologia de Paisagens com R" />
   <meta property="og:type" content="book" />
@@ -58,9 +58,9 @@
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-binding-2.2.0/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.0/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -201,36 +201,38 @@ div.csl-indent {
 <li class="part"><span><b>II Escala e padrões</b></span></li>
 <li class="chapter" data-level="1" data-path="escala.html"><a href="escala.html"><i class="fa fa-check"></i><b>1</b> Escala</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="escala.html"><a href="escala.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a>
+<li class="chapter" data-level="1.1" data-path="escala.html"><a href="escala.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a></li>
+<li class="chapter" data-level="1.2" data-path="escala.html"><a href="escala.html#escala-breve-definação"><i class="fa fa-check"></i><b>1.2</b> Escala: breve definação</a></li>
+<li class="chapter" data-level="1.3" data-path="escala.html"><a href="escala.html#pacotes-e-dados"><i class="fa fa-check"></i><b>1.3</b> Pacotes e dados</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="escala.html"><a href="escala.html#escala-breve-definação"><i class="fa fa-check"></i><b>1.1.1</b> Escala: breve definação</a></li>
+<li class="chapter" data-level="1.3.1" data-path="escala.html"><a href="escala.html#pacotes"><i class="fa fa-check"></i><b>1.3.1</b> Pacotes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="escala.html"><a href="escala.html#dados"><i class="fa fa-check"></i><b>1.3.2</b> Dados</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="escala.html"><a href="escala.html#pacotes-e-dados"><i class="fa fa-check"></i><b>1.2</b> Pacotes e dados</a></li>
-<li class="chapter" data-level="1.3" data-path="escala.html"><a href="escala.html#alterando-a-resolução"><i class="fa fa-check"></i><b>1.3</b> Alterando a resolução</a></li>
-<li class="chapter" data-level="1.4" data-path="escala.html"><a href="escala.html#escala-espacial-e-desenho-amostral"><i class="fa fa-check"></i><b>1.4</b> Escala espacial e desenho amostral</a>
+<li class="chapter" data-level="1.4" data-path="escala.html"><a href="escala.html#alterando-a-resolução"><i class="fa fa-check"></i><b>1.4</b> Alterando a resolução</a></li>
+<li class="chapter" data-level="1.5" data-path="escala.html"><a href="escala.html#escala-espacial-e-desenho-amostral"><i class="fa fa-check"></i><b>1.5</b> Escala espacial e desenho amostral</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-vectores"><i class="fa fa-check"></i><b>1.4.1</b> Obter e carregar dados (vectores)</a></li>
-<li class="chapter" data-level="1.4.2" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-vector"><i class="fa fa-check"></i><b>1.4.2</b> Visualizar os arquivos (camadas vector)</a></li>
-<li class="chapter" data-level="1.4.3" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-raster"><i class="fa fa-check"></i><b>1.4.3</b> Obter e carregar dados (raster)</a></li>
-<li class="chapter" data-level="1.4.4" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-raster-e-vector"><i class="fa fa-check"></i><b>1.4.4</b> Visualizar os arquivos (camadas raster e vector)</a></li>
-<li class="chapter" data-level="1.4.5" data-path="escala.html"><a href="escala.html#reclassificação"><i class="fa fa-check"></i><b>1.4.5</b> Reclassificação</a></li>
+<li class="chapter" data-level="1.5.1" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-vectores"><i class="fa fa-check"></i><b>1.5.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="1.5.2" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-vector"><i class="fa fa-check"></i><b>1.5.2</b> Visualizar os arquivos (camadas vector)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-raster"><i class="fa fa-check"></i><b>1.5.3</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="1.5.4" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-raster-e-vector"><i class="fa fa-check"></i><b>1.5.4</b> Visualizar os arquivos (camadas raster e vector)</a></li>
+<li class="chapter" data-level="1.5.5" data-path="escala.html"><a href="escala.html#reclassificação"><i class="fa fa-check"></i><b>1.5.5</b> Reclassificação</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="escala.html"><a href="escala.html#comparação-multiescala"><i class="fa fa-check"></i><b>1.5</b> Comparação multiescala</a>
+<li class="chapter" data-level="1.6" data-path="escala.html"><a href="escala.html#comparação-multiescala"><i class="fa fa-check"></i><b>1.6</b> Comparação multiescala</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="escala.html"><a href="escala.html#pergunta-3"><i class="fa fa-check"></i><b>1.5.1</b> Pergunta 3</a></li>
-<li class="chapter" data-level="1.5.2" data-path="escala.html"><a href="escala.html#pergunta-4"><i class="fa fa-check"></i><b>1.5.2</b> Pergunta 4</a></li>
-<li class="chapter" data-level="1.5.3" data-path="escala.html"><a href="escala.html#pergunta-5"><i class="fa fa-check"></i><b>1.5.3</b> Pergunta 5</a></li>
+<li class="chapter" data-level="1.6.1" data-path="escala.html"><a href="escala.html#pergunta-4"><i class="fa fa-check"></i><b>1.6.1</b> Pergunta 4</a></li>
+<li class="chapter" data-level="1.6.2" data-path="escala.html"><a href="escala.html#pergunta-5"><i class="fa fa-check"></i><b>1.6.2</b> Pergunta 5</a></li>
+<li class="chapter" data-level="1.6.3" data-path="escala.html"><a href="escala.html#pergunta-6"><i class="fa fa-check"></i><b>1.6.3</b> Pergunta 6</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="escala.html"><a href="escala.html#próximos-passos-repetindo-para-muitas-amostras."><i class="fa fa-check"></i><b>1.6</b> Próximos passos: repetindo para muitas amostras.</a></li>
+<li class="chapter" data-level="1.7" data-path="escala.html"><a href="escala.html#próximos-passos-repetindo-para-muitas-amostras."><i class="fa fa-check"></i><b>1.7</b> Próximos passos: repetindo para muitas amostras.</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html"><i class="fa fa-check"></i><b>2</b> Métricas da paisagem</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#apresentação-1"><i class="fa fa-check"></i><b>2.1</b> Apresentação</a></li>
 <li class="chapter" data-level="2.2" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#métricas-da-paisagem-e-pacote-landscapemetrics"><i class="fa fa-check"></i><b>2.2</b> Métricas da paisagem e pacote “landscapemetrics”</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#pacotes"><i class="fa fa-check"></i><b>2.2.1</b> Pacotes</a></li>
+<li class="chapter" data-level="2.2.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#pacotes-1"><i class="fa fa-check"></i><b>2.2.1</b> Pacotes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#dados"><i class="fa fa-check"></i><b>2.3</b> Dados</a>
+<li class="chapter" data-level="2.3" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#dados-1"><i class="fa fa-check"></i><b>2.3</b> Dados</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#exibir-dados-raster-e-sobreposição-com-locais-de-amostragem"><i class="fa fa-check"></i><b>2.3.1</b> Exibir dados raster e sobreposição com locais de amostragem</a></li>
 </ul></li>
@@ -249,7 +251,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#apresentação-2"><i class="fa fa-check"></i><b>3.1</b> Apresentação</a></li>
 <li class="chapter" data-level="3.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#pacotes-necessarios"><i class="fa fa-check"></i><b>3.2</b> Pacotes necessarios:</a></li>
 <li class="chapter" data-level="3.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#área-de-estudo"><i class="fa fa-check"></i><b>3.3</b> Área de estudo</a></li>
-<li class="chapter" data-level="3.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-1"><i class="fa fa-check"></i><b>3.4</b> Dados</a>
+<li class="chapter" data-level="3.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-2"><i class="fa fa-check"></i><b>3.4</b> Dados</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-4326"><i class="fa fa-check"></i><b>3.4.1</b> Ponto de referência (EPSG: 4326)</a></li>
 <li class="chapter" data-level="3.4.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-31976"><i class="fa fa-check"></i><b>3.4.2</b> Ponto de referência (EPSG: 31976)</a></li>
@@ -291,6 +293,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.1" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#obter-e-carregar-dados-vectores-1"><i class="fa fa-check"></i><b>6.1</b> Obter e carregar dados (vectores)</a></li>
 <li class="chapter" data-level="6.2" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#visualizar-os-arquivos-camadas-vector-1"><i class="fa fa-check"></i><b>6.2</b> Visualizar os arquivos (camadas vector)</a></li>
 </ul></li>
+<li class="part"><span><b>V Encerramento</b></span></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="appendix"><span><b>Apêndice</b></span></li>
 <li class="chapter" data-level="A" data-path="annexo-1.html"><a href="annexo-1.html"><i class="fa fa-check"></i><b>A</b> Annexo 1</a>
@@ -332,24 +335,24 @@ div.csl-indent {
 <li><a href="https://r-tmap.github.io/tmap-book/">tmap</a>.</li>
 </ul>
 <p>Carregar pacotes:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="primeiros-passos-com-uma-raster.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb111-2"><a href="primeiros-passos-com-uma-raster.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb111-3"><a href="primeiros-passos-com-uma-raster.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb111-4"><a href="primeiros-passos-com-uma-raster.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
-<span id="cb111-5"><a href="primeiros-passos-com-uma-raster.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="primeiros-passos-com-uma-raster.html#cb106-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb106-2"><a href="primeiros-passos-com-uma-raster.html#cb106-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb106-3"><a href="primeiros-passos-com-uma-raster.html#cb106-3" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb106-4"><a href="primeiros-passos-com-uma-raster.html#cb106-4" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb106-5"><a href="primeiros-passos-com-uma-raster.html#cb106-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
 <p>Inicialmente iremos gerar uma raster representando uma paisagem bem simples, de 6 por 6 pixels. Você já deve saber que pixel é a unidade básica de uma imagem (lembra da camera do seu celular, 10Mb ou algo assim?!). Vocês devem ter visto sobre pixels e resolução no mesmo em aulas de geoprocessamento. Aqui podemos tratar o pixel como a resolução. Vamos dizer que temos um pixel de 10 metros (res=10 no bloco de código), ou seja, uma quadrado de 10 por 10m, sendo essa, a menor unidade mapeável. Assim sendo, a resolução tambem tem ligação com escala cartográfica!</p>
 <p>Vamos gerar e plotar uma paisagem simples em 4 passos. Primeiramente, a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">rast</span> cria um objeto do tipo raster. E depois a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">values</span> atribui valores, e na sequencia vamos visualisar os valores com <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">plot</span> e <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">text</span> .</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="primeiros-passos-com-uma-raster.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Função &quot;rast&quot; gera a paisagem virtual (paisagem simulado)</span></span>
-<span id="cb112-2"><a href="primeiros-passos-com-uma-raster.html#cb112-2" aria-hidden="true" tabindex="-1"></a>pai_sim <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">ncols=</span><span class="dv">6</span>, <span class="at">nrows=</span><span class="dv">6</span>, </span>
-<span id="cb112-3"><a href="primeiros-passos-com-uma-raster.html#cb112-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmin=</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">60</span>, </span>
-<span id="cb112-4"><a href="primeiros-passos-com-uma-raster.html#cb112-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">60</span>, </span>
-<span id="cb112-5"><a href="primeiros-passos-com-uma-raster.html#cb112-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">res=</span><span class="dv">10</span>) </span>
-<span id="cb112-6"><a href="primeiros-passos-com-uma-raster.html#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="co">#E essa atribui valores (&quot;values&quot;) para os pixels criados acima</span></span>
-<span id="cb112-7"><a href="primeiros-passos-com-uma-raster.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(pai_sim) <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb112-8"><a href="primeiros-passos-com-uma-raster.html#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pai_sim) <span class="co">#Essa plota</span></span>
-<span id="cb112-9"><a href="primeiros-passos-com-uma-raster.html#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pai_sim) <span class="co">#Essa coloca os valores dos pixels</span></span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-96"></span>
-<img src="epr_files/figure-html/unnamed-chunk-96-1.png" alt="Paisagem simples de 36 pixels." width="384" />
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="primeiros-passos-com-uma-raster.html#cb107-1" tabindex="-1"></a><span class="co">#Função &quot;rast&quot; gera a paisagem virtual (paisagem simulado)</span></span>
+<span id="cb107-2"><a href="primeiros-passos-com-uma-raster.html#cb107-2" tabindex="-1"></a>pai_sim <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">ncols=</span><span class="dv">6</span>, <span class="at">nrows=</span><span class="dv">6</span>, </span>
+<span id="cb107-3"><a href="primeiros-passos-com-uma-raster.html#cb107-3" tabindex="-1"></a>                <span class="at">xmin=</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">60</span>, </span>
+<span id="cb107-4"><a href="primeiros-passos-com-uma-raster.html#cb107-4" tabindex="-1"></a>                <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">60</span>, </span>
+<span id="cb107-5"><a href="primeiros-passos-com-uma-raster.html#cb107-5" tabindex="-1"></a>                <span class="at">res=</span><span class="dv">10</span>) </span>
+<span id="cb107-6"><a href="primeiros-passos-com-uma-raster.html#cb107-6" tabindex="-1"></a><span class="co">#E essa atribui valores (&quot;values&quot;) para os pixels criados acima</span></span>
+<span id="cb107-7"><a href="primeiros-passos-com-uma-raster.html#cb107-7" tabindex="-1"></a><span class="fu">values</span>(pai_sim) <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb107-8"><a href="primeiros-passos-com-uma-raster.html#cb107-8" tabindex="-1"></a><span class="fu">plot</span>(pai_sim) <span class="co">#Essa plota</span></span>
+<span id="cb107-9"><a href="primeiros-passos-com-uma-raster.html#cb107-9" tabindex="-1"></a><span class="fu">text</span>(pai_sim) <span class="co">#Essa coloca os valores dos pixels</span></span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
+<img src="epr_files/figure-html/unnamed-chunk-85-1.png" alt="Paisagem simples de 36 pixels." width="384" />
 <p class="caption">
 Figura 5.1: Paisagem simples de 36 pixels.
 </p>
@@ -358,9 +361,9 @@ Figura 5.1: Paisagem simples de 36 pixels.
 <div id="obter-e-carregar-dados-raster-1" class="section level3 hasAnchor" number="5.0.1">
 <h3><span class="header-section-number">5.0.1</span> Obter e carregar dados (raster)<a href="primeiros-passos-com-uma-raster.html#obter-e-carregar-dados-raster-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mais uma vez vamos aproveitar os dados de MapBiomas. Agora baixar arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato “.tif”, tamanho 3.3 MB). Link: <a href="https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif" target="_blank">https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif</a> . Lembrando-se de salvar o arquivo (“utm_cover_AP_rio_2020.tif”) em um local conhecido no seu computador. Agora avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo “utm_cover_AP_rio_2020.tif”:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="primeiros-passos-com-uma-raster.html#cb113-1" aria-hidden="true" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="primeiros-passos-com-uma-raster.html#cb108-1" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
 <p>O código abaixo vai carregar os dados e criar o objeto “mapbiomas_2020”.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="primeiros-passos-com-uma-raster.html#cb114-1" aria-hidden="true" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="primeiros-passos-com-uma-raster.html#cb109-1" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
 <p><br></p>
 <div style="page-break-after: always;"></div>
 </div>
@@ -368,28 +371,28 @@ Figura 5.1: Paisagem simples de 36 pixels.
 <h3><span class="header-section-number">5.0.2</span> Reclassificação<a href="primeiros-passos-com-uma-raster.html#reclassificação-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><br></p>
 <p>Para simplificar nossa avaliação de escala, reclassificamos a camada mapbiomas_2020 em uma camada binária de floresta/não-floresta. Essa tarefa de geoprocessamento pode ser realizada anteriormente usando SIG (<a href="https://docs.qgis.org/3.22/pt_BR/docs/training_manual/rasters/terrain_analysis.html#moderate-fa-reclassifying-the-raster">QGIS</a>). Aqui vamos reclassificar as categorias de cobertura da terra (agrupando diferentes áreas de cobertura florestal tipos) usando alguns comandos genéricos do R para criar uma nova camada com a cobertura de floresta em toda a região de estudo. Para isso, criamos um mapa do mesmo resolução e extensão, e então podemos redefinir os valores do mapa. Neste caso, queremos agrupar a cobertura da terra categorias 3 e 4 (Formação Florestal e Formação Savânica, respectivamente).</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="primeiros-passos-com-uma-raster.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
-<span id="cb115-2"><a href="primeiros-passos-com-uma-raster.html#cb115-2" aria-hidden="true" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
-<span id="cb115-3"><a href="primeiros-passos-com-uma-raster.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
-<span id="cb115-4"><a href="primeiros-passos-com-uma-raster.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb115-5"><a href="primeiros-passos-com-uma-raster.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
-<span id="cb115-6"><a href="primeiros-passos-com-uma-raster.html#cb115-6" aria-hidden="true" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="primeiros-passos-com-uma-raster.html#cb110-1" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
+<span id="cb110-2"><a href="primeiros-passos-com-uma-raster.html#cb110-2" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
+<span id="cb110-3"><a href="primeiros-passos-com-uma-raster.html#cb110-3" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
+<span id="cb110-4"><a href="primeiros-passos-com-uma-raster.html#cb110-4" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb110-5"><a href="primeiros-passos-com-uma-raster.html#cb110-5" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
+<span id="cb110-6"><a href="primeiros-passos-com-uma-raster.html#cb110-6" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>Vizualizar para verificar.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="primeiros-passos-com-uma-raster.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
-<span id="cb116-2"><a href="primeiros-passos-com-uma-raster.html#cb116-2" aria-hidden="true" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
-<span id="cb116-3"><a href="primeiros-passos-com-uma-raster.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb116-4"><a href="primeiros-passos-com-uma-raster.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
-<span id="cb116-5"><a href="primeiros-passos-com-uma-raster.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
-<span id="cb116-6"><a href="primeiros-passos-com-uma-raster.html#cb116-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
-<span id="cb116-7"><a href="primeiros-passos-com-uma-raster.html#cb116-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb116-8"><a href="primeiros-passos-com-uma-raster.html#cb116-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
-<span id="cb116-9"><a href="primeiros-passos-com-uma-raster.html#cb116-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
-<span id="cb116-10"><a href="primeiros-passos-com-uma-raster.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
-<span id="cb116-11"><a href="primeiros-passos-com-uma-raster.html#cb116-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb116-12"><a href="primeiros-passos-com-uma-raster.html#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
-<img src="epr_files/figure-html/unnamed-chunk-101-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="primeiros-passos-com-uma-raster.html#cb111-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb111-2"><a href="primeiros-passos-com-uma-raster.html#cb111-2" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb111-3"><a href="primeiros-passos-com-uma-raster.html#cb111-3" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb111-4"><a href="primeiros-passos-com-uma-raster.html#cb111-4" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb111-5"><a href="primeiros-passos-com-uma-raster.html#cb111-5" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb111-6"><a href="primeiros-passos-com-uma-raster.html#cb111-6" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
+<span id="cb111-7"><a href="primeiros-passos-com-uma-raster.html#cb111-7" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb111-8"><a href="primeiros-passos-com-uma-raster.html#cb111-8" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb111-9"><a href="primeiros-passos-com-uma-raster.html#cb111-9" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
+<span id="cb111-10"><a href="primeiros-passos-com-uma-raster.html#cb111-10" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb111-11"><a href="primeiros-passos-com-uma-raster.html#cb111-11" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb111-12"><a href="primeiros-passos-com-uma-raster.html#cb111-12" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
+<img src="epr_files/figure-html/unnamed-chunk-90-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
 <p class="caption">
 Figura 5.2: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio.
 </p>

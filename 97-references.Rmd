@@ -1,6 +1,8 @@
 
 \newpage{}
 
+# (PART) Encerramento {-}
+
 # Bibliografia {.unnumbered}
 
 <div id="refs"></div>
