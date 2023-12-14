@@ -70,6 +70,7 @@ library(eprdados)
 
 Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: `r kableExtra::text_spec("Error in library(nomepacote) : there is no package called ‘nomepacote’", color = "red", bold = TRUE)`. Neste caso, para instalá-los consulte o capitulos aqui [Capitulo 4 instalação de pacotes](https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html) e aqui [Capitulo 4 pacotes](https://analises-ecologicas.com/cap4#pacotes-1) .
 
+\newpage
 
 ### Dados
 
@@ -206,6 +207,9 @@ ramostra_modal <- resample(ramostra, ramostra_modal, method="near")
 
 ------------------------------------------------------------------------
 
+\newpage
+
+
 Visualizar os resultados apresentados em Figura 1.4. Os valores calculados pela média não fazem sentido para uma classificação categórica.
 Os valores calculados pela modal são consistentes com o original e fazem sentido.
 
@@ -248,6 +252,68 @@ sf_grids %>%
 
 ## Escala espacial e desenho amostral
 
+
+
+```{r buffer-figure, echo = FALSE, message = FALSE, warning = FALSE, out.width = "60%", out.height = "60%", fig.cap = "A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km."}
+
+rio_pontos_31976 <- st_transform(rio_pontos, 31976)
+# 1000 m
+rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], dist = 1000)
+# 2000 m
+rio_pontos_31976_b2000 <- st_buffer(rio_pontos_31976[1, ], dist = 2000)
+# 4000 m
+rio_pontos_31976_b4000 <- st_buffer(rio_pontos_31976[1, ], dist = 4000)
+# 8000 m
+rio_pontos_31976_b8000 <- st_buffer(rio_pontos_31976[1, ], dist = 8000)
+# 16000 m
+rio_pontos_31976_b16000 <- st_buffer(rio_pontos_31976[1, ], dist = 16000)
+
+meuSIGr <- system.file("raster/utm_cover_AP_rio_2020.tif", 
+                       package = "eprdados")
+# carregar
+mapbiomas_2020 <- rast(meuSIGr)
+floresta_2020 <- mapbiomas_2020
+# Com valor de 0
+values(floresta_2020) <- 0
+# Atualizar categorias florestais agrupados com valor de 1
+floresta_2020[mapbiomas_2020 == 3 | mapbiomas_2020 == 4] <- 1
+
+buffer.forest1.16000m <- crop(floresta_2020, rio_pontos_31976_b16000)
+buffer.forest1.16000m <- mask(buffer.forest1.16000m, rio_pontos_31976_b16000)
+
+#fig all together
+line_col <- "black"
+fig_together <- tm_shape(buffer.forest1.16000m) +
+  tm_raster(style = "cat", 
+            palette = c("0" = "#E974ED", 
+                        "1" ="#129912"), legend.show = FALSE) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
+    tm_symbols(shape =21, col = "yellow", 
+            border.col = "black", border.lwd = 0.2, size=0.5) + 
+  tm_shape(rio_pontos_31976_b1000) +
+    tm_borders(col = line_col, lwd = 4, lty = "dashed") + 
+  tm_shape(rio_pontos_31976_b2000) +
+    tm_borders(col = line_col, lwd = 4, lty = "dashed") + 
+  tm_shape(rio_pontos_31976_b4000) +
+    tm_borders(col = line_col, lwd = 4, lty = "dashed") + 
+  tm_shape(rio_pontos_31976_b8000) +
+    tm_borders(col = line_col, lwd = 4, lty = "dashed") + 
+  tm_shape(rio_pontos_31976_b16000) +
+    tm_borders(col = line_col, lwd = 4, lty = "dashed") + 
+  tm_add_legend(type = "fill", 
+    labels = c("não-floresta", "floresta"),
+    col = c("#E974ED", "#129912"),
+    title = "Classe") + 
+tm_scale_bar(breaks = c(0, 2, 4), text.size = 1, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("right","top"),
+          legend.bg.color = "white")
+fig_together
+
+```
+
+
+
 Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resoloção), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.
 
 Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (bordas - [Buffers](https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html)) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.
@@ -256,59 +322,28 @@ O objetivo é criar buffers circulares de diferentes extensões ao redor dos sit
 
 ### Obter e carregar dados (vectores)
 
-```{r}
-#| echo: FALSE
-#| eval: TRUE
-#| message: FALSE
-#| warning: FALSE
-meuSIG <- system.file("vector/rivers.gpkg", package = "eprdados")
-fs <- file.size(meuSIG)/(1024^2)
-```
-
-Precisamos carregar os dados para rios e pontos de amostragem (arquivo tipo vector, formato "GPKG", tamanho `r round(fs,1)` MB). Este arquivo contém diferentes camadas vetoriais usadas para avaliar impactos de barragens hidroelétricas em tracajas [@bárcenas-garcía2022] e ariranhas [@raffo2022].
-
-Mais sobre [dados vetoriais](https://docs.qgis.org/3.22/pt_BR/docs/gentle_gis_introduction/vector_data.html). O formato aberto [GeoPackage](https://www.geopackage.org/) é um contêiner que permite armazenar dados SIG (feições/camadas) em um único arquivo. Por exemplo, um arquivo GeoPackage pode conter vários dados (dados vetoriais e raster) em diferentes sistemas de coordenadas. Todos esses recursos permitem que você compartilhe dados facilmente e evite a duplicação de arquivos.
-
-O formato "GPKG" é diferente de "tif" (raster), o processo de importação é, portanto com funções diferentes. Primeira, avisar R sobre onde ficar o arquivo. O código abaixo vai fazer isso:
-
-```{r echo=TRUE, eval=FALSE}
-meuSIG <- system.file("vector/rivers.gpkg", package = "eprdados")
-```
-
-Agora vamos olhar o que tem no arquivo. Depois que voces rodar o codigo `r kableExtra::text_spec( "st_layers(meuSIG)", background = "#d3d3d3", bold = TRUE)`, o resultado mostra que o arquivo rivers.GPKG inclui camadas diferentes com pontos ("Point"), linhas ("Line String") e polígonos ("Polygon"). Alem disso, a coluna "crs_name" mostrar que a sistema de coordenadas é geográfica (WGS84, (EPSG: 4326)\[https://epsg.io/4326\], e é diferente do arquivo raster:
-
-```{r }
-sf::st_layers(meuSIG)
-```
-
-\newpage
-
-Nós só precisamos de duas dessas camadas. O código abaixo vai carregar as camadas que precisamos e criar os objetos "rsm" e "rsl". Assim, agora temos dados com: pontos cada 5 km ao longo os rios ("rsm") e a linha central de rios ("rsl").
-
-```{r }
-# pontos cada 5 km
-rsm <- sf::st_read(meuSIG, layer = "midpoints")
-# linha central de rios
-rsl <- sf::st_read(meuSIG, layer = "centerline")
-```
+Antes de quantificar a quantidade de floresta, precisamos carregar os dados de rios e pontos de amostragem.
+O formato de vector é diferente de "tif" (raster), portanto o processo de importação é diferente. 
+Aqui, nós só precisamos de duas dessas camadas, ambos do pacote 'eprdados': "rio_linhacentral" e "rio_pontos".
+A primeira camada de dados contém o eixo central de 260 km de rios a montante da Barragem Cachoeira Caldeirão. Os dados foram obtidos a partir de registros de trajetória GPS durante levantamentos de barco. Os rios foram divididos em 52 seções, cada uma com aproximadamente 5 km de extensão. A segunda camada de dados, "rio_pontos", contém 52 pontos espaçados regularmente ao longo dos rios. Cada ponto está localizado a aproximadamente 5 km de distância do ponto anterior. 
 
 \newpage
 
 ### Visualizar os arquivos (camadas vector)
 
-Visualizar para verificar. Mapa com linha central e pontos de rios em trechos de 5km.
+Visualizar para verificar. Mapa com ambos a linha central e pontos de rios em trechos de 5km.
 
 ```{r fig.width=6, fig.height=4, fig.cap="Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari."}
-ggplot(rsl) +
+ggplot(rio_linhacentral) +
   geom_sf(aes(color=rio)) +
-  geom_sf(data = rsm, shape=21, aes(fill=zone))
+  geom_sf(data = rio_pontos, shape=21, aes(fill=zone))
 ```
 
 <br> Mapa interativo (funcione somente com internet) Mostrando agora com fundo de mapas "base" (OpenStreetMap/ESRI etc)
 
 ```{r fig.width=4, fig.height=4, echo=TRUE, warning=FALSE, fig.cap="Linhas dos rios a montante das hidrelétricas no Rio Araguari."}
 #
-mapview(rsl, zcol = "rio") 
+mapview(rio_linhacentral, zcol = "rio") 
 
 ```
 
@@ -337,17 +372,19 @@ mapbiomas_2020 <- rast(meuSIGr)
 
 ### Visualizar os arquivos (camadas raster e vector)
 
-Visualizar para verificar. É possível de visualizar camadas de raster e vetor juntos com funcões no pacote tmap (https://r-tmap.github.io/tmap-book/index.html).
+Visualizar para verificar. É possível de visualizar varios camadas de raster e vetor juntos com funcões no pacote tmap (https://r-tmap.github.io/tmap-book/index.html).
 
-```{r fig.width=5, fig.height=5, fig.cap="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
+```{r fig.width = 5, fig.height = 5, warning = FALSE, message = FALSE, fig.cap =" Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
 # Passo necessario para agilizar o processamento
-mapbiomas_2020_modal<-aggregate(mapbiomas_2020, fact=10, fun="modal")
+mapbiomas_2020_modal <- aggregate(mapbiomas_2020, 
+                                  fact = 10, 
+                                  fun = "modal")
 # Plot
 tm_shape(mapbiomas_2020_modal) +
   tm_raster(title = "Classe", style = "cat", palette = "Set3") + 
-tm_shape(rsl) + 
+tm_shape(rio_linhacentral) + 
   tm_lines(col="blue") + 
-tm_shape(rsm) + 
+tm_shape(rio_pontos) + 
   tm_dots(size = 0.2, col = "yellow") + 
 tm_compass(position=c("left", "top")) +
 tm_scale_bar(breaks = c(0, 25, 50), text.size = 1, 
@@ -365,31 +402,33 @@ tm_layout(legend.position = c("right","top"), legend.bg.color="white")
 
 Para simplificar nossa avaliação de escala, reclassificamos a camada mapbiomas_2020 em uma camada binária de floresta/não-floresta. Essa tarefa de geoprocessamento pode ser realizada anteriormente usando SIG ([QGIS](https://docs.qgis.org/3.22/pt_BR/docs/training_manual/rasters/terrain_analysis.html#moderate-fa-reclassifying-the-raster)). Aqui vamos reclassificar as categorias de cobertura da terra (agrupando diferentes áreas de cobertura florestal tipos) usando alguns comandos genéricos do R para criar uma nova camada com a cobertura de floresta em toda a região de estudo. Para isso, criamos um mapa do mesmo resolução e extensão, e então podemos redefinir os valores do mapa. Neste caso, queremos agrupar a cobertura da terra categorias 3 e 4 (Formação Florestal e Formação Savânica, respectivamente).
 
-```{r}
+```{r reclass-example, eval = FALSE, echo = TRUE, message = FALSE, warning = FALSE}
 # criar uma nova camada de floresta
 floresta_2020 <- mapbiomas_2020
 # Com valor de 0
 values(floresta_2020) <- 0
 # Atualizar categorias florestais agrupados com valor de 1
-floresta_2020[mapbiomas_2020==3 | mapbiomas_2020==4] <- 1 
+floresta_2020[mapbiomas_2020 == 3 | mapbiomas_2020 == 4] <- 1 
 ```
 
 \newpage
 
 Vizualizar para verificar.
 
-```{r, fig.width=5, fig.height=5, fig.cap="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
+```{r, fig.width = 5, fig.height = 5, fig.cap="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
 # Passo necessario para agilizar o processamento
-floresta_2020_modal<-aggregate(floresta_2020, fact=10, fun="modal")
+floresta_2020_modal <- aggregate(floresta_2020, 
+                                 fact=10, 
+                                 fun="modal")
 # Plot
 tm_shape(floresta_2020_modal) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", "1" ="#129912"), legend.show = FALSE) + 
   tm_add_legend(type = "fill", labels = c("não-floresta", "floresta"),
     col = c("#E974ED", "#129912"), title = "Classe") +
-tm_shape(rsl) + 
+tm_shape(rio_linhacentral) + 
   tm_lines(col="blue") + 
-tm_shape(rsm) + 
+tm_shape(rio_pontos) + 
   tm_dots(size = 0.2, col = "yellow") + 
 tm_scale_bar(breaks = c(0, 25, 50), text.size = 1, 
              text.color = "white", position=c("left", "bottom")) +
@@ -400,17 +439,17 @@ tm_layout(legend.position = c("right","top"),legend.bg.color = "white")
 
 ## Comparação multiescala
 
-Em seguida, com as coordenadas dos pontos das localizações das amostras calculamos a quantidade de floresta que circunda cada local de amostragem em diferentes extensões.
+Em seguida, com as coordenadas dos pontos de amostragem, podemos calcular a quantidade de floresta que circunda cada local de amostragem em diferentes extensões. Primeiramente, vamos fazer so para um ponto, assim para entender o processo e os passos melhor.
 
 ```{r}
-rsm_31976 <- st_transform(rsm, 31976) 
+rio_pontos_31976 <- st_transform(rio_pontos, 31976) 
 # Buffer
-rsm_31976_b1000 <- st_buffer(rsm_31976[1, ], dist = 1000)
+rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], dist = 1000)
 
 # Recorte com buffer de 1000 metros (mudando a extensão).
-buffer.forest1.1km <- crop(floresta_2020, snap="out", rsm_31976_b1000)
+buffer.forest1.1km <- crop(floresta_2020, snap="out", rio_pontos_31976_b1000)
 # Máscara para que os pixels fora do polígono sejam nulos.
-buffer.forest1.1km <- mask(buffer.forest1.1km, rsm_31976_b1000, touches=TRUE)
+buffer.forest1.1km <- mask(buffer.forest1.1km, rio_pontos_31976_b1000, touches=TRUE)
 names(buffer.forest1.1km) <- "forest_2020_1km"
 
 ```
@@ -425,10 +464,10 @@ tm_shape(buffer.forest1.1km) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-tm_shape(rsm_31976[1, ]) + 
+tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-tm_shape(rsm_31976_b1000) +
+tm_shape(rio_pontos_31976_b1000) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
 tm_add_legend(type = "fill",  labels = c("não-floresta", "floresta"),
     col = c("#E974ED", "#129912"), title = "Classe") + 
@@ -444,7 +483,9 @@ tm_layout(legend.position = c("right","top"), legend.bg.color = "white")
 
 ------------------------------------------------------------------------
 
-<P style="page-break-before: always">
+
+\newpage
+
 
 Temos valores de 0 (não-floresta) e 1 (floresta). Então, para saber a aréa de floresta podemos somar o número de células (pixels) que contém o habitat e multiplica pela área de cada pixel conforme o codigo:
 
@@ -480,36 +521,36 @@ area_floresta_ha
 Para uma comparação multiescala, vamos repetir o mesmo processo, mas agora com distancias de 250, 500, 1000, 2000 e 4000 metros, doubrando a escala (extensão) em cada passo.
 
 ```{r, echo=FALSE, fig.width=15, fig.height=5, dpi=300, out.height="165px", out.width="500px", fig.cap="Cobertura florestal em extensões diferentes ao redor de um local de amostragem."}
-rsm_31976 <- st_transform(rsm, 31976) 
+rio_pontos_31976 <- st_transform(rio_pontos, 31976) 
 #250 m
-rsm_31976_b250 <- st_buffer(rsm_31976[1, ], dist = 250)
-buffer.forest1.250m <- crop(floresta_2020, rsm_31976_b250, snap="out")
-buffer.forest1.250m <- mask(buffer.forest1.250m, rsm_31976_b250, touches=TRUE)
+rio_pontos_31976_b250 <- st_buffer(rio_pontos_31976[1, ], dist = 250)
+buffer.forest1.250m <- crop(floresta_2020, rio_pontos_31976_b250, snap="out")
+buffer.forest1.250m <- mask(buffer.forest1.250m, rio_pontos_31976_b250, touches=TRUE)
 # 500 m
-rsm_31976_b500 <- st_buffer(rsm_31976[1, ], dist = 500)
-buffer.forest1.500m <- crop(floresta_2020, snap="out", rsm_31976_b500)
-buffer.forest1.500m <- mask(buffer.forest1.500m, touches=TRUE, rsm_31976_b500)
+rio_pontos_31976_b500 <- st_buffer(rio_pontos_31976[1, ], dist = 500)
+buffer.forest1.500m <- crop(floresta_2020, snap="out", rio_pontos_31976_b500)
+buffer.forest1.500m <- mask(buffer.forest1.500m, touches=TRUE, rio_pontos_31976_b500)
 # 1000 m
-rsm_31976_b1000 <- st_buffer(rsm_31976[1, ], dist = 1000)
-buffer.forest1.1km <- crop(floresta_2020, rsm_31976_b1000)
-buffer.forest1.1km <- mask(buffer.forest1.1km, rsm_31976_b1000)
+rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], dist = 1000)
+buffer.forest1.1km <- crop(floresta_2020, rio_pontos_31976_b1000)
+buffer.forest1.1km <- mask(buffer.forest1.1km, rio_pontos_31976_b1000)
 # 2000 m
-rsm_31976_b2000 <- st_buffer(rsm_31976[1, ], dist = 2000)
-buffer.forest1.2000m <- crop(floresta_2020, rsm_31976_b2000)
-buffer.forest1.2000m <- mask(buffer.forest1.2000m, rsm_31976_b2000)
+rio_pontos_31976_b2000 <- st_buffer(rio_pontos_31976[1, ], dist = 2000)
+buffer.forest1.2000m <- crop(floresta_2020, rio_pontos_31976_b2000)
+buffer.forest1.2000m <- mask(buffer.forest1.2000m, rio_pontos_31976_b2000)
 # 4000 m
-rsm_31976_b4000 <- st_buffer(rsm_31976[1, ], dist = 4000)
-buffer.forest1.4000m <- crop(floresta_2020, rsm_31976_b4000)
-buffer.forest1.4000m <- mask(buffer.forest1.4000m, rsm_31976_b4000)
+rio_pontos_31976_b4000 <- st_buffer(rio_pontos_31976[1, ], dist = 4000)
+buffer.forest1.4000m <- crop(floresta_2020, rio_pontos_31976_b4000)
+buffer.forest1.4000m <- mask(buffer.forest1.4000m, rio_pontos_31976_b4000)
 #fig 250
 fig_250m <- tm_shape(buffer.forest1.250m) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-  tm_shape(rsm_31976[1, ]) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-  tm_shape(rsm_31976_b250) +
+  tm_shape(rio_pontos_31976_b250) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
   tm_add_legend(type = "fill", 
     labels = c("não-floresta", "floresta"),
@@ -524,10 +565,10 @@ fig_500m <- tm_shape(buffer.forest1.500m) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-  tm_shape(rsm_31976[1, ]) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-  tm_shape(rsm_31976_b500) +
+  tm_shape(rio_pontos_31976_b500) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
   tm_add_legend(type = "fill", 
     labels = c("não-floresta", "floresta"),
@@ -543,10 +584,10 @@ fig_1000m <- tm_shape(buffer.forest1.1km) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-  tm_shape(rsm_31976[1, ]) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-  tm_shape(rsm_31976_b1000) +
+  tm_shape(rio_pontos_31976_b1000) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
   tm_add_legend(type = "fill", 
     labels = c("não-floresta", "floresta"),
@@ -562,10 +603,10 @@ fig_2000m <- tm_shape(buffer.forest1.2000m) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-  tm_shape(rsm_31976[1, ]) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-  tm_shape(rsm_31976_b2000) +
+  tm_shape(rio_pontos_31976_b2000) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
   tm_add_legend(type = "fill", 
     labels = c("não-floresta", "floresta"),
@@ -581,10 +622,10 @@ fig_4000m <- tm_shape(buffer.forest1.4000m) +
   tm_raster(style = "cat", 
             palette = c("0" = "#E974ED", 
                         "1" ="#129912"), legend.show = FALSE) + 
-  tm_shape(rsm_31976[1, ]) + 
+  tm_shape(rio_pontos_31976[1, ]) + 
   tm_symbols(shape =21, col = "yellow", 
             border.col = "black", border.lwd = 0.2, size=0.5) + 
-  tm_shape(rsm_31976_b4000) +
+  tm_shape(rio_pontos_31976_b4000) +
   tm_borders(col = "black", lwd = 4, lty = "dashed") + 
   tm_add_legend(type = "fill", 
     labels = c("não-floresta", "floresta"),

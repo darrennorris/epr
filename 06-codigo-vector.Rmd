@@ -76,4 +76,6 @@ mapview(rsl, zcol = "rio")
 
 <br>
 
-\newpage
+
+\newpage{}
+
