@@ -1382,7 +1382,7 @@ download.file(url = "https://github.com/allisonhorst/palmerpenguins/blob/main/in
 Agora podemos importar a tabela de dados com a função `read.csv()`, atribuindo ao objeto `penguins_raw`. 
 
 ```{r eval=FALSE}
-## Importar a tabela de locais
+## Importar a tabela
 pinguins_raw <- read.csv("dados/tabelas/penguins_raw.csv")
 ```
 
