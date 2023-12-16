@@ -38,14 +38,11 @@ Esperamos que ele seja utilizado tanto por quem quer se aprofundar em análises 
 
 O conteudo e organização dos capítulos esta separado em partes.
 
--   O primeiro parte é "Apresentação". 
-    o objetivo dessa parte é inclui os aspectos mais gerais sobre os componentes e da estrutura do livro e seus objetivos.
+-   O primeiro parte é "Apresentação".    o objetivo dessa parte é inclui os aspectos mais gerais sobre os componentes e da estrutura do livro e seus objetivos.
 
--   O segundo é "Escala e Padrões".
-    Aqui, os capitulos inclui um breve introdução usando R para explorar alguns componentes chaves da Ecologia da Paisagem. 
+-   O segundo é "Escala e Padrões".    Aqui, os capitulos inclui um breve introdução usando R para explorar alguns componentes chaves da Ecologia da Paisagem. 
 
--   A terceira é "Exemplos de caso". 
-    Aqui, os capítulos apresentam a aplicação de análises específicas e atualmente utilizadas em Ecologia da Paisagem.
+-   A terceira é "Exemplos de caso".    Aqui, os capítulos apresentam a aplicação de análises específicas e atualmente utilizadas em Ecologia da Paisagem.
 
 -   A quarta parte do livro é chamada de "R: codigo".
     Esta parte trata o funcionamento da linguagem R. Aqui, nós aprendemos desde como instalar o R e o RStudio até a manipulação e visualização de dados geoespaciais no R.

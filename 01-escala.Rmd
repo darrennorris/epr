@@ -68,7 +68,7 @@ library(tmap)
 library(eprdados)
 ```
 
-Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: `r kableExtra::text_spec("Error in library(nomepacote) : there is no package called ‘nomepacote’", color = "red", bold = TRUE)`. Neste caso, para instalá-los consulte o capitulos aqui [Capitulo 4 instalação de pacotes](https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html) e aqui [Capitulo 4 pacotes](https://analises-ecologicas.com/cap4#pacotes-1) .
+Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: `r kableExtra::text_spec("Error in library(nomepacote)  there is no package called nomepacote", color = "red")`. Neste caso, para instalá-los consulte o capitulos aqui [Capitulo 4 instalação de pacotes](https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html) e aqui [Capitulo 4 pacotes](https://analises-ecologicas.com/cap4#pacotes-1) .
 
 \newpage
 
@@ -92,7 +92,9 @@ ramostra <- rast(arquivo)
 
 Plotar para verificar.
 
-```{r plot-ramostra, fig.width =4, fig.height = 2.5, fig.cap="Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
+(ref:foo) Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande.
+
+```{r plot-ramostra, fig.width = 4, fig.height = 2.5, fig.cap = '(ref:foo)'}
 plot(ramostra)
 ```
 
@@ -163,7 +165,7 @@ classe_cores <- c("#006400", "#B8AF4F", "#0000FF")
 
 Agora podemos fazer o mapa com as classes e os cores seguindo o padrão recomendado pela MapBiomas para Coleção 6.
 
-```{r, dpi=300, fig.width =5, fig.height = 4, out.height="400px", out.width="500px", fig.cap="Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
+```{r mapa-mapbiomas-cores, fig.cap="Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
 
 tm_shape(ramostra) + 
   tm_raster(style = "cat", 
@@ -217,7 +219,7 @@ Os valores calculados pela modal são consistentes com o original e fazem sentid
 
 Em cada nível de resolução, são observáveis processos e padrões que não podem necessariamente ser inferidos daqueles abaixo ou acima. Aqui por exemplo, mudamos a proporção de cobertura florestal em nossa pequeno paisagem quando juntamos 3 pixels em um único: a proporção de floresta moudou de 4% (3/72) para 11% (1/9). Ou seja, com cada passo mudamos a representção do mundo.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, dpi=300, fig.width =9, fig.height = 5, out.height="270px", out.width="500px", fig.cap="Mudanças causadas pela agregação."}
+```{r fig-mud-agg, echo=FALSE, message=FALSE, warning=FALSE, dpi = 300, fig.width = 9, fig.height = 5,  fig.cap = "Mudanças causadas pela agregação."}
 bind_rows(as.polygons(ramostra, dissolve = FALSE) %>% 
   st_as_sf() %>% mutate(type = "original"), 
   as.polygons(ramostra_media, dissolve = FALSE) %>% 
@@ -333,7 +335,7 @@ A primeira camada de dados contém o eixo central de 260 km de rios a montante d
 
 Visualizar para verificar. Mapa com ambos a linha central e pontos de rios em trechos de 5km.
 
-```{r fig.width=6, fig.height=4, fig.cap="Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari."}
+```{r map-pontod-rio, fig.width = 6, fig.height = 4, fig.cap = "Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari."}
 ggplot(rio_linhacentral) +
   geom_sf(aes(color=rio)) +
   geom_sf(data = rio_pontos, shape=21, aes(fill=zone))
@@ -520,7 +522,7 @@ area_floresta_ha
 
 Para uma comparação multiescala, vamos repetir o mesmo processo, mas agora com distancias de 250, 500, 1000, 2000 e 4000 metros, doubrando a escala (extensão) em cada passo.
 
-```{r, echo=FALSE, fig.width=15, fig.height=5, dpi=300, out.height="165px", out.width="500px", fig.cap="Cobertura florestal em extensões diferentes ao redor de um local de amostragem."}
+```{r mapa-exte-pontos, echo=FALSE, fig.width = 15, fig.height = 5, dpi = 300, fig.cap="Cobertura florestal em extensões diferentes ao redor de um local de amostragem."}
 rio_pontos_31976 <- st_transform(rio_pontos, 31976) 
 #250 m
 rio_pontos_31976_b250 <- st_buffer(rio_pontos_31976[1, ], dist = 250)

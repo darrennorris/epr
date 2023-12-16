@@ -1,9 +1,12 @@
 
 \newpage{}
 
+
 # (PART) Encerramento {-} 
 
+
 \newpage{}
+
 
 # Bibliografia {.unnumbered}
 

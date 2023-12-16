@@ -66,13 +66,16 @@ ggplot(rsl) +
   geom_sf(data = rsm, shape=21, aes(fill=zone))
 ```
 
-<br> Mapa interativo (funcione somente com internet) Mostrando agora com fundo de mapas "base" (OpenStreetMap/ESRI etc)
+<br> Mapa interativo (funcione somente com internet). Mostrando agora com fundo de mapas "base" (OpenStreetMap/ESRI etc)
 
 ```{r fig.width=4, fig.height=4, echo=TRUE, warning=FALSE, fig.cap="Linhas dos rios a montante das hidrelétricas no Rio Araguari."}
 #
 mapview(rsl, zcol = "rio") 
 
 ```
+
+
+Em andamento ..............
 
 <br>
 

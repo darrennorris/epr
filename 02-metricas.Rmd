@@ -153,7 +153,7 @@ tm_layout(legend.bg.color = "white")
 
 Se esta todo certo, voces devem ter uma imagem assim:
 
-```{r, echo = FALSE, fig.width=5, fig.height=5, fig.cap="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta."}
+```{r, echo = FALSE, fig.width = 5, fig.height = 5, fig.cap = "Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta."}
 # Passo necessario para agilizar o processamento
 floresta_2020_modal<-aggregate(floresta_2020, fact=10, fun="modal")
 # Plot
@@ -205,7 +205,7 @@ tm_layout(legend.bg.color="white")
 
 Depois de executar ("run") o código acima, você deverá ver a figura a seguir.
 
-```{r, echo=FALSE, fig.width=5, fig.height=5, fig.cap="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul)."}
+```{r, echo = FALSE, fig.width = 5, fig.height = 5, fig.cap="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul)."}
 # Passo necessario para agilizar o processamento
 mapbiomas_2020_modal <- aggregate(mapbiomas_2020, 
                                   fact=10, 
@@ -285,7 +285,7 @@ minha_amostra_1000 |>
 
 ### Ponto único, distâncias variados, métrica única
 
-```{r, echo=FALSE, message=FALSE, out.width="90%", out.height="90%",fig.cap="Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem."}
+```{r, echo = FALSE, message = FALSE, fig.cap = "Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem."}
 # 1000 m
 rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], 
                                     dist = 1000)
@@ -417,7 +417,7 @@ amostras_metrica |>
 #### Faça um gráfico
 
 
-```{r, met-fig-logo, echo=FALSE, message=FALSE, warning=FALSE, out.width="65%", out.height="65%", fig.align="center"}
+```{r, met-fig-logo, echo = FALSE, message = FALSE, warning = FALSE, out.width = "65%", out.height = "65%", fig.align="center"}
 knitr::include_graphics("www/logo_gg_lsm.png")
 
 
@@ -461,7 +461,7 @@ amostras_metrica |>
 ```
 
 Depois de executar (“run”) o código acima, você deverá ver o grafico a seguir.
-```{r, echo=FALSE, out.width="50%", out.height="50%", fig.align="center"}
+```{r, echo=FALSE, out.width = "50%", out.height = "50%", fig.align = "center"}
 amostras_metrica |> 
   filter(class==1) |> mutate(ext_m = 2*raio) |>
   ggplot(aes(x=ext_m, y=value)) + 
@@ -482,7 +482,7 @@ amostras_metrica |>
 #### Faça um gráfico elegante
 
 Podemos ajustar qualquer elemento do grafico com ggplot2. Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro. 
-```{r, out.width="55%", out.height="55%", fig.cap="Comparação da área central de floresta em diferentes extensões.", fig.align="center" }
+```{r, out.width = "55%", out.height = "55%", fig.cap = "Comparação da área central de floresta em diferentes extensões.", fig.align="center" }
 # arrumar os dados
 amostras_metrica |> 
   filter(class==1) |> 
@@ -591,7 +591,7 @@ knitr::include_graphics("figures/fig_comp_linear.png")
 
 ### Ponto único, distâncias variados, métricas variadas
 
-No exemplo anterior comparamos uma métrica da paisagem em torno de um único ponto de amostragem. Mas sabemos que uma combinação de várias métricas de paisagem diferentes é necessária para entender os padrões na paisagem.
+No exemplo anterior comparamos uma métrica da paisagem em torno de um único ponto de amostragem. Mas sabemos que uma combinação de várias métricas é necessária para entender os padrões na paisagem.
 Aqui mostraremos como incluir cálculos de diferentes métricas de paisagem ao mesmo tempo.
 
 
@@ -733,7 +733,7 @@ Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à ár
     * `r kableExtra::text_spec("pd", background = "#dedede")` = Patch density. Densidade das manchas.
     * `r kableExtra::text_spec("cohesion", background = "#dedede")` = Cohesion index. Índice de coesão das manchas.
     
-Para incluir cálculos de diferentes métricas de paisagem ao mesmo tempo, precisamos  acrescentar somente uma nova linha de codigo. Uma nova linha, que cria um objeto com os nomes das funções para as métricas que queremos calcular..... Também precisamos usar a opção "what" na função para aceitar os nomes das funções. 
+Para incluir cálculos de diferentes métricas de paisagem ao mesmo tempo, precisamos  acrescentar somente uma nova linha de codigo. Uma nova linha, que cria um objeto com os nomes das funções para as métricas que queremos calcular..... Também precisamos usar a opção "what" na função para aceitar os nomes das funções . 
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 # Objeto com os nomes das funções para calcular as métricas desejadas.
@@ -742,7 +742,7 @@ Para incluir cálculos de diferentes métricas de paisagem ao mesmo tempo, preci
 #                              sd = desvio padrão, 
 #                              cv = coeficiente de variação)
 minhas_metricas <- c("lsm_c_pland", "lsm_c_ed", "lsm_c_cpland", 
-                     "lsm_c_enn_mn", "lsm_c_enn_sd", "lsm_c_enn_cv", 
+                     "lsm_c_enn_mn", "lsm_c_enn_sd", "lsm_c_enn_cv",
                      "lsm_c_pd","lsm_c_cohesion")
 
 # 6 Métricas calculadas para cada extensão
@@ -801,8 +801,8 @@ Depois que executar ("run"), podemos olhar os dados com o codigo a seguir.
 amostras_metricas
 ```
 
-Os dados deve ter os valores (coluna value) das métricas (coluna metric) 
-de cada classe (coluna class) para cada distância (coluna raio):
+Os dados deve ter os valores (coluna "value") das métricas (coluna metric) 
+de cada classe (coluna "class") para cada distância (coluna "raio"):
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 head(amostras_metricas, n=10) |> 
   mutate(value = round(value,2), 
@@ -811,7 +811,7 @@ head(amostras_metricas, n=10) |>
   kable_styling(full_width = F,  latex_options = "hold_position")
 ```
 
-Agora, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2. Para ajudar na visualização incluímos quais métricas são para composição e configuração e nomes que são mais fáceis de entender.
+Agora, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2. Para ajudar na visualização incluímos quais métricas são para composição e configuração e nomes que são mais fáceis de entender. A função `r kableExtra::text_spec( "mutate", background = "#d3d3d3")` é usado para incluir novas colunas. 
 
 ```{r met-insert-fig-multiplemetrics, message=FALSE, warning=FALSE}
 metricas_composicao <- c("pland", "ed", "cpland")
