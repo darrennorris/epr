@@ -1,5 +1,3 @@
-\usepackage{polyglossia}
-\setmainlanguage{portuges}
 \renewcommand{\topfraction}{.85}
 \renewcommand{\bottomfraction}{.7}
 \renewcommand{\textfraction}{.15}

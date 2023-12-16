@@ -2,7 +2,7 @@
 bookdown::render_book("index.Rmd")
 # check
 browseURL("docs/index.html")
-# pdf
+# pdf, when using 
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
 # quarto::quarto_render()
@@ -10,3 +10,4 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 # \usepackage{polyglossia}
 # \setmainlanguage{portuges}
 # in tinytext need hyphen-portuges and hyphen-portuguese
+

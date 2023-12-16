@@ -79,7 +79,7 @@ Vamos olhar um exemplo do mundo real. Uma pequena amostra do Rio Araguari, perto
 Vammos trabalhar com os dados de [MapBiomas](https://mapbiomas.org/), que produz mapeamento anual da cobertura e uso da terra no Brasil desde 1985. Os dados de MapBiomas vem no formato de raster, que tem uma  classificação da terra feito a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com algoritmos de aprendizagem de máquina (machine learning) através da plataforma Google Earth Engine, que oferece imensa capacidade de processamento na nuvem. Mais detalhes sobre a metodologia aqui: [Metodologia MapBiomas](https://brasil.mapbiomas.org/visao-geral-da-metodologia/). 
 
 
-Para carregar um arquivo raster trabalhamos com o pacote [terra](https://CRAN.R-project.org/package=terra). O pacote tem varios funçoes para a análise e modelagem de dados geográficos. Nós podemos ler os dados de cobertura da terra no arquivo ".tif" com a função `r kableExtra::text_spec( "rast", background = "#d3d3d3")`.
+Para carregar um arquivo raster trabalhamos com o pacote [terra](https://CRAN.R-project.org/package=terra). O pacote tem varios funçoes para a análise e modelagem de dados geográficos. Nós podemos ler os dados de cobertura da terra no arquivo ".tif" com a função `rast`.
 
 ```{r load-ramostra, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
 # arquivo no pacote "eprdados"
@@ -92,13 +92,13 @@ ramostra <- rast(arquivo)
 
 Plotar para verificar.
 
-(ref:foo) Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande.
 
-```{r plot-ramostra, fig.width = 4, fig.height = 2.5, fig.cap = '(ref:foo)'}
+
+```{r plot-ramostra, fig.width = 4, fig.height = 2.5, fig.cap = "Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
 plot(ramostra)
 ```
 
-Podemos também verificar informações sobre o raster (metadados) - simplesmente rodando o nome do objeto:
+Podemos também verificar informações sobre o raster (metadados) - simplesmente rodar o nome do objeto:
 
 ```{r run-name}
 ramostra
@@ -117,21 +117,17 @@ nrow(ramostra)
 
 ```
 
+
+
 #### Pergunta 1
 
-`r kableExtra::text_spec("Com base nos resultados obtidos até agora em relação ao objeto raster ramostra, qual o área do pixel em metros quadrados? Qual o área total da paisagem (raster ramostra) em hectares e quilometros quadrados?", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec(enc2utf8("Sobre o objeto ramostra. Com base nos resultados obtidos, qual o área do pixel em metros quadrados? Qual o área total da paisagem em hectares e quilometros quadrados?"), color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
 \newpage
 
-Vamos olhar o mapa de novo.
-
-```{r, fig.width =4, fig.height = 2.5, fig.cap="Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
-plot(ramostra)
-```
-
-<br> O mapa mostra três classes com valores de 3, 12 e 33. Lembrando, o objetivo principal não é de fazer mapas. Mas, a visualização dos dados é um passo importante para verificar e entender os padrões. Portanto, segue exemplo mostrando uma forma de visualizar o arquivo de raster como mapa.
+Olhando a mapa (Figura \@ref(fig:plot-ramostra)), existem três classes com valores de 3, 12 e 33. O objetivo principal não é de fazer mapas, mas, a visualização dos dados é um passo importante para verificar e entender os padrões. Portanto, segue exemplo mostrando uma forma de visualizar o arquivo de raster como mapa.
 
 Para entender o que os valores (3, 12, 33) representam no mundo real precisamos de uma referência (legenda). Para a MapBiomas Coleção 6, arquivo: [Cod_Class_legenda_Col6_MapBiomas_BR.pdf](https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Cod_Class_legenda_Col6_MapBiomas_BR.pdf). Existe também arquivos para fazer as mapas com cores corretas em [QGIS](https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/MapBiomas_Col6_classes_colors.qml) ou [ArcGIS](https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Legenda_Col6_MapBiomas.lyr).
 
@@ -165,7 +161,7 @@ classe_cores <- c("#006400", "#B8AF4F", "#0000FF")
 
 Agora podemos fazer o mapa com as classes e os cores seguindo o padrão recomendado pela MapBiomas para Coleção 6.
 
-```{r mapa-mapbiomas-cores, fig.cap="Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
+```{r mapa-mapbiomas-cores, fig.cap = "Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
 
 tm_shape(ramostra) + 
   tm_raster(style = "cat", 
@@ -194,11 +190,11 @@ Agora iremos degradar a resolução desses dados, ou seja, iremos alterar o tama
 
 ```{r}
 # Média
-ramostra_media<-aggregate(ramostra, fact=3, fun="mean")
+ramostra_media <- aggregate(ramostra, fact=3, fun="mean")
 ramostra_media <- resample(ramostra, ramostra_media)
 
 # Modal
-ramostra_modal<- aggregate(ramostra, fact=3, fun="modal")
+ramostra_modal <- aggregate(ramostra, fact=3, fun="modal")
 ramostra_modal <- resample(ramostra, ramostra_modal, method="near")
 ```
 
@@ -417,7 +413,7 @@ floresta_2020[mapbiomas_2020 == 3 | mapbiomas_2020 == 4] <- 1
 
 Vizualizar para verificar.
 
-```{r, fig.width = 5, fig.height = 5, fig.cap="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
+```{r, fig.width = 5, fig.height = 5, fig.cap = "Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
 # Passo necessario para agilizar o processamento
 floresta_2020_modal <- aggregate(floresta_2020, 
                                  fact=10, 

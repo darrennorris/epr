@@ -35,7 +35,7 @@ Como o R é um software livre, não existe a possibilidade de o usuário entrar 
 
 Apesar de podermos utilizar o R com o IDE (Ambiente de Desenvolvimento Integrado - *Integrated Development Environment*) RGui que vem com a instalação da linguagem R para usuários Windows  ou no próprio terminal para usuários Linux e MacOS, existem alguns IDEs específicos para facilitar nosso uso dessa linguagem.
 
-```{r fig-rgui, echo=FALSE, out.width = "55%", out.height = "55%", fig.cap="Interface do RGui. Os números indicam: (1) R Script, (2) R Console, e (3) R Graphics."}
+```{r fig-rgui, echo=FALSE, out.width = "75%", out.height = "75%", fig.cap = "Interface do RGui. Os números indicam: (1) R Script, (2) R Console, e (3) R Graphics."}
 knitr::include_graphics("figures/cap04_fig01.png")
 ```
 
@@ -60,7 +60,7 @@ Nesta seção, veremos os principais conceitos para entender como a linguagem R 
 
 Antes de iniciarmos o uso do R pelo RStudio é fundamental entendermos alguns pontos sobre as janelas e o funcionamento delas no RStudio.
 
-```{r fig-rstudio, echo=FALSE, out.width = "55%", out.height = "55%", fig.cap="Interface do RStudio. Os números indicam: (1) janela com abas de Script, R Markdown, dentre outras; (2) janela com abas de Console, Terminal e Jobs; (3) janela com abas de Environment, History, Conections e Tutorial; e (4) janela com abas de Files, Plots, Packages, Help e Viewer."}
+```{r fig-rstudio, echo=FALSE, out.width = "75%", out.height = "75%", fig.cap = "Interface do RStudio. Os números indicam: (1) janela com abas de Script, R Markdown, dentre outras; (2) janela com abas de Console, Terminal e Jobs; (3) janela com abas de Environment, History, Conections e Tutorial; e (4) janela com abas de Files, Plots, Packages, Help e Viewer."}
 knitr::include_graphics("figures/cap04_fig02.png")
 ```
 
@@ -1370,7 +1370,7 @@ dir.create("tabelas")
 setwd("tabelas")
 ```
 
-Agora podemos fazer o download do arquivo `.zip` e extrair as tabelas usando a função `unzip()` nesse mesmo diretório.
+Agora podemos fazer o download do arquivo `.csv` e importar a tabela de dados.
 
 ```{r eval=FALSE}
 ## Download
