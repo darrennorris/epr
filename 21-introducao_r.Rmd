@@ -1031,7 +1031,7 @@ ve[ve > 1]
 
 Além da indexação, temos algumas funções que nos auxiliam em algumas operações com objetos unidimensionais.
 
-```{r tab-tab-funcoes-conf-uni, echo=FALSE}
+```{r tab-tab-funcoes-conf-uni, echo = FALSE}
 
 funcs <- c(
   "`max()`",
