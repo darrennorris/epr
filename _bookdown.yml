@@ -20,6 +20,8 @@ rmd_files:
   - "10-exemplo-lorenco.Rmd"
   - "20-pre_requisitos.Rmd"
   - "21-introducao_r.Rmd"
+  - "22-tidyverse.Rmd"
+  - "23-graficos.Rmd"
   - "25-codigo-raster.Rmd"
   - "26-codigo-vector.Rmd"
   - "97-references.Rmd"

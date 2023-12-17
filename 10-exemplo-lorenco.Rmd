@@ -11,7 +11,7 @@
 Mudanças na paisagem ao redor do Garimpo do Lourenço. 
 Changes in the landscape surrounding the Lourenço gold mine.
 
-<img align="right" src="figures/www/lourenco_metrics.jpg" alt="Gold mine" width="300" style="margin-top: 20px">
+<img align="right" src="www/lourenco_metrics.jpg" alt="Gold mine" width="300" style="margin-top: 20px">
 
 Código de [R](https://cran.r-project.org/) e dados para calcular 
 métricas de paisagem associadas com a exploração de recursos minerários. 

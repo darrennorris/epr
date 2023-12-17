@@ -1,6 +1,10 @@
 
 # (PART) R e RStudio: Codigo com certeza {-}
 
+
+\newpage{}
+
+
 # Pré-requisitos {#cap20}
 
 Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 3 Pré-requisitos](https://analises-ecologicas.com/cap3), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) .
@@ -21,7 +25,7 @@ Abaixo descrevemos os sete passos necessários para a instalação do programa R
 6.  Clique no arquivo **Download R (versão mais recente) for Windows** que será instalado no seu computador
 7.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa R
 
-```{r fig-r-instalacao, out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa R no computador. "}
+```{r fig-r-instalacao, fig.align = 'center', out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa R no computador. "}
 knitr::include_graphics(path = "figures/cap03_fig01.png")
 ```
 
@@ -40,7 +44,7 @@ Abaixo descrevemos os cinco passos necessários para a instalação do RStudio n
 2.  Clique em **download...**,
 3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RStudio.
 
-```{r fig-rstudio-instalacao, out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa RStudio no computador."}
+```{r fig-rstudio-instalacao, fig.align = 'center', out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa RStudio no computador."}
 knitr::include_graphics(path = "figures/cap03_fig02.png")
 ```
 

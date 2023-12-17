@@ -1,3 +1,6 @@
+
+\newpage{}
+
 # Introdução ao R {#cap21}
 
 Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 4 Introdução ao R](https://analises-ecologicas.com/cap4), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) .
@@ -35,7 +38,7 @@ Como o R é um software livre, não existe a possibilidade de o usuário entrar 
 
 Apesar de podermos utilizar o R com o IDE (Ambiente de Desenvolvimento Integrado - *Integrated Development Environment*) RGui que vem com a instalação da linguagem R para usuários Windows  ou no próprio terminal para usuários Linux e MacOS, existem alguns IDEs específicos para facilitar nosso uso dessa linguagem.
 
-```{r fig-rgui, echo=FALSE, out.width = "75%", out.height = "75%", fig.cap = "Interface do RGui. Os números indicam: (1) R Script, (2) R Console, e (3) R Graphics."}
+```{r fig-rgui, echo=FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap = "Interface do RGui. Os números indicam: (1) R Script, (2) R Console, e (3) R Graphics."}
 knitr::include_graphics("figures/cap04_fig01.png")
 ```
 
@@ -60,7 +63,7 @@ Nesta seção, veremos os principais conceitos para entender como a linguagem R 
 
 Antes de iniciarmos o uso do R pelo RStudio é fundamental entendermos alguns pontos sobre as janelas e o funcionamento delas no RStudio.
 
-```{r fig-rstudio, echo=FALSE, out.width = "75%", out.height = "75%", fig.cap = "Interface do RStudio. Os números indicam: (1) janela com abas de Script, R Markdown, dentre outras; (2) janela com abas de Console, Terminal e Jobs; (3) janela com abas de Environment, History, Conections e Tutorial; e (4) janela com abas de Files, Plots, Packages, Help e Viewer."}
+```{r fig-rstudio, echo=FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap = "Interface do RStudio. Os números indicam: (1) janela com abas de Script, R Markdown, dentre outras; (2) janela com abas de Console, Terminal e Jobs; (3) janela com abas de Environment, History, Conections e Tutorial; e (4) janela com abas de Files, Plots, Packages, Help e Viewer."}
 knitr::include_graphics("figures/cap04_fig02.png")
 ```
 
@@ -159,9 +162,9 @@ Uma aplicação bem interessante dos *Code Snippets* no script é o `ts`. Basta 
 
 ### Operadores
 
-No R, podemos agrupar os operadores em cinco tipos: aritméticos, relacionais, lógicos, atribuição e diversos.
+No R, podemos agrupar os operadores em cinco tipos: aritméticos, relacionais, lógicos, atribuição e diversos. Grande parte deles são descritos na Tabela "Principais operadores no R.".
 
-```{r tab-operadores, echo=FALSE}
+```{r tab-operadores, echo = FALSE, results = 'as.is'}
 oper <- c("+", "-", "*", "/", "%%", "%/%", "^ ou **", ">", "<", ">=", "<=", "==", "!=", "!", "&", "|", "&&", "||", "<- ou =", "<<-", "->", "->>", ":", "%in%", "%*%", "%>%", "|>", "%--%") 
 
 tip <- c(
@@ -573,7 +576,7 @@ knitr::write_bib("vegan", file = "vegan_ex.bib")
 
 ### Principais erros de iniciantes
 
-```{r fig-turing, echo=FALSE, out.width = "55%", out.height = "55%"}
+```{r fig-turing, echo=FALSE, fig.align='center', out.width = "55%", out.height = "55%"}
 knitr::include_graphics(path = "figures/Turing_quote_01.jpg")
 ```
 
@@ -670,7 +673,7 @@ Além disso, é fundamental ressaltar a importância de verificar se o nome do a
 
 ## Estrutura e manipulação de objetos
 
-O conhecimento sobre a estrutura e manipulação de objetos é fundamental para ter domínio e entendimento do funcionamento da linguagem R. Nesta seção, trataremos da estrutura e manipulação de dados no R, no que ficou conhecido como modo *R Base*, em contrapartida ao *tidyverse*, tópico tratado no Capítulo \@ref(cap5). Abordaremos aqui temas chaves, como: i) atributos de objetos, ii) manipulação de objetos unidimensionais e multidimensionais, iii) valores faltantes e especiais, iv) diretório de trabalho e v) importar, conferir e exportar dados tabulares.
+O conhecimento sobre a estrutura e manipulação de objetos é fundamental para ter domínio e entendimento do funcionamento da linguagem R. Nesta seção, trataremos da estrutura e manipulação de dados no R, no que ficou conhecido como modo *R Base*, em contrapartida ao *tidyverse*, tópico tratado no Capítulo \@ref(cap22). Abordaremos aqui temas chaves, como: i) atributos de objetos, ii) manipulação de objetos unidimensionais e multidimensionais, iii) valores faltantes e especiais, iv) diretório de trabalho e v) importar, conferir e exportar dados tabulares.
 
 ### Atributo dos objetos
 
@@ -848,7 +851,7 @@ as.numeric(repeticao)
 
 O fator representa medidas de uma variável categórica, podendo ser nominal ou ordinal. É fundamental destacar que fatores no R devem ser entendidos como um vetor de **integer**, i.e., ele é composto por números inteiros representando os níveis da variável categórica.
 
-Para criar um fator no R usamos uma função específica `factor()`, na qual podemos especificar os **níveis** com o argumento `level`, ou fazemos uma conversão usando a função `as.factor()`. Trabalhar com fatores no *R Base* não é das tarefas mais agradáveis, sendo assim, no Capítulo \@ref(cap5) usamos a versão *tidyverse* usando o pacote `forcats`. Destacamos ainda a existência de fatores nominais para variáveis categóricas nominais e fatores ordinais para variáveis categóricas ordinais, quando há ordenamento entre os níveis, como dias da semana ou classes de altura.
+Para criar um fator no R usamos uma função específica `factor()`, na qual podemos especificar os **níveis** com o argumento `level`, ou fazemos uma conversão usando a função `as.factor()`. Trabalhar com fatores no *R Base* não é das tarefas mais agradáveis, sendo assim, no Capítulo \@ref(cap22) usamos a versão *tidyverse* usando o pacote `forcats`. Destacamos ainda a existência de fatores nominais para variáveis categóricas nominais e fatores ordinais para variáveis categóricas ordinais, quando há ordenamento entre os níveis, como dias da semana ou classes de altura.
 
 ```{r}
 ## Fator nominal
@@ -1113,7 +1116,8 @@ descrip <- c(
   "Subconjunto", 
   "Operação condicional")
 knitr::kable(data.frame(`Função` = funcs,`Descrição` = descrip), 
-             align = "c",
+             align = "c", 
+             format = 'pandoc',
              caption = "Funções para verificação e resumo de dados unidimensionais.")
 ```
 

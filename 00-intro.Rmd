@@ -106,7 +106,7 @@ install.packages(c("sp", "sf","raster", "mapview","tmap",
 ```
 
 
-## Codigo no livro
+## Codigo no livro {.unnumbered}
 
 
 -   Objetivo não é de apresentar detalhes sobre os cálculos/métodos estatísticas ou os funções no [R](https://cran.r-project.org/). Existem diversos exemplos disponíveis ["Ciência de Dados com R--Introdução......":](https://cdr.ibpad.com.br/cdr-intro.pdf) e com google "r cran introdução tutorial"....... Alem disso, existem grupos de ajuda, como por exemplo: [R Brasil](https://www.facebook.com/groups/rbrasilprogramadores/) e [Stack Overflow em Português](https://pt.stackoverflow.com/questions/tagged/r)
@@ -119,7 +119,7 @@ Aliás, atualmente a grande maioria dos artigos científicos publicados na revis
 
 \newpage
 
-### Organização do codigo no livro
+### Organização do codigo no livro {.unnumbered}
 
 O capitulo está organizado em etapas de processamento, com blocos de código em caixas cinzas:
 

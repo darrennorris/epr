@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.16)  16 DEC 2023 21:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.16)  17 DEC 2023 09:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,7 +312,11 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \cslhangindent=\skip64
 \csllabelwidth=\skip65
 \cslentryspacingunit=\skip66
-(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/flafter.sty
+Package: flafter 2021/07/31 v1.4e Standard LaTeX floats after reference (FMi)
+Applying: [2015/01/01] float order in 2-column on input line 49.
+Already applied: [0000/00/00] float order in 2-column on input line 151.
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2023-11-26 v7.01g Hypertext links for LaTeX
@@ -417,8 +421,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count305
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 153.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 159.
+Package hyperref Info: Option `colorlinks' set `true' on input line 155.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 161.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -428,37 +432,37 @@ File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
 ) (./epr.aux)
 \openout1 = `epr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 159.
-LaTeX Font Info:    ... okay on input line 159.
-LaTeX Info: Redefining \microtypecontext on input line 159.
-Package microtype Info: Applying patch `item' on input line 159.
-Package microtype Info: Applying patch `toc' on input line 159.
-Package microtype Info: Applying patch `eqnum' on input line 159.
-Package microtype Info: Applying patch `footnote' on input line 159.
-Package microtype Info: Applying patch `verbatim' on input line 159.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Info: Redefining \microtypecontext on input line 161.
+Package microtype Info: Applying patch `item' on input line 161.
+Package microtype Info: Applying patch `toc' on input line 161.
+Package microtype Info: Applying patch `eqnum' on input line 161.
+Package microtype Info: Applying patch `footnote' on input line 161.
+Package microtype Info: Applying patch `verbatim' on input line 161.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 159.
+LaTeX Info: Redefining \showhyphens on input line 161.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -504,36 +508,36 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 159.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 161.
+Package hyperref Info: Link coloring ON on input line 161.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 161.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 161.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 161.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 161.
+(Font)              <12> on input line 163.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 161.
+(Font)              <8> on input line 163.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 161.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 161.
+(Font)              <6> on input line 163.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 161.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 163.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -547,114 +551,134 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 3.
 [1
 
-{c:/Users/user/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}])
+{c:/Users/user/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] [2])
 \tf@toc=\write4
 \openout4 = `epr.toc'.
 
-[2]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 177.
+[3]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 179.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [3{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [4] [5]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 319.
+) [4{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [5] [6]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 321.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 320.
-[6] [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 455--457
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 322.
+[7] [8] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 459--461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--459
+Underfull \hbox (badness 10000) in paragraph at lines 461--463
 
  []
 
-[10] [11]
-<epr_files/figure-latex/plot-ramostra-1.pdf, id=246, 289.08pt x 180.675pt>
+[11] [12]
+<epr_files/figure-latex/plot-ramostra-1.pdf, id=354, 289.08pt x 180.675pt>
 File: epr_files/figure-latex/plot-ramostra-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/plot-ramostra-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/plot-ramostra-1.pdf  used on input line 571.
+Package pdftex.def Info: epr_files/figure-latex/plot-ramostra-1.pdf  used on input line 575.
 (pdftex.def)             Requested size: 289.07928pt x 180.67455pt.
-[12 <./epr_files/figure-latex/plot-ramostra-1.pdf>] [13]
-<epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf, id=286, 469.755pt x 325.215pt>
+[13 <./epr_files/figure-latex/plot-ramostra-1.pdf>] [14]
+<epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf, id=393, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf  used on input line 674.
+Package pdftex.def Info: epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf  used on input line 678.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[14] [15 <./epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf>] [16] [17]
-<epr_files/figure-latex/fig-mud-agg-1.pdf, id=315, 650.43pt x 361.35pt>
+[15] [16 <./epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf>] [17] [18]
+<epr_files/figure-latex/fig-mud-agg-1.pdf, id=421, 650.43pt x 361.35pt>
 File: epr_files/figure-latex/fig-mud-agg-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-mud-agg-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/fig-mud-agg-1.pdf  used on input line 719.
+Package pdftex.def Info: epr_files/figure-latex/fig-mud-agg-1.pdf  used on input line 723.
 (pdftex.def)             Requested size: 469.76817pt x 260.98232pt.
-[18 <./epr_files/figure-latex/fig-mud-agg-1.pdf>]
-<epr_files/figure-latex/buffer-figure-1.pdf, id=329, 469.755pt x 325.215pt>
+[19 <./epr_files/figure-latex/fig-mud-agg-1.pdf>]
+<epr_files/figure-latex/buffer-figure-1.pdf, id=436, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/buffer-figure-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/buffer-figure-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/buffer-figure-1.pdf  used on input line 736.
+Package pdftex.def Info: epr_files/figure-latex/buffer-figure-1.pdf  used on input line 740.
 (pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
-[19 <./epr_files/figure-latex/buffer-figure-1.pdf>]
-<epr_files/figure-latex/map-pontod-rio-1.pdf, id=348, 433.62pt x 289.08pt>
+[20 <./epr_files/figure-latex/buffer-figure-1.pdf>]
+<epr_files/figure-latex/map-pontod-rio-1.pdf, id=454, 433.62pt x 289.08pt>
 File: epr_files/figure-latex/map-pontod-rio-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/map-pontod-rio-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/map-pontod-rio-1.pdf  used on input line 770.
+Package pdftex.def Info: epr_files/figure-latex/map-pontod-rio-1.pdf  used on input line 774.
 (pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
-<epr_files/figure-latex/unnamed-chunk-8-1.pdf, id=349, 289.08pt x 289.08pt>
+<epr_files/figure-latex/unnamed-chunk-8-1.pdf, id=455, 289.08pt x 289.08pt>
 File: epr_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 785.
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 789.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-[20 <./epr_files/figure-latex/map-pontod-rio-1.pdf>]
-Overfull \vbox (0.20686pt too high) detected at line 828
+[21 <./epr_files/figure-latex/map-pontod-rio-1.pdf>]
+Overfull \vbox (0.20686pt too high) detected at line 832
  []
 
-[21 <./epr_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-11-1.pdf, id=435, 361.35pt x 361.35pt>
+[22 <./epr_files/figure-latex/unnamed-chunk-8-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-11-1.pdf, id=537, 361.35pt x 361.35pt>
 File: epr_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 832.
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 836.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[22 <./epr_files/figure-latex/unnamed-chunk-11-1.pdf>] [23]
-<epr_files/figure-latex/unnamed-chunk-12-1.pdf, id=456, 361.35pt x 361.35pt>
+[23 <./epr_files/figure-latex/unnamed-chunk-11-1.pdf>] [24]
+<epr_files/figure-latex/unnamed-chunk-12-1.pdf, id=557, 361.35pt x 361.35pt>
 File: epr_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-12-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-12-1.pdf  used on input line 882.
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-12-1.pdf  used on input line 886.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[24 <./epr_files/figure-latex/unnamed-chunk-12-1.pdf>] [25]
-<epr_files/figure-latex/unnamed-chunk-14-1.pdf, id=476, 216.81pt x 216.81pt>
+[25 <./epr_files/figure-latex/unnamed-chunk-12-1.pdf>] [26]
+<epr_files/figure-latex/unnamed-chunk-14-1.pdf, id=577, 216.81pt x 216.81pt>
 File: epr_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-14-1.pdf  used on input line 932.
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-14-1.pdf  used on input line 936.
 (pdftex.def)             Requested size: 216.81938pt x 216.81938pt.
-[26 <./epr_files/figure-latex/unnamed-chunk-14-1.pdf>] [27]
-<epr_files/figure-latex/mapa-exte-pontos-1.pdf, id=496, 1084.05pt x 361.35pt>
+[27 <./epr_files/figure-latex/unnamed-chunk-14-1.pdf>] [28]
+<epr_files/figure-latex/mapa-exte-pontos-1.pdf, id=597, 1084.05pt x 361.35pt>
 File: epr_files/figure-latex/mapa-exte-pontos-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/mapa-exte-pontos-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/mapa-exte-pontos-1.pdf  used on input line 1030.
+Package pdftex.def Info: epr_files/figure-latex/mapa-exte-pontos-1.pdf  used on input line 1034.
 (pdftex.def)             Requested size: 469.75496pt x 156.58498pt.
-[28 <./epr_files/figure-latex/mapa-exte-pontos-1.pdf>] [29] [30] [31] [32] [33]
-<epr_files/figure-latex/unnamed-chunk-23-1.pdf, id=575, 361.35pt x 361.35pt>
+[29 <./epr_files/figure-latex/mapa-exte-pontos-1.pdf>] [30] [31] [32] [33] [34]
+<epr_files/figure-latex/unnamed-chunk-23-1.pdf, id=672, 361.35pt x 361.35pt>
 File: epr_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-23-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-23-1.pdf  used on input line 1244.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[34 <./epr_files/figure-latex/unnamed-chunk-23-1.pdf>] [35]
-<epr_files/figure-latex/unnamed-chunk-26-1.pdf, id=595, 361.35pt x 361.35pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1245 ...assificado em floresta e não-floresta.}
+                                                   [35 <./epr_files/figure-latex/unnamed-chunk-23-1.pdf>] [36]
+<epr_files/figure-latex/unnamed-chunk-26-1.pdf, id=690, 361.35pt x 361.35pt>
 File: epr_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-26-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-26-1.pdf  used on input line 1295.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[36 <./epr_files/figure-latex/unnamed-chunk-26-1.pdf>] [37] [38]
-<epr_files/figure-latex/unnamed-chunk-30-1.pdf, id=624, 469.755pt x 325.215pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1296 ...lômetros ao longo do rio (linha azul).}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1296 ...lômetros ao longo do rio (linha azul).}
+                                                   [37 <./epr_files/figure-latex/unnamed-chunk-26-1.pdf>] [38] [39]
+<epr_files/figure-latex/unnamed-chunk-30-1.pdf, id=718, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-30-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-30-1.pdf  used on input line 1376.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[39 <./epr_files/figure-latex/unnamed-chunk-30-1.pdf>] [40] [41]
-<www/logo_gg_lsm.png, id=648, 960.58875pt x 461.3235pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1377 ...tes ao redor de um ponto de amostragem.}
+                                                   [40 <./epr_files/figure-latex/unnamed-chunk-30-1.pdf>] [41] [42]
+<www/logo_gg_lsm.png, id=740, 960.58875pt x 461.3235pt>
 File: www/logo_gg_lsm.png Graphic file (type png)
 <use www/logo_gg_lsm.png>
 Package pdftex.def Info: www/logo_gg_lsm.png  used on input line 1494.
@@ -664,184 +688,286 @@ Underfull \hbox (badness 10000) in paragraph at lines 1507--1509
 
  []
 
-[42 <./www/logo_gg_lsm.png>]
-<epr_files/figure-latex/unnamed-chunk-36-1.pdf, id=667, 469.755pt x 325.215pt>
+[43 <./www/logo_gg_lsm.png>]
+<epr_files/figure-latex/unnamed-chunk-36-1.pdf, id=760, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-36-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-36-1.pdf  used on input line 1542.
 (pdftex.def)             Requested size: 234.87692pt x 162.6071pt.
-[43 <./epr_files/figure-latex/unnamed-chunk-36-1.pdf>]
+[44 <./epr_files/figure-latex/unnamed-chunk-36-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1579.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<epr_files/figure-latex/unnamed-chunk-37-1.pdf, id=680, 469.755pt x 325.215pt>
+<epr_files/figure-latex/unnamed-chunk-37-1.pdf, id=772, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-37-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-37-1.pdf  used on input line 1583.
 (pdftex.def)             Requested size: 258.36604pt x 178.86879pt.
-[44 <./epr_files/figure-latex/unnamed-chunk-37-1.pdf>]
-<figures/fig_comp_linear.pdf, id=700, 794.97pt x 216.81pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1587 ...l de floresta em diferentes extensões.}
+                                                  \label{fig:unnamed-chunk-37} [45 <./epr_files/figure-latex/unnamed-chunk-37-1.pdf>]
+<figures/fig_comp_linear.pdf, id=790, 794.97pt x 216.81pt>
 File: figures/fig_comp_linear.pdf Graphic file (type pdf)
 <use figures/fig_comp_linear.pdf>
 Package pdftex.def Info: figures/fig_comp_linear.pdf  used on input line 1616.
 (pdftex.def)             Requested size: 460.36723pt x 125.55469pt.
-[45 <./figures/fig_comp_linear.pdf>]
-<epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf, id=719, 469.755pt x 325.215pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1616 ...o de padrões lineares e não-lineares.}
+                                                  \label{fig:met-insert-fig-... [46 <./figures/fig_comp_linear.pdf>]
+<epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf, id=808, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf  used on input line 1636.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[46 <./epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>] [47] [48]
-<epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf, id=747, 469.755pt x 325.215pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1637 ...o é repetido em diferentes extensões.}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1637 ...o é repetido em diferentes extensões.}
+                                                   [47 <./epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>] [48] [49]
+<epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf, id=835, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf  used on input line 1811.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[49 <./epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>] [50] [51] [52]
-<figures/fig_garimpo_access.png, id=783, 739.26187pt x 304.88907pt>
+[50 <./epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>] [51] [52] [53]
+<figures/fig_garimpo_access.png, id=871, 739.26187pt x 304.88907pt>
 File: figures/fig_garimpo_access.png Graphic file (type png)
 <use figures/fig_garimpo_access.png>
 Package pdftex.def Info: figures/fig_garimpo_access.png  used on input line 1927.
 (pdftex.def)             Requested size: 375.8003pt x 154.98892pt.
-[53]
-<figures/mapview_point_buffer.png, id=796, 412.54124pt x 270.25969pt>
+[54]
+<figures/mapview_point_buffer.png, id=883, 412.54124pt x 270.25969pt>
 File: figures/mapview_point_buffer.png Graphic file (type png)
 <use figures/mapview_point_buffer.png>
 Package pdftex.def Info: figures/mapview_point_buffer.png  used on input line 1978.
 (pdftex.def)             Requested size: 375.8097pt x 246.19649pt.
-[54 <./figures/fig_garimpo_access.png>] [55 <./figures/mapview_point_buffer.png>]
-<epr_files/figure-latex/fig-plot-raster-1.pdf, id=820, 469.755pt x 325.215pt>
+[55 <./figures/fig_garimpo_access.png>] [56 <./figures/mapview_point_buffer.png>]
+<epr_files/figure-latex/fig-plot-raster-1.pdf, id=903, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/fig-plot-raster-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-plot-raster-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/fig-plot-raster-1.pdf  used on input line 2051.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[56 <./epr_files/figure-latex/fig-plot-raster-1.pdf>] [57] [58]
-<epr_files/figure-latex/unnamed-chunk-59-1.pdf, id=851, 469.755pt x 325.215pt>
+[57 <./epr_files/figure-latex/fig-plot-raster-1.pdf>] [58] [59]
+<epr_files/figure-latex/unnamed-chunk-59-1.pdf, id=931, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-59-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-59-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-59-1.pdf  used on input line 2304.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[59]
-<epr_files/figure-latex/unnamed-chunk-59-2.pdf, id=859, 469.755pt x 325.215pt>
+[60]
+<epr_files/figure-latex/unnamed-chunk-59-2.pdf, id=937, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-59-2.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-59-2.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-59-2.pdf  used on input line 2312.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[60 <./epr_files/figure-latex/unnamed-chunk-59-1.pdf>] [61 <./epr_files/figure-latex/unnamed-chunk-59-2.pdf>] [62] [63] [64] [65]
-<epr_files/figure-latex/unnamed-chunk-68-1.pdf, id=910, 469.755pt x 325.215pt>
+[61 <./epr_files/figure-latex/unnamed-chunk-59-1.pdf>] [62 <./epr_files/figure-latex/unnamed-chunk-59-2.pdf>] [63] [64] [65] [66]
+<epr_files/figure-latex/unnamed-chunk-68-1.pdf, id=987, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-68-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-68-1.pdf  used on input line 2611.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[66] [67 <./epr_files/figure-latex/unnamed-chunk-68-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-70-1.pdf, id=928, 469.755pt x 325.215pt>
+[67] [68 <./epr_files/figure-latex/unnamed-chunk-68-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-70-1.pdf, id=1004, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-70-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-70-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-70-1.pdf  used on input line 2671.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[68 <./epr_files/figure-latex/unnamed-chunk-70-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-71-1.pdf, id=940, 469.755pt x 325.215pt>
+[69 <./epr_files/figure-latex/unnamed-chunk-70-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-71-1.pdf, id=1015, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/unnamed-chunk-71-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-71-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-71-1.pdf  used on input line 2720.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[69] [70 <./epr_files/figure-latex/unnamed-chunk-71-1.pdf>]
-<figures/images_large_10.1177_19400829221127087-fig3.jpeg, id=958, 313.17pt x 294.1389pt>
+[70] [71 <./epr_files/figure-latex/unnamed-chunk-71-1.pdf>]
+<figures/images_large_10.1177_19400829221127087-fig3.jpeg, id=1033, 313.17pt x 294.1389pt>
 File: figures/images_large_10.1177_19400829221127087-fig3.jpeg Graphic file (type jpg)
 <use figures/images_large_10.1177_19400829221127087-fig3.jpeg>
 Package pdftex.def Info: figures/images_large_10.1177_19400829221127087-fig3.jpeg  used on input line 2746.
 (pdftex.def)             Requested size: 234.88646pt x 220.6126pt.
-[71 <./figures/images_large_10.1177_19400829221127087-fig3.jpeg>]
-<figures/cap03_fig01.png, id=974, 782.925pt x 587.796pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2750 ... Science. doi:10.1177/19400829221127087}
+                                                  \label{fig:plot-fig-sankey}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2750 ... Science. doi:10.1177/19400829221127087}
+                                                  \label{fig:plot-fig-sankey} [72 <./figures/images_large_10.1177_19400829221127087-fig3.jpeg>]
+<figures/cap03_fig01.png, id=1048, 782.925pt x 587.796pt>
 File: figures/cap03_fig01.png Graphic file (type png)
 <use figures/cap03_fig01.png>
 Package pdftex.def Info: figures/cap03_fig01.png  used on input line 2804.
 (pdftex.def)             Requested size: 352.313pt x 264.50575pt.
-<figures/cap03_fig02.png, id=977, 782.925pt x 587.796pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2804 ...talação do programa R no computador. }
+                                                  \label{fig:fig-r-instalacao}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2804 ...talação do programa R no computador. }
+                                                  \label{fig:fig-r-instalacao}
+<figures/cap03_fig02.png, id=1051, 782.925pt x 587.796pt>
 File: figures/cap03_fig02.png Graphic file (type png)
 <use figures/cap03_fig02.png>
 Package pdftex.def Info: figures/cap03_fig02.png  used on input line 2829.
 (pdftex.def)             Requested size: 352.313pt x 264.50575pt.
-[72] [73 <./figures/cap03_fig01.png> <./figures/cap03_fig02.png>]
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2829 ...�ão do programa RStudio no computador.}
+                                                  \label{fig:fig-rstudio-ins...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2829 ...�ão do programa RStudio no computador.}
+                                                  \label{fig:fig-rstudio-ins... [73] [74 <./figures/cap03_fig01.png> <./figures/cap03_fig02.png>]
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2883.
 
-[74]
-<figures/cap04_fig01.png, id=1036, 1007.26312pt x 620.3175pt>
+[75]
+<figures/cap04_fig01.png, id=1108, 1007.26312pt x 620.3175pt>
 File: figures/cap04_fig01.png Graphic file (type png)
 <use figures/cap04_fig01.png>
 Package pdftex.def Info: figures/cap04_fig01.png  used on input line 2914.
 (pdftex.def)             Requested size: 352.31683pt x 216.9724pt.
 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2914 ...cript, (2) R Console, e (3) R Graphics.}
+                                                  \label{fig:fig-rgui}
 Underfull \hbox (badness 2573) in paragraph at lines 2929--2930
 []\T1/lmtt/m/n/10 Tools > Global options > Code > Display > [X Show Margis] e Margin column (80)\T1/lmr/m/n/10 (+20) : com
  []
 
-[75]
-<figures/cap04_fig02.png, id=1046, 1001.99344pt x 616.55344pt>
+[76]
+<figures/cap04_fig02.png, id=1117, 1001.99344pt x 616.55344pt>
 File: figures/cap04_fig02.png Graphic file (type png)
 <use figures/cap04_fig02.png>
 Package pdftex.def Info: figures/cap04_fig02.png  used on input line 2945.
 (pdftex.def)             Requested size: 352.32361pt x 216.79416pt.
-[76 <./figures/cap04_fig01.png (PNG copy)>] [77 <./figures/cap04_fig02.png (PNG copy)>] [78] [79]
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2945 ... Files, Plots, Packages, Help e Viewer.}
+                                                  \label{fig:fig-rstudio}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2945 ... Files, Plots, Packages, Help e Viewer.}
+                                                  \label{fig:fig-rstudio} [77 <./figures/cap04_fig01.png (PNG copy)>] [78 <./figures/cap04_fig02.png (PNG copy)>] [79] [80]
 
 LaTeX Font Warning: Font shape `TS1/lmtt/bx/it' in size <10> not available
 (Font)              Font shape `TS1/lmtt/b/sl' tried instead on input line 3263.
 
-[80] [81] [82] [83] [84] [85] [86] [87] [88]
+[81] [82] [83] [84] [85] [86] [87] [88] [89]
 Overfull \hbox (3152.73445pt too wide) in paragraph at lines 3898--3898
 []\T1/lmtt/m/n/10 ##     author = {Jari Oksanen and Gavin L. Simpson and F. Guillaume Blanchet and Roeland Kindt and Pierre Legendre and Peter R. Minchin and R.B. O\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 Hara and Peter Solymos and M. Henry H. Stevens and Eduard Szoecs and Helene Wagner and Matt Barbour and Michael Bedward and Ben Bolker and Daniel Borcard and Gustavo Carvalho and Michael Chirico and Miquel {De Caceres} and Sebastien Durand and Heloisa Beatriz Antoniazi Evangelista and Rich FitzJohn and Michael Friendly and Brendan Furneaux and Geoffrey Hannigan and Mark O. Hill and Leo Lahti and Dan McGlinn and Marie-Helene Ouellette and Eduardo {Ribeiro Cunha} and Tyler Smith and Adrian Stier and Cajo J.F. {Ter Braak} and James Weedon},[] 
  []
 
-<figures/Turing_quote_01.jpg, id=1150, 1084.05pt x 449.68pt>
+<figures/Turing_quote_01.jpg, id=1211, 1084.05pt x 449.68pt>
 File: figures/Turing_quote_01.jpg Graphic file (type jpg)
 <use figures/Turing_quote_01.jpg>
 Package pdftex.def Info: figures/Turing_quote_01.jpg  used on input line 3912.
 (pdftex.def)             Requested size: 258.35777pt x 107.17062pt.
-[89 <./figures/Turing_quote_01.jpg>] [90]
+[90 <./figures/Turing_quote_01.jpg>] [91]
 
-LaTeX Warning: Reference `cap5' on page 91 undefined on input line 4081.
+LaTeX Warning: Reference `cap5' on page 92 undefined on input line 4081.
 
-[91] [92] [93]
-<figures/cap04_fig03.png, id=1182, 347.3778pt x 260.6538pt>
+[92] [93] [94]
+<figures/cap04_fig03.png, id=1240, 347.3778pt x 260.6538pt>
 File: figures/cap04_fig03.png Graphic file (type png)
 <use figures/cap04_fig03.png>
 Package pdftex.def Info: figures/cap04_fig03.png  used on input line 4283.
 (pdftex.def)             Requested size: 347.41405pt x 260.68097pt.
-[94 <./figures/cap04_fig03.png>]
 
-LaTeX Warning: Reference `cap5' on page 95 undefined on input line 4415.
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4283 ... Adaptado de: R for Data Science (2e) .}
+                                                  \label{fig:fig-r-estruturas}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4283 ... Adaptado de: R for Data Science (2e) .}
+                                                  \label{fig:fig-r-estruturas} [95 <./figures/cap04_fig03.png>]
 
-[95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113]
-<epr_files/figure-latex/unnamed-chunk-159-1.pdf, id=1329, 289.08pt x 180.675pt>
+LaTeX Warning: Reference `cap5' on page 96 undefined on input line 4415.
+
+[96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114]
+<epr_files/figure-latex/unnamed-chunk-159-1.pdf, id=1377, 289.08pt x 180.675pt>
 File: epr_files/figure-latex/unnamed-chunk-159-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-159-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-159-1.pdf  used on input line 5939.
 (pdftex.def)             Requested size: 289.07928pt x 180.67455pt.
-[114] [115 <./epr_files/figure-latex/unnamed-chunk-159-1.pdf>] [116]
-<epr_files/figure-latex/unnamed-chunk-164-1.pdf, id=1358, 361.35pt x 361.35pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5940 ...hunk-159}Paisagem simples de 36 pixels.}
+                                                   [115] [116 <./epr_files/figure-latex/unnamed-chunk-159-1.pdf>] [117]
+<epr_files/figure-latex/unnamed-chunk-164-1.pdf, id=1404, 361.35pt x 361.35pt>
 File: epr_files/figure-latex/unnamed-chunk-164-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-164-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-164-1.pdf  used on input line 6003.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[117 <./epr_files/figure-latex/unnamed-chunk-164-1.pdf>] [118{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [119] [120]
-<epr_files/figure-latex/unnamed-chunk-170-1.pdf, id=1395, 433.62pt x 289.08pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6004 ...s) cada 5 quilômetros ao longo do rio.}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6004 ...s) cada 5 quilômetros ao longo do rio.}
+                                                   [118 <./epr_files/figure-latex/unnamed-chunk-164-1.pdf>] [119{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [120] [121]
+<epr_files/figure-latex/unnamed-chunk-170-1.pdf, id=1441, 433.62pt x 289.08pt>
 File: epr_files/figure-latex/unnamed-chunk-170-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-170-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-170-1.pdf  used on input line 6137.
 (pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
-<epr_files/figure-latex/unnamed-chunk-171-1.pdf, id=1396, 289.08pt x 289.08pt>
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6138 ...nte das hidrelétricas no Rio Araguari.}
+                                                  
+<epr_files/figure-latex/unnamed-chunk-171-1.pdf, id=1442, 289.08pt x 289.08pt>
 File: epr_files/figure-latex/unnamed-chunk-171-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-171-1.pdf>
 Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-171-1.pdf  used on input line 6152.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-[121 <./epr_files/figure-latex/unnamed-chunk-170-1.pdf>] [122 <./epr_files/figure-latex/unnamed-chunk-171-1.pdf>] [123] [124]
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6153 ...nte das hidrelétricas no Rio Araguari.}
+                                                   [122 <./epr_files/figure-latex/unnamed-chunk-170-1.pdf>] [123 <./epr_files/figure-latex/unnamed-chunk-171-1.pdf>] [124] [125]
 Overfull \vbox (2.11417pt too high) detected at line 6357
  []
 
-[125] [126] [127] (./epr.aux)
+[126] [127] [128] (./epr.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
@@ -851,18 +977,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15668 strings out of 476100
- 259511 string characters out of 5791771
+ 15726 strings out of 476100
+ 260264 string characters out of 5791771
  1951460 words of memory out of 5000000
- 36795 multiletter control sequences out of 15000+600000
+ 36865 multiletter control sequences out of 15000+600000
  628489 words of font info for 197 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  77i,8n,81p,3200b,700s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtko10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on epr.pdf (127 pages, 4399449 bytes).
+Output written on epr.pdf (128 pages, 4405799 bytes).
 PDF statistics:
- 1876 PDF objects out of 2073 (max. 8388607)
- 1547 compressed objects within 16 object streams
- 469 named destinations out of 1000 (max. 500000)
- 35519 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 2078 PDF objects out of 2487 (max. 8388607)
+ 1746 compressed objects within 18 object streams
+ 454 named destinations out of 1000 (max. 500000)
+ 35951 words of extra memory for PDF output out of 42996 (max. 10000000)
 
