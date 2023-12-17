@@ -35,3 +35,4 @@ bookdown::html_document2:
 always_allow_html: yes
 urlcolor: blue
 toc-title: Sumário
+bibliography: references.bib
