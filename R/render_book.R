@@ -4,7 +4,9 @@ bookdown::render_book("index.Rmd", "bookdown::gitbook")
 
 # check
 browseURL("docs/index.html")
-# pdf, when using 
+# pdf, when using . "23-graficos" Not working 
+# something to do with figure legends/captions and cross-ref labels .
+# Just use html for now and hope gets fixed in updates.
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
 # quarto::quarto_render()
