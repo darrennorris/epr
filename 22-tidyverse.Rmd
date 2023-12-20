@@ -258,7 +258,7 @@ Um conjunto de dados `tidy` (organizados) são mais fáceis de manipular, modela
 2. Cada observação em uma linha
 3. Cada valor como uma célula
 
-```{r fig-r-dados-tidy, echo=FALSE, fig.cap="As três regras que tornam um conjunto de dados *tidy*."}
+```{r fig-r-dados-tidy, echo=FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap="As três regras que tornam um conjunto de dados *tidy*."}
 knitr::include_graphics("figures/cap05_fig02.png")
 ```
 
@@ -504,14 +504,14 @@ head(penguins_rename_with)
 Outra operação bastante usual dentro da manipulação de dados tabulares é a seleção de colunas. Podemos fazer essa operação com a função `dplyr::select()`, que seleciona colunas pelo nome ou pela sua posição. Aqui há uma série de possibilidades de seleção de colunas, desde utilizar operadores como `:` para selecionar intervalos de colunas, `!` para tomar o complemento (todas menos as listadas), além de funções como `dplyr::starts_with()`, `dplyr::ends_with()`, `dplyr::contains()` para procurar colunas com um padrão de texto do nome da coluna.
 
 ```{r}
-## Selecionar colunas por posição
+## Selecionar colunas por posição (3a até 6a)
 penguins_select_position <- penguins |> 
     dplyr::select(3:6)
 head(penguins_select_position)
 
 ## Selecionar colunas por nomes
 penguins_select_names <- penguins |> 
-    dplyr::select(bill_length_mm:body_mass_g)
+    dplyr::select(bill_length_mm, body_mass_g)
 head(penguins_select_names)
 
 ## Selecionar colunas por padrão
@@ -732,7 +732,7 @@ Finalmente, veremos o último conjunto de funções do pacote `dplyr`, a junçã
 
 Existem quatro tipos de junções de modificações, que são realizadas pelas funções: `dplyr::inner_join()`, `dplyr::left_join()`, `dplyr::full_join()` e `dplyr::right_join()`, e que podem ser representadas na Figura \@ref(fig:fig-r-join).
 
-```{r fig-r-join, echo=FALSE, fig.cap="Diferentes tipos de joins, representados com um diagrama de Venn."}
+```{r fig-r-join, echo=FALSE, fig.align = 'center', fig.cap="Diferentes tipos de joins, representados com um diagrama de Venn."}
 knitr::include_graphics("figures/cap05_fig03.png")
 ```
 

@@ -4465,7 +4465,7 @@ Um conjunto de dados `tidy` (organizados) são mais fáceis de manipular, modela
 2. Cada observação em uma linha
 3. Cada valor como uma célula
 
-```{r fig-r-dados-tidy, echo=FALSE, fig.cap="As três regras que tornam um conjunto de dados *tidy*."}
+```{r fig-r-dados-tidy, echo=FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap="As três regras que tornam um conjunto de dados *tidy*."}
 knitr::include_graphics("figures/cap05_fig02.png")
 ```
 
@@ -4711,14 +4711,14 @@ head(penguins_rename_with)
 Outra operação bastante usual dentro da manipulação de dados tabulares é a seleção de colunas. Podemos fazer essa operação com a função `dplyr::select()`, que seleciona colunas pelo nome ou pela sua posição. Aqui há uma série de possibilidades de seleção de colunas, desde utilizar operadores como `:` para selecionar intervalos de colunas, `!` para tomar o complemento (todas menos as listadas), além de funções como `dplyr::starts_with()`, `dplyr::ends_with()`, `dplyr::contains()` para procurar colunas com um padrão de texto do nome da coluna.
 
 ```{r}
-## Selecionar colunas por posição
+## Selecionar colunas por posição (3a até 6a)
 penguins_select_position <- penguins |> 
     dplyr::select(3:6)
 head(penguins_select_position)
 
 ## Selecionar colunas por nomes
 penguins_select_names <- penguins |> 
-    dplyr::select(bill_length_mm:body_mass_g)
+    dplyr::select(bill_length_mm, body_mass_g)
 head(penguins_select_names)
 
 ## Selecionar colunas por padrão
@@ -4939,7 +4939,7 @@ Finalmente, veremos o último conjunto de funções do pacote `dplyr`, a junçã
 
 Existem quatro tipos de junções de modificações, que são realizadas pelas funções: `dplyr::inner_join()`, `dplyr::left_join()`, `dplyr::full_join()` e `dplyr::right_join()`, e que podem ser representadas na Figura \@ref(fig:fig-r-join).
 
-```{r fig-r-join, echo=FALSE, fig.cap="Diferentes tipos de joins, representados com um diagrama de Venn."}
+```{r fig-r-join, echo=FALSE, fig.align = 'center', fig.cap="Diferentes tipos de joins, representados com um diagrama de Venn."}
 knitr::include_graphics("figures/cap05_fig03.png")
 ```
 
@@ -5637,12 +5637,20 @@ library(datasauRus)
 library(gridExtra)
 
 ## Dados
-penguins <- palmerpenguins::penguins
+penguins <- palmerpenguins::penguins |> 
+  na.omit()
 
-## Edição dos nomes das colunas para português 
-colnames(penguins) <- c("especies", "ilha", "comprimento_bico", 
-                        "profundidade_bico", "comprimento_nadadeira", 
-                        "massa_corporal", "sexo", "ano")
+## Edição dos nomes das colunas para português
+penguins <- penguins |> 
+  rename("especies" = "species", 
+         "ilha" = "island", 
+         "comprimento_bico" = "bill_length_mm", 
+         "profundidade_bico" = "bill_depth_mm", 
+         "comprimento_nadadeira" = "flipper_length_mm", 
+         "massa_corporal" = "body_mass_g", 
+         "sexo" = "sex", 
+         "ano" = "year")
+
 ```
 
 ## Contextualização
@@ -5758,7 +5766,7 @@ Neste histograma é possível entender que a maioria dos valores da variável `x
 
 Vamos utilizar o conjunto de dados *palmerpenguins* para construir um histograma da distribuição da variável "comprimento_nadadeira" com a função `geom_hitogram()`. Esta função utiliza uma variável contínua no eixo X e a frequência de cada categoria de intervalo de valores no eixo Y. O gráfico a seguir representa a frequência de uma variável (neste caso, a medida de todos os pinguins, independente da espécie).
 
-```{r fig-hist-flipper, eval = FALSE, out.width = "75%", out.height = "75%", fig.cap = "Histograma da variável comprimento_nadadeira."}
+```{r fig-hist-flipper, eval = FALSE, out.width = "75%", out.height = "75%", fig.cap = "Histograma de comprimento_nadadeira."}
 ## Histograma da coluna flipper_length_mm
 ggplot(data = penguins, 
        aes(x = comprimento_nadadeira)
@@ -5771,18 +5779,16 @@ ggplot(data = penguins,
 
 Vamos utilizar o argumento `bins` para definir em quantas classes de agrupamentos a variável `x` deve ser dividida.
 
-```{r fig-hist-bins, out.width="75%", out.height="75%", fig.cap="Histograma de comprimento_nadadeira para diferentes classes."}
+```{r fig-hist-bins, fig.cap="Histograma de comprimento_nadadeira para diferentes classes."}
 ## Histograma com 10 classes
 ggplot(data = penguins, 
-       aes(x = comprimento_nadadeira)
-       ) +
+       aes(x = comprimento_nadadeira)) +
     geom_histogram(bins = 10) +
     labs(title = "10 classes")
 
 ## Histograma com 30 classes
 ggplot(data = penguins, 
-       aes(x = comprimento_nadadeira)
-       ) +
+       aes(x = comprimento_nadadeira)) +
     geom_histogram(bins = 30) +
     labs(title = "30 classes")
 ```
@@ -5791,7 +5797,7 @@ ggplot(data = penguins,
 
 Se quisermos comparar a distribuição de uma variável contínua entre diferentes categorias, podemos utilizar o argumento `fill` para colorir o gráfico. No exemplo abaixo, utilizamos cores diferentes para ilustrar a distribuição da variável X (`x = comprimento_nadadeira`) entre espécies diferentes (`fill = especies`) (Figura \@ref(fig:fig-hist-cat)).
 
-```{r fig-hist-cat, out.width = "75%", out.height = "75%", fig.cap="Histograma da variável comprimento_nadadeira para diferentes espécies com e sem sobreposição."}
+```{r fig-hist-cat, fig.cap="Histograma de comprimento_nadadeira para diferentes espécies."}
 ## Histograma com cores para diferentes categorias com sobreposição
 ggplot(data = penguins, 
        aes(x = comprimento_nadadeira, fill = especies)) +
@@ -5807,7 +5813,7 @@ ggplot(data = penguins,
 
 **Ajustes finos (versão personalizada)**
 
-```{r fig-hist-fino, out.width = "75%", out.height = "75%", fig.cap="Histograma da variável comprimento_nadadeira com ajustes finos."}
+```{r fig-hist-fino, out.width="75%", out.height="75%", fig.align="center", fig.cap="Histograma da variável comprimento_nadadeira com ajustes finos."}
 ## Histograma exemplo
 ggplot(data = penguins, aes(x = comprimento_nadadeira, fill = especies)) +
     geom_histogram(alpha = .4, position = "identity") +

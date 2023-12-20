@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.16)  18 DEC 2023 14:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.18)  19 DEC 2023 08:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -603,275 +603,275 @@ Package pdftex.def Info: epr_files/figure-latex/fig-mud-agg-1.pdf  used on input
 <epr_files/figure-latex/buffer-figure-1.pdf, id=211, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/buffer-figure-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/buffer-figure-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/buffer-figure-1.pdf  used on input line 744.
+Package pdftex.def Info: epr_files/figure-latex/buffer-figure-1.pdf  used on input line 740.
 (pdftex.def)             Requested size: 281.85518pt x 195.1305pt.
 [18 <./epr_files/figure-latex/buffer-figure-1.pdf>]
 <epr_files/figure-latex/map-pontod-rio-1.pdf, id=230, 433.62pt x 289.08pt>
 File: epr_files/figure-latex/map-pontod-rio-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/map-pontod-rio-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/map-pontod-rio-1.pdf  used on input line 778.
+Package pdftex.def Info: epr_files/figure-latex/map-pontod-rio-1.pdf  used on input line 774.
 (pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
-<epr_files/figure-latex/unnamed-chunk-8-1.pdf, id=231, 289.08pt x 289.08pt>
-File: epr_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 793.
-(pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-[19 <./epr_files/figure-latex/map-pontod-rio-1.pdf>]
-Overfull \vbox (0.20686pt too high) detected at line 836
- []
-
-[20 <./epr_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-11-1.pdf, id=318, 361.35pt x 361.35pt>
-File: epr_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 840.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[21 <./epr_files/figure-latex/unnamed-chunk-11-1.pdf>] [22]
-<epr_files/figure-latex/unnamed-chunk-12-1.pdf, id=339, 361.35pt x 361.35pt>
+<epr_files/figure-latex/unnamed-chunk-12-1.pdf, id=231, 289.08pt x 289.08pt>
 File: epr_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-12-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-12-1.pdf  used on input line 890.
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-12-1.pdf  used on input line 789.
+(pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
+[19 <./epr_files/figure-latex/map-pontod-rio-1.pdf>]
+Overfull \vbox (0.20686pt too high) detected at line 832
+ []
+
+[20 <./epr_files/figure-latex/unnamed-chunk-12-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-15-1.pdf, id=318, 361.35pt x 361.35pt>
+File: epr_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-15-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-15-1.pdf  used on input line 836.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[23 <./epr_files/figure-latex/unnamed-chunk-12-1.pdf>] [24]
-<epr_files/figure-latex/unnamed-chunk-14-1.pdf, id=359, 216.81pt x 216.81pt>
-File: epr_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-14-1.pdf  used on input line 940.
+[21 <./epr_files/figure-latex/unnamed-chunk-15-1.pdf>] [22]
+<epr_files/figure-latex/unnamed-chunk-16-1.pdf, id=339, 361.35pt x 361.35pt>
+File: epr_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-16-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-16-1.pdf  used on input line 886.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+[23 <./epr_files/figure-latex/unnamed-chunk-16-1.pdf>] [24]
+<epr_files/figure-latex/unnamed-chunk-18-1.pdf, id=359, 216.81pt x 216.81pt>
+File: epr_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-18-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-18-1.pdf  used on input line 936.
 (pdftex.def)             Requested size: 216.81938pt x 216.81938pt.
-[25 <./epr_files/figure-latex/unnamed-chunk-14-1.pdf>] [26]
+[25 <./epr_files/figure-latex/unnamed-chunk-18-1.pdf>] [26]
 <epr_files/figure-latex/mapa-exte-pontos-1.pdf, id=380, 1084.05pt x 361.35pt>
 File: epr_files/figure-latex/mapa-exte-pontos-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/mapa-exte-pontos-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/mapa-exte-pontos-1.pdf  used on input line 1038.
+Package pdftex.def Info: epr_files/figure-latex/mapa-exte-pontos-1.pdf  used on input line 1034.
 (pdftex.def)             Requested size: 469.75496pt x 156.58498pt.
 [27 <./epr_files/figure-latex/mapa-exte-pontos-1.pdf>] [28] [29] [30] [31] [32]
-<epr_files/figure-latex/unnamed-chunk-23-1.pdf, id=464, 361.35pt x 361.35pt>
-File: epr_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-23-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-23-1.pdf  used on input line 1248.
+<epr_files/figure-latex/unnamed-chunk-27-1.pdf, id=464, 361.35pt x 361.35pt>
+File: epr_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-27-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-27-1.pdf  used on input line 1244.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1249 ...assificado em floresta e não-floresta.}
-                                                   [33 <./epr_files/figure-latex/unnamed-chunk-23-1.pdf>] [34]
-<epr_files/figure-latex/unnamed-chunk-26-1.pdf, id=483, 361.35pt x 361.35pt>
-File: epr_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-26-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-26-1.pdf  used on input line 1299.
+l.1245 ...assificado em floresta e não-floresta.}
+                                                   [33 <./epr_files/figure-latex/unnamed-chunk-27-1.pdf>] [34]
+<epr_files/figure-latex/unnamed-chunk-30-1.pdf, id=483, 361.35pt x 361.35pt>
+File: epr_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-30-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-30-1.pdf  used on input line 1295.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1300 ...lômetros ao longo do rio (linha azul).}
+l.1296 ...lômetros ao longo do rio (linha azul).}
                                                   
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1300 ...lômetros ao longo do rio (linha azul).}
-                                                   [35 <./epr_files/figure-latex/unnamed-chunk-26-1.pdf>] [36] [37]
-<epr_files/figure-latex/unnamed-chunk-30-1.pdf, id=512, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-30-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-30-1.pdf  used on input line 1380.
+l.1296 ...lômetros ao longo do rio (linha azul).}
+                                                   [35 <./epr_files/figure-latex/unnamed-chunk-30-1.pdf>] [36] [37]
+<epr_files/figure-latex/unnamed-chunk-34-1.pdf, id=512, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-34-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-34-1.pdf  used on input line 1376.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1381 ...tes ao redor de um ponto de amostragem.}
-                                                   [38 <./epr_files/figure-latex/unnamed-chunk-30-1.pdf>] [39] [40]
+l.1377 ...tes ao redor de um ponto de amostragem.}
+                                                   [38 <./epr_files/figure-latex/unnamed-chunk-34-1.pdf>] [39] [40]
 <www/logo_gg_lsm.png, id=535, 960.58875pt x 461.3235pt>
 File: www/logo_gg_lsm.png Graphic file (type png)
 <use www/logo_gg_lsm.png>
-Package pdftex.def Info: www/logo_gg_lsm.png  used on input line 1498.
+Package pdftex.def Info: www/logo_gg_lsm.png  used on input line 1494.
 (pdftex.def)             Requested size: 305.34264pt x 146.64104pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1511--1513
+Underfull \hbox (badness 10000) in paragraph at lines 1507--1509
 
  []
 
 [41 <./www/logo_gg_lsm.png>]
-<epr_files/figure-latex/unnamed-chunk-36-1.pdf, id=555, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-36-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-36-1.pdf  used on input line 1546.
+<epr_files/figure-latex/unnamed-chunk-40-1.pdf, id=555, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-40-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-40-1.pdf  used on input line 1542.
 (pdftex.def)             Requested size: 234.87692pt x 162.6071pt.
-[42 <./epr_files/figure-latex/unnamed-chunk-36-1.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1583.
+[42 <./epr_files/figure-latex/unnamed-chunk-40-1.pdf>]
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1579.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<epr_files/figure-latex/unnamed-chunk-37-1.pdf, id=567, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-37-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-37-1.pdf  used on input line 1587.
+<epr_files/figure-latex/unnamed-chunk-41-1.pdf, id=567, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-41-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-41-1.pdf  used on input line 1583.
 (pdftex.def)             Requested size: 258.36604pt x 178.86879pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1591 ...l de floresta em diferentes extensões.}
-                                                  \label{fig:unnamed-chunk-37} [43 <./epr_files/figure-latex/unnamed-chunk-37-1.pdf>]
+l.1587 ...l de floresta em diferentes extensões.}
+                                                  \label{fig:unnamed-chunk-41} [43 <./epr_files/figure-latex/unnamed-chunk-41-1.pdf>]
 <figures/fig_comp_linear.pdf, id=586, 794.97pt x 216.81pt>
 File: figures/fig_comp_linear.pdf Graphic file (type pdf)
 <use figures/fig_comp_linear.pdf>
-Package pdftex.def Info: figures/fig_comp_linear.pdf  used on input line 1620.
+Package pdftex.def Info: figures/fig_comp_linear.pdf  used on input line 1616.
 (pdftex.def)             Requested size: 460.36723pt x 125.55469pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1620 ...o de padrões lineares e não-lineares.}
+l.1616 ...o de padrões lineares e não-lineares.}
                                                   \label{fig:met-insert-fig-... [44 <./figures/fig_comp_linear.pdf>]
 <epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf, id=604, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf  used on input line 1640.
+Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf  used on input line 1636.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1641 ...o é repetido em diferentes extensões.}
+l.1637 ...o é repetido em diferentes extensões.}
                                                   
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1641 ...o é repetido em diferentes extensões.}
+l.1637 ...o é repetido em diferentes extensões.}
                                                    [45 <./epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>] [46] [47]
 <epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf, id=631, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf  used on input line 1815.
+Package pdftex.def Info: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf  used on input line 1811.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [48 <./epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>] [49] [50] [51]
 <figures/fig_garimpo_access.png, id=670, 739.26187pt x 304.88907pt>
 File: figures/fig_garimpo_access.png Graphic file (type png)
 <use figures/fig_garimpo_access.png>
-Package pdftex.def Info: figures/fig_garimpo_access.png  used on input line 1931.
+Package pdftex.def Info: figures/fig_garimpo_access.png  used on input line 1927.
 (pdftex.def)             Requested size: 375.8003pt x 154.98892pt.
 [52]
 <figures/mapview_point_buffer.png, id=687, 412.54124pt x 270.25969pt>
 File: figures/mapview_point_buffer.png Graphic file (type png)
 <use figures/mapview_point_buffer.png>
-Package pdftex.def Info: figures/mapview_point_buffer.png  used on input line 1982.
+Package pdftex.def Info: figures/mapview_point_buffer.png  used on input line 1978.
 (pdftex.def)             Requested size: 375.8097pt x 246.19649pt.
 [53 <./figures/fig_garimpo_access.png>] [54 <./figures/mapview_point_buffer.png>]
 <epr_files/figure-latex/fig-plot-raster-1.pdf, id=709, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/fig-plot-raster-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-plot-raster-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/fig-plot-raster-1.pdf  used on input line 2055.
+Package pdftex.def Info: epr_files/figure-latex/fig-plot-raster-1.pdf  used on input line 2051.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [55 <./epr_files/figure-latex/fig-plot-raster-1.pdf>] [56] [57]
-<epr_files/figure-latex/unnamed-chunk-59-1.pdf, id=742, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-59-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-59-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-59-1.pdf  used on input line 2308.
+<epr_files/figure-latex/unnamed-chunk-63-1.pdf, id=742, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-63-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-63-1.pdf  used on input line 2304.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [58]
-<epr_files/figure-latex/unnamed-chunk-59-2.pdf, id=750, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-59-2.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-59-2.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-59-2.pdf  used on input line 2316.
+<epr_files/figure-latex/unnamed-chunk-63-2.pdf, id=750, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-63-2.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-63-2.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-63-2.pdf  used on input line 2312.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[59 <./epr_files/figure-latex/unnamed-chunk-59-1.pdf>] [60 <./epr_files/figure-latex/unnamed-chunk-59-2.pdf>] [61] [62] [63] [64]
-<epr_files/figure-latex/unnamed-chunk-68-1.pdf, id=806, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-68-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-68-1.pdf  used on input line 2615.
+[59 <./epr_files/figure-latex/unnamed-chunk-63-1.pdf>] [60 <./epr_files/figure-latex/unnamed-chunk-63-2.pdf>] [61] [62] [63] [64]
+<epr_files/figure-latex/unnamed-chunk-72-1.pdf, id=806, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-72-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-72-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-72-1.pdf  used on input line 2611.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[65] [66 <./epr_files/figure-latex/unnamed-chunk-68-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-70-1.pdf, id=824, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-70-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-70-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-70-1.pdf  used on input line 2675.
+[65] [66 <./epr_files/figure-latex/unnamed-chunk-72-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-74-1.pdf, id=824, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-74-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-74-1.pdf  used on input line 2671.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[67 <./epr_files/figure-latex/unnamed-chunk-70-1.pdf>]
-<epr_files/figure-latex/unnamed-chunk-71-1.pdf, id=836, 469.755pt x 325.215pt>
-File: epr_files/figure-latex/unnamed-chunk-71-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-71-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-71-1.pdf  used on input line 2724.
+[67 <./epr_files/figure-latex/unnamed-chunk-74-1.pdf>]
+<epr_files/figure-latex/unnamed-chunk-75-1.pdf, id=836, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/unnamed-chunk-75-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-75-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/unnamed-chunk-75-1.pdf  used on input line 2720.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[68] [69 <./epr_files/figure-latex/unnamed-chunk-71-1.pdf>]
+[68] [69 <./epr_files/figure-latex/unnamed-chunk-75-1.pdf>]
 <figures/images_large_10.1177_19400829221127087-fig3.jpeg, id=854, 313.17pt x 294.1389pt>
 File: figures/images_large_10.1177_19400829221127087-fig3.jpeg Graphic file (type jpg)
 <use figures/images_large_10.1177_19400829221127087-fig3.jpeg>
-Package pdftex.def Info: figures/images_large_10.1177_19400829221127087-fig3.jpeg  used on input line 2750.
+Package pdftex.def Info: figures/images_large_10.1177_19400829221127087-fig3.jpeg  used on input line 2746.
 (pdftex.def)             Requested size: 234.88646pt x 220.6126pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2754 ... Science. doi:10.1177/19400829221127087}
+l.2750 ... Science. doi:10.1177/19400829221127087}
                                                   \label{fig:plot-fig-sankey}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2754 ... Science. doi:10.1177/19400829221127087}
+l.2750 ... Science. doi:10.1177/19400829221127087}
                                                   \label{fig:plot-fig-sankey} [70 <./figures/images_large_10.1177_19400829221127087-fig3.jpeg>] [71]
 <figures/cap03_fig01.png, id=876, 782.925pt x 587.796pt>
 File: figures/cap03_fig01.png Graphic file (type png)
 <use figures/cap03_fig01.png>
-Package pdftex.def Info: figures/cap03_fig01.png  used on input line 2811.
+Package pdftex.def Info: figures/cap03_fig01.png  used on input line 2807.
 (pdftex.def)             Requested size: 352.313pt x 264.50575pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2815 ...talação do programa R no computador. }
+l.2811 ...talação do programa R no computador. }
                                                   \label{fig:fig-r-instalacao}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2815 ...talação do programa R no computador. }
+l.2811 ...talação do programa R no computador. }
                                                   \label{fig:fig-r-instalacao} [72 <./figures/cap03_fig01.png>]
 <figures/cap03_fig02.png, id=899, 782.925pt x 587.796pt>
 File: figures/cap03_fig02.png Graphic file (type png)
 <use figures/cap03_fig02.png>
-Package pdftex.def Info: figures/cap03_fig02.png  used on input line 2841.
+Package pdftex.def Info: figures/cap03_fig02.png  used on input line 2837.
 (pdftex.def)             Requested size: 352.313pt x 264.50575pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2845 ...�ão do programa RStudio no computador.}
+l.2841 ...�ão do programa RStudio no computador.}
                                                   \label{fig:fig-rstudio-ins...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2845 ...�ão do programa RStudio no computador.}
+l.2841 ...�ão do programa RStudio no computador.}
                                                   \label{fig:fig-rstudio-ins...
 
-LaTeX Warning: Reference `cap21' on page 73 undefined on input line 2856.
+LaTeX Warning: Reference `cap21' on page 73 undefined on input line 2852.
 
 [73 <./figures/cap03_fig02.png>]
 
-LaTeX Warning: Reference `cap21' on page 74 undefined on input line 2863.
+LaTeX Warning: Reference `cap21' on page 74 undefined on input line 2859.
 
 [74]
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2901.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2897.
 
 
-LaTeX Warning: Reference `cap20' on page 75 undefined on input line 2925.
+LaTeX Warning: Reference `cap20' on page 75 undefined on input line 2921.
 
 [75]
 <figures/cap04_fig01.png, id=949, 1007.26312pt x 620.3175pt>
 File: figures/cap04_fig01.png Graphic file (type png)
 <use figures/cap04_fig01.png>
-Package pdftex.def Info: figures/cap04_fig01.png  used on input line 2933.
+Package pdftex.def Info: figures/cap04_fig01.png  used on input line 2929.
 (pdftex.def)             Requested size: 352.31683pt x 216.9724pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2937 ...cript, (2) R Console, e (3) R Graphics.}
+l.2933 ...cript, (2) R Console, e (3) R Graphics.}
                                                   \label{fig:fig-rgui}
-Underfull \hbox (badness 2573) in paragraph at lines 2952--2953
+Underfull \hbox (badness 2573) in paragraph at lines 2948--2949
 []\T1/lmtt/m/n/10 Tools > Global options > Code > Display > [X Show Margis] e Margin column (80)\T1/lmr/m/n/10 (+20) : com
  []
 
@@ -879,219 +879,266 @@ Underfull \hbox (badness 2573) in paragraph at lines 2952--2953
 <figures/cap04_fig02.png, id=958, 1001.99344pt x 616.55344pt>
 File: figures/cap04_fig02.png Graphic file (type png)
 <use figures/cap04_fig02.png>
-Package pdftex.def Info: figures/cap04_fig02.png  used on input line 2969.
+Package pdftex.def Info: figures/cap04_fig02.png  used on input line 2965.
 (pdftex.def)             Requested size: 352.32361pt x 216.79416pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2973 ... Files, Plots, Packages, Help e Viewer.}
+l.2969 ... Files, Plots, Packages, Help e Viewer.}
                                                   \label{fig:fig-rstudio}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2973 ... Files, Plots, Packages, Help e Viewer.}
+l.2969 ... Files, Plots, Packages, Help e Viewer.}
                                                   \label{fig:fig-rstudio} [77 <./figures/cap04_fig02.png (PNG copy)>]
 
-LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3039.
+LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3035.
 
 
-LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3064.
+LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3060.
 
 
-LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3069.
+LaTeX Warning: Reference `fig:fig-rstudio' on page 78 undefined on input line 3065.
 
 [78] [79] [80] [81]
 
 LaTeX Font Warning: Font shape `TS1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TS1/lmtt/b/sl' tried instead on input line 3397.
+(Font)              Font shape `TS1/lmtt/b/sl' tried instead on input line 3393.
 
 [82] [83] [84] [85] [86] [87] [88] [89] [90]
-Overfull \hbox (3152.73445pt too wide) in paragraph at lines 4032--4032
+Overfull \hbox (3152.73445pt too wide) in paragraph at lines 4023--4023
 []\T1/lmtt/m/n/10 ##     author = {Jari Oksanen and Gavin L. Simpson and F. Guillaume Blanchet and Roeland Kindt and Pierre Legendre and Peter R. Minchin and R.B. O\TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 Hara and Peter Solymos and M. Henry H. Stevens and Eduard Szoecs and Helene Wagner and Matt Barbour and Michael Bedward and Ben Bolker and Daniel Borcard and Gustavo Carvalho and Michael Chirico and Miquel {De Caceres} and Sebastien Durand and Heloisa Beatriz Antoniazi Evangelista and Rich FitzJohn and Michael Friendly and Brendan Furneaux and Geoffrey Hannigan and Mark O. Hill and Leo Lahti and Dan McGlinn and Marie-Helene Ouellette and Eduardo {Ribeiro Cunha} and Tyler Smith and Adrian Stier and Cajo J.F. {Ter Braak} and James Weedon},[] 
  []
 
 <figures/Turing_quote_01.jpg, id=1061, 1084.05pt x 449.68pt>
 File: figures/Turing_quote_01.jpg Graphic file (type jpg)
 <use figures/Turing_quote_01.jpg>
-Package pdftex.def Info: figures/Turing_quote_01.jpg  used on input line 4046.
+Package pdftex.def Info: figures/Turing_quote_01.jpg  used on input line 4037.
 (pdftex.def)             Requested size: 258.35777pt x 107.17062pt.
 [91 <./figures/Turing_quote_01.jpg>] [92]
 
-LaTeX Warning: Reference `cap22' on page 93 undefined on input line 4215.
+LaTeX Warning: Reference `cap22' on page 93 undefined on input line 4206.
 
 [93] [94] [95]
 <figures/cap04_fig03.png, id=1093, 347.3778pt x 260.6538pt>
 File: figures/cap04_fig03.png Graphic file (type png)
 <use figures/cap04_fig03.png>
-Package pdftex.def Info: figures/cap04_fig03.png  used on input line 4417.
+Package pdftex.def Info: figures/cap04_fig03.png  used on input line 4408.
 (pdftex.def)             Requested size: 347.41405pt x 260.68097pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.4417 ... Adaptado de: R for Data Science (2e) .}
+l.4408 ... Adaptado de: R for Data Science (2e) .}
                                                   \label{fig:fig-r-estruturas}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.4417 ... Adaptado de: R for Data Science (2e) .}
-                                                  \label{fig:fig-r-estruturas} [96 <./figures/cap04_fig03.png>] [97]
+l.4408 ... Adaptado de: R for Data Science (2e) .}
+                                                  \label{fig:fig-r-estruturas} [96 <./figures/cap04_fig03.png>]
 
-LaTeX Warning: Reference `cap22' on page 98 undefined on input line 4549.
+LaTeX Warning: Reference `cap22' on page 97 undefined on input line 4540.
 
-[98] [99] [100] [101] [102]
+[97] [98] [99] [100] [101] [102]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 5034.
+(longtable)                in table 1 on input line 5025.
 
 [103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115]
 <figures/cap05_fig01.png, id=1240, 961.6728pt x 338.7054pt>
 File: figures/cap05_fig01.png Graphic file (type png)
 <use figures/cap05_fig01.png>
-Package pdftex.def Info: figures/cap05_fig01.png  used on input line 6027.
+Package pdftex.def Info: figures/cap05_fig01.png  used on input line 6018.
 (pdftex.def)             Requested size: 352.32098pt x 124.08899pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.6031 ...ssas ferramentas está a programação.}
+l.6022 ...ssas ferramentas está a programação.}
                                                   \label{fig:fig-r-tidyverse}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.6031 ...ssas ferramentas está a programação.}
+l.6022 ...ssas ferramentas está a programação.}
                                                   \label{fig:fig-r-tidyverse} [116] [117 <./figures/cap05_fig01.png>] [118] [119]
 
-LaTeX Warning: Reference `cap21' on page 120 undefined on input line 6235.
+LaTeX Warning: Reference `cap21' on page 120 undefined on input line 6225.
 
 [120]
 
-LaTeX Warning: Reference `fig:fig-r-dados-tidy' on page 121 undefined on input line 6350.
+LaTeX Warning: Reference `fig:fig-r-dados-tidy' on page 121 undefined on input line 6340.
 
 [121]
 <figures/cap05_fig02.png, id=1335, 1445.4pt x 451.6875pt>
 File: figures/cap05_fig02.png Graphic file (type png)
 <use figures/cap05_fig02.png>
-Package pdftex.def Info: figures/cap05_fig02.png  used on input line 6364.
-(pdftex.def)             Requested size: 1445.4847pt x 451.71394pt.
-
-Overfull \hbox (975.72968pt too wide) in paragraph at lines 6364--6364
-[][] 
- []
-
+Package pdftex.def Info: figures/cap05_fig02.png  used on input line 6355.
+(pdftex.def)             Requested size: 352.30656pt x 110.0958pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.6364 ...que tornam um conjunto de dados *tidy*.}
+l.6359 ...que tornam um conjunto de dados *tidy*.}
                                                   \label{fig:fig-r-dados-tidy} [122 <./figures/cap05_fig02.png>] [123] [124]
 
-LaTeX Warning: Reference `cap21' on page 125 undefined on input line 6570.
+LaTeX Warning: Reference `cap21' on page 125 undefined on input line 6565.
 
-[125] [126] [127] [128] [129] [130] [131] [132] [133]
+[125] [126] [127] [128] [129] [130] [131] [132]
 
-LaTeX Warning: Reference `cap21' on page 134 undefined on input line 7168.
+LaTeX Warning: Reference `cap21' on page 133 undefined on input line 7163.
 
-[134] [135] [136] [137] [138] [139]
+[133] [134] [135] [136] [137] [138]
 
-LaTeX Warning: Reference `cap21' on page 140 undefined on input line 7606.
+LaTeX Warning: Reference `cap21' on page 139 undefined on input line 7601.
 
-[140]
+[139]
 
-LaTeX Warning: Reference `fig:fig-r-join' on page 141 undefined on input line 7687.
+LaTeX Warning: Reference `fig:fig-r-join' on page 140 undefined on input line 7681.
 
-<figures/cap05_fig03.png, id=1480, 362.007pt x 104.463pt>
+<figures/cap05_fig03.png, id=1476, 362.007pt x 104.463pt>
 File: figures/cap05_fig03.png Graphic file (type png)
 <use figures/cap05_fig03.png>
-Package pdftex.def Info: figures/cap05_fig03.png  used on input line 7690.
+Package pdftex.def Info: figures/cap05_fig03.png  used on input line 7685.
 (pdftex.def)             Requested size: 362.01164pt x 104.46431pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.7690 ... representados com um diagrama de Venn.}
-                                                  \label{fig:fig-r-join} [141 <./figures/cap05_fig03.png>] [142]
-Overfull \hbox (0.6456pt too wide) in paragraph at lines 7873--7874
+l.7689 ... representados com um diagrama de Venn.}
+                                                  \label{fig:fig-r-join} [140] [141 <./figures/cap05_fig03.png>] [142]
+Overfull \hbox (0.6456pt too wide) in paragraph at lines 7872--7873
 []\T1/lmr/m/n/10 (-20) Tamb�m pode-mos re-mover es-pa�os em branco da es-querda, di-re-ita ou am-bos, uti-lizando \T1/lmtt/m/n/10 stringr::str_trim()\T1/lmr/m/n/10 (-20) . 
  []
 
 [143]
 
-LaTeX Warning: Reference `cap21' on page 144 undefined on input line 7993.
+LaTeX Warning: Reference `cap21' on page 144 undefined on input line 7992.
+
+
+Overfull \hbox (23.74355pt too wide) in paragraph at lines 8019--8019
+[]\T1/lmtt/m/n/10 ## 3 Levels: Adelie Penguin (Pygoscelis adeliae) ... Chinstrap penguin (Pygoscelis antarctica)[] 
+ []
 
 [144] [145] [146]
-Overfull \hbox (34.27731pt too wide) in paragraph at lines 8290--8291
+Overfull \hbox (34.27731pt too wide) in paragraph at lines 8289--8290
 []\T1/lmr/m/n/10 (-20) Por fim, pode-mos criar datas mod-i-f-i-cando en-tre data/hor�rio e data, uti-lizando as fun��es \T1/lmtt/m/n/10 lubridate::as_datetime()
  []
 
 [147] [148] [149] [150] [151] [152] [153] [154] [155] [156] [157]
 
-LaTeX Warning: Reference `cap25' on page 158 undefined on input line 9348.
+LaTeX Warning: Reference `cap25' on page 158 undefined on input line 9353.
 
 [158]
 
-LaTeX Warning: Reference `cap22' on page 159 undefined on input line 9355.
+LaTeX Warning: Reference `cap22' on page 159 undefined on input line 9360.
 
 
-LaTeX Warning: Reference `cap22' on page 159 undefined on input line 9366.
+LaTeX Warning: Reference `cap22' on page 159 undefined on input line 9371.
 
 [159]
 
-LaTeX Warning: Reference `fig:fig-camadas' on page 160 undefined on input line 9406.
+LaTeX Warning: Reference `fig:fig-camadas' on page 160 undefined on input line 9411.
 
-<figures/cap06_fig01.png, id=1633, 1177.39874pt x 684.5575pt>
+<figures/cap06_fig01.png, id=1631, 1177.39874pt x 684.5575pt>
 File: figures/cap06_fig01.png Graphic file (type png)
 <use figures/cap06_fig01.png>
-Package pdftex.def Info: figures/cap06_fig01.png  used on input line 9410.
+Package pdftex.def Info: figures/cap06_fig01.png  used on input line 9415.
 (pdftex.def)             Requested size: 305.32596pt x 177.52115pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.9414 ...o quantitativa entre a variável Y e X.}
+l.9419 ...o quantitativa entre a variável Y e X.}
                                                   \label{fig:fig-camadas}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.9414 ...o quantitativa entre a variável Y e X.}
+l.9419 ...o quantitativa entre a variável Y e X.}
                                                   \label{fig:fig-camadas} [160 <./figures/cap06_fig01.png>]
 
-LaTeX Warning: Reference `fig:fig-hist-norm' on page 161 undefined on input line 9466.
+LaTeX Warning: Reference `fig:fig-hist-norm' on page 161 undefined on input line 9471.
 
 [161]
 <epr_files/figure-latex/fig-hist-norm-1.pdf, id=1649, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/fig-hist-norm-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-hist-norm-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/fig-hist-norm-1.pdf  used on input line 9486.
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-norm-1.pdf  used on input line 9491.
 (pdftex.def)             Requested size: 352.31538pt x 243.91064pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.9486 ...uição normal com 10000 observações.}
-                                                  \label{fig:fig-hist-norm}
-<epr_files/figure-latex/fig-hist-bins-1.pdf, id=1650, 469.755pt x 325.215pt>
+l.9491 ...uição normal com 10000 observações.}
+                                                  \label{fig:fig-hist-norm} [162 <./epr_files/figure-latex/fig-hist-norm-1.pdf>]
+<epr_files/figure-latex/fig-hist-bins-1.pdf, id=1659, 469.755pt x 325.215pt>
 File: epr_files/figure-latex/fig-hist-bins-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-hist-bins-1.pdf>
-Package pdftex.def Info: epr_files/figure-latex/fig-hist-bins-1.pdf  used on input line 9525.
-(pdftex.def)             Requested size: 352.31538pt x 243.91064pt.
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-bins-1.pdf  used on input line 9526.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.9525 ...ento_nadadeira para diferentes classes.}
-                                                  \label{fig:fig-hist-bins-1}
+l.9527 ...nto\_nadadeira para diferentes classes.}
+                                                  
+<epr_files/figure-latex/fig-hist-bins-2.pdf, id=1660, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/fig-hist-bins-2.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/fig-hist-bins-2.pdf>
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-bins-2.pdf  used on input line 9542.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9543 ...nto\_nadadeira para diferentes classes.}
+                                                  
+
+LaTeX Warning: Reference `fig:fig-hist-cat' on page 163 undefined on input line 9548.
+
+<epr_files/figure-latex/fig-hist-cat-1.pdf, id=1661, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/fig-hist-cat-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/fig-hist-cat-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-cat-1.pdf  used on input line 9566.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9567 ...o\_nadadeira para diferentes espécies.}
+                                                   [163 <./epr_files/figure-latex/fig-hist-bins-1.pdf>]
+<epr_files/figure-latex/fig-hist-cat-2.pdf, id=1672, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/fig-hist-cat-2.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/fig-hist-cat-2.pdf>
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-cat-2.pdf  used on input line 9586.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9587 ...o\_nadadeira para diferentes espécies.}
+                                                  
+<epr_files/figure-latex/fig-hist-fino-1.pdf, id=1673, 469.755pt x 325.215pt>
+File: epr_files/figure-latex/fig-hist-fino-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/fig-hist-fino-1.pdf>
+Package pdftex.def Info: epr_files/figure-latex/fig-hist-fino-1.pdf  used on input line 9610.
+(pdftex.def)             Requested size: 352.31538pt x 243.91064pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9614 ...omprimento_nadadeira com ajustes finos.}
+                                                  \label{fig:fig-hist-fino}
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.9525 ...ento_nadadeira para diferentes classes.}
-                                                  \label{fig:fig-hist-bins-1} 
+l.9614 ...omprimento_nadadeira com ajustes finos.}
+                                                  \label{fig:fig-hist-fino} 
 Here is how much of TeX's memory you used:
- 15780 strings out of 476100
- 258957 string characters out of 5791771
- 1960460 words of memory out of 5000000
- 36780 multiletter control sequences out of 15000+600000
+ 15811 strings out of 476100
+ 260448 string characters out of 5791771
+ 1955460 words of memory out of 5000000
+ 36809 multiletter control sequences out of 15000+600000
  635400 words of font info for 219 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  77i,8n,81p,3200b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s

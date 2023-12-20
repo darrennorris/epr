@@ -1519,10 +1519,10 @@ Instale o pacote `tidyverse` do CRAN.
 Escolha números para jogar na mega-sena usando o R, nomeando o objeto como `mega`. Lembrando: são 6 valores de 1 a 60 e atribuam a um objeto.
 
 **4.7**
-Crie um fator chamado `tr`, com dois níveis ("cont" e "trat") para descrever 300 locais de amostragem, 15 de cada tratamento. O fator deve ser dessa forma `cont, cont, cont, ...., cont, trat, trat, ...., trat`.
+Crie um fator chamado `tr`, com dois níveis ("cont" e "trat") para descrever 30 locais de amostragem, 15 de cada tratamento. O fator deve ser dessa forma `cont, cont, cont, ...., cont, trat, trat, ...., trat`.
 
 **4.8**
-Crie uma matriz chamada `ma`, resultante da disposição de um vetor composto por 130 valores aleatórios entre 0 e 10. A matriz deve conter 100 linhas e ser disposta por colunas.
+Crie uma matriz chamada `ma`, resultante da disposição de um vetor composto por 300 valores aleatórios entre 0 e 10. A matriz deve conter 30 linhas e ser disposta por colunas.
 
 **4.9**
 Crie um data frame chamado `df`, resultante da composição desses vetores:
