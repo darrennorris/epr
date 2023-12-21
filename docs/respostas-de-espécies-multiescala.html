@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Respostas de espécies multiescala | Ecologia de Paisagens com R</title>
+  <meta name="description" content="This is a minimal example." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Respostas de espécies multiescala | Ecologia de Paisagens com R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html//cover.jpg" />
+  <meta property="og:description" content="This is a minimal example." />
+  <meta name="github-repo" content="darrennorris/epr" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Respostas de espécies multiescala | Ecologia de Paisagens com R" />
+  
+  <meta name="twitter:description" content="This is a minimal example." />
+  <meta name="twitter:image" content="https://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html//cover.jpg" />
+
+<meta name="author" content="Darren Norris: darren.norris@unifap.br" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="métricas-da-paisagem.html"/>
+<link rel="next" href="garimpo-do-lourenço.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">epr</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Apresentação</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindos</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i>Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="prefácio-à-primeira-edição.html"><a href="prefácio-à-primeira-edição.html"><i class="fa fa-check"></i>Prefácio à primeira edição</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>Introdução</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-vai-aprender"><i class="fa fa-check"></i>O que você vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#como-este-livro-está-organizado"><i class="fa fa-check"></i>Como este livro está organizado</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-não-vai-aprender"><i class="fa fa-check"></i>O que você não vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-universo-arrumado---tidyverse"><i class="fa fa-check"></i>O universo arrumado - tidyverse</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#outros-pacotes"><i class="fa fa-check"></i>Outros pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#codigo-no-livro"><i class="fa fa-check"></i>Codigo no livro</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#organização-do-codigo-no-livro"><i class="fa fa-check"></i>Organização do codigo no livro</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Escala e padrões</b></span></li>
+<li class="chapter" data-level="1" data-path="escala.html"><a href="escala.html"><i class="fa fa-check"></i><b>1</b> Escala</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="escala.html"><a href="escala.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a></li>
+<li class="chapter" data-level="1.2" data-path="escala.html"><a href="escala.html#escala-breve-definação"><i class="fa fa-check"></i><b>1.2</b> Escala: breve definação</a></li>
+<li class="chapter" data-level="1.3" data-path="escala.html"><a href="escala.html#pacotes-e-dados"><i class="fa fa-check"></i><b>1.3</b> Pacotes e dados</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="escala.html"><a href="escala.html#pacotes"><i class="fa fa-check"></i><b>1.3.1</b> Pacotes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="escala.html"><a href="escala.html#dados"><i class="fa fa-check"></i><b>1.3.2</b> Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="escala.html"><a href="escala.html#alterando-a-resolução"><i class="fa fa-check"></i><b>1.4</b> Alterando a resolução</a></li>
+<li class="chapter" data-level="1.5" data-path="escala.html"><a href="escala.html#escala-espacial-e-desenho-amostral"><i class="fa fa-check"></i><b>1.5</b> Escala espacial e desenho amostral</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-vectores"><i class="fa fa-check"></i><b>1.5.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="1.5.2" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-vector"><i class="fa fa-check"></i><b>1.5.2</b> Visualizar os arquivos (camadas vector)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="escala.html"><a href="escala.html#obter-e-carregar-dados-raster"><i class="fa fa-check"></i><b>1.5.3</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="1.5.4" data-path="escala.html"><a href="escala.html#visualizar-os-arquivos-camadas-raster-e-vector"><i class="fa fa-check"></i><b>1.5.4</b> Visualizar os arquivos (camadas raster e vector)</a></li>
+<li class="chapter" data-level="1.5.5" data-path="escala.html"><a href="escala.html#reclassificação"><i class="fa fa-check"></i><b>1.5.5</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="escala.html"><a href="escala.html#comparação-multiescala"><i class="fa fa-check"></i><b>1.6</b> Comparação multiescala</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="escala.html"><a href="escala.html#pergunta-4"><i class="fa fa-check"></i><b>1.6.1</b> Pergunta 4</a></li>
+<li class="chapter" data-level="1.6.2" data-path="escala.html"><a href="escala.html#pergunta-5"><i class="fa fa-check"></i><b>1.6.2</b> Pergunta 5</a></li>
+<li class="chapter" data-level="1.6.3" data-path="escala.html"><a href="escala.html#pergunta-6"><i class="fa fa-check"></i><b>1.6.3</b> Pergunta 6</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="escala.html"><a href="escala.html#próximos-passos-repetindo-para-muitas-amostras."><i class="fa fa-check"></i><b>1.7</b> Próximos passos: repetindo para muitas amostras.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html"><i class="fa fa-check"></i><b>2</b> Métricas da paisagem</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#apresentação-1"><i class="fa fa-check"></i><b>2.1</b> Apresentação</a></li>
+<li class="chapter" data-level="2.2" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#métricas-da-paisagem-e-pacote-landscapemetrics"><i class="fa fa-check"></i><b>2.2</b> Métricas da paisagem e pacote “landscapemetrics”</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#pacotes-1"><i class="fa fa-check"></i><b>2.2.1</b> Pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#dados-1"><i class="fa fa-check"></i><b>2.3</b> Dados</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#exibir-dados-raster-e-sobreposição-com-locais-de-amostragem"><i class="fa fa-check"></i><b>2.3.1</b> Exibir dados raster e sobreposição com locais de amostragem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#calculo-de-métricas"><i class="fa fa-check"></i><b>2.4</b> Calculo de métricas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.1</b> Ponto único, raio único, métrica única</a></li>
+<li class="chapter" data-level="2.4.2" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
+<li class="chapter" data-level="2.4.3" data-path="métricas-da-paisagem.html"><a href="métricas-da-paisagem.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="respostas-de-espécies-multiescala.html"><a href="respostas-de-espécies-multiescala.html"><i class="fa fa-check"></i><b>3</b> Respostas de espécies multiescala</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="respostas-de-espécies-multiescala.html"><a href="respostas-de-espécies-multiescala.html#apresentação-2"><i class="fa fa-check"></i><b>3.1</b> Apresentação</a></li>
+<li class="chapter" data-level="3.2" data-path="respostas-de-espécies-multiescala.html"><a href="respostas-de-espécies-multiescala.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.2</b> Pacotes e dados</a></li>
+<li class="chapter" data-level="3.3" data-path="respostas-de-espécies-multiescala.html"><a href="respostas-de-espécies-multiescala.html#buffers"><i class="fa fa-check"></i><b>3.3</b> Buffers</a></li>
+<li class="chapter" data-level="3.4" data-path="respostas-de-espécies-multiescala.html"><a href="respostas-de-espécies-multiescala.html#kernels"><i class="fa fa-check"></i><b>3.4</b> Kernels</a></li>
+</ul></li>
+<li class="part"><span><b>III Exemplos de caso</b></span></li>
+<li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#apresentação-3"><i class="fa fa-check"></i><b>4.1</b> Apresentação</a></li>
+<li class="chapter" data-level="4.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#pacotes-necessarios"><i class="fa fa-check"></i><b>4.2</b> Pacotes necessarios:</a></li>
+<li class="chapter" data-level="4.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#área-de-estudo"><i class="fa fa-check"></i><b>4.3</b> Área de estudo</a></li>
+<li class="chapter" data-level="4.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-2"><i class="fa fa-check"></i><b>4.4</b> Dados</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-4326"><i class="fa fa-check"></i><b>4.4.1</b> Ponto de referência (EPSG: 4326)</a></li>
+<li class="chapter" data-level="4.4.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-31976"><i class="fa fa-check"></i><b>4.4.2</b> Ponto de referência (EPSG: 31976)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#verificar-com-mapa-de-base-openstreetmap."><i class="fa fa-check"></i><b>4.4.3</b> Verificar com mapa de base (OpenStreetMap).</a></li>
+<li class="chapter" data-level="4.4.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-mapbiomas-cobertura-da-terra"><i class="fa fa-check"></i><b>4.4.4</b> Dados: MapBiomas cobertura da terra</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#calculo-de-métricas-1"><i class="fa fa-check"></i><b>4.5</b> Calculo de métricas</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-a-paisagem"><i class="fa fa-check"></i><b>4.5.1</b> Métricas para a paisagem</a></li>
+<li class="chapter" data-level="4.5.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-as-classes"><i class="fa fa-check"></i><b>4.5.2</b> Métricas para as classes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-as-manchas"><i class="fa fa-check"></i><b>4.5.3</b> Métricas para as manchas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#quais-métricas-devo-escolher"><i class="fa fa-check"></i><b>4.5.4</b> Quais métricas devo escolher?</a></li>
+<li class="chapter" data-level="4.5.5" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-por-classe-de-mineração"><i class="fa fa-check"></i><b>4.5.5</b> Métricas por classe de mineração</a></li>
+<li class="chapter" data-level="4.5.6" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#exportar-as-métricas"><i class="fa fa-check"></i><b>4.5.6</b> Exportar as métricas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#preparando-os-resultados"><i class="fa fa-check"></i><b>4.6</b> Preparando os resultados</a></li>
+<li class="chapter" data-level="4.7" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#uma-tabela-versatil"><i class="fa fa-check"></i><b>4.7</b> Uma tabela versatil</a></li>
+<li class="chapter" data-level="4.8" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#reorganização"><i class="fa fa-check"></i><b>4.8</b> Reorganização</a></li>
+<li class="chapter" data-level="4.9" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#uma-figura-elegante"><i class="fa fa-check"></i><b>4.9</b> Uma figura elegante</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#gráfico-de-barra"><i class="fa fa-check"></i><b>4.9.1</b> Gráfico de barra</a></li>
+<li class="chapter" data-level="4.9.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#gráfico-de-boxplot"><i class="fa fa-check"></i><b>4.9.2</b> Gráfico de boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#comparação-entre-anos"><i class="fa fa-check"></i><b>4.10</b> Comparação entre anos</a></li>
+<li class="chapter" data-level="4.11" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#conclusões-e-próximos-passos"><i class="fa fa-check"></i><b>4.11</b> Conclusões e próximos passos</a></li>
+</ul></li>
+<li class="part"><span><b>IV R e RStudio: Codigo com certeza</b></span></li>
+<li class="chapter" data-level="5" data-path="cap20.html"><a href="cap20.html"><i class="fa fa-check"></i><b>5</b> Pré-requisitos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.2" data-path="cap20.html"><a href="cap20.html#instalação-do-r"><i class="fa fa-check"></i><b>5.2</b> Instalação do R</a></li>
+<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.3</b> Instalação do RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.4</b> Versão do R</a></li>
+<li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-2"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a></li>
+<li class="chapter" data-level="5.6" data-path="cap20.html"><a href="cap20.html#dados-3"><i class="fa fa-check"></i><b>5.6</b> Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cap21.html"><a href="cap21.html"><i class="fa fa-check"></i><b>6</b> Introdução ao R</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap21.html"><a href="cap21.html#pré-requisitos-do-capítulo"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="6.1" data-path="cap21.html"><a href="cap21.html#contextualização"><i class="fa fa-check"></i><b>6.1</b> Contextualização</a></li>
+<li class="chapter" data-level="6.2" data-path="cap21.html"><a href="cap21.html#r-e-rstudio"><i class="fa fa-check"></i><b>6.2</b> R e RStudio</a></li>
+<li class="chapter" data-level="6.3" data-path="cap21.html"><a href="cap21.html#funcionamento-da-linguagem-r"><i class="fa fa-check"></i><b>6.3</b> Funcionamento da linguagem R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="cap21.html"><a href="cap21.html#console"><i class="fa fa-check"></i><b>6.3.1</b> Console</a></li>
+<li class="chapter" data-level="6.3.2" data-path="cap21.html"><a href="cap21.html#scripts"><i class="fa fa-check"></i><b>6.3.2</b> Scripts</a></li>
+<li class="chapter" data-level="6.3.3" data-path="cap21.html"><a href="cap21.html#operadores"><i class="fa fa-check"></i><b>6.3.3</b> Operadores</a></li>
+<li class="chapter" data-level="6.3.4" data-path="cap21.html"><a href="cap21.html#objetos"><i class="fa fa-check"></i><b>6.3.4</b> Objetos</a></li>
+<li class="chapter" data-level="6.3.5" data-path="cap21.html"><a href="cap21.html#funções"><i class="fa fa-check"></i><b>6.3.5</b> Funções</a></li>
+<li class="chapter" data-level="6.3.6" data-path="cap21.html"><a href="cap21.html#pacotes-3"><i class="fa fa-check"></i><b>6.3.6</b> Pacotes</a></li>
+<li class="chapter" data-level="6.3.7" data-path="cap21.html"><a href="cap21.html#ajuda-help"><i class="fa fa-check"></i><b>6.3.7</b> Ajuda (<em>Help</em>)</a></li>
+<li class="chapter" data-level="6.3.8" data-path="cap21.html"><a href="cap21.html#ambiente-environment"><i class="fa fa-check"></i><b>6.3.8</b> Ambiente (<em>Environment</em>)</a></li>
+<li class="chapter" data-level="6.3.9" data-path="cap21.html"><a href="cap21.html#citações"><i class="fa fa-check"></i><b>6.3.9</b> Citações</a></li>
+<li class="chapter" data-level="6.3.10" data-path="cap21.html"><a href="cap21.html#principais-erros-de-iniciantes"><i class="fa fa-check"></i><b>6.3.10</b> Principais erros de iniciantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="cap21.html"><a href="cap21.html#estrutura-e-manipulação-de-objetos"><i class="fa fa-check"></i><b>6.4</b> Estrutura e manipulação de objetos</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="cap21.html"><a href="cap21.html#atributo-dos-objetos"><i class="fa fa-check"></i><b>6.4.1</b> Atributo dos objetos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="cap21.html"><a href="cap21.html#manipulação-de-objetos-unidimensionais"><i class="fa fa-check"></i><b>6.4.2</b> Manipulação de objetos unidimensionais</a></li>
+<li class="chapter" data-level="6.4.3" data-path="cap21.html"><a href="cap21.html#manipulação-de-objetos-multidimensionais"><i class="fa fa-check"></i><b>6.4.3</b> Manipulação de objetos multidimensionais</a></li>
+<li class="chapter" data-level="6.4.4" data-path="cap21.html"><a href="cap21.html#valores-faltantes-e-especiais"><i class="fa fa-check"></i><b>6.4.4</b> Valores faltantes e especiais</a></li>
+<li class="chapter" data-level="6.4.5" data-path="cap21.html"><a href="cap21.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>6.4.5</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="6.4.6" data-path="cap21.html"><a href="cap21.html#importar-dados"><i class="fa fa-check"></i><b>6.4.6</b> Importar dados</a></li>
+<li class="chapter" data-level="6.4.7" data-path="cap21.html"><a href="cap21.html#conferência-dos-dados-importados"><i class="fa fa-check"></i><b>6.4.7</b> Conferência dos dados importados</a></li>
+<li class="chapter" data-level="6.4.8" data-path="cap21.html"><a href="cap21.html#exportar-dados"><i class="fa fa-check"></i><b>6.4.8</b> Exportar dados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="cap21.html"><a href="cap21.html#para-se-aprofundar"><i class="fa fa-check"></i><b>6.5</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="cap21.html"><a href="cap21.html#livros"><i class="fa fa-check"></i><b>6.5.1</b> Livros</a></li>
+<li class="chapter" data-level="6.5.2" data-path="cap21.html"><a href="cap21.html#links"><i class="fa fa-check"></i><b>6.5.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="cap21.html"><a href="cap21.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap22.html"><a href="cap22.html"><i class="fa fa-check"></i><b>7</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap22.html"><a href="cap22.html#pré-requisitos-do-capítulo-1"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="7.1" data-path="cap22.html"><a href="cap22.html#contextualização-1"><i class="fa fa-check"></i><b>7.1</b> Contextualização</a></li>
+<li class="chapter" data-level="7.2" data-path="cap22.html"><a href="cap22.html#tidyverse"><i class="fa fa-check"></i><b>7.2</b> <em>tidyverse</em></a></li>
+<li class="chapter" data-level="7.3" data-path="cap22.html"><a href="cap22.html#readr-readxl-e-writexl"><i class="fa fa-check"></i><b>7.3</b> readr, readxl e writexl</a></li>
+<li class="chapter" data-level="7.4" data-path="cap22.html"><a href="cap22.html#tibble"><i class="fa fa-check"></i><b>7.4</b> tibble</a></li>
+<li class="chapter" data-level="7.5" data-path="cap22.html"><a href="cap22.html#pipe-base-e-magrittr"><i class="fa fa-check"></i><b>7.5</b> pipe: base (|&gt;) e magrittr (%&gt;%)</a></li>
+<li class="chapter" data-level="7.6" data-path="cap22.html"><a href="cap22.html#tidyr"><i class="fa fa-check"></i><b>7.6</b> tidyr</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="cap22.html"><a href="cap22.html#palmerpenguins"><i class="fa fa-check"></i><b>7.6.1</b> palmerpenguins</a></li>
+<li class="chapter" data-level="7.6.2" data-path="cap22.html"><a href="cap22.html#glimpse"><i class="fa fa-check"></i><b>7.6.2</b> glimpse()</a></li>
+<li class="chapter" data-level="7.6.3" data-path="cap22.html"><a href="cap22.html#unite"><i class="fa fa-check"></i><b>7.6.3</b> unite()</a></li>
+<li class="chapter" data-level="7.6.4" data-path="cap22.html"><a href="cap22.html#separate"><i class="fa fa-check"></i><b>7.6.4</b> separate()</a></li>
+<li class="chapter" data-level="7.6.5" data-path="cap22.html"><a href="cap22.html#drop_na-e-replace_na"><i class="fa fa-check"></i><b>7.6.5</b> drop_na() e replace_na()</a></li>
+<li class="chapter" data-level="7.6.6" data-path="cap22.html"><a href="cap22.html#pivot_longer-e-pivot_wider"><i class="fa fa-check"></i><b>7.6.6</b> pivot_longer() e pivot_wider()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="cap22.html"><a href="cap22.html#dplyr"><i class="fa fa-check"></i><b>7.7</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="cap22.html"><a href="cap22.html#gramática"><i class="fa fa-check"></i><b>7.7.1</b> Gramática</a></li>
+<li class="chapter" data-level="7.7.2" data-path="cap22.html"><a href="cap22.html#sintaxe"><i class="fa fa-check"></i><b>7.7.2</b> Sintaxe</a></li>
+<li class="chapter" data-level="7.7.3" data-path="cap22.html"><a href="cap22.html#palmerpenguins-1"><i class="fa fa-check"></i><b>7.7.3</b> palmerpenguins</a></li>
+<li class="chapter" data-level="7.7.4" data-path="cap22.html"><a href="cap22.html#relocate"><i class="fa fa-check"></i><b>7.7.4</b> relocate()</a></li>
+<li class="chapter" data-level="7.7.5" data-path="cap22.html"><a href="cap22.html#rename"><i class="fa fa-check"></i><b>7.7.5</b> rename()</a></li>
+<li class="chapter" data-level="7.7.6" data-path="cap22.html"><a href="cap22.html#select"><i class="fa fa-check"></i><b>7.7.6</b> select()</a></li>
+<li class="chapter" data-level="7.7.7" data-path="cap22.html"><a href="cap22.html#pull"><i class="fa fa-check"></i><b>7.7.7</b> pull()</a></li>
+<li class="chapter" data-level="7.7.8" data-path="cap22.html"><a href="cap22.html#mutate"><i class="fa fa-check"></i><b>7.7.8</b> mutate()</a></li>
+<li class="chapter" data-level="7.7.9" data-path="cap22.html"><a href="cap22.html#arrange"><i class="fa fa-check"></i><b>7.7.9</b> arrange()</a></li>
+<li class="chapter" data-level="7.7.10" data-path="cap22.html"><a href="cap22.html#filter"><i class="fa fa-check"></i><b>7.7.10</b> filter()</a></li>
+<li class="chapter" data-level="7.7.11" data-path="cap22.html"><a href="cap22.html#slice"><i class="fa fa-check"></i><b>7.7.11</b> slice()</a></li>
+<li class="chapter" data-level="7.7.12" data-path="cap22.html"><a href="cap22.html#distinct"><i class="fa fa-check"></i><b>7.7.12</b> distinct()</a></li>
+<li class="chapter" data-level="7.7.13" data-path="cap22.html"><a href="cap22.html#count"><i class="fa fa-check"></i><b>7.7.13</b> count()</a></li>
+<li class="chapter" data-level="7.7.14" data-path="cap22.html"><a href="cap22.html#group_by"><i class="fa fa-check"></i><b>7.7.14</b> group_by()</a></li>
+<li class="chapter" data-level="7.7.15" data-path="cap22.html"><a href="cap22.html#summarise"><i class="fa fa-check"></i><b>7.7.15</b> summarise()</a></li>
+<li class="chapter" data-level="7.7.16" data-path="cap22.html"><a href="cap22.html#bind_rows-e-bind_cols"><i class="fa fa-check"></i><b>7.7.16</b> bind_rows() e bind_cols()</a></li>
+<li class="chapter" data-level="7.7.17" data-path="cap22.html"><a href="cap22.html#join"><i class="fa fa-check"></i><b>7.7.17</b> *_join()</a></li>
+<li class="chapter" data-level="7.7.18" data-path="cap22.html"><a href="cap22.html#operações-de-conjuntos-e-comparação-de-dados"><i class="fa fa-check"></i><b>7.7.18</b> Operações de conjuntos e comparação de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="cap22.html"><a href="cap22.html#stringr"><i class="fa fa-check"></i><b>7.8</b> stringr</a></li>
+<li class="chapter" data-level="7.9" data-path="cap22.html"><a href="cap22.html#forcats"><i class="fa fa-check"></i><b>7.9</b> forcats</a></li>
+<li class="chapter" data-level="7.10" data-path="cap22.html"><a href="cap22.html#lubridate"><i class="fa fa-check"></i><b>7.10</b> lubridate</a></li>
+<li class="chapter" data-level="7.11" data-path="cap22.html"><a href="cap22.html#purrr"><i class="fa fa-check"></i><b>7.11</b> purrr</a></li>
+<li class="chapter" data-level="7.12" data-path="cap22.html"><a href="cap22.html#para-se-aprofundar-1"><i class="fa fa-check"></i><b>7.12</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="7.12.1" data-path="cap22.html"><a href="cap22.html#livros-1"><i class="fa fa-check"></i><b>7.12.1</b> Livros</a></li>
+<li class="chapter" data-level="7.12.2" data-path="cap22.html"><a href="cap22.html#links-1"><i class="fa fa-check"></i><b>7.12.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="cap22.html"><a href="cap22.html#exercícios-1"><i class="fa fa-check"></i><b>7.13</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cap23.html"><a href="cap23.html"><i class="fa fa-check"></i><b>8</b> Visualização de dados</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap23.html"><a href="cap23.html#pré-requisitos-do-capítulo-2"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="8.1" data-path="cap23.html"><a href="cap23.html#contextualização-2"><i class="fa fa-check"></i><b>8.1</b> Contextualização</a></li>
+<li class="chapter" data-level="8.2" data-path="cap23.html"><a href="cap23.html#principais-pacotes"><i class="fa fa-check"></i><b>8.2</b> Principais pacotes</a></li>
+<li class="chapter" data-level="8.3" data-path="cap23.html"><a href="cap23.html#grámatica-dos-gráficos"><i class="fa fa-check"></i><b>8.3</b> Grámatica dos gráficos</a></li>
+<li class="chapter" data-level="8.4" data-path="cap23.html"><a href="cap23.html#tipos-de-gráficos"><i class="fa fa-check"></i><b>8.4</b> Tipos de gráficos</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="cap23.html"><a href="cap23.html#histograma-histogram"><i class="fa fa-check"></i><b>8.4.1</b> Histograma (<em>histogram</em>)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="cap23.html"><a href="cap23.html#gráfico-de-densidade-density-plot"><i class="fa fa-check"></i><b>8.4.2</b> Gráfico de densidade (<em>density plot</em>)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="cap23.html"><a href="cap23.html#diagrama-de-pontos-dot-plot"><i class="fa fa-check"></i><b>8.4.3</b> Diagrama de pontos (<em>dot plot</em>)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="cap23.html"><a href="cap23.html#gráfico-de-barras-bar-plot"><i class="fa fa-check"></i><b>8.4.4</b> Gráfico de barras (<em>bar plot</em>)</a></li>
+<li class="chapter" data-level="8.4.5" data-path="cap23.html"><a href="cap23.html#gráfico-de-setores-pie-chart-e-donut-chart"><i class="fa fa-check"></i><b>8.4.5</b> Gráfico de setores (<em>pie chart</em> e <em>donut chart</em>)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="cap23.html"><a href="cap23.html#gráfico-de-caixa-boxplot"><i class="fa fa-check"></i><b>8.4.6</b> Gráfico de caixa (<em>boxplot</em>)</a></li>
+<li class="chapter" data-level="8.4.7" data-path="cap23.html"><a href="cap23.html#gráfico-de-dispersão-scatter-plot"><i class="fa fa-check"></i><b>8.4.7</b> Gráfico de dispersão (<em>scatter plot</em>)</a></li>
+<li class="chapter" data-level="8.4.8" data-path="cap23.html"><a href="cap23.html#visualização-de-múltiplos-gráficos-pareados"><i class="fa fa-check"></i><b>8.4.8</b> Visualização de múltiplos gráficos pareados</a></li>
+<li class="chapter" data-level="8.4.9" data-path="cap23.html"><a href="cap23.html#erros-comuns-dos-usuários-do-ggplot2-e-como-evitá-los"><i class="fa fa-check"></i><b>8.4.9</b> Erros comuns dos usuários do <code>ggplot2</code> e como evitá-los</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="cap23.html"><a href="cap23.html#finalização-de-gráficos-para-publicação"><i class="fa fa-check"></i><b>8.5</b> Finalização de gráficos para publicação</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="cap23.html"><a href="cap23.html#posição-cores-e-fonte-da-legenda"><i class="fa fa-check"></i><b>8.5.1</b> Posição, cores e fonte da legenda</a></li>
+<li class="chapter" data-level="8.5.2" data-path="cap23.html"><a href="cap23.html#elementos-gráficos-eixo-fonte-gride"><i class="fa fa-check"></i><b>8.5.2</b> Elementos gráficos: eixo, fonte, gride</a></li>
+<li class="chapter" data-level="8.5.3" data-path="cap23.html"><a href="cap23.html#temas-personalizados-ggtheme"><i class="fa fa-check"></i><b>8.5.3</b> Temas personalizados <code>ggtheme()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="cap23.html"><a href="cap23.html#exportando-gráficos-com-alta-qualidade-com-a-função-ggsave"><i class="fa fa-check"></i><b>8.5.4</b> Exportando gráficos com alta qualidade com a função <code>ggsave()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="cap23.html"><a href="cap23.html#para-se-aprofundar-2"><i class="fa fa-check"></i><b>8.6</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="cap23.html"><a href="cap23.html#livros-2"><i class="fa fa-check"></i><b>8.6.1</b> Livros</a></li>
+<li class="chapter" data-level="8.6.2" data-path="cap23.html"><a href="cap23.html#links-2"><i class="fa fa-check"></i><b>8.6.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="cap23.html"><a href="cap23.html#exercícios-2"><i class="fa fa-check"></i><b>8.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cap25.html"><a href="cap25.html"><i class="fa fa-check"></i><b>9</b> Primeiros passos com uma raster</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="cap25.html"><a href="cap25.html#obter-e-carregar-dados-raster-1"><i class="fa fa-check"></i><b>9.0.1</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="9.0.2" data-path="cap25.html"><a href="cap25.html#reclassificação-1"><i class="fa fa-check"></i><b>9.0.2</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html"><i class="fa fa-check"></i><b>10</b> Primeiros passos com vector</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#obter-e-carregar-dados-vectores-1"><i class="fa fa-check"></i><b>10.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="10.2" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#visualizar-os-arquivos-camadas-vector-1"><i class="fa fa-check"></i><b>10.2</b> Visualizar os arquivos (camadas vector)</a></li>
+</ul></li>
+<li class="part"><span><b>V Encerramento</b></span></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#appendix-apêndice"><i class="fa fa-check"></i>(APPENDIX) Apêndice</a>
+<ul>
+<li class="chapter" data-level="10.3" data-path="bibliografia.html"><a href="bibliografia.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>10.3</b> Download mapbiomas cover</a></li>
+<li class="chapter" data-level="10.4" data-path="bibliografia.html"><a href="bibliografia.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>10.4</b> Crop mapbiomas cover</a></li>
+<li class="chapter" data-level="10.5" data-path="bibliografia.html"><a href="bibliografia.html#plot-with-legend"><i class="fa fa-check"></i><b>10.5</b> Plot with legend</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>11</b> Soluções de exercícios</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia de Paisagens com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="respostas-de-espécies-multiescala" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Respostas de espécies multiescala<a href="respostas-de-espécies-multiescala.html#respostas-de-espécies-multiescala" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="apresentação-2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Apresentação<a href="respostas-de-espécies-multiescala.html#apresentação-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este capitulo pretende ilustrar a abordagem geral de identificação de escalas de efeitos nas relações ambientais usando R, uma questão de interesse crescente (Jackson e Fahrig 2015; Miguet et al. 2017). Usaremos conteudo baseado no Capítulo 2 do livro <a href="https://doi.org/10.1007/978-3-030-01989-1">Spatial Ecology and Conservation Modeling</a> <span class="citation">(Fletcher and Fortin 2018)</span> . Aqui interpretamos a escala em que as espécies podem responder ao habitat, como a cobertura florestal. Para fazer isso, quantificamos a quantidade de floresta que ocorre a várias distâncias dos pontos de amostragem e, em seguida, determinamos a escala em que a cobertura florestal melhor prevê a ocorrência de espécies.</p>
+<p>Consideramos como podemos relacionar estas diferenças no resolução e na extensão com a ocorrência de espécies para ajudar a identificar a escala característica (ou escala de efeito) da cobertura florestal na ocorrência de espécies. Este é um problema cada vez mais considerado na ecologia aplicada (Holland et al. 2004; Jackson e Fahrig 2015; McGarigal et al. 2016; Miguet et al. 2016).</p>
+<p>Existem várias maneiras de quantificar a escala de efeito. Uma abordagem é usar buffers (zonas tampão) de diferentes tamanhos para medir a paisagem circundante aos locais de amostragem. Essa abordagem foi popularizada por Pearson (1993) e é amplamente utilizada por outros pesquisadores (Holland et al. 2004; Jackson e Fahrig 2015).</p>
+<p>Um método alternativo emprega uma função de suavização ponderada pela distância - Kernels espaciais. Os kernels podem ser usados para ponderar os dados com base na distância do local de amostreagem. Isso ajuda a capturar melhor os efeitos da vizinhança, ponderando mais os locais próximos do que os distantes. Chandler e Hepinstall-Cymerman (-<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>) mostraram como os kernels espaciais podem ser usados para selecionar de forma otimizada a escala de efeito sem recorrer a binning a priori (como por exemplo, os buffers de 1 km no capítulo “Métricas”).</p>
+<p>Neste capitulo, primeiro ilustramos o uso de buffers de diferentes distancias e depois ilustramos o uso de kernels espaciais.</p>
+</div>
+<div id="pacotes-e-dados-1" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Pacotes e dados<a href="respostas-de-espécies-multiescala.html#pacotes-e-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Carregar pacotes (que deve esta instalado antes):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="respostas-de-espécies-multiescala.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="respostas-de-espécies-multiescala.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href="respostas-de-espécies-multiescala.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb1-4"><a href="respostas-de-espécies-multiescala.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-5"><a href="respostas-de-espécies-multiescala.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-6"><a href="respostas-de-espécies-multiescala.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1-7"><a href="respostas-de-espécies-multiescala.html#cb1-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-8"><a href="respostas-de-espécies-multiescala.html#cb1-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb1-9"><a href="respostas-de-espécies-multiescala.html#cb1-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
+<span id="cb1-10"><a href="respostas-de-espécies-multiescala.html#cb1-10" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
+</div>
+<div id="buffers" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Buffers<a href="respostas-de-espécies-multiescala.html#buffers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="kernels" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Kernels<a href="respostas-de-espécies-multiescala.html#kernels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig-r-instalacao"></span>
+<img src="figures/spatialkernels.png" alt="Esquema ilustrativo demonstrando Seções transversais de diferentes tipos de kernels espaciais: (A) diagrama representando a anatomia geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura acima é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).. " width="75%" height="75%" />
+<p class="caption">
+Figura 3.1: Esquema ilustrativo demonstrando Seções transversais de diferentes tipos de kernels espaciais: (A) diagrama representando a anatomia geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura acima é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009)..
+</p>
+</div>
+<p>A abordagem de Kernels fornece uma maneira rigorosa de estimar formalmente as escalas nas quais as variáveis da paisagem afetam a abundância e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem (Aue et al. 2012, <span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>, Miguet et al. 2017). A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância, o que fornece uma representação mais realista de muitos processos ecológicos (por exemplo, movimentos de forrageadoras de lugar central; Orians e Pearson 1979).</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="métricas-da-paisagem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="garimpo-do-lourenço.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darrennorris/epr/edit/main/03-especies.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/darrennorris/epr/blob/main/03-especies.Rmd",
+"text": null
+},
+"download": ["epr.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

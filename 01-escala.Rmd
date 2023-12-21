@@ -40,7 +40,12 @@ e/ou
 
 -   na análise
 
-Para que a Ecologia da Paisagem gere evidências científicas robustas e úteis, a escala nas três dimensões deve ser consistente e apropriada para o estudo. Aqui nos concentramos na dimensão “análise”, e aprendemos como a escala espacial pode ser alterada e representada em modelos ecológicos.
+Para que a Ecologia da Paisagem gere evidências científicas robustas e úteis, a escala nas três dimensões deve ser consistente e apropriada para o estudo. Incompatibilidade entre a escala de análise (definida por o pesquisador) e a escala de efeito (definida pelo verdadeiro relacionamento) representa uma versão do Problema de Unidade Areal Modificável ("Modifiable Areal
+Unit Problem" Gehlke e Biehl 1934), em que os resultados e a inferência
+torna-se um artefato do esquema de amostragem espacial em vez de um processo ecológico (Jelinski e Wu 1996).
+
+
+Aqui nos concentramos na dimensão “análise”, e aprendemos como a escala espacial pode ser alterada e representada em modelos ecológicos.
 
 
 \newpage

@@ -1,0 +1,57 @@
+---
+bibliography: references.bib
+---
+
+
+\newpage{}
+
+# Respostas de espécies multiescala
+
+## Apresentação
+
+Este capitulo pretende ilustrar a abordagem geral de identificação de escalas de efeitos nas relações ambientais usando R, uma questão de interesse crescente (Jackson e Fahrig 2015; Miguet et al. 2017). Usaremos conteudo baseado no Capítulo 2 do livro [Spatial Ecology and Conservation Modeling](https://doi.org/10.1007/978-3-030-01989-1) [@fletcher2018] . Aqui interpretamos a escala em que as espécies podem responder ao habitat, como a cobertura florestal. Para fazer isso, quantificamos a quantidade de floresta que ocorre a várias distâncias dos pontos de amostragem e, em seguida, determinamos a escala em que a cobertura florestal melhor prevê a ocorrência de espécies. 
+
+Consideramos como podemos relacionar estas diferenças no resolução e na extensão com a ocorrência de espécies para ajudar a identificar a escala característica (ou escala de efeito) da cobertura florestal na ocorrência de espécies. Este é um problema cada vez mais considerado na ecologia aplicada (Holland et al. 2004; Jackson e Fahrig 2015; McGarigal et al. 2016; Miguet et al. 2016).
+
+Existem várias maneiras de quantificar a escala de efeito. Uma abordagem é usar buffers (zonas tampão) de diferentes tamanhos para medir a paisagem circundante aos locais de amostragem. Essa abordagem foi popularizada por Pearson (1993) e é amplamente utilizada por outros pesquisadores (Holland et al. 2004; Jackson e Fahrig 2015).
+
+Um método alternativo emprega uma função de suavização ponderada pela distância - Kernels espaciais.  Os kernels podem ser usados para ponderar os dados com base na distância do local de amostreagem. Isso ajuda a capturar melhor os efeitos da vizinhança, ponderando mais os locais próximos do que os distantes. Chandler e Hepinstall-Cymerman (-[@chandler2016estimating]) mostraram como os kernels espaciais podem ser usados para selecionar a escala de efeito sem recorrer a binning a priori (como por exemplo, os buffers de 1 km no capítulo "Métricas").
+
+Neste capitulo, primeiro ilustramos o uso de buffers de diferentes distancias e depois ilustramos o uso de kernels espaciais.
+
+## Pacotes e dados
+
+Carregar pacotes (que deve esta instalado antes): 
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(raster)
+library(terra)
+library(tmap)
+library(gridExtra)
+library(kableExtra)
+library(mgcv)
+library(eprdados)
+library(siland)
+```
+
+
+
+## Buffers
+
+
+
+## Kernels
+
+
+
+```{r fig-kerneltypes, fig.align = 'center', out.width = "70%", out.height = "70%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009)."}
+
+# Figura Jennifer Lentz 2012 Developing a Geospatial Protocol for Coral 
+# Epizootiology. https://www.researchgate.net/figure/Cross-sections-of-different-ty# pes-of-spatial-kernels-A-diagram-depicting-the-general_fig15_296695387
+
+knitr::include_graphics(path = "figures/spatialkernels.png")
+```
+
+
+A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (@chandler2016estimating). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem [@Aue2012; @chandler2016estimating; @Miguet2017dwm]. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes (@bullock2017) e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).
