@@ -109,7 +109,16 @@ Podemos também verificar informações sobre o raster (metadados) - simplesment
 ramostra
 ```
 
-Isso nos mostra informações sobre escala espacial (resolução e extensão) e a sistema de coordenadas (SIRGAS 2000 / UTM zone 22N , [EPSG:31976](https://epsg.io/31976)). Além disso é possível obter informações específicas através de funções específicas.
+Isso nos mostra informações sobre os atributos da raster no objeto ramostra. As informações como escala espacial (resolução e extensão) e a sistema de coordenadas (SIRGAS 2000 / UTM zone 22N , [EPSG:31976](https://epsg.io/31976)) são apresentados e representem os componentes conforme a a proxima figura.
+
+```{r raster-components, echo = FALSE, fig.align = 'center', out.width = "60%", out.height = "60%", fig.cap=" Componentes de uma raster e suas atrubutos no pacote terra."}
+knitr::include_graphics(path = "figures/raster_components.png")
+```
+
+
+
+
+Além disso é possível obter informações específicas através de funções específicas.
 
 ```{r get-raster-info, eval= FALSE, echo = TRUE}
 # Obter informações sobre escala espacial
