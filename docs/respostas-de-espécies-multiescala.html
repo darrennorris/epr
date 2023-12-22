@@ -51,6 +51,24 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -408,13 +426,15 @@ div.csl-indent {
 </ul></li>
 <li class="part"><span><b>V Encerramento</b></span></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#appendix-apêndice"><i class="fa fa-check"></i>(APPENDIX) Apêndice</a>
+<li class="chapter" data-level="" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i>Glossário</a></li>
+<li class="appendix"><span><b>Apêndice</b></span></li>
+<li class="chapter" data-level="A" data-path="annexo-1.html"><a href="annexo-1.html"><i class="fa fa-check"></i><b>A</b> Annexo 1</a>
 <ul>
-<li class="chapter" data-level="10.3" data-path="bibliografia.html"><a href="bibliografia.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>10.3</b> Download mapbiomas cover</a></li>
-<li class="chapter" data-level="10.4" data-path="bibliografia.html"><a href="bibliografia.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>10.4</b> Crop mapbiomas cover</a></li>
-<li class="chapter" data-level="10.5" data-path="bibliografia.html"><a href="bibliografia.html#plot-with-legend"><i class="fa fa-check"></i><b>10.5</b> Plot with legend</a></li>
+<li class="chapter" data-level="A.1" data-path="annexo-1.html"><a href="annexo-1.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>A.1</b> Download mapbiomas cover</a></li>
+<li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
+<li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>11</b> Soluções de exercícios</a></li>
+<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -439,44 +459,46 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 3</span> Respostas de espécies multiescala<a href="respostas-de-espécies-multiescala.html#respostas-de-espécies-multiescala" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="apresentação-2" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Apresentação<a href="respostas-de-espécies-multiescala.html#apresentação-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Este capitulo pretende ilustrar a abordagem geral de identificação de escalas de efeitos nas relações ambientais usando R, uma questão de interesse crescente (Jackson e Fahrig 2015; Miguet et al. 2017). Usaremos conteudo baseado no Capítulo 2 do livro <a href="https://doi.org/10.1007/978-3-030-01989-1">Spatial Ecology and Conservation Modeling</a> <span class="citation">(Fletcher and Fortin 2018)</span> . Aqui interpretamos a escala em que as espécies podem responder ao habitat, como a cobertura florestal. Para fazer isso, quantificamos a quantidade de floresta que ocorre a várias distâncias dos pontos de amostragem e, em seguida, determinamos a escala em que a cobertura florestal melhor prevê a ocorrência de espécies.</p>
-<p>Consideramos como podemos relacionar estas diferenças no resolução e na extensão com a ocorrência de espécies para ajudar a identificar a escala característica (ou escala de efeito) da cobertura florestal na ocorrência de espécies. Este é um problema cada vez mais considerado na ecologia aplicada (Holland et al. 2004; Jackson e Fahrig 2015; McGarigal et al. 2016; Miguet et al. 2016).</p>
-<p>Existem várias maneiras de quantificar a escala de efeito. Uma abordagem é usar buffers (zonas tampão) de diferentes tamanhos para medir a paisagem circundante aos locais de amostragem. Essa abordagem foi popularizada por Pearson (1993) e é amplamente utilizada por outros pesquisadores (Holland et al. 2004; Jackson e Fahrig 2015).</p>
-<p>Um método alternativo emprega uma função de suavização ponderada pela distância - Kernels espaciais. Os kernels podem ser usados para ponderar os dados com base na distância do local de amostreagem. Isso ajuda a capturar melhor os efeitos da vizinhança, ponderando mais os locais próximos do que os distantes. Chandler e Hepinstall-Cymerman (-<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>) mostraram como os kernels espaciais podem ser usados para selecionar de forma otimizada a escala de efeito sem recorrer a binning a priori (como por exemplo, os buffers de 1 km no capítulo “Métricas”).</p>
+<p>Este capitulo pretende ilustrar a abordagem geral de identificação de escalas de efeitos nas relações ambientais usando R. Usaremos conteudo baseado no Capítulo 2 do livro <a href="https://doi.org/10.1007/978-3-030-01989-1">Spatial Ecology and Conservation Modeling</a> <span class="citation">(Fletcher and Fortin 2018)</span> . Aqui interpretamos a escala em que as espécies podem responder ao habitat, como a cobertura florestal. Para fazer isso, quantificamos a quantidade de floresta que ocorre a várias distâncias dos pontos de amostragem e, em seguida, determinamos a escala em que a cobertura florestal melhor prevê a ocorrência de espécies.</p>
+<p>Consideramos como podemos relacionar estas diferenças de escala (na extensão) com a ocorrência de espécies para ajudar a identificar a escala característica (ou escala de efeito) da cobertura florestal na ocorrência de espécies. Este é um problema cada vez mais considerado na ecologia aplicada (Holland et al. 2004; Jackson e Fahrig 2015; McGarigal et al. 2016; Miguet et al. 2016).</p>
+<p>Existem várias maneiras de quantificar a escala de efeito. Uma abordagem é usar zonas tampão (daqui adiante “buffers”) de diferentes tamanhos para medir a paisagem circundante aos locais de amostragem. Essa abordagem foi popularizada por Pearson (1993) e é amplamente utilizada por outros pesquisadores (Holland et al. 2004; Jackson e Fahrig 2015).</p>
+<p>Um método alternativo emprega uma função de suavização ponderada pela distância - Kernels espaciais. Os kernels podem ser usados para ponderar os dados com base na distância do local de amostreagem. Isso ajuda a capturar melhor os efeitos da vizinhança, ponderando mais os locais próximos do que os distantes. Chandler e Hepinstall-Cymerman <span class="citation">(2016)</span> mostraram como os kernels espaciais podem ser usados para selecionar a escala de efeito sem recorrer a binning a priori (como por exemplo, os buffers de 1 km no capítulo “Métricas”).</p>
 <p>Neste capitulo, primeiro ilustramos o uso de buffers de diferentes distancias e depois ilustramos o uso de kernels espaciais.</p>
 </div>
 <div id="pacotes-e-dados-1" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Pacotes e dados<a href="respostas-de-espécies-multiescala.html#pacotes-e-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Carregar pacotes (que deve esta instalado antes):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="respostas-de-espécies-multiescala.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="respostas-de-espécies-multiescala.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-3"><a href="respostas-de-espécies-multiescala.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb1-4"><a href="respostas-de-espécies-multiescala.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb1-5"><a href="respostas-de-espécies-multiescala.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb1-6"><a href="respostas-de-espécies-multiescala.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb1-7"><a href="respostas-de-espécies-multiescala.html#cb1-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-8"><a href="respostas-de-espécies-multiescala.html#cb1-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb1-9"><a href="respostas-de-espécies-multiescala.html#cb1-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
-<span id="cb1-10"><a href="respostas-de-espécies-multiescala.html#cb1-10" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="respostas-de-espécies-multiescala.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb57-2"><a href="respostas-de-espécies-multiescala.html#cb57-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb57-3"><a href="respostas-de-espécies-multiescala.html#cb57-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb57-4"><a href="respostas-de-espécies-multiescala.html#cb57-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb57-5"><a href="respostas-de-espécies-multiescala.html#cb57-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb57-6"><a href="respostas-de-espécies-multiescala.html#cb57-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb57-7"><a href="respostas-de-espécies-multiescala.html#cb57-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb57-8"><a href="respostas-de-espécies-multiescala.html#cb57-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb57-9"><a href="respostas-de-espécies-multiescala.html#cb57-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
+<span id="cb57-10"><a href="respostas-de-espécies-multiescala.html#cb57-10" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
 </div>
 <div id="buffers" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Buffers<a href="respostas-de-espécies-multiescala.html#buffers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
 <div id="kernels" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Kernels<a href="respostas-de-espécies-multiescala.html#kernels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig-r-instalacao"></span>
-<img src="figures/spatialkernels.png" alt="Esquema ilustrativo demonstrando Seções transversais de diferentes tipos de kernels espaciais: (A) diagrama representando a anatomia geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura acima é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).. " width="75%" height="75%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig-kerneltypes"></span>
+<img src="figures/spatialkernels.png" alt="Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009)." width="50%" height="50%" />
 <p class="caption">
-Figura 3.1: Esquema ilustrativo demonstrando Seções transversais de diferentes tipos de kernels espaciais: (A) diagrama representando a anatomia geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura acima é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009)..
+Figura 3.1: Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).
 </p>
 </div>
-<p>A abordagem de Kernels fornece uma maneira rigorosa de estimar formalmente as escalas nas quais as variáveis da paisagem afetam a abundância e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem (Aue et al. 2012, <span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>, Miguet et al. 2017). A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância, o que fornece uma representação mais realista de muitos processos ecológicos (por exemplo, movimentos de forrageadoras de lugar central; Orians e Pearson 1979).</p>
+<p>A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem <span class="citation">(Aue et al. 2012; Chandler and Hepinstall-Cymerman 2016; Miguet, Fahrig, and Lavigne 2017)</span>. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes (<span class="citation">Bullock et al. (2017)</span>) e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).</p>
 
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 
 
 
+</div>
             </section>
 
           </div>
@@ -537,6 +559,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
