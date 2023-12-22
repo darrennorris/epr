@@ -1,0 +1,99 @@
+
+# Annexo 5
+
+-   Which species to use? Quantify scale of effect for different species.
+
+
+```{r packages-needed, echo=TRUE, eval=FALSE, message=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(broom)
+library(eprdados)
+library(modEvA)
+
+```
+
+data
+```{r}
+sppD <- interview_species_metrics |> filter(sp_name == "sppD")
+
+
+
+```
+
+plot to see relationships.
+```{r}
+sppD |>  
+  ggplot(aes(x=value_median, y = sp_pa)) + 
+      geom_jitter(width=5, height=0.05, alpha=0.4) + 
+  geom_hline(yintercept = 0.5, linetype="dashed") +
+  geom_smooth(method="glm", 
+              method.args = list(family = binomial()), 
+              se = FALSE) + 
+  facet_wrap(~buff_dist_km) + 
+  scale_y_continuous("presença (probabilidade)", 
+                     c(0,1), breaks = c(0,0.2,0.4,0.6,0.8,1.0)) +
+  labs(x = "floresta (%)") -> fig_sppD_pa
+
+fig_sppD_pa
+```
+
+
+run models
+
+```{r}
+model_sppD <- glm(sp_pa ~ value_median * buff_dist_km, 
+                  data = sppD, 
+                  family = "binomial")
+
+modEvA::Dsquared(model_sppD)
+# [1] 0.250772
+```
+
+see results
+```{r}
+broom::tidy(model_sppD, exp=T, conf.int=T)
+broom::glance(model_sppD) |> 
+  mutate(dev_exp = (null.deviance - deviance)/null.deviance
+  )
+
+```
+
+
+Run across all species
+```{r}
+#Run models
+interview_species_metrics |>
+  select(sp_name, sp_pa, value_median, buff_dist_km) |>
+  nest(data = -c(sp_name)) |>
+  mutate(
+    fit = map(data, ~ glm(sp_pa ~ value_median*buff_dist_km, 
+                          data = .x, family = "binomial")),
+    tidied = map(fit, tidy), 
+    glanced = map(fit, glance)
+  ) -> model_species
+
+
+```
+
+look at models
+```{r}
+# Use 5: sppC = cachorro do mato, sppE = jaguatirica, sppD = onca, 
+# sppF = Ateles, sppG = Cebus
+
+model_species |> 
+  unnest(glanced) |> 
+  mutate(dev_exp = (null.deviance - deviance)/null.deviance
+  ) |> 
+  select(sp_name, logLik, null.deviance, deviance, dev_exp, AIC) |> 
+  left_join(model_species |> 
+  unnest(tidied) |> 
+  filter(term == "value_median") |>
+  mutate(p.value = round(p.value,4) ) |> 
+  select(sp_name, term, estimate, p.value) 
+  ) |> 
+  arrange(desc(dev_exp))
+
+
+```
+

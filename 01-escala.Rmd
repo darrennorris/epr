@@ -8,7 +8,7 @@ bibliography: references.bib
 
 \newpage{}
 
-# Escala
+# Escala {#cap01}
 
 ## Apresentação
 
@@ -199,7 +199,7 @@ tm_layout(legend.position = c("right","top"),legend.bg.color = "white")
 Alterando a resolução serve como exemplo mostrando como os passos/etapas/cálculos mude dependendo o tipo de dados. Ou seja, é preciso adotar metodologias diferentes para dados categóricos (por exemplo classificação de cobertura da terra) e dados contínuos (por exemplo distância até rio).
 
 
-```{r raster-res, echo = FALSE, fig.align = 'center', out.width = "60%", out.height = "60%", fig.cap=" Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1."}
+```{r raster-res, echo = FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap=" Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1."}
 knitr::include_graphics(path = "figures/pixel_size.png")
 ```
 

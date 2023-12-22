@@ -1,7 +1,7 @@
 
 \newpage{}
 
-# Métricas da paisagem
+# Métricas da paisagem {#cap02}
 
 ## Apresentação
 As métricas da paisagem nos ajudam a entender as mudanças na paisagem de diferentes perspectivas (visual, ecológica, cultural). 
