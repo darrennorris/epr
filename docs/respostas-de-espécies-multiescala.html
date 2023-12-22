@@ -468,16 +468,9 @@ div.csl-indent {
 <div id="pacotes-e-dados-1" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Pacotes e dados<a href="respostas-de-espécies-multiescala.html#pacotes-e-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Carregar pacotes (que deve esta instalado antes):</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="respostas-de-espécies-multiescala.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb57-2"><a href="respostas-de-espécies-multiescala.html#cb57-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb57-3"><a href="respostas-de-espécies-multiescala.html#cb57-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb57-4"><a href="respostas-de-espécies-multiescala.html#cb57-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb57-5"><a href="respostas-de-espécies-multiescala.html#cb57-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb57-6"><a href="respostas-de-espécies-multiescala.html#cb57-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb57-7"><a href="respostas-de-espécies-multiescala.html#cb57-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb57-8"><a href="respostas-de-espécies-multiescala.html#cb57-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb57-9"><a href="respostas-de-espécies-multiescala.html#cb57-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
-<span id="cb57-10"><a href="respostas-de-espécies-multiescala.html#cb57-10" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="respostas-de-espécies-multiescala.html#cb56-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb56-2"><a href="respostas-de-espécies-multiescala.html#cb56-2" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
+<span id="cb56-3"><a href="respostas-de-espécies-multiescala.html#cb56-3" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
 </div>
 <div id="buffers" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Buffers<a href="respostas-de-espécies-multiescala.html#buffers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -490,7 +483,7 @@ div.csl-indent {
 Figura 3.1: Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).
 </p>
 </div>
-<p>A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem <span class="citation">(Aue et al. 2012; Chandler and Hepinstall-Cymerman 2016; Miguet, Fahrig, and Lavigne 2017)</span>. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes (<span class="citation">Bullock et al. (2017)</span>) e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).</p>
+<p>A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem <span class="citation">(Aue et al. 2012; Chandler and Hepinstall-Cymerman 2016; Miguet, Fahrig, and Lavigne 2017)</span>. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes <span class="citation">(Bullock et al. 2017)</span> e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).</p>
 
 <div style="page-break-after: always;"></div>
 </div>

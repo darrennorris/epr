@@ -1,6 +1,7 @@
 fig:plot-ramostra
 fig:raster-components
 fig:mapa-mapbiomas-cores
+fig:raster-res
 fig:fig-mud-agg
 fig:buffer-figure
 fig:map-pontod-rio

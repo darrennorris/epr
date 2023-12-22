@@ -198,7 +198,14 @@ tm_layout(legend.position = c("right","top"),legend.bg.color = "white")
 
 Alterando a resolução serve como exemplo mostrando como os passos/etapas/cálculos mude dependendo o tipo de dados. Ou seja, é preciso adotar metodologias diferentes para dados categóricos (por exemplo classificação de cobertura da terra) e dados contínuos (por exemplo distância até rio).
 
+
+```{r raster-res, echo = FALSE, fig.align = 'center', out.width = "60%", out.height = "60%", fig.cap=" Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1."}
+knitr::include_graphics(path = "figures/pixel_size.png")
+```
+
 Alterando a resolução às vezes seria necessário, por exemplo, quando preciso padronizar dados/imagens oriundos de fontes diferentes com resoluções diferentes e/ou para reduzir a complexidade da modelagem. Lembrando - em cada nível de resolução, são observáveis processos e padrões que não podem necessariamente ser inferidos daqueles abaixo ou acima.
+
+Ao escolher um tamanho de pixel apropriado, equilibre a resolução espacial desejada – com base na unidade mínima de mapeamento das variaveis que você precisa analisar – com requisitos práticos para exibição rápida, tempo de processamento e armazenamento. Essencialmente, num SIG, os resultados são tão precisos quanto o conjunto de dados menos preciso. Se você estiver usando um conjunto de dados classificados derivado de imagens de satélite com resolução de 30 metros, o uso de um modelo digital de elevação ou outros dados auxiliares com resolução mais alta, como 10 metros, pode ser desnecessário. Quanto mais homogênea for uma área para variáveis críticas, como topografia e cobertura, maior poderá ser o tamanho da célula sem afetar a precisão.
 
 Agora iremos degradar a resolução desses dados, ou seja, iremos alterar o tamanho dos pixels. Como exemplo, iremos juntar (agregar) 3 pixels em um único pixel. Como você acha que podemos fazer isso? Quais valores esse pixel que vai substituir os 3 originais deve ter? Existem diversas maneiras de se fazer isso, como por exemplo através a média ou valor modal (valor mais comum). O valor mais comum da área, é particularmente adequado quando temos um mapa categórico, como por exemplo a classificação do MapBiomas. Segue exemplo de codigo para agregar com a média e o valor mais frequente (modal).
 
@@ -290,8 +297,8 @@ values(floresta_2020) <- 0
 # Atualizar categorias florestais agrupados com valor de 1
 floresta_2020[mapbiomas_2020 == 3 | mapbiomas_2020 == 4] <- 1
 
-buffer.forest1.16000m <- crop(floresta_2020, rio_pontos_31976_b16000)
-buffer.forest1.16000m <- mask(buffer.forest1.16000m, rio_pontos_31976_b16000)
+buffer.forest1.16000m <- terra::crop(floresta_2020, rio_pontos_31976_b16000, 
+                              snap = "out", mask = TRUE)
 
 #fig all together
 line_col <- "black"
@@ -328,7 +335,7 @@ fig_together
 
 Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resoloção), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.
 
-Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (bordas - [Buffers](https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html)) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.
+Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (zona tampão - [Buffers](https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html)) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.
 
 O objetivo é criar buffers circulares de diferentes extensões ao redor dos sitios de amostragem (pontos, pixels, manchas, transetos lineares etc). Aqui, vamos entender a escala em que a cobertura de floresta muda ao redor dos rios. Para isso, quantificamos a quantidade de floresta que ocorre em várias distâncias em pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari. Para ilustrar esta abordagem geral, usamos o banco de dados MapBiomas Coleção 6 de 2020, e vincule esses dados de cobertura da terra aos pontos de amostragem em rios.
 
@@ -459,9 +466,9 @@ rio_pontos_31976 <- st_transform(rio_pontos, 31976)
 rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], dist = 1000)
 
 # Recorte com buffer de 1000 metros (mudando a extensão).
-buffer.forest1.1km <- crop(floresta_2020, snap="out", rio_pontos_31976_b1000)
-# Máscara para que os pixels fora do polígono sejam nulos.
-buffer.forest1.1km <- mask(buffer.forest1.1km, rio_pontos_31976_b1000, touches=TRUE)
+# Máscara (mask), assimos pixels fora do polígono sejam nulos.
+buffer.forest1.1km <- terra::crop(floresta_2020, rio_pontos_31976_b1000, 
+                           snap="out", mask = TRUE)
 names(buffer.forest1.1km) <- "forest_2020_1km"
 
 ```
@@ -536,24 +543,25 @@ Para uma comparação multiescala, vamos repetir o mesmo processo, mas agora com
 rio_pontos_31976 <- st_transform(rio_pontos, 31976) 
 #250 m
 rio_pontos_31976_b250 <- st_buffer(rio_pontos_31976[1, ], dist = 250)
-buffer.forest1.250m <- crop(floresta_2020, rio_pontos_31976_b250, snap="out")
-buffer.forest1.250m <- mask(buffer.forest1.250m, rio_pontos_31976_b250, touches=TRUE)
+buffer.forest1.250m <- terra::crop(floresta_2020, rio_pontos_31976_b250,
+                                  snap="out", mask = TRUE)
 # 500 m
 rio_pontos_31976_b500 <- st_buffer(rio_pontos_31976[1, ], dist = 500)
-buffer.forest1.500m <- crop(floresta_2020, snap="out", rio_pontos_31976_b500)
-buffer.forest1.500m <- mask(buffer.forest1.500m, touches=TRUE, rio_pontos_31976_b500)
+buffer.forest1.500m <- terra::crop(floresta_2020, rio_pontos_31976_b500, 
+                            snap = "out", mask = TRUE)
 # 1000 m
 rio_pontos_31976_b1000 <- st_buffer(rio_pontos_31976[1, ], dist = 1000)
-buffer.forest1.1km <- crop(floresta_2020, rio_pontos_31976_b1000)
-buffer.forest1.1km <- mask(buffer.forest1.1km, rio_pontos_31976_b1000)
+buffer.forest1.1km <- terra::crop(floresta_2020, rio_pontos_31976_b1000, 
+                           snap = "out", mask = TRUE)
 # 2000 m
 rio_pontos_31976_b2000 <- st_buffer(rio_pontos_31976[1, ], dist = 2000)
-buffer.forest1.2000m <- crop(floresta_2020, rio_pontos_31976_b2000)
-buffer.forest1.2000m <- mask(buffer.forest1.2000m, rio_pontos_31976_b2000)
+buffer.forest1.2000m <- terra::crop(floresta_2020, rio_pontos_31976_b2000, 
+                                    snap = "out", mask = TRUE)
 # 4000 m
 rio_pontos_31976_b4000 <- st_buffer(rio_pontos_31976[1, ], dist = 4000)
-buffer.forest1.4000m <- crop(floresta_2020, rio_pontos_31976_b4000)
-buffer.forest1.4000m <- mask(buffer.forest1.4000m, rio_pontos_31976_b4000)
+buffer.forest1.4000m <- terra::crop(floresta_2020, rio_pontos_31976_b4000, 
+                                    snap = "out", mask = TRUE)
+
 #fig 250
 fig_250m <- tm_shape(buffer.forest1.250m) +
   tm_raster(style = "cat", 

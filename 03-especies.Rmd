@@ -24,13 +24,6 @@ Neste capitulo, primeiro ilustramos o uso de buffers de diferentes distancias e 
 Carregar pacotes (que deve esta instalado antes): 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
-library(sf)
-library(raster)
-library(terra)
-library(tmap)
-library(gridExtra)
-library(kableExtra)
-library(mgcv)
 library(eprdados)
 library(siland)
 ```
@@ -54,4 +47,4 @@ knitr::include_graphics(path = "figures/spatialkernels.png")
 ```
 
 
-A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (@chandler2016estimating). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem [@Aue2012; @chandler2016estimating; @Miguet2017dwm]. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes (@bullock2017) e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).
+A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (@chandler2016estimating). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem [@Aue2012; @chandler2016estimating; @Miguet2017dwm]. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes [@bullock2017] e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).
