@@ -17,7 +17,11 @@ data
 ```{r}
 sppD <- interview_species_metrics |> filter(sp_name == "sppD")
 
-
+# check for missing 
+interview_species_metrics |> 
+  filter(buff_dist_km == 0.125) |> 
+  group_by(sp_name) |> 
+  summarise(count_ints = length(unique(aid)))
 
 ```
 
@@ -33,7 +37,7 @@ sppD |>
   facet_wrap(~buff_dist_km) + 
   scale_y_continuous("presença (probabilidade)", 
                      c(0,1), breaks = c(0,0.2,0.4,0.6,0.8,1.0)) +
-  labs(x = "floresta (%)") -> fig_sppD_pa
+  labs(x = "área core de floresta (%)") -> fig_sppD_pa
 
 fig_sppD_pa
 ```
@@ -47,12 +51,12 @@ model_sppD <- glm(sp_pa ~ value_median * buff_dist_km,
                   family = "binomial")
 
 modEvA::Dsquared(model_sppD)
-# [1] 0.250772
+# [1]0.2198762
 ```
 
 see results
 ```{r}
-broom::tidy(model_sppD, exp=T, conf.int=T)
+broom::tidy(model_sppD, conf.int=TRUE)
 broom::glance(model_sppD) |> 
   mutate(dev_exp = (null.deviance - deviance)/null.deviance
   )
@@ -78,8 +82,8 @@ interview_species_metrics |>
 
 look at models
 ```{r}
-# Use 5: sppC = cachorro do mato, sppE = jaguatirica, sppD = onca, 
-# sppF = Ateles, sppG = Cebus
+# Use 7: sppB = lontra, sppC = cachorro do mato, sppE = jaguatirica, sppD = onca, 
+# sppF = Ateles, sppG = Cebus, sppI = ??
 
 model_species |> 
   unnest(glanced) |> 

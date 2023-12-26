@@ -13,7 +13,6 @@ library(geodata)
 library(sf)
 library(readxl)
 library(tmap)
-# library(coenocliner) #NO
 library(virtualspecies)
 ```
 

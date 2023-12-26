@@ -34,7 +34,7 @@ interviews <- read_excel(interview_file, col_types = c("numeric", "numeric", "te
 "numeric", "text", "text", "text",                                     "text", "text", "text", "text", "text",                                  "text", "text", "text", "text", "text",                                 "text", "text", "text", "text", "text",                                "text", "numeric", "text", "text",                                    "text", "text", "text", "text"))
 
 # Landscape metrics
-mfile <- "C:\\Users\\user\\Documents\\Articles\\2022_Michalski_interview\\analysis\\metric_medians.csv"
+mfile <- "C:\\Users\\user\\Documents\\Articles\\2022_Michalski_interview\\analysis\\metric_medians_new.csv"
 metrics_int <- read.csv(mfile, as.is = TRUE)
 ```
 
@@ -110,20 +110,51 @@ interview_metrics |>
 
 Compare community.
 
-
-Compare species.
-```{r compare-species}
-metrics_int |> 
-  filter(year_group != 1986, class == 1) |> 
-  mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
-    filter(buff_metric %in% c("cpland_0.25", "cpland_0.5", "cpland_1", "cpland_10")) |>
-left_join(interview_counts |> 
+```{r tidy-metrics-forest}
+metrics_keep <- c("cpland_0.125", "cpland_0.25", "cpland_0.5", "cpland_1",
+                  "cpland_2", "cpland_4", "cpland_8", "cpland_16")
+# make final data
+# add year to counts
+interview_counts |> 
             left_join(interviews |> 
-  select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
-  join_by(aid, year_group==Year)) |> 
-  filter(!is.na(int_pres)) |> 
-  select(aid, buff_metric, buff_dist_km, 
-         value_median, sp, int_pres) |> 
+  select(aid, Year, Latitude, Longitude, Habitat_WWF)) |> 
+# add metric namess to make full dataset
+  crossing(buff_metric = metrics_keep) |>
+# add metrics
+  left_join(metrics_int |> 
+              filter(year_group != 1986, class == 1) |> 
+              mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |>
+              filter(buff_metric %in% metrics_keep), 
+            join_by(aid, buff_metric, Year == year_group)) |> 
+# fill in NAs introduced by join
+  mutate(value_median = replace_na(value_median, 0), 
+         value_min = replace_na(value_min, 0), 
+         value_max = replace_na(value_max, 0),
+         metric = replace_na(metric, "cpland"), 
+         Descricao = replace_na(Descricao, "Floresta"),
+         Description = replace_na(Description, "Forest"), 
+         class = replace_na(class, 1),
+         pa = ifelse(int_pres > 0, 1, 0)) |> 
+  #filter(is.na(buff_dist_km), aid ==55) |> 
+  separate_wider_delim(buff_metric, delim = "_", 
+                       names = c("a", "buff"),
+                       cols_remove = FALSE) |> 
+  mutate(buff_dist_km = coalesce(buff_dist_km, as.numeric(buff))) |>  
+  select(aid, Latitude, Longitude, Habitat_WWF, class,
+         Description, metric, buff_dist_km, buff_metric, value_median,  
+         sp, int_pres, pa) -> species_interviews
+
+species_interviews |> 
+  filter(is.na(buff_dist_km)) |> 
+  group_by(aid) |> summarise(count = n())
+
+```
+
+
+Plot to compare species.
+```{r compare-species}
+# abundances
+species_interviews |> 
   ggplot(aes(x=value_median, y = int_pres)) + 
       geom_jitter(height=0.1, width=1, alpha=0.4) + 
   #geom_smooth(aes(fill= Habitat_WWF, colour = Habitat_WWF), 
@@ -135,24 +166,11 @@ left_join(interview_counts |>
 
 #export
 png("figures/fig_sp01.png", bg = "white", type = c("cairo"), 
-    width=11, height=20, units = "in", res = 600)
+    width=16, height=20, units = "in", res = 600)
 fig_sp01
 dev.off()
 
-metrics_int |> 
-  filter(year_group != 1986, class == 1) |> 
-  mutate(buff_metric = paste(metric, buff_dist_km, sep="_")) |> 
-    filter(buff_metric %in% c("cpland_0.25","cpland_0.5", "cpland_1", "cpland_10")) |>
-left_join(interview_counts |> 
-            left_join(interviews |> 
-  select(aid, Year, Latitude, Longitude, Habitat_WWF)), 
-  join_by(aid, year_group==Year)) |> 
-  filter(!is.na(int_pres)) |> 
-  select(aid, Latitude, Longitude, Habitat_WWF, 
-         Description, metric, buff_dist_km, buff_metric, value_median,  
-         sp, int_pres) |> 
-  mutate(pa = ifelse(int_pres>0,1,0)) -> species_interviews
-
+# presence absence
 species_interviews |>  
   ggplot(aes(x=value_median, y = pa)) + 
       geom_jitter(width=5, height=0.05, alpha=0.4) + 
@@ -167,7 +185,7 @@ species_interviews |>
 
 #export
 png("figures/fig_sp01_pa.png", bg = "white", type = c("cairo"), 
-    width=11, height=20, units = "in", res = 600)
+    width=16, height=20, units = "in", res = 600)
 fig_sp01_pa
 dev.off()
   
@@ -181,7 +199,7 @@ species_interviews |>
          sp_name = sp, 
          sp_ab = int_pres, 
          sp_pa = pa) |>
-write.csv("data/species_interviews.csv", 
+write.csv("data/species_interviews_forest.csv", 
           row.names = FALSE)
 ```
 

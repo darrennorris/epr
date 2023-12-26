@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 1 Escala | Ecologia de Paisagens com R</title>
+  <meta name="description" content="This is a minimal example." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 1 Escala | Ecologia de Paisagens com R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html//cover.jpg" />
+  <meta property="og:description" content="This is a minimal example." />
+  <meta name="github-repo" content="darrennorris/epr" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 1 Escala | Ecologia de Paisagens com R" />
+  
+  <meta name="twitter:description" content="This is a minimal example." />
+  <meta name="twitter:image" content="https://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html//cover.jpg" />
+
+<meta name="author" content="Darren Norris: darren.norris@unifap.br" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introdução.html"/>
+<link rel="next" href="cap02.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">epr</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Apresentação</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindos</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i>Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="prefácio-à-primeira-edição.html"><a href="prefácio-à-primeira-edição.html"><i class="fa fa-check"></i>Prefácio à primeira edição</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>Introdução</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-vai-aprender"><i class="fa fa-check"></i>O que você vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#como-este-livro-está-organizado"><i class="fa fa-check"></i>Como este livro está organizado</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-que-você-não-vai-aprender"><i class="fa fa-check"></i>O que você não vai aprender</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#o-universo-arrumado---tidyverse"><i class="fa fa-check"></i>O universo arrumado - tidyverse</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#outros-pacotes"><i class="fa fa-check"></i>Outros pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#codigo-no-livro"><i class="fa fa-check"></i>Codigo no livro</a>
+<ul>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html#organização-do-codigo-no-livro"><i class="fa fa-check"></i>Organização do codigo no livro</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Escala e padrões</b></span></li>
+<li class="chapter" data-level="1" data-path="cap01.html"><a href="cap01.html"><i class="fa fa-check"></i><b>1</b> Escala</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap01.html"><a href="cap01.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a></li>
+<li class="chapter" data-level="1.2" data-path="cap01.html"><a href="cap01.html#escala-breve-definação"><i class="fa fa-check"></i><b>1.2</b> Escala: breve definação</a></li>
+<li class="chapter" data-level="1.3" data-path="cap01.html"><a href="cap01.html#pacotes-e-dados"><i class="fa fa-check"></i><b>1.3</b> Pacotes e dados</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="cap01.html"><a href="cap01.html#pacotes"><i class="fa fa-check"></i><b>1.3.1</b> Pacotes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="cap01.html"><a href="cap01.html#dados"><i class="fa fa-check"></i><b>1.3.2</b> Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="cap01.html"><a href="cap01.html#alterando-a-resolução"><i class="fa fa-check"></i><b>1.4</b> Alterando a resolução</a></li>
+<li class="chapter" data-level="1.5" data-path="cap01.html"><a href="cap01.html#escala-espacial-e-desenho-amostral"><i class="fa fa-check"></i><b>1.5</b> Escala espacial e desenho amostral</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="cap01.html"><a href="cap01.html#obter-e-carregar-dados-vectores"><i class="fa fa-check"></i><b>1.5.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="1.5.2" data-path="cap01.html"><a href="cap01.html#visualizar-os-arquivos-camadas-vector"><i class="fa fa-check"></i><b>1.5.2</b> Visualizar os arquivos (camadas vector)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="cap01.html"><a href="cap01.html#obter-e-carregar-dados-raster"><i class="fa fa-check"></i><b>1.5.3</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="1.5.4" data-path="cap01.html"><a href="cap01.html#visualizar-os-arquivos-camadas-raster-e-vector"><i class="fa fa-check"></i><b>1.5.4</b> Visualizar os arquivos (camadas raster e vector)</a></li>
+<li class="chapter" data-level="1.5.5" data-path="cap01.html"><a href="cap01.html#reclassificação"><i class="fa fa-check"></i><b>1.5.5</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="cap01.html"><a href="cap01.html#comparação-multiescala"><i class="fa fa-check"></i><b>1.6</b> Comparação multiescala</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="cap01.html"><a href="cap01.html#pergunta-4"><i class="fa fa-check"></i><b>1.6.1</b> Pergunta 4</a></li>
+<li class="chapter" data-level="1.6.2" data-path="cap01.html"><a href="cap01.html#pergunta-5"><i class="fa fa-check"></i><b>1.6.2</b> Pergunta 5</a></li>
+<li class="chapter" data-level="1.6.3" data-path="cap01.html"><a href="cap01.html#pergunta-6"><i class="fa fa-check"></i><b>1.6.3</b> Pergunta 6</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="cap01.html"><a href="cap01.html#próximos-passos-repetindo-para-muitas-amostras."><i class="fa fa-check"></i><b>1.7</b> Próximos passos: repetindo para muitas amostras.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap02.html"><a href="cap02.html"><i class="fa fa-check"></i><b>2</b> Métricas da paisagem</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap02.html"><a href="cap02.html#apresentação-1"><i class="fa fa-check"></i><b>2.1</b> Apresentação</a></li>
+<li class="chapter" data-level="2.2" data-path="cap02.html"><a href="cap02.html#métricas-da-paisagem-e-pacote-landscapemetrics"><i class="fa fa-check"></i><b>2.2</b> Métricas da paisagem e pacote “landscapemetrics”</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cap02.html"><a href="cap02.html#pacotes-1"><i class="fa fa-check"></i><b>2.2.1</b> Pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="cap02.html"><a href="cap02.html#dados-1"><i class="fa fa-check"></i><b>2.3</b> Dados</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="cap02.html"><a href="cap02.html#exibir-dados-raster-e-sobreposição-com-locais-de-amostragem"><i class="fa fa-check"></i><b>2.3.1</b> Exibir dados raster e sobreposição com locais de amostragem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="cap02.html"><a href="cap02.html#calculo-de-métricas"><i class="fa fa-check"></i><b>2.4</b> Calculo de métricas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.1</b> Ponto único, raio único, métrica única</a></li>
+<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
+<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap03.html"><a href="cap03.html"><i class="fa fa-check"></i><b>3</b> Respostas multiescala de espécies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cap03.html"><a href="cap03.html#apresentação-2"><i class="fa fa-check"></i><b>3.1</b> Apresentação</a></li>
+<li class="chapter" data-level="3.2" data-path="cap03.html"><a href="cap03.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.2</b> Pacotes e dados</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cap03.html"><a href="cap03.html#pacotes-2"><i class="fa fa-check"></i><b>3.2.1</b> Pacotes</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cap03.html"><a href="cap03.html#dados-necessarios"><i class="fa fa-check"></i><b>3.2.2</b> Dados necessarios</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cap03.html"><a href="cap03.html#buffers"><i class="fa fa-check"></i><b>3.3</b> Buffers</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cap03.html"><a href="cap03.html#floresta"><i class="fa fa-check"></i><b>3.3.1</b> Floresta</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#especies"><i class="fa fa-check"></i><b>3.3.2</b> Especies</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.4</b> Kernels</a></li>
+</ul></li>
+<li class="part"><span><b>III Exemplos de caso</b></span></li>
+<li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#apresentação-3"><i class="fa fa-check"></i><b>4.1</b> Apresentação</a></li>
+<li class="chapter" data-level="4.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#pacotes-necessarios"><i class="fa fa-check"></i><b>4.2</b> Pacotes necessarios:</a></li>
+<li class="chapter" data-level="4.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#área-de-estudo"><i class="fa fa-check"></i><b>4.3</b> Área de estudo</a></li>
+<li class="chapter" data-level="4.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-2"><i class="fa fa-check"></i><b>4.4</b> Dados</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-4326"><i class="fa fa-check"></i><b>4.4.1</b> Ponto de referência (EPSG: 4326)</a></li>
+<li class="chapter" data-level="4.4.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#ponto-de-referência-epsg-31976"><i class="fa fa-check"></i><b>4.4.2</b> Ponto de referência (EPSG: 31976)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#verificar-com-mapa-de-base-openstreetmap."><i class="fa fa-check"></i><b>4.4.3</b> Verificar com mapa de base (OpenStreetMap).</a></li>
+<li class="chapter" data-level="4.4.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-mapbiomas-cobertura-da-terra"><i class="fa fa-check"></i><b>4.4.4</b> Dados: MapBiomas cobertura da terra</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#calculo-de-métricas-1"><i class="fa fa-check"></i><b>4.5</b> Calculo de métricas</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-a-paisagem"><i class="fa fa-check"></i><b>4.5.1</b> Métricas para a paisagem</a></li>
+<li class="chapter" data-level="4.5.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-as-classes"><i class="fa fa-check"></i><b>4.5.2</b> Métricas para as classes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-para-as-manchas"><i class="fa fa-check"></i><b>4.5.3</b> Métricas para as manchas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#quais-métricas-devo-escolher"><i class="fa fa-check"></i><b>4.5.4</b> Quais métricas devo escolher?</a></li>
+<li class="chapter" data-level="4.5.5" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas-por-classe-de-mineração"><i class="fa fa-check"></i><b>4.5.5</b> Métricas por classe de mineração</a></li>
+<li class="chapter" data-level="4.5.6" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#exportar-as-métricas"><i class="fa fa-check"></i><b>4.5.6</b> Exportar as métricas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#preparando-os-resultados"><i class="fa fa-check"></i><b>4.6</b> Preparando os resultados</a></li>
+<li class="chapter" data-level="4.7" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#uma-tabela-versatil"><i class="fa fa-check"></i><b>4.7</b> Uma tabela versatil</a></li>
+<li class="chapter" data-level="4.8" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#reorganização"><i class="fa fa-check"></i><b>4.8</b> Reorganização</a></li>
+<li class="chapter" data-level="4.9" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#uma-figura-elegante"><i class="fa fa-check"></i><b>4.9</b> Uma figura elegante</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#gráfico-de-barra"><i class="fa fa-check"></i><b>4.9.1</b> Gráfico de barra</a></li>
+<li class="chapter" data-level="4.9.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#gráfico-de-boxplot"><i class="fa fa-check"></i><b>4.9.2</b> Gráfico de boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#comparação-entre-anos"><i class="fa fa-check"></i><b>4.10</b> Comparação entre anos</a></li>
+<li class="chapter" data-level="4.11" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#conclusões-e-próximos-passos"><i class="fa fa-check"></i><b>4.11</b> Conclusões e próximos passos</a></li>
+</ul></li>
+<li class="part"><span><b>IV R e RStudio: Codigo com certeza</b></span></li>
+<li class="chapter" data-level="5" data-path="cap20.html"><a href="cap20.html"><i class="fa fa-check"></i><b>5</b> Pré-requisitos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.2" data-path="cap20.html"><a href="cap20.html#instalação-do-r"><i class="fa fa-check"></i><b>5.2</b> Instalação do R</a></li>
+<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.3</b> Instalação do RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.4</b> Versão do R</a></li>
+<li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-3"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a></li>
+<li class="chapter" data-level="5.6" data-path="cap20.html"><a href="cap20.html#dados-3"><i class="fa fa-check"></i><b>5.6</b> Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cap21.html"><a href="cap21.html"><i class="fa fa-check"></i><b>6</b> Introdução ao R</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap21.html"><a href="cap21.html#pré-requisitos-do-capítulo"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="6.1" data-path="cap21.html"><a href="cap21.html#contextualização"><i class="fa fa-check"></i><b>6.1</b> Contextualização</a></li>
+<li class="chapter" data-level="6.2" data-path="cap21.html"><a href="cap21.html#r-e-rstudio"><i class="fa fa-check"></i><b>6.2</b> R e RStudio</a></li>
+<li class="chapter" data-level="6.3" data-path="cap21.html"><a href="cap21.html#funcionamento-da-linguagem-r"><i class="fa fa-check"></i><b>6.3</b> Funcionamento da linguagem R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="cap21.html"><a href="cap21.html#console"><i class="fa fa-check"></i><b>6.3.1</b> Console</a></li>
+<li class="chapter" data-level="6.3.2" data-path="cap21.html"><a href="cap21.html#scripts"><i class="fa fa-check"></i><b>6.3.2</b> Scripts</a></li>
+<li class="chapter" data-level="6.3.3" data-path="cap21.html"><a href="cap21.html#operadores"><i class="fa fa-check"></i><b>6.3.3</b> Operadores</a></li>
+<li class="chapter" data-level="6.3.4" data-path="cap21.html"><a href="cap21.html#objetos"><i class="fa fa-check"></i><b>6.3.4</b> Objetos</a></li>
+<li class="chapter" data-level="6.3.5" data-path="cap21.html"><a href="cap21.html#funções"><i class="fa fa-check"></i><b>6.3.5</b> Funções</a></li>
+<li class="chapter" data-level="6.3.6" data-path="cap21.html"><a href="cap21.html#pacotes-4"><i class="fa fa-check"></i><b>6.3.6</b> Pacotes</a></li>
+<li class="chapter" data-level="6.3.7" data-path="cap21.html"><a href="cap21.html#ajuda-help"><i class="fa fa-check"></i><b>6.3.7</b> Ajuda (<em>Help</em>)</a></li>
+<li class="chapter" data-level="6.3.8" data-path="cap21.html"><a href="cap21.html#ambiente-environment"><i class="fa fa-check"></i><b>6.3.8</b> Ambiente (<em>Environment</em>)</a></li>
+<li class="chapter" data-level="6.3.9" data-path="cap21.html"><a href="cap21.html#citações"><i class="fa fa-check"></i><b>6.3.9</b> Citações</a></li>
+<li class="chapter" data-level="6.3.10" data-path="cap21.html"><a href="cap21.html#principais-erros-de-iniciantes"><i class="fa fa-check"></i><b>6.3.10</b> Principais erros de iniciantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="cap21.html"><a href="cap21.html#estrutura-e-manipulação-de-objetos"><i class="fa fa-check"></i><b>6.4</b> Estrutura e manipulação de objetos</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="cap21.html"><a href="cap21.html#atributo-dos-objetos"><i class="fa fa-check"></i><b>6.4.1</b> Atributo dos objetos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="cap21.html"><a href="cap21.html#manipulação-de-objetos-unidimensionais"><i class="fa fa-check"></i><b>6.4.2</b> Manipulação de objetos unidimensionais</a></li>
+<li class="chapter" data-level="6.4.3" data-path="cap21.html"><a href="cap21.html#manipulação-de-objetos-multidimensionais"><i class="fa fa-check"></i><b>6.4.3</b> Manipulação de objetos multidimensionais</a></li>
+<li class="chapter" data-level="6.4.4" data-path="cap21.html"><a href="cap21.html#valores-faltantes-e-especiais"><i class="fa fa-check"></i><b>6.4.4</b> Valores faltantes e especiais</a></li>
+<li class="chapter" data-level="6.4.5" data-path="cap21.html"><a href="cap21.html#diretório-de-trabalho"><i class="fa fa-check"></i><b>6.4.5</b> Diretório de trabalho</a></li>
+<li class="chapter" data-level="6.4.6" data-path="cap21.html"><a href="cap21.html#importar-dados"><i class="fa fa-check"></i><b>6.4.6</b> Importar dados</a></li>
+<li class="chapter" data-level="6.4.7" data-path="cap21.html"><a href="cap21.html#conferência-dos-dados-importados"><i class="fa fa-check"></i><b>6.4.7</b> Conferência dos dados importados</a></li>
+<li class="chapter" data-level="6.4.8" data-path="cap21.html"><a href="cap21.html#exportar-dados"><i class="fa fa-check"></i><b>6.4.8</b> Exportar dados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="cap21.html"><a href="cap21.html#para-se-aprofundar"><i class="fa fa-check"></i><b>6.5</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="cap21.html"><a href="cap21.html#livros"><i class="fa fa-check"></i><b>6.5.1</b> Livros</a></li>
+<li class="chapter" data-level="6.5.2" data-path="cap21.html"><a href="cap21.html#links"><i class="fa fa-check"></i><b>6.5.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="cap21.html"><a href="cap21.html#exercícios"><i class="fa fa-check"></i><b>6.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap22.html"><a href="cap22.html"><i class="fa fa-check"></i><b>7</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap22.html"><a href="cap22.html#pré-requisitos-do-capítulo-1"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="7.1" data-path="cap22.html"><a href="cap22.html#contextualização-1"><i class="fa fa-check"></i><b>7.1</b> Contextualização</a></li>
+<li class="chapter" data-level="7.2" data-path="cap22.html"><a href="cap22.html#tidyverse"><i class="fa fa-check"></i><b>7.2</b> <em>tidyverse</em></a></li>
+<li class="chapter" data-level="7.3" data-path="cap22.html"><a href="cap22.html#readr-readxl-e-writexl"><i class="fa fa-check"></i><b>7.3</b> readr, readxl e writexl</a></li>
+<li class="chapter" data-level="7.4" data-path="cap22.html"><a href="cap22.html#tibble"><i class="fa fa-check"></i><b>7.4</b> tibble</a></li>
+<li class="chapter" data-level="7.5" data-path="cap22.html"><a href="cap22.html#pipe-base-e-magrittr"><i class="fa fa-check"></i><b>7.5</b> pipe: base (|&gt;) e magrittr (%&gt;%)</a></li>
+<li class="chapter" data-level="7.6" data-path="cap22.html"><a href="cap22.html#tidyr"><i class="fa fa-check"></i><b>7.6</b> tidyr</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="cap22.html"><a href="cap22.html#palmerpenguins"><i class="fa fa-check"></i><b>7.6.1</b> palmerpenguins</a></li>
+<li class="chapter" data-level="7.6.2" data-path="cap22.html"><a href="cap22.html#glimpse"><i class="fa fa-check"></i><b>7.6.2</b> glimpse()</a></li>
+<li class="chapter" data-level="7.6.3" data-path="cap22.html"><a href="cap22.html#unite"><i class="fa fa-check"></i><b>7.6.3</b> unite()</a></li>
+<li class="chapter" data-level="7.6.4" data-path="cap22.html"><a href="cap22.html#separate"><i class="fa fa-check"></i><b>7.6.4</b> separate()</a></li>
+<li class="chapter" data-level="7.6.5" data-path="cap22.html"><a href="cap22.html#drop_na-e-replace_na"><i class="fa fa-check"></i><b>7.6.5</b> drop_na() e replace_na()</a></li>
+<li class="chapter" data-level="7.6.6" data-path="cap22.html"><a href="cap22.html#pivot_longer-e-pivot_wider"><i class="fa fa-check"></i><b>7.6.6</b> pivot_longer() e pivot_wider()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="cap22.html"><a href="cap22.html#dplyr"><i class="fa fa-check"></i><b>7.7</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="cap22.html"><a href="cap22.html#gramática"><i class="fa fa-check"></i><b>7.7.1</b> Gramática</a></li>
+<li class="chapter" data-level="7.7.2" data-path="cap22.html"><a href="cap22.html#sintaxe"><i class="fa fa-check"></i><b>7.7.2</b> Sintaxe</a></li>
+<li class="chapter" data-level="7.7.3" data-path="cap22.html"><a href="cap22.html#palmerpenguins-1"><i class="fa fa-check"></i><b>7.7.3</b> palmerpenguins</a></li>
+<li class="chapter" data-level="7.7.4" data-path="cap22.html"><a href="cap22.html#relocate"><i class="fa fa-check"></i><b>7.7.4</b> relocate()</a></li>
+<li class="chapter" data-level="7.7.5" data-path="cap22.html"><a href="cap22.html#rename"><i class="fa fa-check"></i><b>7.7.5</b> rename()</a></li>
+<li class="chapter" data-level="7.7.6" data-path="cap22.html"><a href="cap22.html#select"><i class="fa fa-check"></i><b>7.7.6</b> select()</a></li>
+<li class="chapter" data-level="7.7.7" data-path="cap22.html"><a href="cap22.html#pull"><i class="fa fa-check"></i><b>7.7.7</b> pull()</a></li>
+<li class="chapter" data-level="7.7.8" data-path="cap22.html"><a href="cap22.html#mutate"><i class="fa fa-check"></i><b>7.7.8</b> mutate()</a></li>
+<li class="chapter" data-level="7.7.9" data-path="cap22.html"><a href="cap22.html#arrange"><i class="fa fa-check"></i><b>7.7.9</b> arrange()</a></li>
+<li class="chapter" data-level="7.7.10" data-path="cap22.html"><a href="cap22.html#filter"><i class="fa fa-check"></i><b>7.7.10</b> filter()</a></li>
+<li class="chapter" data-level="7.7.11" data-path="cap22.html"><a href="cap22.html#slice"><i class="fa fa-check"></i><b>7.7.11</b> slice()</a></li>
+<li class="chapter" data-level="7.7.12" data-path="cap22.html"><a href="cap22.html#distinct"><i class="fa fa-check"></i><b>7.7.12</b> distinct()</a></li>
+<li class="chapter" data-level="7.7.13" data-path="cap22.html"><a href="cap22.html#count"><i class="fa fa-check"></i><b>7.7.13</b> count()</a></li>
+<li class="chapter" data-level="7.7.14" data-path="cap22.html"><a href="cap22.html#group_by"><i class="fa fa-check"></i><b>7.7.14</b> group_by()</a></li>
+<li class="chapter" data-level="7.7.15" data-path="cap22.html"><a href="cap22.html#summarise"><i class="fa fa-check"></i><b>7.7.15</b> summarise()</a></li>
+<li class="chapter" data-level="7.7.16" data-path="cap22.html"><a href="cap22.html#bind_rows-e-bind_cols"><i class="fa fa-check"></i><b>7.7.16</b> bind_rows() e bind_cols()</a></li>
+<li class="chapter" data-level="7.7.17" data-path="cap22.html"><a href="cap22.html#join"><i class="fa fa-check"></i><b>7.7.17</b> *_join()</a></li>
+<li class="chapter" data-level="7.7.18" data-path="cap22.html"><a href="cap22.html#operações-de-conjuntos-e-comparação-de-dados"><i class="fa fa-check"></i><b>7.7.18</b> Operações de conjuntos e comparação de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="cap22.html"><a href="cap22.html#stringr"><i class="fa fa-check"></i><b>7.8</b> stringr</a></li>
+<li class="chapter" data-level="7.9" data-path="cap22.html"><a href="cap22.html#forcats"><i class="fa fa-check"></i><b>7.9</b> forcats</a></li>
+<li class="chapter" data-level="7.10" data-path="cap22.html"><a href="cap22.html#lubridate"><i class="fa fa-check"></i><b>7.10</b> lubridate</a></li>
+<li class="chapter" data-level="7.11" data-path="cap22.html"><a href="cap22.html#purrr"><i class="fa fa-check"></i><b>7.11</b> purrr</a></li>
+<li class="chapter" data-level="7.12" data-path="cap22.html"><a href="cap22.html#para-se-aprofundar-1"><i class="fa fa-check"></i><b>7.12</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="7.12.1" data-path="cap22.html"><a href="cap22.html#livros-1"><i class="fa fa-check"></i><b>7.12.1</b> Livros</a></li>
+<li class="chapter" data-level="7.12.2" data-path="cap22.html"><a href="cap22.html#links-1"><i class="fa fa-check"></i><b>7.12.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="cap22.html"><a href="cap22.html#exercícios-1"><i class="fa fa-check"></i><b>7.13</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cap23.html"><a href="cap23.html"><i class="fa fa-check"></i><b>8</b> Visualização de dados</a>
+<ul>
+<li class="chapter" data-level="" data-path="cap23.html"><a href="cap23.html#pré-requisitos-do-capítulo-2"><i class="fa fa-check"></i>Pré-requisitos do capítulo</a></li>
+<li class="chapter" data-level="8.1" data-path="cap23.html"><a href="cap23.html#contextualização-2"><i class="fa fa-check"></i><b>8.1</b> Contextualização</a></li>
+<li class="chapter" data-level="8.2" data-path="cap23.html"><a href="cap23.html#principais-pacotes"><i class="fa fa-check"></i><b>8.2</b> Principais pacotes</a></li>
+<li class="chapter" data-level="8.3" data-path="cap23.html"><a href="cap23.html#grámatica-dos-gráficos"><i class="fa fa-check"></i><b>8.3</b> Grámatica dos gráficos</a></li>
+<li class="chapter" data-level="8.4" data-path="cap23.html"><a href="cap23.html#tipos-de-gráficos"><i class="fa fa-check"></i><b>8.4</b> Tipos de gráficos</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="cap23.html"><a href="cap23.html#histograma-histogram"><i class="fa fa-check"></i><b>8.4.1</b> Histograma (<em>histogram</em>)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="cap23.html"><a href="cap23.html#gráfico-de-densidade-density-plot"><i class="fa fa-check"></i><b>8.4.2</b> Gráfico de densidade (<em>density plot</em>)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="cap23.html"><a href="cap23.html#diagrama-de-pontos-dot-plot"><i class="fa fa-check"></i><b>8.4.3</b> Diagrama de pontos (<em>dot plot</em>)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="cap23.html"><a href="cap23.html#gráfico-de-barras-bar-plot"><i class="fa fa-check"></i><b>8.4.4</b> Gráfico de barras (<em>bar plot</em>)</a></li>
+<li class="chapter" data-level="8.4.5" data-path="cap23.html"><a href="cap23.html#gráfico-de-setores-pie-chart-e-donut-chart"><i class="fa fa-check"></i><b>8.4.5</b> Gráfico de setores (<em>pie chart</em> e <em>donut chart</em>)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="cap23.html"><a href="cap23.html#gráfico-de-caixa-boxplot"><i class="fa fa-check"></i><b>8.4.6</b> Gráfico de caixa (<em>boxplot</em>)</a></li>
+<li class="chapter" data-level="8.4.7" data-path="cap23.html"><a href="cap23.html#gráfico-de-dispersão-scatter-plot"><i class="fa fa-check"></i><b>8.4.7</b> Gráfico de dispersão (<em>scatter plot</em>)</a></li>
+<li class="chapter" data-level="8.4.8" data-path="cap23.html"><a href="cap23.html#visualização-de-múltiplos-gráficos-pareados"><i class="fa fa-check"></i><b>8.4.8</b> Visualização de múltiplos gráficos pareados</a></li>
+<li class="chapter" data-level="8.4.9" data-path="cap23.html"><a href="cap23.html#erros-comuns-dos-usuários-do-ggplot2-e-como-evitá-los"><i class="fa fa-check"></i><b>8.4.9</b> Erros comuns dos usuários do <code>ggplot2</code> e como evitá-los</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="cap23.html"><a href="cap23.html#finalização-de-gráficos-para-publicação"><i class="fa fa-check"></i><b>8.5</b> Finalização de gráficos para publicação</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="cap23.html"><a href="cap23.html#posição-cores-e-fonte-da-legenda"><i class="fa fa-check"></i><b>8.5.1</b> Posição, cores e fonte da legenda</a></li>
+<li class="chapter" data-level="8.5.2" data-path="cap23.html"><a href="cap23.html#elementos-gráficos-eixo-fonte-gride"><i class="fa fa-check"></i><b>8.5.2</b> Elementos gráficos: eixo, fonte, gride</a></li>
+<li class="chapter" data-level="8.5.3" data-path="cap23.html"><a href="cap23.html#temas-personalizados-ggtheme"><i class="fa fa-check"></i><b>8.5.3</b> Temas personalizados <code>ggtheme()</code></a></li>
+<li class="chapter" data-level="8.5.4" data-path="cap23.html"><a href="cap23.html#exportando-gráficos-com-alta-qualidade-com-a-função-ggsave"><i class="fa fa-check"></i><b>8.5.4</b> Exportando gráficos com alta qualidade com a função <code>ggsave()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="cap23.html"><a href="cap23.html#para-se-aprofundar-2"><i class="fa fa-check"></i><b>8.6</b> Para se aprofundar</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="cap23.html"><a href="cap23.html#livros-2"><i class="fa fa-check"></i><b>8.6.1</b> Livros</a></li>
+<li class="chapter" data-level="8.6.2" data-path="cap23.html"><a href="cap23.html#links-2"><i class="fa fa-check"></i><b>8.6.2</b> Links</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="cap23.html"><a href="cap23.html#exercícios-2"><i class="fa fa-check"></i><b>8.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cap25.html"><a href="cap25.html"><i class="fa fa-check"></i><b>9</b> Primeiros passos com uma raster</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="cap25.html"><a href="cap25.html#obter-e-carregar-dados-raster-1"><i class="fa fa-check"></i><b>9.0.1</b> Obter e carregar dados (raster)</a></li>
+<li class="chapter" data-level="9.0.2" data-path="cap25.html"><a href="cap25.html#reclassificação-1"><i class="fa fa-check"></i><b>9.0.2</b> Reclassificação</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html"><i class="fa fa-check"></i><b>10</b> Primeiros passos com vector</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#obter-e-carregar-dados-vectores-1"><i class="fa fa-check"></i><b>10.1</b> Obter e carregar dados (vectores)</a></li>
+<li class="chapter" data-level="10.2" data-path="primeiros-passos-com-vector.html"><a href="primeiros-passos-com-vector.html#visualizar-os-arquivos-camadas-vector-1"><i class="fa fa-check"></i><b>10.2</b> Visualizar os arquivos (camadas vector)</a></li>
+</ul></li>
+<li class="part"><span><b>V Encerramento</b></span></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="chapter" data-level="" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i>Glossário</a></li>
+<li class="appendix"><span><b>Apêndice</b></span></li>
+<li class="chapter" data-level="A" data-path="annexo-1.html"><a href="annexo-1.html"><i class="fa fa-check"></i><b>A</b> Annexo 1</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="annexo-1.html"><a href="annexo-1.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>A.1</b> Download mapbiomas cover</a></li>
+<li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
+<li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia de Paisagens com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cap01" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Escala<a href="cap01.html#cap01" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="apresentação" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Apresentação<a href="cap01.html#apresentação" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nesta capitulo vamos entender a importância de escala na ecologia da paisagem através cálculos com a proporção de floresta. Durante o capitulo você aprenderá a</p>
+<ol style="list-style-type: decimal">
+<li>Alterar escala (resolução e extensão espacial),<br />
+</li>
+<li>Calcular a área de uma classe de habitat,<br />
+</li>
+<li>Desenvolve uma comparação multiescala.</li>
+</ol>
+<p><br> É muito importante ficar claro para você o que é escala (e o que não é!), e qual a importância desse conceito na elaboração do desenho amostral, na coleta de dados, nas análises e na tomada de decisão. Nesse tutorial usaremos conteudo baseado no Capítulo 2 do livro <a href="https://doi.org/10.1007/978-3-030-01989-1">Spatial Ecology and Conservation Modeling</a> <span class="citation">(Fletcher and Fortin 2018)</span> e <a href="https://www.needs.ufscar.br/tutorial_escala.pdf">“Tutorial Escala”</a> do Dr. Alexandre Martensen.</p>
+</div>
+<div id="escala-breve-definação" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Escala: breve definação<a href="cap01.html#escala-breve-definação" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Todos os processos e padrões ecológicos têm uma dimensão temporal e espacial. Assim sendo, o conceito de <b>escala</b> não somente representar essas dimensões, mas também, ajudar nos apresentá-los de uma forma que facilite o entendimento sobre os processos e padrões sendo estudados.</p>
+<p>Na ecologia o termo escala refere-se à dimensão ou domínio espaço-temporal de um processo ou padrão. Na ecologia da paisagem, a escala é frequentemente descrita por sua componentes: resolução e extensão.</p>
+<ul>
+<li><strong>Resolução</strong>: menor unidade espacial de medida para um padrão ou processo.</li>
+<li><strong>Extensão</strong>: descreve o comprimento ou tamanho de área sob investigação.</li>
+</ul>
+<p>Resolução e extensão tendem a covariar – estudos com maior extensão tendem a ter resolução maiores também. Parte dessa covariância é prática: é difícil trabalhar em grandes extensões com dados coletados em tamanhos de resolução finos. No entanto, parte dessa covariância também é conceitual: muitas vezes em grandes extensões, podemos esperar que processos operando em resolução muito finos forneçam somente “ruído” e não dados/informações relevantes sobre os sistemas. Como os desafios computacionais diminuíram e a disponibilidade de dados de alta resolução aumentou, a covariância entre resolução e extensão nas investigações diminuiu.</p>
+<p>Lembrando, na primeira aula, vimos que a escala espacial pode ser interpretada com base em três dimensoes:</p>
+<ul>
+<li>no fenômeno de interesse;</li>
+<li>na amostragem que ocorre;</li>
+</ul>
+<p>e/ou</p>
+<ul>
+<li>na análise</li>
+</ul>
+<p>Para que a Ecologia da Paisagem gere evidências científicas robustas e úteis, a escala nas três dimensões deve ser consistente e apropriada para o estudo. Incompatibilidade entre a escala de análise (definida por o pesquisador) e a escala de efeito (definida pelo verdadeiro relacionamento) representa uma versão do Problema de Unidade Areal Modificável (“Modifiable Areal
+Unit Problem” Gehlke e Biehl 1934), em que os resultados e a inferência
+torna-se um artefato do esquema de amostragem espacial em vez de um processo ecológico (Jelinski e Wu 1996).</p>
+<p>Aqui nos concentramos na dimensão “análise”, e aprendemos como a escala espacial pode ser alterada e representada em modelos ecológicos.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="pacotes-e-dados" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Pacotes e dados<a href="cap01.html#pacotes-e-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Em geral é necessário baixar alguns pacotes para que possamos fazer as nossas análises. Neste caso precisamos os seguintes pacotes, que deve esta instalado antes:</p>
+<ul>
+<li><a href="https://www.tidyverse.org/">tidyverse</a>,</li>
+<li><a href="https://r-spatial.github.io/sf/">sf</a>,</li>
+<li><a href="https://rspatial.org/pkg/1-introduction.html">terra</a>,</li>
+<li><a href="https://r-spatial.github.io/mapview/">mapview</a>,</li>
+<li><a href="https://r-tmap.github.io/tmap-book/">tmap</a>.</li>
+</ul>
+<div id="pacotes" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Pacotes<a href="cap01.html#pacotes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>No R, carregar os pacotes necessarios com o codigo:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="cap01.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="cap01.html#cb9-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb9-3"><a href="cap01.html#cb9-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb9-4"><a href="cap01.html#cb9-4" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb9-5"><a href="cap01.html#cb9-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb9-6"><a href="cap01.html#cb9-6" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span></code></pre></div>
+<p>Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: <span style="     color: red !important;">Error in library(nomepacote) there is no package called nomepacote</span>. Neste caso, para instalá-los consulte o capitulos aqui <a href="https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html">Capitulo 4 instalação de pacotes</a> e aqui <a href="https://analises-ecologicas.com/cap4#pacotes-1">Capitulo 4 pacotes</a> .</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="dados" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Dados<a href="cap01.html#dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos olhar um exemplo do mundo real. Uma pequena amostra do Rio Araguari, perto de Porto Grande. O ponto central é de longitude: -51.406312 latitude: 0.726236. Para visualizar o ponto no Google Earth: <a href="https://earthengine.google.com/timelapse#v=0.72154,-51.41543,11.8,latLng&amp;t=2.24&amp;ps=25&amp;bt=19840101&amp;et=20201231&amp;startDwell=0&amp;endDwell=0" class="uri">https://earthengine.google.com/timelapse#v=0.72154,-51.41543,11.8,latLng&amp;t=2.24&amp;ps=25&amp;bt=19840101&amp;et=20201231&amp;startDwell=0&amp;endDwell=0</a> .</p>
+<p>Vammos trabalhar com os dados de <a href="https://mapbiomas.org/">MapBiomas</a>, que produz mapeamento anual da cobertura e uso da terra no Brasil desde 1985. Os dados de MapBiomas vem no formato de raster, que tem uma classificação da terra feito a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com algoritmos de aprendizagem de máquina (machine learning) através da plataforma Google Earth Engine, que oferece imensa capacidade de processamento na nuvem. Mais detalhes sobre a metodologia aqui: <a href="https://brasil.mapbiomas.org/visao-geral-da-metodologia/">Metodologia MapBiomas</a>.</p>
+<p>Para carregar um arquivo raster trabalhamos com o pacote <a href="https://CRAN.R-project.org/package=terra">terra</a>. O pacote tem varios funçoes para a análise e modelagem de dados geográficos. Nós podemos ler os dados de cobertura da terra no arquivo “.tif” com a função <code>rast</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cap01.html#cb10-1" tabindex="-1"></a><span class="co"># arquivo no pacote &quot;eprdados&quot;</span></span>
+<span id="cb10-2"><a href="cap01.html#cb10-2" tabindex="-1"></a>arquivo <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;raster/amostra_mapbiomas_2020.tif&quot;</span>, </span>
+<span id="cb10-3"><a href="cap01.html#cb10-3" tabindex="-1"></a>                       <span class="at">package =</span> <span class="st">&quot;eprdados&quot;</span>)</span>
+<span id="cb10-4"><a href="cap01.html#cb10-4" tabindex="-1"></a><span class="co"># carregar</span></span>
+<span id="cb10-5"><a href="cap01.html#cb10-5" tabindex="-1"></a>ramostra <span class="ot">&lt;-</span> <span class="fu">rast</span>(arquivo)</span></code></pre></div>
+<p>Plotar para verificar.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="cap01.html#cb11-1" tabindex="-1"></a><span class="fu">plot</span>(ramostra)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:plot-ramostra"></span>
+<img src="epr_files/figure-html/plot-ramostra-1.png" alt="Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande." width="384" />
+<p class="caption">
+Figura 1.1: Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande.
+</p>
+</div>
+<p>Podemos também verificar informações sobre o raster (metadados) - simplesmente rodar o nome do objeto:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cap01.html#cb12-1" tabindex="-1"></a>ramostra</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 8, 9, 1  (nrow, ncol, nlyr)
+## resolution  : 29.89281, 29.89281  (x, y)
+## extent      : 454659.8, 454928.9, 80160.06, 80399.2  (xmin, xmax, ymin, ymax)
+## coord. ref. : SIRGAS 2000 / UTM zone 22N (EPSG:31976) 
+## source      : amostra_mapbiomas_2020.tif 
+## name        : mapbiomas_2020 
+## min value   :              3 
+## max value   :             33</code></pre>
+<p>Isso nos mostra informações sobre os atributos da raster no objeto ramostra. As informações como escala espacial (resolução e extensão) e a sistema de coordenadas (SIRGAS 2000 / UTM zone 22N , <a href="https://epsg.io/31976">EPSG:31976</a>) são apresentados e representem os componentes conforme a a proxima figura.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:raster-components"></span>
+<img src="figures/raster_components.png" alt=" Componentes de uma raster e suas atrubutos no pacote terra." width="60%" height="60%" />
+<p class="caption">
+Figura 1.2:  Componentes de uma raster e suas atrubutos no pacote terra.
+</p>
+</div>
+<p>Além disso é possível obter informações específicas através de funções específicas.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="cap01.html#cb14-1" tabindex="-1"></a><span class="co"># Obter informações sobre escala espacial</span></span>
+<span id="cb14-2"><a href="cap01.html#cb14-2" tabindex="-1"></a><span class="co"># resolução, comprimento e largura do pixel em metros</span></span>
+<span id="cb14-3"><a href="cap01.html#cb14-3" tabindex="-1"></a><span class="fu">res</span>(ramostra)</span>
+<span id="cb14-4"><a href="cap01.html#cb14-4" tabindex="-1"></a><span class="co"># numero de colunas</span></span>
+<span id="cb14-5"><a href="cap01.html#cb14-5" tabindex="-1"></a><span class="fu">ncol</span>(ramostra)</span>
+<span id="cb14-6"><a href="cap01.html#cb14-6" tabindex="-1"></a><span class="co"># numero de linhas</span></span>
+<span id="cb14-7"><a href="cap01.html#cb14-7" tabindex="-1"></a><span class="fu">nrow</span>(ramostra)</span></code></pre></div>
+<div id="pergunta-1" class="section level4 hasAnchor" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> Pergunta 1<a href="cap01.html#pergunta-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Sobre o objeto ramostra. Com base nos resultados obtidos, qual o área do pixel em metros quadrados? Qual o área total da paisagem em hectares e quilometros quadrados?</span></p>
+<hr />
+<div style="page-break-after: always;"></div>
+<p>Olhando a mapa (Figura <a href="cap01.html#fig:plot-ramostra">1.1</a>), existem três classes com valores de 3, 12 e 33. O objetivo principal não é de fazer mapas, mas, a visualização dos dados é um passo importante para verificar e entender os padrões. Portanto, segue exemplo mostrando uma forma de visualizar o arquivo de raster como mapa.</p>
+<p>Para entender o que os valores (3, 12, 33) representam no mundo real precisamos de uma referência (legenda). Para a MapBiomas Coleção 6, arquivo: <a href="https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Cod_Class_legenda_Col6_MapBiomas_BR.pdf">Cod_Class_legenda_Col6_MapBiomas_BR.pdf</a>. Existe também arquivos para fazer as mapas com cores corretas em <a href="https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/MapBiomas_Col6_classes_colors.qml">QGIS</a> ou <a href="https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Legenda_Col6_MapBiomas.lyr">ArcGIS</a>.</p>
+<p>Olhando a legenda (<a href="https://mapbiomas-br-site.s3.amazonaws.com/downloads/Colecction%206/Cod_Class_legenda_Col6_MapBiomas_BR.pdf">Cod_Class_legenda_Col6_MapBiomas_BR.pdf</a>), sabemos que “3”, “12” e “33” representem cobertura de “Formação Florestal”, “Formação Campestre”, e “Rio, Lago e Oceano”. Então podemos fazer um mapa mostrando tais informações.</p>
+<p>Daqui pra frente vamos aproveitar uma forma mais elegante de apresentar mapas e gráficos. Isso seria atraves funçoes em 2 pacotes:</p>
+<ul>
+<li><p><a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">tmap</a> é utilizado para gerar mapas temáticos</p></li>
+<li><p><a href="https://ggplot2.tidyverse.org/">ggplot2</a>, que faz parte do “tidyverse”, e é utilizado para produção de gráficos, e pode representar dados geoespacias.</p></li>
+</ul>
+<p>Exemplos :
+<a href="https://www.youtube.com/watch?v=OYON-VzPFmw">Pacotes ggplot2 e tmap</a></p>
+<p>Mais exemplos sobre o uso de <a href="https://ggplot2.tidyverse.org/">ggplot2</a> no <a href="http://www.cookbook-r.com/Graphs/">R cookbook</a> : <a href="http://www.cookbook-r.com/Graphs/" class="uri">http://www.cookbook-r.com/Graphs/</a> .</p>
+<p>E com mais exemplos de mapas e dados espaciais no R: <a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html">sf e ggplot2</a> : <a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html" class="uri">https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html</a></p>
+<p><a href="https://geocompr.robinlovelace.net/adv-map.html">Capitulo 9</a> no livro <a href="https://geocompr.robinlovelace.net/">Geocomputation with R</a> : <a href="https://geocompr.robinlovelace.net/adv-map.html" class="uri">https://geocompr.robinlovelace.net/adv-map.html</a></p>
+<p>Primeiramente precisamos incluir as informações relevantes da legenda. Ou seja, incluir os nomes para cada valor de classe.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="cap01.html#cb15-1" tabindex="-1"></a><span class="co"># legenda e cores na sequencia correta</span></span>
+<span id="cb15-2"><a href="cap01.html#cb15-2" tabindex="-1"></a>classe_valor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">33</span>)</span>
+<span id="cb15-3"><a href="cap01.html#cb15-3" tabindex="-1"></a>classe_legenda <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Formação Florestal&quot;</span>, </span>
+<span id="cb15-4"><a href="cap01.html#cb15-4" tabindex="-1"></a>                   <span class="st">&quot;Formação Campestre&quot;</span>, <span class="st">&quot;Rio, Lago e Oceano&quot;</span>)</span>
+<span id="cb15-5"><a href="cap01.html#cb15-5" tabindex="-1"></a>classe_cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#006400&quot;</span>, <span class="st">&quot;#B8AF4F&quot;</span>, <span class="st">&quot;#0000FF&quot;</span>) </span></code></pre></div>
+<p>Agora podemos fazer o mapa com as classes e os cores seguindo o padrão recomendado pela MapBiomas para Coleção 6.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="cap01.html#cb16-1" tabindex="-1"></a><span class="fu">tm_shape</span>(ramostra) <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="cap01.html#cb16-2" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb16-3"><a href="cap01.html#cb16-3" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;3&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>, <span class="st">&quot;12&quot;</span> <span class="ot">=</span><span class="st">&quot;#B8AF4F&quot;</span>, </span>
+<span id="cb16-4"><a href="cap01.html#cb16-4" tabindex="-1"></a>                        <span class="st">&quot;33&quot;</span><span class="ot">=</span> <span class="st">&quot;#0000FF&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb16-5"><a href="cap01.html#cb16-5" tabindex="-1"></a>  <span class="fu">tm_grid</span>(<span class="at">labels.format =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="cap01.html#cb16-6" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> classe_legenda,</span>
+<span id="cb16-7"><a href="cap01.html#cb16-7" tabindex="-1"></a>    <span class="at">col =</span> classe_cores, <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="cap01.html#cb16-8" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="cap01.html#cb16-9" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb16-10"><a href="cap01.html#cb16-10" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb16-11"><a href="cap01.html#cb16-11" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:mapa-mapbiomas-cores"></span>
+<img src="epr_files/figure-html/mapa-mapbiomas-cores-1.png" alt="Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande." width="672" />
+<p class="caption">
+Figura 1.3: Paisagem com valores e classes de cobertura da terra. Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande.
+</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div id="alterando-a-resolução" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Alterando a resolução<a href="cap01.html#alterando-a-resolução" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Alterando a resolução serve como exemplo mostrando como os passos/etapas/cálculos mude dependendo o tipo de dados. Ou seja, é preciso adotar metodologias diferentes para dados categóricos (por exemplo classificação de cobertura da terra) e dados contínuos (por exemplo distância até rio).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:raster-res"></span>
+<img src="figures/pixel_size.png" alt=" Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1." width="75%" height="75%" />
+<p class="caption">
+Figura 1.4:  Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1.
+</p>
+</div>
+<p>Alterando a resolução às vezes seria necessário, por exemplo, quando preciso padronizar dados/imagens oriundos de fontes diferentes com resoluções diferentes e/ou para reduzir a complexidade da modelagem. Lembrando - em cada nível de resolução, são observáveis processos e padrões que não podem necessariamente ser inferidos daqueles abaixo ou acima.</p>
+<p>A principal razão para tornar o mapa mais grosseiro é traduzi-lo para uma resolução de dados coletados em campo que estamos usando para fazer inferências. Por exemplo, se os dados foram coletados ao longo de dois transectos de 200 x 100 m dentro de manchas florestais. Se desejarmos fazer previsões das relações espécie-ambiente, podemos querer que o grão do nosso mapa reflita o grão da amostragem. Consequentemente, gostaríamos que o mapa tivesse um grão aproximado de 200 x 200 m.</p>
+<p>Ao escolher um tamanho de pixel apropriado, equilibre a resolução espacial desejada – com base na unidade mínima de mapeamento das variaveis que você precisa analisar – com requisitos práticos para exibição rápida, tempo de processamento e armazenamento. Essencialmente, num SIG, os resultados são tão precisos quanto o conjunto de dados menos preciso. Se você estiver usando um conjunto de dados classificados derivado de imagens de satélite com resolução de 30 metros, o uso de um modelo digital de elevação ou outros dados auxiliares com resolução mais alta, como 10 metros, pode ser desnecessário. Quanto mais homogênea for uma área para variáveis críticas, como topografia e cobertura, maior poderá ser o tamanho da célula sem afetar a precisão.</p>
+<p>Agora iremos degradar a resolução desses dados, ou seja, iremos alterar o tamanho dos pixels. Como exemplo, iremos juntar (agregar) 3 pixels em um único pixel. Como você acha que podemos fazer isso? Quais valores esse pixel que vai substituir os 3 originais deve ter? Existem diversas maneiras de se fazer isso, como por exemplo através a média ou valor modal (valor mais comum). O valor mais comum da área, é particularmente adequado quando temos um mapa categórico, como por exemplo a classificação do MapBiomas. Segue exemplo de codigo para agregar com a média e o valor mais frequente (modal).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap01.html#cb17-1" tabindex="-1"></a><span class="co"># Média</span></span>
+<span id="cb17-2"><a href="cap01.html#cb17-2" tabindex="-1"></a>ramostra_media <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(ramostra, <span class="at">fact=</span><span class="dv">3</span>, <span class="at">fun=</span><span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb17-3"><a href="cap01.html#cb17-3" tabindex="-1"></a>ramostra_media <span class="ot">&lt;-</span> <span class="fu">resample</span>(ramostra, ramostra_media)</span>
+<span id="cb17-4"><a href="cap01.html#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="cap01.html#cb17-5" tabindex="-1"></a><span class="co"># Modal</span></span>
+<span id="cb17-6"><a href="cap01.html#cb17-6" tabindex="-1"></a>ramostra_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(ramostra, <span class="at">fact=</span><span class="dv">3</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb17-7"><a href="cap01.html#cb17-7" tabindex="-1"></a>ramostra_modal <span class="ot">&lt;-</span> <span class="fu">resample</span>(ramostra, ramostra_modal, <span class="at">method=</span><span class="st">&quot;near&quot;</span>)</span></code></pre></div>
+<div id="pergunta-2" class="section level4 hasAnchor" number="1.4.0.1">
+<h4><span class="header-section-number">1.4.0.1</span> Pergunta 2<a href="cap01.html#pergunta-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Utilizando as funções disponíveis no pacote tmap, crie mapas temáticos dos objetos ramostra_media e ramostra_modal. Inclua cópias do seu código e mapas na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e mapas.</span></p>
+<hr />
+<div style="page-break-after: always;"></div>
+<p>Visualizar os resultados apresentados em Figura 1.4. Os valores calculados pela média não fazem sentido para uma classificação categórica.
+Os valores calculados pela modal são consistentes com o original e fazem sentido.</p>
+<div style="page-break-after: always;"></div>
+<p>Em cada nível de resolução, são observáveis processos e padrões que não podem necessariamente ser inferidos daqueles abaixo ou acima. Aqui por exemplo, mudamos a proporção de cobertura florestal em nossa pequeno paisagem quando juntamos 3 pixels em um único: a proporção de floresta moudou de 4% (3/72) para 11% (1/9). Ou seja, com cada passo mudamos a representção do mundo.</p>
+<div class="figure"><span style="display:block;" id="fig:fig-mud-agg"></span>
+<img src="epr_files/figure-html/fig-mud-agg-1.png" alt="Mudanças causadas pela agregação." width="2700" />
+<p class="caption">
+Figura 1.5: Mudanças causadas pela agregação.
+</p>
+</div>
+</div>
+<div id="pergunta-3" class="section level4 hasAnchor" number="1.4.0.2">
+<h4><span class="header-section-number">1.4.0.2</span> Pergunta 3<a href="cap01.html#pergunta-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Confira o codigo e os resultados obtidos anteriormente, quando mudamos a resolução da ratser ramostra (por exemplo figura 1.4). Explique o que aconteceu. Como e porque moudou os valores em cada caso (média e modal)?</span></p>
+<hr />
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="escala-espacial-e-desenho-amostral" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Escala espacial e desenho amostral<a href="cap01.html#escala-espacial-e-desenho-amostral" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure"><span style="display:block;" id="fig:buffer-figure"></span>
+<img src="epr_files/figure-html/buffer-figure-1.png" alt="A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km." width="60%" height="60%" />
+<p class="caption">
+Figura 1.6: A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km.
+</p>
+</div>
+<p>Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resoloção), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.</p>
+<p>Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (zona tampão - <a href="https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html">Buffers</a>) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.</p>
+<p>O objetivo é criar buffers circulares de diferentes extensões ao redor dos sitios de amostragem (pontos, pixels, manchas, transetos lineares etc). Aqui, vamos entender a escala em que a cobertura de floresta muda ao redor dos rios. Para isso, quantificamos a quantidade de floresta que ocorre em várias distâncias em pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari. Para ilustrar esta abordagem geral, usamos o banco de dados MapBiomas Coleção 6 de 2020, e vincule esses dados de cobertura da terra aos pontos de amostragem em rios.</p>
+<div id="obter-e-carregar-dados-vectores" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Obter e carregar dados (vectores)<a href="cap01.html#obter-e-carregar-dados-vectores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Antes de quantificar a quantidade de floresta, precisamos carregar os dados de rios e pontos de amostragem.
+O formato de vector é diferente de “tif” (raster), portanto o processo de importação é diferente.
+Aqui, nós só precisamos de duas dessas camadas, ambos do pacote ‘eprdados’: “rio_linhacentral” e “rio_pontos”.
+A primeira camada de dados contém o eixo central de 260 km de rios a montante da Barragem Cachoeira Caldeirão. Os dados foram obtidos a partir de registros de trajetória GPS durante levantamentos de barco. Os rios foram divididos em 52 seções, cada uma com aproximadamente 5 km de extensão. A segunda camada de dados, “rio_pontos”, contém 52 pontos espaçados regularmente ao longo dos rios. Cada ponto está localizado a aproximadamente 5 km de distância do ponto anterior.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="visualizar-os-arquivos-camadas-vector" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Visualizar os arquivos (camadas vector)<a href="cap01.html#visualizar-os-arquivos-camadas-vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Visualizar para verificar. Mapa com ambos a linha central e pontos de rios em trechos de 5km.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap01.html#cb18-1" tabindex="-1"></a><span class="fu">ggplot</span>(rio_linhacentral) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="cap01.html#cb18-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">color=</span>rio)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="cap01.html#cb18-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rio_pontos, <span class="at">shape=</span><span class="dv">21</span>, <span class="fu">aes</span>(<span class="at">fill=</span>zone))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:map-pontod-rio"></span>
+<img src="epr_files/figure-html/map-pontod-rio-1.png" alt="Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari." width="576" />
+<p class="caption">
+Figura 1.7: Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari.
+</p>
+</div>
+<p><br> Mapa interativo (funcione somente com internet) Mostrando agora com fundo de mapas “base” (OpenStreetMap/ESRI etc)</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap01.html#cb19-1" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb19-2"><a href="cap01.html#cb19-2" tabindex="-1"></a><span class="fu">mapview</span>(rio_linhacentral, <span class="at">zcol =</span> <span class="st">&quot;rio&quot;</span>) </span></code></pre></div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-a7b2b7eac465940f9533" style="width:384px;height:384px;"></div>
+<script type="application/json" data-for="htmlwidget-a7b2b7eac465940f9533">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["line",430]},{"method":"addPolylines","args":[[[[{"lng":[-51.29689788374527,-51.29269877964548,-51.29660633568778,-51.29771503589182,-51.30159570985675,-51.30840707966158],"lat":[0.8523729329966458,0.8419961434075621,0.8350755223606143,0.8257461274731941,0.8198042222904178,0.8141359287685322]}]],[[{"lng":[-51.30868845979305,-51.31268018461461,-51.31661066374342,-51.33025834554651,-51.33399992874218,-51.33543767152392,-51.33915118041061,-51.33968676217586],"lat":[0.8135597500271222,0.8081893605357602,0.7981907145296815,0.7959191200108995,0.7937806121925916,0.7894792737115793,0.787094191905776,0.7862727557094545]}]],[[{"lng":[-51.33983139990235,-51.34728110849404,-51.34832234757418,-51.35553251499311,-51.36744443968427,-51.36901519651511,-51.36445534216683],"lat":[0.786050920899806,0.7782146635508167,0.778255929634186,0.7757287908170785,0.7717440315370729,0.7671971893359402,0.7606216954913613]}]],[[{"lng":[-51.36414404984527,-51.36633178032107,-51.37766662252961,-51.38458876948692,-51.39091796060515,-51.39386129164611],"lat":[0.7596342666660059,0.7468695785009414,0.738750453454351,0.7375010507452118,0.7348888135383138,0.7312437266221149]}]],[[{"lng":[-51.39414500783408,-51.40680862832475,-51.40728460939967,-51.41799424132424,-51.42937810562952,-51.43424174139822],"lat":[0.7311598255911536,0.7236530284844345,0.7228081290662625,0.7173813841972463,0.7148974520506656,0.7107550537937921]}]],[[{"lng":[-51.43498464841226,-51.44498312568591,-51.45646864771107,-51.45688037772455,-51.4585212473764,-51.45632502535505],"lat":[0.7105800430146838,0.709748585452336,0.7181697742994139,0.7191054914134624,0.7354392602290635,0.7404052091487879]}]],[[{"lng":[-51.45632573294158,-51.46189611391004,-51.47396972759915,-51.48382278687671,-51.48472320061803,-51.50063024283424,-51.50220540647998],"lat":[0.740582570608459,0.7425801974169173,0.7402891535726145,0.7430439683692365,0.742939215531405,0.7419048258379073,0.7419114293686138]}]],[[{"lng":[-51.50236444286136,-51.51566786584932,-51.53011682468349,-51.54014139102856,-51.54326819901566],"lat":[0.7418820242371279,0.7412176752318936,0.7363988528733697,0.7245893042364505,0.7239715734203797]}]],[[{"lng":[-51.54347470943829,-51.55278755096415,-51.55970083200336,-51.5677637962033,-51.57258195209346,-51.57514205243821,-51.580395697685,-51.58105896488868],"lat":[0.7239442778610589,0.7266086492375206,0.7369720016793236,0.7379105831703211,0.7333586789817101,0.730211752078489,0.7301336900831649,0.730753515302216]}]],[[{"lng":[-51.58107055102129,-51.58471314483393,-51.57919430665446,-51.57935605379875,-51.57957315771,-51.58161275512686],"lat":[0.730765864632024,0.7451562261958179,0.7694137099938065,0.7703306644222594,0.7713195767876014,0.7776399511897536]}]],[[{"lng":[-51.58206423677817,-51.58921652734814,-51.59830682741034,-51.606873884435,-51.60747048416751,-51.6103787292181],"lat":[0.7783900554805118,0.7820231711287893,0.7832297940176232,0.7901214188852692,0.7995131635294749,0.807765639214412]}]],[[{"lng":[-51.61014227583132,-51.60895388079315,-51.60997664992159,-51.6065145049074,-51.61401110534337,-51.61491398901028,-51.61772100552468,-51.61783922585053,-51.62021593871146],"lat":[0.8086936739552856,0.8157012689034797,0.8213021119859008,0.8315810640681558,0.8344923960631392,0.8344025038878999,0.8381805623970426,0.8392044309811064,0.846659799058379]}]],[[{"lng":[-51.62033715549195,-51.62698709531984,-51.62424014798459,-51.61297832879658,-51.60929339956983],"lat":[0.8468606199631321,0.866832569692763,0.8776045100129608,0.8818861218166799,0.8823211913357708]}]],[[{"lng":[-51.60913162994436,-51.60442809893514,-51.60311097167016,-51.6031526781379,-51.59441911701283,-51.59426579790294,-51.59615342476808],"lat":[0.8823632834564032,0.887224926432284,0.8959855507818925,0.9102365806034238,0.9167654233709622,0.9177087908369211,0.9231297372674599]}]],[[{"lng":[-51.59741497332547,-51.61556786524287,-51.61754884757131,-51.6292519624019,-51.63012594327132,-51.6333132051714],"lat":[0.9244619940533328,0.9336152212286331,0.9403388159679886,0.9487959973259567,0.9490729292168985,0.9504306210941507]}]],[[{"lng":[-51.63338041601245,-51.63996537941463,-51.64628868063892,-51.65625591998364,-51.66090911404506,-51.66430412809532,-51.66737701212813],"lat":[0.9504906164823037,0.9545018097259438,0.9539015345308611,0.9609355446373171,0.9587188959600637,0.9616537474629704,0.971693381893748]}]],[[{"lng":[-51.66761780678652,-51.67136742393785,-51.66874311616426,-51.66604396803962,-51.6676239765775,-51.67306698574061,-51.67294606918617,-51.67524102961751],"lat":[0.9721276499125501,0.9803842612643684,0.9818836012317704,0.983688591104248,0.989605931013765,1.004451614618814,1.005350473811656,1.011359923265489]}]],[[{"lng":[-51.67651990099679,-51.68738123633222,-51.68996874667423,-51.69000851131433,-51.69088176652733,-51.69339337961501,-51.69527803594222],"lat":[1.012107751184268,1.010954384953697,1.003029880481203,0.9909640085385266,0.9903172036038652,0.9804688921727583,0.9784523211516247]}]],[[{"lng":[-51.695965799177,-51.70237049858307,-51.70598612569542,-51.70470919452318,-51.70912229900134,-51.7127350475161,-51.71315697425508,-51.71641834992595,-51.72661516964119],"lat":[0.9781447548332357,0.9763111945875651,0.9816990679964961,0.9869931226945224,0.9902474563653861,0.9912664116177384,0.9920646604643751,0.9944719139292924,0.9870864960043407]}]],[[{"lng":[-51.72687083465311,-51.73922219159756,-51.74554928761615,-51.75196352691417,-51.75509947670005,-51.75820084938336,-51.75651062448629,-51.75394563657578],"lat":[0.987000712883671,0.9803936710731497,0.977308421224234,0.9761636994838913,0.9717317524106691,0.9737886563280115,0.9794359793140782,0.9815914110830625]}]],[[{"lng":[-51.75333387739914,-51.7532889204109,-51.75831527488265,-51.76580193746244,-51.77641183996204,-51.78000222403252,-51.7846395097006,-51.78810046957273],"lat":[0.9822766153214892,0.9871640153309444,0.9896678280565163,0.9875162950159897,0.99670984290516,0.9966774410116706,0.9938311300452198,0.9949319419336816]}]],[[{"lng":[-51.78858128926653,-51.79645401578376,-51.79698980639417,-51.79831001535013,-51.79870412160164,-51.80110501667621,-51.81299005839947,-51.81497021074873],"lat":[0.9948691839943175,0.9955723689860452,0.9894373068385188,0.9809444524666324,0.9800476272136882,0.9744687224787953,0.9734447608264091,0.9769226266372034]}]],[[{"lng":[-51.81483158663604,-51.81282013873309,-51.81288504803766,-51.81652330866176,-51.81536389699988,-51.82021357448902,-51.82776008021589,-51.83114268202592],"lat":[0.9773811079883836,0.9830272429882579,0.9839471919245659,0.9933644106431279,1.001907082154717,1.005353343497371,1.007233963875176,1.01299101783647]}]],[[{"lng":[-51.59580831625769,-51.59200119391864,-51.59644498072844,-51.5947719338202,-51.59644899284087,-51.59735046313929,-51.59834481247368,-51.60112156654587,-51.60069816065571,-51.5965346820604,-51.59765239465175],"lat":[0.9240906611276356,0.9300014350322078,0.9357530909755867,0.9480213994081573,0.9502213445866887,0.9503125070196428,0.9503774486409458,0.9512955632613976,0.9536553430604076,0.9556388859634115,0.9593836622671504]}]],[[{"lng":[-51.59826785031856,-51.60648632243142,-51.60717366335457,-51.60784002254291,-51.6083758813318,-51.60486286774049,-51.60517442388864,-51.60180044875096,-51.59740397203136,-51.59638151628238,-51.59310591550246,-51.58666970351486],"lat":[0.9596121667184514,0.9600587122564852,0.9606906248555479,0.9614110133078074,0.9647243945796454,0.9701612527888739,0.9740905989022937,0.9752296890665658,0.9724431067623344,0.9724501818895953,0.9726171251575695,0.9761315068251508]}]],[[{"lng":[-51.58664503133828,-51.58468965088402,-51.59052687181862,-51.59087311935288,-51.59235553806658,-51.59312640872584,-51.59686419092822,-51.59914825828219,-51.60039625808803,-51.59802522080237,-51.59751636332624],"lat":[0.9761578024975044,0.9806204507000671,0.983788577432482,0.9846885341949748,0.991352816738623,0.9918317732845602,0.9923011948115734,0.9903245010262631,0.9942114067725106,1.004870098698651,1.007560084467412]}]],[[{"lng":[-51.59744837536371,-51.59414572831306,-51.59386288628753,-51.58788440574554,-51.58732356958089,-51.58575251275821,-51.58360771206709,-51.58255746854496,-51.58348768560417,-51.57586054670011],"lat":[1.007652118337222,1.014497337756227,1.018307274337011,1.016465442144368,1.017193842603635,1.023153662830992,1.027527786759694,1.031244059500298,1.033653216806941,1.035823380739363]}]],[[{"lng":[-51.57465841572607,-51.57037259750906,-51.56890689532705,-51.56816716426201,-51.56142942203801,-51.55969652453327,-51.54918861256848,-51.54578177365397,-51.54013924445109],"lat":[1.035451834422122,1.034304815922025,1.040733323496312,1.041316442166245,1.046062186702108,1.048634993751096,1.047253784149931,1.049358658176395,1.048229613258427]}]],[[{"lng":[-51.53882696770975,-51.53129378954496,-51.52946526561371,-51.52814851575143,-51.5284297714477,-51.52880939585317,-51.52051076256326,-51.52342960173175,-51.52487845299521,-51.52145632904654],"lat":[1.048466930954158,1.04344218463879,1.041447440814429,1.043419382108004,1.044362202687928,1.048817828539369,1.050039189298561,1.057342981554119,1.061019295945912,1.063186359335455]}]],[[{"lng":[-51.52075233501643,-51.51797225240283,-51.51302614711179,-51.51438652893528,-51.50785858477269,-51.50610196248428,-51.50669737431421,-51.50471480017949,-51.50663888860198,-51.50509765898516],"lat":[1.063739096427406,1.065942899452805,1.068057064650638,1.071638101357367,1.067542971969213,1.065662766290372,1.072821098910893,1.075412183814875,1.078953769329223,1.084594202262827]}]],[[{"lng":[-51.50498457800562,-51.50077223241183,-51.50065951986933,-51.49002320677475,-51.48775074732336,-51.48171401390355,-51.48130101978552,-51.47227157432637,-51.47164565801713],"lat":[1.08471820165704,1.084881440926551,1.088204956658718,1.085638120497616,1.085404409919903,1.089365777146162,1.090215396525356,1.103145962250205,1.103800973151856]}]],[[{"lng":[-51.47099971454808,-51.46460032940245,-51.46403848428598,-51.46351869447602,-51.46093838038734,-51.45674500001152,-51.45355817567878,-51.45252856428769,-51.44933568592525,-51.45383029321284],"lat":[1.104669457683418,1.10692349292406,1.10766742616539,1.108516734381238,1.11107715478774,1.107551965846221,1.121429622826035,1.124290788935899,1.126263070395191,1.129398795740436]}]],[[{"lng":[-51.45393048991761,-51.45270431250499,-51.44847432021281,-51.44732650797175,-51.44564416471653,-51.44865149883414,-51.44457644137051,-51.44505618226669],"lat":[1.129640840821722,1.132801542406935,1.134606448700199,1.140640766151595,1.144038720006328,1.150714859470621,1.162850860467099,1.171439070888603]}]],[[{"lng":[-51.44505806460923,-51.44475104462051,-51.43853423101544,-51.43523014598829,-51.4362070630523,-51.43818027019216,-51.44053556488176],"lat":[1.171442544371836,1.182801216299814,1.184839680055848,1.187855145266638,1.205522341787652,1.206724522617663,1.208299665195778]}]],[[{"lng":[-51.4406683666761,-51.44177734078244,-51.44103228320495,-51.44146038625178,-51.44522784261002,-51.44393241062276,-51.45327745704433,-51.44999714654445],"lat":[1.208683956886984,1.212120047088747,1.216410925973729,1.226201687474722,1.231237399024966,1.235481222834119,1.241928189032885,1.246265801073573]}]],[[{"lng":[-51.44865718407282,-51.44213922961853,-51.44102979828899,-51.4366575222368,-51.43394874293515,-51.43021603464552,-51.43006061885336,-51.4253292823697,-51.41915404377671],"lat":[1.246811023239788,1.247742317458912,1.254341562997414,1.254208759697504,1.253570818121529,1.260321335362108,1.265302472105528,1.264456287804955,1.266293090887322]}]],[[{"lng":[-51.41890445782955,-51.41357162759525,-51.40799055655407,-51.39998302682061,-51.40593584284569,-51.40139952179495,-51.40028318777018],"lat":[1.266324491617832,1.269336077807504,1.268611482704999,1.276415636348594,1.284386392136005,1.29211800855961,1.294842437361351]}]],[[{"lng":[-51.83180609185024,-51.83709228970161,-51.8370623971169,-51.83709870745943,-51.83479035789266,-51.83988040686543,-51.8433795046227,-51.84998876551871,-51.8523893855297],"lat":[1.013701606059393,1.022957192483188,1.023860652354559,1.024771221804566,1.03136427154278,1.038764746741744,1.038125969011582,1.030264189194926,1.028995961568949]}]],[[{"lng":[-51.85263738707422,-51.8572287150761,-51.86085600858861,-51.86575888036769,-51.8727238883974,-51.88397977767278,-51.88433300782465],"lat":[1.028797780511847,1.026521235527055,1.036163965466564,1.039006534310019,1.034912440292093,1.038584516962114,1.042182496079167]}]],[[{"lng":[-51.88407013357612,-51.88126031910053,-51.88398739697539,-51.88860285041747,-51.89190992471072,-51.8915961272138,-51.89364064331251,-51.90244273795416,-51.9061051122284],"lat":[1.042643930666117,1.053110575581881,1.054994455671975,1.054197610983502,1.047132424713849,1.046150722886281,1.043357359023929,1.046239109214726,1.049663996007302]}]],[[{"lng":[-51.90677744986694,-51.91104196606953,-51.90784901547858,-51.91585639285248,-51.92336836097721,-51.92430803288547,-51.92179118241783],"lat":[1.05054714337032,1.058728113048039,1.06775038031833,1.069554091288282,1.065339979404756,1.059181499594739,1.057602571226406]}]],[[{"lng":[-51.92140658433009,-51.91759869573492,-51.91945010797338,-51.92511883131272,-51.92903138444945,-51.93653628653858,-51.94148576977344,-51.94743295658359],"lat":[1.057477295197899,1.054584242639816,1.049740056583582,1.050027224583244,1.047730261325204,1.040508340292453,1.043197540489207,1.048173091604848]}]],[[{"lng":[-51.94825909135824,-51.95108894648969,-51.98315867708672,-51.98532804363661],"lat":[1.04888060996068,1.058679390904028,1.054576484602327,1.05603340165828]}]],[[{"lng":[-51.98570647823302,-51.9826608251258,-51.97984611906347,-51.97999482447492,-51.9831178672157,-51.97984940761238,-51.97794218656992,-51.97860608253841,-51.97848017150972],"lat":[1.057611372477905,1.06278978573131,1.067768717948772,1.068761034912436,1.07931120882164,1.088581916348574,1.092553781085302,1.09846250787463,1.099358934039716]}]],[[{"lng":[-51.97836788725906,-51.97947984398834,-51.98357816912004,-51.98315932738497,-51.97907527808475,-51.97912593859979,-51.98285842820771,-51.98374468559562,-51.99029362112792],"lat":[1.100223694620508,1.110958276192197,1.116482478412014,1.121502570263789,1.128665883677254,1.129577299445127,1.133489282579101,1.133719255604263,1.135652153031753]}]],[[{"lng":[-51.99072654537697,-51.99414434677011,-51.99374072560691,-51.97984596330109,-51.98132960248999,-51.99327710690756],"lat":[1.1357486309091,1.138891292316127,1.14745385216315,1.156292942970023,1.159232652741479,1.160251825389413]}]],[[{"lng":[-51.99373784646988,-51.99524705347635,-51.98853448825422,-51.98850902429875,-51.99406177502478,-51.99506310955222,-52.00650188668277,-52.00891502789987,-52.00839035106485],"lat":[1.160663495267723,1.166237543030143,1.172630434099986,1.173641820021217,1.177413852108297,1.177729541924018,1.179588237923456,1.185775739619188,1.188136706654963]}]],[[{"lng":[-52.00808604389931,-52.00418630473017,-52.00157575073874,-51.98425850956376,-51.9840442067536],"lat":[1.189124713631701,1.206167410634071,1.212064091836106,1.223890525111983,1.224774595295867]}]],[[{"lng":[-51.98400382276503,-51.98563944507305,-51.98801478084174,-51.99266814156876,-51.99873073265785,-51.99923916894532,-51.9983710504731,-51.99725668511206],"lat":[1.225024445162093,1.229357963816629,1.230731127164405,1.227757629112785,1.23078352163592,1.245562757149026,1.253283554973818,1.255952231462421]}]],[[{"lng":[-51.99727551586811,-52.00036241198679,-52.00342369704101,-52.00036469880637,-51.9980996302136],"lat":[1.256268115617118,1.263954164314207,1.266892508373853,1.279933915547218,1.28162826951132]}],[{"lng":[-51.9980996302136,-51.99671395181215],"lat":[1.28162826951132,1.282223004417722]}],[{"lng":[-51.99671395181215,-51.9980996302136],"lat":[1.282223004417722,1.28162826951132]}],[{"lng":[-51.99671395181215,-51.98655111032048],"lat":[1.282223004417722,1.286071026509103]}]],[[{"lng":[-51.98641395232706,-51.98471138362482,-51.98282573597557,-51.9821656176811,-51.98183156831855,-51.98566937490055,-51.99873299066812],"lat":[1.286238445351348,1.295557647827613,1.302365493111731,1.307497802949828,1.311830448667762,1.314900502491349,1.320766455357515]}]],[[{"lng":[-51.99928233665901,-52.00937675879351,-52.01017409999928,-52.01440359546423,-52.00837408032841,-52.01042765149295,-52.00927353908497],"lat":[1.320890575629281,1.320482444487915,1.320971907316049,1.326922633510182,1.339130435638145,1.345155494054293,1.351967477720493]}]]],null,"rio_linhacentral - rio",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"line","stroke":true,"color":["#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055"],"weight":2,"opacity":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9],"fill":false,"fillColor":["#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#FDE333","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055","#4B0055"],"fillOpacity":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"smoothFactor":1,"noClip":false},["<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 1&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>2&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 2&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>2&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>3&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 3&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>3&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>4&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 4&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>4&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>5&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 5&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>5&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>6&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 6&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>6&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>7&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 7&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>7&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>8&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 8&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>8&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>barragem-Amapari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5336&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>9&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td> 9&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>9&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>10&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>10&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>10&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>11&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>11&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>11&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>1&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>12&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>12&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>12&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>13&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>13&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>13&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>14&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>14&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>14&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Amapari-base&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5397&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>15&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>15&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>15&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>16&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>16&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>16&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>17&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>17&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>17&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>18&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>18&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>18&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>19&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>19&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>19&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>20&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>20&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>20&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>21&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>21&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>21&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>22&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>22&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>22&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>23&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>23&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>23&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Araguari&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5313&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>24&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>24&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>39&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>25&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>25&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>40&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>26&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>26&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>41&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>27&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>27&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>42&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>28&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>28&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>43&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>29&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>29&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>44&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>base-Falsino&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5264&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>30&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>30&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>45&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>31&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>31&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>46&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>32&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>32&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>47&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>33&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>33&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>48&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>34&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>34&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>49&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>35&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>35&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>50&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>36&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>36&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>51&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>37&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>37&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>52&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Espingada-Cachoeira Grande&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Falsino&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5338&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>38&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>38&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>24&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>39&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>39&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>25&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>40&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>40&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>26&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>41&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>41&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>27&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>42&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>42&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>28&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>43&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>43&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>29&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>44&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>44&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>30&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>45&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>45&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>31&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>46&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>46&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>32&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>47&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>47&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>33&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>48&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>48&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>34&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>49&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>49&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>35&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>50&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>50&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>36&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>51&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>51&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>37&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>52&emsp;<\/td><\/tr><tr><td>1<\/td><th>aid&emsp;<\/th><td>52&emsp;<\/td><\/tr><tr><td>2<\/td><th>subz_id&emsp;<\/th><td>38&emsp;<\/td><\/tr><tr><td>3<\/td><th>zone&emsp;<\/th><td>Sta Rosa-Mutum&emsp;<\/td><\/tr><tr><td>4<\/td><th>rio&emsp;<\/th><td>Araguari&emsp;<\/td><\/tr><tr><td>5<\/td><th>secl_r&emsp;<\/th><td>5242&emsp;<\/td><\/tr><tr><td>6<\/td><th>impact&emsp;<\/th><td>0&emsp;<\/td><\/tr><tr><td>7<\/td><th>geom&emsp;<\/th><td>sfc_MULTILINESTRING&emsp;<\/td><\/tr><\/table><\/div>"],{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},["Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Falsino","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari","Araguari"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":3,"opacity":1,"fill":false,"fillOpacity":0,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[-52.01440359546423,0.709748585452336,-51.29269877964548,1.351967477720493,true,"rio_linhacentral - rio","Zoom to rio_linhacentral - rio","<strong> rio_linhacentral - rio <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"rio_linhacentral - rio",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#4B0055","#FDE333"],"labels":["Araguari","Falsino"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"rio_linhacentral - rio","extra":null,"layerId":null,"className":"info legend","group":"rio_linhacentral - rio"}]}],"limits":{"lat":[0.709748585452336,1.351967477720493],"lng":[-52.01440359546423,-51.29269877964548]},"fitBounds":[0.709748585452336,-52.01440359546423,1.351967477720493,-51.29269877964548,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+<p><br></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="obter-e-carregar-dados-raster" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Obter e carregar dados (raster)<a href="cap01.html#obter-e-carregar-dados-raster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mais uma vez vamos aproveitar os dados de MapBiomas. Agora um arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato “.tif”, tamanho 1.3 MB).O código abaixo vai carregar os dados e criar o objeto “mapbiomas_2020”:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap01.html#cb20-1" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;raster/utm_cover_AP_rio_2020.tif&quot;</span>, </span>
+<span id="cb20-2"><a href="cap01.html#cb20-2" tabindex="-1"></a>                       <span class="at">package =</span> <span class="st">&quot;eprdados&quot;</span>)</span>
+<span id="cb20-3"><a href="cap01.html#cb20-3" tabindex="-1"></a><span class="co"># carregar</span></span>
+<span id="cb20-4"><a href="cap01.html#cb20-4" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
+</div>
+<div id="visualizar-os-arquivos-camadas-raster-e-vector" class="section level3 hasAnchor" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Visualizar os arquivos (camadas raster e vector)<a href="cap01.html#visualizar-os-arquivos-camadas-raster-e-vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Visualizar para verificar. É possível de visualizar varios camadas de raster e vetor juntos com funcões no pacote tmap (<a href="https://r-tmap.github.io/tmap-book/index.html" class="uri">https://r-tmap.github.io/tmap-book/index.html</a>).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="cap01.html#cb21-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb21-2"><a href="cap01.html#cb21-2" tabindex="-1"></a>mapbiomas_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(mapbiomas_2020, </span>
+<span id="cb21-3"><a href="cap01.html#cb21-3" tabindex="-1"></a>                                  <span class="at">fact =</span> <span class="dv">10</span>, </span>
+<span id="cb21-4"><a href="cap01.html#cb21-4" tabindex="-1"></a>                                  <span class="at">fun =</span> <span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb21-5"><a href="cap01.html#cb21-5" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb21-6"><a href="cap01.html#cb21-6" tabindex="-1"></a><span class="fu">tm_shape</span>(mapbiomas_2020_modal) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="cap01.html#cb21-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>, <span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, <span class="at">palette =</span> <span class="st">&quot;Set3&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb21-8"><a href="cap01.html#cb21-8" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_linhacentral) <span class="sc">+</span> </span>
+<span id="cb21-9"><a href="cap01.html#cb21-9" tabindex="-1"></a>  <span class="fu">tm_lines</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb21-10"><a href="cap01.html#cb21-10" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos) <span class="sc">+</span> </span>
+<span id="cb21-11"><a href="cap01.html#cb21-11" tabindex="-1"></a>  <span class="fu">tm_dots</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb21-12"><a href="cap01.html#cb21-12" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;top&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="cap01.html#cb21-13" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb21-14"><a href="cap01.html#cb21-14" tabindex="-1"></a>             <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb21-15"><a href="cap01.html#cb21-15" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>), <span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="epr_files/figure-html/unnamed-chunk-11-1.png" alt=" Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
+<p class="caption">
+Figura 1.8:  Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio.
+</p>
+</div>
+<p><br></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="reclassificação" class="section level3 hasAnchor" number="1.5.5">
+<h3><span class="header-section-number">1.5.5</span> Reclassificação<a href="cap01.html#reclassificação" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><br></p>
+<p>Para simplificar nossa avaliação de escala, reclassificamos a camada mapbiomas_2020 em uma camada binária de floresta/não-floresta. Essa tarefa de geoprocessamento pode ser realizada anteriormente usando SIG (<a href="https://docs.qgis.org/3.22/pt_BR/docs/training_manual/rasters/terrain_analysis.html#moderate-fa-reclassifying-the-raster">QGIS</a>). Aqui vamos reclassificar as categorias de cobertura da terra (agrupando diferentes áreas de cobertura florestal tipos) usando alguns comandos genéricos do R para criar uma nova camada com a cobertura de floresta em toda a região de estudo. Para isso, criamos um mapa do mesmo resolução e extensão, e então podemos redefinir os valores do mapa. Neste caso, queremos agrupar a cobertura da terra categorias 3 e 4 (Formação Florestal e Formação Savânica, respectivamente).</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="cap01.html#cb22-1" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
+<span id="cb22-2"><a href="cap01.html#cb22-2" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
+<span id="cb22-3"><a href="cap01.html#cb22-3" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
+<span id="cb22-4"><a href="cap01.html#cb22-4" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb22-5"><a href="cap01.html#cb22-5" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
+<span id="cb22-6"><a href="cap01.html#cb22-6" tabindex="-1"></a>floresta_2020[mapbiomas_2020 <span class="sc">==</span> <span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020 <span class="sc">==</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<div style="page-break-after: always;"></div>
+<p>Vizualizar para verificar.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="cap01.html#cb23-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb23-2"><a href="cap01.html#cb23-2" tabindex="-1"></a>floresta_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(floresta_2020, </span>
+<span id="cb23-3"><a href="cap01.html#cb23-3" tabindex="-1"></a>                                 <span class="at">fact=</span><span class="dv">10</span>, </span>
+<span id="cb23-4"><a href="cap01.html#cb23-4" tabindex="-1"></a>                                 <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb23-5"><a href="cap01.html#cb23-5" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb23-6"><a href="cap01.html#cb23-6" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="cap01.html#cb23-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb23-8"><a href="cap01.html#cb23-8" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb23-9"><a href="cap01.html#cb23-9" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb23-10"><a href="cap01.html#cb23-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="cap01.html#cb23-11" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_linhacentral) <span class="sc">+</span> </span>
+<span id="cb23-12"><a href="cap01.html#cb23-12" tabindex="-1"></a>  <span class="fu">tm_lines</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb23-13"><a href="cap01.html#cb23-13" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos) <span class="sc">+</span> </span>
+<span id="cb23-14"><a href="cap01.html#cb23-14" tabindex="-1"></a>  <span class="fu">tm_dots</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb23-15"><a href="cap01.html#cb23-15" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb23-16"><a href="cap01.html#cb23-16" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb23-17"><a href="cap01.html#cb23-17" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="epr_files/figure-html/unnamed-chunk-12-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
+<p class="caption">
+Figura 1.9: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio.
+</p>
+</div>
+<P style="page-break-before: always">
+</div>
+</div>
+<div id="comparação-multiescala" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Comparação multiescala<a href="cap01.html#comparação-multiescala" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Em seguida, com as coordenadas dos pontos de amostragem, podemos calcular a quantidade de floresta que circunda cada local de amostragem em diferentes extensões. Primeiramente, vamos fazer so para um ponto, assim para entender o processo e os passos melhor.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="cap01.html#cb24-1" tabindex="-1"></a>rio_pontos_31976 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(rio_pontos, <span class="dv">31976</span>) </span>
+<span id="cb24-2"><a href="cap01.html#cb24-2" tabindex="-1"></a><span class="co"># Buffer</span></span>
+<span id="cb24-3"><a href="cap01.html#cb24-3" tabindex="-1"></a>rio_pontos_31976_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(rio_pontos_31976[<span class="dv">1</span>, ], <span class="at">dist =</span> <span class="dv">1000</span>)</span>
+<span id="cb24-4"><a href="cap01.html#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="cap01.html#cb24-5" tabindex="-1"></a><span class="co"># Recorte com buffer de 1000 metros (mudando a extensão).</span></span>
+<span id="cb24-6"><a href="cap01.html#cb24-6" tabindex="-1"></a><span class="co"># Máscara (mask), assimos pixels fora do polígono sejam nulos.</span></span>
+<span id="cb24-7"><a href="cap01.html#cb24-7" tabindex="-1"></a>buffer.forest1<span class="fl">.1</span>km <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crop</span>(floresta_2020, rio_pontos_31976_b1000, </span>
+<span id="cb24-8"><a href="cap01.html#cb24-8" tabindex="-1"></a>                           <span class="at">snap=</span><span class="st">&quot;out&quot;</span>, <span class="at">mask =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-9"><a href="cap01.html#cb24-9" tabindex="-1"></a><span class="fu">names</span>(buffer.forest1<span class="fl">.1</span>km) <span class="ot">&lt;-</span> <span class="st">&quot;forest_2020_1km&quot;</span></span></code></pre></div>
+<div style="page-break-after: always;"></div>
+<p>Vizualizar para verificar.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="cap01.html#cb25-1" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb25-2"><a href="cap01.html#cb25-2" tabindex="-1"></a><span class="fu">tm_shape</span>(buffer.forest1<span class="fl">.1</span>km) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="cap01.html#cb25-3" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb25-4"><a href="cap01.html#cb25-4" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, </span>
+<span id="cb25-5"><a href="cap01.html#cb25-5" tabindex="-1"></a>                        <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="cap01.html#cb25-6" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos_31976[<span class="dv">1</span>, ]) <span class="sc">+</span> </span>
+<span id="cb25-7"><a href="cap01.html#cb25-7" tabindex="-1"></a>  <span class="fu">tm_symbols</span>(<span class="at">shape =</span><span class="dv">21</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>, </span>
+<span id="cb25-8"><a href="cap01.html#cb25-8" tabindex="-1"></a>            <span class="at">border.col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">border.lwd =</span> <span class="fl">0.2</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb25-9"><a href="cap01.html#cb25-9" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos_31976_b1000) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="cap01.html#cb25-10" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb25-11"><a href="cap01.html#cb25-11" tabindex="-1"></a><span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>,  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb25-12"><a href="cap01.html#cb25-12" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb25-13"><a href="cap01.html#cb25-13" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;top&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb25-14"><a href="cap01.html#cb25-14" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb25-15"><a href="cap01.html#cb25-15" tabindex="-1"></a>             <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb25-16"><a href="cap01.html#cb25-16" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>), <span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="epr_files/figure-html/unnamed-chunk-14-1.png" alt="Ilustração da determinação da quantidade de habitat ao redor de um ponto. Para um determinada extensão, o habitat de interesse é isolado. Um buffer (linha tracejada) é colocado ao redor de um ponto (amarela) e o número de células (pixels) que contém o habitat é somado e multiplicado pela área de cada pixel." width="288" />
+<p class="caption">
+Figura 1.10: Ilustração da determinação da quantidade de habitat ao redor de um ponto. Para um determinada extensão, o habitat de interesse é isolado. Um buffer (linha tracejada) é colocado ao redor de um ponto (amarela) e o número de células (pixels) que contém o habitat é somado e multiplicado pela área de cada pixel.
+</p>
+</div>
+<div id="pergunta-4" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Pergunta 4<a href="cap01.html#pergunta-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span style=" font-weight: bold;    color: blue !important;">Qual é a extensão em número de pixels desse recorte (buffer.forest1.1km)?</span></p>
+<hr />
+<div style="page-break-after: always;"></div>
+<p>Temos valores de 0 (não-floresta) e 1 (floresta). Então, para saber a aréa de floresta podemos somar o número de células (pixels) que contém o habitat e multiplica pela área de cada pixel conforme o codigo:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="cap01.html#cb26-1" tabindex="-1"></a><span class="co"># 1) Somatório. </span></span>
+<span id="cb26-2"><a href="cap01.html#cb26-2" tabindex="-1"></a><span class="co"># No caso igual o numero de pixels de floresta. </span></span>
+<span id="cb26-3"><a href="cap01.html#cb26-3" tabindex="-1"></a><span class="co"># Para todo a paisagem, somatorio &quot;global&quot;.</span></span>
+<span id="cb26-4"><a href="cap01.html#cb26-4" tabindex="-1"></a><span class="co"># Não deve incluir pixels nulos, então use &quot;na.rm = TRUE&quot;.</span></span>
+<span id="cb26-5"><a href="cap01.html#cb26-5" tabindex="-1"></a>soma_floresta <span class="ot">&lt;-</span> <span class="fu">global</span>(buffer.forest1<span class="fl">.1</span>km, <span class="st">&quot;sum&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb26-6"><a href="cap01.html#cb26-6" tabindex="-1"></a>soma_floresta</span></code></pre></div>
+<pre><code>##                 sum
+## forest_2020_1km 939</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="cap01.html#cb28-1" tabindex="-1"></a><span class="co"># 2) Área de cada pixel.</span></span>
+<span id="cb28-2"><a href="cap01.html#cb28-2" tabindex="-1"></a><span class="co"># Sabemos o sistema de coordenadas (EPSG = 31976).</span></span>
+<span id="cb28-3"><a href="cap01.html#cb28-3" tabindex="-1"></a><span class="co"># EPSG 31976 é uma sistema projetado com unidade em metros.</span></span>
+<span id="cb28-4"><a href="cap01.html#cb28-4" tabindex="-1"></a>buffer.forest1<span class="fl">.1</span>km</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 68, 68, 1  (nrow, ncol, nlyr)
+## resolution  : 29.89281, 29.89281  (x, y)
+## extent      : 465959.3, 467992, 90921.47, 92954.18  (xmin, xmax, ymin, ymax)
+## coord. ref. : SIRGAS 2000 / UTM zone 22N (EPSG:31976) 
+## source(s)   : memory
+## varname     : utm_cover_AP_rio_2020 
+## name        : forest_2020_1km 
+## min value   :               0 
+## max value   :               1</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="cap01.html#cb30-1" tabindex="-1"></a><span class="co"># Portanto, o tamanho de cada pixel é igual.</span></span>
+<span id="cb30-2"><a href="cap01.html#cb30-2" tabindex="-1"></a>area_pixel_m2 <span class="ot">&lt;-</span> <span class="fl">29.89281</span> <span class="sc">*</span> <span class="fl">29.89281</span></span>
+<span id="cb30-3"><a href="cap01.html#cb30-3" tabindex="-1"></a>area_pixel_m2</span></code></pre></div>
+<pre><code>## [1] 893.5801</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="cap01.html#cb32-1" tabindex="-1"></a><span class="co"># 3) Calculos de aréa.</span></span>
+<span id="cb32-2"><a href="cap01.html#cb32-2" tabindex="-1"></a><span class="co"># Aréa de floresta m2</span></span>
+<span id="cb32-3"><a href="cap01.html#cb32-3" tabindex="-1"></a>area_floresta_m2 <span class="ot">&lt;-</span> soma_floresta <span class="sc">*</span> area_pixel_m2</span>
+<span id="cb32-4"><a href="cap01.html#cb32-4" tabindex="-1"></a>area_floresta_m2</span></code></pre></div>
+<pre><code>##                      sum
+## forest_2020_1km 839071.7</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="cap01.html#cb34-1" tabindex="-1"></a><span class="co"># Aréa de floresta hectares</span></span>
+<span id="cb34-2"><a href="cap01.html#cb34-2" tabindex="-1"></a>area_floresta_ha <span class="ot">&lt;-</span> area_floresta_m2 <span class="sc">/</span> <span class="dv">10000</span></span>
+<span id="cb34-3"><a href="cap01.html#cb34-3" tabindex="-1"></a>area_floresta_ha</span></code></pre></div>
+<pre><code>##                      sum
+## forest_2020_1km 83.90717</code></pre>
+<div style="page-break-after: always;"></div>
+<p>Para uma comparação multiescala, vamos repetir o mesmo processo, mas agora com distancias de 250, 500, 1000, 2000 e 4000 metros, doubrando a escala (extensão) em cada passo.</p>
+<div class="figure"><span style="display:block;" id="fig:mapa-exte-pontos"></span>
+<img src="epr_files/figure-html/mapa-exte-pontos-1.png" alt="Cobertura florestal em extensões diferentes ao redor de um local de amostragem." width="4500" />
+<p class="caption">
+Figura 1.11: Cobertura florestal em extensões diferentes ao redor de um local de amostragem.
+</p>
+</div>
+<p><br> Aspectos quantitativos das paisagens mudam fundamentalmente com a escala. Por exemplo, nesse caso, parece que a proporção de floresta aumenta à medida que a extensão aumenta de 500 para 4000 metros. Esta percepção visual é confirmada pelos valores calculados, onde as áreas são:</p>
+<ul>
+<li>raio 250 m = 0 hectares de floresta</li>
+<li>raio 500 m = 6,3 hectares de floresta</li>
+<li>raio 1000 m = 84,3 hectares de floresta</li>
+<li>raio 2000 m = 502.6 hectares de floresta</li>
+<li>raio 4000 m = 3351.0 hectares de floresta</li>
+</ul>
+</div>
+<div id="pergunta-5" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Pergunta 5<a href="cap01.html#pergunta-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span style=" font-weight: bold;    color: blue !important;">Usando os valores listadas acima de raio e área de floresta para os diferentes buffers circulares, calcule a proporção de floresta em cada uma das diferentes extensões de buffer. Apresente 1) os resultados incluindo cálculos. 2) um gráfico com valores de extensão no eixo x e proporção da floresta no eixo y. 3) Em menos de 200 palavras apresente a sua interpretação do gráfico.</span></p>
+<hr />
+</div>
+<div id="pergunta-6" class="section level3 hasAnchor" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> Pergunta 6<a href="cap01.html#pergunta-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span style=" font-weight: bold;    color: blue !important;">A modelagem multiescala quantifica as condições do ambiente em múltiplas escalas alterando o resolução ou a extensão da análise e, em seguida, avaliando qual das escalas consideradas explica melhor um padrão ou processo. Escolha 1 espécie aquático e 1 espécie terrestre que ocorram na região a montante das hidrelétricas no Rio Araguari. Com base nas diferenças entre extensões (indicados no exemplo anterior) e as características funcionais das espécies (por exemplo área de vida), escolher as extensões mais adequadas para um estudo multiescala de cada espécie.</span></p>
+<hr />
+</div>
+</div>
+<div id="próximos-passos-repetindo-para-muitas-amostras." class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Próximos passos: repetindo para muitas amostras.<a href="cap01.html#próximos-passos-repetindo-para-muitas-amostras." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Neste exemplo comparamos a área de floresta em torno de um único ponto de amostragem. Para calcular o mesmo para todos os 52 pontos, seriam necessárias varias repetições (52 pontos x 5 extensões = 260 repetições).</p>
+<p>Poderíamos escrever código para executar esse processo automaticamente. Felizmente, alguém já escreveu funções para fazer isso e muito mais. O próximo tutorial sobre métricas de paisagem mostrará exemplos usando o pacote “landscapemetrics” (<a href="https://r-spatialecology.github.io/landscapemetrics/" class="uri">https://r-spatialecology.github.io/landscapemetrics/</a>).</p>
+<p><br></p>
+
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introdução.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap02.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darrennorris/epr/edit/main/01-escala.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/darrennorris/epr/blob/main/01-escala.Rmd",
+"text": null
+},
+"download": ["epr.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

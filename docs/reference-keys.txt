@@ -15,6 +15,7 @@ fig:unnamed-chunk-30
 fig:unnamed-chunk-37
 fig:met-insert-fig-comp2
 fig:met-insert-fig-buffmetrics
+fig:plot-pairs
 fig:fig-kerneltypes
 fig:plot-fig-sankey
 fig:fig-r-instalacao
@@ -102,10 +103,10 @@ fig:fig-plot-final-ggtheme-1
 fig:fig-plot-final-ggtheme-2
 fig:fig-plot-final-ggtheme-3
 fig:fig-plot-final-export
-fig:unnamed-chunk-243
-fig:unnamed-chunk-248
-fig:unnamed-chunk-254
-escala
+fig:unnamed-chunk-244
+fig:unnamed-chunk-249
+fig:unnamed-chunk-255
+cap01
 apresentação
 escala-breve-definação
 pacotes-e-dados
@@ -126,7 +127,7 @@ pergunta-4
 pergunta-5
 pergunta-6
 próximos-passos-repetindo-para-muitas-amostras.
-métricas-da-paisagem
+cap02
 apresentação-1
 métricas-da-paisagem-e-pacote-landscapemetrics
 pacotes-1
@@ -147,10 +148,15 @@ pergunta-5-1
 ponto-único-distâncias-variados-métricas-variadas
 pergunta-6-1
 pergunta-7
-respostas-de-espécies-multiescala
+cap03
 apresentação-2
 pacotes-e-dados-1
+pacotes-2
+dados-necessarios
 buffers
+floresta
+especies
+pergunta-7-1
 kernels
 garimpo-do-lourenço
 apresentação-3
@@ -181,7 +187,7 @@ introdução-1
 instalação-do-r
 instalação-do-rstudio
 versão-do-r
-pacotes-2
+pacotes-3
 dados-3
 cap21
 contextualização
@@ -192,7 +198,7 @@ scripts
 operadores
 objetos
 funções
-pacotes-3
+pacotes-4
 ajuda-help
 ambiente-environment
 citações

@@ -56,5 +56,5 @@ Aqui os capítulos apresentam a bibliografia, alguns apêndices (exemplos de có
 
 ## Agradecimentos {.unnumbered}
 
-Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil.
+O material deste livro foi desenvolvido a partir de cursos de graduação ministrados pelos autores. Agradecemos a todos os alunos por fornecerem um suprimento ilimitado de perguntas que melhoraram o conteúdo. Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil.
 Muito obrigado!
