@@ -290,3 +290,10 @@ download-mapbiomas-cover
 crop-mapbiomas-cover
 plot-with-legend
 soluções-de-exercícios
+fig:fig-sppd-lr
+terminologia
+pergunta-1-2
+fig:fig-sppD
+links-uteis
+fig:fig-sppd-scale
+fig:fig-sppd-scale-est

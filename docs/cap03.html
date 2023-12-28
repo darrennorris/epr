@@ -51,24 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -261,6 +243,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#especies"><i class="fa fa-check"></i><b>3.3.2</b> Especies</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.4</b> Kernels</a></li>
+<li class="chapter" data-level="3.5" data-path="cap03.html"><a href="cap03.html#links-uteis"><i class="fa fa-check"></i><b>3.5</b> Links uteis</a></li>
 </ul></li>
 <li class="part"><span><b>III Exemplos de caso</b></span></li>
 <li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
@@ -435,14 +418,13 @@ div.csl-indent {
 <li class="part"><span><b>V Encerramento</b></span></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="chapter" data-level="" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i>Glossário</a></li>
-<li class="appendix"><span><b>Apêndice</b></span></li>
-<li class="chapter" data-level="A" data-path="annexo-1.html"><a href="annexo-1.html"><i class="fa fa-check"></i><b>A</b> Annexo 1</a>
+<li class="chapter" data-level="" data-path=""><a href="#appendix-apêndice"><i class="fa fa-check"></i>(APPENDIX) Apêndice</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="annexo-1.html"><a href="annexo-1.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>A.1</b> Download mapbiomas cover</a></li>
-<li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
-<li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
+<li class="chapter" data-level="10.3" data-path="glossário.html"><a href="glossário.html#download-mapbiomas-cover"><i class="fa fa-check"></i><b>10.3</b> Download mapbiomas cover</a></li>
+<li class="chapter" data-level="10.4" data-path="glossário.html"><a href="glossário.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>10.4</b> Crop mapbiomas cover</a></li>
+<li class="chapter" data-level="10.5" data-path="glossário.html"><a href="glossário.html#plot-with-legend"><i class="fa fa-check"></i><b>10.5</b> Plot with legend</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
+<li class="chapter" data-level="11" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>11</b> Soluções de exercícios</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -471,18 +453,18 @@ div.csl-indent {
 <p>Consideramos como podemos relacionar diferenças de escala (extensão) com a ocorrência de espécies para ajudar a identificar a escala característica (ou escala de efeito) da cobertura florestal na ocorrência de espécies. Este é um problema cada vez mais considerado na ecologia aplicada (Holland et al. 2004; Jackson e Fahrig 2015; McGarigal et al. 2016; Miguet et al. 2016).</p>
 <p>Existem várias maneiras de quantificar a escala de efeito. Uma abordagem é usar zonas tampão (daqui adiante “buffers”) de diferentes tamanhos para medir a paisagem circundante aos locais de amostragem. Essa abordagem foi popularizada por Pearson (1993) e é amplamente utilizada por outros pesquisadores (Holland et al. 2004; Jackson e Fahrig 2015).</p>
 <p>Um método alternativo emprega uma função de suavização ponderada pela distância - Kernels espaciais. Os kernels podem ser usados para ponderar os dados com base na distância do local de amostreagem. Isso ajuda a capturar melhor os efeitos da vizinhança, ponderando mais os locais próximos do que os distantes. Chandler e Hepinstall-Cymerman <span class="citation">(2016)</span> mostraram como os kernels espaciais podem ser usados para selecionar a escala de efeito sem recorrer a binning a priori (como por exemplo, os buffers de 1 km no capítulo “Métricas”).</p>
-<p>Neste capitulo, primeiro ilustramos o uso de buffers de diferentes distancias e depois ilustramos o uso de kernels espaciais.</p>
+<p>Neste capitulo, primeiramente ilustramos o uso de buffers de diferentes distancias e depois ilustramos o uso de kernels espaciais.</p>
 </div>
 <div id="pacotes-e-dados-1" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Pacotes e dados<a href="cap03.html#pacotes-e-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="pacotes-2" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Pacotes<a href="cap03.html#pacotes-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Carregar pacotes (que deve esta instalado antes):</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="cap03.html#cb56-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb56-2"><a href="cap03.html#cb56-2" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb56-3"><a href="cap03.html#cb56-3" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb56-4"><a href="cap03.html#cb56-4" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
-<span id="cb56-5"><a href="cap03.html#cb56-5" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cap03.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span>
+<span id="cb1-2"><a href="cap03.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="cap03.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-4"><a href="cap03.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-5"><a href="cap03.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(siland)</span></code></pre></div>
 <p>Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: <span style="     color: red !important;">Error in library(nomepacote) there is no package called nomepacote</span>. Neste caso, para instalá-los consulte o capitulos aqui <a href="https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html">Capitulo 4 instalação de pacotes</a> e aqui <a href="https://analises-ecologicas.com/cap4#pacotes-1">Capitulo 4 pacotes</a> .</p>
 </div>
 <div id="dados-necessarios" class="section level3 hasAnchor" number="3.2.2">
@@ -496,7 +478,21 @@ div.csl-indent {
 <div id="floresta" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Floresta<a href="cap03.html#floresta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Primeiramente, olhamos a proporção de cobertura florestal em diferentes escalas (distâncias de buffer) para todos os pontos. Esses dados ja foram calculados seguindo os passos no capitulo “Métricas”. Para nos auxilia à ter uma visão geral do conjunto de dados e de suas interrelações podemos apresentar como um gráfico pareado. Esse gráfico também é chamado de “pairs plot” ou “correlograma”. A função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggpairs()</span> do pacote <a href="https://ggobi.github.io/ggally/index.html">GGally</a> permite criar múltiplos gráficos pareados comparando as variáveis contínuas no seu conjunto de dados. Além de demonstrar gráficos de dispersão de cada par de variáveis, ela apresenta gráficos de densidade de cada variável individualmente e, além disso, os valores de correlação entre os pares analisados. Mais detalhes sobre a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggpairs()</span> no Capítulo <a href="cap23.html#cap23">8</a>.</p>
-<p>Ao fazê-lo, descobrimos que a percentagem de cobertura florestal em diferentes escalas tende a ser altamente correlacionada. Isto não é surpreendente, dado que os cálculos com um tamanho de buffer maior incluem a área em tamanhos de buffer menores. No entanto, esta correlação tem implicações para a interpretação dos efeitos de escala.</p>
+<p>Ao fazê-lo, descobrimos que a percentagem de cobertura florestal em diferentes escalas tende a ser altamente correlacionada. Isto não é surpreendente, dado que os cálculos com um tamanho de buffer maior incluem a área em tamanhos de buffer menores.</p>
+<pre><code>##   aid Latitude Longitude Habitat_WWF class class_description metric
+## 1   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+## 2   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+## 3   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+## 4   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+## 5   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+## 6   1 -0.01624 -51.10926     Cerrado     1            Forest cpland
+##   buff_dist_km  buff_metric value_median
+## 1        0.125 cpland_0.125     3.225806
+## 2        0.250  cpland_0.25    34.583333
+## 3        0.500   cpland_0.5    51.113468
+## 4        1.000     cpland_1    47.513053
+## 5       16.000    cpland_16    22.700354
+## 6        2.000     cpland_2    30.515579</code></pre>
 plot correlations
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-pairs"></span>
 <img src="figures/fig_pairs.png" alt="Cobertura florestal em torno dos locais de amostragem, calculada em diferentes escalas. São mostrados gráficos de dispersão da porcentagem de cobertura florestal para cada combinação de escalas em pares. Observe o alto grau de correlação entre as escalas similares (125 e 250 metros por exemplo) e escalas maiores (acima de 1 km)." width="75%" height="75%" />
@@ -509,127 +505,253 @@ Figura 3.1: Cobertura florestal em torno dos locais de amostragem, calculada em 
 <h3><span class="header-section-number">3.3.2</span> Especies<a href="cap03.html#especies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para entender como a cobertura florestal afeta a ocorrência de espécies, usamos um modelo de regressão logística. Esse modelo é usado para prever a probabilidade de um evento ocorrer, como a presença de uma espécie. No caso da regressão logística, o evento é a presença de uma espécie (1) ou sua ausência (0). A regressão logística funciona de forma semelhante à regressão linear, mas é adaptada para dados binários. Na regressão linear, o modelo prevê um valor contínuo, como o tamanho do corpo de um animal. Na regressão logística, o modelo prevê a probabilidade de um evento ocorrer, como a presença de uma espécie. O modelo de regressão logística que usamos é simples, e não leva em conta todos os fatores que podem afetar a ocorrência de espécies. No entanto, é útil para ilustrar como efeitos de escala na cobertura florestal pode afetar nossa entendimento sobre a ocorrência de espécies.</p>
 <p>Comparamos diferentes modelos com base em medições de cobertura florestal em diferentes escalas - extensões locais (tamanhos de buffer). Para comparar os modelos com tamanhos de buffer diferentes, podemos usar medidas, como medidas de ajuste (verossimilhança), a variação explicada e/ou o sucesso preditivo.</p>
-<p>Para comparar o ajuste de modelos diferentes, usamos a log-verossimilhança, que tem um forte base filosófica em estatística. log-verossimilhanças são baseadas no conceito de máxima verossimilhança e quantificam a plausibilidade (ou probabilidade) de um modelo, dados os dados. Ela é baseada no conceito de máxima verossimilhança, que é uma técnica estatística para estimar os parâmetros de um modelo a partir dos dados.</p>
+<p>Para comparar o ajuste de modelos diferentes, usamos a log-verossimilhança, que tem um forte base filosófica em estatística. log-verossimilhanças são baseadas no conceito de máxima verossimilhança e quantificam a plausibilidade de um modelo, dados os dados. Ela é baseada no conceito de máxima verossimilhança, que é uma técnica estatística para estimar os parâmetros de um modelo a partir dos dados.</p>
 <p>Neste estudo, comparamos modelos que possuem o mesmo número de parâmetros. Isso é importante porque permite que os resultados sejam interpretados com mais confiança. Se os modelos tivessem diferentes números de parâmetros, seria difícil dizer se as diferenças nos resultados eram devido às diferenças nas escalas espaciais ou ao número de parâmetros. Assim sendo, neste caso, o uso de alternativos como critérios de seleção de modelos, como o Critério de Informação de Akaike, que penaliza a log-verossimilhança com base no número de parâmetros (Burnham e Anderson 1998), forneceria resultados idênticos.</p>
+<p>Primeiramente vamos rodar as analises para uma especie.
+Isso seria um exemplo mostrando os passos.</p>
+<div id="terminologia" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> terminologia<a href="cap03.html#terminologia" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Vamos nos referir a:</p>
+<ul>
+<li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sp_pa</span> como variável dependente/resposta, com o valor observado (1 ou 0) denominado respostas.</li>
+</ul>
+<p>As outras variáveis são referidas como variáveis independentes, mas classificaremos adicionalmente:</p>
+<ul>
+<li><p>A <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">buff_dist_km</span> como variável de desenho (isto foi controlada pelo experimentador).</p></li>
+<li><p>A <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">value_median</span> como variável independente/explanatoria; um covariável específica do ponto de amostragem (proprieadade rural) e distância de buffer.</p></li>
+</ul>
+<p>A forma estrutural do modelo de regressão logística é:</p>
+<div align="center">
+<span class="math inline">\(logit( E[Y_i | X_i]) = logit(p_i) = ln(\frac{p_i}{1 - p_i}) = \beta_0 + \beta_1 X_{1i} + \epsilon\)</span>
+</div>
+<p><br />
+</p>
+<p>Typical notation of the linear regression include:</p>
+<ul>
+<li><span class="math inline">\(Y_i\)</span> denotes the outcome (or dependent) variable for subject <span class="math inline">\(i\)</span>; this is a binary variable</li>
+<li><span class="math inline">\(X_{1i}\)</span> denotes the predictor of interest or the independent variable (<span class="math inline">\(X_1\)</span>) for subject <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\beta_0\)</span> denotes the Y-intercept when <span class="math inline">\(X\)</span> is zero; this is not informative for logistic regression models</li>
+<li><span class="math inline">\(\beta_1\)</span> denotes the slope or the change in <span class="math inline">\(Y\)</span> with a 1-unit change in <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(p_{i}\)</span> denotes the probability of the event occurring</li>
+<li><span class="math inline">\(\epsilon\)</span> denotes the errors</li>
+</ul>
+<p>Neste exemplo, analisamos a ocorrência da espécie “sppD” em relação à cobertura florestal. Para variáveis independentes contínuas como proporção de floresta ( <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">value_median</span> ), podemos tentar gráficos de caixa (boxplots) de cada variável independente com a variável dependente (presença-ausencia) tratada como um fator de agrupamento. Usamos boxplots para uma análise exploratória preliminar. Os boxplots mostram que, onde a espécie está presente, a cobertura florestal é, em média, mais elevada do que onde a espécie está ausente. No entanto, há uma variação substancial na cobertura florestal nos locais onde a espécie está ausente. Essa variação sugere que, embora a cobertura florestal seja um fator importante que influencia a ocorrência da espécie, outros fatores também podem desempenhar um papel. Por exemplo, a espécie pode estar sujeita a outros fatores de pressão, como a caça ou a competição com outras espécies.</p>
+<div class="figure"><span style="display:block;" id="fig:fig-sppD"></span>
+<img src="figures/fig_sppD_box.png" alt="Gráfico para explorar as relações entre as variáveis. Boxplot comparando área core de floresta entre a presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km)." width="90%" height="90%" />
+<p class="caption">
+Figura 3.2: Gráfico para explorar as relações entre as variáveis. Boxplot comparando área core de floresta entre a presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km).
+</p>
+</div>
+</div>
+<div id="pergunta-1-2" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Pergunta 1<a href="cap03.html#pergunta-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Identifique a espécie "sppD". Com base nos resultados dos boxplots e lendo os artigos (Michalski &amp; Peres 2005; Michalski &amp; Peres 2007), sugerem três espécies de carnívoros que poderiam apresentar os mesmos padrões do sppD? Que informações/resultados adicionais o ajudariam a identificar a espécie sppD com maior certeza? Justifique suas escolhas de forma clara e concisa.</span></p>
+<hr />
+<p>Os boxplots são muito úteis para análises exploratórias, mas não fornecem muitas informações para a compreensão da escala do efeito. O modelo de regressão logística é um modelo preditivo para dados binários. Conseqüentemente, o modelo de regressão logística pode gerar probabilidades de que uma amostra terá o resultado discreto dada(s) uma(s) variável(ões) de entrada. O modelo de regressão logística usa estimativa de máxima verossimilhança (Maximum Likelihood Estimation - MLE), que é uma probabilidade condicional que classifica o resultado se um determinado limite for atingido (por exemplo, &gt; 0,50). Portanto, o intervalo de probabilidade de um modelo de regressão logística está entre 0 e 1. A figura abaixo fornece um exemplo de função logística. Ele usa uma função logit para modelar um resultado binário. A função logit é o logaritmo natural das probabilidades. Por exemplo, se a probabilidade for &gt; 0,5, a função logit é positiva, se a probabilidade for &lt;0,5, a função logit é negativa.</p>
+<p>Agora plotamos os dados, ajustando uma regressão logística para obter uma representação visual. É útil executar isso antes de executar os modelos, para que tenhamos uma ideia dos padrões que existem nos dados.</p>
+<div class="figure"><span style="display:block;" id="fig:fig-sppd-lr"></span>
+<img src="figures/fig_sppD_lr.png" alt="Gráfico para explorar as relações entre as variáveis. Comparando a resposta de presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km). Pontos mostram presença-ausência da espécie em 106 propriedades rurais. A linha azul é o ajuste de uma regressão logística." width="90%" height="90%" />
+<p class="caption">
+Figura 3.3: Gráfico para explorar as relações entre as variáveis. Comparando a resposta de presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km). Pontos mostram presença-ausência da espécie em 106 propriedades rurais. A linha azul é o ajuste de uma regressão logística.
+</p>
+</div>
+<p>Os graficos mostrarm a mesma padrao que os boxplots.
+Uma impressão visual é útil. Mas devemos utilizar modelos estatísticos para fornecer evidências mais robustas e objetivas.
+Usamos código que executará modelos simultaneamente para todas as distâncias de buffer. Podemos rodar a mesma com modelos e reultados separadamente para cada distância de buffer. Mas, seria pelo menos 50 linhas de codigo para rodar modelos e obter os resultados que precisamos. Aqui usamos funções oriundos do tinyverse e tidymodels para rodar os modelos e obter os resumos que precisamos em menos de 10 linhas.</p>
+<p>Em menos de 10 linhas, incluimos funçoes para obter um conjunto de 8 modelos diferentes (um modelo para cada distância de buffer) e resultados associados.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cap03.html#cb3-1" tabindex="-1"></a><span class="co"># Run models for sppD and 8 buffer distances</span></span>
+<span id="cb3-2"><a href="cap03.html#cb3-2" tabindex="-1"></a>modelos_sppD <span class="ot">&lt;-</span> carnivoros <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="cap03.html#cb3-3" tabindex="-1"></a><span class="co"># filtro a especie desejada</span></span>
+<span id="cb3-4"><a href="cap03.html#cb3-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(sp_name <span class="sc">==</span> <span class="st">&quot;sppD&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="cap03.html#cb3-5" tabindex="-1"></a><span class="co"># selecionar as colunas que faz parte dos modelos</span></span>
+<span id="cb3-6"><a href="cap03.html#cb3-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, sp_pa, value_median, buff_dist_km) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="cap03.html#cb3-7" tabindex="-1"></a><span class="co"># agrupar para rodar modelos diferentes para especie </span></span>
+<span id="cb3-8"><a href="cap03.html#cb3-8" tabindex="-1"></a><span class="co"># e escala (distância de buffer)</span></span>
+<span id="cb3-9"><a href="cap03.html#cb3-9" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">nest</span>(<span class="at">.by =</span> <span class="fu">c</span>(sp_name, buff_dist_km)) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="cap03.html#cb3-10" tabindex="-1"></a><span class="co"># especificar modelo e resumos desejados</span></span>
+<span id="cb3-11"><a href="cap03.html#cb3-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb3-12"><a href="cap03.html#cb3-12" tabindex="-1"></a>    <span class="at">fit =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">glm</span>(sp_pa <span class="sc">~</span> value_median,</span>
+<span id="cb3-13"><a href="cap03.html#cb3-13" tabindex="-1"></a>      <span class="at">data =</span> .x, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>) </span>
+<span id="cb3-14"><a href="cap03.html#cb3-14" tabindex="-1"></a>      ),</span>
+<span id="cb3-15"><a href="cap03.html#cb3-15" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(fit, broom<span class="sc">::</span>tidy, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>),</span>
+<span id="cb3-16"><a href="cap03.html#cb3-16" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(fit, broom<span class="sc">::</span>glance)</span>
+<span id="cb3-17"><a href="cap03.html#cb3-17" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Olhar os resultados.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cap03.html#cb4-1" tabindex="-1"></a>modelos_sppD <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="cap03.html#cb4-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(glanced)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 13
+##   sp_name buff_dist_km data     fit    tidied   null.deviance df.null logLik
+##   &lt;chr&gt;          &lt;dbl&gt; &lt;list&gt;   &lt;list&gt; &lt;list&gt;           &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt;
+## 1 sppD           0.125 &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -63.8
+## 2 sppD           0.25  &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -54.6
+## 3 sppD           0.5   &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -47.5
+## 4 sppD           1     &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -44.6
+## 5 sppD          16     &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -50.2
+## 6 sppD           2     &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -46.8
+## 7 sppD           4     &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -49.1
+## 8 sppD           8     &lt;tibble&gt; &lt;glm&gt;  &lt;tibble&gt;          143.     105  -48.8
+## # ℹ 5 more variables: AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;,
+## #   nobs &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="cap03.html#cb6-1" tabindex="-1"></a>modelos_sppD <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="cap03.html#cb6-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(tidied)</span></code></pre></div>
+<pre><code>## # A tibble: 16 × 12
+##    sp_name buff_dist_km data     fit    term        estimate std.error statistic
+##    &lt;chr&gt;          &lt;dbl&gt; &lt;list&gt;   &lt;list&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sppD           0.125 &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -1.08      0.285      -3.81
+##  2 sppD           0.125 &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0419    0.0114      3.68
+##  3 sppD           0.25  &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -2.46      0.514      -4.79
+##  4 sppD           0.25  &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0662    0.0139      4.76
+##  5 sppD           0.5   &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -4.66      1.03       -4.51
+##  6 sppD           0.5   &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0832    0.0177      4.70
+##  7 sppD           1     &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -5.89      1.35       -4.36
+##  8 sppD           1     &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0853    0.0185      4.62
+##  9 sppD          16     &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -4.29      0.873      -4.91
+## 10 sppD          16     &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0543    0.0106      5.13
+## 11 sppD           2     &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -5.45      1.22       -4.48
+## 12 sppD           2     &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0726    0.0154      4.72
+## 13 sppD           4     &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -4.88      1.07       -4.58
+## 14 sppD           4     &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0624    0.0130      4.80
+## 15 sppD           8     &lt;tibble&gt; &lt;glm&gt;  (Intercept)  -4.55      0.958      -4.74
+## 16 sppD           8     &lt;tibble&gt; &lt;glm&gt;  value_medi…   0.0575    0.0115      4.99
+## # ℹ 4 more variables: p.value &lt;dbl&gt;, conf.low &lt;dbl&gt;, conf.high &lt;dbl&gt;,
+## #   glanced &lt;list&gt;</code></pre>
+<p>Compara scale of effect.
+Pergunta: qual escala melhor se ajusta aos dados de presença-ausencia de sppD?</p>
+Para identificar a escala do efeito da cobertura florestal na ocorrência de sppD, plotamos as log-verossimilhanças e AIC de diferentes modelos de regressão logística ajustados aos dados em função da cobertura florestal calculada em diferentes escalas, variando de 0.125 m a 16 km. Esperaríamos que a escala que melhor se ajustasse aos dados fosse a que melhor explicasse a variação na ocorrência. Nesse caso, descobrimos que a cobertura florestal dentro de 1 km é a que melhor se ajusta aos dados.
+<div class="figure"><span style="display:block;" id="fig:fig-sppd-scale"></span>
+<img src="figures/figg_sppD_logLikAIC.png" alt="a fazer" width="90%" height="90%" />
+<p class="caption">
+Figura 3.4: a fazer
+</p>
+</div>
+<p>Pergunta: A relação entre a ocorrência de espécie sppD e a cobertura florestal é a mesma em diferentes escalas?
+However, when plotting the β terms at different scales (Fig. 2.11b), we find that relationships are identical when forest cover is measured at 2 km or greater buffer sizes. In this situation, only at 500 m do we see a weak relationship with forest cover.</p>
+<div class="figure"><span style="display:block;" id="fig:fig-sppd-scale-est"></span>
+<img src="figures/figg_sppD_scale_est.png" alt="mais a fazer" width="90%" height="90%" />
+<p class="caption">
+Figura 3.5: mais a fazer
+</p>
+</div>
 <p>Primeiro plotamos os dados.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="cap03.html#cb57-1" tabindex="-1"></a>carnivoros <span class="sc">|&gt;</span> </span>
-<span id="cb57-2"><a href="cap03.html#cb57-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(buff_dist_km <span class="sc">&lt;</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
-<span id="cb57-3"><a href="cap03.html#cb57-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value_median, <span class="at">y =</span> sp_pa)) <span class="sc">+</span> </span>
-<span id="cb57-4"><a href="cap03.html#cb57-4" tabindex="-1"></a>      <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="dv">5</span>, <span class="at">height=</span><span class="fl">0.05</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb57-5"><a href="cap03.html#cb57-5" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb57-6"><a href="cap03.html#cb57-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
-<span id="cb57-7"><a href="cap03.html#cb57-7" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), </span>
-<span id="cb57-8"><a href="cap03.html#cb57-8" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb57-9"><a href="cap03.html#cb57-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sp_name<span class="sc">~</span>buff_dist_km) <span class="sc">+</span> </span>
-<span id="cb57-10"><a href="cap03.html#cb57-10" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;presença (probabilidade)&quot;</span>, </span>
-<span id="cb57-11"><a href="cap03.html#cb57-11" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="fl">1.0</span>)) <span class="sc">+</span></span>
-<span id="cb57-12"><a href="cap03.html#cb57-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;área core de floresta (%)&quot;</span>) <span class="ot">-&gt;</span> fig_spp_near</span>
-<span id="cb57-13"><a href="cap03.html#cb57-13" tabindex="-1"></a>fig_spp_near</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="cap03.html#cb8-1" tabindex="-1"></a>carnivoros <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="cap03.html#cb8-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(buff_dist_km <span class="sc">&lt;</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="cap03.html#cb8-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value_median, <span class="at">y =</span> sp_pa)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="cap03.html#cb8-4" tabindex="-1"></a>      <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="dv">5</span>, <span class="at">height=</span><span class="fl">0.05</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="cap03.html#cb8-5" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="cap03.html#cb8-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
+<span id="cb8-7"><a href="cap03.html#cb8-7" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), </span>
+<span id="cb8-8"><a href="cap03.html#cb8-8" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb8-9"><a href="cap03.html#cb8-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sp_name<span class="sc">~</span>buff_dist_km) <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="cap03.html#cb8-10" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;presença (probabilidade)&quot;</span>, </span>
+<span id="cb8-11"><a href="cap03.html#cb8-11" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="fl">1.0</span>)) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="cap03.html#cb8-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;área core de floresta (%)&quot;</span>) <span class="ot">-&gt;</span> fig_spp_near</span>
+<span id="cb8-13"><a href="cap03.html#cb8-13" tabindex="-1"></a>fig_spp_near</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="epr_files/figure-html/fig-species-logistic-1.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="cap03.html#cb59-1" tabindex="-1"></a>carnivoros <span class="sc">|&gt;</span></span>
-<span id="cb59-2"><a href="cap03.html#cb59-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value_median, <span class="at">y =</span> sp_pa)) <span class="sc">+</span> </span>
-<span id="cb59-3"><a href="cap03.html#cb59-3" tabindex="-1"></a>      <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="dv">5</span>, <span class="at">height=</span><span class="fl">0.05</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb59-4"><a href="cap03.html#cb59-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb59-5"><a href="cap03.html#cb59-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
-<span id="cb59-6"><a href="cap03.html#cb59-6" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), </span>
-<span id="cb59-7"><a href="cap03.html#cb59-7" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb59-8"><a href="cap03.html#cb59-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sp_name<span class="sc">~</span>buff_dist_km) <span class="sc">+</span> </span>
-<span id="cb59-9"><a href="cap03.html#cb59-9" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;presença (probabilidade)&quot;</span>, </span>
-<span id="cb59-10"><a href="cap03.html#cb59-10" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="fl">1.0</span>)) <span class="sc">+</span></span>
-<span id="cb59-11"><a href="cap03.html#cb59-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;área core de floresta (%)&quot;</span>) <span class="ot">-&gt;</span> fig_spp</span>
-<span id="cb59-12"><a href="cap03.html#cb59-12" tabindex="-1"></a></span>
-<span id="cb59-13"><a href="cap03.html#cb59-13" tabindex="-1"></a>fig_spp</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cap03.html#cb10-1" tabindex="-1"></a>carnivoros <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="cap03.html#cb10-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value_median, <span class="at">y =</span> sp_pa)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="cap03.html#cb10-3" tabindex="-1"></a>      <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="dv">5</span>, <span class="at">height=</span><span class="fl">0.05</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="cap03.html#cb10-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="cap03.html#cb10-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
+<span id="cb10-6"><a href="cap03.html#cb10-6" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), </span>
+<span id="cb10-7"><a href="cap03.html#cb10-7" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb10-8"><a href="cap03.html#cb10-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sp_name<span class="sc">~</span>buff_dist_km) <span class="sc">+</span> </span>
+<span id="cb10-9"><a href="cap03.html#cb10-9" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;presença (probabilidade)&quot;</span>, </span>
+<span id="cb10-10"><a href="cap03.html#cb10-10" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="fl">1.0</span>)) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="cap03.html#cb10-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;área core de floresta (%)&quot;</span>) <span class="ot">-&gt;</span> fig_spp</span>
+<span id="cb10-12"><a href="cap03.html#cb10-12" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="cap03.html#cb10-13" tabindex="-1"></a>fig_spp</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="epr_files/figure-html/fig-species-logistic-2.png" width="672" /></p>
 <p>Modelos.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="cap03.html#cb61-1" tabindex="-1"></a><span class="co">#Run models for three species and 8 buffer distances</span></span>
-<span id="cb61-2"><a href="cap03.html#cb61-2" tabindex="-1"></a>carnivoros<span class="sc">|&gt;</span></span>
-<span id="cb61-3"><a href="cap03.html#cb61-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, sp_pa, value_median, buff_dist_km) <span class="sc">|&gt;</span></span>
-<span id="cb61-4"><a href="cap03.html#cb61-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span><span class="fu">c</span>(sp_name, buff_dist_km)) <span class="sc">|&gt;</span></span>
-<span id="cb61-5"><a href="cap03.html#cb61-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb61-6"><a href="cap03.html#cb61-6" tabindex="-1"></a>    <span class="at">fit =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">glm</span>(sp_pa <span class="sc">~</span> value_median, </span>
-<span id="cb61-7"><a href="cap03.html#cb61-7" tabindex="-1"></a>                          <span class="at">data =</span> .x, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)),</span>
-<span id="cb61-8"><a href="cap03.html#cb61-8" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(fit, tidy), </span>
-<span id="cb61-9"><a href="cap03.html#cb61-9" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(fit, glance)</span>
-<span id="cb61-10"><a href="cap03.html#cb61-10" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> modelos_carnivoros</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cap03.html#cb12-1" tabindex="-1"></a><span class="co">#Run models for three species and 8 buffer distances</span></span>
+<span id="cb12-2"><a href="cap03.html#cb12-2" tabindex="-1"></a>carnivoros<span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="cap03.html#cb12-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, sp_pa, value_median, buff_dist_km) <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="cap03.html#cb12-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span><span class="fu">c</span>(sp_name, buff_dist_km)) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="cap03.html#cb12-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb12-6"><a href="cap03.html#cb12-6" tabindex="-1"></a>    <span class="at">fit =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">glm</span>(sp_pa <span class="sc">~</span> value_median, </span>
+<span id="cb12-7"><a href="cap03.html#cb12-7" tabindex="-1"></a>                          <span class="at">data =</span> .x, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)),</span>
+<span id="cb12-8"><a href="cap03.html#cb12-8" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(fit, tidy), </span>
+<span id="cb12-9"><a href="cap03.html#cb12-9" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(fit, glance)</span>
+<span id="cb12-10"><a href="cap03.html#cb12-10" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> modelos_carnivoros</span></code></pre></div>
 <p>Models resutls.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="cap03.html#cb62-1" tabindex="-1"></a>modelos_carnivoros <span class="sc">|&gt;</span> </span>
-<span id="cb62-2"><a href="cap03.html#cb62-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(glanced) <span class="sc">|&gt;</span> </span>
-<span id="cb62-3"><a href="cap03.html#cb62-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">dev_exp =</span> (null.deviance <span class="sc">-</span> deviance)<span class="sc">/</span>null.deviance</span>
-<span id="cb62-4"><a href="cap03.html#cb62-4" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb62-5"><a href="cap03.html#cb62-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, logLik, null.deviance, deviance, dev_exp, AIC) <span class="sc">|&gt;</span> </span>
-<span id="cb62-6"><a href="cap03.html#cb62-6" tabindex="-1"></a>  <span class="fu">left_join</span>(modelos_carnivoros <span class="sc">|&gt;</span> </span>
-<span id="cb62-7"><a href="cap03.html#cb62-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(tidied) <span class="sc">|&gt;</span> </span>
-<span id="cb62-8"><a href="cap03.html#cb62-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;value_median&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb62-9"><a href="cap03.html#cb62-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">round</span>(p.value,<span class="dv">4</span>) ) <span class="sc">|&gt;</span> </span>
-<span id="cb62-10"><a href="cap03.html#cb62-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, term, estimate, p.value) </span>
-<span id="cb62-11"><a href="cap03.html#cb62-11" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb62-12"><a href="cap03.html#cb62-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(sp_name, <span class="fu">desc</span>(dev_exp))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="cap03.html#cb13-1" tabindex="-1"></a>modelos_carnivoros <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="cap03.html#cb13-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(glanced) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="cap03.html#cb13-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">dev_exp =</span> (null.deviance <span class="sc">-</span> deviance)<span class="sc">/</span>null.deviance</span>
+<span id="cb13-4"><a href="cap03.html#cb13-4" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="cap03.html#cb13-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, logLik, null.deviance, deviance, dev_exp, AIC) <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="cap03.html#cb13-6" tabindex="-1"></a>  <span class="fu">left_join</span>(modelos_carnivoros <span class="sc">|&gt;</span> </span>
+<span id="cb13-7"><a href="cap03.html#cb13-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(tidied) <span class="sc">|&gt;</span> </span>
+<span id="cb13-8"><a href="cap03.html#cb13-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;value_median&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-9"><a href="cap03.html#cb13-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">round</span>(p.value,<span class="dv">4</span>) ) <span class="sc">|&gt;</span> </span>
+<span id="cb13-10"><a href="cap03.html#cb13-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, term, estimate, p.value) </span>
+<span id="cb13-11"><a href="cap03.html#cb13-11" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb13-12"><a href="cap03.html#cb13-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(sp_name, <span class="fu">desc</span>(dev_exp))</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(sp_name, buff_dist_km)`</code></pre>
 <pre><code>## # A tibble: 24 × 10
-##    sp_name buff_dist_km logLik null.deviance deviance dev_exp   AIC
-##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-##  1 sppB           8      -60.5          142.    121.   0.150  125. 
-##  2 sppB           4      -61.4          142.    123.   0.137  127. 
-##  3 sppB          16      -62.2          142.    124.   0.127  128. 
-##  4 sppB           2      -62.4          142.    125.   0.123  129. 
-##  5 sppB           1      -64.8          142.    130.   0.0892 134. 
-##  6 sppB           0.125  -64.9          142.    130.   0.0886 134. 
-##  7 sppB           0.5    -66.4          142.    133.   0.0671 137. 
-##  8 sppB           0.25   -67.1          142.    134.   0.0568 138. 
-##  9 sppC           4      -41.4          113.     82.8  0.270   86.8
-## 10 sppC           2      -41.7          113.     83.3  0.265   87.3
+##    sp_name buff_dist_km logLik null.deviance deviance dev_exp   AIC term        
+##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       
+##  1 sppB           8      -60.5          142.    121.   0.150  125.  value_median
+##  2 sppB           4      -61.4          142.    123.   0.137  127.  value_median
+##  3 sppB          16      -62.2          142.    124.   0.127  128.  value_median
+##  4 sppB           2      -62.4          142.    125.   0.123  129.  value_median
+##  5 sppB           1      -64.8          142.    130.   0.0892 134.  value_median
+##  6 sppB           0.125  -64.9          142.    130.   0.0886 134.  value_median
+##  7 sppB           0.5    -66.4          142.    133.   0.0671 137.  value_median
+##  8 sppB           0.25   -67.1          142.    134.   0.0568 138.  value_median
+##  9 sppC           4      -41.4          113.     82.8  0.270   86.8 value_median
+## 10 sppC           2      -41.7          113.     83.3  0.265   87.3 value_median
 ## # ℹ 14 more rows
-## # ℹ 3 more variables: term &lt;chr&gt;, estimate &lt;dbl&gt;, p.value &lt;dbl&gt;</code></pre>
+## # ℹ 2 more variables: estimate &lt;dbl&gt;, p.value &lt;dbl&gt;</code></pre>
 <p>Plot model results.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="cap03.html#cb65-1" tabindex="-1"></a>modelos_carnivoros <span class="sc">|&gt;</span> </span>
-<span id="cb65-2"><a href="cap03.html#cb65-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(glanced) <span class="sc">|&gt;</span> </span>
-<span id="cb65-3"><a href="cap03.html#cb65-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">dev_exp =</span> (null.deviance <span class="sc">-</span> deviance)<span class="sc">/</span>null.deviance</span>
-<span id="cb65-4"><a href="cap03.html#cb65-4" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb65-5"><a href="cap03.html#cb65-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, logLik, null.deviance, deviance, dev_exp, AIC) <span class="sc">|&gt;</span> </span>
-<span id="cb65-6"><a href="cap03.html#cb65-6" tabindex="-1"></a>  <span class="fu">left_join</span>(modelos_carnivoros <span class="sc">|&gt;</span> </span>
-<span id="cb65-7"><a href="cap03.html#cb65-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(tidied) <span class="sc">|&gt;</span> </span>
-<span id="cb65-8"><a href="cap03.html#cb65-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;value_median&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb65-9"><a href="cap03.html#cb65-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">round</span>(p.value,<span class="dv">4</span>) ) <span class="sc">|&gt;</span> </span>
-<span id="cb65-10"><a href="cap03.html#cb65-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, term, estimate, p.value) </span>
-<span id="cb65-11"><a href="cap03.html#cb65-11" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> model_summary</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="cap03.html#cb16-1" tabindex="-1"></a>modelos_carnivoros <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="cap03.html#cb16-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(glanced) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="cap03.html#cb16-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">dev_exp =</span> (null.deviance <span class="sc">-</span> deviance)<span class="sc">/</span>null.deviance</span>
+<span id="cb16-4"><a href="cap03.html#cb16-4" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb16-5"><a href="cap03.html#cb16-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, logLik, null.deviance, deviance, dev_exp, AIC) <span class="sc">|&gt;</span> </span>
+<span id="cb16-6"><a href="cap03.html#cb16-6" tabindex="-1"></a>  <span class="fu">left_join</span>(modelos_carnivoros <span class="sc">|&gt;</span> </span>
+<span id="cb16-7"><a href="cap03.html#cb16-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(tidied) <span class="sc">|&gt;</span> </span>
+<span id="cb16-8"><a href="cap03.html#cb16-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;value_median&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-9"><a href="cap03.html#cb16-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">round</span>(p.value,<span class="dv">4</span>) ) <span class="sc">|&gt;</span> </span>
+<span id="cb16-10"><a href="cap03.html#cb16-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sp_name, buff_dist_km, term, estimate, p.value) </span>
+<span id="cb16-11"><a href="cap03.html#cb16-11" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> model_summary</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(sp_name, buff_dist_km)`</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="cap03.html#cb67-1" tabindex="-1"></a>model_summary <span class="sc">|&gt;</span></span>
-<span id="cb67-2"><a href="cap03.html#cb67-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> AIC)) <span class="sc">+</span> </span>
-<span id="cb67-3"><a href="cap03.html#cb67-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb67-4"><a href="cap03.html#cb67-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb67-5"><a href="cap03.html#cb67-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
-<span id="cb67-6"><a href="cap03.html#cb67-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb67-7"><a href="cap03.html#cb67-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_AIC</span>
-<span id="cb67-8"><a href="cap03.html#cb67-8" tabindex="-1"></a></span>
-<span id="cb67-9"><a href="cap03.html#cb67-9" tabindex="-1"></a>fig_scale_effect_AIC</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="cap03.html#cb68-1" tabindex="-1"></a>model_summary  <span class="sc">|&gt;</span> </span>
-<span id="cb68-2"><a href="cap03.html#cb68-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> logLik)) <span class="sc">+</span> </span>
-<span id="cb68-3"><a href="cap03.html#cb68-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb68-4"><a href="cap03.html#cb68-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb68-5"><a href="cap03.html#cb68-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
-<span id="cb68-6"><a href="cap03.html#cb68-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb68-7"><a href="cap03.html#cb68-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>, </span>
-<span id="cb68-8"><a href="cap03.html#cb68-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;log-verossimilhança&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_loglik</span>
-<span id="cb68-9"><a href="cap03.html#cb68-9" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="cap03.html#cb68-10" tabindex="-1"></a>fig_scale_effect_loglik</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="cap03.html#cb69-1" tabindex="-1"></a>model_summary  <span class="sc">|&gt;</span> </span>
-<span id="cb69-2"><a href="cap03.html#cb69-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> dev_exp)) <span class="sc">+</span> </span>
-<span id="cb69-3"><a href="cap03.html#cb69-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb69-4"><a href="cap03.html#cb69-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb69-5"><a href="cap03.html#cb69-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
-<span id="cb69-6"><a href="cap03.html#cb69-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb69-7"><a href="cap03.html#cb69-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>, </span>
-<span id="cb69-8"><a href="cap03.html#cb69-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;variação explicada&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_dev</span>
-<span id="cb69-9"><a href="cap03.html#cb69-9" tabindex="-1"></a></span>
-<span id="cb69-10"><a href="cap03.html#cb69-10" tabindex="-1"></a>fig_scale_effect_dev</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-44-3.png" width="672" /></p>
-<p>Para identificar a escala do efeito da cobertura florestal na ocorrência de carnivoros, plotamos as probabilidades logarítmicas de diferentes modelos de regressão logística ajustados aos dados em função da cobertura florestal calculada em diferentes escalas, variando de 0.125 m a 16 km. Esperaríamos que a escala que melhor se ajustasse aos dados fosse a que melhor explicasse a variação na ocorrência. Nesse caso, descobrimos que a cobertura florestal dentro de 2 km é a que melhor se ajusta aos dados. No entanto, quando plotamos os parâmetros β dos modelos em diferentes escalas, descobrimos que as relações são idênticas quando a cobertura florestal é medida em 2 km ou em tamanhos de buffer maiores. Apenas em escalas menores (125 a 500 m) vemos uma fraca relação com a cobertura florestal. Essa incerteza quanto à escala do efeito é provavelmente uma consequência da cobertura florestal estar altamente correlacionada entre escalas, como vimos anteriormente. No entanto, há evidências consistentes de que a ocorrência de carnivoros mudar com a cobertura florestal na paisagem, independentemente da escala.</p>
-<div id="pergunta-7-1" class="section level4 hasAnchor" number="3.3.2.1">
-<h4><span class="header-section-number">3.3.2.1</span> Pergunta 7<a href="cap03.html#pergunta-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap03.html#cb18-1" tabindex="-1"></a>model_summary <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="cap03.html#cb18-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> AIC)) <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="cap03.html#cb18-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb18-4"><a href="cap03.html#cb18-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb18-5"><a href="cap03.html#cb18-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="cap03.html#cb18-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb18-7"><a href="cap03.html#cb18-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_AIC</span>
+<span id="cb18-8"><a href="cap03.html#cb18-8" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="cap03.html#cb18-9" tabindex="-1"></a>fig_scale_effect_AIC</span></code></pre></div>
+<p><img src="epr_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap03.html#cb19-1" tabindex="-1"></a>model_summary  <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="cap03.html#cb19-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> logLik)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="cap03.html#cb19-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb19-4"><a href="cap03.html#cb19-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb19-5"><a href="cap03.html#cb19-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="cap03.html#cb19-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb19-7"><a href="cap03.html#cb19-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>, </span>
+<span id="cb19-8"><a href="cap03.html#cb19-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;log-verossimilhança&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_loglik</span>
+<span id="cb19-9"><a href="cap03.html#cb19-9" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="cap03.html#cb19-10" tabindex="-1"></a>fig_scale_effect_loglik</span></code></pre></div>
+<p><img src="epr_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap03.html#cb20-1" tabindex="-1"></a>model_summary  <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="cap03.html#cb20-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>buff_dist_km, <span class="at">y =</span> dev_exp)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="cap03.html#cb20-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="cap03.html#cb20-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb20-5"><a href="cap03.html#cb20-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="cap03.html#cb20-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sp_name, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb20-7"><a href="cap03.html#cb20-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;distância (km)&quot;</span>, </span>
+<span id="cb20-8"><a href="cap03.html#cb20-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;variação explicada&quot;</span>) <span class="ot">-&gt;</span> fig_scale_effect_dev</span>
+<span id="cb20-9"><a href="cap03.html#cb20-9" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="cap03.html#cb20-10" tabindex="-1"></a>fig_scale_effect_dev</span></code></pre></div>
+<p><img src="epr_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p>No entanto, quando plotamos os parâmetros β dos modelos em diferentes escalas, descobrimos que as relações são idênticas quando a cobertura florestal é medida em 2 km ou em tamanhos de buffer maiores. Apenas em escalas menores (125 a 500 m) vemos uma fraca relação com a cobertura florestal. Essa incerteza quanto à escala do efeito é provavelmente uma consequência da cobertura florestal estar altamente correlacionada entre escalas, como vimos anteriormente. No entanto, há evidências consistentes de que a ocorrência de carnivoros mudar com a cobertura florestal na paisagem, independentemente da escala.</p>
+</div>
+<div id="pergunta-7-1" class="section level4 hasAnchor" number="3.3.2.3">
+<h4><span class="header-section-number">3.3.2.3</span> Pergunta 7<a href="cap03.html#pergunta-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Vimos como a incerteza quanto à escala do efeito é provavelmente, pelo menos em parte, uma consequência da correlação entre escalas. Também é possível que, além da cobertura florestal, existam outros fatores que afetem a ocorrência das espécies na paisagem estudada. Usando como base o conteudo das aulas, leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises), e/ou exemplos apresentados aqui no tutorial, apresentam algumas hipóteses alternativas que poderiam explicar a incerteza nos modelos. Forneça recomendações para variáveis adicionais que poderiam ser incluídas nos modelos para testar suas hipóteses. Justifique sua seleção de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 <hr />
 <p>Essa foi a última pergunta. O que se segue é um exemplo que mostra uma abordagem alternativa.</p>
@@ -643,18 +765,23 @@ Figura 3.1: Cobertura florestal em torno dos locais de amostragem, calculada em 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig-kerneltypes"></span>
 <img src="figures/spatialkernels.png" alt="Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009)." width="50%" height="50%" />
 <p class="caption">
-Figura 3.2: Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).
+Figura 3.6: Esquema ilustrativo demonstrando diferentes tipos de kernels espaciais: (A) diagrama representando a estrutura geral de um filtro espacial baseado em kernel; (B) os cinco tipos mais comuns de distribuições espaciais de kernel; (C) núcleos espaciais de largura de banda de distância fixa (estática); e (D) núcleos espaciais de distância adaptativa. Observe que a figura é baseada nas seguintes fontes: Figura 3.4 na página 86 de Bailey e Gatrell (1995); Fotheringham et al. (2002) Figuras 2.11 e 2.13 nas páginas 45 e 47 respectivamente; Figura 3.2 na página 37 de Wang (2006); páginas 67-68 de Smith e Bruce (2008); e Figura 4-47 na página 177 de de Smith et al. (2009).
 </p>
 </div>
 <p>A abordagem de Kernels fornece uma maneira rigorosa de estimar as escalas nas quais as variáveis da paisagem afetam respostas ecologicas, e pode ser incorporado na maioria das classes de modelos estatísticos (<span class="citation">Chandler and Hepinstall-Cymerman (2016)</span>). Esta abordagem pode reduzir o viés do modelo e levar a interpretações mais precisas das relações espécie-paisagem <span class="citation">(Aue et al. 2012; Chandler and Hepinstall-Cymerman 2016; Miguet, Fahrig, and Lavigne 2017)</span>. A função de suavização Kernel assume que o efeito de uma variável da paisagem é mais forte perto do local focal e decai em função da distância. Assim fornecendo uma representação mais realista de muitos processos ecológicos como por exemplo, dispersão de sementes <span class="citation">(Bullock et al. 2017)</span> e movimentos de forrageadoras de lugar central (Orians e Pearson 1979).</p>
+</div>
+<div id="links-uteis" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Links uteis<a href="cap03.html#links-uteis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tidy Modeling with R: <a href="https://www.tmwr.org/" class="uri">https://www.tmwr.org/</a>
+models: <a href="https://www.tmwr.org/models" class="uri">https://www.tmwr.org/models</a>
+workflow: <a href="https://www.tmwr.org/workflows" class="uri">https://www.tmwr.org/workflows</a></p>
+<p>R for Data Science Many Models: <a href="https://r4ds.had.co.nz/many-models.html" class="uri">https://r4ds.had.co.nz/many-models.html</a></p>
 
-<div style="page-break-after: always;"></div>
 </div>
 </div>
 
 
 
-</div>
             </section>
 
           </div>
