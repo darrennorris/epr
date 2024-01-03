@@ -61,6 +61,10 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -69,6 +73,8 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
+<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -250,17 +256,24 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="cap03.html"><a href="cap03.html"><i class="fa fa-check"></i><b>3</b> Respostas multiescala de espécies</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="cap03.html"><a href="cap03.html#apresentação-2"><i class="fa fa-check"></i><b>3.1</b> Apresentação</a></li>
-<li class="chapter" data-level="3.2" data-path="cap03.html"><a href="cap03.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.2</b> Pacotes e dados</a>
+<li class="chapter" data-level="3.2" data-path="cap03.html"><a href="cap03.html#escala-de-efeito---definição"><i class="fa fa-check"></i><b>3.2</b> Escala de efeito - definição</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="cap03.html"><a href="cap03.html#pacotes-2"><i class="fa fa-check"></i><b>3.2.1</b> Pacotes</a></li>
-<li class="chapter" data-level="3.2.2" data-path="cap03.html"><a href="cap03.html#dados-necessarios"><i class="fa fa-check"></i><b>3.2.2</b> Dados necessarios</a></li>
+<li class="chapter" data-level="3.2.1" data-path="cap03.html"><a href="cap03.html#definições"><i class="fa fa-check"></i><b>3.2.1</b> Definições</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cap03.html"><a href="cap03.html#aplicação"><i class="fa fa-check"></i><b>3.2.2</b> Aplicação</a></li>
+<li class="chapter" data-level="3.2.3" data-path="cap03.html"><a href="cap03.html#como-identificar-a-escala-de-efeito"><i class="fa fa-check"></i><b>3.2.3</b> Como identificar a escala de efeito?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="cap03.html"><a href="cap03.html#buffers"><i class="fa fa-check"></i><b>3.3</b> Buffers</a>
+<li class="chapter" data-level="3.3" data-path="cap03.html"><a href="cap03.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.3</b> Pacotes e dados</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="cap03.html"><a href="cap03.html#floresta"><i class="fa fa-check"></i><b>3.3.1</b> Floresta</a></li>
-<li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#especies"><i class="fa fa-check"></i><b>3.3.2</b> Especies</a></li>
+<li class="chapter" data-level="3.3.1" data-path="cap03.html"><a href="cap03.html#pacotes-2"><i class="fa fa-check"></i><b>3.3.1</b> Pacotes</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#dados-necessarios"><i class="fa fa-check"></i><b>3.3.2</b> Dados necessarios</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.4</b> Kernels</a></li>
+<li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#buffers"><i class="fa fa-check"></i><b>3.4</b> Buffers</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cap03.html"><a href="cap03.html#floresta"><i class="fa fa-check"></i><b>3.4.1</b> Floresta</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cap03.html"><a href="cap03.html#floresta-e-a-ocorrência-de-espécies"><i class="fa fa-check"></i><b>3.4.2</b> Floresta e a ocorrência de espécies</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.5</b> Kernels</a></li>
+<li class="chapter" data-level="3.6" data-path="cap03.html"><a href="cap03.html#links-uteis"><i class="fa fa-check"></i><b>3.6</b> Links uteis</a></li>
 </ul></li>
 <li class="part"><span><b>III Exemplos de caso</b></span></li>
 <li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
@@ -700,45 +713,44 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="cap22.html#cb401-1" tabindex="-1"></a><span class="do">## Visualizar os dados</span></span>
 <span id="cb401-2"><a href="cap22.html#cb401-2" tabindex="-1"></a>penguins_raw</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 17
-##    studyName `Sample Number` Species Region Island Stage `Individual ID`
-##    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
-##  1 PAL0708                 1 Adelie… Anvers Torge… Adul… N1A1           
-##  2 PAL0708                 2 Adelie… Anvers Torge… Adul… N1A2           
-##  3 PAL0708                 3 Adelie… Anvers Torge… Adul… N2A1           
-##  4 PAL0708                 4 Adelie… Anvers Torge… Adul… N2A2           
-##  5 PAL0708                 5 Adelie… Anvers Torge… Adul… N3A1           
-##  6 PAL0708                 6 Adelie… Anvers Torge… Adul… N3A2           
-##  7 PAL0708                 7 Adelie… Anvers Torge… Adul… N4A1           
-##  8 PAL0708                 8 Adelie… Anvers Torge… Adul… N4A2           
-##  9 PAL0708                 9 Adelie… Anvers Torge… Adul… N5A1           
-## 10 PAL0708                10 Adelie… Anvers Torge… Adul… N5A2           
+##    studyName `Sample Number` Species         Region Island Stage `Individual ID`
+##    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
+##  1 PAL0708                 1 Adelie Penguin… Anvers Torge… Adul… N1A1           
+##  2 PAL0708                 2 Adelie Penguin… Anvers Torge… Adul… N1A2           
+##  3 PAL0708                 3 Adelie Penguin… Anvers Torge… Adul… N2A1           
+##  4 PAL0708                 4 Adelie Penguin… Anvers Torge… Adul… N2A2           
+##  5 PAL0708                 5 Adelie Penguin… Anvers Torge… Adul… N3A1           
+##  6 PAL0708                 6 Adelie Penguin… Anvers Torge… Adul… N3A2           
+##  7 PAL0708                 7 Adelie Penguin… Anvers Torge… Adul… N4A1           
+##  8 PAL0708                 8 Adelie Penguin… Anvers Torge… Adul… N4A2           
+##  9 PAL0708                 9 Adelie Penguin… Anvers Torge… Adul… N5A1           
+## 10 PAL0708                10 Adelie Penguin… Anvers Torge… Adul… N5A2           
 ## # ℹ 334 more rows
 ## # ℹ 10 more variables: `Clutch Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;,
 ## #   `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
 ## #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;,
-## #   `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;,
-## #   Comments &lt;chr&gt;</code></pre>
+## #   `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;, Comments &lt;chr&gt;</code></pre>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="cap22.html#cb403-1" tabindex="-1"></a><span class="do">## Espiar os dados</span></span>
 <span id="cb403-2"><a href="cap22.html#cb403-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(penguins_raw)</span></code></pre></div>
 <pre><code>## Rows: 344
 ## Columns: 17
-## $ studyName             &lt;chr&gt; &quot;PAL0708&quot;, &quot;PAL0708&quot;, &quot;PAL0708&quot;, &quot;PAL070…
-## $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1…
-## $ Species               &lt;chr&gt; &quot;Adelie Penguin (Pygoscelis adeliae)&quot;, &quot;…
-## $ Region                &lt;chr&gt; &quot;Anvers&quot;, &quot;Anvers&quot;, &quot;Anvers&quot;, &quot;Anvers&quot;, …
-## $ Island                &lt;chr&gt; &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;…
-## $ Stage                 &lt;chr&gt; &quot;Adult, 1 Egg Stage&quot;, &quot;Adult, 1 Egg Stag…
-## $ `Individual ID`       &lt;chr&gt; &quot;N1A1&quot;, &quot;N1A2&quot;, &quot;N2A1&quot;, &quot;N2A2&quot;, &quot;N3A1&quot;, …
-## $ `Clutch Completion`   &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;…
-## $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 200…
-## $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, …
-## $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, …
-## $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 1…
-## $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, …
-## $ Sex                   &lt;chr&gt; &quot;MALE&quot;, &quot;FEMALE&quot;, &quot;FEMALE&quot;, NA, &quot;FEMALE&quot;…
-## $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.664…
-## $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426,…
-## $ Comments              &lt;chr&gt; &quot;Not enough blood for isotopes.&quot;, NA, NA…</code></pre>
+## $ studyName             &lt;chr&gt; &quot;PAL0708&quot;, &quot;PAL0708&quot;, &quot;PAL0708&quot;, &quot;PAL0708&quot;, &quot;PAL…
+## $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…
+## $ Species               &lt;chr&gt; &quot;Adelie Penguin (Pygoscelis adeliae)&quot;, &quot;Adelie P…
+## $ Region                &lt;chr&gt; &quot;Anvers&quot;, &quot;Anvers&quot;, &quot;Anvers&quot;, &quot;Anvers&quot;, &quot;Anvers&quot;…
+## $ Island                &lt;chr&gt; &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;Torgerse…
+## $ Stage                 &lt;chr&gt; &quot;Adult, 1 Egg Stage&quot;, &quot;Adult, 1 Egg Stage&quot;, &quot;Adu…
+## $ `Individual ID`       &lt;chr&gt; &quot;N1A1&quot;, &quot;N1A2&quot;, &quot;N2A1&quot;, &quot;N2A2&quot;, &quot;N3A1&quot;, &quot;N3A2&quot;, …
+## $ `Clutch Completion`   &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, …
+## $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16,…
+## $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34…
+## $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18…
+## $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190,…
+## $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 34…
+## $ Sex                   &lt;chr&gt; &quot;MALE&quot;, &quot;FEMALE&quot;, &quot;FEMALE&quot;, NA, &quot;FEMALE&quot;, &quot;MALE&quot;…
+## $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18…
+## $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.298…
+## $ Comments              &lt;chr&gt; &quot;Not enough blood for isotopes.&quot;, NA, NA, &quot;Adult…</code></pre>
 </div>
 <div id="unite" class="section level3 hasAnchor" number="7.6.3">
 <h3><span class="header-section-number">7.6.3</span> unite()<a href="cap22.html#unite" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -786,14 +798,14 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb409-5"><a href="cap22.html#cb409-5" tabindex="-1"></a><span class="fu">head</span>(penguins_raw_separar_linhas[, <span class="fu">c</span>(<span class="st">&quot;studyName&quot;</span>, <span class="st">&quot;Sample Number&quot;</span>, <span class="st">&quot;Species&quot;</span>, </span>
 <span id="cb409-6"><a href="cap22.html#cb409-6" tabindex="-1"></a>                                     <span class="st">&quot;Region&quot;</span>, <span class="st">&quot;Island&quot;</span>, <span class="st">&quot;Stage&quot;</span>)])</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
-##   studyName `Sample Number` Species                  Region Island Stage
-##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;
-## 1 PAL0708                 1 Adelie Penguin (Pygosce… Anvers Torge… Adult
-## 2 PAL0708                 1 Adelie Penguin (Pygosce… Anvers Torge… 1 Eg…
-## 3 PAL0708                 2 Adelie Penguin (Pygosce… Anvers Torge… Adult
-## 4 PAL0708                 2 Adelie Penguin (Pygosce… Anvers Torge… 1 Eg…
-## 5 PAL0708                 3 Adelie Penguin (Pygosce… Anvers Torge… Adult
-## 6 PAL0708                 3 Adelie Penguin (Pygosce… Anvers Torge… 1 Eg…</code></pre>
+##   studyName `Sample Number` Species                          Region Island Stage
+##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;                            &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;
+## 1 PAL0708                 1 Adelie Penguin (Pygoscelis adel… Anvers Torge… Adult
+## 2 PAL0708                 1 Adelie Penguin (Pygoscelis adel… Anvers Torge… 1 Eg…
+## 3 PAL0708                 2 Adelie Penguin (Pygoscelis adel… Anvers Torge… Adult
+## 4 PAL0708                 2 Adelie Penguin (Pygoscelis adel… Anvers Torge… 1 Eg…
+## 5 PAL0708                 3 Adelie Penguin (Pygoscelis adel… Anvers Torge… Adult
+## 6 PAL0708                 3 Adelie Penguin (Pygoscelis adel… Anvers Torge… 1 Eg…</code></pre>
 </div>
 <div id="drop_na-e-replace_na" class="section level3 hasAnchor" number="7.6.5">
 <h3><span class="header-section-number">7.6.5</span> drop_na() e replace_na()<a href="cap22.html#drop_na-e-replace_na" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -802,19 +814,18 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb411-2"><a href="cap22.html#cb411-2" tabindex="-1"></a>penguins_raw_todas_na <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>(<span class="at">data =</span> penguins_raw)</span>
 <span id="cb411-3"><a href="cap22.html#cb411-3" tabindex="-1"></a><span class="fu">head</span>(penguins_raw_todas_na)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 17
-##   studyName `Sample Number` Species  Region Island Stage `Individual ID`
-##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
-## 1 PAL0708                 7 Adelie … Anvers Torge… Adul… N4A1           
-## 2 PAL0708                 8 Adelie … Anvers Torge… Adul… N4A2           
-## 3 PAL0708                29 Adelie … Anvers Biscoe Adul… N18A1          
-## 4 PAL0708                30 Adelie … Anvers Biscoe Adul… N18A2          
-## 5 PAL0708                39 Adelie … Anvers Dream  Adul… N25A1          
-## 6 PAL0809                69 Adelie … Anvers Torge… Adul… N32A1          
+##   studyName `Sample Number` Species          Region Island Stage `Individual ID`
+##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
+## 1 PAL0708                 7 Adelie Penguin … Anvers Torge… Adul… N4A1           
+## 2 PAL0708                 8 Adelie Penguin … Anvers Torge… Adul… N4A2           
+## 3 PAL0708                29 Adelie Penguin … Anvers Biscoe Adul… N18A1          
+## 4 PAL0708                30 Adelie Penguin … Anvers Biscoe Adul… N18A2          
+## 5 PAL0708                39 Adelie Penguin … Anvers Dream  Adul… N25A1          
+## 6 PAL0809                69 Adelie Penguin … Anvers Torge… Adul… N32A1          
 ## # ℹ 10 more variables: `Clutch Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;,
 ## #   `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
 ## #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;,
-## #   `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;,
-## #   Comments &lt;chr&gt;</code></pre>
+## #   `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;, Comments &lt;chr&gt;</code></pre>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="cap22.html#cb413-1" tabindex="-1"></a><span class="do">## Remover linhas de colunas específicas com NAs</span></span>
 <span id="cb413-2"><a href="cap22.html#cb413-2" tabindex="-1"></a>penguins_raw_colunas_na <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>(<span class="at">data =</span> penguins_raw,</span>
 <span id="cb413-3"><a href="cap22.html#cb413-3" tabindex="-1"></a>                                          <span class="fu">any_of</span>(<span class="st">&quot;Comments&quot;</span>))</span>
@@ -863,32 +874,30 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb419-4"><a href="cap22.html#cb419-4" tabindex="-1"></a>                                               <span class="at">values_from =</span> <span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>)</span>
 <span id="cb419-5"><a href="cap22.html#cb419-5" tabindex="-1"></a><span class="fu">head</span>(penguins_raw_pivot_wider)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
-##   `Sample Number` Adelie Penguin (Pygoscelis ad…¹ Gentoo penguin (Pygo…²
-##             &lt;dbl&gt;                           &lt;dbl&gt;                  &lt;dbl&gt;
-## 1               1                            3750                   4500
-## 2               2                            3800                   5700
-## 3               3                            3250                   4450
-## 4               4                              NA                   5700
-## 5               5                            3450                   5400
-## 6               6                            3650                   4550
-## # ℹ abbreviated names: ¹​`Adelie Penguin (Pygoscelis adeliae)`,
-## #   ²​`Gentoo penguin (Pygoscelis papua)`
+##   `Sample Number` `Adelie Penguin (Pygoscelis adeliae)` Gentoo penguin (Pygosc…¹
+##             &lt;dbl&gt;                                 &lt;dbl&gt;                    &lt;dbl&gt;
+## 1               1                                  3750                     4500
+## 2               2                                  3800                     5700
+## 3               3                                  3250                     4450
+## 4               4                                    NA                     5700
+## 5               5                                  3450                     5400
+## 6               6                                  3650                     4550
+## # ℹ abbreviated name: ¹​`Gentoo penguin (Pygoscelis papua)`
 ## # ℹ 1 more variable: `Chinstrap penguin (Pygoscelis antarctica)` &lt;dbl&gt;</code></pre>
 <p>De modo oposto, podemos partir de um conjunto de dados largo (<em>wide</em>), ou seja, com várias colunas, e queremos que essas colunas preencham uma única coluna, e que os valores antes espalhados nessas várias colunas sejam adicionados um embaixo do outro, numa única coluna, no formato longo (<em>long</em>). Para essa operação, podemos utilizar a função <code>tidyr::pivot_longer()</code>. Novamente, dos diversos parâmetros que podem compor essa função, três deles são fundamentais: <code>cols</code> indicando as colunas que serão usadas para serem pivotadas, <code>names_to</code> que indica a coluna de onde os nomes serão usados e <code>values_to</code> que indica a coluna com os valores.</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="cap22.html#cb421-1" tabindex="-1"></a><span class="do">## Selecionar colunas</span></span>
 <span id="cb421-2"><a href="cap22.html#cb421-2" tabindex="-1"></a>penguins_raw_sel_col <span class="ot">&lt;-</span> penguins_raw[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span>
 <span id="cb421-3"><a href="cap22.html#cb421-3" tabindex="-1"></a><span class="fu">head</span>(penguins_raw_sel_col)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
-##   `Sample Number` Species       `Culmen Length (mm)` `Culmen Depth (mm)`
-##             &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;               &lt;dbl&gt;
-## 1               1 Adelie Pengu…                 39.1                18.7
-## 2               2 Adelie Pengu…                 39.5                17.4
-## 3               3 Adelie Pengu…                 40.3                18  
-## 4               4 Adelie Pengu…                 NA                  NA  
-## 5               5 Adelie Pengu…                 36.7                19.3
-## 6               6 Adelie Pengu…                 39.3                20.6
-## # ℹ 2 more variables: `Flipper Length (mm)` &lt;dbl&gt;,
-## #   `Body Mass (g)` &lt;dbl&gt;</code></pre>
+##   `Sample Number` Species               `Culmen Length (mm)` `Culmen Depth (mm)`
+##             &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;               &lt;dbl&gt;
+## 1               1 Adelie Penguin (Pygo…                 39.1                18.7
+## 2               2 Adelie Penguin (Pygo…                 39.5                17.4
+## 3               3 Adelie Penguin (Pygo…                 40.3                18  
+## 4               4 Adelie Penguin (Pygo…                 NA                  NA  
+## 5               5 Adelie Penguin (Pygo…                 36.7                19.3
+## 6               6 Adelie Penguin (Pygo…                 39.3                20.6
+## # ℹ 2 more variables: `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="cap22.html#cb423-1" tabindex="-1"></a><span class="do">## Pivotar para largo</span></span>
 <span id="cb423-2"><a href="cap22.html#cb423-2" tabindex="-1"></a>penguins_raw_pivot_longer <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> penguins_raw_sel_col, </span>
 <span id="cb423-3"><a href="cap22.html#cb423-3" tabindex="-1"></a>                                                 <span class="at">cols =</span> <span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>,</span>
@@ -896,14 +905,14 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb423-5"><a href="cap22.html#cb423-5" tabindex="-1"></a>                                                 <span class="at">values_to =</span> <span class="st">&quot;valores&quot;</span>)</span>
 <span id="cb423-6"><a href="cap22.html#cb423-6" tabindex="-1"></a><span class="fu">head</span>(penguins_raw_pivot_longer)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
-##   `Sample Number` Species                             medidas    valores
-##             &lt;dbl&gt; &lt;chr&gt;                               &lt;chr&gt;        &lt;dbl&gt;
-## 1               1 Adelie Penguin (Pygoscelis adeliae) Culmen Le…    39.1
-## 2               1 Adelie Penguin (Pygoscelis adeliae) Culmen De…    18.7
-## 3               1 Adelie Penguin (Pygoscelis adeliae) Flipper L…   181  
-## 4               1 Adelie Penguin (Pygoscelis adeliae) Body Mass…  3750  
-## 5               2 Adelie Penguin (Pygoscelis adeliae) Culmen Le…    39.5
-## 6               2 Adelie Penguin (Pygoscelis adeliae) Culmen De…    17.4</code></pre>
+##   `Sample Number` Species                             medidas            valores
+##             &lt;dbl&gt; &lt;chr&gt;                               &lt;chr&gt;                &lt;dbl&gt;
+## 1               1 Adelie Penguin (Pygoscelis adeliae) Culmen Length (mm)    39.1
+## 2               1 Adelie Penguin (Pygoscelis adeliae) Culmen Depth (mm)     18.7
+## 3               1 Adelie Penguin (Pygoscelis adeliae) Flipper Length (m…   181  
+## 4               1 Adelie Penguin (Pygoscelis adeliae) Body Mass (g)       3750  
+## 5               2 Adelie Penguin (Pygoscelis adeliae) Culmen Length (mm)    39.5
+## 6               2 Adelie Penguin (Pygoscelis adeliae) Culmen Depth (mm)     17.4</code></pre>
 <p>Para se aprofundar no tema, recomendamos a leitura do Capítulo 12 <a href="https://r4ds.had.co.nz/tidy-data.html">Tidy data</a> de Wickham &amp; Grolemund <span class="citation">(2017)</span>.</p>
 </div>
 </div>
@@ -969,29 +978,29 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb427-3"><a href="cap22.html#cb427-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">relocate</span>(sex, year, <span class="at">.after =</span> island)</span>
 <span id="cb427-4"><a href="cap22.html#cb427-4" tabindex="-1"></a><span class="fu">head</span>(penguins_relocate_col)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    sex     year bill_length_mm bill_depth_mm
-##   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;
-## 1 Adelie  Torgersen male    2007           39.1          18.7
-## 2 Adelie  Torgersen female  2007           39.5          17.4
-## 3 Adelie  Torgersen female  2007           40.3          18  
-## 4 Adelie  Torgersen &lt;NA&gt;    2007           NA            NA  
-## 5 Adelie  Torgersen female  2007           36.7          19.3
-## 6 Adelie  Torgersen male    2007           39.3          20.6
-## # ℹ 2 more variables: flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;</code></pre>
+##   species island    sex     year bill_length_mm bill_depth_mm flipper_length_mm
+##   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+## 1 Adelie  Torgersen male    2007           39.1          18.7               181
+## 2 Adelie  Torgersen female  2007           39.5          17.4               186
+## 3 Adelie  Torgersen female  2007           40.3          18                 195
+## 4 Adelie  Torgersen &lt;NA&gt;    2007           NA            NA                  NA
+## 5 Adelie  Torgersen female  2007           36.7          19.3               193
+## 6 Adelie  Torgersen male    2007           39.3          20.6               190
+## # ℹ 1 more variable: body_mass_g &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="cap22.html#cb429-1" tabindex="-1"></a><span class="do">## Reordenar colunas - posição</span></span>
 <span id="cb429-2"><a href="cap22.html#cb429-2" tabindex="-1"></a>penguins_relocate_ncol <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb429-3"><a href="cap22.html#cb429-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">relocate</span>(sex, year, <span class="at">.after =</span> <span class="dv">2</span>)</span>
 <span id="cb429-4"><a href="cap22.html#cb429-4" tabindex="-1"></a><span class="fu">head</span>(penguins_relocate_ncol)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    sex     year bill_length_mm bill_depth_mm
-##   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;
-## 1 Adelie  Torgersen male    2007           39.1          18.7
-## 2 Adelie  Torgersen female  2007           39.5          17.4
-## 3 Adelie  Torgersen female  2007           40.3          18  
-## 4 Adelie  Torgersen &lt;NA&gt;    2007           NA            NA  
-## 5 Adelie  Torgersen female  2007           36.7          19.3
-## 6 Adelie  Torgersen male    2007           39.3          20.6
-## # ℹ 2 more variables: flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;</code></pre>
+##   species island    sex     year bill_length_mm bill_depth_mm flipper_length_mm
+##   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+## 1 Adelie  Torgersen male    2007           39.1          18.7               181
+## 2 Adelie  Torgersen female  2007           39.5          17.4               186
+## 3 Adelie  Torgersen female  2007           40.3          18                 195
+## 4 Adelie  Torgersen &lt;NA&gt;    2007           NA            NA                  NA
+## 5 Adelie  Torgersen female  2007           36.7          19.3               193
+## 6 Adelie  Torgersen male    2007           39.3          20.6               190
+## # ℹ 1 more variable: body_mass_g &lt;int&gt;</code></pre>
 </div>
 <div id="rename" class="section level3 hasAnchor" number="7.7.5">
 <h3><span class="header-section-number">7.7.5</span> rename()<a href="cap22.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1004,29 +1013,28 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb431-6"><a href="cap22.html#cb431-6" tabindex="-1"></a>                  <span class="at">body_mass =</span> body_mass_g)</span>
 <span id="cb431-7"><a href="cap22.html#cb431-7" tabindex="-1"></a><span class="fu">head</span>(penguins_rename)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island   bill_length bill_depth flipper_length body_mass sex  
-##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;      &lt;dbl&gt;          &lt;int&gt;     &lt;int&gt; &lt;fct&gt;
-## 1 Adelie  Torgers…        39.1       18.7            181      3750 male 
-## 2 Adelie  Torgers…        39.5       17.4            186      3800 fema…
-## 3 Adelie  Torgers…        40.3       18              195      3250 fema…
-## 4 Adelie  Torgers…        NA         NA               NA        NA &lt;NA&gt; 
-## 5 Adelie  Torgers…        36.7       19.3            193      3450 fema…
-## 6 Adelie  Torgers…        39.3       20.6            190      3650 male 
-## # ℹ 1 more variable: year &lt;int&gt;</code></pre>
+##   species island    bill_length bill_depth flipper_length body_mass sex     year
+##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;      &lt;dbl&gt;          &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
+## 1 Adelie  Torgersen        39.1       18.7            181      3750 male    2007
+## 2 Adelie  Torgersen        39.5       17.4            186      3800 female  2007
+## 3 Adelie  Torgersen        40.3       18              195      3250 female  2007
+## 4 Adelie  Torgersen        NA         NA               NA        NA &lt;NA&gt;    2007
+## 5 Adelie  Torgersen        36.7       19.3            193      3450 female  2007
+## 6 Adelie  Torgersen        39.3       20.6            190      3650 male    2007</code></pre>
 <div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="cap22.html#cb433-1" tabindex="-1"></a><span class="do">## mudar o nome de todas as colunas</span></span>
 <span id="cb433-2"><a href="cap22.html#cb433-2" tabindex="-1"></a>penguins_rename_with <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb433-3"><a href="cap22.html#cb433-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(toupper)</span>
 <span id="cb433-4"><a href="cap22.html#cb433-4" tabindex="-1"></a><span class="fu">head</span>(penguins_rename_with)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   SPECIES ISLAND    BILL_LENGTH_MM BILL_DEPTH_MM FLIPPER_LENGTH_MM
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: BODY_MASS_G &lt;int&gt;, SEX &lt;fct&gt;, YEAR &lt;int&gt;</code></pre>
+##   SPECIES ISLAND    BILL_LENGTH_MM BILL_DEPTH_MM FLIPPER_LENGTH_MM BODY_MASS_G
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: SEX &lt;fct&gt;, YEAR &lt;int&gt;</code></pre>
 </div>
 <div id="select" class="section level3 hasAnchor" number="7.7.6">
 <h3><span class="header-section-number">7.7.6</span> select()<a href="cap22.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1078,8 +1086,7 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb441-2"><a href="cap22.html#cb441-2" tabindex="-1"></a>penguins_select_pull <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb441-3"><a href="cap22.html#cb441-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">pull</span>(bill_length_mm)</span>
 <span id="cb441-4"><a href="cap22.html#cb441-4" tabindex="-1"></a><span class="fu">head</span>(penguins_select_pull, <span class="dv">15</span>)</span></code></pre></div>
-<pre><code>##  [1] 39.1 39.5 40.3   NA 36.7 39.3 38.9 39.2 34.1 42.0 37.8 37.8 41.1
-## [14] 38.6 34.6</code></pre>
+<pre><code>##  [1] 39.1 39.5 40.3   NA 36.7 39.3 38.9 39.2 34.1 42.0 37.8 37.8 41.1 38.6 34.6</code></pre>
 </div>
 <div id="mutate" class="section level3 hasAnchor" number="7.7.8">
 <h3><span class="header-section-number">7.7.8</span> mutate()<a href="cap22.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1089,30 +1096,29 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb443-3"><a href="cap22.html#cb443-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">body_mass_kg =</span> body_mass_g<span class="sc">/</span><span class="fl">1e3</span>, <span class="at">.before =</span> sex)</span>
 <span id="cb443-4"><a href="cap22.html#cb443-4" tabindex="-1"></a><span class="fu">head</span>(penguins_mutate)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 4 more variables: body_mass_g &lt;int&gt;, body_mass_kg &lt;dbl&gt;, sex &lt;fct&gt;,
-## #   year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 3 more variables: body_mass_kg &lt;dbl&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="cap22.html#cb445-1" tabindex="-1"></a><span class="do">## Modificar várias colunas</span></span>
 <span id="cb445-2"><a href="cap22.html#cb445-2" tabindex="-1"></a>penguins_mutate_across <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb445-3"><a href="cap22.html#cb445-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.factor), as.character))</span>
 <span id="cb445-4"><a href="cap22.html#cb445-4" tabindex="-1"></a><span class="fu">head</span>(penguins_mutate_across)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;chr&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;chr&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="arrange" class="section level3 hasAnchor" number="7.7.9">
 <h3><span class="header-section-number">7.7.9</span> arrange()<a href="cap22.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1122,57 +1128,57 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb447-3"><a href="cap22.html#cb447-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(body_mass_g)</span>
 <span id="cb447-4"><a href="cap22.html#cb447-4" tabindex="-1"></a><span class="fu">head</span>(penguins_arrange)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species   island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Chinstrap Dream               46.9          16.6               192
-## 2 Adelie    Biscoe              36.5          16.6               181
-## 3 Adelie    Biscoe              36.4          17.1               184
-## 4 Adelie    Biscoe              34.5          18.1               187
-## 5 Adelie    Dream               33.1          16.1               178
-## 6 Adelie    Torgersen           38.6          17                 188
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Chinstrap Dream               46.9          16.6               192        2700
+## 2 Adelie    Biscoe              36.5          16.6               181        2850
+## 3 Adelie    Biscoe              36.4          17.1               184        2850
+## 4 Adelie    Biscoe              34.5          18.1               187        2900
+## 5 Adelie    Dream               33.1          16.1               178        2900
+## 6 Adelie    Torgersen           38.6          17                 188        2900
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="cap22.html#cb449-1" tabindex="-1"></a><span class="do">## Reordenar linhas - decrescente</span></span>
 <span id="cb449-2"><a href="cap22.html#cb449-2" tabindex="-1"></a>penguins_arrange_desc <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb449-3"><a href="cap22.html#cb449-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(body_mass_g))</span>
 <span id="cb449-4"><a href="cap22.html#cb449-4" tabindex="-1"></a><span class="fu">head</span>(penguins_arrange_desc)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Gentoo  Biscoe           49.2          15.2               221
-## 2 Gentoo  Biscoe           59.6          17                 230
-## 3 Gentoo  Biscoe           51.1          16.3               220
-## 4 Gentoo  Biscoe           48.8          16.2               222
-## 5 Gentoo  Biscoe           45.2          16.4               223
-## 6 Gentoo  Biscoe           49.8          15.9               229
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Gentoo  Biscoe           49.2          15.2               221        6300
+## 2 Gentoo  Biscoe           59.6          17                 230        6050
+## 3 Gentoo  Biscoe           51.1          16.3               220        6000
+## 4 Gentoo  Biscoe           48.8          16.2               222        6000
+## 5 Gentoo  Biscoe           45.2          16.4               223        5950
+## 6 Gentoo  Biscoe           49.8          15.9               229        5950
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="cap22.html#cb451-1" tabindex="-1"></a><span class="do">## Reordenar linhas - decrescente</span></span>
 <span id="cb451-2"><a href="cap22.html#cb451-2" tabindex="-1"></a>penguins_arrange_desc_m <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb451-3"><a href="cap22.html#cb451-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>body_mass_g)</span>
 <span id="cb451-4"><a href="cap22.html#cb451-4" tabindex="-1"></a><span class="fu">head</span>(penguins_arrange_desc_m)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Gentoo  Biscoe           49.2          15.2               221
-## 2 Gentoo  Biscoe           59.6          17                 230
-## 3 Gentoo  Biscoe           51.1          16.3               220
-## 4 Gentoo  Biscoe           48.8          16.2               222
-## 5 Gentoo  Biscoe           45.2          16.4               223
-## 6 Gentoo  Biscoe           49.8          15.9               229
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Gentoo  Biscoe           49.2          15.2               221        6300
+## 2 Gentoo  Biscoe           59.6          17                 230        6050
+## 3 Gentoo  Biscoe           51.1          16.3               220        6000
+## 4 Gentoo  Biscoe           48.8          16.2               222        6000
+## 5 Gentoo  Biscoe           45.2          16.4               223        5950
+## 6 Gentoo  Biscoe           49.8          15.9               229        5950
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="cap22.html#cb453-1" tabindex="-1"></a><span class="do">## Reordenar linhas - multiplas colunas</span></span>
 <span id="cb453-2"><a href="cap22.html#cb453-2" tabindex="-1"></a>penguins_arrange_across <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb453-3"><a href="cap22.html#cb453-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric)))</span>
 <span id="cb453-4"><a href="cap22.html#cb453-4" tabindex="-1"></a><span class="fu">head</span>(penguins_arrange_across)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Dream               32.1          15.5               188
-## 2 Adelie  Dream               33.1          16.1               178
-## 3 Adelie  Torgersen           33.5          19                 190
-## 4 Adelie  Dream               34            17.1               185
-## 5 Adelie  Torgersen           34.1          18.1               193
-## 6 Adelie  Torgersen           34.4          18.4               184
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Dream               32.1          15.5               188        3050
+## 2 Adelie  Dream               33.1          16.1               178        2900
+## 3 Adelie  Torgersen           33.5          19                 190        3600
+## 4 Adelie  Dream               34            17.1               185        3400
+## 5 Adelie  Torgersen           34.1          18.1               193        3475
+## 6 Adelie  Torgersen           34.4          18.4               184        3325
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="filter" class="section level3 hasAnchor" number="7.7.10">
 <h3><span class="header-section-number">7.7.10</span> filter()<a href="cap22.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1182,86 +1188,86 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb455-3"><a href="cap22.html#cb455-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
 <span id="cb455-4"><a href="cap22.html#cb455-4" tabindex="-1"></a><span class="fu">head</span>(penguins_filter)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="cap22.html#cb457-1" tabindex="-1"></a><span class="do">## Filtrar linhas</span></span>
 <span id="cb457-2"><a href="cap22.html#cb457-2" tabindex="-1"></a>penguins_filter_two <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb457-3"><a href="cap22.html#cb457-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
 <span id="cb457-4"><a href="cap22.html#cb457-4" tabindex="-1"></a><span class="fu">head</span>(penguins_filter_two)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.5          17.4               186
-## 2 Adelie  Torgersen           40.3          18                 195
-## 3 Adelie  Torgersen           36.7          19.3               193
-## 4 Adelie  Torgersen           38.9          17.8               181
-## 5 Adelie  Torgersen           41.1          17.6               182
-## 6 Adelie  Torgersen           36.6          17.8               185
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.5          17.4               186        3800
+## 2 Adelie  Torgersen           40.3          18                 195        3250
+## 3 Adelie  Torgersen           36.7          19.3               193        3450
+## 4 Adelie  Torgersen           38.9          17.8               181        3625
+## 5 Adelie  Torgersen           41.1          17.6               182        3200
+## 6 Adelie  Torgersen           36.6          17.8               185        3700
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="cap22.html#cb459-1" tabindex="-1"></a><span class="do">## Filtrar linhas</span></span>
 <span id="cb459-2"><a href="cap22.html#cb459-2" tabindex="-1"></a>penguins_filter_in <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb459-3"><a href="cap22.html#cb459-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Adelie&quot;</span>, <span class="st">&quot;Gentoo&quot;</span>),</span>
 <span id="cb459-4"><a href="cap22.html#cb459-4" tabindex="-1"></a>                  sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
 <span id="cb459-5"><a href="cap22.html#cb459-5" tabindex="-1"></a><span class="fu">head</span>(penguins_filter_in)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.5          17.4               186
-## 2 Adelie  Torgersen           40.3          18                 195
-## 3 Adelie  Torgersen           36.7          19.3               193
-## 4 Adelie  Torgersen           38.9          17.8               181
-## 5 Adelie  Torgersen           41.1          17.6               182
-## 6 Adelie  Torgersen           36.6          17.8               185
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.5          17.4               186        3800
+## 2 Adelie  Torgersen           40.3          18                 195        3250
+## 3 Adelie  Torgersen           36.7          19.3               193        3450
+## 4 Adelie  Torgersen           38.9          17.8               181        3625
+## 5 Adelie  Torgersen           41.1          17.6               182        3200
+## 6 Adelie  Torgersen           36.6          17.8               185        3700
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="cap22.html#cb461-1" tabindex="-1"></a><span class="do">## Filtrar linhas - NA</span></span>
 <span id="cb461-2"><a href="cap22.html#cb461-2" tabindex="-1"></a>penguins_filter_na <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb461-3"><a href="cap22.html#cb461-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
 <span id="cb461-4"><a href="cap22.html#cb461-4" tabindex="-1"></a><span class="fu">head</span>(penguins_filter_na)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           36.7          19.3               193
-## 5 Adelie  Torgersen           39.3          20.6               190
-## 6 Adelie  Torgersen           38.9          17.8               181
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           36.7          19.3               193        3450
+## 5 Adelie  Torgersen           39.3          20.6               190        3650
+## 6 Adelie  Torgersen           38.9          17.8               181        3625
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="cap22.html#cb463-1" tabindex="-1"></a><span class="do">## Filtrar linhas - intervalos</span></span>
 <span id="cb463-2"><a href="cap22.html#cb463-2" tabindex="-1"></a>penguins_filter_between <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb463-3"><a href="cap22.html#cb463-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">between</span>(body_mass_g, <span class="dv">3000</span>, <span class="dv">4000</span>))</span>
 <span id="cb463-4"><a href="cap22.html#cb463-4" tabindex="-1"></a><span class="fu">head</span>(penguins_filter_between)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           36.7          19.3               193
-## 5 Adelie  Torgersen           39.3          20.6               190
-## 6 Adelie  Torgersen           38.9          17.8               181
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           36.7          19.3               193        3450
+## 5 Adelie  Torgersen           39.3          20.6               190        3650
+## 6 Adelie  Torgersen           38.9          17.8               181        3625
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="cap22.html#cb465-1" tabindex="-1"></a><span class="do">## Filtrar linhas por várias colunas</span></span>
 <span id="cb465-2"><a href="cap22.html#cb465-2" tabindex="-1"></a>penguins_filter_if <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb465-3"><a href="cap22.html#cb465-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">where</span>(is.integer), <span class="sc">~</span> . <span class="sc">&gt;</span> <span class="dv">200</span>))</span>
 <span id="cb465-4"><a href="cap22.html#cb465-4" tabindex="-1"></a><span class="fu">head</span>(penguins_filter_if)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Dream               35.7          18                 202
-## 2 Adelie  Dream               41.1          18.1               205
-## 3 Adelie  Dream               40.8          18.9               208
-## 4 Adelie  Biscoe              41            20                 203
-## 5 Adelie  Torgersen           41.4          18.5               202
-## 6 Adelie  Torgersen           44.1          18                 210
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Dream               35.7          18                 202        3550
+## 2 Adelie  Dream               41.1          18.1               205        4300
+## 3 Adelie  Dream               40.8          18.9               208        4300
+## 4 Adelie  Biscoe              41            20                 203        4725
+## 5 Adelie  Torgersen           41.4          18.5               202        3875
+## 6 Adelie  Torgersen           44.1          18                 210        4000
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="slice" class="section level3 hasAnchor" number="7.7.11">
 <h3><span class="header-section-number">7.7.11</span> slice()<a href="cap22.html#slice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1271,56 +1277,56 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb467-3"><a href="cap22.html#cb467-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">300</span><span class="sc">:</span><span class="fu">n</span>())</span>
 <span id="cb467-4"><a href="cap22.html#cb467-4" tabindex="-1"></a><span class="fu">head</span>(penguins_slice)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species   island bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Chinstrap Dream            50.6          19.4               193
-## 2 Chinstrap Dream            46.7          17.9               195
-## 3 Chinstrap Dream            52            19                 197
-## 4 Chinstrap Dream            50.5          18.4               200
-## 5 Chinstrap Dream            49.5          19                 200
-## 6 Chinstrap Dream            46.4          17.8               191
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Chinstrap Dream            50.6          19.4               193        3800
+## 2 Chinstrap Dream            46.7          17.9               195        3300
+## 3 Chinstrap Dream            52            19                 197        4150
+## 4 Chinstrap Dream            50.5          18.4               200        3400
+## 5 Chinstrap Dream            49.5          19                 200        3800
+## 6 Chinstrap Dream            46.4          17.8               191        3700
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="cap22.html#cb469-1" tabindex="-1"></a><span class="do">## Seleciona linhas - head</span></span>
 <span id="cb469-2"><a href="cap22.html#cb469-2" tabindex="-1"></a>penguins_slice_head <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb469-3"><a href="cap22.html#cb469-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb469-4"><a href="cap22.html#cb469-4" tabindex="-1"></a><span class="fu">head</span>(penguins_slice_head)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="cap22.html#cb471-1" tabindex="-1"></a><span class="do">## Seleciona linhas - max</span></span>
 <span id="cb471-2"><a href="cap22.html#cb471-2" tabindex="-1"></a>penguins_slice_max <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb471-3"><a href="cap22.html#cb471-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_max</span>(body_mass_g, <span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb471-4"><a href="cap22.html#cb471-4" tabindex="-1"></a><span class="fu">head</span>(penguins_slice_max)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Gentoo  Biscoe           49.2          15.2               221
-## 2 Gentoo  Biscoe           59.6          17                 230
-## 3 Gentoo  Biscoe           51.1          16.3               220
-## 4 Gentoo  Biscoe           48.8          16.2               222
-## 5 Gentoo  Biscoe           45.2          16.4               223
-## 6 Gentoo  Biscoe           49.8          15.9               229
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Gentoo  Biscoe           49.2          15.2               221        6300
+## 2 Gentoo  Biscoe           59.6          17                 230        6050
+## 3 Gentoo  Biscoe           51.1          16.3               220        6000
+## 4 Gentoo  Biscoe           48.8          16.2               222        6000
+## 5 Gentoo  Biscoe           45.2          16.4               223        5950
+## 6 Gentoo  Biscoe           49.8          15.9               229        5950
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="cap22.html#cb473-1" tabindex="-1"></a><span class="do">## Seleciona linhas - sample</span></span>
 <span id="cb473-2"><a href="cap22.html#cb473-2" tabindex="-1"></a>penguins_slice_sample <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb473-3"><a href="cap22.html#cb473-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">30</span>)</span>
 <span id="cb473-4"><a href="cap22.html#cb473-4" tabindex="-1"></a><span class="fu">head</span>(penguins_slice_sample)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Biscoe              41.3          21.1               195
-## 2 Gentoo  Biscoe              44.5          15.7               217
-## 3 Adelie  Torgersen           41.4          18.5               202
-## 4 Adelie  Biscoe              37.6          17                 185
-## 5 Adelie  Dream               36            17.9               190
-## 6 Adelie  Biscoe              35.7          16.9               185
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Biscoe              41.3          21.1               195        4400
+## 2 Gentoo  Biscoe              44.5          15.7               217        4875
+## 3 Adelie  Torgersen           41.4          18.5               202        3875
+## 4 Adelie  Biscoe              37.6          17                 185        3600
+## 5 Adelie  Dream               36            17.9               190        3450
+## 6 Adelie  Biscoe              35.7          16.9               185        3150
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="distinct" class="section level3 hasAnchor" number="7.7.12">
 <h3><span class="header-section-number">7.7.12</span> distinct()<a href="cap22.html#distinct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1343,29 +1349,29 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb477-3"><a href="cap22.html#cb477-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(body_mass_g, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb477-4"><a href="cap22.html#cb477-4" tabindex="-1"></a><span class="fu">head</span>(penguins_distinct_keep_all)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="cap22.html#cb479-1" tabindex="-1"></a><span class="do">## Retirar linhas com valores repetidos para várias colunas</span></span>
 <span id="cb479-2"><a href="cap22.html#cb479-2" tabindex="-1"></a>penguins_distinct_keep_all_across <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb479-3"><a href="cap22.html#cb479-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.integer)), <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb479-4"><a href="cap22.html#cb479-4" tabindex="-1"></a><span class="fu">head</span>(penguins_distinct_keep_all_across)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="count" class="section level3 hasAnchor" number="7.7.13">
 <h3><span class="header-section-number">7.7.13</span> count()<a href="cap22.html#count" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1402,30 +1408,30 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb485-4"><a href="cap22.html#cb485-4" tabindex="-1"></a><span class="fu">head</span>(penguins_group_by)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
 ## # Groups:   species [1]
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="cap22.html#cb487-1" tabindex="-1"></a><span class="do">## Agrupamento de várias colunas</span></span>
 <span id="cb487-2"><a href="cap22.html#cb487-2" tabindex="-1"></a>penguins_group_by_across <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb487-3"><a href="cap22.html#cb487-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.factor)))</span>
 <span id="cb487-4"><a href="cap22.html#cb487-4" tabindex="-1"></a><span class="fu">head</span>(penguins_group_by_across)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
 ## # Groups:   species, island, sex [3]
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 <div id="summarise" class="section level3 hasAnchor" number="7.7.15">
 <h3><span class="header-section-number">7.7.15</span> summarise()<a href="cap22.html#summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1448,12 +1454,11 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 <span id="cb491-4"><a href="cap22.html#cb491-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span>
 <span id="cb491-5"><a href="cap22.html#cb491-5" tabindex="-1"></a>penguins_summarise_across</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 6
-##   species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-##   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
-## 1 Adelie              38.8          18.3              190.       3701.
-## 2 Chinstrap           48.8          18.4              196.       3733.
-## 3 Gentoo              47.5          15.0              217.       5076.
-## # ℹ 1 more variable: year &lt;dbl&gt;</code></pre>
+##   species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
+##   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Adelie              38.8          18.3              190.       3701. 2008.
+## 2 Chinstrap           48.8          18.4              196.       3733. 2008.
+## 3 Gentoo              47.5          15.0              217.       5076. 2008.</code></pre>
 </div>
 <div id="bind_rows-e-bind_cols" class="section level3 hasAnchor" number="7.7.16">
 <h3><span class="header-section-number">7.7.16</span> bind_rows() e bind_cols()<a href="cap22.html#bind_rows-e-bind_cols" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1503,11 +1508,11 @@ Figura 7.2: As três regras que tornam um conjunto de dados <em>tidy</em>.
 ## 3 Adelie      Torgersen                40.3              18  
 ## 4 Adelie      Torgersen                NA                NA  
 ## 5 Adelie      Torgersen                36.7              19.3
-## # ℹ 12 more variables: flipper_length_mm...5 &lt;int&gt;,
-## #   body_mass_g...6 &lt;int&gt;, sex...7 &lt;fct&gt;, year...8 &lt;int&gt;,
-## #   species...9 &lt;fct&gt;, island...10 &lt;fct&gt;, bill_length_mm...11 &lt;dbl&gt;,
-## #   bill_depth_mm...12 &lt;dbl&gt;, flipper_length_mm...13 &lt;int&gt;,
-## #   body_mass_g...14 &lt;int&gt;, sex...15 &lt;fct&gt;, year...16 &lt;int&gt;</code></pre>
+## # ℹ 12 more variables: flipper_length_mm...5 &lt;int&gt;, body_mass_g...6 &lt;int&gt;,
+## #   sex...7 &lt;fct&gt;, year...8 &lt;int&gt;, species...9 &lt;fct&gt;, island...10 &lt;fct&gt;,
+## #   bill_length_mm...11 &lt;dbl&gt;, bill_depth_mm...12 &lt;dbl&gt;,
+## #   flipper_length_mm...13 &lt;int&gt;, body_mass_g...14 &lt;int&gt;, sex...15 &lt;fct&gt;,
+## #   year...16 &lt;int&gt;</code></pre>
 </div>
 <div id="join" class="section level3 hasAnchor" number="7.7.17">
 <h3><span class="header-section-number">7.7.17</span> *_join()<a href="cap22.html#join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1537,16 +1542,15 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <span id="cb499-8"><a href="cap22.html#cb499-8" tabindex="-1"></a>penguins_left_join <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(penguins, penguin_islands, <span class="at">by =</span> <span class="st">&quot;island&quot;</span>)</span>
 <span id="cb499-9"><a href="cap22.html#cb499-9" tabindex="-1"></a><span class="fu">head</span>(penguins_left_join)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
-##   species island    bill_length_mm bill_depth_mm flipper_length_mm
-##   &lt;fct&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-## 1 Adelie  Torgersen           39.1          18.7               181
-## 2 Adelie  Torgersen           39.5          17.4               186
-## 3 Adelie  Torgersen           40.3          18                 195
-## 4 Adelie  Torgersen           NA            NA                  NA
-## 5 Adelie  Torgersen           36.7          19.3               193
-## 6 Adelie  Torgersen           39.3          20.6               190
-## # ℹ 5 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
-## #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 4 more variables: sex &lt;fct&gt;, year &lt;int&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</code></pre>
 <p>Já o segundo tipo de junção, a junção de filtragem combina as observações da mesma maneira que as junções de modificação, mas afetam as observações (linhas), não as variáveis (colunas). Existem dois tipos.</p>
 <ul>
 <li><code>semi_join(x, y)</code>: mantém todas as observações em <code>x</code> que têm uma correspondência em <code>y</code></li>
@@ -1620,11 +1624,11 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos ainda ordenar os elementos de um vetor por ordem alfabética de forma crescente ou decrescente, usando <code>stringr::str_sort()</code>.</p>
 <div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="cap22.html#cb531-1" tabindex="-1"></a><span class="do">## Ordenar</span></span>
 <span id="cb531-2"><a href="cap22.html#cb531-2" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_sort</span>(<span class="at">x =</span> letters)</span></code></pre></div>
-<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot;
-## [18] &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
+## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="cap22.html#cb533-1" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_sort</span>(<span class="at">x =</span> letters, <span class="at">dec =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;z&quot; &quot;y&quot; &quot;x&quot; &quot;w&quot; &quot;v&quot; &quot;u&quot; &quot;t&quot; &quot;s&quot; &quot;r&quot; &quot;q&quot; &quot;p&quot; &quot;o&quot; &quot;n&quot; &quot;m&quot; &quot;l&quot; &quot;k&quot; &quot;j&quot;
-## [18] &quot;i&quot; &quot;h&quot; &quot;g&quot; &quot;f&quot; &quot;e&quot; &quot;d&quot; &quot;c&quot; &quot;b&quot; &quot;a&quot;</code></pre>
+<pre><code>##  [1] &quot;z&quot; &quot;y&quot; &quot;x&quot; &quot;w&quot; &quot;v&quot; &quot;u&quot; &quot;t&quot; &quot;s&quot; &quot;r&quot; &quot;q&quot; &quot;p&quot; &quot;o&quot; &quot;n&quot; &quot;m&quot; &quot;l&quot; &quot;k&quot; &quot;j&quot; &quot;i&quot; &quot;h&quot;
+## [20] &quot;g&quot; &quot;f&quot; &quot;e&quot; &quot;d&quot; &quot;c&quot; &quot;b&quot; &quot;a&quot;</code></pre>
 <p>Podemos ainda utilizar essas funções em complemento com o pacote <code>dplyr</code>, para alterar os strings de colunas ou nome das colunas.</p>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="cap22.html#cb535-1" tabindex="-1"></a><span class="do">## Alterar valores das colunas</span></span>
 <span id="cb535-2"><a href="cap22.html#cb535-2" tabindex="-1"></a>penguins_stringr_valores <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
@@ -1645,12 +1649,9 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Primeiramente, vamos converter dados de string para fator, utilizando a função <code>forcats::as_factor()</code>.</p>
 <div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="cap22.html#cb537-1" tabindex="-1"></a><span class="do">## String</span></span>
 <span id="cb537-2"><a href="cap22.html#cb537-2" tabindex="-1"></a>forcats<span class="sc">::</span><span class="fu">as_factor</span>(penguins_raw<span class="sc">$</span>Species) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>## [1] Adelie Penguin (Pygoscelis adeliae)
-## [2] Adelie Penguin (Pygoscelis adeliae)
-## [3] Adelie Penguin (Pygoscelis adeliae)
-## [4] Adelie Penguin (Pygoscelis adeliae)
-## [5] Adelie Penguin (Pygoscelis adeliae)
-## [6] Adelie Penguin (Pygoscelis adeliae)
+<pre><code>## [1] Adelie Penguin (Pygoscelis adeliae) Adelie Penguin (Pygoscelis adeliae)
+## [3] Adelie Penguin (Pygoscelis adeliae) Adelie Penguin (Pygoscelis adeliae)
+## [5] Adelie Penguin (Pygoscelis adeliae) Adelie Penguin (Pygoscelis adeliae)
 ## 3 Levels: Adelie Penguin (Pygoscelis adeliae) ...</code></pre>
 <p>Podemos facilmente mudar o nome dos níveis utilizando a função <code>forcats::fct_recode()</code>.</p>
 <div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="cap22.html#cb539-1" tabindex="-1"></a><span class="do">## Mudar o nome dos níveis</span></span>
@@ -1710,10 +1711,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Para acessar a informação da data e horários atuais podemos utilizar as funções <code>lubridate::today()</code> e <code>lubridate::now()</code>.</p>
 <div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="cap22.html#cb553-1" tabindex="-1"></a><span class="do">## Extrair a data nesse instante</span></span>
 <span id="cb553-2"><a href="cap22.html#cb553-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03&quot;</code></pre>
 <div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="cap22.html#cb555-1" tabindex="-1"></a><span class="do">## Extrair a data e tempo nesse instante</span></span>
 <span id="cb555-2"><a href="cap22.html#cb555-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 11:47:55 -03&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 11:31:04 -03&quot;</code></pre>
 <p>Além dessas informações instantâneas, existem três maneiras de criar um dado de data/horário.</p>
 <ul>
 <li>De um string</li>
@@ -1762,10 +1763,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Por fim, podemos criar datas modificando entre data/horário e data, utilizando as funções <code>lubridate::as_datetime()</code> e <code>lubridate::as_date()</code>.</p>
 <div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="cap22.html#cb570-1" tabindex="-1"></a><span class="do">## Data para data-horário</span></span>
 <span id="cb570-2"><a href="cap22.html#cb570-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_datetime</span>(<span class="fu">today</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="cap22.html#cb572-1" tabindex="-1"></a><span class="do">## Data-horário para data</span></span>
 <span id="cb572-2"><a href="cap22.html#cb572-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_date</span>(<span class="fu">now</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03&quot;</code></pre>
 <p>Uma vez que entendemos como podemos criar dados de data/horário, podemos explorar funções para acessar e definir componentes individuais. Para essa tarefa existe uma grande quantidade de funções para acessar partes específicas de datas e horários.</p>
 <ul>
 <li><code>year()</code>: acessa o ano</li>
@@ -1781,15 +1782,15 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="cap22.html#cb574-1" tabindex="-1"></a><span class="do">## Extrair</span></span>
 <span id="cb574-2"><a href="cap22.html#cb574-2" tabindex="-1"></a>agora <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
 <span id="cb574-3"><a href="cap22.html#cb574-3" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">year</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 2023</code></pre>
+<pre><code>## [1] 2024</code></pre>
 <div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="cap22.html#cb576-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">month</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="cap22.html#cb578-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">day</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 26</code></pre>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="cap22.html#cb580-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">wday</span>(agora)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="cap22.html#cb580-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">wday</span>(agora)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
 <div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="cap22.html#cb582-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">second</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 56.10698</code></pre>
+<pre><code>## [1] 4.964235</code></pre>
 <p>Além de acessar componentes de datas e horários, podemos usar essas funções para fazer a inclusão de informações de datas e horários.</p>
 <div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="cap22.html#cb584-1" tabindex="-1"></a><span class="do">## Data</span></span>
 <span id="cb584-2"><a href="cap22.html#cb584-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">dmy_hms</span>(<span class="st">&quot;04-03-2021 01:04:56&quot;</span>)</span>
@@ -1849,10 +1850,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos ainda utilizar as durações para fazer operações aritméticas com datas como adição, subtração e multiplicação.</p>
 <div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="cap22.html#cb605-1" tabindex="-1"></a><span class="do">## Somando durações a datas</span></span>
 <span id="cb605-2"><a href="cap22.html#cb605-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-27&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-04&quot;</code></pre>
 <div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="cap22.html#cb607-1" tabindex="-1"></a><span class="do">## Subtraindo durações de datas</span></span>
 <span id="cb607-2"><a href="cap22.html#cb607-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">-</span> lubridate<span class="sc">::</span><span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2022-12-25 18:00:00 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2023-01-02 18:00:00 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="cap22.html#cb609-1" tabindex="-1"></a><span class="do">## Multiplicando durações</span></span>
 <span id="cb609-2"><a href="cap22.html#cb609-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dyears</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;126230400s (~4 years)&quot;</code></pre>
@@ -1889,15 +1890,15 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Além disso, podemos fazer operações com os períodos, somando e subtraindo.</p>
 <div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="cap22.html#cb627-1" tabindex="-1"></a><span class="do">## Somando datas</span></span>
 <span id="cb627-2"><a href="cap22.html#cb627-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-03-05&quot;</code></pre>
+<pre><code>## [1] &quot;2024-03-13&quot;</code></pre>
 <div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="cap22.html#cb629-1" tabindex="-1"></a><span class="do">## Subtraindo datas</span></span>
 <span id="cb629-2"><a href="cap22.html#cb629-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">-</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-10-17&quot;</code></pre>
+<pre><code>## [1] &quot;2023-10-25&quot;</code></pre>
 <div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="cap22.html#cb631-1" tabindex="-1"></a><span class="do">## Criando datas recorrentes</span></span>
 <span id="cb631-2"><a href="cap22.html#cb631-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;2023-12-26&quot; &quot;2024-01-02&quot; &quot;2024-01-09&quot; &quot;2024-01-16&quot; &quot;2024-01-23&quot;
-##  [6] &quot;2024-01-30&quot; &quot;2024-02-06&quot; &quot;2024-02-13&quot; &quot;2024-02-20&quot; &quot;2024-02-27&quot;
-## [11] &quot;2024-03-05&quot;</code></pre>
+<pre><code>##  [1] &quot;2024-01-03&quot; &quot;2024-01-10&quot; &quot;2024-01-17&quot; &quot;2024-01-24&quot; &quot;2024-01-31&quot;
+##  [6] &quot;2024-02-07&quot; &quot;2024-02-14&quot; &quot;2024-02-21&quot; &quot;2024-02-28&quot; &quot;2024-03-06&quot;
+## [11] &quot;2024-03-13&quot;</code></pre>
 <p>Por fim, intervalos são períodos de tempo limitados por duas datas, possuindo uma duração com um ponto de partida, que o faz preciso para determinar uma duração. Intervalos são objetos da classe <code>Interval</code>. Da mesma forma que para duração e períodos, há uma série de funções para realizar essas operações.</p>
 <ul>
 <li><code>interval()</code>: cria data em intervalo</li>
@@ -1929,13 +1930,13 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <span id="cb633-13"><a href="cap22.html#cb633-13" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_start</span>(r_intervalo)</span></code></pre></div>
 <pre><code>## [1] &quot;2011-11-30 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="cap22.html#cb635-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_end</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="cap22.html#cb637-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_length</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] 380937600</code></pre>
+<pre><code>## [1] 381628800</code></pre>
 <div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="cap22.html#cb639-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_flip</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] 2023-12-26 UTC--2011-11-30 UTC</code></pre>
+<pre><code>## [1] 2024-01-03 UTC--2011-11-30 UTC</code></pre>
 <div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="cap22.html#cb641-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_shift</span>(r_intervalo, <span class="fu">duration</span>(<span class="at">days =</span> <span class="dv">30</span>))</span></code></pre></div>
-<pre><code>## [1] 2011-12-30 UTC--2024-01-25 UTC</code></pre>
+<pre><code>## [1] 2011-12-30 UTC--2024-02-02 UTC</code></pre>
 <p>Uma operação de destaque é verificar a sobreposição entre dois intervalos.</p>
 <div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="cap22.html#cb643-1" tabindex="-1"></a><span class="do">## Verificar sobreposição - int_overlaps</span></span>
 <span id="cb643-2"><a href="cap22.html#cb643-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_overlaps</span>(r_intervalo, filho_intervalo)</span></code></pre></div>
@@ -1948,21 +1949,21 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos ainda calcular quantos períodos existem dentro de um intervalo, utilizando as operações de <code>/</code> e <code>%/%</code>.</p>
 <div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="cap22.html#cb649-1" tabindex="-1"></a><span class="do">## Períodos dentro de um intervalo - anos</span></span>
 <span id="cb649-2"><a href="cap22.html#cb649-2" tabindex="-1"></a>r_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">years</span>()</span></code></pre></div>
-<pre><code>## [1] 12.07104</code></pre>
+<pre><code>## [1] 12.0929</code></pre>
 <div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="cap22.html#cb651-1" tabindex="-1"></a>r_intervalo <span class="sc">%/%</span> lubridate<span class="sc">::</span><span class="fu">years</span>()</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="cap22.html#cb653-1" tabindex="-1"></a><span class="do">## Períodos dentro de um intervalo - dias e semandas</span></span>
 <span id="cb653-2"><a href="cap22.html#cb653-2" tabindex="-1"></a>filho_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">days</span>()</span></code></pre></div>
-<pre><code>## [1] 3743</code></pre>
+<pre><code>## [1] 3751</code></pre>
 <div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="cap22.html#cb655-1" tabindex="-1"></a>filho_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>()</span></code></pre></div>
-<pre><code>## [1] 534.7143</code></pre>
+<pre><code>## [1] 535.8571</code></pre>
 <p>Ainda podemos fazer transformações dos dados para períodos e ter todas as unidades de data e tempo que o intervalo compreende.</p>
 <div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="cap22.html#cb657-1" tabindex="-1"></a><span class="do">## Tempo total estudando R</span></span>
 <span id="cb657-2"><a href="cap22.html#cb657-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as.period</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;12y 0m 26d 0H 0M 0S&quot;</code></pre>
+<pre><code>## [1] &quot;12y 1m 4d 0H 0M 0S&quot;</code></pre>
 <div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="cap22.html#cb659-1" tabindex="-1"></a><span class="do">## Idade do meu filho</span></span>
 <span id="cb659-2"><a href="cap22.html#cb659-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as.period</span>(filho_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;10y 3m 0d 0H 0M 0S&quot;</code></pre>
+<pre><code>## [1] &quot;10y 3m 8d 0H 0M 0S&quot;</code></pre>
 <p>Por fim, fusos horários tendem a ser um fator complicador quando precisamos analisar informações instantâneas de tempo (horário) de outras partes do planeta, ou mesmo fazer conversões dos horários. No <code>lubridate</code> há funções para ajudar nesse sentido. Para isso, podemos utilizar a função <code>lubridate::with_tz()</code> e no argumento <code>tzone</code> informar o fuso horário para a transformação do horário.</p>
 <p>Podemos descobrir o fuso horário que o R está considerando com a função <code>Sys.timezone()</code>.</p>
 <div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="cap22.html#cb661-1" tabindex="-1"></a><span class="do">## Fuso horário no R</span></span>
@@ -1978,12 +1979,12 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos nos perguntar que horas são em outra parte do globo ou fazer as conversões facilmente no <em>lubridate</em>.</p>
 <div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="cap22.html#cb667-1" tabindex="-1"></a><span class="do">## Que horas são em...</span></span>
 <span id="cb667-2"><a href="cap22.html#cb667-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 14:47:57 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 14:31:05 GMT&quot;</code></pre>
 <div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="cap22.html#cb669-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;Europe/Berlin&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 15:47:57 CET&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 15:31:05 CET&quot;</code></pre>
 <div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="cap22.html#cb671-1" tabindex="-1"></a><span class="do">## Altera o fuso sem mudar a hora</span></span>
 <span id="cb671-2"><a href="cap22.html#cb671-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">force_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-12-26 11:47:58 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-03 11:31:05 GMT&quot;</code></pre>
 <p>Para se aprofundar no tema, recomendamos a leitura do Capítulo <a href="https://r4ds.had.co.nz/dates-and-times.html">16 Dates and times</a> de Wickham &amp; Grolemund <span class="citation">(2017)</span>.</p>
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="7.11">

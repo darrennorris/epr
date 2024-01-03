@@ -464,7 +464,7 @@ bind_rows(
 ```
 
 
-Test to see how many across interview samples.
+Test to see how many across interview samples. Use different buffer sizes to represent species movement patterns i.e. jaguar use 20 km etc.
 ```{r count-interview-samples}
 int_5km <- st_buffer(interviews_4326[, "aid"], 5000)
 # Function to count species abundances around interviews.

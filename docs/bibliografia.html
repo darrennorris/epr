@@ -61,6 +61,10 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -69,6 +73,8 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
+<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -250,17 +256,24 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="cap03.html"><a href="cap03.html"><i class="fa fa-check"></i><b>3</b> Respostas multiescala de espécies</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="cap03.html"><a href="cap03.html#apresentação-2"><i class="fa fa-check"></i><b>3.1</b> Apresentação</a></li>
-<li class="chapter" data-level="3.2" data-path="cap03.html"><a href="cap03.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.2</b> Pacotes e dados</a>
+<li class="chapter" data-level="3.2" data-path="cap03.html"><a href="cap03.html#escala-de-efeito---definição"><i class="fa fa-check"></i><b>3.2</b> Escala de efeito - definição</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="cap03.html"><a href="cap03.html#pacotes-2"><i class="fa fa-check"></i><b>3.2.1</b> Pacotes</a></li>
-<li class="chapter" data-level="3.2.2" data-path="cap03.html"><a href="cap03.html#dados-necessarios"><i class="fa fa-check"></i><b>3.2.2</b> Dados necessarios</a></li>
+<li class="chapter" data-level="3.2.1" data-path="cap03.html"><a href="cap03.html#definições"><i class="fa fa-check"></i><b>3.2.1</b> Definições</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cap03.html"><a href="cap03.html#aplicação"><i class="fa fa-check"></i><b>3.2.2</b> Aplicação</a></li>
+<li class="chapter" data-level="3.2.3" data-path="cap03.html"><a href="cap03.html#como-identificar-a-escala-de-efeito"><i class="fa fa-check"></i><b>3.2.3</b> Como identificar a escala de efeito?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="cap03.html"><a href="cap03.html#buffers"><i class="fa fa-check"></i><b>3.3</b> Buffers</a>
+<li class="chapter" data-level="3.3" data-path="cap03.html"><a href="cap03.html#pacotes-e-dados-1"><i class="fa fa-check"></i><b>3.3</b> Pacotes e dados</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="cap03.html"><a href="cap03.html#floresta"><i class="fa fa-check"></i><b>3.3.1</b> Floresta</a></li>
-<li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#especies"><i class="fa fa-check"></i><b>3.3.2</b> Especies</a></li>
+<li class="chapter" data-level="3.3.1" data-path="cap03.html"><a href="cap03.html#pacotes-2"><i class="fa fa-check"></i><b>3.3.1</b> Pacotes</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap03.html"><a href="cap03.html#dados-necessarios"><i class="fa fa-check"></i><b>3.3.2</b> Dados necessarios</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.4</b> Kernels</a></li>
+<li class="chapter" data-level="3.4" data-path="cap03.html"><a href="cap03.html#buffers"><i class="fa fa-check"></i><b>3.4</b> Buffers</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cap03.html"><a href="cap03.html#floresta"><i class="fa fa-check"></i><b>3.4.1</b> Floresta</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cap03.html"><a href="cap03.html#floresta-e-a-ocorrência-de-espécies"><i class="fa fa-check"></i><b>3.4.2</b> Floresta e a ocorrência de espécies</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.5</b> Kernels</a></li>
+<li class="chapter" data-level="3.6" data-path="cap03.html"><a href="cap03.html#links-uteis"><i class="fa fa-check"></i><b>3.6</b> Links uteis</a></li>
 </ul></li>
 <li class="part"><span><b>III Exemplos de caso</b></span></li>
 <li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
@@ -473,16 +486,25 @@ Aue, Birgit, Klemens Ekschmitt, Stefan Hotes, and Volkmar Wolters. 2012. <span>�
 Bullock, James M., Laura Mallada González, Riin Tamme, Lars Götzenberger, Steven M. White, Meelis Pärtel, and Danny A. P. Hooftman. 2017. <span>“A Synthesis of Empirical Plant Dispersal Kernels.”</span> <em>Journal of Ecology</em> 105 (1): 6–19. <a href="https://doi.org/10.1111/1365-2745.12666">https://doi.org/10.1111/1365-2745.12666</a>.
 </div>
 <div class="csl-entry">
+Burnham, K. A., and D. R. Anderson, eds. 2002. <em><span class="nocase">Model Selection and Multimodel Inference</span></em>. Springer. https://doi.org/<a href="https://doi.org/10.1007/b97636">https://doi.org/10.1007/b97636</a>.
+</div>
+<div class="csl-entry">
 Chandler, Richard, and Jeffrey Hepinstall-Cymerman. 2016. <span>“Estimating the Spatial Scales of Landscape Effects on Abundance.”</span> <em>Landscape Ecology</em> 31: 1383–94. <a href="https://doi.org/10.1007/s10980-016-0380-z">https://doi.org/10.1007/s10980-016-0380-z</a>.
 </div>
 <div class="csl-entry">
 Chang, W. 2018. <em>R Graphics Cookbook: Practical Recipes for Visualizing Data</em>. Second edition. Beijing ; Boston: O’Reilly.
 </div>
 <div class="csl-entry">
+Dáttilo, Wesley, André Luis Regolin, Fernanda Baena-Dı́az, and Danilo Boscolo. 2023. <span>“Spatial Scaling Involving the Complexity of Biotic Interactions: Integrating Concepts, Current Status, and Future Perspectives.”</span> <em>Current Landscape Ecology Reports</em>, 1–12. <a href="https://doi.org/10.1007/s40823-023-00090-1">https://doi.org/10.1007/s40823-023-00090-1</a>.
+</div>
+<div class="csl-entry">
 Emerson, J. W., W. A. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham. 2013. <span>“The <span>Generalized</span> <span>Pairs</span> <span>Plot</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 22 (1): 79–91. <a href="https://doi.org/10.1080/10618600.2012.694762">https://doi.org/10.1080/10618600.2012.694762</a>.
 </div>
 <div class="csl-entry">
 Fletcher, R., and M.-J. Fortin. 2018. <em><span class="nocase">Spatial ecology and conservation modeling: applications with r</span></em>. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-01989-1">https://doi.org/10.1007/978-3-030-01989-1</a>.
+</div>
+<div class="csl-entry">
+Galán-Acedo, Carmen, Víctor Arroyo-Rodríguez, Alejandro Estrada, and Gabriel Ramos-Fernández. 2018. <span>“Drivers of the Spatial Scale That Best Predict Primate Responses to Landscape Structure.”</span> <em>Ecography</em> 41 (12): 2027–37. <a href="https://doi.org/10.1111/ecog.03632">https://doi.org/10.1111/ecog.03632</a>.
 </div>
 <div class="csl-entry">
 Healy, K. 2018. <em>Data Visualization: A Practical Introduction</em>. Princeton, NJ: Princeton University Press.
@@ -500,16 +522,43 @@ Irizarry, Rafael A. 2019. <em>Introduction to <span>Data</span> <span>Science</s
 Ismay, C., and A. Y.-S. Kim. 2020. <em>Statistical Inference via Data Science: A <span>ModernDive</span> into <span>R</span> and the <span>Tidyverse</span></em>. Chapman &amp; <span>Hall</span>/<span>CRC</span> the <span>R</span> <span>Series</span>. Boca Raton: CRC Press / Taylor &amp; Francis Group.
 </div>
 <div class="csl-entry">
+Jackson, Heather Bird, and Lenore Fahrig. 2015. <span>“Are Ecologists Conducting Research at the Optimal Scale?”</span> <em>Global Ecology and Biogeography</em> 24 (1): 52–63. <a href="https://doi.org/10.1111/geb.12233">https://doi.org/10.1111/geb.12233</a>.
+</div>
+<div class="csl-entry">
+Martin, Amanda E., and Lenore Fahrig. 2012. <span>“Measuring and Selecting Scales of Effect for Landscape Predictors in Species–Habitat Models.”</span> <em>Ecological Applications</em> 22 (8): 2277–92. <a href="https://doi.org/10.1890/11-2224.1">https://doi.org/10.1890/11-2224.1</a>.
+</div>
+<div class="csl-entry">
 Matejka, J., and G. Fitzmaurice. 2017. <span>“Same <span>Stats</span>, <span>Different</span> <span>Graphs</span>: <span>Generating</span> <span>Datasets</span> with <span>Varied</span> <span>Appearance</span> and <span>Identical</span> <span>Statistics</span> Through <span>Simulated</span> <span>Annealing</span>.”</span> In <em>Proceedings of the 2017 <span>CHI</span> <span>Conference</span> on <span>Human</span> <span>Factors</span> in <span>Computing</span> <span>Systems</span></em>, 1290–94. Denver Colorado USA: ACM. <a href="https://doi.org/10.1145/3025453.3025912">https://doi.org/10.1145/3025453.3025912</a>.
+</div>
+<div class="csl-entry">
+McGarigal, Kevin, Ho Yi Wan, Kathy A Zeller, Brad C Timm, and Samuel A Cushman. 2016. <span>“Multi-Scale Habitat Selection Modeling: A Review and Outlook.”</span> <em>Landscape Ecology</em> 31: 1161–75. <a href="https://doi.org/10.1007/s10980-016-0374-x">https://doi.org/10.1007/s10980-016-0374-x</a>.
+</div>
+<div class="csl-entry">
+Michalski, Fernanda, Ricardo Luiz Pires Boulhosa, Yuri Nascimento do Nascimento, and Darren Norris. 2020. <span>“Rural Wage-Earners’ Attitudes Towards Diverse Wildlife Groups Differ Between Tropical Ecoregions: Implications for Forest and Savanna Conservation in the Brazilian Amazon.”</span> <em>Tropical Conservation Science</em> 13: 1940082920971747. <a href="https://doi.org/10.1177/1940082920971747">https://doi.org/10.1177/1940082920971747</a>.
+</div>
+<div class="csl-entry">
+Michalski, Fernanda, and Carlos A. Peres. 2005. <span>“Anthropogenic Determinants of Primate and Carnivore Local Extinctions in a Fragmented Forest Landscape of Southern Amazonia.”</span> <em>Biological Conservation</em> 124 (3): 383–96. <a href="https://doi.org/10.1016/j.biocon.2005.01.045">https://doi.org/10.1016/j.biocon.2005.01.045</a>.
+</div>
+<div class="csl-entry">
+———. 2007. <span>“Disturbance-Mediated Mammal Persistence and Abundance-Area Relationships in Amazonian Forest Fragments.”</span> <em>Conservation Biology</em> 21 (6): 1626–40. <a href="https://doi.org/10.1111/j.1523-1739.2007.00797.x">https://doi.org/10.1111/j.1523-1739.2007.00797.x</a>.
 </div>
 <div class="csl-entry">
 Miguet, Paul, Lenore Fahrig, and Claire Lavigne. 2017. <span>“How to Quantify a Distance-Dependent Landscape Effect on a Biological Response.”</span> <em>Methods in Ecology and Evolution</em> 8 (12): 1717–24. <a href="https://doi.org/10.1111/2041-210X.12830">https://doi.org/10.1111/2041-210X.12830</a>.
 </div>
 <div class="csl-entry">
+Moll, Remington J., Jonathon D. Cepek, Patrick D. Lorch, Patricia M. Dennis, Terry Robison, and Robert A. Montgomery. 2020. <span>“At What Spatial Scale(s) Do Mammals Respond to Urbanization?”</span> <em>Ecography</em> 43 (2): 171–83. <a href="https://doi.org/10.1111/ecog.04762">https://doi.org/10.1111/ecog.04762</a>.
+</div>
+<div class="csl-entry">
 Oliveira, P. F., S. Guerra, and R. McDonnell. 2018. <em>Ciência de <span>Dados</span> Com <span>R</span> - <span>Introdução</span></em>.
 </div>
 <div class="csl-entry">
+Pearson, Scott M. 1993. <span>“The Spatial Extent and Relative Influence of Landscape-Level Factors on Wintering Bird Populations.”</span> <em>Landscape Ecology</em> 8 (1): 3–18. <a href="https://doi.org/10.1007/BF00129863">https://doi.org/10.1007/BF00129863</a>.
+</div>
+<div class="csl-entry">
 Rahlf, T. 2019. <em>Data Visualisation with <span>R</span>: 111 Examples</em>. Second edition. Cham: Springer.
+</div>
+<div class="csl-entry">
+San-José, Miriam, Vı́ctor Arroyo-Rodrı́guez, Pedro Jordano, Jorge A Meave, and Miguel Martı́nez-Ramos. 2019. <span>“The Scale of Landscape Effect on Seed Dispersal Depends on Both Response Variables and Landscape Predictor.”</span> <em>Landscape Ecology</em> 34: 1069–80. <a href="https://doi.org/10.1007/s10980-019-00821-y">https://doi.org/10.1007/s10980-019-00821-y</a>.
 </div>
 <div class="csl-entry">
 Sievert, C. 2020. <em>Interactive Web-Based Data Visualization with <span>R</span>, Plotly, and Shiny</em>. Boca Raton, FL: CRC Press, Taylor; Francis Group.
@@ -534,6 +583,12 @@ Wilkinson, L., and G. Wills. 2005. <em><span class="nocase">The grammar of graph
 </div>
 <div class="csl-entry">
 Williams, G. J. 2018. <em>The Essentials of Data Science: Knowledge Discovery Using <span>R</span></em>. Boca Raton: Taylor &amp; Francis, CRC Press.
+</div>
+<div class="csl-entry">
+Wu, Jianguo. 2004. <span>“Effects of Changing Scale on Landscape Pattern Analysis: Scaling Relations.”</span> <em>Landscape Ecology</em> 19: 125–38. <a href="https://doi.org/10.1023/B:LAND.0000021711.40074.ae">https://doi.org/10.1023/B:LAND.0000021711.40074.ae</a>.
+</div>
+<div class="csl-entry">
+Wu, Jianguo, and Harbin Li. 2006. <span>“Concepts of Scale and Scaling.”</span> In <em>Scaling and Uncertainty Analysis in Ecology</em>, edited by Jianguo Wu, K. Bruce Jones, Harbin Li, and Orie L. Loucks, 3–15. Dordrecht: Springer Netherlands. <a href="https://doi.org/10.1007/1-4020-4663-4_1">https://doi.org/10.1007/1-4020-4663-4_1</a>.
 </div>
 <div class="csl-entry">
 Zumel, N., and J. Mount. 2014. <em>Practical Data Science with <span>R</span></em>. Shelter Island, NY: Manning Publications Co.

@@ -12,6 +12,11 @@ browseURL("docs/index.html")
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
 # quarto::quarto_render()
+# see following for quatro projects that look like a book:
+# https://nmfs-opensci.github.io/NOAA-quarto-simple/
+# https://jmbuhr.de/dataintro/
+# quarto templates https://github.com/mcanouil/awesome-quarto#templates
+# https://stackoverflow.com/questions/74123977/how-to-embed-a-bookdown-gitbook-in-a-quarto-website-as-a-navbar-item
 # to use unicode and Portuguese can also try xelatex engine plus
 # \usepackage{polyglossia}
 # \setmainlanguage{portuges}

@@ -36,10 +36,10 @@ Base teorica pra tras os conceitos e calculos. O foco é sobre a aplicação, e 
 
 ## Prerequisites {.unnumbered}
 Fizemos algumas suposições sobre o que você já sabe para aproveitar ao máximo este livro.
-Você deve ser geralmente alfabetizado numericamente, e com conhecimento previsa de ecologia, geoprocessamento e uso de sistemas de informação geografica.
+Você deve ser geralmente alfabetizado numericamente, e com conhecimento previa de ecologia, geoprocessamento e uso de sistemas de informação geografica.
 
 
-Você precisa de quatro coisas para executar o código deste livro: R, RStudio, uma coleção de pacotes R chamada **tidyverse** e um punhado de outros pacotes.
+Você precisa de quatro coisas para executar o código deste livro: R, RStudio, RTools e uma coleção de pacotes.
 Os pacotes são as unidades fundamentais do código R reproduzível.
 Eles incluem funções reutilizáveis, documentação que descreve como usá-los e dados de amostra.
 
