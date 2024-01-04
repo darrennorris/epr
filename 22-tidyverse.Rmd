@@ -8,7 +8,7 @@ bibliography: references.bib
 # Tidyverse {#cap22}
 
 
-Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 5 Tidyverse](https://analises-ecologicas.com/cap5), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) .
+Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 5 Tidyverse](https://analises-ecologicas.com/cap5), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) . O livro está licenciado sob a licença [BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) : https://creativecommons.org/licenses/by-nc-nd/4.0/.
 
 
 ## Pré-requisitos do capítulo {-}

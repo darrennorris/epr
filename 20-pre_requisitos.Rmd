@@ -7,7 +7,7 @@
 
 # Pré-requisitos {#cap20}
 
-Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 3 Pré-requisitos](https://analises-ecologicas.com/cap3), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) .
+Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 3 Pré-requisitos](https://analises-ecologicas.com/cap3), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) . O livro está licenciado sob a licença [BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) : https://creativecommons.org/licenses/by-nc-nd/4.0/.
 
 ## Introdução
 

@@ -4,7 +4,7 @@ bibliography: references.bib
 
 \newpage{}
 
-# (PART) Escala e padrões {-}
+# (PART) Escala e padrões {.unnumbered}
 
 \newpage{}
 
@@ -20,6 +20,19 @@ Nesta capitulo vamos entender a importância de escala na ecologia da paisagem a
 
 <br> É muito importante ficar claro para você o que é escala (e o que não é!), e qual a importância desse conceito na elaboração do desenho amostral, na coleta de dados, nas análises e na tomada de decisão. Nesse tutorial usaremos conteudo baseado no Capítulo 2 do livro [Spatial Ecology and Conservation Modeling](https://doi.org/10.1007/978-3-030-01989-1) [@fletcher2018] e ["Tutorial Escala"](https://www.needs.ufscar.br/tutorial_escala.pdf) do Dr. Alexandre Martensen.
 
+Para ajudar a acompanhar e entender os exemplos no capítulo, você deve ler os seguintes artigos:
+
+-   Best, J. 2019.\
+    Anthropogenic stresses on the world’s big rivers. Nature Geoscience 12, 7–21. <https://doi.org/10.1038/s41561-018-0262-x>
+
+-   Raffo DCD, Norris D, Hartz SM, Michalski F. 2022.\
+    Anthropogenic influences on the distribution of a threatened apex-predator around sustainable-use reserves following hydropower dam installation. PeerJ 10:e14287 <https://doi.org/10.7717/peerj.14287>
+
+-   Bárcenas‐García, A., Michalski, F., Gibbs, J. P., & Norris, D. (2022). Amazonian run‐of‐river dam reservoir impacts underestimated: Evidence from a before–after control–impact study of freshwater turtle nesting areas. Aquatic Conservation: Marine and Freshwater Ecosystems, 32(3), 508-522. https://doi.org/10.1002/aqc.3775
+
+-   Sá‐Oliveira JC, Hawes JE, Isaac‐Nahum VJ, Peres C 2015.\
+    Upstream and downstream responses of fish assemblages to an eastern Amazonian hydroelectric dam. Freshwater biology. Oct;60(10):2037-50.  https://doi.org/10.1111/fwb.12628
+
 ## Escala: breve definação
 
 Todos os processos e padrões ecológicos têm uma dimensão temporal e espacial. Assim sendo, o conceito de <b>escala</b> não somente representar essas dimensões, mas também, ajudar nos apresentá-los de uma forma que facilite o entendimento sobre os processos e padrões sendo estudados.
@@ -34,19 +47,15 @@ Resolução e extensão tendem a covariar -- estudos com maior extensão tendem 
 Lembrando, na primeira aula, vimos que a escala espacial pode ser interpretada com base em três dimensoes:
 
 -   no fenômeno de interesse;
--   na amostragem que ocorre; 
+-   na amostragem que ocorre;
 
 e/ou
 
 -   na análise
 
-Para que a Ecologia da Paisagem gere evidências científicas robustas e úteis, a escala nas três dimensões deve ser consistente e apropriada para o estudo. Incompatibilidade entre a escala de análise (definida por o pesquisador) e a escala de efeito (definida pelo verdadeiro relacionamento) representa uma versão do Problema de Unidade Areal Modificável ("Modifiable Areal
-Unit Problem" Gehlke e Biehl 1934), em que os resultados e a inferência
-torna-se um artefato do esquema de amostragem espacial em vez de um processo ecológico (Jelinski e Wu 1996).
-
+Para que a Ecologia da Paisagem gere evidências científicas robustas e úteis, a escala nas três dimensões deve ser consistente e apropriada para o estudo. Incompatibilidade entre a escala de análise (definida por o pesquisador) e a escala de efeito (definida pelo verdadeiro relacionamento) representa uma versão do Problema de Unidade Areal Modificável ("Modifiable Areal Unit Problem" [@gehlke1934certain]), em que os resultados e a inferência torna-se um artefato do esquema de amostragem espacial em vez de um processo ecológico [@jelinski1996modifiable; @WU2006].
 
 Aqui nos concentramos na dimensão “análise”, e aprendemos como a escala espacial pode ser alterada e representada em modelos ecológicos.
-
 
 \newpage
 
@@ -79,10 +88,9 @@ Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem 
 
 ### Dados
 
-Vamos olhar um exemplo do mundo real. Uma pequena amostra do Rio Araguari, perto de Porto Grande. O ponto central é de longitude: -51.406312 latitude: 0.726236. Para visualizar o ponto no Google Earth: https://earthengine.google.com/timelapse#v=0.72154,-51.41543,11.8,latLng&t=2.24&ps=25&bt=19840101&et=20201231&startDwell=0&endDwell=0 .
+Vamos olhar um exemplo do mundo real. Uma pequena amostra do Rio Araguari, perto de Porto Grande. O ponto central é de longitude: -51.406312 latitude: 0.726236. Para visualizar o ponto no Google Earth: <https://earthengine.google.com/timelapse#v=0.72154,-51.41543,11.8,latLng&t=2.24&ps=25&bt=19840101&et=20201231&startDwell=0&endDwell=0> .
 
-Vammos trabalhar com os dados de [MapBiomas](https://mapbiomas.org/), que produz mapeamento anual da cobertura e uso da terra no Brasil desde 1985. Os dados de MapBiomas vem no formato de raster, que tem uma  classificação da terra feito a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com algoritmos de aprendizagem de máquina (machine learning) através da plataforma Google Earth Engine, que oferece imensa capacidade de processamento na nuvem. Mais detalhes sobre a metodologia aqui: [Metodologia MapBiomas](https://brasil.mapbiomas.org/visao-geral-da-metodologia/). 
-
+Vammos trabalhar com os dados de [MapBiomas](https://mapbiomas.org/), que produz mapeamento anual da cobertura e uso da terra no Brasil desde 1985. Os dados de MapBiomas vem no formato de raster, que tem uma classificação da terra feito a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com algoritmos de aprendizagem de máquina (machine learning) através da plataforma Google Earth Engine, que oferece imensa capacidade de processamento na nuvem. Mais detalhes sobre a metodologia aqui: [Metodologia MapBiomas](https://brasil.mapbiomas.org/visao-geral-da-metodologia/).
 
 Para carregar um arquivo raster trabalhamos com o pacote [terra](https://CRAN.R-project.org/package=terra). O pacote tem varios funçoes para a análise e modelagem de dados geográficos. Nós podemos ler os dados de cobertura da terra no arquivo ".tif" com a função `rast`.
 
@@ -94,10 +102,7 @@ arquivo <- system.file("raster/amostra_mapbiomas_2020.tif",
 ramostra <- rast(arquivo)
 ```
 
-
 Plotar para verificar.
-
-
 
 ```{r plot-ramostra, fig.width = 4, fig.height = 2.5, fig.cap = "Mapbiomas 2020. Uma pequena amostra do Rio Araguari, perto de Porto Grande."}
 plot(ramostra)
@@ -115,9 +120,6 @@ Isso nos mostra informações sobre os atributos da raster no objeto ramostra. A
 knitr::include_graphics(path = "figures/raster_components.png")
 ```
 
-
-
-
 Além disso é possível obter informações específicas através de funções específicas.
 
 ```{r get-raster-info, eval= FALSE, echo = TRUE}
@@ -130,8 +132,6 @@ ncol(ramostra)
 nrow(ramostra)
 
 ```
-
-
 
 #### Pergunta 1
 
@@ -151,17 +151,15 @@ Daqui pra frente vamos aproveitar uma forma mais elegante de apresentar mapas e 
 
 -   [tmap](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html) é utilizado para gerar mapas temáticos
 
--   [ggplot2](https://ggplot2.tidyverse.org/), que faz parte do "tidyverse", e é utilizado para produção de gráficos, e pode representar dados geoespacias. 
+-   [ggplot2](https://ggplot2.tidyverse.org/), que faz parte do "tidyverse", e é utilizado para produção de gráficos, e pode representar dados geoespacias.
 
+Exemplos : [Pacotes ggplot2 e tmap](https://www.youtube.com/watch?v=OYON-VzPFmw)
 
-Exemplos : 
-[Pacotes ggplot2 e tmap](https://www.youtube.com/watch?v=OYON-VzPFmw )
+Mais exemplos sobre o uso de [ggplot2](https://ggplot2.tidyverse.org/) no [R cookbook](http://www.cookbook-r.com/Graphs/) : <http://www.cookbook-r.com/Graphs/> .
 
-Mais exemplos sobre o uso de [ggplot2](https://ggplot2.tidyverse.org/) no [R cookbook](http://www.cookbook-r.com/Graphs/) : http://www.cookbook-r.com/Graphs/ .
+E com mais exemplos de mapas e dados espaciais no R: [sf e ggplot2](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html) : <https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html>
 
-E com mais exemplos de mapas e dados espaciais no R: [sf e ggplot2](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html) : https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
-
-[Capitulo 9](https://geocompr.robinlovelace.net/adv-map.html) no livro [Geocomputation with R](https://geocompr.robinlovelace.net/) : https://geocompr.robinlovelace.net/adv-map.html
+[Capitulo 9](https://geocompr.robinlovelace.net/adv-map.html) no livro [Geocomputation with R](https://geocompr.robinlovelace.net/) : <https://geocompr.robinlovelace.net/adv-map.html>
 
 Primeiramente precisamos incluir as informações relevantes da legenda. Ou seja, incluir os nomes para cada valor de classe.
 
@@ -198,7 +196,6 @@ tm_layout(legend.position = c("right","top"),legend.bg.color = "white")
 
 Alterando a resolução serve como exemplo mostrando como os passos/etapas/cálculos mude dependendo o tipo de dados. Ou seja, é preciso adotar metodologias diferentes para dados categóricos (por exemplo classificação de cobertura da terra) e dados contínuos (por exemplo distância até rio).
 
-
 ```{r raster-res, echo = FALSE, fig.align = 'center', out.width = "75%", out.height = "75%", fig.cap=" Comparação de tamanhos de pixels pequenos e grandes. Mostrando diferenças causadas pela agregação de 4 pixels em 1."}
 knitr::include_graphics(path = "figures/pixel_size.png")
 ```
@@ -221,7 +218,6 @@ ramostra_modal <- aggregate(ramostra, fact=3, fun="modal")
 ramostra_modal <- resample(ramostra, ramostra_modal, method="near")
 ```
 
-
 #### Pergunta 2
 
 `r kableExtra::text_spec("Utilizando as funções disponíveis no pacote tmap, crie mapas temáticos dos objetos ramostra_media e ramostra_modal. Inclua cópias do seu código e mapas na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e mapas.", color = "blue", bold = TRUE)`
@@ -230,9 +226,7 @@ ramostra_modal <- resample(ramostra, ramostra_modal, method="near")
 
 \newpage
 
-
-Visualizar os resultados apresentados em Figura 1.4. Os valores calculados pela média não fazem sentido para uma classificação categórica.
-Os valores calculados pela modal são consistentes com o original e fazem sentido.
+Visualizar os resultados apresentados em Figura 1.4. Os valores calculados pela média não fazem sentido para uma classificação categórica. Os valores calculados pela modal são consistentes com o original e fazem sentido.
 
 \newpage
 
@@ -265,15 +259,13 @@ sf_grids |>
 
 #### Pergunta 3
 
-`r kableExtra::text_spec("Confira o codigo e os resultados obtidos anteriormente, quando mudamos a resolução da ratser ramostra (por exemplo figura 1.4). Explique o que aconteceu. Como e porque moudou os valores em cada caso (média e modal)?", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec("Confira o codigo e os resultados obtidos anteriormente, quando mudamos a resolução da raster ramostra (por exemplo figura 1.4). Explique o que aconteceu. Como e porque moudou os valores em cada caso (média e modal)?", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
 \newpage
 
 ## Escala espacial e desenho amostral
-
-
 
 ```{r buffer-figure, echo = FALSE, message = FALSE, warning = FALSE, out.width = "60%", out.height = "60%", fig.cap = "A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km."}
 
@@ -333,8 +325,6 @@ fig_together
 
 ```
 
-
-
 Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resoloção), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.
 
 Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (zona tampão - [Buffers](https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html)) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.
@@ -343,10 +333,7 @@ O objetivo é criar buffers circulares de diferentes extensões ao redor dos sit
 
 ### Obter e carregar dados (vectores)
 
-Antes de quantificar a quantidade de floresta, precisamos carregar os dados de rios e pontos de amostragem.
-O formato de vector é diferente de "tif" (raster), portanto o processo de importação é diferente. 
-Aqui, nós só precisamos de duas dessas camadas, ambos do pacote 'eprdados': "rio_linhacentral" e "rio_pontos".
-A primeira camada de dados contém o eixo central de 260 km de rios a montante da Barragem Cachoeira Caldeirão. Os dados foram obtidos a partir de registros de trajetória GPS durante levantamentos de barco. Os rios foram divididos em 52 seções, cada uma com aproximadamente 5 km de extensão. A segunda camada de dados, "rio_pontos", contém 52 pontos espaçados regularmente ao longo dos rios. Cada ponto está localizado a aproximadamente 5 km de distância do ponto anterior. 
+Antes de quantificar a quantidade de floresta, precisamos carregar os dados de rios e pontos de amostragem. O formato de vector é diferente de "tif" (raster), portanto o processo de importação é diferente. Aqui, nós só precisamos de duas dessas camadas, ambos do pacote 'eprdados': "rio_linhacentral" e "rio_pontos". A primeira camada de dados contém o eixo central de 260 km de rios a montante da Barragem Cachoeira Caldeirão. Os dados foram obtidos a partir de registros de trajetória GPS durante levantamentos de barco. Os rios foram divididos em 52 seções, cada uma com aproximadamente 5 km de extensão. A segunda camada de dados, "rio_pontos", contém 52 pontos espaçados regularmente ao longo dos rios. Cada ponto está localizado a aproximadamente 5 km de distância do ponto anterior.
 
 \newpage
 
@@ -390,10 +377,9 @@ meuSIGr <- system.file("raster/utm_cover_AP_rio_2020.tif",
 mapbiomas_2020 <- rast(meuSIGr)
 ```
 
-
 ### Visualizar os arquivos (camadas raster e vector)
 
-Visualizar para verificar. É possível de visualizar varios camadas de raster e vetor juntos com funcões no pacote tmap (https://r-tmap.github.io/tmap-book/index.html).
+Visualizar para verificar. É possível de visualizar varios camadas de raster e vetor juntos com funcões no pacote tmap (<https://r-tmap.github.io/tmap-book/index.html>).
 
 ```{r fig.width = 5, fig.height = 5, warning = FALSE, message = FALSE, fig.cap =" Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio."}
 # Passo necessario para agilizar o processamento
@@ -498,15 +484,13 @@ tm_scale_bar(breaks = c(0, 0.5, 1), text.size = 1,
 tm_layout(legend.position = c("right","top"), legend.bg.color = "white")
 ```
 
-### Pergunta 4
+#### Pergunta 4
 
 `r kableExtra::text_spec("Qual é a extensão em número de pixels desse recorte (buffer.forest1.1km)?", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
-
 \newpage
-
 
 Temos valores de 0 (não-floresta) e 1 (floresta). Então, para saber a aréa de floresta podemos somar o número de células (pixels) que contém o habitat e multiplica pela área de cada pixel conforme o codigo:
 
@@ -670,22 +654,24 @@ tmap_arrange(fig_250m, fig_500m, fig_1000m, fig_2000m, fig_4000m, nrow=1)
 -   raio 2000 m = 502.6 hectares de floresta
 -   raio 4000 m = 3351.0 hectares de floresta
 
-### Pergunta 5
+#### Pergunta 5
 
 `r kableExtra::text_spec("Usando os valores listadas acima de raio e área de floresta para os diferentes buffers circulares, calcule a proporção de floresta em cada uma das diferentes extensões de buffer. Apresente 1) os resultados incluindo cálculos. 2) um gráfico com valores de extensão no eixo x e proporção da floresta no eixo y. 3) Em menos de 200 palavras apresente a sua interpretação do gráfico.", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
-### Pergunta 6
+#### Pergunta 6
 
 `r kableExtra::text_spec("A modelagem multiescala quantifica as condições do ambiente em múltiplas escalas alterando o resolução ou a extensão da análise e, em seguida, avaliando qual das escalas consideradas  explica melhor um padrão ou processo. Escolha 1 espécie aquático e 1 espécie terrestre que ocorram na região a montante das hidrelétricas no Rio Araguari. Com base nas diferenças entre extensões (indicados no exemplo anterior) e as características funcionais das espécies (por exemplo área de vida), escolher as extensões mais adequadas para um estudo multiescala de cada espécie.", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
+[Soluções dos exercícios:](https://darrennorris.github.io/eprsol/solutions.html) https://darrennorris.github.io/eprsol/solutions.html
+
 ## Próximos passos: repetindo para muitas amostras.
 
 Neste exemplo comparamos a área de floresta em torno de um único ponto de amostragem. Para calcular o mesmo para todos os 52 pontos, seriam necessárias varias repetições (52 pontos x 5 extensões = 260 repetições).
 
-Poderíamos escrever código para executar esse processo automaticamente. Felizmente, alguém já escreveu funções para fazer isso e muito mais. O próximo tutorial sobre métricas de paisagem mostrará exemplos usando o pacote "landscapemetrics" (https://r-spatialecology.github.io/landscapemetrics/).
+Poderíamos escrever código para executar esse processo automaticamente. Felizmente, alguém já escreveu funções para fazer isso e muito mais. O próximo tutorial sobre métricas de paisagem mostrará exemplos usando o pacote "landscapemetrics" (<https://r-spatialecology.github.io/landscapemetrics/>).
 
 <br>
