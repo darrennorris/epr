@@ -21,4 +21,4 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 # \usepackage{polyglossia}
 # \setmainlanguage{portuges}
 # in tinytext need hyphen-portuges and hyphen-portuguese
-
+# update geo chapters using https://r.geocompx.org/eco#introduction-9

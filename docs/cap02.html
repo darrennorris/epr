@@ -61,6 +61,10 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -69,6 +73,8 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
+<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -241,6 +247,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
 <li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
 </ul></li>
+<li class="chapter" data-level="2.5" data-path="cap02.html"><a href="cap02.html#links-úteis"><i class="fa fa-check"></i><b>2.5</b> Links úteis</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap03.html"><a href="cap03.html"><i class="fa fa-check"></i><b>3</b> Respostas multiescala de espécies</a>
 <ul>
@@ -262,7 +269,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.2" data-path="cap03.html"><a href="cap03.html#floresta-e-a-ocorrência-de-espécies"><i class="fa fa-check"></i><b>3.4.2</b> Floresta e a ocorrência de espécies</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="cap03.html"><a href="cap03.html#kernels"><i class="fa fa-check"></i><b>3.5</b> Kernels</a></li>
-<li class="chapter" data-level="3.6" data-path="cap03.html"><a href="cap03.html#links-uteis"><i class="fa fa-check"></i><b>3.6</b> Links uteis</a></li>
+<li class="chapter" data-level="3.6" data-path="cap03.html"><a href="cap03.html#links-úteis-1"><i class="fa fa-check"></i><b>3.6</b> Links úteis</a></li>
 </ul></li>
 <li class="part"><span><b>III Exemplos de caso</b></span></li>
 <li class="chapter" data-level="4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html"><i class="fa fa-check"></i><b>4</b> Garimpo do Lourenço</a>
@@ -470,8 +477,10 @@ div.csl-indent {
 <div id="apresentação-1" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Apresentação<a href="cap02.html#apresentação-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As métricas da paisagem nos ajudam a entender as mudanças na paisagem de diferentes perspectivas (visual, ecológica, cultural).</p>
-<p>Asssim sendo, análises com métricas de paisagem é um atividade fundamental na ecologia da paisagem. Nesta capitulo aprenderemos sobre como analisar a cobertura da terra com métricas de paisagem em R. As tecnicas será ilustrada através cálculos usando a cobertura florestal ao redor do Rio Araguari. Ao longo do caminho, revisaremos modelos lineares e não lineares, aprenderemos sobre manipulação de dados em R e aprenderemos como criar gráficos com o pacote ggplot2.</p>
-<p>No capitulo você aprenderá a:</p>
+<p>Asssim sendo, análises com métricas de paisagem é um atividade fundamental na ecologia da paisagem.
+Nesta capitulo aprenderemos sobre como analisar a cobertura da terra com métricas de paisagem em R. o objetivo principal é mostrar a importância de selecionar a métrica “certa” para o problema “certo” usando R.
+As tecnicas será ilustrada através cálculos usando a cobertura florestal ao redor do Rio Araguari, Amapá, Brasil.</p>
+<p>Ao longo do caminho, revisaremos modelos lineares e não lineares, aprenderemos sobre manipulação de dados em R e aprenderemos como criar gráficos com o pacote ggplot2. No capitulo você aprenderá a:</p>
 <ul>
 <li><p>Importar e plotar dados raster em R e mapear locais de amostragem com os pacotes <a href="https://rspatial.org/pkg/index.html">terra</a>, <a href="https://cran.r-project.org/web/packages/sf/vignettes/sf1.html">sf</a> e <a href="https://r-tmap.github.io/tmap/">tmap</a>.</p></li>
 <li><p>Calcular métricas de paisagem com o pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a>.</p></li>
@@ -479,60 +488,86 @@ div.csl-indent {
 <li><p>Construir gráficos com o pacote <a href="https://ggplot2.tidyverse.org/">ggplot2</a>.</p></li>
 <li><p>Comparação de padrões lineares e não-lineares.</p></li>
 </ul>
+<p>Para ajudar a acompanhar e entender os exemplos no capítulo, use como base as aulas (“Métricas da paisagem: Modelo mancha-corredor-matriz” e “Índices de Paisagem e Análises de Padrões Espaciais”) e você deve ler os seguintes artigos:</p>
+<ul>
+<li><p>Tischendorf, L. 2001.<br />
+Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254. <a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a></p></li>
+<li><p>Casimiro PC. 2009.<br />
+Estrutura, composição e configuração da paisagem conceitos e princípios para a sua quantificação no âmbito da ecologia da paisagem. Revista portuguesa de estudos regionais. (20):75-99. <a href="https://www.redalyc.org/pdf/5143/514351895006.pdf" class="uri">https://www.redalyc.org/pdf/5143/514351895006.pdf</a></p></li>
+<li><p>Pereira JL, et. al. 2001.<br />
+Métricas da paisagem na caracterização da evolução da ocupação da Amazônia. Geografia. 2001:59-90. <a href="https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907" class="uri">https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907</a></p></li>
+<li><p>McGarigal K. 2017.<br />
+Landscape metrics for categorical map patterns. Lecture notes. <a href="https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf" class="uri">https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf</a></p></li>
+</ul>
+<p>Cópias dos artigos estão no Google Classroom e também podem ser baixadas <a href="https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing">aqui</a>: <a href="https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing" class="uri">https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing</a></p>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="métricas-da-paisagem-e-pacote-landscapemetrics" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Métricas da paisagem e pacote “landscapemetrics”<a href="cap02.html#métricas-da-paisagem-e-pacote-landscapemetrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As métricas de paisagem são a forma que os ecólogos de paisagem usam para descrever os padrões espaciais de paisagens para depois avaliar a influência destes padrões espaciais nos padrões e processos ecológicos.</p>
-<p>A paisagem objeto de análise é definida pelo usuário e pode representar qualquer fenômeno espacial. As métricas simplesmente quantifica a heterogeneidade espacial da paisagem representada no mapa categórico; cabe ao usuário estabelecer uma base sólida para definir e dimensionar a paisagem em termos de conteúdo temático e resolução e extensão espacial. É importante ressaltar que o resultado das métricas só é relevante se a paisagem definida for adequado em relação ao fenômeno em consideração.</p>
-<p><a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> tem funções para calcular métricas de paisagem em paisagems categóricos (onde tem uma classificação de cobertura de terra/habitat - modelo mancha-corredor-matriz), em um fluxo de trabalho organizado. O pacote pode ser usado como um substituto do FRAGSTATS (<a href="https://doi.org/10.2737/PNW-GTR-351">McGarigal et al. 1995</a>, <a href="https://doi.org/10.2737/PNW-GTR-351" class="uri">https://doi.org/10.2737/PNW-GTR-351</a>), pois oferece um fluxo de trabalho reproduzível para análise de paisagem em um único ambiente. Pode tambem obter FRAGSTATS aqui: <a href="https://fragstats.org/" class="uri">https://fragstats.org/</a> .
+<p>A paisagem objeto de análise é definida pelo usuário e pode representar qualquer fenômeno espacial.
+As métricas simplesmente quantifica a heterogeneidade espacial da paisagem; cabe ao usuário estabelecer uma base sólida para definir e dimensionar a paisagem em termos de conteúdo temático e resolução e extensão espacial.
+É importante ressaltar que o resultado das métricas só é relevante se a paisagem definida for adequado em relação ao fenômeno em consideração.</p>
+<p><a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> tem funções para calcular métricas de paisagem em paisagems categóricos (onde tem uma classificação de cobertura de terra/habitat - modelo mancha-corredor-matriz), em um fluxo de trabalho organizado <span class="citation">(Hesselbarth et al. 2019)</span>. Existem diversos tutoriais e exemplos no site do proprio pacote: <a href="https://r-spatialecology.github.io/landscapemetrics/" class="uri">https://r-spatialecology.github.io/landscapemetrics/</a> .</p>
+<p>O pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> pode ser usado como um substituto do FRAGSTATS (<a href="https://doi.org/10.2737/PNW-GTR-351">McGarigal et al. 1995</a>, <a href="https://doi.org/10.2737/PNW-GTR-351" class="uri">https://doi.org/10.2737/PNW-GTR-351</a>), pois oferece um fluxo de trabalho reproduzível para análise de paisagem em um único ambiente.
+Pode obter FRAGSTATS aqui: <a href="https://fragstats.org/" class="uri">https://fragstats.org/</a> .
 <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> também permite cálculos de quatro métricas teóricas de complexidade da paisagem: entropia marginal, entropia condicional, entropia conjunta e informação mútua (<a href="https://doi.org/10.1007/s10980-019-00830-x">Nowosad e Stepinski 2019</a> <a href="https://doi.org/10.1007/s10980-019-00830-x" class="uri">https://doi.org/10.1007/s10980-019-00830-x</a>).</p>
 <div id="pacotes-1" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Pacotes<a href="cap02.html#pacotes-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Além do “landscapemetrics”, precisamos carregar alguns pacotes a mais para facilitar a organização e apresentação de dados espaciais (vector e raster) e os resultados.</p>
 <p>Carregar pacotes (que deve esta instalado antes):</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cap02.html#cb36-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb36-2"><a href="cap02.html#cb36-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb36-3"><a href="cap02.html#cb36-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb36-4"><a href="cap02.html#cb36-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb36-5"><a href="cap02.html#cb36-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb36-6"><a href="cap02.html#cb36-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb36-7"><a href="cap02.html#cb36-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb36-8"><a href="cap02.html#cb36-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb36-9"><a href="cap02.html#cb36-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cap02.html#cb37-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb37-2"><a href="cap02.html#cb37-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb37-3"><a href="cap02.html#cb37-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb37-4"><a href="cap02.html#cb37-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb37-5"><a href="cap02.html#cb37-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb37-6"><a href="cap02.html#cb37-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb37-7"><a href="cap02.html#cb37-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb37-8"><a href="cap02.html#cb37-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb37-9"><a href="cap02.html#cb37-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span></code></pre></div>
+<p>Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: <span style="     color: red !important;">Error in library(nomepacote) there is no package called nomepacote</span>. Neste caso, para instalá-los consulte o capitulos aqui <a href="https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html">Capitulo 4 instalação de pacotes</a> e aqui <a href="https://analises-ecologicas.com/cap4#pacotes-1">Capitulo 4 pacotes</a> .</p>
 <div id="landscapemetrics" class="section level4 hasAnchor" number="2.2.1.1">
 <h4><span class="header-section-number">2.2.1.1</span> landscapemetrics<a href="cap02.html#landscapemetrics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Agora, vamos para o pacote principal <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a>. Digite o código abaixo e veja o resultado. Leia com atenção e preste particular atenção na organização da página de ajuda.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cap02.html#cb37-1" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
-<span id="cb37-2"><a href="cap02.html#cb37-2" tabindex="-1"></a><span class="co"># Olhar a pagina de ajuda</span></span>
-<span id="cb37-3"><a href="cap02.html#cb37-3" tabindex="-1"></a>?landscapemetrics</span></code></pre></div>
-<p>No final da página você vai encontrar a palavra “Index”. Clique nela e você verá todas as funções do pacote. Desca até as lsm_. . . e clique em algumas delas ali. Explorar!
+<p>Agora, vamos para o pacote principal <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a>.
+Digite o código abaixo e veja o resultado.
+Leia com atenção e preste particular atenção na organização da página de ajuda.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cap02.html#cb38-1" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb38-2"><a href="cap02.html#cb38-2" tabindex="-1"></a><span class="co"># Olhar a pagina de ajuda</span></span>
+<span id="cb38-3"><a href="cap02.html#cb38-3" tabindex="-1"></a>?landscapemetrics</span></code></pre></div>
+<p>No final da página você vai encontrar a palavra “Index”.
+Clique nela e você verá todas as funções do pacote.
+Desca até as lsm_.
+. . e clique em algumas delas ali.
+Explorar!
 Para listar todas as métricas disponíveis, você pode usar a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">list_lsm()</span> . A função também permite mostrar métricas filtradas por nível, tipo ou nome da métrica. Para obter mais informações sobre as métricas, consulte os arquivos de ajuda correspondentes ou <a href="https://r-spatialecology.github.io/landscapemetrics" class="uri">https://r-spatialecology.github.io/landscapemetrics</a>.</p>
 <p>Digite o código abaixo e veja o resultados, mostrando exemplos das métricas diferentes disponíveis no pacote.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cap02.html#cb38-1" tabindex="-1"></a><span class="co"># métricas de agregação, nível de fragmento</span></span>
-<span id="cb38-2"><a href="cap02.html#cb38-2" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;patch&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span>
-<span id="cb38-3"><a href="cap02.html#cb38-3" tabindex="-1"></a><span class="co"># métricas de agregação, nível de classe</span></span>
-<span id="cb38-4"><a href="cap02.html#cb38-4" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span>
-<span id="cb38-5"><a href="cap02.html#cb38-5" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb38-6"><a href="cap02.html#cb38-6" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">metric =</span> <span class="st">&quot;area&quot;</span>)</span>
-<span id="cb38-7"><a href="cap02.html#cb38-7" tabindex="-1"></a><span class="co"># ajudar com opções da função</span></span>
-<span id="cb38-8"><a href="cap02.html#cb38-8" tabindex="-1"></a>?landscapemetrics<span class="sc">::</span>list_lsm</span></code></pre></div>
-<p>Nesse pacote o formato geral para uma função é em trés partes “lsm_nível_métrica”. A primeira parte é sempre lsm_ (“landscapemetric”), seguinda do “nível_” e por fim a “métrica”:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cap02.html#cb39-1" tabindex="-1"></a><span class="co"># métricas de agregação, nível de fragmento</span></span>
+<span id="cb39-2"><a href="cap02.html#cb39-2" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;patch&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span>
+<span id="cb39-3"><a href="cap02.html#cb39-3" tabindex="-1"></a><span class="co"># métricas de agregação, nível de classe</span></span>
+<span id="cb39-4"><a href="cap02.html#cb39-4" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span>
+<span id="cb39-5"><a href="cap02.html#cb39-5" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb39-6"><a href="cap02.html#cb39-6" tabindex="-1"></a>landscapemetrics<span class="sc">::</span><span class="fu">list_lsm</span>(<span class="at">metric =</span> <span class="st">&quot;area&quot;</span>)</span>
+<span id="cb39-7"><a href="cap02.html#cb39-7" tabindex="-1"></a><span class="co"># ajudar com opções da função</span></span>
+<span id="cb39-8"><a href="cap02.html#cb39-8" tabindex="-1"></a>?landscapemetrics<span class="sc">::</span>list_lsm</span></code></pre></div>
+<p>Nesse pacote o formato geral para uma função é em trés partes “lsm_nível_métrica”.
+A primeira parte é sempre lsm_ (“landscapemetric”), seguinda do “nível_” e por fim a “métrica”:</p>
 <ol style="list-style-type: decimal">
 <li><p>Ou seja, todas as funções que calculam métricas começam com lsm_ …….</p></li>
 <li><p>Daí você deve incluir o nível da análise: “p”, “c” ou “l”.<br />
 Sendo, “p” para patch (ou seja, para a mancha/fragmento), “c” para classe e “l” para landscape ou seja, métricas para a paisagem como um todo.</p></li>
 <li><p>E daí existem inúmeras métricas.<br />
-Como por exemplo a <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>, que é o percentual de área central - “core area” na paisagem, como vimos na aula teórica. Assim sendo, a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">lsm_c_cpland</span> vai calacular a métrica porcentagem da área central em cada classe. Lembrando existem metricas que podem se calculados nos trés niveis, e metricas que so pode se calculados somente para um nivel espcifco.
+Como por exemplo a <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>, que é o percentual de área central - “core area” na paisagem, como vimos na aula teórica.
+Assim sendo, a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">lsm_c_cpland</span> vai calacular a métrica porcentagem da área central em cada classe.
+Lembrando existem metricas que podem se calculados nos trés niveis, e metricas que so pode se calculados somente para um nivel espcifco.
 Ja sabendo o nome da função, podemos buscar ajudar para entender mais detalhes.
 Digite o código abaixo e veja o resultado, mostrando um exemplo para uma métrica.</p></li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cap02.html#cb39-1" tabindex="-1"></a><span class="co"># ajudar com opções para uma função especifica</span></span>
-<span id="cb39-2"><a href="cap02.html#cb39-2" tabindex="-1"></a>?landscapemetrics<span class="sc">::</span>lsm_c_cpland</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cap02.html#cb40-1" tabindex="-1"></a><span class="co"># ajudar com opções para uma função especifica</span></span>
+<span id="cb40-2"><a href="cap02.html#cb40-2" tabindex="-1"></a>?landscapemetrics<span class="sc">::</span>lsm_c_cpland</span></code></pre></div>
 </div>
 <div id="pergunta-1-1" class="section level4 hasAnchor" number="2.2.1.2">
 <h4><span class="header-section-number">2.2.1.2</span> Pergunta 1<a href="cap02.html#pergunta-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><span style=" font-weight: bold;    color: blue !important;">Descreva brevemente 2 métricas de cada nível (patch, class, landscape) usando ajudar (usando ? e/ou list_lsm) e/ou a leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises). Incluindo na descrição - o nome, porque serve, unidades de medida, e relevância ecológica.</span></p>
+<p><span style=" font-weight: bold;    color: blue !important;">Descreva brevemente 2 métricas de cada nível (patch, class, landscape) usando ajudar (usando ? e/ou list_lsm), aulas (Métricas da paisagem: Modelo mancha-corredor-matriz e "Índices de Paisagem e Análises de Padrões Espaciais" ) e/ou a leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises). Incluindo na descrição - o nome, porque serve, unidades de medida, e relevância ecológica.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
@@ -541,31 +576,52 @@ Digite o código abaixo e veja o resultado, mostrando um exemplo para uma métri
 <div id="dados-1" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Dados<a href="cap02.html#dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos continuar as analises que começo no capítulo “Escala”, trabalhando com os mesmos bancos de dados.
-Então, primeiramente carregar os dados de cobertura da terra com a função <code>rast</code>. E, em seguida implementar uma reclassificação para gerar uma camada binaria de floresta (valor de “1”) e não-floresta (valor de “0”).</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cap02.html#cb40-1" tabindex="-1"></a><span class="co"># Carregar</span></span>
-<span id="cb40-2"><a href="cap02.html#cb40-2" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(utm_cover_AP_rio_2020)</span>
-<span id="cb40-3"><a href="cap02.html#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="cap02.html#cb40-4" tabindex="-1"></a><span class="co"># Reclassificação - </span></span>
-<span id="cb40-5"><a href="cap02.html#cb40-5" tabindex="-1"></a><span class="co"># Criar uma nova camada de floresta (novo objeto de raster copiando mapbiomas_2020, </span></span>
-<span id="cb40-6"><a href="cap02.html#cb40-6" tabindex="-1"></a><span class="co"># assim para ter os mesmos coordenados, resolução e extensão)</span></span>
-<span id="cb40-7"><a href="cap02.html#cb40-7" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
-<span id="cb40-8"><a href="cap02.html#cb40-8" tabindex="-1"></a><span class="co"># Todos os pixels com valor de 0</span></span>
-<span id="cb40-9"><a href="cap02.html#cb40-9" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb40-10"><a href="cap02.html#cb40-10" tabindex="-1"></a><span class="co"># Atualizar com valor de 1 quando pixels originais são de floresta (classe 3 e 4)</span></span>
-<span id="cb40-11"><a href="cap02.html#cb40-11" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+Então, primeiramente carregar os dados de cobertura da terra com a função <code>rast</code>.
+E, em seguida implementar uma reclassificação para gerar uma camada binaria de floresta (valor de “1”) e não-floresta (valor de “0”).</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cap02.html#cb41-1" tabindex="-1"></a><span class="co"># Carregar</span></span>
+<span id="cb41-2"><a href="cap02.html#cb41-2" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(utm_cover_AP_rio_2020)</span>
+<span id="cb41-3"><a href="cap02.html#cb41-3" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="cap02.html#cb41-4" tabindex="-1"></a><span class="co"># Reclassificação - </span></span>
+<span id="cb41-5"><a href="cap02.html#cb41-5" tabindex="-1"></a><span class="co"># Criar uma nova camada de floresta (novo objeto de raster copiando mapbiomas_2020, </span></span>
+<span id="cb41-6"><a href="cap02.html#cb41-6" tabindex="-1"></a><span class="co"># assim para ter os mesmos coordenados, resolução e extensão)</span></span>
+<span id="cb41-7"><a href="cap02.html#cb41-7" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
+<span id="cb41-8"><a href="cap02.html#cb41-8" tabindex="-1"></a><span class="co"># Todos os pixels com valor de 0</span></span>
+<span id="cb41-9"><a href="cap02.html#cb41-9" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
+<pre><code>## 
+|---------|---------|---------|---------|
+=========================================
+                                          </code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cap02.html#cb43-1" tabindex="-1"></a><span class="co"># Atualizar com valor de 1 quando pixels originais são de floresta (classe 3 e 4)</span></span>
+<span id="cb43-2"><a href="cap02.html#cb43-2" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<pre><code>## 
+|---------|---------|---------|---------|
+=========================================
+                                          
+
+|---------|---------|---------|---------|
+=========================================
+                                          
+
+|---------|---------|---------|---------|
+=========================================
+                                          
+
+|---------|---------|---------|---------|
+=========================================
+                                          </code></pre>
 <div style="page-break-after: always;"></div>
 <p>Plotar para verificar, incluindo nomes e os cores para classes de floresta (valor = 1) e não-floresta (valor = 0).</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cap02.html#cb41-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
-<span id="cb41-2"><a href="cap02.html#cb41-2" tabindex="-1"></a>floresta_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(floresta_2020, </span>
-<span id="cb41-3"><a href="cap02.html#cb41-3" tabindex="-1"></a>                                 <span class="at">fact=</span><span class="dv">10</span>, </span>
-<span id="cb41-4"><a href="cap02.html#cb41-4" tabindex="-1"></a>                                 <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
-<span id="cb41-5"><a href="cap02.html#cb41-5" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb41-6"><a href="cap02.html#cb41-6" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
-<span id="cb41-7"><a href="cap02.html#cb41-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
-<span id="cb41-8"><a href="cap02.html#cb41-8" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb41-9"><a href="cap02.html#cb41-9" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
-<span id="cb41-10"><a href="cap02.html#cb41-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb41-11"><a href="cap02.html#cb41-11" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cap02.html#cb45-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb45-2"><a href="cap02.html#cb45-2" tabindex="-1"></a>floresta_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(floresta_2020, </span>
+<span id="cb45-3"><a href="cap02.html#cb45-3" tabindex="-1"></a>                                 <span class="at">fact=</span><span class="dv">10</span>, </span>
+<span id="cb45-4"><a href="cap02.html#cb45-4" tabindex="-1"></a>                                 <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb45-5"><a href="cap02.html#cb45-5" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb45-6"><a href="cap02.html#cb45-6" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="cap02.html#cb45-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb45-8"><a href="cap02.html#cb45-8" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb45-9"><a href="cap02.html#cb45-9" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb45-10"><a href="cap02.html#cb45-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb45-11"><a href="cap02.html#cb45-11" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <p>Se esta todo certo, voces devem ter uma imagem assim:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="epr_files/figure-html/unnamed-chunk-23-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta." width="480" />
@@ -575,32 +631,37 @@ Figura 2.1: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em 
 </div>
 <div id="exibir-dados-raster-e-sobreposição-com-locais-de-amostragem" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Exibir dados raster e sobreposição com locais de amostragem<a href="cap02.html#exibir-dados-raster-e-sobreposição-com-locais-de-amostragem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Agora temos a paisagem, precisamos tambem os pontos de amostra. Por isso, precisamos carregar os dados de rios e pontos de amostragem que usamos no tutorial Escala. Vamos carregar as camadas, e no mesmo tempo implementar uma reprojeção, assim para que as sistemas de coordenados ficam iguais para todas as camadas - tanto de vector quanto raster.</p>
-<p>No codigo abaixo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo. Ou seja, <span style=" font-weight: bold;    ">|&gt;</span> passa o objeto anterior automaticamente para a próxima função como primeiro argumento.
-Primeiro, carregamos os dados. Em seguida, usamos a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">st_transform</span> para converter as coordenadas para o mesmo sistema de referência do arquivo raster. As duas etapas ficam ligados através a função <span style=" font-weight: bold;    ">|&gt;</span>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="cap02.html#cb42-1" tabindex="-1"></a><span class="co"># pontos cada 5 km</span></span>
-<span id="cb42-2"><a href="cap02.html#cb42-2" tabindex="-1"></a>rio_pontos_31976 <span class="ot">&lt;-</span> rio_pontos <span class="sc">|&gt;</span> </span>
-<span id="cb42-3"><a href="cap02.html#cb42-3" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">31976</span>) </span>
-<span id="cb42-4"><a href="cap02.html#cb42-4" tabindex="-1"></a><span class="co"># linha central de rios</span></span>
-<span id="cb42-5"><a href="cap02.html#cb42-5" tabindex="-1"></a>rio_linhacentral_31976 <span class="ot">&lt;-</span> rio_linhacentral <span class="sc">|&gt;</span> </span>
-<span id="cb42-6"><a href="cap02.html#cb42-6" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">31976</span>) </span></code></pre></div>
+<p>Agora temos a paisagem, precisamos tambem os pontos de amostra.
+Por isso, precisamos carregar os dados de rios e pontos de amostragem que usamos no tutorial Escala.
+Vamos carregar as camadas, e no mesmo tempo implementar uma reprojeção, assim para que as sistemas de coordenados ficam iguais para todas as camadas - tanto de vector quanto raster.</p>
+<p>No codigo abaixo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo.
+Ou seja, <span style=" font-weight: bold;    ">|&gt;</span> passa o objeto anterior automaticamente para a próxima função como primeiro argumento.
+Primeiro, carregamos os dados.
+Em seguida, usamos a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">st_transform</span> para converter as coordenadas para o mesmo sistema de referência do arquivo raster.
+As duas etapas ficam ligados através a função <span style=" font-weight: bold;    ">|&gt;</span>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="cap02.html#cb46-1" tabindex="-1"></a><span class="co"># pontos cada 5 km</span></span>
+<span id="cb46-2"><a href="cap02.html#cb46-2" tabindex="-1"></a>rio_pontos_31976 <span class="ot">&lt;-</span> rio_pontos <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="cap02.html#cb46-3" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">31976</span>) </span>
+<span id="cb46-4"><a href="cap02.html#cb46-4" tabindex="-1"></a><span class="co"># linha central de rios</span></span>
+<span id="cb46-5"><a href="cap02.html#cb46-5" tabindex="-1"></a>rio_linhacentral_31976 <span class="ot">&lt;-</span> rio_linhacentral <span class="sc">|&gt;</span> </span>
+<span id="cb46-6"><a href="cap02.html#cb46-6" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">31976</span>) </span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>Visualizer para verificar.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cap02.html#cb43-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
-<span id="cb43-2"><a href="cap02.html#cb43-2" tabindex="-1"></a>floresta_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(floresta_2020, </span>
-<span id="cb43-3"><a href="cap02.html#cb43-3" tabindex="-1"></a>                                 <span class="at">fact=</span><span class="dv">10</span>, </span>
-<span id="cb43-4"><a href="cap02.html#cb43-4" tabindex="-1"></a>                                 <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
-<span id="cb43-5"><a href="cap02.html#cb43-5" tabindex="-1"></a><span class="co"># Mapa</span></span>
-<span id="cb43-6"><a href="cap02.html#cb43-6" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
-<span id="cb43-7"><a href="cap02.html#cb43-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
-<span id="cb43-8"><a href="cap02.html#cb43-8" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb43-9"><a href="cap02.html#cb43-9" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
-<span id="cb43-10"><a href="cap02.html#cb43-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb43-11"><a href="cap02.html#cb43-11" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_linhacentral_31976) <span class="sc">+</span> </span>
-<span id="cb43-12"><a href="cap02.html#cb43-12" tabindex="-1"></a>  <span class="fu">tm_lines</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb43-13"><a href="cap02.html#cb43-13" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos_31976) <span class="sc">+</span> </span>
-<span id="cb43-14"><a href="cap02.html#cb43-14" tabindex="-1"></a>  <span class="fu">tm_dots</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb43-15"><a href="cap02.html#cb43-15" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cap02.html#cb47-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb47-2"><a href="cap02.html#cb47-2" tabindex="-1"></a>floresta_2020_modal <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(floresta_2020, </span>
+<span id="cb47-3"><a href="cap02.html#cb47-3" tabindex="-1"></a>                                 <span class="at">fact=</span><span class="dv">10</span>, </span>
+<span id="cb47-4"><a href="cap02.html#cb47-4" tabindex="-1"></a>                                 <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb47-5"><a href="cap02.html#cb47-5" tabindex="-1"></a><span class="co"># Mapa</span></span>
+<span id="cb47-6"><a href="cap02.html#cb47-6" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb47-7"><a href="cap02.html#cb47-7" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb47-8"><a href="cap02.html#cb47-8" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb47-9"><a href="cap02.html#cb47-9" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb47-10"><a href="cap02.html#cb47-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb47-11"><a href="cap02.html#cb47-11" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_linhacentral_31976) <span class="sc">+</span> </span>
+<span id="cb47-12"><a href="cap02.html#cb47-12" tabindex="-1"></a>  <span class="fu">tm_lines</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb47-13"><a href="cap02.html#cb47-13" tabindex="-1"></a><span class="fu">tm_shape</span>(rio_pontos_31976) <span class="sc">+</span> </span>
+<span id="cb47-14"><a href="cap02.html#cb47-14" tabindex="-1"></a>  <span class="fu">tm_dots</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb47-15"><a href="cap02.html#cb47-15" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <p>Depois de executar (“run”) o código acima, você deverá ver a figura a seguir.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
 <img src="epr_files/figure-html/unnamed-chunk-26-1.png" alt="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul)." width="480" />
@@ -614,31 +675,35 @@ Figura 2.2: Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os po
 </div>
 <div id="calculo-de-métricas" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Calculo de métricas<a href="cap02.html#calculo-de-métricas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Agora com todos as camadas organizados e verifcados podemos calcular as métricas de paisagem. Para ilustrar como rodar as funções e cálculos com landscapemetrics, vamos calcular o percentual de área central na paisagem ( <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>). Vamos estudar uma classe (floresta), portanto vamos incluir as métricas para nível de classe. No geral, as métricas de paisagem em nível de classe são mais eficazes na definição de processos ecológicos (Tischendorf, L. Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254 (2001).
+<p>Agora com todos as camadas organizados e verifcados podemos calcular as métricas de paisagem.
+Para ilustrar como rodar as funções e cálculos com landscapemetrics, vamos calcular o percentual de área central na paisagem ( <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>).
+Vamos estudar uma classe (floresta), portanto vamos incluir as métricas para nível de classe.
+No geral, as métricas de paisagem em nível de classe são mais eficazes na definição de processos ecológicos (Tischendorf, L. Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254 (2001).
 <a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.).</p>
 <p>Para calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, existe a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span>. Através da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.</p>
 <div id="ponto-único-raio-único-métrica-única" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Ponto único, raio único, métrica única<a href="cap02.html#ponto-único-raio-único-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Métricas de área central (“core area”) são consideradas medidas da qualidade de hábitat, uma vez que indica quanto existe realmente de área efetiva de um fragmento/classe, após descontar-se o efeito de borda. Vamos calcular a percentual de área central (“core area”) no entorno de um ponto de amostragem. Isso seria, a percentual de áreas centrais (excluídas as bordas de 30 m) de cada classe em relação à área total da paisagem.</p>
-<p>Para a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> funcionar, precisamos informar
-(i) a paisagem (arquivo de raster), (ii) ponto (arquivo vector),
-(iii) raio do buffer desejada, (iv) forma do buffer (círculo ou quadrado) e por final (v) a métrica desejada. Cada opção tem especificações particulares, assim para que a função pode receber dados em formatos diferentes e produzir resultados conforme as necessidades de diversos casos.</p>
-<p>Para este primeiro exemplo trabalharemos com apenas um ponto. Fazemos isso selecionando a primeira linha (primeiro ponto) do objeto com os 52 pontos de amostragem (“rio_pontos_31976”) usando colchetes: <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">[1, ]</span> .</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cap02.html#cb44-1" tabindex="-1"></a><span class="co"># com a paisagem &quot;floresta_2020&quot;, </span></span>
-<span id="cb44-2"><a href="cap02.html#cb44-2" tabindex="-1"></a><span class="co"># fazer uma amostragem de um ponto &quot;rio_pontos_31976[1, ]&quot;</span></span>
-<span id="cb44-3"><a href="cap02.html#cb44-3" tabindex="-1"></a><span class="co"># dentro de uma buffer com raio de 1000 metros e forma circular</span></span>
-<span id="cb44-4"><a href="cap02.html#cb44-4" tabindex="-1"></a><span class="co"># e calcular a métrica &quot;cpland&quot;</span></span>
-<span id="cb44-5"><a href="cap02.html#cb44-5" tabindex="-1"></a></span>
-<span id="cb44-6"><a href="cap02.html#cb44-6" tabindex="-1"></a>minha_amostra_1000 <span class="ot">&lt;-</span> <span class="fu">sample_lsm</span>(<span class="at">landscape =</span> floresta_2020, </span>
-<span id="cb44-7"><a href="cap02.html#cb44-7" tabindex="-1"></a>                                 <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb44-8"><a href="cap02.html#cb44-8" tabindex="-1"></a>                                <span class="at">size =</span> <span class="dv">1000</span>, </span>
-<span id="cb44-9"><a href="cap02.html#cb44-9" tabindex="-1"></a>                                <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb44-10"><a href="cap02.html#cb44-10" tabindex="-1"></a>                                <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>, </span>
-<span id="cb44-11"><a href="cap02.html#cb44-11" tabindex="-1"></a>                                <span class="at">edge_depth =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p>Métricas de área central (“core area”) são consideradas medidas da qualidade de hábitat, uma vez que indica quanto existe realmente de área efetiva de um fragmento/classe, após descontar-se o efeito de borda.
+Vamos calcular a percentual de área central (“core area”) no entorno de um ponto de amostragem.
+Isso seria, a percentual de áreas centrais (excluídas as bordas de 30 m) de cada classe em relação à área total da paisagem.</p>
+<p>Para a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> funcionar, precisamos informar (i) a paisagem (arquivo de raster), (ii) ponto (arquivo vector), (iii) raio do buffer desejada, (iv) forma do buffer (círculo ou quadrado) e por final (v) a métrica desejada. Cada opção tem especificações particulares, assim para que a função pode receber dados em formatos diferentes e produzir resultados conforme as necessidades de diversos casos.</p>
+<p>Para este primeiro exemplo trabalharemos com apenas um ponto.
+Fazemos isso selecionando a primeira linha (primeiro ponto) do objeto com os 52 pontos de amostragem (“rio_pontos_31976”) usando colchetes: <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">[1, ]</span> .</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cap02.html#cb48-1" tabindex="-1"></a><span class="co"># com a paisagem &quot;floresta_2020&quot;, </span></span>
+<span id="cb48-2"><a href="cap02.html#cb48-2" tabindex="-1"></a><span class="co"># fazer uma amostragem de um ponto &quot;rio_pontos_31976[1, ]&quot;</span></span>
+<span id="cb48-3"><a href="cap02.html#cb48-3" tabindex="-1"></a><span class="co"># dentro de uma buffer com raio de 1000 metros e forma circular</span></span>
+<span id="cb48-4"><a href="cap02.html#cb48-4" tabindex="-1"></a><span class="co"># e calcular a métrica &quot;cpland&quot;</span></span>
+<span id="cb48-5"><a href="cap02.html#cb48-5" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="cap02.html#cb48-6" tabindex="-1"></a>minha_amostra_1000 <span class="ot">&lt;-</span> <span class="fu">sample_lsm</span>(<span class="at">landscape =</span> floresta_2020, </span>
+<span id="cb48-7"><a href="cap02.html#cb48-7" tabindex="-1"></a>                                 <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb48-8"><a href="cap02.html#cb48-8" tabindex="-1"></a>                                <span class="at">size =</span> <span class="dv">1000</span>, </span>
+<span id="cb48-9"><a href="cap02.html#cb48-9" tabindex="-1"></a>                                <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb48-10"><a href="cap02.html#cb48-10" tabindex="-1"></a>                                <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>, </span>
+<span id="cb48-11"><a href="cap02.html#cb48-11" tabindex="-1"></a>                                <span class="at">edge_depth =</span> <span class="dv">1</span>) </span></code></pre></div>
 <p>Depois que executar (“run”), podemos olhar os dados com o codigo a seguir.
 Rodando o nome do obejto, como no proximo bloco de codigo podemos verifcar os resultados.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cap02.html#cb45-1" tabindex="-1"></a>minha_amostra_1000</span></code></pre></div>
-Os dados deve ter os valores (coluna “value”) da métrica (coluna “metric”) de cada classe (coluna “class”) conforme a proxima tabela:
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="cap02.html#cb49-1" tabindex="-1"></a>minha_amostra_1000</span></code></pre></div>
+<p>Os dados deve ter os valores (coluna “value”) da métrica (coluna “metric”) de cada classe (coluna “class”) conforme a proxima tabela:</p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -738,58 +803,61 @@ cpland
 Figura 2.3: Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem.
 </p>
 </div>
-<p>Para uma comparação multiescala, vamos calcular a mesma métrica, no mesmo ponto, mas agora com extensões diferentes. Continuando o exemplo no tutorial anteriio (Escala), vamos repetir o mesmo processo, mas agora com raios de 250, 500, 1000, 2000, 4000, 8000 e 16000 metros, doubrando a escala (extensão) em cada passo.</p>
+<p>Para uma comparação multiescala, vamos calcular a mesma métrica, no mesmo ponto, mas agora com extensões diferentes.
+Continuando o exemplo no tutorial anteriio (Escala), vamos repetir o mesmo processo, mas agora com raios de 250, 500, 1000, 2000, 4000, 8000 e 16000 metros, doubrando a escala (extensão) em cada passo.</p>
 <div style="page-break-after: always;"></div>
 <p>Para obter resultados com extensões diferentes, precisamos primeiramente repetir o código, ajustando para cada extensão, e depois juntar os resultados.
 O código a seguir calculará a mesma métrica para as diferentes distâncias.
-No exemplo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo. Neste caso, para incluir uma coluna nova (“raio”) para manter o valor das diferentes distâncias.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="cap02.html#cb46-1" tabindex="-1"></a><span class="co"># raio 250 metros</span></span>
-<span id="cb46-2"><a href="cap02.html#cb46-2" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-3"><a href="cap02.html#cb46-3" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">250</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-4"><a href="cap02.html#cb46-4" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-5"><a href="cap02.html#cb46-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">250</span>) <span class="ot">-&gt;</span> minha_amostra_250 </span>
-<span id="cb46-6"><a href="cap02.html#cb46-6" tabindex="-1"></a><span class="co"># raio 500 metros</span></span>
-<span id="cb46-7"><a href="cap02.html#cb46-7" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-8"><a href="cap02.html#cb46-8" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">500</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-9"><a href="cap02.html#cb46-9" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb46-10"><a href="cap02.html#cb46-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">500</span>) <span class="ot">-&gt;</span> minha_amostra_500</span>
-<span id="cb46-11"><a href="cap02.html#cb46-11" tabindex="-1"></a><span class="co"># raio 1 km (1000 metros)</span></span>
-<span id="cb46-12"><a href="cap02.html#cb46-12" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-13"><a href="cap02.html#cb46-13" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-14"><a href="cap02.html#cb46-14" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb46-15"><a href="cap02.html#cb46-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">1000</span>) <span class="ot">-&gt;</span> minha_amostra_1000</span>
-<span id="cb46-16"><a href="cap02.html#cb46-16" tabindex="-1"></a><span class="co"># raio 2 km</span></span>
-<span id="cb46-17"><a href="cap02.html#cb46-17" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-18"><a href="cap02.html#cb46-18" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">2000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-19"><a href="cap02.html#cb46-19" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-20"><a href="cap02.html#cb46-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">2000</span>) <span class="ot">-&gt;</span> minha_amostra_2000</span>
-<span id="cb46-21"><a href="cap02.html#cb46-21" tabindex="-1"></a><span class="co"># raio 4 km</span></span>
-<span id="cb46-22"><a href="cap02.html#cb46-22" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-23"><a href="cap02.html#cb46-23" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">4000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-24"><a href="cap02.html#cb46-24" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb46-25"><a href="cap02.html#cb46-25" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">4000</span>) <span class="ot">-&gt;</span> minha_amostra_4000</span>
-<span id="cb46-26"><a href="cap02.html#cb46-26" tabindex="-1"></a><span class="co"># raio 8 km</span></span>
-<span id="cb46-27"><a href="cap02.html#cb46-27" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-28"><a href="cap02.html#cb46-28" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">8000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-29"><a href="cap02.html#cb46-29" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb46-30"><a href="cap02.html#cb46-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">8000</span>) <span class="ot">-&gt;</span> minha_amostra_8000</span>
-<span id="cb46-31"><a href="cap02.html#cb46-31" tabindex="-1"></a><span class="co"># raio 16 km</span></span>
-<span id="cb46-32"><a href="cap02.html#cb46-32" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb46-33"><a href="cap02.html#cb46-33" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">16000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb46-34"><a href="cap02.html#cb46-34" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb46-35"><a href="cap02.html#cb46-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">16000</span>) <span class="ot">-&gt;</span> minha_amostra_16000</span></code></pre></div>
+No exemplo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo.
+Neste caso, usamos a função <code>mutate()</code> para incluir uma coluna nova (“raio”) para manter o valor das diferentes distâncias.
+<code>mutate()</code> é uma função muito versátil que pode ser usada para criar, modificar e excluir colunas em um quadro de dados (data frame).</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cap02.html#cb50-1" tabindex="-1"></a><span class="co"># raio 250 metros</span></span>
+<span id="cb50-2"><a href="cap02.html#cb50-2" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-3"><a href="cap02.html#cb50-3" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">250</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-4"><a href="cap02.html#cb50-4" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-5"><a href="cap02.html#cb50-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">250</span>) <span class="ot">-&gt;</span> minha_amostra_250 </span>
+<span id="cb50-6"><a href="cap02.html#cb50-6" tabindex="-1"></a><span class="co"># raio 500 metros</span></span>
+<span id="cb50-7"><a href="cap02.html#cb50-7" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-8"><a href="cap02.html#cb50-8" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">500</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-9"><a href="cap02.html#cb50-9" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb50-10"><a href="cap02.html#cb50-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">500</span>) <span class="ot">-&gt;</span> minha_amostra_500</span>
+<span id="cb50-11"><a href="cap02.html#cb50-11" tabindex="-1"></a><span class="co"># raio 1 km (1000 metros)</span></span>
+<span id="cb50-12"><a href="cap02.html#cb50-12" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-13"><a href="cap02.html#cb50-13" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-14"><a href="cap02.html#cb50-14" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb50-15"><a href="cap02.html#cb50-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">1000</span>) <span class="ot">-&gt;</span> minha_amostra_1000</span>
+<span id="cb50-16"><a href="cap02.html#cb50-16" tabindex="-1"></a><span class="co"># raio 2 km</span></span>
+<span id="cb50-17"><a href="cap02.html#cb50-17" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-18"><a href="cap02.html#cb50-18" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">2000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-19"><a href="cap02.html#cb50-19" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-20"><a href="cap02.html#cb50-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">2000</span>) <span class="ot">-&gt;</span> minha_amostra_2000</span>
+<span id="cb50-21"><a href="cap02.html#cb50-21" tabindex="-1"></a><span class="co"># raio 4 km</span></span>
+<span id="cb50-22"><a href="cap02.html#cb50-22" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-23"><a href="cap02.html#cb50-23" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">4000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-24"><a href="cap02.html#cb50-24" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb50-25"><a href="cap02.html#cb50-25" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">4000</span>) <span class="ot">-&gt;</span> minha_amostra_4000</span>
+<span id="cb50-26"><a href="cap02.html#cb50-26" tabindex="-1"></a><span class="co"># raio 8 km</span></span>
+<span id="cb50-27"><a href="cap02.html#cb50-27" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-28"><a href="cap02.html#cb50-28" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">8000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-29"><a href="cap02.html#cb50-29" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb50-30"><a href="cap02.html#cb50-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">8000</span>) <span class="ot">-&gt;</span> minha_amostra_8000</span>
+<span id="cb50-31"><a href="cap02.html#cb50-31" tabindex="-1"></a><span class="co"># raio 16 km</span></span>
+<span id="cb50-32"><a href="cap02.html#cb50-32" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb50-33"><a href="cap02.html#cb50-33" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">16000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb50-34"><a href="cap02.html#cb50-34" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb50-35"><a href="cap02.html#cb50-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">16000</span>) <span class="ot">-&gt;</span> minha_amostra_16000</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>E agora, o código a seguir juntará os resultados das diferentes extensões.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cap02.html#cb47-1" tabindex="-1"></a><span class="fu">bind_rows</span>(minha_amostra_250, </span>
-<span id="cb47-2"><a href="cap02.html#cb47-2" tabindex="-1"></a>          minha_amostra_500, </span>
-<span id="cb47-3"><a href="cap02.html#cb47-3" tabindex="-1"></a>          minha_amostra_1000, </span>
-<span id="cb47-4"><a href="cap02.html#cb47-4" tabindex="-1"></a>          minha_amostra_2000, </span>
-<span id="cb47-5"><a href="cap02.html#cb47-5" tabindex="-1"></a>          minha_amostra_4000, </span>
-<span id="cb47-6"><a href="cap02.html#cb47-6" tabindex="-1"></a>          minha_amostra_8000, </span>
-<span id="cb47-7"><a href="cap02.html#cb47-7" tabindex="-1"></a>          minha_amostra_16000) <span class="ot">-&gt;</span> amostras_metrica</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="cap02.html#cb51-1" tabindex="-1"></a><span class="fu">bind_rows</span>(minha_amostra_250, </span>
+<span id="cb51-2"><a href="cap02.html#cb51-2" tabindex="-1"></a>          minha_amostra_500, </span>
+<span id="cb51-3"><a href="cap02.html#cb51-3" tabindex="-1"></a>          minha_amostra_1000, </span>
+<span id="cb51-4"><a href="cap02.html#cb51-4" tabindex="-1"></a>          minha_amostra_2000, </span>
+<span id="cb51-5"><a href="cap02.html#cb51-5" tabindex="-1"></a>          minha_amostra_4000, </span>
+<span id="cb51-6"><a href="cap02.html#cb51-6" tabindex="-1"></a>          minha_amostra_8000, </span>
+<span id="cb51-7"><a href="cap02.html#cb51-7" tabindex="-1"></a>          minha_amostra_16000) <span class="ot">-&gt;</span> amostras_metrica</span></code></pre></div>
 <p>Depois que executar (“run”), podemos olhar os dados “amostras_metrica” com o codigo a seguir.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cap02.html#cb48-1" tabindex="-1"></a>amostras_metrica</span></code></pre></div>
-Os dados deve ter os valores (coluna value) da métrica (coluna metric) de cada classe (coluna class) para cada distância (coluna raio):
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cap02.html#cb52-1" tabindex="-1"></a>amostras_metrica</span></code></pre></div>
+<p>Os dados deve ter os valores (coluna value) da métrica (coluna metric) de cada classe (coluna class) para cada distância (coluna raio):</p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1205,12 +1273,20 @@ cpland
 <div style="page-break-after: always;"></div>
 <div id="faça-um-gráfico" class="section level4 hasAnchor" number="2.4.2.1">
 <h4><span class="header-section-number">2.4.2.1</span> Faça um gráfico<a href="cap02.html#faça-um-gráfico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><img src="www/logo_gg_lsm.png" width="65%" height="65%" style="display: block; margin: auto;" /></p>
-<p>Uma imagem vale mais que mil palavras. Portanto, gráficos/figuras/imagens são uma das mais importantes formas de comunicar a ciência. Os dados apresentados em uma tabela podem ser difíceis de entender. Portanto, a primeira pergunta que você deve se fazer é se você pode transformar aquela tabela (chata e feia) em algum tipo de gráfico. Lembrando, sempre pode incluir a tabela como anexo.</p>
-<p>Aqui, vamos fazer um grafico com os dados amostras_metrica,
-usando o pacote <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>.</p>
-<p>O ggplot2 faz parte do conjunto de pacotes <a href="https://tidyverse.tidyverse.org/articles/paper.html">tidyverse</a>, e é um pacote de visualização de dados. “gg” se refere a uma gramática de gráficos. A ideia principal é criar um gráfico como se fosse uma frase, onde cada elemento do gráfico seria uma palavra, organizados em uma sequencia logica para construir uma frase completo (gráfico final). Você fornece os dados, informa ao ggplot2 como mapear variáveis para estética, quais tipos/formatos gráficas usar e ele cuida dos detalhes.</p>
-<p>Isto nos permite construir gráficos tão complexos quanto quisermos. Os gráficos criados com ggplot2 são, em geral, mais elegantes do que os gráficos tradicionais do R. Para mais exemplos e tutoriais com mais detalhes veja os capitulos sobre ggplot2 nos livros:</p>
+<p><img src="www/logo_gg_lsm.png" width="55%" height="55%" style="display: block; margin: auto;" /></p>
+<p>Uma imagem vale mais que mil palavras.
+Portanto, gráficos/figuras/imagens são uma das mais importantes formas de comunicar a ciência.
+Os dados apresentados em uma tabela podem ser difíceis de entender.
+Portanto, a primeira pergunta que você deve se fazer é se você pode transformar aquela tabela (chata e feia) em algum tipo de gráfico.
+Lembrando, sempre pode incluir a tabela como anexo.</p>
+<p>Aqui, vamos fazer um grafico com os dados amostras_metrica, usando o pacote <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>.</p>
+<p>O <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> faz parte do conjunto de pacotes <a href="https://tidyverse.tidyverse.org/articles/paper.html">tidyverse</a>, e é um pacote de visualização de dados.
+“gg” se refere a uma gramática de gráficos.
+A ideia principal é criar um gráfico como se fosse uma frase, onde cada elemento do gráfico seria uma palavra, organizados em uma sequencia logica para construir uma frase completo (gráfico final).
+Você fornece os dados, informa ao <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> como mapear variáveis para estética, quais tipos/formatos gráficas usar e ele cuida dos detalhes.</p>
+<p>Isto nos permite construir gráficos tão complexos quanto quisermos.
+Os gráficos criados com <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> são, em geral, mais elegantes do que os gráficos tradicionais do R.
+Para mais exemplos e tutoriais com mais detalhes veja os capitulos sobre <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> nos livros:</p>
 <ul>
 <li><p><a href="http://sillasgonzaga.com/material/cdr/ggplot2.html">Ciência de Dados com R</a><br />
 </p></li>
@@ -1218,23 +1294,28 @@ usando o pacote <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>.<
 <li><p>No livro em ingles <a href="https://r-graphics.org/">R Graphics Cookbook</a> .</p></li>
 <li><p>E sempre pode buscar exemplos no Google, por exemplo digitando: ggplot2 grafico de barra no Google, tem mais de 50 mil resultados com paginas de imagens, codigo pronto e exemplos no YouTube.</p></li>
 </ul>
-<p>O ggplot2 exige que os dados a serem plotados estejam em um “dataframe” (<a href="https://bookdown.org/wevsena/curso_r_tce/curso_r_tce.html#data-frames-e-tibbles">tabela de dados</a>). Ou seja, sempre teremos que transformar os dados para dataframe ou construir um dataframe com os dados que possuímos. Dataframe é um formato comum e fácil de trabalhar. Por exemplo, se você importar uma planilha de dados, o resultado seria como dataframe (para mais detalhes veja <a href="https://analises-ecologicas.com/cap4.html#estrutura-e-manipula%C3%A7%C3%A3o-de-objetos">Estrutura e manipulação de objetos</a> e <a href="http://sillasgonzaga.com/material/cdr/lendo-os-dados.html">lendo dados</a> ). Além disso, o resultado dos funções de <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> é sempre um dataframe, ou seja os resultados da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> são prontos para um grafico.</p>
+<p>O <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> exige que os dados a serem plotados estejam em um “data frame” (<a href="https://bookdown.org/wevsena/curso_r_tce/curso_r_tce.html#data-frames-e-tibbles">quadro de dados</a>).
+Ou seja, sempre teremos que transformar os dados para um data frame ou construir um data frame com os dados que possuímos.
+Data frame é um formato comum e fácil de trabalhar - parecido com uma planilha de dados com linhas e colunas.
+Todo que pode fazer com uma planilha de dados pode fazer com um data frame.
+Por exemplo, se você importar uma planilha de dados, o resultado seria como data frame (para mais detalhes veja <a href="https://analises-ecologicas.com/cap4.html#estrutura-e-manipula%C3%A7%C3%A3o-de-objetos">Estrutura e manipulação de objetos</a> e <a href="http://sillasgonzaga.com/material/cdr/lendo-os-dados.html">lendo dados</a> ).</p>
+<p>Além disso, o mais importante é que o resultado dos funções de <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> é sempre um data frame, ou seja os resultados da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> são prontos para um grafico elegante com <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>.</p>
 <div style="page-break-after: always;"></div>
-<p>O principal função a ser utilizado é <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot()</span>.
-Para ggplot, precisamos os dados (dataframe), e depois cria o “mapeamento” das variáveis, normalmente usando <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">aes</span> (de aesthetics). Ou seja, você especifica quais são as variáveis dos eixos x e y dentro de <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">aes()</span>. Através dele vamos definir qual é a variável preditora/explanatora (eixo x) e qual é a variável resposta (eixo y) em nosso conjunto de dados.
-Depois da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot()</span>, na sequencia no codigo nós especificamos qual tipo de grafico com um “geom”. Por exemplo, <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_point()</span> para plotar pontos, <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_boxplot()</span> para um boxplot, etc. Para a lista completa de geoms e todas as outras opções do pacote, visite a página do projeto ggplot2 <a href="https://ggplot2.tidyverse.org/index.html" class="uri">https://ggplot2.tidyverse.org/index.html</a> .</p>
+<p>O principal função a ser utilizado é <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot()</span>. Para <code>ggplot()</code>, precisamos os dados (data frame), e depois cria o “mapeamento” das variáveis, normalmente usando <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">aes()</span> (de aesthetics). Ou seja, você especifica quais são as variáveis dos eixos x e y dentro de <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">aes()</span>. Através dele vamos definir qual é a variável preditora/explanatora/independente (eixo x) e qual é a variável resposta/dependente (eixo y) em nosso conjunto de dados. Depois da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot()</span>, na sequencia no codigo nós especificamos qual tipo de grafico com um “geom”. Por exemplo, <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_point()</span> para plotar pontos, <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_boxplot()</span> para um boxplot, etc. Para a lista completa de geoms e todas as outras opções do pacote, visite a página do projeto <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a> <a href="https://ggplot2.tidyverse.org/index.html" class="uri">https://ggplot2.tidyverse.org/index.html</a> .</p>
 <p>Aqui vamos fazer um gráfico com valores de extensão no eixo x e proporção da floresta central no eixo y.
-Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando classe de floresta atraves de um filtro e acresentando uma coluna nova (“ext_m”) com a extensão em metros, (ii) as colunas para os eixos x e y, (iii) tipo de grafico (grafico de pontos - <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_point()</span> e grafico de linha - <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_line()</span>), (iv) nomes para os eixos. No exemplo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo, ligando os dados (amostras_metrica) e o grafico <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot</span>. Note que no codigo a seguir, adicionamos um geom com um “+”. No ggplot2, nós criamos gráficos em camadas, e adicionamos camada a camada com um “+”. Assim, é posivel ajustar qualquer elemento do grafico.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="cap02.html#cb49-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
-<span id="cb49-2"><a href="cap02.html#cb49-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
-<span id="cb49-3"><a href="cap02.html#cb49-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">ext_m =</span> <span class="dv">2</span><span class="sc">*</span>raio) <span class="sc">|&gt;</span></span>
-<span id="cb49-4"><a href="cap02.html#cb49-4" tabindex="-1"></a><span class="co"># fazer o grafico</span></span>
-<span id="cb49-5"><a href="cap02.html#cb49-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ext_m, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
-<span id="cb49-6"><a href="cap02.html#cb49-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb49-7"><a href="cap02.html#cb49-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Extensão (metros)&quot;</span>, </span>
-<span id="cb49-8"><a href="cap02.html#cb49-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta (porcentagem da paisagem)&quot;</span>)</span></code></pre></div>
-<p>Depois de executar (“run”) o código acima, você deverá ver o grafico a seguir.
-<img src="epr_files/figure-html/unnamed-chunk-36-1.png" width="50%" height="50%" style="display: block; margin: auto;" /></p>
+Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando classe de floresta atraves de um filtro e acresentando uma coluna nova (“ext_m”) com a extensão em metros, (ii) as colunas para os eixos x e y, (iii) tipo de grafico (grafico de pontos - <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_point()</span> e grafico de linha - <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">geom_line()</span>), (iv) nomes para os eixos. No exemplo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo, ligando os dados (amostras_metrica) e o grafico <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ggplot</span>. Note que no codigo a seguir, adicionamos um geom com um “+”. No <a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>, nós criamos gráficos em camadas, e adicionamos camada a camada com um “+”. Assim, é posivel ajustar qualquer elemento do grafico.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="cap02.html#cb53-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
+<span id="cb53-2"><a href="cap02.html#cb53-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
+<span id="cb53-3"><a href="cap02.html#cb53-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb53-4"><a href="cap02.html#cb53-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ext_m =</span> <span class="dv">2</span><span class="sc">*</span>raio) <span class="sc">|&gt;</span></span>
+<span id="cb53-5"><a href="cap02.html#cb53-5" tabindex="-1"></a><span class="co"># fazer o grafico</span></span>
+<span id="cb53-6"><a href="cap02.html#cb53-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ext_m, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
+<span id="cb53-7"><a href="cap02.html#cb53-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  </span>
+<span id="cb53-8"><a href="cap02.html#cb53-8" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb53-9"><a href="cap02.html#cb53-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Extensão (metros)&quot;</span>, </span>
+<span id="cb53-10"><a href="cap02.html#cb53-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta (porcentagem da paisagem)&quot;</span>)</span></code></pre></div>
+<p>Depois de executar (“run”) o código acima, você deverá ver o grafico a seguir.</p>
+<p><img src="epr_files/figure-html/unnamed-chunk-36-1.png" width="50%" height="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="pergunta-3-1" class="section level4 hasAnchor" number="2.4.2.2">
 <h4><span class="header-section-number">2.4.2.2</span> Pergunta 3<a href="cap02.html#pergunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1244,21 +1325,22 @@ Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando cla
 </div>
 <div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.2.3">
 <h4><span class="header-section-number">2.4.2.3</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Podemos ajustar qualquer elemento do grafico com ggplot2. Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cap02.html#cb50-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
-<span id="cb50-2"><a href="cap02.html#cb50-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
-<span id="cb50-3"><a href="cap02.html#cb50-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb50-4"><a href="cap02.html#cb50-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ext_m =</span> <span class="dv">2</span><span class="sc">*</span>raio, </span>
-<span id="cb50-5"><a href="cap02.html#cb50-5" tabindex="-1"></a>         <span class="at">ext_km =</span> (<span class="dv">2</span><span class="sc">*</span>raio)<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb50-6"><a href="cap02.html#cb50-6" tabindex="-1"></a><span class="co"># fazer o grafico</span></span>
-<span id="cb50-7"><a href="cap02.html#cb50-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ext_km, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
-<span id="cb50-8"><a href="cap02.html#cb50-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb50-9"><a href="cap02.html#cb50-9" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb50-10"><a href="cap02.html#cb50-10" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;green&quot;</span>, </span>
-<span id="cb50-11"><a href="cap02.html#cb50-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb50-12"><a href="cap02.html#cb50-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Extensão (quilômetros)&quot;</span>, </span>
-<span id="cb50-13"><a href="cap02.html#cb50-13" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta</span><span class="sc">\n</span><span class="st">(porcentagem da paisagem)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb50-14"><a href="cap02.html#cb50-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div>
+<p>Podemos ajustar qualquer elemento do grafico com ggplot2.
+Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="cap02.html#cb54-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
+<span id="cb54-2"><a href="cap02.html#cb54-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
+<span id="cb54-3"><a href="cap02.html#cb54-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb54-4"><a href="cap02.html#cb54-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ext_m =</span> <span class="dv">2</span><span class="sc">*</span>raio, </span>
+<span id="cb54-5"><a href="cap02.html#cb54-5" tabindex="-1"></a>         <span class="at">ext_km =</span> (<span class="dv">2</span><span class="sc">*</span>raio)<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb54-6"><a href="cap02.html#cb54-6" tabindex="-1"></a><span class="co"># fazer o grafico</span></span>
+<span id="cb54-7"><a href="cap02.html#cb54-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ext_km, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
+<span id="cb54-8"><a href="cap02.html#cb54-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb54-9"><a href="cap02.html#cb54-9" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb54-10"><a href="cap02.html#cb54-10" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;green&quot;</span>, </span>
+<span id="cb54-11"><a href="cap02.html#cb54-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb54-12"><a href="cap02.html#cb54-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Extensão (quilômetros)&quot;</span>, </span>
+<span id="cb54-13"><a href="cap02.html#cb54-13" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta</span><span class="sc">\n</span><span class="st">(porcentagem da paisagem)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb54-14"><a href="cap02.html#cb54-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
 <img src="epr_files/figure-html/unnamed-chunk-37-1.png" alt="Comparação da área central de floresta em diferentes extensões." width="55%" height="55%" />
@@ -1275,18 +1357,54 @@ Figura 2.4: Comparação da área central de floresta em diferentes extensões.
 </div>
 <div id="modelos-linear-e-não-linear" class="section level4 hasAnchor" number="2.4.2.5">
 <h4><span class="header-section-number">2.4.2.5</span> Modelos linear e não linear<a href="cap02.html#modelos-linear-e-não-linear" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Um dos desafios mais frequentes é como melhor representar os dados observados para gerar evidências científicas robustas e informações confiáveis. Nós vimos que as mudancas na métrica porcentagem de área central de floresta não segue uma linha reta em relação de escala (extensão). Para ir além de uma descrição simplista dos padrões observados, na ecologia da paisagem uma variedade de modelos estatísticos são usados.Não vamos rodar modelos (ainda), mas é importante entender algumas das opções disponíveis ao interpretar os gráficos.</p>
-<p>Por exemplo, modelos de regressão são amplamente usados em diversas aplicações
-para descrever a relação entre uma variável resposta Y e uma variável
-explicativa x. Os modelos lineares são uma generalização dos testes de hipótese clássicos mais simples (<a href="http://sillasgonzaga.com/material/cdr/modelos.html#modelo-linear">Modelos linear</a> e <a href="https://analises-ecologicas.com/cap7.html">Modelos lineares</a>). Uma regressão linear, só pode ser aplicada para dados em que tanto a variável preditora quanto a resposta são contínuas, enquanto uma análise de variância é utilizada quando a variável preditora/explicativa é categórica. Os modelos lineares generalizados não têm essa limitação, podemos usar variáveis contínuas ou categóricas indistintamente (<a href="https://analises-ecologicas.com/cap8.html">Modelos Lineares Generalizados</a>).</p>
-<p>Mas, no caso de padroes ecologicas, sera que um modelo linear é o melhor modelo para representar a relação que explica “y” em função de “x”? Um número crescente de pesquisadores compartilham o sentimento de que as relações entre variáveis biológicas/ecologicas são melhores descritas por funções não lineares. Processos ecologicas (como por exemplo crescimento, mortalidade, dispersão, e competição) raramente são relacionadas linearmente às variáveis explicativas.</p>
-<p>A principal vantagem do modelo não linear sobre o linear é que 1) sua
-escolha está associada à conhecimento prévio sobre a relação a ser modelada e 2) geralmente apresenta interpretação prática para os parâmetros. Em modelos não-linear dados observados de uma variável resposta são descritos por uma função de uma ou mais variáveis explicativas que é não linear seus parâmetros. Assim como nos modelos lineares o objetivo é identificar e estabelecer a relação entre variáveis explicativas e resposta. Entretanto, enquanto os modelos lineares definem, em geral, relações empíricas/teoricas, os modelos não-lineares são, em grande parte das vezes, motivados pelo conhecimento do tipo de relação entre as variáveis. Desta forma, as aplicações surgem nas diversas áreas onde relações físicas, biológicas, cinéticas, químicas, fisiológicas, dentre outras, são estabelecidas por funções não lineares que devem ter coeficientes (parâmetros) identificados (estimados) a partir de dados observados, dados experimentais e/ou dados simulados.</p>
+<p>Um dos desafios mais frequentes é como melhor representar os dados observados para gerar evidências científicas robustas e informações confiáveis.
+Nós vimos que as mudancas na métrica porcentagem de área central de floresta não segue uma linha reta em relação de escala (extensão).
+Para ir além de uma descrição simplista dos padrões observados, na ecologia da paisagem uma variedade de modelos estatísticos são usados.Não vamos rodar modelos (ainda), mas é importante entender algumas das opções disponíveis ao interpretar os gráficos.</p>
+<p>Por exemplo, modelos de regressão são amplamente usados em diversas aplicações para descrever a relação entre uma variável resposta Y e uma variável explicativa x.
+Os modelos lineares são uma generalização dos testes de hipótese clássicos mais simples (<a href="http://sillasgonzaga.com/material/cdr/modelos.html#modelo-linear">Modelos linear</a> e <a href="https://analises-ecologicas.com/cap7.html">Modelos lineares</a>).
+Uma regressão linear, só pode ser aplicada para dados em que tanto a variável preditora quanto a resposta são contínuas, enquanto uma análise de variância é utilizada quando a variável preditora/explicativa é categórica.
+Os modelos lineares generalizados não têm essa limitação, podemos usar variáveis contínuas ou categóricas indistintamente (<a href="https://analises-ecologicas.com/cap8.html">Modelos Lineares Generalizados</a>).</p>
+<p>Mas, no caso de padroes ecologicas, sera que um modelo linear é o melhor modelo para representar a relação que explica “y” em função de “x”?
+Um número crescente de pesquisadores compartilham o sentimento de que as relações entre variáveis biológicas/ecologicas são melhores descritas por funções não lineares.
+Processos ecologicas (como por exemplo crescimento, mortalidade, dispersão, e competição) raramente são relacionadas linearmente às variáveis explicativas.</p>
+<p>A principal vantagem do modelo não linear sobre o linear é que 1) sua escolha está associada à conhecimento prévio sobre a relação a ser modelada e 2) geralmente apresenta interpretação prática para os parâmetros.
+Em modelos não-linear dados observados de uma variável resposta são descritos por uma função de uma ou mais variáveis explicativas que é não linear seus parâmetros.
+Assim como nos modelos lineares o objetivo é identificar e estabelecer a relação entre variáveis explicativas e resposta.
+Entretanto, enquanto os modelos lineares definem, em geral, relações empíricas/teoricas, os modelos não-lineares são, em grande parte das vezes, motivados pelo conhecimento do tipo de relação entre as variáveis.
+Desta forma, as aplicações surgem nas diversas áreas onde relações físicas, biológicas, cinéticas, químicas, fisiológicas, dentre outras, são estabelecidas por funções não lineares que devem ter coeficientes (parâmetros) identificados (estimados) a partir de dados observados, dados experimentais e/ou dados simulados.</p>
 <p>Como as mudanças na estrutura da paisagem caracterizam-se por serem não-lineares, para desenvolver análises estatísticas robustos pode (i) aplicar uma transformação (por exemplo, “log”) ou (ii) adotar modelos não-lineares.</p>
+<p>Nesta análise, exploramos os dados <code>amostras_metrica</code> através das lentes de três modelos distintos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Modelo Linear (Dados Originais):<br />
+Este modelo de linha de base assume uma relação linear entre as variáveis independentes e dependentes nos dados originais não transformados.
+Podemos interpretar os coeficientes do modelo para compreender o impacto direto de cada preditor na variável resposta.
+No entanto, esta abordagem pode não capturar padrões não lineares ou heterocedasticidade (variância desigual) nos dados.</p></li>
+<li><p>Modelo Linear (dados transformados em log):<br />
+Reconhecendo a potencial não linearidade, transformamos logaritmo da variável dependente.
+Isto pode estabilizar a variância e potencialmente linearizar a relação, melhorando o ajuste de um modelo linear.
+No entanto, a interpretação dos coeficientes torna-se menos simples, exigindo transformação reversa e exponenciação para retornar às unidades originais.</p></li>
+<li><p>Modelo Não Linear (Dados Originais):<br />
+Para contabilizar a potencial não linearidade sem transformar os dados, empregamos um modelo não linear, como uma regressão polinomial.
+Isto permite relações mais flexíveis entre as variáveis mas pode levar a coeficientes menos interpretáveis.</p></li>
+</ol>
+<p>Visualizando o ajuste:</p>
+<p>Para comparar a eficácia destes modelos, empregamos ferramentas de diagnóstico visual:</p>
+<ul>
+<li><p>Valores previstos versus pontos de dados:<br />
+sobrepomos os valores previstos (linhas tracejadas) gerados por cada modelo nos pontos de dados originais (pontos pretos).
+Quanto mais próximas as linhas previstas estiverem dos pontos de dados, melhor o modelo captura as tendências subjacentes.</p></li>
+<li><p>Intervalos de confiança:<br />
+visualizamos os intervalos de confiança (sombreamento cinza) associados às previsões de cada modelo.
+Intervalos mais estreitos indicam maior precisão e menor incerteza nas estimativas.
+A comparação das larguras dos intervalos entre os modelos pode revelar qual deles fornece previsões mais confiáveis.</p></li>
+</ul>
+<p>Para fornecer evidências científicas robustas, precisaríamos ir além de uma avaliação visual subjetiva e adicionar análises estatísticas para apoiar as nossas conclusões.
+Ao analisar esses recursos visuais juntamente com métricas estatísticas como R-quadrado (por enquanto não precisamos saber os detalhes, apenas que existem técnicas), podemos tirar conclusões informadas sobre qual modelo melhor se ajusta aos dados amostras_metrica.
+Esta abordagem comparativa proporciona uma compreensão mais profunda das relações dentro dos dados e permite-nos escolher o modelo mais apropriado para análise e previsão subsequentes.</p>
 <div class="figure"><span style="display:block;" id="fig:met-insert-fig-comp2"></span>
-<img src="figures/fig_comp_linear.png" alt="Comparação de padrões lineares e não-lineares." width="98%" height="98%" />
+<img src="figures/fig_comp_linear.png" alt="Comparação de padrões lineares e não-lineares. Comparamos visualmente o ajuste dos modelos comparando o quão próximos os valores previstos (linhas tracejadas) estão dos pontos de dados originais (pontos pretos) e as diferenças nos intervalos de confiança do modelo (sombreamento cinza)." width="98%" height="98%" />
 <p class="caption">
-Figura 2.5: Comparação de padrões lineares e não-lineares.
+Figura 2.5: Comparação de padrões lineares e não-lineares. Comparamos visualmente o ajuste dos modelos comparando o quão próximos os valores previstos (linhas tracejadas) estão dos pontos de dados originais (pontos pretos) e as diferenças nos intervalos de confiança do modelo (sombreamento cinza).
 </p>
 </div>
 </div>
@@ -1294,12 +1412,18 @@ Figura 2.5: Comparação de padrões lineares e não-lineares.
 <h4><span class="header-section-number">2.4.2.6</span> Pergunta 5<a href="cap02.html#pergunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Comparar os resultados apresentados nas figuras com modelos lineares e não-lineares. Como podemos estabelecer qual seria o melhor modelo? Qual modelo seria mais adequado para identificar limiares no padrão de área central de floresta?</span></p>
 <hr />
+</div>
+<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.2.7">
+<h4><span class="header-section-number">2.4.2.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar dados novas (isso é seis distâncias novas e as seis distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um grafico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.</span></p>
+<hr />
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div id="ponto-único-distâncias-variados-métricas-variadas" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Ponto único, distâncias variados, métricas variadas<a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>No exemplo anterior comparamos uma métrica da paisagem em torno de um único ponto de amostragem. Mas sabemos que uma combinação de várias métricas é necessária para entender os padrões na paisagem.
+<p>No exemplo anterior comparamos uma métrica da paisagem em torno de um único ponto de amostragem.
+Mas sabemos que uma combinação de várias métricas é necessária para entender os padrões na paisagem.
 Aqui mostraremos como incluir cálculos de diferentes métricas de paisagem ao mesmo tempo.</p>
 <div class="figure"><span style="display:block;" id="fig:met-insert-fig-buffmetrics"></span>
 <img src="epr_files/figure-html/met-insert-fig-buffmetrics-1.png" alt="Ilustração da determinação de métricas da paisagem diferentes ao redor de um ponto. Exemplo com a estrutura da paisagem representado com trés caracteristicas (A) Área central, (B) Borda e (C) Vizinho mais próximo. O habitat de interesse (classe) é isolado. Um buffer (linha tracejada) é colocado ao redor de um ponto (amarela) e as métricas calculadas. E em seguida o processo é repetido em diferentes extensões." width="672" />
@@ -1312,17 +1436,24 @@ Figura 2.6: Ilustração da determinação de métricas da paisagem diferentes a
 <blockquote>
 <p>Não deve calcular todas as métricas disponíveis, mas sim, escolher aquelas que podem ser realmente adequadas para sua pergunta de pesquisa.</p>
 </blockquote>
-<p>Calculando todas as métricas se chama um “tiro no escuro”, algo cujo resultado se desconhece ou é imprevisível. Isso não é recomendado. Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.
-Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums. Mas, isso não representa necessariamente as métricas mais adequados ou recommendadas.</p>
+<p>Calculando todas as métricas se chama um “tiro no escuro”, algo cujo resultado se desconhece ou é imprevisível.
+Isso não é recomendado.
+Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.
+Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums.
+Mas, isso não representa necessariamente as métricas mais adequados ou recommendadas.
+Lembre-se que algumas métricas possuem uma combinação de estatísticas (média, coeficiente de variação e desvio padrão).
+É importante incluir medidas de variação (coeficiente de variação e desvio padrão), bem como a média, para que possamos fornecer evidências científicas robustas.
+<strong>Nunca apresente uma média sem uma medida da variação</strong>.</p>
 <ul>
-<li><p>Métricas de área e borda (area and edge metrics). Quantificam a composição da paisagem:</p>
+<li><p>Métricas de área e borda (area and edge metrics).
+Quantificam a composição da paisagem:</p>
 <ul>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">pland</span> = percentage of landscape. Percentagem da paisagem. Porcentagem de cobertura da classe na paisagem.</li>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ed</span> = edge density . Densidade de borda que é igual à soma dos comprimentos (m) de todos os segmentos de borda que envolvem o fragmento, dividida pela área total da paisagem (m²), sendo posteriormente convertido em hectares.</li>
-<li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span> = core area percentage of landscape. Percentual de área central (“core”) na paisagem.
-Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à área total da paisagem. O termo “Core area” foi traduzido como área central ou área núcleo. Aqui vamos adotar área central.</li>
+<li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span> = core area percentage of landscape. Percentual de área central (“core”) na paisagem. Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à área total da paisagem. O termo “Core area” foi traduzido como área central ou área núcleo. Aqui vamos adotar área central.</li>
 </ul></li>
-<li><p>Métricas de agregação. Quantificam a configuração da paisagem:</p>
+<li><p>Métricas de agregação.
+Quantificam a configuração da paisagem:</p>
 <ul>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">enn</span> = euclidian nearest neighbour distance. Distância euclidiana do vizinho mais próximo.</li>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">enn_cv</span> = Coefficient of variation of euclidean nearest-neighbor distance. Coeficiente de variação da distância euclidiana do vizinho mais próximo. A métrica resume cada classe como o Coeficiente de variação das distâncias euclidianas do vizinho mais próximo entre as manchas pertencentes à classe. O valor de enn_cv = 0 se a distância euclidiana do vizinho mais próximo for idêntica para todas as manchas. Aumenta, sem limite, à medida que a variação do ENN aumenta.</li>
@@ -1331,64 +1462,65 @@ Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à ár
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cohesion</span> = Cohesion index. Índice de coesão das manchas.</li>
 </ul></li>
 </ul>
-<p>Para incluir cálculos de diferentes métricas de paisagem ao mesmo tempo, precisamos acrescentar somente uma nova linha de codigo. Uma nova linha, que cria um objeto com os nomes das funções para as métricas que queremos calcular….. Também precisamos usar a opção “what” na função para aceitar os nomes das funções .</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cap02.html#cb52-1" tabindex="-1"></a><span class="co"># Objeto com os nomes das funções para calcular as métricas desejadas.</span></span>
-<span id="cb52-2"><a href="cap02.html#cb52-2" tabindex="-1"></a><span class="co"># 6 métricas, </span></span>
-<span id="cb52-3"><a href="cap02.html#cb52-3" tabindex="-1"></a><span class="co"># um (enn) com 3 estatisticas (mn = media, </span></span>
-<span id="cb52-4"><a href="cap02.html#cb52-4" tabindex="-1"></a><span class="co">#                              sd = desvio padrão, </span></span>
-<span id="cb52-5"><a href="cap02.html#cb52-5" tabindex="-1"></a><span class="co">#                              cv = coeficiente de variação)</span></span>
-<span id="cb52-6"><a href="cap02.html#cb52-6" tabindex="-1"></a>minhas_metricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;lsm_c_pland&quot;</span>, <span class="st">&quot;lsm_c_ed&quot;</span>, <span class="st">&quot;lsm_c_cpland&quot;</span>, </span>
-<span id="cb52-7"><a href="cap02.html#cb52-7" tabindex="-1"></a>                     <span class="st">&quot;lsm_c_enn_mn&quot;</span>, <span class="st">&quot;lsm_c_enn_sd&quot;</span>, <span class="st">&quot;lsm_c_enn_cv&quot;</span>,</span>
-<span id="cb52-8"><a href="cap02.html#cb52-8" tabindex="-1"></a>                     <span class="st">&quot;lsm_c_pd&quot;</span>,<span class="st">&quot;lsm_c_cohesion&quot;</span>)</span>
-<span id="cb52-9"><a href="cap02.html#cb52-9" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="cap02.html#cb52-10" tabindex="-1"></a><span class="co"># 6 Métricas calculadas para cada extensão</span></span>
-<span id="cb52-11"><a href="cap02.html#cb52-11" tabindex="-1"></a><span class="co"># raio 250 metros</span></span>
-<span id="cb52-12"><a href="cap02.html#cb52-12" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-13"><a href="cap02.html#cb52-13" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">250</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-14"><a href="cap02.html#cb52-14" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas) <span class="sc">|&gt;</span> </span>
-<span id="cb52-15"><a href="cap02.html#cb52-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">250</span>) <span class="ot">-&gt;</span> metricas_amostra_250 </span>
-<span id="cb52-16"><a href="cap02.html#cb52-16" tabindex="-1"></a><span class="co"># raio 500 metros</span></span>
-<span id="cb52-17"><a href="cap02.html#cb52-17" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-18"><a href="cap02.html#cb52-18" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">500</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-19"><a href="cap02.html#cb52-19" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
-<span id="cb52-20"><a href="cap02.html#cb52-20" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">500</span>) <span class="ot">-&gt;</span> metricas_amostra_500</span>
-<span id="cb52-21"><a href="cap02.html#cb52-21" tabindex="-1"></a><span class="co"># raio 1 km (1000 metros)</span></span>
-<span id="cb52-22"><a href="cap02.html#cb52-22" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-23"><a href="cap02.html#cb52-23" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-24"><a href="cap02.html#cb52-24" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
-<span id="cb52-25"><a href="cap02.html#cb52-25" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">1000</span>) <span class="ot">-&gt;</span> metricas_amostra_1000</span>
-<span id="cb52-26"><a href="cap02.html#cb52-26" tabindex="-1"></a><span class="co"># raio 2 km (2000 metros)</span></span>
-<span id="cb52-27"><a href="cap02.html#cb52-27" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-28"><a href="cap02.html#cb52-28" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">2000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-29"><a href="cap02.html#cb52-29" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas) <span class="sc">|&gt;</span> </span>
-<span id="cb52-30"><a href="cap02.html#cb52-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">2000</span>) <span class="ot">-&gt;</span> metricas_amostra_2000</span>
-<span id="cb52-31"><a href="cap02.html#cb52-31" tabindex="-1"></a><span class="co"># raio 4 km (4000 metros)</span></span>
-<span id="cb52-32"><a href="cap02.html#cb52-32" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-33"><a href="cap02.html#cb52-33" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">4000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-34"><a href="cap02.html#cb52-34" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
-<span id="cb52-35"><a href="cap02.html#cb52-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">4000</span>)  <span class="ot">-&gt;</span> metricas_amostra_4000</span>
-<span id="cb52-36"><a href="cap02.html#cb52-36" tabindex="-1"></a><span class="co"># raio 8 km (8000 metros)</span></span>
-<span id="cb52-37"><a href="cap02.html#cb52-37" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-38"><a href="cap02.html#cb52-38" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">8000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-39"><a href="cap02.html#cb52-39" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
-<span id="cb52-40"><a href="cap02.html#cb52-40" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">8000</span>) <span class="ot">-&gt;</span> metricas_amostra_8000</span>
-<span id="cb52-41"><a href="cap02.html#cb52-41" tabindex="-1"></a><span class="co"># raio 16 km (16000 metros)</span></span>
-<span id="cb52-42"><a href="cap02.html#cb52-42" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
-<span id="cb52-43"><a href="cap02.html#cb52-43" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">16000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
-<span id="cb52-44"><a href="cap02.html#cb52-44" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
-<span id="cb52-45"><a href="cap02.html#cb52-45" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">16000</span>) <span class="ot">-&gt;</span> metricas_amostra_16000</span></code></pre></div>
+<p>Para incluir cálculos de diferentes métricas de paisagem ao mesmo tempo, precisamos acrescentar somente uma nova linha de codigo.
+Uma nova linha, que cria um objeto com os nomes das funções para as métricas que queremos calcular…..
+Também precisamos usar a opção “what” na função para aceitar os nomes das funções .</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="cap02.html#cb56-1" tabindex="-1"></a><span class="co"># Objeto com os nomes das funções para calcular as métricas desejadas.</span></span>
+<span id="cb56-2"><a href="cap02.html#cb56-2" tabindex="-1"></a><span class="co"># 6 métricas, </span></span>
+<span id="cb56-3"><a href="cap02.html#cb56-3" tabindex="-1"></a><span class="co"># um (enn) com 3 estatisticas (mn = media, </span></span>
+<span id="cb56-4"><a href="cap02.html#cb56-4" tabindex="-1"></a><span class="co">#                              sd = desvio padrão, </span></span>
+<span id="cb56-5"><a href="cap02.html#cb56-5" tabindex="-1"></a><span class="co">#                              cv = coeficiente de variação)</span></span>
+<span id="cb56-6"><a href="cap02.html#cb56-6" tabindex="-1"></a>minhas_metricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;lsm_c_pland&quot;</span>, <span class="st">&quot;lsm_c_ed&quot;</span>, <span class="st">&quot;lsm_c_cpland&quot;</span>, </span>
+<span id="cb56-7"><a href="cap02.html#cb56-7" tabindex="-1"></a>                     <span class="st">&quot;lsm_c_enn_mn&quot;</span>, <span class="st">&quot;lsm_c_enn_sd&quot;</span>, <span class="st">&quot;lsm_c_enn_cv&quot;</span>,</span>
+<span id="cb56-8"><a href="cap02.html#cb56-8" tabindex="-1"></a>                     <span class="st">&quot;lsm_c_pd&quot;</span>,<span class="st">&quot;lsm_c_cohesion&quot;</span>)</span>
+<span id="cb56-9"><a href="cap02.html#cb56-9" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="cap02.html#cb56-10" tabindex="-1"></a><span class="co"># 6 Métricas calculadas para cada extensão</span></span>
+<span id="cb56-11"><a href="cap02.html#cb56-11" tabindex="-1"></a><span class="co"># raio 250 metros</span></span>
+<span id="cb56-12"><a href="cap02.html#cb56-12" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-13"><a href="cap02.html#cb56-13" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">250</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-14"><a href="cap02.html#cb56-14" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas) <span class="sc">|&gt;</span> </span>
+<span id="cb56-15"><a href="cap02.html#cb56-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">250</span>) <span class="ot">-&gt;</span> metricas_amostra_250 </span>
+<span id="cb56-16"><a href="cap02.html#cb56-16" tabindex="-1"></a><span class="co"># raio 500 metros</span></span>
+<span id="cb56-17"><a href="cap02.html#cb56-17" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-18"><a href="cap02.html#cb56-18" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">500</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-19"><a href="cap02.html#cb56-19" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
+<span id="cb56-20"><a href="cap02.html#cb56-20" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">500</span>) <span class="ot">-&gt;</span> metricas_amostra_500</span>
+<span id="cb56-21"><a href="cap02.html#cb56-21" tabindex="-1"></a><span class="co"># raio 1 km (1000 metros)</span></span>
+<span id="cb56-22"><a href="cap02.html#cb56-22" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-23"><a href="cap02.html#cb56-23" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-24"><a href="cap02.html#cb56-24" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
+<span id="cb56-25"><a href="cap02.html#cb56-25" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">1000</span>) <span class="ot">-&gt;</span> metricas_amostra_1000</span>
+<span id="cb56-26"><a href="cap02.html#cb56-26" tabindex="-1"></a><span class="co"># raio 2 km (2000 metros)</span></span>
+<span id="cb56-27"><a href="cap02.html#cb56-27" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-28"><a href="cap02.html#cb56-28" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">2000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-29"><a href="cap02.html#cb56-29" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas) <span class="sc">|&gt;</span> </span>
+<span id="cb56-30"><a href="cap02.html#cb56-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">2000</span>) <span class="ot">-&gt;</span> metricas_amostra_2000</span>
+<span id="cb56-31"><a href="cap02.html#cb56-31" tabindex="-1"></a><span class="co"># raio 4 km (4000 metros)</span></span>
+<span id="cb56-32"><a href="cap02.html#cb56-32" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-33"><a href="cap02.html#cb56-33" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">4000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-34"><a href="cap02.html#cb56-34" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
+<span id="cb56-35"><a href="cap02.html#cb56-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">4000</span>)  <span class="ot">-&gt;</span> metricas_amostra_4000</span>
+<span id="cb56-36"><a href="cap02.html#cb56-36" tabindex="-1"></a><span class="co"># raio 8 km (8000 metros)</span></span>
+<span id="cb56-37"><a href="cap02.html#cb56-37" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-38"><a href="cap02.html#cb56-38" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">8000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-39"><a href="cap02.html#cb56-39" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
+<span id="cb56-40"><a href="cap02.html#cb56-40" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">8000</span>) <span class="ot">-&gt;</span> metricas_amostra_8000</span>
+<span id="cb56-41"><a href="cap02.html#cb56-41" tabindex="-1"></a><span class="co"># raio 16 km (16000 metros)</span></span>
+<span id="cb56-42"><a href="cap02.html#cb56-42" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
+<span id="cb56-43"><a href="cap02.html#cb56-43" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">16000</span>, <span class="at">shape =</span> <span class="st">&quot;circle&quot;</span>, </span>
+<span id="cb56-44"><a href="cap02.html#cb56-44" tabindex="-1"></a>           <span class="at">what =</span> minhas_metricas)  <span class="sc">|&gt;</span> </span>
+<span id="cb56-45"><a href="cap02.html#cb56-45" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">16000</span>) <span class="ot">-&gt;</span> metricas_amostra_16000</span></code></pre></div>
 <p>E agora, o código a seguir juntará os resultados das diferentes extensões.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="cap02.html#cb53-1" tabindex="-1"></a><span class="fu">bind_rows</span>(metricas_amostra_250, </span>
-<span id="cb53-2"><a href="cap02.html#cb53-2" tabindex="-1"></a>          metricas_amostra_500, </span>
-<span id="cb53-3"><a href="cap02.html#cb53-3" tabindex="-1"></a>          metricas_amostra_1000, </span>
-<span id="cb53-4"><a href="cap02.html#cb53-4" tabindex="-1"></a>          metricas_amostra_2000, </span>
-<span id="cb53-5"><a href="cap02.html#cb53-5" tabindex="-1"></a>          metricas_amostra_4000, </span>
-<span id="cb53-6"><a href="cap02.html#cb53-6" tabindex="-1"></a>          metricas_amostra_8000, </span>
-<span id="cb53-7"><a href="cap02.html#cb53-7" tabindex="-1"></a>          metricas_amostra_16000) <span class="ot">-&gt;</span> amostras_metricas</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="cap02.html#cb57-1" tabindex="-1"></a><span class="fu">bind_rows</span>(metricas_amostra_250, </span>
+<span id="cb57-2"><a href="cap02.html#cb57-2" tabindex="-1"></a>          metricas_amostra_500, </span>
+<span id="cb57-3"><a href="cap02.html#cb57-3" tabindex="-1"></a>          metricas_amostra_1000, </span>
+<span id="cb57-4"><a href="cap02.html#cb57-4" tabindex="-1"></a>          metricas_amostra_2000, </span>
+<span id="cb57-5"><a href="cap02.html#cb57-5" tabindex="-1"></a>          metricas_amostra_4000, </span>
+<span id="cb57-6"><a href="cap02.html#cb57-6" tabindex="-1"></a>          metricas_amostra_8000, </span>
+<span id="cb57-7"><a href="cap02.html#cb57-7" tabindex="-1"></a>          metricas_amostra_16000) <span class="ot">-&gt;</span> amostras_metricas</span></code></pre></div>
 <p>Depois que executar (“run”), podemos olhar os dados com o codigo a seguir.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="cap02.html#cb54-1" tabindex="-1"></a>amostras_metricas</span></code></pre></div>
-Os dados deve ter os valores (coluna “value”) das métricas (coluna metric)
-de cada classe (coluna “class”) para cada distância (coluna “raio”):
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="cap02.html#cb58-1" tabindex="-1"></a>amostras_metricas</span></code></pre></div>
+<p>Os dados deve ter os valores (coluna “value”) das métricas (coluna metric) de cada classe (coluna “class”) para cada distância (coluna “raio”):</p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1714,35 +1846,51 @@ cohesion
 </tr>
 </tbody>
 </table>
-<p>Agora, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2. Para ajudar na visualização incluímos quais métricas são para composição e configuração e nomes que são mais fáceis de entender. A função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">mutate</span> é usado para incluir novas colunas.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="cap02.html#cb55-1" tabindex="-1"></a>metricas_composicao <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pland&quot;</span>, <span class="st">&quot;ed&quot;</span>, <span class="st">&quot;cpland&quot;</span>)</span>
-<span id="cb55-2"><a href="cap02.html#cb55-2" tabindex="-1"></a><span class="co"># arrumar dados</span></span>
-<span id="cb55-3"><a href="cap02.html#cb55-3" tabindex="-1"></a>amostras_metricas <span class="sc">|&gt;</span> </span>
-<span id="cb55-4"><a href="cap02.html#cb55-4" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb55-5"><a href="cap02.html#cb55-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ext_km =</span> (<span class="dv">2</span><span class="sc">*</span>raio)<span class="sc">/</span><span class="dv">1000</span>, </span>
-<span id="cb55-6"><a href="cap02.html#cb55-6" tabindex="-1"></a>         <span class="at">met_cat =</span> <span class="fu">if_else</span>(metric <span class="sc">%in%</span> metricas_composicao, </span>
-<span id="cb55-7"><a href="cap02.html#cb55-7" tabindex="-1"></a>                           <span class="st">&quot;composição&quot;</span>, <span class="st">&quot;configuração&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb55-8"><a href="cap02.html#cb55-8" tabindex="-1"></a><span class="co"># fazer grafico</span></span>
-<span id="cb55-9"><a href="cap02.html#cb55-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ext_km, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
-<span id="cb55-10"><a href="cap02.html#cb55-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb55-11"><a href="cap02.html#cb55-11" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb55-12"><a href="cap02.html#cb55-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(met_cat<span class="sc">~</span>metric, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb55-13"><a href="cap02.html#cb55-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Comparação multiescala de várias métricas&quot;</span>,</span>
-<span id="cb55-14"><a href="cap02.html#cb55-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;extensão (quilômetros)&quot;</span>, </span>
-<span id="cb55-15"><a href="cap02.html#cb55-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;metric value&quot;</span>)</span></code></pre></div>
+<p>Agora, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2.
+Para ajudar na visualização incluímos quais métricas são para composição e configuração, e nomes que são mais fáceis de entender.
+A função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #d3d3d3 !important;">mutate()</span> é usado para incluir novas colunas.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="cap02.html#cb59-1" tabindex="-1"></a>metricas_composicao <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pland&quot;</span>, <span class="st">&quot;ed&quot;</span>, <span class="st">&quot;cpland&quot;</span>)</span>
+<span id="cb59-2"><a href="cap02.html#cb59-2" tabindex="-1"></a><span class="co"># arrumar dados</span></span>
+<span id="cb59-3"><a href="cap02.html#cb59-3" tabindex="-1"></a>amostras_metricas <span class="sc">|&gt;</span> </span>
+<span id="cb59-4"><a href="cap02.html#cb59-4" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb59-5"><a href="cap02.html#cb59-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ext_km =</span> (<span class="dv">2</span><span class="sc">*</span>raio)<span class="sc">/</span><span class="dv">1000</span>, </span>
+<span id="cb59-6"><a href="cap02.html#cb59-6" tabindex="-1"></a>         <span class="at">met_cat =</span> <span class="fu">if_else</span>(metric <span class="sc">%in%</span> metricas_composicao, </span>
+<span id="cb59-7"><a href="cap02.html#cb59-7" tabindex="-1"></a>                           <span class="st">&quot;composição&quot;</span>, <span class="st">&quot;configuração&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb59-8"><a href="cap02.html#cb59-8" tabindex="-1"></a><span class="co"># fazer grafico</span></span>
+<span id="cb59-9"><a href="cap02.html#cb59-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ext_km, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
+<span id="cb59-10"><a href="cap02.html#cb59-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb59-11"><a href="cap02.html#cb59-11" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb59-12"><a href="cap02.html#cb59-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(met_cat<span class="sc">~</span>metric, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-13"><a href="cap02.html#cb59-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Comparação multiescala de várias métricas&quot;</span>,</span>
+<span id="cb59-14"><a href="cap02.html#cb59-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;extensão (quilômetros)&quot;</span>, </span>
+<span id="cb59-15"><a href="cap02.html#cb59-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;metric value&quot;</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/met-insert-fig-multiplemetrics-1.png" width="672" /></p>
-<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.3.1">
-<h4><span class="header-section-number">2.4.3.1</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.3.1">
+<h4><span class="header-section-number">2.4.3.1</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Com base nos resultados apresentados (figura e tabela) caracterisar as mudançãs na paisagem em função de extensões diferentes. Olhando os graficos prever como seria o padrão para extensões maiores (lembrando que valores são doubrados - por exemplo raio de 250 metros gerar uma extensão de 500 metros). Seria relevante repetir incluindo calculos para extensões maiores (por exemplo 64 km e 128 km)? Justifique sua caracterização e previsões de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 </div>
-<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.3.2">
-<h4><span class="header-section-number">2.4.3.2</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><span style=" font-weight: bold;    color: blue !important;">Usando como base o conteudo das aulas, leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises), e/ou exemplos apresentados aqui no tutorial, selecione pelo menos oito métricas de nível classe para caracterizar a paisagem de estudo e objectivos da sua projeto. Justifique sua seleção de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
+<div id="pergunta-8" class="section level4 hasAnchor" number="2.4.3.2">
+<h4><span class="header-section-number">2.4.3.2</span> Pergunta 8<a href="cap02.html#pergunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Usando como base o conteudo das aulas, leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises), e/ou exemplos apresentados aqui no tutorial, selecione pelo menos oito métricas de nível classe para caracterizar a paisagem de estudo e objectivos da sua projeto em grupo. Justifique sua seleção de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 <hr />
+<p>Essa foi a última pergunta.</p>
+<p><a href="https://darrennorris.github.io/eprsol/solutions.html">Soluções dos exercícios:</a> <a href="https://darrennorris.github.io/eprsol/solutions.html" class="uri">https://darrennorris.github.io/eprsol/solutions.html</a></p>
+</div>
+</div>
+</div>
+<div id="links-úteis" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Links úteis<a href="cap02.html#links-úteis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Spatial Data Science with R: <a href="https://rspatial.org/" class="uri">https://rspatial.org/</a></p>
+<p>McGarigal K., Cushman SA., &amp; Ene, E. 2023.<br />
+Spatial Pattern Analysis. Concepts and applications: <a href="https://www.fragstats.org/index.php/documentation" class="uri">https://www.fragstats.org/index.php/documentation</a></p>
+<p>Wagner, H. 2022.<br />
+Landscape Genetic Data Analysis with R: <a href="https://bookdown.org/hhwagner1/LandGenCourse_book/" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/</a>
+Helene Wagner and Max Hesselbarth. Spatial data landscape analysis:
+<a href="https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html</a></p>
+<p>Lovelace, R. 2023.<br />
+Geocomputation with R: <a href="https://geocompr.robinlovelace.net/index.html" class="uri">https://geocompr.robinlovelace.net/index.html</a></p>
 
 <div style="page-break-after: always;"></div>
-</div>
-</div>
 </div>
 </div>
             </section>

@@ -30,7 +30,7 @@ Versoes:
 
 -  pdf: https://github.com/darrennorris/epr/blob/main/docs/epr.pdf
 
-Este é um material introdutório destinado principalmente a estudantes de graduação e cursos de pós-graduação em ecologia e áreas correlatas.
+Este material introdutório é direcionado principalmente a estudantes de graduação e pós-graduação em ecologia e áreas afins. Ele está sendo utilizado como interface para os materiais do curso de Ecologia da Paisagem, do [Bacharelado em Ciências Ambientais](https://www2.unifap.br/cambientais/) da Universidade Federal do Amapá, Brasil.
 
 O objetivo é de apresentar os capacidades e opções para desenvolver e integrar pesquisas na Ecologia da Paisagem no ambiente estatística de R.
 

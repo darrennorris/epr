@@ -153,9 +153,11 @@ faça-um-gráfico-elegante
 pergunta-4-1
 modelos-linear-e-não-linear
 pergunta-5-1
-ponto-único-distâncias-variados-métricas-variadas
 pergunta-6-1
+ponto-único-distâncias-variados-métricas-variadas
 pergunta-7
+pergunta-8
+links-úteis
 cap03
 apresentação-2
 escala-de-efeito---definição
@@ -179,7 +181,7 @@ múltiplas-espécies
 pergunta-5-2
 pergunta-6-2
 kernels
-links-uteis
+links-úteis-1
 garimpo-do-lourenço
 apresentação-3
 pacotes-necessarios
