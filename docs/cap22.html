@@ -1710,7 +1710,7 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <pre><code>## [1] &quot;2024-01-07&quot;</code></pre>
 <div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="cap22.html#cb556-1" tabindex="-1"></a><span class="do">## Extrair a data e tempo nesse instante</span></span>
 <span id="cb556-2"><a href="cap22.html#cb556-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-07 12:22:23 -03&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-07 18:30:01 -03&quot;</code></pre>
 <p>Além dessas informações instantâneas, existem três maneiras de criar um dado de data/horário.</p>
 <ul>
 <li>De um string</li>
@@ -1786,7 +1786,7 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="cap22.html#cb581-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">wday</span>(agora)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="cap22.html#cb583-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">second</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 23.68912</code></pre>
+<pre><code>## [1] 2.201839</code></pre>
 <p>Além de acessar componentes de datas e horários, podemos usar essas funções para fazer a inclusão de informações de datas e horários.</p>
 <div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="cap22.html#cb585-1" tabindex="-1"></a><span class="do">## Data</span></span>
 <span id="cb585-2"><a href="cap22.html#cb585-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">dmy_hms</span>(<span class="st">&quot;04-03-2021 01:04:56&quot;</span>)</span>
@@ -1975,12 +1975,12 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos nos perguntar que horas são em outra parte do globo ou fazer as conversões facilmente no <em>lubridate</em>.</p>
 <div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="cap22.html#cb668-1" tabindex="-1"></a><span class="do">## Que horas são em...</span></span>
 <span id="cb668-2"><a href="cap22.html#cb668-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-07 15:22:25 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-07 21:30:03 GMT&quot;</code></pre>
 <div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="cap22.html#cb670-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;Europe/Berlin&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-07 16:22:25 CET&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-07 22:30:03 CET&quot;</code></pre>
 <div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="cap22.html#cb672-1" tabindex="-1"></a><span class="do">## Altera o fuso sem mudar a hora</span></span>
 <span id="cb672-2"><a href="cap22.html#cb672-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">force_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-07 12:22:25 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-07 18:30:03 GMT&quot;</code></pre>
 <p>Para se aprofundar no tema, recomendamos a leitura do Capítulo <a href="https://r4ds.had.co.nz/dates-and-times.html">16 Dates and times</a> de Wickham &amp; Grolemund <span class="citation">(2017)</span>.</p>
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="7.11">

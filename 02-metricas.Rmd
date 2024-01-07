@@ -384,8 +384,11 @@ Para obter resultados com extensões diferentes, precisamos primeiramente repeti
 O código a seguir calculará a mesma métrica para as diferentes distâncias.
 No exemplo, usamos `r kableExtra::text_spec("|>", bold = TRUE)`, que estabelece a ligação entre os passos do processo.
 Neste caso, usamos a função `mutate()` para incluir uma coluna nova ("raio") para manter o valor das diferentes distâncias.
-`mutate()` é uma função muito versátil que pode ser usada para criar, modificar e excluir colunas em um quadro de dados (data frame).
+`mutate()` é uma função muito versátil que pode ser usada para criar, modificar e excluir colunas em um quadro de dados (data frame). Mais exemplos com o uso de `mutate()` [aqui:](https://analises-ecologicas.com/cap5#mutate) https://analises-ecologicas.com/cap5#mutate.
 
+Uso de `mutate()`  seguir com a sintaxe: o quadro de dados será sempre o primeiro argumento, seguido de um operador pipe ( `|>` ) e pelo nome da função `mutate()`. Isso permite o encadeamento de várias operações consecutivas mantendo a estrutura do dado original e acrescentando mudanças num encadeamento lógico.
+
+Sendo assim, `mutate()` não precisa modificar necessariamente os dados originais, sendo que as operações de manipulações podem e devem ser atribuídas a um novo objeto.
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 # raio 250 metros
 sample_lsm(floresta_2020, y = rio_pontos_31976[1, ], 
@@ -426,7 +429,7 @@ sample_lsm(floresta_2020, y = rio_pontos_31976[1, ],
 
 \newpage
 
-E agora, o código a seguir juntará os resultados das diferentes extensões.
+E agora, o código a seguir juntará os resultados das diferentes extensões. Para combinar as linhas de duas ou mais tabelas de dados podemos utilizar a função `bind_rows()`. Para esta função, precisamos incluir os nomes de todos os dados que queremos combinar, separados por vírgulas. Aqui combinamos as métricas de sete buffers separados e criamos um novo objeto "amostras_metrica".
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 bind_rows(minha_amostra_250, 
@@ -470,7 +473,7 @@ Os dados apresentados em uma tabela podem ser difíceis de entender.
 Portanto, a primeira pergunta que você deve se fazer é se você pode transformar aquela tabela (chata e feia) em algum tipo de gráfico.
 Lembrando, sempre pode incluir a tabela como anexo.
 
-Aqui, vamos fazer um grafico com os dados amostras_metrica, usando o pacote [ggplot2](https://ggplot2.tidyverse.org/index.html).
+Aqui, vamos fazer um gráfico com os dados amostras_metrica, usando o pacote [ggplot2](https://ggplot2.tidyverse.org/index.html) para verificar como a paisagem muda com a escala.
 
 O [ggplot2](https://ggplot2.tidyverse.org/index.html) faz parte do conjunto de pacotes [tidyverse](https://tidyverse.tidyverse.org/articles/paper.html), e é um pacote de visualização de dados.
 "gg" se refere a uma gramática de gráficos.
@@ -487,7 +490,7 @@ Para mais exemplos e tutoriais com mais detalhes veja os capitulos sobre [ggplot
 
 -   No livro em ingles [R Graphics Cookbook](https://r-graphics.org/) .
 
--   E sempre pode buscar exemplos no Google, por exemplo digitando: ggplot2 grafico de barra no Google, tem mais de 50 mil resultados com paginas de imagens, codigo pronto e exemplos no YouTube.
+-   E sempre pode buscar exemplos no Google, por exemplo digitando: ggplot2 gráfico de barra no Google, tem mais de 50 mil resultados com paginas de imagens, codigo pronto e exemplos no YouTube.
 
 O [ggplot2](https://ggplot2.tidyverse.org/index.html) exige que os dados a serem plotados estejam em um "data frame" ([quadro de dados](https://bookdown.org/wevsena/curso_r_tce/curso_r_tce.html#data-frames-e-tibbles)).
 Ou seja, sempre teremos que transformar os dados para um data frame ou construir um data frame com os dados que possuímos.
@@ -495,21 +498,21 @@ Data frame é um formato comum e fácil de trabalhar - parecido com uma planilha
 Todo que pode fazer com uma planilha de dados pode fazer com um data frame.
 Por exemplo, se você importar uma planilha de dados, o resultado seria como data frame (para mais detalhes veja [Estrutura e manipulação de objetos](https://analises-ecologicas.com/cap4.html#estrutura-e-manipula%C3%A7%C3%A3o-de-objetos) e [lendo dados](http://sillasgonzaga.com/material/cdr/lendo-os-dados.html) ).
 
-Além disso, o mais importante é que o resultado dos funções de [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/) é sempre um data frame, ou seja os resultados da função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")` são prontos para um grafico elegante com [ggplot2](https://ggplot2.tidyverse.org/index.html).
+Além disso, o mais importante é que o resultado dos funções de [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/) é sempre um data frame, ou seja os resultados da função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")` são prontos para um gráfico elegante com [ggplot2](https://ggplot2.tidyverse.org/index.html).
 
 \newpage
 
-O principal função a ser utilizado é `r kableExtra::text_spec("ggplot()", background = "#dedede")`. Para `ggplot()`, precisamos os dados (data frame), e depois cria o “mapeamento” das variáveis, normalmente usando `r kableExtra::text_spec("aes()", background = "#dedede")` (de aesthetics). Ou seja, você especifica quais são as variáveis dos eixos x e y dentro de `r kableExtra::text_spec("aes()", background = "#dedede")`. Através dele vamos definir qual é a variável preditora/explanatora/independente (eixo x) e qual é a variável resposta/dependente (eixo y) em nosso conjunto de dados. Depois da função `r kableExtra::text_spec("ggplot()", background = "#dedede")`, na sequencia no codigo nós especificamos qual tipo de grafico com um "geom". Por exemplo, `r kableExtra::text_spec("geom_point()", background = "#dedede")` para plotar pontos, `r kableExtra::text_spec("geom_boxplot()", background = "#dedede")` para um boxplot, etc. Para a lista completa de geoms e todas as outras opções do pacote, visite a página do projeto [ggplot2](https://ggplot2.tidyverse.org/index.html) <https://ggplot2.tidyverse.org/index.html> .
+O principal função a ser utilizado é `r kableExtra::text_spec("ggplot()", background = "#dedede")`. Para `ggplot()`, precisamos os dados (data frame), e depois cria o “mapeamento” das variáveis, normalmente usando `r kableExtra::text_spec("aes()", background = "#dedede")` (de aesthetics). Ou seja, você especifica quais são as variáveis dos eixos x e y dentro de `r kableExtra::text_spec("aes()", background = "#dedede")`. Através dele vamos definir qual é a variável preditora/explanatora/independente (eixo x) e qual é a variável resposta/dependente (eixo y) em nosso conjunto de dados. Depois da função `r kableExtra::text_spec("ggplot()", background = "#dedede")`, na sequencia no codigo nós especificamos qual tipo de gráfico com um "geom". Por exemplo, `r kableExtra::text_spec("geom_point()", background = "#dedede")` para plotar pontos, `r kableExtra::text_spec("geom_boxplot()", background = "#dedede")` para um boxplot, etc. Para a lista completa de geoms e todas as outras opções do pacote, visite a página do projeto [ggplot2](https://ggplot2.tidyverse.org/index.html) <https://ggplot2.tidyverse.org/index.html> .
 
-Aqui vamos fazer um gráfico com valores de extensão no eixo x e proporção da floresta central no eixo y.
-Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando classe de floresta atraves de um filtro e acresentando uma coluna nova ("ext_m") com a extensão em metros, (ii) as colunas para os eixos x e y, (iii) tipo de grafico (grafico de pontos - `r kableExtra::text_spec("geom_point()", background = "#dedede")` e grafico de linha - `r kableExtra::text_spec("geom_line()", background = "#dedede")`), (iv) nomes para os eixos. No exemplo, usamos `r kableExtra::text_spec("|>", bold = TRUE)`, que estabelece a ligação entre os passos do processo, ligando os dados (amostras_metrica) e o grafico `r kableExtra::text_spec("ggplot", background = "#dedede")`. Note que no codigo a seguir, adicionamos um geom com um “+”. No [ggplot2](https://ggplot2.tidyverse.org/index.html), nós criamos gráficos em camadas, e adicionamos camada a camada com um “+”. Assim, é posivel ajustar qualquer elemento do grafico.
+Aqui vamos fazer um gráfico com valores de extensão no eixo x (calculado a partir da coluna raio) e proporção da floresta central no eixo y (coluna value).
+Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando classe de floresta atraves de um filtro com a função `filter()` e acresentando com `mutate()` uma coluna nova ("ext_m") com a extensão em metros, (ii) as colunas para os eixos x e y, (iii) tipo de gráfico (gráfico de pontos - `r kableExtra::text_spec("geom_point()", background = "#dedede")` e gráfico de linha - `r kableExtra::text_spec("geom_line()", background = "#dedede")`), (iv) nomes para os eixos. No exemplo, usamos `r kableExtra::text_spec("|>", bold = TRUE)`, que estabelece a ligação entre os passos do processo, ligando os dados (amostras_metrica) e o gráfico `r kableExtra::text_spec("ggplot", background = "#dedede")`. Note que no codigo a seguir, adicionamos um geom com um “+”. No [ggplot2](https://ggplot2.tidyverse.org/index.html), nós criamos gráficos em camadas, e adicionamos camada a camada com um “+”. Assim, é posivel ajustar qualquer elemento do gráfico.
 
 ```{r, eval=FALSE}
 # arrumar os dados
 amostras_metrica |> 
   filter(class==1) |> 
   mutate(ext_m = 2*raio) |>
-# fazer o grafico
+# fazer o gráfico
   ggplot(aes(x = ext_m, y = value)) + 
   geom_point() +  
   geom_line() +
@@ -517,7 +520,7 @@ amostras_metrica |>
        y = "Área central de floresta (porcentagem da paisagem)")
 ```
 
-Depois de executar (“run”) o código acima, você deverá ver o grafico a seguir.
+Depois de executar (“run”) o código acima, você deverá ver o gráfico a seguir.
 
 ```{r, echo=FALSE, out.width = "50%", out.height = "50%", fig.align = "center"}
 amostras_metrica |> 
@@ -541,8 +544,8 @@ amostras_metrica |>
 
 #### Faça um gráfico elegante
 
-Podemos ajustar qualquer elemento do grafico com ggplot2.
-Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.
+Podemos ajustar qualquer elemento do gráfico com ggplot2.
+Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral usando a função `stat_smooth()`, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro. O objetivo principal de `stat_smooth()` é ajudar o olho a ver padrões nos dados plotados, ou seja, `stat_smooth()` sobrepõe uma curva ajustada aos dados. Se houver um agrupamento dos dados, curvas separadas poderão ser mostradas para cada grupo por exemplo por cor. Esta função pode traçar curvas de uma variedade de modelos diferentes, incluindo regressão linear (`method = "lm"`).
 
 ```{r, out.width = "55%", out.height = "55%", fig.cap = "Comparação da área central de floresta em diferentes extensões.", fig.align="center" }
 # arrumar os dados
@@ -550,7 +553,7 @@ amostras_metrica |>
   filter(class==1) |> 
   mutate(ext_m = 2*raio, 
          ext_km = (2*raio)/1000) |>
-# fazer o grafico
+# fazer o gráfico
   ggplot(aes(x = ext_km, y = value)) + 
   geom_point(size = 4) + 
   geom_line() +
@@ -576,9 +579,9 @@ Nós vimos que as mudancas na métrica porcentagem de área central de floresta 
 Para ir além de uma descrição simplista dos padrões observados, na ecologia da paisagem uma variedade de modelos estatísticos são usados.Não vamos rodar modelos (ainda), mas é importante entender algumas das opções disponíveis ao interpretar os gráficos.
 
 Por exemplo, modelos de regressão são amplamente usados em diversas aplicações para descrever a relação entre uma variável resposta Y e uma variável explicativa x.
-Os modelos lineares são uma generalização dos testes de hipótese clássicos mais simples ([Modelos linear](http://sillasgonzaga.com/material/cdr/modelos.html#modelo-linear) e [Modelos lineares](https://analises-ecologicas.com/cap7.html)).
-Uma regressão linear, só pode ser aplicada para dados em que tanto a variável preditora quanto a resposta são contínuas, enquanto uma análise de variância é utilizada quando a variável preditora/explicativa é categórica.
-Os modelos lineares generalizados não têm essa limitação, podemos usar variáveis contínuas ou categóricas indistintamente ([Modelos Lineares Generalizados](https://analises-ecologicas.com/cap8.html)).
+Os modelos lineares são uma generalização dos testes de hipótese clássicos mais simples (para mais detalhes veja [Modelos linear](http://sillasgonzaga.com/material/cdr/modelos.html#modelo-linear) e [Modelos lineares](https://analises-ecologicas.com/cap7.html)).
+Uma regressão linear só pode ser aplicada para dados em que tanto a variável preditora quanto a resposta são contínuas, enquanto uma análise de variância é utilizada quando a variável preditora/explicativa é categórica.
+Os modelos lineares generalizados não têm essa limitação, podemos usar variáveis contínuas ou categóricas indistintamente (para mais detalhes e exemplos ecológicos veja [Modelos Lineares Generalizados](https://analises-ecologicas.com/cap8.html)).
 
 Mas, no caso de padroes ecologicas, sera que um modelo linear é o melhor modelo para representar a relação que explica “y” em função de “x”?
 Um número crescente de pesquisadores compartilham o sentimento de que as relações entre variáveis biológicas/ecologicas são melhores descritas por funções não lineares. Os sistemas ecológicos são inerentemente complexos, com interações multifacetadas entre organismos e seu ambiente. Capturar essas complexidades muitas vezes requer ir além da simplicidade das relações lineares. É aí que os modelos não lineares se tornam ferramentas valiosas na pesquisa ecológica.
@@ -634,7 +637,7 @@ amostras_metrica |>
   filter(class==1) |> 
   mutate(ext_m = 2*raio, 
          ext_km = (2*raio)/1000) |>
-# fazer o grafico
+# fazer o gráfico
   ggplot(aes(x = ext_km, y = value)) + 
   geom_point(size = 4) + 
   geom_line() +
@@ -723,7 +726,7 @@ knitr::include_graphics("figures/fig_comp_linear.png")
 
 #### Pergunta 6
 
-`r kableExtra::text_spec('Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar  dados novas (isso é sete distâncias novas e as cinco distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um grafico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.', color = "blue", bold = TRUE)`
+`r kableExtra::text_spec('Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar  dados novas (isso é sete distâncias novas e as cinco distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.', color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
@@ -956,7 +959,7 @@ head(amostras_metricas, n=10) |>
   kable_styling(full_width = F,  latex_options = "hold_position")
 ```
 
-Agora, vamos fazer um grafico com os dados amostras_metricas, usando o pacote ggplot2.
+Agora, vamos fazer um gráfico com os dados amostras_metricas, usando o pacote ggplot2.
 Para ajudar na visualização incluímos quais métricas são para composição e configuração, e nomes que são mais fáceis de entender.
 A função `r kableExtra::text_spec( "mutate()", background = "#d3d3d3")` é usado para incluir novas colunas.
 
@@ -968,7 +971,7 @@ amostras_metricas |>
   mutate(ext_km = (2*raio)/1000, 
          met_cat = if_else(metric %in% metricas_composicao, 
                            "composição", "configuração")) |>
-# fazer grafico
+# fazer gráfico
   ggplot(aes(x=ext_km, y=value)) + 
   geom_point() + 
   geom_line() +
@@ -980,7 +983,7 @@ amostras_metricas |>
 
 #### Pergunta 7
 
-`r kableExtra::text_spec("Com base nos resultados apresentados (figura e tabela) caracterisar as mudançãs na paisagem em função de extensões diferentes. Olhando os graficos prever como seria o padrão para extensões maiores (lembrando que valores são doubrados - por exemplo raio de 250 metros gerar uma extensão de 500 metros). Seria relevante repetir incluindo calculos para extensões maiores (por exemplo 64 km e 128 km)? Justifique sua caracterização e previsões de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec("Com base nos resultados apresentados (figura e tabela) caracterisar as mudançãs na paisagem em função de extensões diferentes. Olhando os gráficos prever como seria o padrão para extensões maiores (lembrando que valores são doubrados - por exemplo raio de 250 metros gerar uma extensão de 500 metros). Seria relevante repetir incluindo calculos para extensões maiores (por exemplo 64 km e 128 km)? Justifique sua caracterização e previsões de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.", color = "blue", bold = TRUE)`
 
 #### Pergunta 8
 
