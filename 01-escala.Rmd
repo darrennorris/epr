@@ -267,7 +267,7 @@ sf_grids |>
 
 ## Escala espacial e desenho amostral
 
-```{r buffer-figure, echo = FALSE, message = FALSE, warning = FALSE, out.width = "60%", out.height = "60%", fig.cap = "A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km."}
+```{r buffer-figure, echo = FALSE, message = FALSE, warning = FALSE, results=FALSE, out.width = "60%", out.height = "60%", fig.cap = "A cobertura florestal ao redor de um ponto de amostragem pode variar em escalas diferentes. Para entender essas variações, podemos criar buffers circulares de diferentes extensões ao redor dos pontos de amostragem. Esses buffers representam áreas de diferentes tamanhos ao redor de cada ponto. Quantificando a quantidade de floresta que ocorre em cada buffer, podemos obter uma visão geral da escala em que a cobertura florestal muda ao redor dos pontos de amostragem. Por exemplo, podemos descobrir que a cobertura florestal é mais alta dentro de um buffer de 5 km do que em um buffer de 10 km."}
 
 rio_pontos_31976 <- st_transform(rio_pontos, 31976)
 # 1000 m
@@ -325,7 +325,7 @@ fig_together
 
 ```
 
-Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resoloção), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.
+Dado o papel que a escala pode desempenhar em nossa compreensão dos padrões e processos ecológicos, como escala deve ser considerada no desenho do estudo? Claramente, a resposta a esta pergunta irá variar dependendo dos fenômenos de interesse, mas ecologistas e estatísticos têm forneceu algumas orientações importantes. As questões-chave incluem o tamanho da unidade de amostragem (resolução), o tipo de unidade de amostra e localizações da unidade de amostra, incluindo o espacamento entre as amostras (distância entre as amostras) e o tamanho da área de estudo.
 
 Com a disponibilidade de imagens de satélite é possível responder questões importantes relacionadas ao desenho do estudo antes de qualquer trabalho de campo. Uma tecnica de geoprocessamento (zona tampão - [Buffers](https://docs.qgis.org/3.16/pt_BR/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html)) é um dos mais frequentemente adotados para quantificar escala espacial na ecologia da paisagem.
 
@@ -666,7 +666,7 @@ tmap_arrange(fig_250m, fig_500m, fig_1000m, fig_2000m, fig_4000m, nrow=1)
 
 ------------------------------------------------------------------------
 
-[Soluções dos exercícios:](https://darrennorris.github.io/eprsol/solutions.html) https://darrennorris.github.io/eprsol/solutions.html
+[Soluções dos exercícios:](https://darrennorris.github.io/eprsol/solutions01_escala.html) https://darrennorris.github.io/eprsol/solutions01_escala.html
 
 ## Próximos passos: repetindo para muitas amostras.
 

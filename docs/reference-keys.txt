@@ -13,6 +13,7 @@ fig:unnamed-chunk-23
 fig:unnamed-chunk-26
 fig:unnamed-chunk-30
 fig:unnamed-chunk-37
+fig:unnamed-chunk-38
 fig:met-insert-fig-comp2
 fig:met-insert-fig-buffmetrics
 fig:fig-mapview-example
@@ -111,9 +112,9 @@ fig:fig-plot-final-ggtheme-1
 fig:fig-plot-final-ggtheme-2
 fig:fig-plot-final-ggtheme-3
 fig:fig-plot-final-export
-fig:unnamed-chunk-245
-fig:unnamed-chunk-250
-fig:unnamed-chunk-256
+fig:unnamed-chunk-246
+fig:unnamed-chunk-251
+fig:unnamed-chunk-257
 cap01
 apresentação
 escala-breve-definação
