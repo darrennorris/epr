@@ -84,7 +84,6 @@ FRAGSTATS é um programa de análise de padrões espaciais para mapas categóric
 Pode obter FRAGSTATS aqui: <https://fragstats.org/> .
 Além de métricas padrão [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/) também permite cálculos de quatro métricas teóricas de complexidade da paisagem: entropia marginal, entropia condicional, entropia conjunta e informação mútua ([Nowosad e Stepinski 2019](https://doi.org/10.1007/s10980-019-00830-x) <https://doi.org/10.1007/s10980-019-00830-x>).
 
-
 ### Pacotes
 
 Além do "landscapemetrics", precisamos carregar alguns pacotes a mais para facilitar a organização e apresentação de dados espaciais (vector e raster) e os resultados.
@@ -294,9 +293,54 @@ Agora com todos as camadas organizados e verifcados podemos calcular as métrica
 Para ilustrar como rodar as funções e cálculos com landscapemetrics, vamos calcular o percentual de área central na paisagem ( `r kableExtra::text_spec("cpland", background = "#dedede")`).
 Vamos estudar uma classe (floresta), portanto vamos incluir as métricas para nível de classe.
 No geral, as métricas de paisagem em nível de classe são mais eficazes na definição de processos ecológicos (Tischendorf, L. Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254 (2001).
-<https://doi.org/10.1023/A:1011112719782>.). No entanto, por vezes, os índices de manchas podem ser importantes e informativos nas investigações ao nível da paisagem. Por exemplo, muitos vertebrados requerem manchas de habitat maiores do que um tamanho mínimo, por isso seria útil saber também o tamanho de cada mancha na paisagem.
+<https://doi.org/10.1023/A:1011112719782>.).
+No entanto, por vezes, os índices de manchas podem ser importantes e informativos nas investigações ao nível da paisagem.
+Por exemplo, muitos vertebrados requerem manchas de habitat maiores do que um tamanho mínimo, por isso seria útil saber também o tamanho de cada mancha na paisagem.
 
-Para calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, existe a função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")`. Através da função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")` podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.
+### Uso de pontos de amostragem na ecologia da paisagem
+
+Na ecologia da paisagem, os pontos de amostragem são ferramentas cruciais para a coleta de dados e a compreensão dos padrões e processos espaciais que ocorrem em diferentes paisagens.
+Eles atuam como janelas para o complexo mosaico de ecossistemas, fornecendo informações valiosas sobre fatores como:
+
+-   Composição e distribuição de espécies:\
+    Os pontos de amostragem podem ser usados para registrar a presença e abundância de diferentes espécies em locais específicos, permitindo aos pesquisadores mapear padrões de biodiversidade e identificar áreas com alto valor de conservação.
+
+-   Características do habitat:\
+    Ao medir várias variáveis ambientais em pontos de amostragem, como cobertura vegetal, umidade do solo e características topográficas, os pesquisadores podem caracterizar os diferentes tipos de habitat dentro de uma paisagem e compreender como eles influenciam a distribuição de espécies e os processos ecológicos.
+
+-   Conectividade da paisagem:\
+    Os pontos de amostragem podem ser usados para avaliar a conectividade entre diferentes manchas de habitat, o que é crucial para o movimento e dispersão de espécies.
+    Essas informações podem informar estratégias de conservação e manejo destinadas a manter paisagens saudáveis e funcionais.
+
+-   Mudança da paisagem:\
+    A amostragem repetida dos mesmos pontos ao longo do tempo pode fornecer dados valiosos sobre como as paisagens estão mudando.
+    Essas informações podem ser usadas para monitorar os impactos das atividades humanas, perturbações naturais e mudanças climáticas nas comunidades ecológicas.
+
+Os métodos específicos usados para amostragem de pontos em ecologia da paisagem variam dependendo da questão de pesquisa e do tipo de dados coletados.
+Alguns métodos comuns incluem:
+
+-   Amostragem aleatória:\
+    Os pontos são distribuídos aleatoriamente por toda a paisagem para garantir uma representação imparcial de toda a área.
+
+-   Amostragem estratificada:\
+    Os pontos são localizados em diferentes tipos de habitat ou outros estratos da paisagem para garantir que todos os componentes da paisagem sejam amostrados adequadamente.
+
+-   Amostragem sistemática:\
+    Os pontos são localizados em intervalos regulares ao longo de transectos ou grades dispostas sobre a paisagem.
+    Amostragens sistemáticas são adotados como padrão dentro do [Programa de Pesquisa em Biodiversidade](https://ppbio.inpa.gov.br/): https://ppbio.inpa.gov.br/ .
+
+A escolha do método de amostragem e do número de pontos de amostragem necessários dependerá do projeto específico do estudo e do nível de precisão desejado.
+
+Neste capitulo, vamos calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra. Ou seja, "buffers" de diferentes tamanhos será usado para medir a paisagem circundante aos locais de amostragem.
+Usando o pacote [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/), podemos calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, com a função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")`. Através da função `r kableExtra::text_spec("sample_lsm()", background = "#dedede")` podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.
+
+Aqui vamos calcular as métricas em três exemplos de caso:
+
+1.  Ponto único, raio único, métrica única.
+
+2.  Ponto único, distâncias variados, métrica única.
+
+3.  Ponto único, distâncias variados, métricas variadas.
 
 ### Ponto único, raio único, métrica única
 
@@ -896,7 +940,8 @@ Calculando todas as métricas se chama um "tiro no escuro", algo cujo resultado 
 Isso não é recomendado.
 Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.
 
-A métrica mais simples e mais importante é o tamanho da mancha, que representa um atributo fundamental do caráter espacial de uma mancha. A maioria das métricas de paisagem incorpora diretamente informações sobre o tamanho da mancha ou é afetada pelo tamanho da mancha.
+A métrica mais simples e mais importante é o tamanho da mancha, que representa um atributo fundamental do caráter espacial de uma mancha.
+A maioria das métricas de paisagem incorpora diretamente informações sobre o tamanho da mancha ou é afetada pelo tamanho da mancha.
 
 Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums.
 Mas, isso não representa necessariamente as métricas mais adequados ou recommendadas.

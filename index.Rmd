@@ -51,10 +51,10 @@ Aqui, os capítulos apresentam a aplicação de análises específicas e atualme
 Esta parte trata o funcionamento da linguagem R. Aqui, nós aprendemos desde como instalar o R e o RStudio até a manipulação e visualização de dados geoespaciais no R.
 
 -   A parte final é "Encerramento".    
-Aqui os capítulos apresentam a bibliografia, alguns apêndices (exemplos de código) e soluções dos exercícios dos capítulos anteriores.
+Aqui os capítulos apresentam a bibliografia e alguns apêndices (exemplos de código).
 
 
 ## Agradecimentos {.unnumbered}
 
-O material deste livro foi desenvolvido a partir de cursos de graduação ministrados pelos autores. Agradecemos a todos os alunos por fornecerem um suprimento ilimitado de perguntas que melhoraram o conteúdo. Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil.
+O material deste livro foi desenvolvido a partir de cursos de graduação ministrados pelos autores. Agradecemos a todos os alunos por fornecerem um suprimento ilimitado de perguntas que melhoraram o conteúdo. Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil. Agradecimentos especiais ao Dr. Alexandre Martensen, cujos exemplos inspiraram meu desenvolvimento de materiais de aprendizagem on-line e aos autores do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) cuja dedicação me salvou anos de trabalho.
 Muito obrigado!

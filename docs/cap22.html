@@ -243,9 +243,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="cap02.html"><a href="cap02.html#calculo-de-métricas"><i class="fa fa-check"></i><b>2.4</b> Calculo de métricas</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.1</b> Ponto único, raio único, métrica única</a></li>
-<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
-<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
+<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#uso-de-pontos-de-amostragem-na-ecologia-da-paisagem"><i class="fa fa-check"></i><b>2.4.1</b> Uso de pontos de amostragem na ecologia da paisagem</a></li>
+<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, raio único, métrica única</a></li>
+<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métrica única</a></li>
+<li class="chapter" data-level="2.4.4" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.4</b> Ponto único, distâncias variados, métricas variadas</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="cap02.html"><a href="cap02.html#links-úteis"><i class="fa fa-check"></i><b>2.5</b> Links úteis</a></li>
 </ul></li>
@@ -451,7 +452,6 @@ div.csl-indent {
 <li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
 <li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -1686,7 +1686,7 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <pre><code>## [1] &quot;2024-01-08&quot;</code></pre>
 <div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="cap22.html#cb556-1" tabindex="-1"></a><span class="do">## Extrair a data e tempo nesse instante</span></span>
 <span id="cb556-2"><a href="cap22.html#cb556-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-08 09:57:36 -03&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-08 11:57:08 -03&quot;</code></pre>
 <p>Além dessas informações instantâneas, existem três maneiras de criar um dado de data/horário.</p>
 <ul>
 <li>De um string</li>
@@ -1762,7 +1762,7 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="cap22.html#cb581-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">wday</span>(agora)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="cap22.html#cb583-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">second</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 36.59095</code></pre>
+<pre><code>## [1] 8.70128</code></pre>
 <p>Além de acessar componentes de datas e horários, podemos usar essas funções para fazer a inclusão de informações de datas e horários.</p>
 <div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="cap22.html#cb585-1" tabindex="-1"></a><span class="do">## Data</span></span>
 <span id="cb585-2"><a href="cap22.html#cb585-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">dmy_hms</span>(<span class="st">&quot;04-03-2021 01:04:56&quot;</span>)</span>
@@ -1950,12 +1950,12 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos nos perguntar que horas são em outra parte do globo ou fazer as conversões facilmente no <em>lubridate</em>.</p>
 <div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="cap22.html#cb668-1" tabindex="-1"></a><span class="do">## Que horas são em...</span></span>
 <span id="cb668-2"><a href="cap22.html#cb668-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-08 12:57:37 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-08 14:57:10 GMT&quot;</code></pre>
 <div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="cap22.html#cb670-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;Europe/Berlin&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-08 13:57:37 CET&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-08 15:57:10 CET&quot;</code></pre>
 <div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="cap22.html#cb672-1" tabindex="-1"></a><span class="do">## Altera o fuso sem mudar a hora</span></span>
 <span id="cb672-2"><a href="cap22.html#cb672-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">force_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-08 09:57:37 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-08 11:57:10 GMT&quot;</code></pre>
 <p>Para se aprofundar no tema, recomendamos a leitura do Capítulo <a href="https://r4ds.had.co.nz/dates-and-times.html">16 Dates and times</a> de Wickham &amp; Grolemund <span class="citation">(2017)</span>.</p>
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="7.11">

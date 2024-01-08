@@ -23,6 +23,7 @@ bookdown::pdf_book:
   number_sections: yes
   extra_dependencies: flafter
   highlight: tango
+  latex_engine: xelatex
   includes:
     in_header: preamble.txe
       

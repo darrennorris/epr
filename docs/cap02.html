@@ -243,9 +243,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="cap02.html"><a href="cap02.html#calculo-de-métricas"><i class="fa fa-check"></i><b>2.4</b> Calculo de métricas</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.1</b> Ponto único, raio único, métrica única</a></li>
-<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
-<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
+<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#uso-de-pontos-de-amostragem-na-ecologia-da-paisagem"><i class="fa fa-check"></i><b>2.4.1</b> Uso de pontos de amostragem na ecologia da paisagem</a></li>
+<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, raio único, métrica única</a></li>
+<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métrica única</a></li>
+<li class="chapter" data-level="2.4.4" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.4</b> Ponto único, distâncias variados, métricas variadas</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="cap02.html"><a href="cap02.html#links-úteis"><i class="fa fa-check"></i><b>2.5</b> Links úteis</a></li>
 </ul></li>
@@ -451,7 +452,6 @@ div.csl-indent {
 <li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
 <li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -681,10 +681,48 @@ Figura 2.2: Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os po
 Para ilustrar como rodar as funções e cálculos com landscapemetrics, vamos calcular o percentual de área central na paisagem ( <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>).
 Vamos estudar uma classe (floresta), portanto vamos incluir as métricas para nível de classe.
 No geral, as métricas de paisagem em nível de classe são mais eficazes na definição de processos ecológicos (Tischendorf, L. Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254 (2001).
-<a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.). No entanto, por vezes, os índices de manchas podem ser importantes e informativos nas investigações ao nível da paisagem. Por exemplo, muitos vertebrados requerem manchas de habitat maiores do que um tamanho mínimo, por isso seria útil saber também o tamanho de cada mancha na paisagem.</p>
-<p>Para calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, existe a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span>. Através da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.</p>
-<div id="ponto-único-raio-único-métrica-única" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Ponto único, raio único, métrica única<a href="cap02.html#ponto-único-raio-único-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.).
+No entanto, por vezes, os índices de manchas podem ser importantes e informativos nas investigações ao nível da paisagem.
+Por exemplo, muitos vertebrados requerem manchas de habitat maiores do que um tamanho mínimo, por isso seria útil saber também o tamanho de cada mancha na paisagem.</p>
+<div id="uso-de-pontos-de-amostragem-na-ecologia-da-paisagem" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Uso de pontos de amostragem na ecologia da paisagem<a href="cap02.html#uso-de-pontos-de-amostragem-na-ecologia-da-paisagem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Na ecologia da paisagem, os pontos de amostragem são ferramentas cruciais para a coleta de dados e a compreensão dos padrões e processos espaciais que ocorrem em diferentes paisagens.
+Eles atuam como janelas para o complexo mosaico de ecossistemas, fornecendo informações valiosas sobre fatores como:</p>
+<ul>
+<li><p>Composição e distribuição de espécies:<br />
+Os pontos de amostragem podem ser usados para registrar a presença e abundância de diferentes espécies em locais específicos, permitindo aos pesquisadores mapear padrões de biodiversidade e identificar áreas com alto valor de conservação.</p></li>
+<li><p>Características do habitat:<br />
+Ao medir várias variáveis ambientais em pontos de amostragem, como cobertura vegetal, umidade do solo e características topográficas, os pesquisadores podem caracterizar os diferentes tipos de habitat dentro de uma paisagem e compreender como eles influenciam a distribuição de espécies e os processos ecológicos.</p></li>
+<li><p>Conectividade da paisagem:<br />
+Os pontos de amostragem podem ser usados para avaliar a conectividade entre diferentes manchas de habitat, o que é crucial para o movimento e dispersão de espécies.
+Essas informações podem informar estratégias de conservação e manejo destinadas a manter paisagens saudáveis e funcionais.</p></li>
+<li><p>Mudança da paisagem:<br />
+A amostragem repetida dos mesmos pontos ao longo do tempo pode fornecer dados valiosos sobre como as paisagens estão mudando.
+Essas informações podem ser usadas para monitorar os impactos das atividades humanas, perturbações naturais e mudanças climáticas nas comunidades ecológicas.</p></li>
+</ul>
+<p>Os métodos específicos usados para amostragem de pontos em ecologia da paisagem variam dependendo da questão de pesquisa e do tipo de dados coletados.
+Alguns métodos comuns incluem:</p>
+<ul>
+<li><p>Amostragem aleatória:<br />
+Os pontos são distribuídos aleatoriamente por toda a paisagem para garantir uma representação imparcial de toda a área.</p></li>
+<li><p>Amostragem estratificada:<br />
+Os pontos são localizados em diferentes tipos de habitat ou outros estratos da paisagem para garantir que todos os componentes da paisagem sejam amostrados adequadamente.</p></li>
+<li><p>Amostragem sistemática:<br />
+Os pontos são localizados em intervalos regulares ao longo de transectos ou grades dispostas sobre a paisagem.
+Amostragens sistemáticas são adotados como padrão dentro do <a href="https://ppbio.inpa.gov.br/">Programa de Pesquisa em Biodiversidade</a>: <a href="https://ppbio.inpa.gov.br/" class="uri">https://ppbio.inpa.gov.br/</a> .</p></li>
+</ul>
+<p>A escolha do método de amostragem e do número de pontos de amostragem necessários dependerá do projeto específico do estudo e do nível de precisão desejado.</p>
+<p>Neste capitulo, vamos calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra. Ou seja, “buffers” de diferentes tamanhos será usado para medir a paisagem circundante aos locais de amostragem.
+Usando o pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a>, podemos calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, com a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span>. Através da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.</p>
+<p>Aqui vamos calcular as métricas em três exemplos de caso:</p>
+<ol style="list-style-type: decimal">
+<li><p>Ponto único, raio único, métrica única.</p></li>
+<li><p>Ponto único, distâncias variados, métrica única.</p></li>
+<li><p>Ponto único, distâncias variados, métricas variadas.</p></li>
+</ol>
+</div>
+<div id="ponto-único-raio-único-métrica-única" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Ponto único, raio único, métrica única<a href="cap02.html#ponto-único-raio-único-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Métricas de área central (“core area”) são consideradas medidas da qualidade de hábitat, uma vez que indica quanto existe realmente de área efetiva de um fragmento/classe, após descontar-se o efeito de borda.
 Vamos calcular a percentual de área central (“core area”) no entorno de um ponto de amostragem.
 Isso seria, a percentual de áreas centrais (excluídas as bordas de 30 m) de cada classe em relação à área total da paisagem.</p>
@@ -790,15 +828,15 @@ cpland
 </tr>
 </tbody>
 </table>
-<div id="pergunta-2-1" class="section level4 hasAnchor" number="2.4.1.1">
-<h4><span class="header-section-number">2.4.1.1</span> Pergunta 2<a href="cap02.html#pergunta-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-2-1" class="section level4 hasAnchor" number="2.4.2.1">
+<h4><span class="header-section-number">2.4.2.1</span> Pergunta 2<a href="cap02.html#pergunta-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">O modelo mancha-corredor-matriz é frequentemente adotado na ecologia da paisagem. Com base nas aulas teóricas e usando os valores no objeto minha_amostra_1000 apresentados na tabela acima, identificar qual classe representar a matriz na paisagem. Há alguma informação faltando que limita a sua capacidade de identificar qual classe representar a matriz? Se sim, o que precisa ser adicionado? Justifique as suas respostas de forma clara e concisa.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-<div id="ponto-único-distâncias-variados-métrica-única" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Ponto único, distâncias variados, métrica única<a href="cap02.html#ponto-único-distâncias-variados-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ponto-único-distâncias-variados-métrica-única" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Ponto único, distâncias variados, métrica única<a href="cap02.html#ponto-único-distâncias-variados-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
 <img src="epr_files/figure-html/unnamed-chunk-30-1.png" alt="Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem." width="672" />
 <p class="caption">
@@ -1280,8 +1318,8 @@ cpland
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<div id="faça-um-gráfico" class="section level4 hasAnchor" number="2.4.2.1">
-<h4><span class="header-section-number">2.4.2.1</span> Faça um gráfico<a href="cap02.html#faça-um-gráfico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="faça-um-gráfico" class="section level4 hasAnchor" number="2.4.3.1">
+<h4><span class="header-section-number">2.4.3.1</span> Faça um gráfico<a href="cap02.html#faça-um-gráfico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><img src="www/logo_gg_lsm.png" width="55%" height="55%" style="display: block; margin: auto;" /></p>
 <p>Uma imagem vale mais que mil palavras.
 Portanto, gráficos/figuras/imagens são uma das mais importantes formas de comunicar a ciência.
@@ -1326,14 +1364,14 @@ Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando cla
 <p>Depois de executar (“run”) o código acima, você deverá ver o gráfico a seguir.</p>
 <p><img src="epr_files/figure-html/unnamed-chunk-36-1.png" width="50%" height="50%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="pergunta-3-1" class="section level4 hasAnchor" number="2.4.2.2">
-<h4><span class="header-section-number">2.4.2.2</span> Pergunta 3<a href="cap02.html#pergunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-3-1" class="section level4 hasAnchor" number="2.4.3.2">
+<h4><span class="header-section-number">2.4.3.2</span> Pergunta 3<a href="cap02.html#pergunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Em vez de extensão, você preciso incluir o tamanho (área do circulo) correspondente a cada raio. Incluir uma cópia do código ajustado para produzir uma figura com tamanho (área em quilômetros quadrados) no eixo x.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
-<div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.2.3">
-<h4><span class="header-section-number">2.4.2.3</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.3.3">
+<h4><span class="header-section-number">2.4.3.3</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Podemos ajustar qualquer elemento do gráfico com ggplot2.
 Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral usando a função <code>stat_smooth()</code>, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.
 O objetivo principal de <code>stat_smooth()</code> é ajudar o olho a ver padrões nos dados plotados, ou seja, <code>stat_smooth()</code> sobrepõe uma curva ajustada aos dados.
@@ -1361,14 +1399,14 @@ Figura 2.4: Comparação da área central de floresta em diferentes extensões.
 </p>
 </div>
 </div>
-<div id="pergunta-4-1" class="section level4 hasAnchor" number="2.4.2.4">
-<h4><span class="header-section-number">2.4.2.4</span> Pergunta 4<a href="cap02.html#pergunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-4-1" class="section level4 hasAnchor" number="2.4.3.4">
+<h4><span class="header-section-number">2.4.3.4</span> Pergunta 4<a href="cap02.html#pergunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 5.2.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
-<div id="modelos-linear-e-não-linear" class="section level4 hasAnchor" number="2.4.2.5">
-<h4><span class="header-section-number">2.4.2.5</span> Modelos linear e não linear<a href="cap02.html#modelos-linear-e-não-linear" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="modelos-linear-e-não-linear" class="section level4 hasAnchor" number="2.4.3.5">
+<h4><span class="header-section-number">2.4.3.5</span> Modelos linear e não linear<a href="cap02.html#modelos-linear-e-não-linear" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Um dos desafios mais frequentes é como melhor representar os dados observados para gerar evidências científicas robustas e informações confiáveis.
 Nós vimos que as mudancas na métrica porcentagem de área central de floresta não segue uma linha reta em relação de escala (extensão).
 Para ir além de uma descrição simplista dos padrões observados, na ecologia da paisagem uma variedade de modelos estatísticos são usados.Não vamos rodar modelos (ainda), mas é importante entender algumas das opções disponíveis ao interpretar os gráficos.</p>
@@ -1460,20 +1498,20 @@ Figura 2.6: Comparação de padrões lineares e não-lineares. Comparamos visual
 </p>
 </div>
 </div>
-<div id="pergunta-5-1" class="section level4 hasAnchor" number="2.4.2.6">
-<h4><span class="header-section-number">2.4.2.6</span> Pergunta 5<a href="cap02.html#pergunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-5-1" class="section level4 hasAnchor" number="2.4.3.6">
+<h4><span class="header-section-number">2.4.3.6</span> Pergunta 5<a href="cap02.html#pergunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Comparar os resultados apresentados nas figuras com modelos lineares e não-lineares. Como podemos estabelecer qual seria o melhor modelo? Qual modelo seria mais adequado para identificar limiares no padrão de área central de floresta?</span></p>
 <hr />
 </div>
-<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.2.7">
-<h4><span class="header-section-number">2.4.2.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.3.7">
+<h4><span class="header-section-number">2.4.3.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar dados novas (isso é sete distâncias novas e as cinco distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-<div id="ponto-único-distâncias-variados-métricas-variadas" class="section level3 hasAnchor" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> Ponto único, distâncias variados, métricas variadas<a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ponto-único-distâncias-variados-métricas-variadas" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Ponto único, distâncias variados, métricas variadas<a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>No exemplo anterior comparamos uma métrica da paisagem em torno de um único ponto de amostragem.
 Mas sabemos que uma combinação de várias métricas é necessária para entender os padrões na paisagem.
 Aqui mostraremos como incluir cálculos de diferentes métricas de paisagem ao mesmo tempo.</p>
@@ -1491,7 +1529,8 @@ Figura 2.7: Ilustração da determinação de métricas da paisagem diferentes a
 <p>Calculando todas as métricas se chama um “tiro no escuro”, algo cujo resultado se desconhece ou é imprevisível.
 Isso não é recomendado.
 Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.</p>
-<p>A métrica mais simples e mais importante é o tamanho da mancha, que representa um atributo fundamental do caráter espacial de uma mancha. A maioria das métricas de paisagem incorpora diretamente informações sobre o tamanho da mancha ou é afetada pelo tamanho da mancha.</p>
+<p>A métrica mais simples e mais importante é o tamanho da mancha, que representa um atributo fundamental do caráter espacial de uma mancha.
+A maioria das métricas de paisagem incorpora diretamente informações sobre o tamanho da mancha ou é afetada pelo tamanho da mancha.</p>
 <p>Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums.
 Mas, isso não representa necessariamente as métricas mais adequados ou recommendadas.
 Lembre-se que algumas métricas possuem uma combinação de estatísticas (média, coeficiente de variação e desvio padrão).
@@ -1918,12 +1957,12 @@ A função <span style="     border-radius: 4px; padding-right: 4px; padding-lef
 <span id="cb57-14"><a href="cap02.html#cb57-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;extensão (quilômetros)&quot;</span>, </span>
 <span id="cb57-15"><a href="cap02.html#cb57-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;metric value&quot;</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/met-insert-fig-multiplemetrics-1.png" width="672" /></p>
-<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.3.1">
-<h4><span class="header-section-number">2.4.3.1</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.4.1">
+<h4><span class="header-section-number">2.4.4.1</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Com base nos resultados apresentados (figura e tabela) caracterisar as mudançãs na paisagem em função de extensões diferentes. Olhando os gráficos prever como seria o padrão para extensões maiores (lembrando que valores são doubrados - por exemplo raio de 250 metros gerar uma extensão de 500 metros). Seria relevante repetir incluindo calculos para extensões maiores (por exemplo 64 km e 128 km)? Justifique sua caracterização e previsões de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 </div>
-<div id="pergunta-8" class="section level4 hasAnchor" number="2.4.3.2">
-<h4><span class="header-section-number">2.4.3.2</span> Pergunta 8<a href="cap02.html#pergunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-8" class="section level4 hasAnchor" number="2.4.4.2">
+<h4><span class="header-section-number">2.4.4.2</span> Pergunta 8<a href="cap02.html#pergunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Usando como base o conteudo das aulas, leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises), e/ou exemplos apresentados aqui no tutorial, selecione pelo menos oito métricas de nível classe para caracterizar a paisagem de estudo e objectivos da sua projeto em grupo. Justifique sua seleção de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 <hr />
 <p>Essa foi a última pergunta.</p>

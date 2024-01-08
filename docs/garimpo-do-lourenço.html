@@ -243,9 +243,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="cap02.html"><a href="cap02.html#calculo-de-métricas"><i class="fa fa-check"></i><b>2.4</b> Calculo de métricas</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.1</b> Ponto único, raio único, métrica única</a></li>
-<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, distâncias variados, métrica única</a></li>
-<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métricas variadas</a></li>
+<li class="chapter" data-level="2.4.1" data-path="cap02.html"><a href="cap02.html#uso-de-pontos-de-amostragem-na-ecologia-da-paisagem"><i class="fa fa-check"></i><b>2.4.1</b> Uso de pontos de amostragem na ecologia da paisagem</a></li>
+<li class="chapter" data-level="2.4.2" data-path="cap02.html"><a href="cap02.html#ponto-único-raio-único-métrica-única"><i class="fa fa-check"></i><b>2.4.2</b> Ponto único, raio único, métrica única</a></li>
+<li class="chapter" data-level="2.4.3" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métrica-única"><i class="fa fa-check"></i><b>2.4.3</b> Ponto único, distâncias variados, métrica única</a></li>
+<li class="chapter" data-level="2.4.4" data-path="cap02.html"><a href="cap02.html#ponto-único-distâncias-variados-métricas-variadas"><i class="fa fa-check"></i><b>2.4.4</b> Ponto único, distâncias variados, métricas variadas</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="cap02.html"><a href="cap02.html#links-úteis"><i class="fa fa-check"></i><b>2.5</b> Links úteis</a></li>
 </ul></li>
@@ -451,7 +452,6 @@ div.csl-indent {
 <li class="chapter" data-level="A.2" data-path="annexo-1.html"><a href="annexo-1.html#crop-mapbiomas-cover"><i class="fa fa-check"></i><b>A.2</b> Crop mapbiomas cover</a></li>
 <li class="chapter" data-level="A.3" data-path="annexo-1.html"><a href="annexo-1.html#plot-with-legend"><i class="fa fa-check"></i><b>A.3</b> Plot with legend</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="soluções-de-exercícios.html"><a href="soluções-de-exercícios.html"><i class="fa fa-check"></i><b>B</b> Soluções de exercícios</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -616,8 +616,8 @@ para arquivos.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="garimpo-do-lourenço.html#cb77-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
 <span id="cb77-2"><a href="garimpo-do-lourenço.html#cb77-2" tabindex="-1"></a>r1985</span></code></pre></div>
 <pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7868464 420.3   14900711  795.8  14900711  795.8
-## Vcells 86517418 660.1  211545401 1614.0 211545401 1614.0</code></pre>
+## Ncells  7891757 421.5   14900711  795.8  14900711  795.8
+## Vcells 86533177 660.2  211545401 1614.0 211545401 1614.0</code></pre>
 <p>Agora que o arquivo foi importado, podemos visualizá- lo.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="garimpo-do-lourenço.html#cb79-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
 <span id="cb79-2"><a href="garimpo-do-lourenço.html#cb79-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
@@ -655,8 +655,8 @@ para arquivos.</p>
 <p>Agora vamos ver a distância total de borda (te= “total
 edge”).</p>
 <pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7869636 420.3   14900711  795.8  14900711  795.8
-## Vcells 86517058 660.1  211545401 1614.0 211545401 1614.0</code></pre>
+## Ncells  7886882 421.3   14900711  795.8  14900711  795.8
+## Vcells 86530324 660.2  211545401 1614.0 211545401 1614.0</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="garimpo-do-lourenço.html#cb86-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
 <span id="cb86-2"><a href="garimpo-do-lourenço.html#cb86-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6
