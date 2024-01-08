@@ -478,9 +478,11 @@ div.csl-indent {
 <h2><span class="header-section-number">2.1</span> Apresentação<a href="cap02.html#apresentação-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As métricas da paisagem nos ajudam a entender as mudanças na paisagem de diferentes perspectivas (visual, ecológica, cultural).</p>
 <p>Asssim sendo, análises com métricas de paisagem é um atividade fundamental na ecologia da paisagem.
-Nesta capitulo aprenderemos sobre como analisar a cobertura da terra com métricas de paisagem em R. o objetivo principal é mostrar a importância de selecionar a métrica “certa” para o problema “certo” usando R.
+Nesta capitulo aprenderemos sobre como analisar a cobertura da terra com métricas de paisagem em R.
+o objetivo principal é mostrar a importância de selecionar a métrica “certa” para o problema “certo” usando R.
 As tecnicas será ilustrada através cálculos usando a cobertura florestal ao redor do Rio Araguari, Amapá, Brasil.</p>
-<p>Ao longo do caminho, revisaremos modelos lineares e não lineares, aprenderemos sobre manipulação de dados em R e aprenderemos como criar gráficos com o pacote ggplot2. No capitulo você aprenderá a:</p>
+<p>Ao longo do caminho, revisaremos modelos lineares e não lineares, aprenderemos sobre manipulação de dados em R e aprenderemos como criar gráficos com o pacote ggplot2.
+No capitulo você aprenderá a:</p>
 <ul>
 <li><p>Importar e plotar dados raster em R e mapear locais de amostragem com os pacotes <a href="https://rspatial.org/pkg/index.html">terra</a>, <a href="https://cran.r-project.org/web/packages/sf/vignettes/sf1.html">sf</a> e <a href="https://r-tmap.github.io/tmap/">tmap</a>.</p></li>
 <li><p>Calcular métricas de paisagem com o pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a>.</p></li>
@@ -490,14 +492,28 @@ As tecnicas será ilustrada através cálculos usando a cobertura florestal ao r
 </ul>
 <p>Para ajudar a acompanhar e entender os exemplos no capítulo, use como base as aulas (“Métricas da paisagem: Modelo mancha-corredor-matriz” e “Índices de Paisagem e Análises de Padrões Espaciais”) e você deve ler os seguintes artigos:</p>
 <ul>
-<li><p>Tischendorf, L. 2001.<br />
-Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254. <a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a></p></li>
-<li><p>Casimiro PC. 2009.<br />
-Estrutura, composição e configuração da paisagem conceitos e princípios para a sua quantificação no âmbito da ecologia da paisagem. Revista portuguesa de estudos regionais. (20):75-99. <a href="https://www.redalyc.org/pdf/5143/514351895006.pdf" class="uri">https://www.redalyc.org/pdf/5143/514351895006.pdf</a></p></li>
-<li><p>Pereira JL, et. al. 2001.<br />
-Métricas da paisagem na caracterização da evolução da ocupação da Amazônia. Geografia. 2001:59-90. <a href="https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907" class="uri">https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907</a></p></li>
-<li><p>McGarigal K. 2017.<br />
-Landscape metrics for categorical map patterns. Lecture notes. <a href="https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf" class="uri">https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf</a></p></li>
+<li><p>Tischendorf, L.
+2001.<br />
+Can landscape indices predict ecological processes consistently?.
+Landscape Ecology 16, 235–254.
+<a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a></p></li>
+<li><p>Casimiro PC.
+2009.<br />
+Estrutura, composição e configuração da paisagem conceitos e princípios para a sua quantificação no âmbito da ecologia da paisagem.
+Revista portuguesa de estudos regionais.
+(20):75-99.
+<a href="https://www.redalyc.org/pdf/5143/514351895006.pdf" class="uri">https://www.redalyc.org/pdf/5143/514351895006.pdf</a></p></li>
+<li><p>Pereira JL, et.
+al. 2001.<br />
+Métricas da paisagem na caracterização da evolução da ocupação da Amazônia.
+Geografia.
+2001:59-90.
+<a href="https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907" class="uri">https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/1907</a></p></li>
+<li><p>McGarigal K.
+2017.<br />
+Landscape metrics for categorical map patterns.
+Lecture notes.
+<a href="https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf" class="uri">https://opencourses.ionio.gr/modules/document/file.php/TFP122/%CE%98%CE%95%CE%A9%CE%A1%CE%99%CE%91/%CE%94%CE%95%CE%99%CE%9A%CE%A4%CE%95%CE%A3%20%CE%A4%CE%9F%CE%A0%CE%99%CE%9F%CE%A5/Landscape%20metrics.pdf</a></p></li>
 </ul>
 <p>Cópias dos artigos estão no Google Classroom e também podem ser baixadas <a href="https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing">aqui</a>: <a href="https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing" class="uri">https://drive.google.com/drive/folders/1n6KrIiqu8IPvKLdhcKqwpI5o3MB_4gEu?usp=sharing</a></p>
 <div style="page-break-after: always;"></div>
@@ -506,12 +522,18 @@ Landscape metrics for categorical map patterns. Lecture notes. <a href="https://
 <h2><span class="header-section-number">2.2</span> Métricas da paisagem e pacote “landscapemetrics”<a href="cap02.html#métricas-da-paisagem-e-pacote-landscapemetrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As métricas de paisagem são a forma que os ecólogos de paisagem usam para descrever os padrões espaciais de paisagens para depois avaliar a influência destes padrões espaciais nos padrões e processos ecológicos.</p>
 <p>A paisagem objeto de análise é definida pelo usuário e pode representar qualquer fenômeno espacial.
-As métricas simplesmente quantifica a heterogeneidade espacial da paisagem; cabe ao usuário estabelecer uma base sólida para definir e dimensionar a paisagem em termos de conteúdo temático e resolução e extensão espacial.
-É importante ressaltar que o resultado das métricas só é relevante se a paisagem definida for adequado em relação ao fenômeno em consideração.</p>
-<p><a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> tem funções para calcular métricas de paisagem em paisagems categóricos (onde tem uma classificação de cobertura de terra/habitat - modelo mancha-corredor-matriz), em um fluxo de trabalho organizado <span class="citation">(Hesselbarth et al. 2019)</span>. Existem diversos tutoriais e exemplos no site do proprio pacote: <a href="https://r-spatialecology.github.io/landscapemetrics/" class="uri">https://r-spatialecology.github.io/landscapemetrics/</a> .</p>
-<p>O pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> pode ser usado como um substituto do FRAGSTATS (<a href="https://doi.org/10.2737/PNW-GTR-351">McGarigal et al. 1995</a>, <a href="https://doi.org/10.2737/PNW-GTR-351" class="uri">https://doi.org/10.2737/PNW-GTR-351</a>), pois oferece um fluxo de trabalho reproduzível para análise de paisagem em um único ambiente.
+As métricas simplesmente quantifica a heterogeneidade espacial da paisagem; cabe ao usuário estabelecer uma base sólida para definir e dimensionar a paisagem em termos de conteúdo temático e resolução e extensão espacial.</p>
+<p><strong>É importante ressaltar que o resultado das métricas só é relevante se a paisagem definida for adequado em relação ao fenômeno em consideração.</strong></p>
+<p>O uso comum do termo “métricas de paisagem” refere-se exclusivamente a índices desenvolvidos para padrões de mapas categóricos.
+Métricas de paisagem são algoritmos que quantificam características espaciais específicas de manchas, classes de manchas ou mosaicos inteiros de paisagem.
+Uma infinidade de métricas foi desenvolvida para quantificar padrões de mapas categóricos.
+Estas métricas enquadram-se em duas categorias gerais: aquelas que quantificam a composição do mapa sem referência a atributos espaciais, e aquelas que quantificam a configuração espacial do mapa, necessitando de informação espacial para o seu cálculo <a href="https://doi.org/10.2737/PNW-GTR-351">McGarigal &amp; Marks 1995</a>, <a href="https://doi.org/10.2737/PNW-GTR-351" class="uri">https://doi.org/10.2737/PNW-GTR-351</a>.</p>
+<p>O pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> tem funções para calcular métricas de paisagem em paisagems categóricos (onde tem uma classificação de cobertura de terra/habitat - modelo mancha-corredor-matriz), em um fluxo de trabalho organizado <span class="citation">(Hesselbarth et al. 2019)</span>.
+Existem diversos tutoriais e exemplos no site do proprio pacote: <a href="https://r-spatialecology.github.io/landscapemetrics/" class="uri">https://r-spatialecology.github.io/landscapemetrics/</a> .</p>
+<p>O pacote <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> pode ser usado como um substituto do FRAGSTATS (<a href="https://doi.org/10.2737/PNW-GTR-351">McGarigal &amp; Marks 1995</a>, <a href="https://doi.org/10.2737/PNW-GTR-351" class="uri">https://doi.org/10.2737/PNW-GTR-351</a>), pois oferece um fluxo de trabalho reproduzível para análise de paisagem em um único ambiente.
+FRAGSTATS é um programa de análise de padrões espaciais para mapas categóricos disponível apenas para a sistema operacional Windows.
 Pode obter FRAGSTATS aqui: <a href="https://fragstats.org/" class="uri">https://fragstats.org/</a> .
-<a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> também permite cálculos de quatro métricas teóricas de complexidade da paisagem: entropia marginal, entropia condicional, entropia conjunta e informação mútua (<a href="https://doi.org/10.1007/s10980-019-00830-x">Nowosad e Stepinski 2019</a> <a href="https://doi.org/10.1007/s10980-019-00830-x" class="uri">https://doi.org/10.1007/s10980-019-00830-x</a>).</p>
+Além de métricas padrão <a href="https://r-spatialecology.github.io/landscapemetrics/">landscapemetrics</a> também permite cálculos de quatro métricas teóricas de complexidade da paisagem: entropia marginal, entropia condicional, entropia conjunta e informação mútua (<a href="https://doi.org/10.1007/s10980-019-00830-x">Nowosad e Stepinski 2019</a> <a href="https://doi.org/10.1007/s10980-019-00830-x" class="uri">https://doi.org/10.1007/s10980-019-00830-x</a>).</p>
 <div id="pacotes-1" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Pacotes<a href="cap02.html#pacotes-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Além do “landscapemetrics”, precisamos carregar alguns pacotes a mais para facilitar a organização e apresentação de dados espaciais (vector e raster) e os resultados.</p>
@@ -659,14 +681,14 @@ Figura 2.2: Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os po
 Para ilustrar como rodar as funções e cálculos com landscapemetrics, vamos calcular o percentual de área central na paisagem ( <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span>).
 Vamos estudar uma classe (floresta), portanto vamos incluir as métricas para nível de classe.
 No geral, as métricas de paisagem em nível de classe são mais eficazes na definição de processos ecológicos (Tischendorf, L. Can landscape indices predict ecological processes consistently?. Landscape Ecology 16, 235–254 (2001).
-<a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.).</p>
+<a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.). No entanto, por vezes, os índices de manchas podem ser importantes e informativos nas investigações ao nível da paisagem. Por exemplo, muitos vertebrados requerem manchas de habitat maiores do que um tamanho mínimo, por isso seria útil saber também o tamanho de cada mancha na paisagem.</p>
 <p>Para calcular as métricas de paisagem dentro de um certo buffer em torno de pontos de amostra, existe a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span>. Através da função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> podemos calcular mais de 50 métricas da paisagem, dentro de buffers (raios/distancias) diferentes.</p>
 <div id="ponto-único-raio-único-métrica-única" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Ponto único, raio único, métrica única<a href="cap02.html#ponto-único-raio-único-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Métricas de área central (“core area”) são consideradas medidas da qualidade de hábitat, uma vez que indica quanto existe realmente de área efetiva de um fragmento/classe, após descontar-se o efeito de borda.
 Vamos calcular a percentual de área central (“core area”) no entorno de um ponto de amostragem.
 Isso seria, a percentual de áreas centrais (excluídas as bordas de 30 m) de cada classe em relação à área total da paisagem.</p>
-<p>Para a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> funcionar, precisamos informar (i) a paisagem (arquivo de raster), (ii) ponto (arquivo vector), (iii) raio do buffer desejada, (iv) forma do buffer (círculo ou quadrado) e por final (v) a métrica desejada. Cada opção tem especificações particulares, assim para que a função pode receber dados em formatos diferentes e produzir resultados conforme as necessidades de diversos casos.</p>
+<p>Para a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">sample_lsm()</span> funcionar, precisamos informar (i) a paisagem (arquivo de raster), (ii) ponto de amostragem (arquivo vector), (iii) raio do buffer desejada, (iv) forma do buffer (círculo ou quadrado) e por final (v) a métrica desejada. Cada opção tem especificações particulares, assim para que a função pode receber dados em formatos diferentes e produzir resultados conforme as necessidades de diversos casos.</p>
 <p>Para este primeiro exemplo trabalharemos com apenas um ponto.
 Fazemos isso selecionando a primeira linha (primeiro ponto) do objeto com os 52 pontos de amostragem (“rio_pontos_31976”) usando colchetes: <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">[1, ]</span> .</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cap02.html#cb44-1" tabindex="-1"></a><span class="co"># com a paisagem &quot;floresta_2020&quot;, </span></span>
@@ -790,8 +812,10 @@ Continuando o exemplo no tutorial anteriio (Escala), vamos repetir o mesmo proce
 O código a seguir calculará a mesma métrica para as diferentes distâncias.
 No exemplo, usamos <span style=" font-weight: bold;    ">|&gt;</span>, que estabelece a ligação entre os passos do processo.
 Neste caso, usamos a função <code>mutate()</code> para incluir uma coluna nova (“raio”) para manter o valor das diferentes distâncias.
-<code>mutate()</code> é uma função muito versátil que pode ser usada para criar, modificar e excluir colunas em um quadro de dados (data frame). Mais exemplos com o uso de <code>mutate()</code> <a href="https://analises-ecologicas.com/cap5#mutate">aqui:</a> <a href="https://analises-ecologicas.com/cap5#mutate" class="uri">https://analises-ecologicas.com/cap5#mutate</a>.</p>
-<p>Uso de <code>mutate()</code> seguir com a sintaxe: o quadro de dados será sempre o primeiro argumento, seguido de um operador pipe ( <code>|&gt;</code> ) e pelo nome da função <code>mutate()</code>. Isso permite o encadeamento de várias operações consecutivas mantendo a estrutura do dado original e acrescentando mudanças num encadeamento lógico.</p>
+<code>mutate()</code> é uma função muito versátil que pode ser usada para criar, modificar e excluir colunas em um quadro de dados (data frame).
+Mais exemplos com o uso de <code>mutate()</code> <a href="https://analises-ecologicas.com/cap5#mutate">aqui:</a> <a href="https://analises-ecologicas.com/cap5#mutate" class="uri">https://analises-ecologicas.com/cap5#mutate</a>.</p>
+<p>Uso de <code>mutate()</code> seguir com a sintaxe: o quadro de dados será sempre o primeiro argumento, seguido de um operador pipe ( <code>|&gt;</code> ) e pelo nome da função <code>mutate()</code>.
+Isso permite o encadeamento de várias operações consecutivas mantendo a estrutura do dado original e acrescentando mudanças num encadeamento lógico.</p>
 <p>Sendo assim, <code>mutate()</code> não precisa modificar necessariamente os dados originais, sendo que as operações de manipulações podem e devem ser atribuídas a um novo objeto.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="cap02.html#cb46-1" tabindex="-1"></a><span class="co"># raio 250 metros</span></span>
 <span id="cb46-2"><a href="cap02.html#cb46-2" tabindex="-1"></a><span class="fu">sample_lsm</span>(floresta_2020, <span class="at">y =</span> rio_pontos_31976[<span class="dv">1</span>, ], </span>
@@ -829,7 +853,10 @@ Neste caso, usamos a função <code>mutate()</code> para incluir uma coluna nova
 <span id="cb46-34"><a href="cap02.html#cb46-34" tabindex="-1"></a>           <span class="at">metric =</span> <span class="st">&quot;cpland&quot;</span>)  <span class="sc">|&gt;</span> </span>
 <span id="cb46-35"><a href="cap02.html#cb46-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio =</span> <span class="dv">16000</span>) <span class="ot">-&gt;</span> minha_amostra_16000</span></code></pre></div>
 <div style="page-break-after: always;"></div>
-<p>E agora, o código a seguir juntará os resultados das diferentes extensões. Para combinar as linhas de duas ou mais tabelas de dados podemos utilizar a função <code>bind_rows()</code>. Para esta função, precisamos incluir os nomes de todos os dados que queremos combinar, separados por vírgulas. Aqui combinamos as métricas de sete buffers separados e criamos um novo objeto “amostras_metrica”.</p>
+<p>E agora, o código a seguir juntará os resultados das diferentes extensões.
+Para combinar as linhas de duas ou mais tabelas de dados podemos utilizar a função <code>bind_rows()</code>.
+Para esta função, precisamos incluir os nomes de todos os dados que queremos combinar, separados por vírgulas.
+Aqui combinamos as métricas de sete buffers separados e criamos um novo objeto “amostras_metrica”.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cap02.html#cb47-1" tabindex="-1"></a><span class="fu">bind_rows</span>(minha_amostra_250, </span>
 <span id="cb47-2"><a href="cap02.html#cb47-2" tabindex="-1"></a>          minha_amostra_500, </span>
 <span id="cb47-3"><a href="cap02.html#cb47-3" tabindex="-1"></a>          minha_amostra_1000, </span>
@@ -1308,7 +1335,10 @@ Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando cla
 <div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.2.3">
 <h4><span class="header-section-number">2.4.2.3</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Podemos ajustar qualquer elemento do gráfico com ggplot2.
-Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral usando a função <code>stat_smooth()</code>, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro. O objetivo principal de <code>stat_smooth()</code> é ajudar o olho a ver padrões nos dados plotados, ou seja, <code>stat_smooth()</code> sobrepõe uma curva ajustada aos dados. Se houver um agrupamento dos dados, curvas separadas poderão ser mostradas para cada grupo por exemplo por cor. Esta função pode traçar curvas de uma variedade de modelos diferentes, incluindo regressão linear (<code>method = "lm"</code>).</p>
+Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral usando a função <code>stat_smooth()</code>, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.
+O objetivo principal de <code>stat_smooth()</code> é ajudar o olho a ver padrões nos dados plotados, ou seja, <code>stat_smooth()</code> sobrepõe uma curva ajustada aos dados.
+Se houver um agrupamento dos dados, curvas separadas poderão ser mostradas para cada grupo por exemplo por cor.
+Esta função pode traçar curvas de uma variedade de modelos diferentes, incluindo regressão linear (<code>method = "lm"</code>).</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cap02.html#cb50-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
 <span id="cb50-2"><a href="cap02.html#cb50-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
 <span id="cb50-3"><a href="cap02.html#cb50-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
@@ -1347,8 +1377,14 @@ Os modelos lineares são uma generalização dos testes de hipótese clássicos 
 Uma regressão linear só pode ser aplicada para dados em que tanto a variável preditora quanto a resposta são contínuas, enquanto uma análise de variância é utilizada quando a variável preditora/explicativa é categórica.
 Os modelos lineares generalizados não têm essa limitação, podemos usar variáveis contínuas ou categóricas indistintamente (para mais detalhes e exemplos ecológicos veja <a href="https://analises-ecologicas.com/cap8.html">Modelos Lineares Generalizados</a>).</p>
 <p>Mas, no caso de padroes ecologicas, sera que um modelo linear é o melhor modelo para representar a relação que explica “y” em função de “x”?
-Um número crescente de pesquisadores compartilham o sentimento de que as relações entre variáveis biológicas/ecologicas são melhores descritas por funções não lineares. Os sistemas ecológicos são inerentemente complexos, com interações multifacetadas entre organismos e seu ambiente. Capturar essas complexidades muitas vezes requer ir além da simplicidade das relações lineares. É aí que os modelos não lineares se tornam ferramentas valiosas na pesquisa ecológica.</p>
-<p>Ao contrário dos modelos lineares, que assumem uma relação linear entre as variáveis, os modelos não lineares abraçam a possibilidade de curvas, limiares e outros padrões intrincados. Eles alcançam isso por meio de funções matemáticas que permitem diversas interações entre variáveis. A principal vantagem dos modelos não lineares sobre os lineares é que eles são baseados em conhecimento prévio sobre a relação a ser modelada e geralmente apresentam interpretação prática para os parâmetros. Portanto, modelos não lineares captura relações complexas como:</p>
+Um número crescente de pesquisadores compartilham o sentimento de que as relações entre variáveis biológicas/ecologicas são melhores descritas por funções não lineares.
+Os sistemas ecológicos são inerentemente complexos, com interações multifacetadas entre organismos e seu ambiente.
+Capturar essas complexidades muitas vezes requer ir além da simplicidade das relações lineares.
+É aí que os modelos não lineares se tornam ferramentas valiosas na pesquisa ecológica.</p>
+<p>Ao contrário dos modelos lineares, que assumem uma relação linear entre as variáveis, os modelos não lineares abraçam a possibilidade de curvas, limiares e outros padrões intrincados.
+Eles alcançam isso por meio de funções matemáticas que permitem diversas interações entre variáveis.
+A principal vantagem dos modelos não lineares sobre os lineares é que eles são baseados em conhecimento prévio sobre a relação a ser modelada e geralmente apresentam interpretação prática para os parâmetros.
+Portanto, modelos não lineares captura relações complexas como:</p>
 <ul>
 <li>Efeitos de limiar:<br />
 Mudanças repentinas na resposta além de um ponto crítico, como o colapso das populações de plantas após exceder uma pressão de pastejo específica.</li>
@@ -1357,7 +1393,10 @@ Interações positivas ou negativas entre variáveis, como ciclos predador-presa
 <li>Respostas saturadas:<br />
 Diminuição ou nivelamento da resposta à medida que uma variável explicativa aumenta, como a absorção de nutrientes se aproximando de um limite máximo.</li>
 </ul>
-<p>Em modelos não lineares, os dados observados de uma variável resposta são descritos por uma função que é não linear em seus parâmetros. Assim como nos modelos lineares, o objetivo é identificar e estabelecer a relação entre as variáveis explicativas e resposta. No entanto, enquanto os modelos lineares geralmente são utilizados para descrever relações empíricas, os modelos não lineares são geralmente motivados pelo conhecimento do tipo de relação entre as variáveis. ssisendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.</p>
+<p>Em modelos não lineares, os dados observados de uma variável resposta são descritos por uma função que é não linear em seus parâmetros.
+Assim como nos modelos lineares, o objetivo é identificar e estabelecer a relação entre as variáveis explicativas e resposta.
+No entanto, enquanto os modelos lineares geralmente são utilizados para descrever relações empíricas, os modelos não lineares são geralmente motivados pelo conhecimento do tipo de relação entre as variáveis.
+ssisendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.</p>
 <p>Como resultado, os modelos não lineares são amplamente utilizados em diversas áreas, como física, biologia, química, fisiologia, etc., onde as relações entre as variáveis são descritas por funções não lineares.</p>
 <p>Como as mudanças na estrutura da paisagem caracterizam-se por serem não-lineares, para desenvolver análises estatísticas robustos pode (i) aplicar uma transformação (por exemplo, “log”) ou (ii) adotar modelos não-lineares.</p>
 <p>Nesta análise, exploramos os dados <code>amostras_metrica</code> através das lentes de três modelos distintos:</p>
@@ -1451,8 +1490,9 @@ Figura 2.7: Ilustração da determinação de métricas da paisagem diferentes a
 </blockquote>
 <p>Calculando todas as métricas se chama um “tiro no escuro”, algo cujo resultado se desconhece ou é imprevisível.
 Isso não é recomendado.
-Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.
-Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums.
+Para fazer uma escolha melhor (mais robusta), seguindo princípios básicos da ciência, precisamos ler os estudos anteriores (artigos) para obter as métricas mais relevantes para nosso objetivo, pergunta e/ou a hipótese a ser testada.</p>
+<p>A métrica mais simples e mais importante é o tamanho da mancha, que representa um atributo fundamental do caráter espacial de uma mancha. A maioria das métricas de paisagem incorpora diretamente informações sobre o tamanho da mancha ou é afetada pelo tamanho da mancha.</p>
+<p>Aqui, como exemplo illustrativa vamos calcular alguns das métricas mais comums.
 Mas, isso não representa necessariamente as métricas mais adequados ou recommendadas.
 Lembre-se que algumas métricas possuem uma combinação de estatísticas (média, coeficiente de variação e desvio padrão).
 É importante incluir medidas de variação (coeficiente de variação e desvio padrão), bem como a média, para que possamos fornecer evidências científicas robustas.
@@ -1894,13 +1934,16 @@ A função <span style="     border-radius: 4px; padding-right: 4px; padding-lef
 <div id="links-úteis" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Links úteis<a href="cap02.html#links-úteis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Spatial Data Science with R: <a href="https://rspatial.org/" class="uri">https://rspatial.org/</a></p>
-<p>McGarigal K., Cushman SA., &amp; Ene, E. 2023.<br />
-Spatial Pattern Analysis. Concepts and applications: <a href="https://www.fragstats.org/index.php/documentation" class="uri">https://www.fragstats.org/index.php/documentation</a></p>
-<p>Wagner, H. 2022.<br />
-Landscape Genetic Data Analysis with R: <a href="https://bookdown.org/hhwagner1/LandGenCourse_book/" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/</a>
-Helene Wagner and Max Hesselbarth. Spatial data landscape analysis:
-<a href="https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html</a></p>
-<p>Lovelace, R. 2023.<br />
+<p>McGarigal K., Cushman SA., &amp; Ene, E.
+2023.<br />
+Spatial Pattern Analysis.
+Concepts and applications: <a href="https://www.fragstats.org/index.php/documentation" class="uri">https://www.fragstats.org/index.php/documentation</a></p>
+<p>Wagner, H.
+2022.<br />
+Landscape Genetic Data Analysis with R: <a href="https://bookdown.org/hhwagner1/LandGenCourse_book/" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/</a> Helene Wagner and Max Hesselbarth.
+Spatial data landscape analysis: <a href="https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html" class="uri">https://bookdown.org/hhwagner1/LandGenCourse_book/WE_2.html</a></p>
+<p>Lovelace, R.
+2023.<br />
 Geocomputation with R: <a href="https://geocompr.robinlovelace.net/index.html" class="uri">https://geocompr.robinlovelace.net/index.html</a></p>
 
 <div style="page-break-after: always;"></div>
