@@ -90,7 +90,7 @@ Além do "landscapemetrics", precisamos carregar alguns pacotes a mais para faci
 
 Carregar pacotes (que deve esta instalado antes):
 
-```{r, message=FALSE, warning=FALSE}
+```{r packages-metrics, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(sf)
 library(raster)
@@ -101,6 +101,16 @@ library(kableExtra)
 library(mgcv)
 library(eprdados)
 ```
+
+```{r packages-metrics-show, eval=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(terra)
+library(tmap)
+library(mgcv)
+library(eprdados)
+```
+
 
 Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: `r kableExtra::text_spec("Error in library(nomepacote)  there is no package called nomepacote", color = "red")`. Neste caso, para instalá-los consulte o capitulos aqui [Capitulo 4 instalação de pacotes](https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html) e aqui [Capitulo 4 pacotes](https://analises-ecologicas.com/cap4#pacotes-1) .
 
@@ -642,7 +652,7 @@ amostras_metrica |>
 
 #### Pergunta 4
 
-`r kableExtra::text_spec("Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 5.2.", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec("Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 2.4. Esclareça em sua resposta por que há apenas seis pontos mostrados quando sete buffers foram usados.", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
@@ -680,7 +690,7 @@ Portanto, modelos não lineares captura relações complexas como:
 Em modelos não lineares, os dados observados de uma variável resposta são descritos por uma função que é não linear em seus parâmetros.
 Assim como nos modelos lineares, o objetivo é identificar e estabelecer a relação entre as variáveis explicativas e resposta.
 No entanto, enquanto os modelos lineares geralmente são utilizados para descrever relações empíricas, os modelos não lineares são geralmente motivados pelo conhecimento do tipo de relação entre as variáveis.
-ssisendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.
+Assim sendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.
 
 Como resultado, os modelos não lineares são amplamente utilizados em diversas áreas, como física, biologia, química, fisiologia, etc., onde as relações entre as variáveis são descritas por funções não lineares.
 
@@ -715,7 +725,7 @@ Para comparar a eficácia destes modelos, empregamos ferramentas de diagnóstico
     Intervalos mais estreitos indicam maior precisão e menor incerteza nas estimativas.
     A comparação das larguras dos intervalos entre os modelos pode revelar qual deles fornece previsões mais confiáveis.
 
-Podemos mostrar os intervalos de confiança no gráfico com a área central de floresta em diferentes extensões com o seguinte código:
+Podemos mostrar os intervalos de confiança no gráfico com a área central de floresta em diferentes extensões com um ajuste simples no codigo. Os intervalos de confiança são feitos com `stat_smooth()` pela opção `se = TRUE`, usando o seguinte código:
 
 ```{r, out.width = "55%", out.height = "55%", fig.cap = "Comparação da área central de floresta em diferentes extensões. Mostrando os valores previstos do modelo linear (linha tracejada), pontos de dados originais (pontos pretos) e o intervalo de confiança do modelo (sombreamento cinza).", fig.align="center" }
 # arrumar os dados
@@ -809,7 +819,7 @@ knitr::include_graphics("figures/fig_comp_linear.png")
 
 #### Pergunta 6
 
-`r kableExtra::text_spec('Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar  dados novas (isso é sete distâncias novas e as cinco distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.', color = "blue", bold = TRUE)`
+`r kableExtra::text_spec('Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar  dados novas (isso é sete distâncias originais e as cinco distâncias novas) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.', color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 

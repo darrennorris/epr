@@ -540,13 +540,10 @@ Além de métricas padrão <a href="https://r-spatialecology.github.io/landscape
 <p>Carregar pacotes (que deve esta instalado antes):</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cap02.html#cb36-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb36-2"><a href="cap02.html#cb36-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb36-3"><a href="cap02.html#cb36-3" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb36-4"><a href="cap02.html#cb36-4" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb36-5"><a href="cap02.html#cb36-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb36-6"><a href="cap02.html#cb36-6" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb36-7"><a href="cap02.html#cb36-7" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb36-8"><a href="cap02.html#cb36-8" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb36-9"><a href="cap02.html#cb36-9" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span></code></pre></div>
+<span id="cb36-3"><a href="cap02.html#cb36-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb36-4"><a href="cap02.html#cb36-4" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb36-5"><a href="cap02.html#cb36-5" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb36-6"><a href="cap02.html#cb36-6" tabindex="-1"></a><span class="fu">library</span>(eprdados)</span></code></pre></div>
 <p>Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: <span style="     color: red !important;">Error in library(nomepacote) there is no package called nomepacote</span>. Neste caso, para instalá-los consulte o capitulos aqui <a href="https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html">Capitulo 4 instalação de pacotes</a> e aqui <a href="https://analises-ecologicas.com/cap4#pacotes-1">Capitulo 4 pacotes</a> .</p>
 <div id="landscapemetrics" class="section level4 hasAnchor" number="2.2.1.1">
 <h4><span class="header-section-number">2.2.1.1</span> landscapemetrics<a href="cap02.html#landscapemetrics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -625,8 +622,8 @@ E, em seguida implementar uma reclassificação para gerar uma camada binaria de
 <span id="cb41-10"><a href="cap02.html#cb41-10" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb41-11"><a href="cap02.html#cb41-11" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <p>Se esta todo certo, voces devem ter uma imagem assim:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="epr_files/figure-html/unnamed-chunk-23-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta." width="480" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="epr_files/figure-html/unnamed-chunk-22-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta." width="480" />
 <p class="caption">
 Figura 2.1: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta.
 </p>
@@ -665,8 +662,8 @@ As duas etapas ficam ligados através a função <span style=" font-weight: bold
 <span id="cb43-14"><a href="cap02.html#cb43-14" tabindex="-1"></a>  <span class="fu">tm_dots</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb43-15"><a href="cap02.html#cb43-15" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <p>Depois de executar (“run”) o código acima, você deverá ver a figura a seguir.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
-<img src="epr_files/figure-html/unnamed-chunk-26-1.png" alt="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul)." width="480" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="epr_files/figure-html/unnamed-chunk-25-1.png" alt="Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul)." width="480" />
 <p class="caption">
 Figura 2.2: Cobertura da terra ao redor do Rio Araguari em 2020. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio (linha azul).
 </p>
@@ -837,8 +834,8 @@ cpland
 </div>
 <div id="ponto-único-distâncias-variados-métrica-única" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Ponto único, distâncias variados, métrica única<a href="cap02.html#ponto-único-distâncias-variados-métrica-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
-<img src="epr_files/figure-html/unnamed-chunk-30-1.png" alt="Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem." width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<img src="epr_files/figure-html/unnamed-chunk-29-1.png" alt="Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem." width="672" />
 <p class="caption">
 Figura 2.3: Cobertura florestal em extensões diferentes ao redor de um ponto de amostragem.
 </p>
@@ -1362,7 +1359,7 @@ Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando cla
 <span id="cb49-9"><a href="cap02.html#cb49-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Extensão (metros)&quot;</span>, </span>
 <span id="cb49-10"><a href="cap02.html#cb49-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta (porcentagem da paisagem)&quot;</span>)</span></code></pre></div>
 <p>Depois de executar (“run”) o código acima, você deverá ver o gráfico a seguir.</p>
-<p><img src="epr_files/figure-html/unnamed-chunk-36-1.png" width="50%" height="50%" style="display: block; margin: auto;" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-35-1.png" width="50%" height="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="pergunta-3-1" class="section level4 hasAnchor" number="2.4.3.2">
 <h4><span class="header-section-number">2.4.3.2</span> Pergunta 3<a href="cap02.html#pergunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1392,8 +1389,8 @@ Esta função pode traçar curvas de uma variedade de modelos diferentes, inclui
 <span id="cb50-13"><a href="cap02.html#cb50-13" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Área central de floresta</span><span class="sc">\n</span><span class="st">(porcentagem da paisagem)&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb50-14"><a href="cap02.html#cb50-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
-<img src="epr_files/figure-html/unnamed-chunk-37-1.png" alt="Comparação da área central de floresta em diferentes extensões." width="55%" height="55%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
+<img src="epr_files/figure-html/unnamed-chunk-36-1.png" alt="Comparação da área central de floresta em diferentes extensões." width="55%" height="55%" />
 <p class="caption">
 Figura 2.4: Comparação da área central de floresta em diferentes extensões.
 </p>
@@ -1401,7 +1398,7 @@ Figura 2.4: Comparação da área central de floresta em diferentes extensões.
 </div>
 <div id="pergunta-4-1" class="section level4 hasAnchor" number="2.4.3.4">
 <h4><span class="header-section-number">2.4.3.4</span> Pergunta 4<a href="cap02.html#pergunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><span style=" font-weight: bold;    color: blue !important;">Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 5.2.</span></p>
+<p><span style=" font-weight: bold;    color: blue !important;">Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 2.4. Esclareça em sua resposta por que há apenas seis pontos mostrados quando sete buffers foram usados.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
@@ -1434,7 +1431,7 @@ Diminuição ou nivelamento da resposta à medida que uma variável explicativa 
 <p>Em modelos não lineares, os dados observados de uma variável resposta são descritos por uma função que é não linear em seus parâmetros.
 Assim como nos modelos lineares, o objetivo é identificar e estabelecer a relação entre as variáveis explicativas e resposta.
 No entanto, enquanto os modelos lineares geralmente são utilizados para descrever relações empíricas, os modelos não lineares são geralmente motivados pelo conhecimento do tipo de relação entre as variáveis.
-ssisendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.</p>
+Assim sendo, os modelos não lineares podem se ajustar melhor e prever padrões complexos nos dados ecológicos, levando a previsões mais precisas da dinâmica populacional, impactos ambientais e estratégias de manejo de recursos.</p>
 <p>Como resultado, os modelos não lineares são amplamente utilizados em diversas áreas, como física, biologia, química, fisiologia, etc., onde as relações entre as variáveis são descritas por funções não lineares.</p>
 <p>Como as mudanças na estrutura da paisagem caracterizam-se por serem não-lineares, para desenvolver análises estatísticas robustos pode (i) aplicar uma transformação (por exemplo, “log”) ou (ii) adotar modelos não-lineares.</p>
 <p>Nesta análise, exploramos os dados <code>amostras_metrica</code> através das lentes de três modelos distintos:</p>
@@ -1462,7 +1459,7 @@ visualizamos os intervalos de confiança (sombreamento cinza) associados às pre
 Intervalos mais estreitos indicam maior precisão e menor incerteza nas estimativas.
 A comparação das larguras dos intervalos entre os modelos pode revelar qual deles fornece previsões mais confiáveis.</p></li>
 </ul>
-<p>Podemos mostrar os intervalos de confiança no gráfico com a área central de floresta em diferentes extensões com o seguinte código:</p>
+<p>Podemos mostrar os intervalos de confiança no gráfico com a área central de floresta em diferentes extensões com um ajuste simples no codigo. Os intervalos de confiança são feitos com <code>stat_smooth()</code> pela opção <code>se = TRUE</code>, usando o seguinte código:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cap02.html#cb52-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
 <span id="cb52-2"><a href="cap02.html#cb52-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
 <span id="cb52-3"><a href="cap02.html#cb52-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
@@ -1481,8 +1478,8 @@ A comparação das larguras dos intervalos entre os modelos pode revelar qual de
 <span id="cb52-16"><a href="cap02.html#cb52-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb52-17"><a href="cap02.html#cb52-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
-<img src="epr_files/figure-html/unnamed-chunk-38-1.png" alt="Comparação da área central de floresta em diferentes extensões. Mostrando os valores previstos do modelo linear (linha tracejada), pontos de dados originais (pontos pretos) e o intervalo de confiança do modelo (sombreamento cinza)." width="55%" height="55%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
+<img src="epr_files/figure-html/unnamed-chunk-37-1.png" alt="Comparação da área central de floresta em diferentes extensões. Mostrando os valores previstos do modelo linear (linha tracejada), pontos de dados originais (pontos pretos) e o intervalo de confiança do modelo (sombreamento cinza)." width="55%" height="55%" />
 <p class="caption">
 Figura 2.5: Comparação da área central de floresta em diferentes extensões. Mostrando os valores previstos do modelo linear (linha tracejada), pontos de dados originais (pontos pretos) e o intervalo de confiança do modelo (sombreamento cinza).
 </p>
@@ -1505,7 +1502,7 @@ Figura 2.6: Comparação de padrões lineares e não-lineares. Comparamos visual
 </div>
 <div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.3.7">
 <h4><span class="header-section-number">2.4.3.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><span style=" font-weight: bold;    color: blue !important;">Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar dados novas (isso é sete distâncias novas e as cinco distâncias originais) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.</span></p>
+<p><span style=" font-weight: bold;    color: blue !important;">Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar dados novas (isso é sete distâncias originais e as cinco distâncias novas) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>

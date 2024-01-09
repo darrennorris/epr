@@ -114,9 +114,9 @@ Podemos também verificar informações sobre o raster (metadados) - simplesment
 ramostra
 ```
 
-Isso nos mostra informações sobre os atributos da raster no objeto ramostra. As informações como escala espacial (resolução e extensão) e a sistema de coordenadas (SIRGAS 2000 / UTM zone 22N , [EPSG:31976](https://epsg.io/31976)) são apresentados e representem os componentes conforme a a proxima figura.
+Isso nos mostra informações sobre os atributos da raster no objeto ramostra. As informações como escala espacial (resolução e extensão) e a sistema de coordenadas (SIRGAS 2000 / UTM zone 22N , [EPSG:31976](https://epsg.io/31976)) são apresentados e representem os componentes conforme a proxima figura.
 
-```{r raster-components, echo = FALSE, fig.align = 'center', out.width = "60%", out.height = "60%", fig.cap=" Componentes de uma raster e suas atrubutos no pacote terra."}
+```{r raster-components, echo = FALSE, fig.align = 'center', out.width = "60%", out.height = "60%", fig.cap=" Componentes de uma raster e suas atributos no pacote terra."}
 knitr::include_graphics(path = "figures/raster_components.png")
 ```
 
@@ -662,7 +662,7 @@ tmap_arrange(fig_250m, fig_500m, fig_1000m, fig_2000m, fig_4000m, nrow=1)
 
 #### Pergunta 6
 
-`r kableExtra::text_spec("A modelagem multiescala quantifica as condições do ambiente em múltiplas escalas alterando o resolução ou a extensão da análise e, em seguida, avaliando qual das escalas consideradas  explica melhor um padrão ou processo. Escolha 1 espécie aquático e 1 espécie terrestre que ocorram na região a montante das hidrelétricas no Rio Araguari. Com base nas diferenças entre extensões (indicados no exemplo anterior) e as características funcionais das espécies (por exemplo área de vida), escolher as extensões mais adequadas para um estudo multiescala de cada espécie.", color = "blue", bold = TRUE)`
+`r kableExtra::text_spec("A modelagem multiescala quantifica as condições do ambiente em múltiplas escalas alterando o resolução ou a extensão da análise e, em seguida, avaliando qual das escalas consideradas  explica melhor um padrão ou processo. Escolha 1 espécie aquático e 1 espécie terrestre que ocorram na região a montante das hidrelétricas no Rio Araguari (especificando nome comum junto com o nome científico para ambos). Com base nas diferenças entre extensões (indicados no exemplo anterior) e as características funcionais das espécies (por exemplo área de vida), escolher as extensões mais adequadas para um estudo multiescala de cada espécie.", color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 

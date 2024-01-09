@@ -615,9 +615,9 @@ análises da paisagem.</p>
 para arquivos.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="garimpo-do-lourenço.html#cb77-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
 <span id="cb77-2"><a href="garimpo-do-lourenço.html#cb77-2" tabindex="-1"></a>r1985</span></code></pre></div>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7891757 421.5   14900711  795.8  14900711  795.8
-## Vcells 86533177 660.2  211545401 1614.0 211545401 1614.0</code></pre>
+<pre><code>##             used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells   8002428 427.4   14900711  795.8  14900711  795.8
+## Vcells 121388667 926.2  253934481 1937.4 253884904 1937.0</code></pre>
 <p>Agora que o arquivo foi importado, podemos visualizá- lo.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="garimpo-do-lourenço.html#cb79-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
 <span id="cb79-2"><a href="garimpo-do-lourenço.html#cb79-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
@@ -654,9 +654,9 @@ para arquivos.</p>
 ## 1     1 landscape    NA    NA ta     160264.</code></pre>
 <p>Agora vamos ver a distância total de borda (te= “total
 edge”).</p>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7886882 421.3   14900711  795.8  14900711  795.8
-## Vcells 86530324 660.2  211545401 1614.0 211545401 1614.0</code></pre>
+<pre><code>##             used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells   8003750 427.5   14900711  795.8  14900711  795.8
+## Vcells 121388557 926.2  253934481 1937.4 253884904 1937.0</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="garimpo-do-lourenço.html#cb86-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
 <span id="cb86-2"><a href="garimpo-do-lourenço.html#cb86-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6
@@ -770,9 +770,9 @@ consistently?. Landscape Ecology 16, 235–254 (2001).
 <p>E aqui, calcular correlações entre todos as métricas por classe
 (função <code>show_correlation()</code>)).</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="garimpo-do-lourenço.html#cb98-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_comp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="garimpo-do-lourenço.html#cb99-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_config, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-62-2.png" width="672" /></p>
 <p>Temos muitos valores e muitas métricas.
 Este se chama um “tiro no escuro”, algo cujo resultado se desconhece
 ou é imprevisível. Isso não é recomendado.
@@ -991,7 +991,7 @@ assim os valores ficarem mais proximos.</p>
 <span id="cb108-18"><a href="garimpo-do-lourenço.html#cb108-18" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb108-19"><a href="garimpo-do-lourenço.html#cb108-19" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb108-20"><a href="garimpo-do-lourenço.html#cb108-20" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">col =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) </span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 </div>
 </div>
 <div id="comparação-entre-anos" class="section level2 hasAnchor" number="4.10">
@@ -1039,7 +1039,7 @@ assim os valores ficarem mais proximos.</p>
 <span id="cb110-16"><a href="garimpo-do-lourenço.html#cb110-16" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="fu">aes</span>(<span class="at">fill=</span>classe_descricao)) <span class="sc">+</span> </span>
 <span id="cb110-17"><a href="garimpo-do-lourenço.html#cb110-17" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
 <span id="cb110-18"><a href="garimpo-do-lourenço.html#cb110-18" tabindex="-1"></a>  <span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class)</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>Agora com “pland” e densidade de manchas juntos.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="garimpo-do-lourenço.html#cb111-1" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
 <span id="cb111-2"><a href="garimpo-do-lourenço.html#cb111-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
@@ -1081,7 +1081,7 @@ assim os valores ficarem mais proximos.</p>
 <span id="cb111-38"><a href="garimpo-do-lourenço.html#cb111-38" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) <span class="ot">-&gt;</span> fig_pd</span>
 <span id="cb111-39"><a href="garimpo-do-lourenço.html#cb111-39" tabindex="-1"></a></span>
 <span id="cb111-40"><a href="garimpo-do-lourenço.html#cb111-40" tabindex="-1"></a><span class="fu">grid.arrange</span>(fig_pland, fig_pd, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="epr_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p><img src="epr_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="conclusões-e-próximos-passos" class="section level2 hasAnchor" number="4.11">
