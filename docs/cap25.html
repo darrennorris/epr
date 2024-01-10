@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -308,10 +302,13 @@ div.csl-indent {
 <li class="part"><span><b>IV R e RStudio: Codigo com certeza</b></span></li>
 <li class="chapter" data-level="5" data-path="cap20.html"><a href="cap20.html"><i class="fa fa-check"></i><b>5</b> Pré-requisitos</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.1.1</b> Versão do R</a></li>
+</ul></li>
 <li class="chapter" data-level="5.2" data-path="cap20.html"><a href="cap20.html#instalação-do-r"><i class="fa fa-check"></i><b>5.2</b> Instalação do R</a></li>
-<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.3</b> Instalação do RStudio</a></li>
-<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.4</b> Versão do R</a></li>
+<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rtools"><i class="fa fa-check"></i><b>5.3</b> Instalação do Rtools</a></li>
+<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.4</b> Instalação do RStudio</a></li>
 <li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-3"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a></li>
 <li class="chapter" data-level="5.6" data-path="cap20.html"><a href="cap20.html#dados-3"><i class="fa fa-check"></i><b>5.6</b> Dados</a></li>
 </ul></li>
@@ -548,20 +545,24 @@ Figura 9.1: Paisagem simples de 36 pixels.
 <span id="cb798-4"><a href="cap25.html#cb798-4" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb798-5"><a href="cap25.html#cb798-5" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
 <span id="cb798-6"><a href="cap25.html#cb798-6" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<pre><code>## 
+|---------|---------|---------|---------|
+=========================================
+                                          </code></pre>
 <div style="page-break-after: always;"></div>
 <p>Vizualizar para verificar.</p>
-<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="cap25.html#cb799-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
-<span id="cb799-2"><a href="cap25.html#cb799-2" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
-<span id="cb799-3"><a href="cap25.html#cb799-3" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb799-4"><a href="cap25.html#cb799-4" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
-<span id="cb799-5"><a href="cap25.html#cb799-5" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
-<span id="cb799-6"><a href="cap25.html#cb799-6" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
-<span id="cb799-7"><a href="cap25.html#cb799-7" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb799-8"><a href="cap25.html#cb799-8" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
-<span id="cb799-9"><a href="cap25.html#cb799-9" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
-<span id="cb799-10"><a href="cap25.html#cb799-10" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
-<span id="cb799-11"><a href="cap25.html#cb799-11" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb799-12"><a href="cap25.html#cb799-12" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="cap25.html#cb800-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb800-2"><a href="cap25.html#cb800-2" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb800-3"><a href="cap25.html#cb800-3" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb800-4"><a href="cap25.html#cb800-4" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb800-5"><a href="cap25.html#cb800-5" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb800-6"><a href="cap25.html#cb800-6" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
+<span id="cb800-7"><a href="cap25.html#cb800-7" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb800-8"><a href="cap25.html#cb800-8" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb800-9"><a href="cap25.html#cb800-9" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
+<span id="cb800-10"><a href="cap25.html#cb800-10" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb800-11"><a href="cap25.html#cb800-11" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb800-12"><a href="cap25.html#cb800-12" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-250"></span>
 <img src="epr_files/figure-html/unnamed-chunk-250-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
 <p class="caption">

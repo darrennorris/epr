@@ -210,9 +210,10 @@ comparação-entre-anos
 conclusões-e-próximos-passos
 cap20
 introdução-1
-instalação-do-r
-instalação-do-rstudio
 versão-do-r
+instalação-do-r
+instalação-do-rtools
+instalação-do-rstudio
 pacotes-3
 dados-3
 cap21

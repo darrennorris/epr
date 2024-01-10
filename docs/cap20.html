@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -308,10 +302,13 @@ div.csl-indent {
 <li class="part"><span><b>IV R e RStudio: Codigo com certeza</b></span></li>
 <li class="chapter" data-level="5" data-path="cap20.html"><a href="cap20.html"><i class="fa fa-check"></i><b>5</b> Pré-requisitos</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.1" data-path="cap20.html"><a href="cap20.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.1.1</b> Versão do R</a></li>
+</ul></li>
 <li class="chapter" data-level="5.2" data-path="cap20.html"><a href="cap20.html#instalação-do-r"><i class="fa fa-check"></i><b>5.2</b> Instalação do R</a></li>
-<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.3</b> Instalação do RStudio</a></li>
-<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#versão-do-r"><i class="fa fa-check"></i><b>5.4</b> Versão do R</a></li>
+<li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rtools"><i class="fa fa-check"></i><b>5.3</b> Instalação do Rtools</a></li>
+<li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.4</b> Instalação do RStudio</a></li>
 <li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-3"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a></li>
 <li class="chapter" data-level="5.6" data-path="cap20.html"><a href="cap20.html#dados-3"><i class="fa fa-check"></i><b>5.6</b> Dados</a></li>
 </ul></li>
@@ -478,14 +475,18 @@ div.csl-indent {
 <div id="introdução-1" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Introdução<a href="cap20.html#introdução-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>O objetivo deste capítulo é informar como fazer a instalação dos Programas R e RStudio, além de descrever os pacotes e dados necessários para reproduzir os exemplos do livro.</p>
+<div id="versão-do-r" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Versão do R<a href="cap20.html#versão-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todas os códigos, pacotes e análises disponibilizados no livro foram realizados no Programa R versão 4.3.2 (31/10/2023).</p>
+</div>
 </div>
 <div id="instalação-do-r" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Instalação do R<a href="cap20.html#instalação-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Abaixo descrevemos os sete passos necessários para a instalação do programa R no seu computador. Para Windows, use link <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a> e vai para passo 6 :</p>
+<p>Abaixo descrevemos os passos necessários para a instalação do programa R no seu computador. Para Windows, use link <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a> e vai para passo 6 :</p>
 <ol style="list-style-type: decimal">
-<li>Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site <a href="http://www.r-project.org">http://www.r-project.org</a></li>
+<li>Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site <a href="http://www.r-project.org">http://www.r-project.org</a> : <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a></li>
 <li>Clique no link <strong>download R</strong></li>
-<li>Na página <em>CRAN Mirros (Comprehensive R Archive Network)</em>, escolha uma das páginas espelho do Brasil mais próxima de você para baixar o programa</li>
+<li>Na página <em>CRAN Mirros (Comprehensive R Archive Network)</em>, escolha “0-Cloud” ou uma das páginas espelho do Brasil mais próxima de você para baixar o programa</li>
 <li>Escolha agora o sistema operacional do seu computador (passos adicionais existem para diferentes distribuições Linux ou MacOS). Aqui faremos o exemplo com o Windows</li>
 <li>Clique em <strong>base</strong> para finalmente chegar à página de download com a versão mais recente do R</li>
 <li>Clique no arquivo <strong>Download R (versão mais recente) for Windows</strong> que será instalado no seu computador</li>
@@ -499,15 +500,27 @@ Figura 5.1: Esquema ilustrativo demonstrando os passos necessários para instala
 </div>
 <div class="alert alert-info">
 <p><strong> Importante </strong><br />
-Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da instalação separada do <a href="https://cran.rstudio.com/bin/windows/Rtools/">Rtools40</a>. Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.</p>
+Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da instalação separada do <a href="https://cran.rstudio.com/bin/windows/Rtools/">Rtools</a>. Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.</p>
 </div>
 </div>
-<div id="instalação-do-rstudio" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Instalação do RStudio<a href="cap20.html#instalação-do-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>O RStudio possui algumas características que o tornam popular: várias janelas de visualização, marcação e preenchimento automático do script, integração com controle de versão, dentre outras funcionalidades.</p>
-<p>Abaixo descrevemos os cinco passos necessários para a instalação do RStudio no seu computador:</p>
+<div id="instalação-do-rtools" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Instalação do Rtools<a href="cap20.html#instalação-do-rtools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Abaixo descrevemos os passos necessários para a instalação do Rtools no seu computador:</p>
 <ol style="list-style-type: decimal">
-<li>Para fazer o download do RStudio, acessamos o site <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a>,</li>
+<li>Para fazer o download do Rtools, acessamos o site <a href="https://cran.rstudio.com/bin/windows/Rtools/">https://cran.rstudio.com/bin/windows/Rtools/</a> : <a href="https://cran.rstudio.com/bin/windows/Rtools/" class="uri">https://cran.rstudio.com/bin/windows/Rtools/</a>,</li>
+<li>clique no link com o mesmo número de versão de R.<br />
+Por exemplo, com R versão 4.3.2 você precisa RTools 43.</li>
+<li>Clique em <strong>Rtools43 installer</strong> ,</li>
+<li>Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RTools.<br />
+Recomenda-se usar os padrões, incluindo o local de instalação padrão “C:”.</li>
+</ol>
+</div>
+<div id="instalação-do-rstudio" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Instalação do RStudio<a href="cap20.html#instalação-do-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O RStudio possui algumas características que o tornam popular: várias janelas de visualização, marcação e preenchimento automático do script, integração com controle de versão, dentre outras funcionalidades.</p>
+<p>Abaixo descrevemos os passos necessários para a instalação do RStudio no seu computador:</p>
+<ol style="list-style-type: decimal">
+<li>Para fazer o download do RStudio, acessamos o site <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a> : <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>,</li>
 <li>Clique em <strong>download…</strong>,</li>
 <li>Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RStudio.</li>
 </ol>
@@ -517,10 +530,6 @@ Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da inst
 Figura 5.2: Esquema ilustrativo demonstrando os passos necessários para instalação do programa RStudio no computador.
 </p>
 </div>
-</div>
-<div id="versão-do-r" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Versão do R<a href="cap20.html#versão-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Todas os códigos, pacotes e análises disponibilizados no livro foram realizados no Programa R versão 4.3.2 (10-12-2023).</p>
 </div>
 <div id="pacotes-3" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Pacotes<a href="cap20.html#pacotes-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>

@@ -13,13 +13,26 @@ Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 3 Pr�
 
 O objetivo deste capítulo é informar como fazer a instalação dos Programas R e RStudio, além de descrever os pacotes e dados necessários para reproduzir os exemplos do livro.
 
+### Versão do R
+
+```{r make-rversion, echo=FALSE}
+rv <- R.version
+rvv <- paste(rv$major, rv$minor, sep=".")
+rvrt <- paste(rv$major, substr(rv$minor,1,1), sep="")
+rvd <- paste(rv$day, rv$month, rv$year, sep="/")
+rvdp <- paste("(", rvd, ")", sep = "")
+rvuse <- paste(rvv, rvdp, sep=" ")
+```
+
+Todas os códigos, pacotes e análises disponibilizados no livro foram realizados no Programa R versão `r rvuse`.
+
 ## Instalação do R
 
-Abaixo descrevemos os sete passos necessários para a instalação do programa R no seu computador. Para Windows, use link https://cran.r-project.org/bin/windows/base/ e vai para passo 6 :
+Abaixo descrevemos os passos necessários para a instalação do programa R no seu computador. Para Windows, use link https://cran.r-project.org/bin/windows/base/ e vai para passo 6 :
 
-1.  Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site [http://www.r-project.org](http://www.r-project.org)
+1.  Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site [http://www.r-project.org](http://www.r-project.org) : http://www.r-project.org
 2.  Clique no link **download R**
-3.  Na página *CRAN Mirros (Comprehensive R Archive Network)*, escolha uma das páginas espelho do Brasil mais próxima de você para baixar o programa
+3.  Na página *CRAN Mirros (Comprehensive R Archive Network)*, escolha "0-Cloud" ou uma das páginas espelho do Brasil mais próxima de você para baixar o programa
 4.  Escolha agora o sistema operacional do seu computador (passos adicionais existem para diferentes distribuições Linux ou MacOS). Aqui faremos o exemplo com o Windows
 5.  Clique em **base** para finalmente chegar à página de download com a versão mais recente do R
 6.  Clique no arquivo **Download R (versão mais recente) for Windows** que será instalado no seu computador
@@ -31,16 +44,27 @@ knitr::include_graphics(path = "figures/cap03_fig01.png")
 
 ::: {.alert .alert-info}
 <strong> Importante </strong>\
-Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da instalação separada do [Rtools40](https://cran.rstudio.com/bin/windows/Rtools/). Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.
+Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da instalação separada do [Rtools](https://cran.rstudio.com/bin/windows/Rtools/). Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.
 :::
+
+## Instalação do Rtools
+
+Abaixo descrevemos os passos necessários para a instalação do Rtools no seu computador:
+
+1.  Para fazer o download do Rtools, acessamos o site [https://cran.rstudio.com/bin/windows/Rtools/](https://cran.rstudio.com/bin/windows/Rtools/) : https://cran.rstudio.com/bin/windows/Rtools/,
+2. clique no link com o mesmo número de versão de R.    
+Por exemplo, com R versão `r rvv` você precisa RTools `r rvrt`.
+2.  Clique em  **Rtools43 installer** ,
+3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RTools.    
+Recomenda-se usar os padrões, incluindo o local de instalação padrão "C:\rtools43".
 
 ## Instalação do RStudio
 
 O RStudio possui algumas características que o tornam popular: várias janelas de visualização, marcação e preenchimento automático do script, integração com controle de versão, dentre outras funcionalidades.
 
-Abaixo descrevemos os cinco passos necessários para a instalação do RStudio no seu computador:
+Abaixo descrevemos os passos necessários para a instalação do RStudio no seu computador:
 
-1.  Para fazer o download do RStudio, acessamos o site [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/),
+1.  Para fazer o download do RStudio, acessamos o site [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) : https://posit.co/download/rstudio-desktop/,
 2.  Clique em **download...**,
 3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RStudio.
 
@@ -48,9 +72,6 @@ Abaixo descrevemos os cinco passos necessários para a instalação do RStudio n
 knitr::include_graphics(path = "figures/cap03_fig02.png")
 ```
 
-## Versão do R
-
-Todas os códigos, pacotes e análises disponibilizados no livro foram realizados no Programa R versão 4.3.2 (10-12-2023).
 
 ## Pacotes
 
