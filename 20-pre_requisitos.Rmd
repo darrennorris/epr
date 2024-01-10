@@ -30,7 +30,7 @@ Todas os códigos, pacotes e análises disponibilizados no livro foram realizado
 
 Abaixo descrevemos os passos necessários para a instalação do programa R no seu computador. Para Windows, use link https://cran.r-project.org/bin/windows/base/ e vai para passo 6 :
 
-1.  Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site [http://www.r-project.org](http://www.r-project.org) : http://www.r-project.org
+1.  Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site [http://www.r-project.org](http://www.r-project.org) 
 2.  Clique no link **download R**
 3.  Na página *CRAN Mirros (Comprehensive R Archive Network)*, escolha "0-Cloud" ou uma das páginas espelho do Brasil mais próxima de você para baixar o programa
 4.  Escolha agora o sistema operacional do seu computador (passos adicionais existem para diferentes distribuições Linux ou MacOS). Aqui faremos o exemplo com o Windows
@@ -51,12 +51,12 @@ Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da inst
 
 Abaixo descrevemos os passos necessários para a instalação do Rtools no seu computador:
 
-1.  Para fazer o download do Rtools, acessamos o site [https://cran.rstudio.com/bin/windows/Rtools/](https://cran.rstudio.com/bin/windows/Rtools/) : https://cran.rstudio.com/bin/windows/Rtools/,
+1.  Para fazer o download do Rtools, acessamos o site [https://cran.rstudio.com/bin/windows/Rtools/](https://cran.rstudio.com/bin/windows/Rtools/) ,
 2. clique no link com o mesmo número de versão de R.    
 Por exemplo, com R versão `r rvv` você precisa RTools `r rvrt`.
 2.  Clique em  **Rtools43 installer** ,
 3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RTools.    
-Recomenda-se usar os padrões, incluindo o local de instalação padrão "C:\rtools43".
+Recomenda-se usar os padrões, incluindo o local de instalação padrão "C:/rtools43".
 
 ## Instalação do RStudio
 
@@ -64,7 +64,7 @@ O RStudio possui algumas características que o tornam popular: várias janelas 
 
 Abaixo descrevemos os passos necessários para a instalação do RStudio no seu computador:
 
-1.  Para fazer o download do RStudio, acessamos o site [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) : https://posit.co/download/rstudio-desktop/,
+1.  Para fazer o download do RStudio, acessamos o site [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) ,
 2.  Clique em **download...**,
 3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RStudio.
 
