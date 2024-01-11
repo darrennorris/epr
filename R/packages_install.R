@@ -1,6 +1,7 @@
 # pacotes para o livro
-eprpackages <- c("tidyverse", "sp", "sf","raster", "mapview","tmap", 
-                "kableExtra", "landscapemetrics", "remotes", "siland")
+eprpackages <- c("tidyverse", "tidymodels", "remotes", "kableExtra",
+                 "sp", "sf","raster", "mapview","tmap", 
+                 "landscapemetrics", "siland")
 install.packages(eprpackages)
 
 # pacote com os dados

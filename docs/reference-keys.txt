@@ -23,6 +23,7 @@ fig:fig-sppd-lr
 fig:fig-sppd-scale
 fig:fig-sppd-scale-est
 fig:fig-species-boxplots
+fig:fig-species-logistic
 fig:fig-carnivoros-scale
 fig:fig-carnivoros-scale-est
 fig:fig-kerneltypes
@@ -170,6 +171,7 @@ pacotes-e-dados-1
 pacotes-2
 dados-necessarios
 pergunta-1-2
+o-paisagem-do-estudo
 pergunta-2-2
 buffers
 floresta
