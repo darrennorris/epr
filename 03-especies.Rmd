@@ -304,7 +304,7 @@ O modelo de regressão logística é um modelo preditivo para dados binários. C
 Para comparar o ajuste de modelos diferentes, usamos a log-verossimilhança, que tem um forte base filosófica em estatística. log-verossimilhanças são baseadas no conceito de máxima verossimilhança, que é uma técnica estatística para estimar os parâmetros de um modelo a partir dos dados. Neste estudo, comparamos modelos que possuem o mesmo número de parâmetros. Isso é importante porque permite que os resultados sejam interpretados com mais confiança. Se os modelos tivessem diferentes números de parâmetros, seria difícil dizer se as diferenças nos resultados eram devido às diferenças nas escalas espaciais ou ao número de parâmetros. Assim sendo, neste caso, o uso de alternativos como critérios de seleção de modelos, como o Critério de Informação de Akaike, que penaliza a log-verossimilhança com base no número de parâmetros [@burnham2002], forneceria resultados idênticos.
 
 #### Construção de modelos
-```{r boxquote}
+```{r boxquote, echo=FALSE, fig.align='center', out.width = "130%", out.height = "130%"}
 knitr::include_graphics("www/boxquote.png")
 ```
 
