@@ -17,7 +17,7 @@ Durante o capitulo você aprenderá:
 3.  Determinar a escala em que a floresta melhor prevê a ocorrência de espécies,\
 4.  Compreender a relevância dos conceitos para a interpretação e aplicação de resultados dos estudos de ecologia da paisagem.
 
-Para ajudar a acompanhar e entender os exemplos no capítulo, você deve ler os seguintes artigos:
+Recomenda-se que você leia os capítulos anteriores antes de iniciar este. Para ajudar a acompanhar e entender os exemplos no capítulo, você deve ler os seguintes artigos:
 
 -   da Silva, C. R., et. al. (2013).\
     Mammals of Amapá State, Eastern Brazilian Amazonia: a revised taxonomic list with comments on species distributions. Mammalia, 77(4), 409-424. <https://doi.org/10.1515/mammalia-2012-0121>
@@ -304,7 +304,7 @@ O modelo de regressão logística é um modelo preditivo para dados binários. C
 Para comparar o ajuste de modelos diferentes, usamos a log-verossimilhança, que tem um forte base filosófica em estatística. log-verossimilhanças são baseadas no conceito de máxima verossimilhança, que é uma técnica estatística para estimar os parâmetros de um modelo a partir dos dados. Neste estudo, comparamos modelos que possuem o mesmo número de parâmetros. Isso é importante porque permite que os resultados sejam interpretados com mais confiança. Se os modelos tivessem diferentes números de parâmetros, seria difícil dizer se as diferenças nos resultados eram devido às diferenças nas escalas espaciais ou ao número de parâmetros. Assim sendo, neste caso, o uso de alternativos como critérios de seleção de modelos, como o Critério de Informação de Akaike, que penaliza a log-verossimilhança com base no número de parâmetros [@burnham2002], forneceria resultados idênticos.
 
 #### Construção de modelos
-```{r boxquote, echo=FALSE, fig.align='center', out.width = "130%", out.height = "130%"}
+```{r boxquote, echo=FALSE, fig.align='center', out.width = "120%", out.height = "120%"}
 knitr::include_graphics("www/boxquote.png")
 ```
 
@@ -315,7 +315,7 @@ Devemos ter cuidado durante o processo utilizado para construir modelos, assim, 
 
 Neste exemplo, analisamos a ocorrência da espécie "sppD" em relação à cobertura florestal. Antes de construir e executar os modelos, é importante executar uma análise exploratória de dados. Aqui usamos boxplots para uma análise exploratória preliminar. Existem muitos tipos de análise exploratória de dados, que variam dependendo dos dados e do tipo de modelo. No caso de modelos de regressão logística, para as variáveis independentes contínuas como proporção de floresta ( `r kableExtra::text_spec("value_median", background = "#dedede")` ), podemos tentar gráficos de caixa ([boxplots](https://www.data-to-viz.com/caveat/boxplot.html)) de cada variável independente no exio "y" com a variável dependente (presença-ausencia) tratada como um fator de agrupamento no eixo "x".
 
-O boxplot mostra a tendência central e a variabilidade dos dados, mais sobre boxplot no capítlo de visualização \@ref(#cap23). Aqui, os boxplots mostram que, onde a espécie está presente, a cobertura florestal é, em média (mediana), mais elevada do que onde a espécie está ausente. No entanto, há uma variação substancial na cobertura florestal nos locais onde a espécie está ausente. Essa variação sugere que, embora a cobertura florestal seja um fator importante que influencia a ocorrência da espécie, outros fatores também podem desempenhar um papel. Por exemplo, a espécie pode estar sujeita a outros fatores de pressão, que podem incluir a caça, limitação de recursos (comida, abrigo, etc.) e/ou a competição com outras espécies.
+O boxplot mostra a tendência central e a variabilidade dos dados, mais sobre boxplot no capítlo de visualização \@ref(cap23). Aqui, os boxplots mostram que, onde a espécie está presente, a cobertura florestal é, em média (mediana), mais elevada do que onde a espécie está ausente. No entanto, há uma variação substancial na cobertura florestal nos locais onde a espécie está ausente. Essa variação sugere que, embora a cobertura florestal seja um fator importante que influencia a ocorrência da espécie, outros fatores também podem desempenhar um papel. Por exemplo, a espécie pode estar sujeita a outros fatores de pressão, que podem incluir a caça, limitação de recursos (comida, abrigo, etc.) e/ou a competição com outras espécies.
 
 ```{r fig-sppD, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="Gráfico para explorar as relações entre as variáveis. Boxplot comparando área central de floresta entre a presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km)."}
 
@@ -612,7 +612,7 @@ carnivoros |>
   labs(x = "Área central de floresta (porcentagem da paisagem)") -> fig_spp
 
 
-png("figures/fig_spp.png", width=7, height=6, 
+png("figures/fig_spp.png", width=7, height=5, 
     units="in", res = 600)
 fig_spp
 invisible(dev.off())
@@ -683,7 +683,7 @@ knitr::include_graphics("figures/figg_carnivoros_logLikAIC.png")
 
 Para identificar se ha diferenças na relação entre a ocorrência de espécies e a cobertura florestal, plotamos os valores estimados (coluna "estimate") para a variavel independente (value_median). Inclumos intervalos de confiança de diferentes modelos de regressão logística ajustados aos dados em função da cobertura florestal calculada em diferentes escalas, variando de 0.125 m a 16 km:
 
-```{r fig-carnivoros-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "80%", out.height = "80%", fig.cap="Estimativas para o efeito da cobertura florestal (termo beta) na ocorrência de três espécies usando buffers de diferentes tamanhos. As estimativas do parâmetro para o efeito da cobertura florestal (termo beta) na probabilidade de ocorrência de sppD usando buffers de diferentes tamanhos. A probabilidade de ocorrência foi modelada em função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Os pontos são as estimativas médias com linhas verticais mostrando intervalos de confiança de 95%. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
+```{r fig-carnivoros-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "80%", out.height = "80%", fig.cap="Estimativas para o efeito da cobertura florestal (termo beta) na ocorrência de três espécies usando buffers de diferentes tamanhos. As estimativas do parâmetro para o efeito da cobertura florestal (termo beta) na probabilidade de ocorrência das três espécies. A probabilidade de ocorrência foi modelada em função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Os pontos são as estimativas médias com linhas verticais mostrando intervalos de confiança de 95%. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
 
 modelos_carnivoros |> 
   tidyr::unnest(tidied) |> 
