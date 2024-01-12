@@ -171,7 +171,7 @@ Alem disso, no R podemos olhar os dados atraves de uma mapa interativa com o pac
 knitr::include_graphics("figures/mapview_components.png")
 ```
 
-A maneira mais fácil de criar um mapa no [mapview](https://r-spatial.github.io/mapview/) é usar a função `r kableExtra::text_spec("mapview()", background = "#dedede")` e passar um conjunto de dados para ele. Podemos visualizar os locais das entrevistas com o seguinte código, que tem a mesma estrutura de sempre "pacote::função(dados)":
+A maneira mais fácil de criar um mapa no [mapview](https://r-spatial.github.io/mapview/) é usar a função `r kableExtra::text_spec("mapview()", background = "#dedede")` e passar um conjunto de dados espacias para ele. Podemos visualizar os locais das entrevistas com o seguinte código, que tem a mesma estrutura de sempre "pacote::função(dados)":
 
 ```{r mapview-example, eval=FALSE}
 mapview::mapview(entrevistas)
@@ -304,6 +304,10 @@ O modelo de regressão logística é um modelo preditivo para dados binários. C
 Para comparar o ajuste de modelos diferentes, usamos a log-verossimilhança, que tem um forte base filosófica em estatística. log-verossimilhanças são baseadas no conceito de máxima verossimilhança, que é uma técnica estatística para estimar os parâmetros de um modelo a partir dos dados. Neste estudo, comparamos modelos que possuem o mesmo número de parâmetros. Isso é importante porque permite que os resultados sejam interpretados com mais confiança. Se os modelos tivessem diferentes números de parâmetros, seria difícil dizer se as diferenças nos resultados eram devido às diferenças nas escalas espaciais ou ao número de parâmetros. Assim sendo, neste caso, o uso de alternativos como critérios de seleção de modelos, como o Critério de Informação de Akaike, que penaliza a log-verossimilhança com base no número de parâmetros [@burnham2002], forneceria resultados idênticos.
 
 #### Construção de modelos
+```{r boxquote}
+knitr::include_graphics("www/boxquote.png")
+```
+
 
 Todos os modelos estão errados, alguns são úteis (“All models are wrong, some are useful.” - [George E. P. Box](https://en.wikipedia.org/wiki/All_models_are_wrong) : <https://en.wikipedia.org/wiki/All_models_are_wrong> ).
 

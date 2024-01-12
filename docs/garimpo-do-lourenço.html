@@ -498,14 +498,14 @@ de habitat (fragmentos).</p>
 </div>
 <div id="pacotes-necessarios" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Pacotes necessarios:<a href="garimpo-do-lourenço.html#pacotes-necessarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="garimpo-do-lourenço.html#cb69-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb69-2"><a href="garimpo-do-lourenço.html#cb69-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb69-3"><a href="garimpo-do-lourenço.html#cb69-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb69-4"><a href="garimpo-do-lourenço.html#cb69-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb69-5"><a href="garimpo-do-lourenço.html#cb69-5" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
-<span id="cb69-6"><a href="garimpo-do-lourenço.html#cb69-6" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
-<span id="cb69-7"><a href="garimpo-do-lourenço.html#cb69-7" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
-<span id="cb69-8"><a href="garimpo-do-lourenço.html#cb69-8" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="garimpo-do-lourenço.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb70-2"><a href="garimpo-do-lourenço.html#cb70-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb70-3"><a href="garimpo-do-lourenço.html#cb70-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb70-4"><a href="garimpo-do-lourenço.html#cb70-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb70-5"><a href="garimpo-do-lourenço.html#cb70-5" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb70-6"><a href="garimpo-do-lourenço.html#cb70-6" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb70-7"><a href="garimpo-do-lourenço.html#cb70-7" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
+<span id="cb70-8"><a href="garimpo-do-lourenço.html#cb70-8" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code></pre></div>
 </div>
 <div id="área-de-estudo" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Área de estudo<a href="garimpo-do-lourenço.html#área-de-estudo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -529,19 +529,19 @@ Mining drives extensive deforestation in the Brazilian Amazon
 <p>Aqui vamos incluir um raio de 20 km além do ponto de acesso para
 o Garimpo do Lourenço em 1985.
 Isso representa uma área quadrada de 40 x 40 km (1600 km2).</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="garimpo-do-lourenço.html#cb70-1" tabindex="-1"></a><span class="co"># Tabela de dados com coordenados de acesso em 1985.</span></span>
-<span id="cb70-2"><a href="garimpo-do-lourenço.html#cb70-2" tabindex="-1"></a>acesso <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nome =</span> <span class="st">&quot;garimpo do Lourenço&quot;</span>, </span>
-<span id="cb70-3"><a href="garimpo-do-lourenço.html#cb70-3" tabindex="-1"></a>           <span class="at">coord_x =</span> <span class="sc">-</span><span class="fl">51.630871</span>, </span>
-<span id="cb70-4"><a href="garimpo-do-lourenço.html#cb70-4" tabindex="-1"></a>           <span class="at">coord_y =</span> <span class="fl">2.318514</span>)</span>
-<span id="cb70-5"><a href="garimpo-do-lourenço.html#cb70-5" tabindex="-1"></a>           </span>
-<span id="cb70-6"><a href="garimpo-do-lourenço.html#cb70-6" tabindex="-1"></a><span class="co"># Converter para objeto espacial, com sistema de coordenados geográfica.</span></span>
-<span id="cb70-7"><a href="garimpo-do-lourenço.html#cb70-7" tabindex="-1"></a>sf_acesso <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(acesso, </span>
-<span id="cb70-8"><a href="garimpo-do-lourenço.html#cb70-8" tabindex="-1"></a>               <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;coord_x&quot;</span>, <span class="st">&quot;coord_y&quot;</span>),</span>
-<span id="cb70-9"><a href="garimpo-do-lourenço.html#cb70-9" tabindex="-1"></a>            <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="garimpo-do-lourenço.html#cb71-1" tabindex="-1"></a><span class="co"># Tabela de dados com coordenados de acesso em 1985.</span></span>
+<span id="cb71-2"><a href="garimpo-do-lourenço.html#cb71-2" tabindex="-1"></a>acesso <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nome =</span> <span class="st">&quot;garimpo do Lourenço&quot;</span>, </span>
+<span id="cb71-3"><a href="garimpo-do-lourenço.html#cb71-3" tabindex="-1"></a>           <span class="at">coord_x =</span> <span class="sc">-</span><span class="fl">51.630871</span>, </span>
+<span id="cb71-4"><a href="garimpo-do-lourenço.html#cb71-4" tabindex="-1"></a>           <span class="at">coord_y =</span> <span class="fl">2.318514</span>)</span>
+<span id="cb71-5"><a href="garimpo-do-lourenço.html#cb71-5" tabindex="-1"></a>           </span>
+<span id="cb71-6"><a href="garimpo-do-lourenço.html#cb71-6" tabindex="-1"></a><span class="co"># Converter para objeto espacial, com sistema de coordenados geográfica.</span></span>
+<span id="cb71-7"><a href="garimpo-do-lourenço.html#cb71-7" tabindex="-1"></a>sf_acesso <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(acesso, </span>
+<span id="cb71-8"><a href="garimpo-do-lourenço.html#cb71-8" tabindex="-1"></a>               <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;coord_x&quot;</span>, <span class="st">&quot;coord_y&quot;</span>),</span>
+<span id="cb71-9"><a href="garimpo-do-lourenço.html#cb71-9" tabindex="-1"></a>            <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
 <p>Visualizar para verificar.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="garimpo-do-lourenço.html#cb71-1" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb71-2"><a href="garimpo-do-lourenço.html#cb71-2" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso) <span class="co"># teste basica</span></span>
-<span id="cb71-3"><a href="garimpo-do-lourenço.html#cb71-3" tabindex="-1"></a><span class="fu">mapview</span>(sf_acesso) <span class="co">#verificar com mapa de base (OpenStreetMap)</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="garimpo-do-lourenço.html#cb72-1" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb72-2"><a href="garimpo-do-lourenço.html#cb72-2" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso) <span class="co"># teste basica</span></span>
+<span id="cb72-3"><a href="garimpo-do-lourenço.html#cb72-3" tabindex="-1"></a><span class="fu">mapview</span>(sf_acesso) <span class="co">#verificar com mapa de base (OpenStreetMap)</span></span></code></pre></div>
 <p><img src="figures/fig_garimpo_access.png" width="80%" height="80%" /></p>
 </div>
 <div id="ponto-de-referência-epsg-31976" class="section level3 hasAnchor" number="4.4.2">
@@ -555,31 +555,31 @@ datum SIRGAS 2000, especificamente EPSG:31976 (SIRGAS 2000/UTM zone 22N).</p>
 <p>Precisamos então reprojetar o objeto original (em coordenados geográficas)
 para a sistema de coordenados projetados. Em seguida, vamos produzir
 um polígono com raio de 20 km no entorno do ponto.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="garimpo-do-lourenço.html#cb72-1" tabindex="-1"></a><span class="co"># Reprojetar o ponto.</span></span>
-<span id="cb72-2"><a href="garimpo-do-lourenço.html#cb72-2" tabindex="-1"></a>sf_acesso_utm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf_acesso, <span class="at">crs =</span> <span class="dv">31976</span>)</span>
-<span id="cb72-3"><a href="garimpo-do-lourenço.html#cb72-3" tabindex="-1"></a><span class="co"># Polígono com raio de 500 metros no entorno do ponto.</span></span>
-<span id="cb72-4"><a href="garimpo-do-lourenço.html#cb72-4" tabindex="-1"></a>sf_acesso_500m <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-5"><a href="garimpo-do-lourenço.html#cb72-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="fl">0.5</span>)</span>
-<span id="cb72-6"><a href="garimpo-do-lourenço.html#cb72-6" tabindex="-1"></a><span class="co"># Polígono com raio de 1 km no entorno do ponto.</span></span>
-<span id="cb72-7"><a href="garimpo-do-lourenço.html#cb72-7" tabindex="-1"></a>sf_acesso_1km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-8"><a href="garimpo-do-lourenço.html#cb72-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">1</span>)</span>
-<span id="cb72-9"><a href="garimpo-do-lourenço.html#cb72-9" tabindex="-1"></a><span class="co"># Polígono com raio de 2 km no entorno do ponto.</span></span>
-<span id="cb72-10"><a href="garimpo-do-lourenço.html#cb72-10" tabindex="-1"></a>sf_acesso_2km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-11"><a href="garimpo-do-lourenço.html#cb72-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">2</span>)</span>
-<span id="cb72-12"><a href="garimpo-do-lourenço.html#cb72-12" tabindex="-1"></a><span class="co"># Polígono com raio de 4 km no entorno do ponto.</span></span>
-<span id="cb72-13"><a href="garimpo-do-lourenço.html#cb72-13" tabindex="-1"></a>sf_acesso_4km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">4000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-14"><a href="garimpo-do-lourenço.html#cb72-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">4</span>)</span>
-<span id="cb72-15"><a href="garimpo-do-lourenço.html#cb72-15" tabindex="-1"></a><span class="co"># Polígono com raio de 20 km no entorno do ponto.</span></span>
-<span id="cb72-16"><a href="garimpo-do-lourenço.html#cb72-16" tabindex="-1"></a>sf_acesso_20km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">20000</span>)</span>
-<span id="cb72-17"><a href="garimpo-do-lourenço.html#cb72-17" tabindex="-1"></a></span>
-<span id="cb72-18"><a href="garimpo-do-lourenço.html#cb72-18" tabindex="-1"></a>acesso_buffers <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sf_acesso_500m, sf_acesso_1km, </span>
-<span id="cb72-19"><a href="garimpo-do-lourenço.html#cb72-19" tabindex="-1"></a>                            sf_acesso_2km, sf_acesso_4km)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="garimpo-do-lourenço.html#cb73-1" tabindex="-1"></a><span class="co"># Reprojetar o ponto.</span></span>
+<span id="cb73-2"><a href="garimpo-do-lourenço.html#cb73-2" tabindex="-1"></a>sf_acesso_utm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf_acesso, <span class="at">crs =</span> <span class="dv">31976</span>)</span>
+<span id="cb73-3"><a href="garimpo-do-lourenço.html#cb73-3" tabindex="-1"></a><span class="co"># Polígono com raio de 500 metros no entorno do ponto.</span></span>
+<span id="cb73-4"><a href="garimpo-do-lourenço.html#cb73-4" tabindex="-1"></a>sf_acesso_500m <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-5"><a href="garimpo-do-lourenço.html#cb73-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="fl">0.5</span>)</span>
+<span id="cb73-6"><a href="garimpo-do-lourenço.html#cb73-6" tabindex="-1"></a><span class="co"># Polígono com raio de 1 km no entorno do ponto.</span></span>
+<span id="cb73-7"><a href="garimpo-do-lourenço.html#cb73-7" tabindex="-1"></a>sf_acesso_1km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-8"><a href="garimpo-do-lourenço.html#cb73-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">1</span>)</span>
+<span id="cb73-9"><a href="garimpo-do-lourenço.html#cb73-9" tabindex="-1"></a><span class="co"># Polígono com raio de 2 km no entorno do ponto.</span></span>
+<span id="cb73-10"><a href="garimpo-do-lourenço.html#cb73-10" tabindex="-1"></a>sf_acesso_2km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-11"><a href="garimpo-do-lourenço.html#cb73-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">2</span>)</span>
+<span id="cb73-12"><a href="garimpo-do-lourenço.html#cb73-12" tabindex="-1"></a><span class="co"># Polígono com raio de 4 km no entorno do ponto.</span></span>
+<span id="cb73-13"><a href="garimpo-do-lourenço.html#cb73-13" tabindex="-1"></a>sf_acesso_4km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">4000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-14"><a href="garimpo-do-lourenço.html#cb73-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">raio_km =</span> <span class="dv">4</span>)</span>
+<span id="cb73-15"><a href="garimpo-do-lourenço.html#cb73-15" tabindex="-1"></a><span class="co"># Polígono com raio de 20 km no entorno do ponto.</span></span>
+<span id="cb73-16"><a href="garimpo-do-lourenço.html#cb73-16" tabindex="-1"></a>sf_acesso_20km <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(sf_acesso_utm, <span class="at">dist=</span><span class="dv">20000</span>)</span>
+<span id="cb73-17"><a href="garimpo-do-lourenço.html#cb73-17" tabindex="-1"></a></span>
+<span id="cb73-18"><a href="garimpo-do-lourenço.html#cb73-18" tabindex="-1"></a>acesso_buffers <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sf_acesso_500m, sf_acesso_1km, </span>
+<span id="cb73-19"><a href="garimpo-do-lourenço.html#cb73-19" tabindex="-1"></a>                            sf_acesso_2km, sf_acesso_4km)</span></code></pre></div>
 </div>
 <div id="verificar-com-mapa-de-base-openstreetmap." class="section level3 hasAnchor" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Verificar com mapa de base (OpenStreetMap).<a href="garimpo-do-lourenço.html#verificar-com-mapa-de-base-openstreetmap." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="garimpo-do-lourenço.html#cb73-1" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb73-2"><a href="garimpo-do-lourenço.html#cb73-2" tabindex="-1"></a><span class="fu">mapview</span>(sf_acesso_20km) <span class="sc">+</span> </span>
-<span id="cb73-3"><a href="garimpo-do-lourenço.html#cb73-3" tabindex="-1"></a>  <span class="fu">mapview</span>(sf_acesso_utm, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">col.regions =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="garimpo-do-lourenço.html#cb74-1" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb74-2"><a href="garimpo-do-lourenço.html#cb74-2" tabindex="-1"></a><span class="fu">mapview</span>(sf_acesso_20km) <span class="sc">+</span> </span>
+<span id="cb74-3"><a href="garimpo-do-lourenço.html#cb74-3" tabindex="-1"></a>  <span class="fu">mapview</span>(sf_acesso_utm, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">col.regions =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
 <p><img src="figures/mapview_point_buffer.png" width="80%" height="80%" /></p>
 </div>
 <div id="dados-mapbiomas-cobertura-da-terra" class="section level3 hasAnchor" number="4.4.4">
@@ -603,32 +603,32 @@ ficar no mesmo diretório do seu código
 Como nós já sabemos a sistema de coordenados desejadas,
 o geoprocessamento da raster foi concluído antes de começar com as
 análises da paisagem.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="garimpo-do-lourenço.html#cb74-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;utm_cover_AP_lorenco_1985.tif&quot;</span>)</span>
-<span id="cb74-2"><a href="garimpo-do-lourenço.html#cb74-2" tabindex="-1"></a>r1985</span>
-<span id="cb74-3"><a href="garimpo-do-lourenço.html#cb74-3" tabindex="-1"></a></span>
-<span id="cb74-4"><a href="garimpo-do-lourenço.html#cb74-4" tabindex="-1"></a><span class="co">#class       : SpatRaster </span></span>
-<span id="cb74-5"><a href="garimpo-do-lourenço.html#cb74-5" tabindex="-1"></a><span class="co">#dimensions  : 1341, 1341, 1  (nrow, ncol, nlyr)</span></span>
-<span id="cb74-6"><a href="garimpo-do-lourenço.html#cb74-6" tabindex="-1"></a><span class="co">#resolution  : 29.87713, 29.87713  (x, y)</span></span>
-<span id="cb74-7"><a href="garimpo-do-lourenço.html#cb74-7" tabindex="-1"></a><span class="co">#extent      : 409829.5, 449894.7, 236241.1, 276306.3  (xmin, xmax, ymin, ymax)</span></span>
-<span id="cb74-8"><a href="garimpo-do-lourenço.html#cb74-8" tabindex="-1"></a><span class="co">#coord. ref. : SIRGAS 2000 / UTM zone 22N (EPSG:31976) </span></span>
-<span id="cb74-9"><a href="garimpo-do-lourenço.html#cb74-9" tabindex="-1"></a><span class="co">#source      : utm_cover_AP_lorenco_1985.tif </span></span>
-<span id="cb74-10"><a href="garimpo-do-lourenço.html#cb74-10" tabindex="-1"></a><span class="co">#name        : classification_1985 </span></span>
-<span id="cb74-11"><a href="garimpo-do-lourenço.html#cb74-11" tabindex="-1"></a><span class="co">#min value   :                   3 </span></span>
-<span id="cb74-12"><a href="garimpo-do-lourenço.html#cb74-12" tabindex="-1"></a><span class="co">#max value   :                  33 </span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="garimpo-do-lourenço.html#cb75-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;utm_cover_AP_lorenco_1985.tif&quot;</span>)</span>
+<span id="cb75-2"><a href="garimpo-do-lourenço.html#cb75-2" tabindex="-1"></a>r1985</span>
+<span id="cb75-3"><a href="garimpo-do-lourenço.html#cb75-3" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="garimpo-do-lourenço.html#cb75-4" tabindex="-1"></a><span class="co">#class       : SpatRaster </span></span>
+<span id="cb75-5"><a href="garimpo-do-lourenço.html#cb75-5" tabindex="-1"></a><span class="co">#dimensions  : 1341, 1341, 1  (nrow, ncol, nlyr)</span></span>
+<span id="cb75-6"><a href="garimpo-do-lourenço.html#cb75-6" tabindex="-1"></a><span class="co">#resolution  : 29.87713, 29.87713  (x, y)</span></span>
+<span id="cb75-7"><a href="garimpo-do-lourenço.html#cb75-7" tabindex="-1"></a><span class="co">#extent      : 409829.5, 449894.7, 236241.1, 276306.3  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb75-8"><a href="garimpo-do-lourenço.html#cb75-8" tabindex="-1"></a><span class="co">#coord. ref. : SIRGAS 2000 / UTM zone 22N (EPSG:31976) </span></span>
+<span id="cb75-9"><a href="garimpo-do-lourenço.html#cb75-9" tabindex="-1"></a><span class="co">#source      : utm_cover_AP_lorenco_1985.tif </span></span>
+<span id="cb75-10"><a href="garimpo-do-lourenço.html#cb75-10" tabindex="-1"></a><span class="co">#name        : classification_1985 </span></span>
+<span id="cb75-11"><a href="garimpo-do-lourenço.html#cb75-11" tabindex="-1"></a><span class="co">#min value   :                   3 </span></span>
+<span id="cb75-12"><a href="garimpo-do-lourenço.html#cb75-12" tabindex="-1"></a><span class="co">#max value   :                  33 </span></span></code></pre></div>
 <p>Ou use o função <code>file.choose()</code>, que faz a busca
 para arquivos.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="garimpo-do-lourenço.html#cb75-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
-<span id="cb75-2"><a href="garimpo-do-lourenço.html#cb75-2" tabindex="-1"></a>r1985</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="garimpo-do-lourenço.html#cb76-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb76-2"><a href="garimpo-do-lourenço.html#cb76-2" tabindex="-1"></a>r1985</span></code></pre></div>
 <pre><code>##            used  (Mb) gc trigger  (Mb)  max used  (Mb)
-## Ncells  7777179 415.4   14929098 797.3  14929098 797.3
-## Vcells 34262657 261.5  119495608 911.7 119495608 911.7</code></pre>
+## Ncells  7817093 417.5   14929098 797.3  14929098 797.3
+## Vcells 34321399 261.9   97074701 740.7 121343376 925.8</code></pre>
 <p>Agora que o arquivo foi importado, podemos visualizá- lo.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="garimpo-do-lourenço.html#cb77-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
-<span id="cb77-2"><a href="garimpo-do-lourenço.html#cb77-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
-<span id="cb77-3"><a href="garimpo-do-lourenço.html#cb77-3" tabindex="-1"></a><span class="co"># ao mundo real (por exemplo verde não é floresta)</span></span>
-<span id="cb77-4"><a href="garimpo-do-lourenço.html#cb77-4" tabindex="-1"></a><span class="fu">plot</span>(r1985, <span class="at">type=</span><span class="st">&quot;classes&quot;</span>) </span>
-<span id="cb77-5"><a href="garimpo-do-lourenço.html#cb77-5" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso_20km, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lty =</span><span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb77-6"><a href="garimpo-do-lourenço.html#cb77-6" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso_utm, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="garimpo-do-lourenço.html#cb78-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
+<span id="cb78-2"><a href="garimpo-do-lourenço.html#cb78-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
+<span id="cb78-3"><a href="garimpo-do-lourenço.html#cb78-3" tabindex="-1"></a><span class="co"># ao mundo real (por exemplo verde não é floresta)</span></span>
+<span id="cb78-4"><a href="garimpo-do-lourenço.html#cb78-4" tabindex="-1"></a><span class="fu">plot</span>(r1985, <span class="at">type=</span><span class="st">&quot;classes&quot;</span>) </span>
+<span id="cb78-5"><a href="garimpo-do-lourenço.html#cb78-5" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso_20km, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lty =</span><span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb78-6"><a href="garimpo-do-lourenço.html#cb78-6" tabindex="-1"></a><span class="fu">plot</span>(sf_acesso_utm, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/fig-plot-raster-1.png" width="672" /></p>
 </div>
 </div>
@@ -641,17 +641,17 @@ para arquivos.</p>
 <li>patch (para a mancha ou fragmento).</li>
 </ul>
 <p>Primeiro, pecisamos verificar se o raster está no formato correto.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="garimpo-do-lourenço.html#cb78-1" tabindex="-1"></a><span class="fu">check_landscape</span>(r1985)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="garimpo-do-lourenço.html#cb79-1" tabindex="-1"></a><span class="fu">check_landscape</span>(r1985)</span></code></pre></div>
 <pre><code>##   layer       crs units   class n_classes OK
 ## 1     1 projected     m integer         7  ✔</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="garimpo-do-lourenço.html#cb80-1" tabindex="-1"></a><span class="co">#  layer crs    units   class n_classes OK</span></span>
-<span id="cb80-2"><a href="garimpo-do-lourenço.html#cb80-2" tabindex="-1"></a><span class="co">#  1  projected   m   integer         7  v</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="garimpo-do-lourenço.html#cb81-1" tabindex="-1"></a><span class="co">#  layer crs    units   class n_classes OK</span></span>
+<span id="cb81-2"><a href="garimpo-do-lourenço.html#cb81-2" tabindex="-1"></a><span class="co">#  1  projected   m   integer         7  v</span></span></code></pre></div>
 <p>Tudo certo (veja a coluna do “OK”)!</p>
 <div id="métricas-para-a-paisagem" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> Métricas para a paisagem<a href="garimpo-do-lourenço.html#métricas-para-a-paisagem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vamos começar avaliando a área total da paisagem (área) de estudo.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="garimpo-do-lourenço.html#cb81-1" tabindex="-1"></a>area.total <span class="ot">&lt;-</span> <span class="fu">lsm_l_ta</span>(r1985) </span>
-<span id="cb81-2"><a href="garimpo-do-lourenço.html#cb81-2" tabindex="-1"></a>area.total <span class="co">#160264 Hectares</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="garimpo-do-lourenço.html#cb82-1" tabindex="-1"></a>area.total <span class="ot">&lt;-</span> <span class="fu">lsm_l_ta</span>(r1985) </span>
+<span id="cb82-2"><a href="garimpo-do-lourenço.html#cb82-2" tabindex="-1"></a>area.total <span class="co">#160264 Hectares</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6
 ##   layer level     class    id metric   value
 ##   &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -659,10 +659,10 @@ para arquivos.</p>
 <p>Agora vamos ver a distância total de borda (te= “total
 edge”).</p>
 <pre><code>##            used  (Mb) gc trigger  (Mb)  max used  (Mb)
-## Ncells  7781454 415.6   14929098 797.3  14929098 797.3
-## Vcells 34272429 261.5  119495608 911.7 119495608 911.7</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="garimpo-do-lourenço.html#cb84-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
-<span id="cb84-2"><a href="garimpo-do-lourenço.html#cb84-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
+## Ncells  7815374 417.4   14929098 797.3  14929098 797.3
+## Vcells 34319843 261.9   97074701 740.7 121343376 925.8</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="garimpo-do-lourenço.html#cb85-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
+<span id="cb85-2"><a href="garimpo-do-lourenço.html#cb85-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6
 ##   layer level     class    id metric   value
 ##   &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -676,8 +676,8 @@ configuração na mesma paisagem em anos diferentes.</p>
 Densidade de Borda mede a configuração da paisagem porque uma paisagem
 altamente fragmentada terá valores mais altas. “Densidade” é uma medida
 adequado para comparacoes de paisagens com áreas totais diferentes.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="garimpo-do-lourenço.html#cb86-1" tabindex="-1"></a>ed <span class="ot">&lt;-</span> <span class="fu">lsm_l_ed</span>(r1985) </span>
-<span id="cb86-2"><a href="garimpo-do-lourenço.html#cb86-2" tabindex="-1"></a>ed <span class="co">#3.41 metros por hectare</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="garimpo-do-lourenço.html#cb87-1" tabindex="-1"></a>ed <span class="ot">&lt;-</span> <span class="fu">lsm_l_ed</span>(r1985) </span>
+<span id="cb87-2"><a href="garimpo-do-lourenço.html#cb87-2" tabindex="-1"></a>ed <span class="co">#3.41 metros por hectare</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6
 ##   layer level     class    id metric value
 ##   &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
@@ -686,7 +686,7 @@ adequado para comparacoes de paisagens com áreas totais diferentes.</p>
 <div id="métricas-para-as-classes" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Métricas para as classes<a href="garimpo-do-lourenço.html#métricas-para-as-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Area de cada classe em hectares.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="garimpo-do-lourenço.html#cb88-1" tabindex="-1"></a><span class="fu">lsm_c_ca</span>(r1985) </span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="garimpo-do-lourenço.html#cb89-1" tabindex="-1"></a><span class="fu">lsm_c_ca</span>(r1985) </span></code></pre></div>
 <pre><code>## # A tibble: 7 × 6
 ##   layer level class    id metric     value
 ##   &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -704,43 +704,43 @@ Ou seja incluir uma coluna de legenda com os nomes para cada classe. Para isso
 precisamos outro arquivo com os nomes.</p>
 <p>Baixar a arquivo de legenda: <a href="https://github.com/darrennorris/Amapa-mine/blob/main/data/raster/Mapbiomas_cover_lourenco_utm/mapbiomas_6_legend.xlsx">mapbiomas_6_legend.xlsx</a>.</p>
 <p>Agora carregar o arquivo com o codigo a seguir.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="garimpo-do-lourenço.html#cb90-1" tabindex="-1"></a>class_nomes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="garimpo-do-lourenço.html#cb91-1" tabindex="-1"></a>class_nomes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
 <p>Agora rodar de novo, com os resultados juntos com a legenda
 de cada classe. Nos resultados acima, os valores na coluna “class”
 são as mesmas que tem na coluna “aid” no objeto “class_nomes”, onde também
 tem os nomes . Assim, podemos repetir, mas agora incluindo os nomes
 para cada valor de class, com base na ligação (join) entre as colunas.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="garimpo-do-lourenço.html#cb91-1" tabindex="-1"></a><span class="co"># Área de cada classe em hectares, incluindo os nomes para cada classe</span></span>
-<span id="cb91-2"><a href="garimpo-do-lourenço.html#cb91-2" tabindex="-1"></a><span class="fu">lsm_c_ca</span>(r1985) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-3"><a href="garimpo-do-lourenço.html#cb91-3" tabindex="-1"></a>  <span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span>
-<span id="cb91-4"><a href="garimpo-do-lourenço.html#cb91-4" tabindex="-1"></a>  </span>
-<span id="cb91-5"><a href="garimpo-do-lourenço.html#cb91-5" tabindex="-1"></a><span class="co"># Numero de fragmentos (manchas)</span></span>
-<span id="cb91-6"><a href="garimpo-do-lourenço.html#cb91-6" tabindex="-1"></a><span class="fu">lsm_c_np</span>(r1985) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-7"><a href="garimpo-do-lourenço.html#cb91-7" tabindex="-1"></a>  <span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span>
-<span id="cb91-8"><a href="garimpo-do-lourenço.html#cb91-8" tabindex="-1"></a>  </span>
-<span id="cb91-9"><a href="garimpo-do-lourenço.html#cb91-9" tabindex="-1"></a><span class="co"># Maior numero de manchas em classes de cobertura classificadas como </span></span>
-<span id="cb91-10"><a href="garimpo-do-lourenço.html#cb91-10" tabindex="-1"></a><span class="co"># pasto (pasture) e formação campestre (grassland).</span></span>
-<span id="cb91-11"><a href="garimpo-do-lourenço.html#cb91-11" tabindex="-1"></a></span>
-<span id="cb91-12"><a href="garimpo-do-lourenço.html#cb91-12" tabindex="-1"></a><span class="co">#  layer level class    id metric value class_description  group_description</span></span>
-<span id="cb91-13"><a href="garimpo-do-lourenço.html#cb91-13" tabindex="-1"></a><span class="co">#     1 class     3    NA np        28 Forest Formation     Natural forest         </span></span>
-<span id="cb91-14"><a href="garimpo-do-lourenço.html#cb91-14" tabindex="-1"></a><span class="co">#     1 class     4    NA np         2 Savanna Formation    Natural forest           </span></span>
-<span id="cb91-15"><a href="garimpo-do-lourenço.html#cb91-15" tabindex="-1"></a><span class="co">#     1 class    11    NA np         7 Wetlands             Natural non fore</span></span>
-<span id="cb91-16"><a href="garimpo-do-lourenço.html#cb91-16" tabindex="-1"></a><span class="co">#     1 class    12    NA np       246 Grassland            Natural non fore.           </span></span>
-<span id="cb91-17"><a href="garimpo-do-lourenço.html#cb91-17" tabindex="-1"></a><span class="co">#     1 class    15    NA np       262 Pasture              Farming              </span></span>
-<span id="cb91-18"><a href="garimpo-do-lourenço.html#cb91-18" tabindex="-1"></a><span class="co">#     1 class    30    NA np        35 Mining               Non vegetated           </span></span>
-<span id="cb91-19"><a href="garimpo-do-lourenço.html#cb91-19" tabindex="-1"></a><span class="co">#     1 class    33    NA np        50 River,Lake and Ocean Water             </span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="garimpo-do-lourenço.html#cb92-1" tabindex="-1"></a><span class="co"># Área de cada classe em hectares, incluindo os nomes para cada classe</span></span>
+<span id="cb92-2"><a href="garimpo-do-lourenço.html#cb92-2" tabindex="-1"></a><span class="fu">lsm_c_ca</span>(r1985) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="garimpo-do-lourenço.html#cb92-3" tabindex="-1"></a>  <span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span>
+<span id="cb92-4"><a href="garimpo-do-lourenço.html#cb92-4" tabindex="-1"></a>  </span>
+<span id="cb92-5"><a href="garimpo-do-lourenço.html#cb92-5" tabindex="-1"></a><span class="co"># Numero de fragmentos (manchas)</span></span>
+<span id="cb92-6"><a href="garimpo-do-lourenço.html#cb92-6" tabindex="-1"></a><span class="fu">lsm_c_np</span>(r1985) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-7"><a href="garimpo-do-lourenço.html#cb92-7" tabindex="-1"></a>  <span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span>
+<span id="cb92-8"><a href="garimpo-do-lourenço.html#cb92-8" tabindex="-1"></a>  </span>
+<span id="cb92-9"><a href="garimpo-do-lourenço.html#cb92-9" tabindex="-1"></a><span class="co"># Maior numero de manchas em classes de cobertura classificadas como </span></span>
+<span id="cb92-10"><a href="garimpo-do-lourenço.html#cb92-10" tabindex="-1"></a><span class="co"># pasto (pasture) e formação campestre (grassland).</span></span>
+<span id="cb92-11"><a href="garimpo-do-lourenço.html#cb92-11" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="garimpo-do-lourenço.html#cb92-12" tabindex="-1"></a><span class="co">#  layer level class    id metric value class_description  group_description</span></span>
+<span id="cb92-13"><a href="garimpo-do-lourenço.html#cb92-13" tabindex="-1"></a><span class="co">#     1 class     3    NA np        28 Forest Formation     Natural forest         </span></span>
+<span id="cb92-14"><a href="garimpo-do-lourenço.html#cb92-14" tabindex="-1"></a><span class="co">#     1 class     4    NA np         2 Savanna Formation    Natural forest           </span></span>
+<span id="cb92-15"><a href="garimpo-do-lourenço.html#cb92-15" tabindex="-1"></a><span class="co">#     1 class    11    NA np         7 Wetlands             Natural non fore</span></span>
+<span id="cb92-16"><a href="garimpo-do-lourenço.html#cb92-16" tabindex="-1"></a><span class="co">#     1 class    12    NA np       246 Grassland            Natural non fore.           </span></span>
+<span id="cb92-17"><a href="garimpo-do-lourenço.html#cb92-17" tabindex="-1"></a><span class="co">#     1 class    15    NA np       262 Pasture              Farming              </span></span>
+<span id="cb92-18"><a href="garimpo-do-lourenço.html#cb92-18" tabindex="-1"></a><span class="co">#     1 class    30    NA np        35 Mining               Non vegetated           </span></span>
+<span id="cb92-19"><a href="garimpo-do-lourenço.html#cb92-19" tabindex="-1"></a><span class="co">#     1 class    33    NA np        50 River,Lake and Ocean Water             </span></span></code></pre></div>
 </div>
 <div id="métricas-para-as-manchas" class="section level3 hasAnchor" number="4.5.3">
 <h3><span class="header-section-number">4.5.3</span> Métricas para as manchas<a href="garimpo-do-lourenço.html#métricas-para-as-manchas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vamos calcular o tamanho de cada mancha agora.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="garimpo-do-lourenço.html#cb92-1" tabindex="-1"></a>mancha_area <span class="ot">&lt;-</span> <span class="fu">lsm_p_area</span>(r1985) <span class="co"># 630 manchas</span></span>
-<span id="cb92-2"><a href="garimpo-do-lourenço.html#cb92-2" tabindex="-1"></a>mancha_area</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="garimpo-do-lourenço.html#cb93-1" tabindex="-1"></a>mancha_area <span class="ot">&lt;-</span> <span class="fu">lsm_p_area</span>(r1985) <span class="co"># 630 manchas</span></span>
+<span id="cb93-2"><a href="garimpo-do-lourenço.html#cb93-2" tabindex="-1"></a>mancha_area</span></code></pre></div>
 <p>Agora queremos saber o tamanho da maior mancha em cada class, e
 portanto o tamanho da maior mancha de mineração.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="garimpo-do-lourenço.html#cb93-1" tabindex="-1"></a>mancha_area <span class="sc">%&gt;%</span> </span>
-<span id="cb93-2"><a href="garimpo-do-lourenço.html#cb93-2" tabindex="-1"></a><span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-3"><a href="garimpo-do-lourenço.html#cb93-3" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">max_ha =</span> <span class="fu">max</span>(value))</span>
-<span id="cb93-4"><a href="garimpo-do-lourenço.html#cb93-4" tabindex="-1"></a><span class="co"># 30.8 hectares (class 15 = mineração)</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="garimpo-do-lourenço.html#cb94-1" tabindex="-1"></a>mancha_area <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="garimpo-do-lourenço.html#cb94-2" tabindex="-1"></a><span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb94-3"><a href="garimpo-do-lourenço.html#cb94-3" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">max_ha =</span> <span class="fu">max</span>(value))</span>
+<span id="cb94-4"><a href="garimpo-do-lourenço.html#cb94-4" tabindex="-1"></a><span class="co"># 30.8 hectares (class 15 = mineração)</span></span></code></pre></div>
 </div>
 <div id="quais-métricas-devo-escolher" class="section level3 hasAnchor" number="4.5.4">
 <h3><span class="header-section-number">4.5.4</span> Quais métricas devo escolher?<a href="garimpo-do-lourenço.html#quais-métricas-devo-escolher" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -757,25 +757,25 @@ classe são mais eficazes na definição de processos ecológicos
 (Tischendorf, L. Can landscape indices predict ecological processes
 consistently?. Landscape Ecology 16, 235–254 (2001).
 <a href="https://doi.org/10.1023/A:1011112719782" class="uri">https://doi.org/10.1023/A:1011112719782</a>.).</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="garimpo-do-lourenço.html#cb94-1" tabindex="-1"></a><span class="co"># métricas de composição para a paisagem por classes</span></span>
-<span id="cb94-2"><a href="garimpo-do-lourenço.html#cb94-2" tabindex="-1"></a><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;area and edge metric&quot;</span>)</span>
-<span id="cb94-3"><a href="garimpo-do-lourenço.html#cb94-3" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="garimpo-do-lourenço.html#cb94-4" tabindex="-1"></a><span class="co"># métricas de configuração para a paisagem por classes</span></span>
-<span id="cb94-5"><a href="garimpo-do-lourenço.html#cb94-5" tabindex="-1"></a><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="garimpo-do-lourenço.html#cb95-1" tabindex="-1"></a><span class="co"># métricas de composição para a paisagem por classes</span></span>
+<span id="cb95-2"><a href="garimpo-do-lourenço.html#cb95-2" tabindex="-1"></a><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;area and edge metric&quot;</span>)</span>
+<span id="cb95-3"><a href="garimpo-do-lourenço.html#cb95-3" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="garimpo-do-lourenço.html#cb95-4" tabindex="-1"></a><span class="co"># métricas de configuração para a paisagem por classes</span></span>
+<span id="cb95-5"><a href="garimpo-do-lourenço.html#cb95-5" tabindex="-1"></a><span class="fu">list_lsm</span>(<span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span></code></pre></div>
 </div>
 <div id="métricas-por-classe-de-mineração" class="section level3 hasAnchor" number="4.5.5">
 <h3><span class="header-section-number">4.5.5</span> Métricas por classe de mineração<a href="garimpo-do-lourenço.html#métricas-por-classe-de-mineração" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Aqui vamos calcular todos as métricas por classe (função <code>calculate_lsm()</code>)).</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="garimpo-do-lourenço.html#cb95-1" tabindex="-1"></a><span class="co"># métricas de composição para a paisagem por classes</span></span>
-<span id="cb95-2"><a href="garimpo-do-lourenço.html#cb95-2" tabindex="-1"></a>metrics_comp <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r1985, <span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;area and edge metric&quot;</span>)</span>
-<span id="cb95-3"><a href="garimpo-do-lourenço.html#cb95-3" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="garimpo-do-lourenço.html#cb95-4" tabindex="-1"></a><span class="co"># métricas de configuração para a paisagem por classes</span></span>
-<span id="cb95-5"><a href="garimpo-do-lourenço.html#cb95-5" tabindex="-1"></a>metrics_config <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r1985, <span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="garimpo-do-lourenço.html#cb96-1" tabindex="-1"></a><span class="co"># métricas de composição para a paisagem por classes</span></span>
+<span id="cb96-2"><a href="garimpo-do-lourenço.html#cb96-2" tabindex="-1"></a>metrics_comp <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r1985, <span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;area and edge metric&quot;</span>)</span>
+<span id="cb96-3"><a href="garimpo-do-lourenço.html#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="garimpo-do-lourenço.html#cb96-4" tabindex="-1"></a><span class="co"># métricas de configuração para a paisagem por classes</span></span>
+<span id="cb96-5"><a href="garimpo-do-lourenço.html#cb96-5" tabindex="-1"></a>metrics_config <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r1985, <span class="at">level =</span> <span class="st">&quot;class&quot;</span>, <span class="at">type =</span> <span class="st">&quot;aggregation metric&quot;</span>)</span></code></pre></div>
 <p>E aqui, calcular correlações entre todos as métricas por classe
 (função <code>show_correlation()</code>)).</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="garimpo-do-lourenço.html#cb96-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_comp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="garimpo-do-lourenço.html#cb97-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_comp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="garimpo-do-lourenço.html#cb97-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_config, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="garimpo-do-lourenço.html#cb98-1" tabindex="-1"></a><span class="fu">show_correlation</span>(<span class="at">data =</span> metrics_config, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/unnamed-chunk-62-2.png" width="672" /></p>
 <p>Temos muitos valores e muitas métricas.
 Este se chama um “tiro no escuro”, algo cujo resultado se desconhece
@@ -798,8 +798,8 @@ Mas por isso, primeiramente precisamos exportar os resultados
 (veja mais exemplos aqui: <a href="https://www.lampada.uerj.br/arquivosdb/_book2/importexport.html">Introdução ao R import-export</a>.</p>
 <p>O arquivo vai sai no mesmo diretório do seu código
 (verifique com <code>getwd()</code>).</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="garimpo-do-lourenço.html#cb98-1" tabindex="-1"></a><span class="fu">bind_rows</span>(metrics_comp, metrics_config) <span class="ot">-&gt;</span> metricas_1985</span>
-<span id="cb98-2"><a href="garimpo-do-lourenço.html#cb98-2" tabindex="-1"></a><span class="fu">write.csv2</span>(metricas_1985, <span class="st">&quot;metricas_lourenco_1985.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="garimpo-do-lourenço.html#cb99-1" tabindex="-1"></a><span class="fu">bind_rows</span>(metrics_comp, metrics_config) <span class="ot">-&gt;</span> metricas_1985</span>
+<span id="cb99-2"><a href="garimpo-do-lourenço.html#cb99-2" tabindex="-1"></a><span class="fu">write.csv2</span>(metricas_1985, <span class="st">&quot;metricas_lourenco_1985.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="preparando-os-resultados" class="section level2 hasAnchor" number="4.6">
@@ -813,18 +813,18 @@ mesmo diretório do seu código (verifique com <code>getwd()</code>).</p>
 feita através menu de “Import Dataset” na janela/panel “Environment”
 de Rstudio.
 Ou com linhas de código:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="garimpo-do-lourenço.html#cb99-1" tabindex="-1"></a>metricas_1985 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;metricas_lourenco_1985.xlsx&quot;</span>)</span>
-<span id="cb99-2"><a href="garimpo-do-lourenço.html#cb99-2" tabindex="-1"></a>metricas_1985</span>
-<span id="cb99-3"><a href="garimpo-do-lourenço.html#cb99-3" tabindex="-1"></a></span>
-<span id="cb99-4"><a href="garimpo-do-lourenço.html#cb99-4" tabindex="-1"></a><span class="co">#  layer level class id    metric     value</span></span>
-<span id="cb99-5"><a href="garimpo-do-lourenço.html#cb99-5" tabindex="-1"></a><span class="co">#   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;</span></span>
-<span id="cb99-6"><a href="garimpo-do-lourenço.html#cb99-6" tabindex="-1"></a><span class="co">#     1 class     3 NA    area_cv  529.   </span></span>
-<span id="cb99-7"><a href="garimpo-do-lourenço.html#cb99-7" tabindex="-1"></a><span class="co">#     1 class     4 NA    area_cv   22.3  </span></span>
-<span id="cb99-8"><a href="garimpo-do-lourenço.html#cb99-8" tabindex="-1"></a><span class="co">#     1 class    11 NA    area_cv   71.2  </span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="garimpo-do-lourenço.html#cb100-1" tabindex="-1"></a>metricas_1985 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;metricas_lourenco_1985.xlsx&quot;</span>)</span>
+<span id="cb100-2"><a href="garimpo-do-lourenço.html#cb100-2" tabindex="-1"></a>metricas_1985</span>
+<span id="cb100-3"><a href="garimpo-do-lourenço.html#cb100-3" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="garimpo-do-lourenço.html#cb100-4" tabindex="-1"></a><span class="co">#  layer level class id    metric     value</span></span>
+<span id="cb100-5"><a href="garimpo-do-lourenço.html#cb100-5" tabindex="-1"></a><span class="co">#   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;</span></span>
+<span id="cb100-6"><a href="garimpo-do-lourenço.html#cb100-6" tabindex="-1"></a><span class="co">#     1 class     3 NA    area_cv  529.   </span></span>
+<span id="cb100-7"><a href="garimpo-do-lourenço.html#cb100-7" tabindex="-1"></a><span class="co">#     1 class     4 NA    area_cv   22.3  </span></span>
+<span id="cb100-8"><a href="garimpo-do-lourenço.html#cb100-8" tabindex="-1"></a><span class="co">#     1 class    11 NA    area_cv   71.2  </span></span></code></pre></div>
 <p>Ou use o função <code>file.choose()</code>, que faz a busca
 para arquivos.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="garimpo-do-lourenço.html#cb100-1" tabindex="-1"></a>metricas_1985 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.choose</span>())</span>
-<span id="cb100-2"><a href="garimpo-do-lourenço.html#cb100-2" tabindex="-1"></a>metricas_1985</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="garimpo-do-lourenço.html#cb101-1" tabindex="-1"></a>metricas_1985 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb101-2"><a href="garimpo-do-lourenço.html#cb101-2" tabindex="-1"></a>metricas_1985</span></code></pre></div>
 <pre><code>## # A tibble: 182 × 6
 ##    layer level class id    metric     value
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -861,19 +861,19 @@ Com base em os estudos anteriores e os objetivos vamos incluir 8 métricas
 tabela de dados. Mantendo os dados originais,
 assim sendo para acresentar mais métricas nos resultados,
 preciso somente acrescentar mais no codigo.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="garimpo-do-lourenço.html#cb102-1" tabindex="-1"></a><span class="co"># Arquivo com os nomes das classes</span></span>
-<span id="cb102-2"><a href="garimpo-do-lourenço.html#cb102-2" tabindex="-1"></a>class_in <span class="ot">&lt;-</span> <span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">user</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Articles</span><span class="sc">\\</span><span class="st">gis_layers</span><span class="sc">\\</span><span class="st">gisdata</span><span class="sc">\\</span><span class="st">inst</span><span class="sc">\\</span><span class="st">raster</span><span class="sc">\\</span><span class="st">mapbiomas_cover_lourenco_utm</span><span class="sc">\\</span><span class="st">mapbiomas_6_legend.xlsx&quot;</span></span>
-<span id="cb102-3"><a href="garimpo-do-lourenço.html#cb102-3" tabindex="-1"></a>class_nomes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(class_in)</span>
-<span id="cb102-4"><a href="garimpo-do-lourenço.html#cb102-4" tabindex="-1"></a></span>
-<span id="cb102-5"><a href="garimpo-do-lourenço.html#cb102-5" tabindex="-1"></a><span class="co"># Especificar métricas desejados</span></span>
-<span id="cb102-6"><a href="garimpo-do-lourenço.html#cb102-6" tabindex="-1"></a>met_comp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pland&quot;</span>, <span class="st">&quot;lpi&quot;</span>, <span class="st">&quot;area_mn&quot;</span>, <span class="st">&quot;area_sd&quot;</span>)</span>
-<span id="cb102-7"><a href="garimpo-do-lourenço.html#cb102-7" tabindex="-1"></a>met_conf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ai&quot;</span>, <span class="st">&quot;cohesion&quot;</span>, <span class="st">&quot;np&quot;</span>, <span class="st">&quot;pd&quot;</span>)</span>
-<span id="cb102-8"><a href="garimpo-do-lourenço.html#cb102-8" tabindex="-1"></a>met_todos <span class="ot">&lt;-</span> <span class="fu">c</span>(met_comp, met_conf)</span>
-<span id="cb102-9"><a href="garimpo-do-lourenço.html#cb102-9" tabindex="-1"></a></span>
-<span id="cb102-10"><a href="garimpo-do-lourenço.html#cb102-10" tabindex="-1"></a><span class="co"># Escholer métricas desejados do conjunto completo</span></span>
-<span id="cb102-11"><a href="garimpo-do-lourenço.html#cb102-11" tabindex="-1"></a>metricas_1985 <span class="sc">%&gt;%</span> </span>
-<span id="cb102-12"><a href="garimpo-do-lourenço.html#cb102-12" tabindex="-1"></a><span class="fu">filter</span>(metric <span class="sc">%in%</span> met_todos) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-13"><a href="garimpo-do-lourenço.html#cb102-13" tabindex="-1"></a><span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>)) <span class="ot">-&gt;</span> metricas_nomes</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="garimpo-do-lourenço.html#cb103-1" tabindex="-1"></a><span class="co"># Arquivo com os nomes das classes</span></span>
+<span id="cb103-2"><a href="garimpo-do-lourenço.html#cb103-2" tabindex="-1"></a>class_in <span class="ot">&lt;-</span> <span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">user</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Articles</span><span class="sc">\\</span><span class="st">gis_layers</span><span class="sc">\\</span><span class="st">gisdata</span><span class="sc">\\</span><span class="st">inst</span><span class="sc">\\</span><span class="st">raster</span><span class="sc">\\</span><span class="st">mapbiomas_cover_lourenco_utm</span><span class="sc">\\</span><span class="st">mapbiomas_6_legend.xlsx&quot;</span></span>
+<span id="cb103-3"><a href="garimpo-do-lourenço.html#cb103-3" tabindex="-1"></a>class_nomes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(class_in)</span>
+<span id="cb103-4"><a href="garimpo-do-lourenço.html#cb103-4" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="garimpo-do-lourenço.html#cb103-5" tabindex="-1"></a><span class="co"># Especificar métricas desejados</span></span>
+<span id="cb103-6"><a href="garimpo-do-lourenço.html#cb103-6" tabindex="-1"></a>met_comp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pland&quot;</span>, <span class="st">&quot;lpi&quot;</span>, <span class="st">&quot;area_mn&quot;</span>, <span class="st">&quot;area_sd&quot;</span>)</span>
+<span id="cb103-7"><a href="garimpo-do-lourenço.html#cb103-7" tabindex="-1"></a>met_conf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ai&quot;</span>, <span class="st">&quot;cohesion&quot;</span>, <span class="st">&quot;np&quot;</span>, <span class="st">&quot;pd&quot;</span>)</span>
+<span id="cb103-8"><a href="garimpo-do-lourenço.html#cb103-8" tabindex="-1"></a>met_todos <span class="ot">&lt;-</span> <span class="fu">c</span>(met_comp, met_conf)</span>
+<span id="cb103-9"><a href="garimpo-do-lourenço.html#cb103-9" tabindex="-1"></a></span>
+<span id="cb103-10"><a href="garimpo-do-lourenço.html#cb103-10" tabindex="-1"></a><span class="co"># Escholer métricas desejados do conjunto completo</span></span>
+<span id="cb103-11"><a href="garimpo-do-lourenço.html#cb103-11" tabindex="-1"></a>metricas_1985 <span class="sc">%&gt;%</span> </span>
+<span id="cb103-12"><a href="garimpo-do-lourenço.html#cb103-12" tabindex="-1"></a><span class="fu">filter</span>(metric <span class="sc">%in%</span> met_todos) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-13"><a href="garimpo-do-lourenço.html#cb103-13" tabindex="-1"></a><span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>)) <span class="ot">-&gt;</span> metricas_nomes</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="uma-tabela-versatil" class="section level2 hasAnchor" number="4.7">
@@ -890,12 +890,12 @@ copiar-colar, filtro, tabela dinâmica).</p>
 <h2><span class="header-section-number">4.8</span> Reorganização<a href="garimpo-do-lourenço.html#reorganização" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Escolhendo as colunas desejadas (<code>select</code>), reorganizando para as
 métricas ficam nas colunas (<code>pivot_wider</code>) e colocando as colunas novas na sequência desejada (<code>select</code>).</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="garimpo-do-lourenço.html#cb103-1" tabindex="-1"></a>metricas_nomes <span class="sc">%&gt;%</span> </span>
-<span id="cb103-2"><a href="garimpo-do-lourenço.html#cb103-2" tabindex="-1"></a><span class="co"># Escholer métricas desejados do conjunto completo de métricas.</span></span>
-<span id="cb103-3"><a href="garimpo-do-lourenço.html#cb103-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(type_class, classe_descricao, hexadecimal_code, </span>
-<span id="cb103-4"><a href="garimpo-do-lourenço.html#cb103-4" tabindex="-1"></a>metric, value)) <span class="sc">%&gt;%</span> </span>
-<span id="cb103-5"><a href="garimpo-do-lourenço.html#cb103-5" tabindex="-1"></a><span class="co"># reorganizando</span></span>
-<span id="cb103-6"><a href="garimpo-do-lourenço.html#cb103-6" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> metric, <span class="at">values_from =</span> value) <span class="ot">-&gt;</span> metricas_tab</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="garimpo-do-lourenço.html#cb104-1" tabindex="-1"></a>metricas_nomes <span class="sc">%&gt;%</span> </span>
+<span id="cb104-2"><a href="garimpo-do-lourenço.html#cb104-2" tabindex="-1"></a><span class="co"># Escholer métricas desejados do conjunto completo de métricas.</span></span>
+<span id="cb104-3"><a href="garimpo-do-lourenço.html#cb104-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(type_class, classe_descricao, hexadecimal_code, </span>
+<span id="cb104-4"><a href="garimpo-do-lourenço.html#cb104-4" tabindex="-1"></a>metric, value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-5"><a href="garimpo-do-lourenço.html#cb104-5" tabindex="-1"></a><span class="co"># reorganizando</span></span>
+<span id="cb104-6"><a href="garimpo-do-lourenço.html#cb104-6" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> metric, <span class="at">values_from =</span> value) <span class="ot">-&gt;</span> metricas_tab</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="uma-figura-elegante" class="section level2 hasAnchor" number="4.9">
@@ -929,41 +929,41 @@ Informações Suplementares/Anexos/Apêndices.</p>
 <h3><span class="header-section-number">4.9.1</span> Gráfico de barra<a href="garimpo-do-lourenço.html#gráfico-de-barra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Primeiramente, vamos produzir uma gráfico de barra comparando a
 proporção que cada classe representa na paisagem.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="garimpo-do-lourenço.html#cb104-1" tabindex="-1"></a><span class="co"># Inclundo cores conforme legenda da Mapbiomas Coleção 6</span></span>
-<span id="cb104-2"><a href="garimpo-do-lourenço.html#cb104-2" tabindex="-1"></a><span class="co"># Legenda nomes ordem alfabetica</span></span>
-<span id="cb104-3"><a href="garimpo-do-lourenço.html#cb104-3" tabindex="-1"></a>classe_cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Campo Alagado e Área Pantanosa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#45C2A5&quot;</span>, </span>
-<span id="cb104-4"><a href="garimpo-do-lourenço.html#cb104-4" tabindex="-1"></a><span class="st">&quot;Formação Campestre&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B8AF4F&quot;</span>, </span>
-<span id="cb104-5"><a href="garimpo-do-lourenço.html#cb104-5" tabindex="-1"></a><span class="st">&quot;Formação Florestal&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>, </span>
-<span id="cb104-6"><a href="garimpo-do-lourenço.html#cb104-6" tabindex="-1"></a><span class="st">&quot;Formação Savânica&quot;</span> <span class="ot">=</span> <span class="st">&quot;#00ff00&quot;</span>, </span>
-<span id="cb104-7"><a href="garimpo-do-lourenço.html#cb104-7" tabindex="-1"></a><span class="st">&quot;Mineração&quot;</span> <span class="ot">=</span> <span class="st">&quot;#af2a2a&quot;</span>, </span>
-<span id="cb104-8"><a href="garimpo-do-lourenço.html#cb104-8" tabindex="-1"></a><span class="st">&quot;Pastagem&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFD966&quot;</span>, </span>
-<span id="cb104-9"><a href="garimpo-do-lourenço.html#cb104-9" tabindex="-1"></a><span class="st">&quot;Rio, Lago e Oceano&quot;</span> <span class="ot">=</span> <span class="st">&quot;#0000FF&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="garimpo-do-lourenço.html#cb105-1" tabindex="-1"></a><span class="co"># Inclundo cores conforme legenda da Mapbiomas Coleção 6</span></span>
+<span id="cb105-2"><a href="garimpo-do-lourenço.html#cb105-2" tabindex="-1"></a><span class="co"># Legenda nomes ordem alfabetica</span></span>
+<span id="cb105-3"><a href="garimpo-do-lourenço.html#cb105-3" tabindex="-1"></a>classe_cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Campo Alagado e Área Pantanosa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#45C2A5&quot;</span>, </span>
+<span id="cb105-4"><a href="garimpo-do-lourenço.html#cb105-4" tabindex="-1"></a><span class="st">&quot;Formação Campestre&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B8AF4F&quot;</span>, </span>
+<span id="cb105-5"><a href="garimpo-do-lourenço.html#cb105-5" tabindex="-1"></a><span class="st">&quot;Formação Florestal&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>, </span>
+<span id="cb105-6"><a href="garimpo-do-lourenço.html#cb105-6" tabindex="-1"></a><span class="st">&quot;Formação Savânica&quot;</span> <span class="ot">=</span> <span class="st">&quot;#00ff00&quot;</span>, </span>
+<span id="cb105-7"><a href="garimpo-do-lourenço.html#cb105-7" tabindex="-1"></a><span class="st">&quot;Mineração&quot;</span> <span class="ot">=</span> <span class="st">&quot;#af2a2a&quot;</span>, </span>
+<span id="cb105-8"><a href="garimpo-do-lourenço.html#cb105-8" tabindex="-1"></a><span class="st">&quot;Pastagem&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFD966&quot;</span>, </span>
+<span id="cb105-9"><a href="garimpo-do-lourenço.html#cb105-9" tabindex="-1"></a><span class="st">&quot;Rio, Lago e Oceano&quot;</span> <span class="ot">=</span> <span class="st">&quot;#0000FF&quot;</span>) </span></code></pre></div>
 <p>E agora o grafico…….</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="garimpo-do-lourenço.html#cb105-1" tabindex="-1"></a><span class="co"># Grafico de barra basica</span></span>
-<span id="cb105-2"><a href="garimpo-do-lourenço.html#cb105-2" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
-<span id="cb105-3"><a href="garimpo-do-lourenço.html#cb105-3" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">class_prop =</span> pland) <span class="sc">%&gt;%</span> </span>
-<span id="cb105-4"><a href="garimpo-do-lourenço.html#cb105-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> classe_descricao, <span class="at">y =</span> class_prop)) <span class="sc">+</span></span>
-<span id="cb105-5"><a href="garimpo-do-lourenço.html#cb105-5" tabindex="-1"></a><span class="fu">geom_col</span>()</span>
-<span id="cb105-6"><a href="garimpo-do-lourenço.html#cb105-6" tabindex="-1"></a></span>
-<span id="cb105-7"><a href="garimpo-do-lourenço.html#cb105-7" tabindex="-1"></a></span>
-<span id="cb105-8"><a href="garimpo-do-lourenço.html#cb105-8" tabindex="-1"></a><span class="co"># Agora com ajustes</span></span>
-<span id="cb105-9"><a href="garimpo-do-lourenço.html#cb105-9" tabindex="-1"></a><span class="co"># Agrupando por tipo (natural e antropico)</span></span>
-<span id="cb105-10"><a href="garimpo-do-lourenço.html#cb105-10" tabindex="-1"></a><span class="co"># Com cores conforme legenda da Mapbiomas Coleção 6</span></span>
-<span id="cb105-11"><a href="garimpo-do-lourenço.html#cb105-11" tabindex="-1"></a><span class="co"># Corrigindo texto dos eixos.</span></span>
-<span id="cb105-12"><a href="garimpo-do-lourenço.html#cb105-12" tabindex="-1"></a><span class="co"># Mudar posição da leganda para o texto com nomes longas encaixar.</span></span>
-<span id="cb105-13"><a href="garimpo-do-lourenço.html#cb105-13" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
-<span id="cb105-14"><a href="garimpo-do-lourenço.html#cb105-14" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">class_prop =</span> pland) <span class="sc">%&gt;%</span> </span>
-<span id="cb105-15"><a href="garimpo-do-lourenço.html#cb105-15" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type_class, <span class="at">y =</span> class_prop, </span>
-<span id="cb105-16"><a href="garimpo-do-lourenço.html#cb105-16" tabindex="-1"></a><span class="at">fill =</span> classe_descricao)) <span class="sc">+</span> </span>
-<span id="cb105-17"><a href="garimpo-do-lourenço.html#cb105-17" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
-<span id="cb105-18"><a href="garimpo-do-lourenço.html#cb105-18" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge2</span>(<span class="at">width =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb105-19"><a href="garimpo-do-lourenço.html#cb105-19" tabindex="-1"></a><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb105-20"><a href="garimpo-do-lourenço.html#cb105-20" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
-<span id="cb105-21"><a href="garimpo-do-lourenço.html#cb105-21" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985&quot;</span>,</span>
-<span id="cb105-22"><a href="garimpo-do-lourenço.html#cb105-22" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Proporção da paisagem (%)&quot;</span>, </span>
-<span id="cb105-23"><a href="garimpo-do-lourenço.html#cb105-23" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb105-24"><a href="garimpo-do-lourenço.html#cb105-24" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb105-25"><a href="garimpo-do-lourenço.html#cb105-25" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="garimpo-do-lourenço.html#cb106-1" tabindex="-1"></a><span class="co"># Grafico de barra basica</span></span>
+<span id="cb106-2"><a href="garimpo-do-lourenço.html#cb106-2" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
+<span id="cb106-3"><a href="garimpo-do-lourenço.html#cb106-3" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">class_prop =</span> pland) <span class="sc">%&gt;%</span> </span>
+<span id="cb106-4"><a href="garimpo-do-lourenço.html#cb106-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> classe_descricao, <span class="at">y =</span> class_prop)) <span class="sc">+</span></span>
+<span id="cb106-5"><a href="garimpo-do-lourenço.html#cb106-5" tabindex="-1"></a><span class="fu">geom_col</span>()</span>
+<span id="cb106-6"><a href="garimpo-do-lourenço.html#cb106-6" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="garimpo-do-lourenço.html#cb106-7" tabindex="-1"></a></span>
+<span id="cb106-8"><a href="garimpo-do-lourenço.html#cb106-8" tabindex="-1"></a><span class="co"># Agora com ajustes</span></span>
+<span id="cb106-9"><a href="garimpo-do-lourenço.html#cb106-9" tabindex="-1"></a><span class="co"># Agrupando por tipo (natural e antropico)</span></span>
+<span id="cb106-10"><a href="garimpo-do-lourenço.html#cb106-10" tabindex="-1"></a><span class="co"># Com cores conforme legenda da Mapbiomas Coleção 6</span></span>
+<span id="cb106-11"><a href="garimpo-do-lourenço.html#cb106-11" tabindex="-1"></a><span class="co"># Corrigindo texto dos eixos.</span></span>
+<span id="cb106-12"><a href="garimpo-do-lourenço.html#cb106-12" tabindex="-1"></a><span class="co"># Mudar posição da leganda para o texto com nomes longas encaixar.</span></span>
+<span id="cb106-13"><a href="garimpo-do-lourenço.html#cb106-13" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
+<span id="cb106-14"><a href="garimpo-do-lourenço.html#cb106-14" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">class_prop =</span> pland) <span class="sc">%&gt;%</span> </span>
+<span id="cb106-15"><a href="garimpo-do-lourenço.html#cb106-15" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type_class, <span class="at">y =</span> class_prop, </span>
+<span id="cb106-16"><a href="garimpo-do-lourenço.html#cb106-16" tabindex="-1"></a><span class="at">fill =</span> classe_descricao)) <span class="sc">+</span> </span>
+<span id="cb106-17"><a href="garimpo-do-lourenço.html#cb106-17" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
+<span id="cb106-18"><a href="garimpo-do-lourenço.html#cb106-18" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge2</span>(<span class="at">width =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb106-19"><a href="garimpo-do-lourenço.html#cb106-19" tabindex="-1"></a><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb106-20"><a href="garimpo-do-lourenço.html#cb106-20" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
+<span id="cb106-21"><a href="garimpo-do-lourenço.html#cb106-21" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985&quot;</span>,</span>
+<span id="cb106-22"><a href="garimpo-do-lourenço.html#cb106-22" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Proporção da paisagem (%)&quot;</span>, </span>
+<span id="cb106-23"><a href="garimpo-do-lourenço.html#cb106-23" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb106-24"><a href="garimpo-do-lourenço.html#cb106-24" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb106-25"><a href="garimpo-do-lourenço.html#cb106-25" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
 <p>Uma imagem vale mais que mil palavras:</p>
 <p><img src="figures/fig_cobertura.png" alt="cobertura" width="680" height="300"></p>
 <p>Mas existe uma separação grande na faixa de valores e ainda é
@@ -975,116 +975,116 @@ assim os valores ficarem mais proximos.</p>
 <div id="gráfico-de-boxplot" class="section level3 hasAnchor" number="4.9.2">
 <h3><span class="header-section-number">4.9.2</span> Gráfico de boxplot<a href="garimpo-do-lourenço.html#gráfico-de-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Agora com uma métrica de configuração:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="garimpo-do-lourenço.html#cb106-1" tabindex="-1"></a><span class="co"># Métrica de configuração: Densidade de manchas (coluna &quot;pd&quot;).</span></span>
-<span id="cb106-2"><a href="garimpo-do-lourenço.html#cb106-2" tabindex="-1"></a><span class="co"># Agrupando por tipo (natural e antrópico)</span></span>
-<span id="cb106-3"><a href="garimpo-do-lourenço.html#cb106-3" tabindex="-1"></a><span class="co"># Incluindo boxplot indicando tendência central (mediano)</span></span>
-<span id="cb106-4"><a href="garimpo-do-lourenço.html#cb106-4" tabindex="-1"></a><span class="co"># Com cores conforme legenda da Mapbiomas Coleção 6</span></span>
-<span id="cb106-5"><a href="garimpo-do-lourenço.html#cb106-5" tabindex="-1"></a><span class="co"># Tamanho dos pontos proporcional o numero de manchas</span></span>
-<span id="cb106-6"><a href="garimpo-do-lourenço.html#cb106-6" tabindex="-1"></a><span class="co"># Corrigindo texto dos eixos.</span></span>
-<span id="cb106-7"><a href="garimpo-do-lourenço.html#cb106-7" tabindex="-1"></a><span class="co"># Mudar posição da leganda para o texto com nomes longas encaixar.</span></span>
-<span id="cb106-8"><a href="garimpo-do-lourenço.html#cb106-8" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
-<span id="cb106-9"><a href="garimpo-do-lourenço.html#cb106-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type_class, <span class="at">y =</span> pd)) <span class="sc">+</span> </span>
-<span id="cb106-10"><a href="garimpo-do-lourenço.html#cb106-10" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span></span>
-<span id="cb106-11"><a href="garimpo-do-lourenço.html#cb106-11" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> np, <span class="at">colour =</span> classe_descricao)) <span class="sc">+</span> </span>
-<span id="cb106-12"><a href="garimpo-do-lourenço.html#cb106-12" tabindex="-1"></a><span class="fu">scale_color_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
-<span id="cb106-13"><a href="garimpo-do-lourenço.html#cb106-13" tabindex="-1"></a><span class="fu">scale_size</span>(<span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb106-14"><a href="garimpo-do-lourenço.html#cb106-14" tabindex="-1"></a><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb106-15"><a href="garimpo-do-lourenço.html#cb106-15" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
-<span id="cb106-16"><a href="garimpo-do-lourenço.html#cb106-16" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985&quot;</span>,</span>
-<span id="cb106-17"><a href="garimpo-do-lourenço.html#cb106-17" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Densidade de manchas (número por 100 hectares)&quot;</span>, </span>
-<span id="cb106-18"><a href="garimpo-do-lourenço.html#cb106-18" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb106-19"><a href="garimpo-do-lourenço.html#cb106-19" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb106-20"><a href="garimpo-do-lourenço.html#cb106-20" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">col =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="garimpo-do-lourenço.html#cb107-1" tabindex="-1"></a><span class="co"># Métrica de configuração: Densidade de manchas (coluna &quot;pd&quot;).</span></span>
+<span id="cb107-2"><a href="garimpo-do-lourenço.html#cb107-2" tabindex="-1"></a><span class="co"># Agrupando por tipo (natural e antrópico)</span></span>
+<span id="cb107-3"><a href="garimpo-do-lourenço.html#cb107-3" tabindex="-1"></a><span class="co"># Incluindo boxplot indicando tendência central (mediano)</span></span>
+<span id="cb107-4"><a href="garimpo-do-lourenço.html#cb107-4" tabindex="-1"></a><span class="co"># Com cores conforme legenda da Mapbiomas Coleção 6</span></span>
+<span id="cb107-5"><a href="garimpo-do-lourenço.html#cb107-5" tabindex="-1"></a><span class="co"># Tamanho dos pontos proporcional o numero de manchas</span></span>
+<span id="cb107-6"><a href="garimpo-do-lourenço.html#cb107-6" tabindex="-1"></a><span class="co"># Corrigindo texto dos eixos.</span></span>
+<span id="cb107-7"><a href="garimpo-do-lourenço.html#cb107-7" tabindex="-1"></a><span class="co"># Mudar posição da leganda para o texto com nomes longas encaixar.</span></span>
+<span id="cb107-8"><a href="garimpo-do-lourenço.html#cb107-8" tabindex="-1"></a>metricas_tab <span class="sc">%&gt;%</span> </span>
+<span id="cb107-9"><a href="garimpo-do-lourenço.html#cb107-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type_class, <span class="at">y =</span> pd)) <span class="sc">+</span> </span>
+<span id="cb107-10"><a href="garimpo-do-lourenço.html#cb107-10" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span></span>
+<span id="cb107-11"><a href="garimpo-do-lourenço.html#cb107-11" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> np, <span class="at">colour =</span> classe_descricao)) <span class="sc">+</span> </span>
+<span id="cb107-12"><a href="garimpo-do-lourenço.html#cb107-12" tabindex="-1"></a><span class="fu">scale_color_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
+<span id="cb107-13"><a href="garimpo-do-lourenço.html#cb107-13" tabindex="-1"></a><span class="fu">scale_size</span>(<span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb107-14"><a href="garimpo-do-lourenço.html#cb107-14" tabindex="-1"></a><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb107-15"><a href="garimpo-do-lourenço.html#cb107-15" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
+<span id="cb107-16"><a href="garimpo-do-lourenço.html#cb107-16" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985&quot;</span>,</span>
+<span id="cb107-17"><a href="garimpo-do-lourenço.html#cb107-17" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Densidade de manchas (número por 100 hectares)&quot;</span>, </span>
+<span id="cb107-18"><a href="garimpo-do-lourenço.html#cb107-18" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb107-19"><a href="garimpo-do-lourenço.html#cb107-19" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb107-20"><a href="garimpo-do-lourenço.html#cb107-20" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">col =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) </span></code></pre></div>
 <p><img src="epr_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 </div>
 </div>
 <div id="comparação-entre-anos" class="section level2 hasAnchor" number="4.10">
 <h2><span class="header-section-number">4.10</span> Comparação entre anos<a href="garimpo-do-lourenço.html#comparação-entre-anos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Calcular as métricas para 3 anos.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="garimpo-do-lourenço.html#cb107-1" tabindex="-1"></a><span class="co"># metricas desejados</span></span>
-<span id="cb107-2"><a href="garimpo-do-lourenço.html#cb107-2" tabindex="-1"></a>what_metricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;lsm_c_pland&quot;</span>, <span class="st">&quot;lsm_c_lpi&quot;</span>, <span class="st">&quot;lsm_c_area_mn&quot;</span>, <span class="st">&quot;lsm_c_area_sd&quot;</span>, </span>
-<span id="cb107-3"><a href="garimpo-do-lourenço.html#cb107-3" tabindex="-1"></a>                   <span class="st">&quot;lsm_c_ai&quot;</span>, <span class="st">&quot;lsm_c_cohesion&quot;</span>, <span class="st">&quot;lsm_c_np&quot;</span>, <span class="st">&quot;lsm_c_pd&quot;</span>)</span>
-<span id="cb107-4"><a href="garimpo-do-lourenço.html#cb107-4" tabindex="-1"></a><span class="co"># rodar</span></span>
-<span id="cb107-5"><a href="garimpo-do-lourenço.html#cb107-5" tabindex="-1"></a>metricas_anos <span class="ot">&lt;-</span> <span class="fu">sample_lsm</span>(<span class="at">landscape =</span> mapbiomas_85a20, </span>
-<span id="cb107-6"><a href="garimpo-do-lourenço.html#cb107-6" tabindex="-1"></a>                            <span class="at">y =</span> acesso_buffers,</span>
-<span id="cb107-7"><a href="garimpo-do-lourenço.html#cb107-7" tabindex="-1"></a>                           <span class="at">plot_id =</span> <span class="fu">data.frame</span>(acesso_buffers)[, <span class="st">&#39;raio_km&#39;</span>],</span>
-<span id="cb107-8"><a href="garimpo-do-lourenço.html#cb107-8" tabindex="-1"></a>                             <span class="at">what =</span> what_metricas, </span>
-<span id="cb107-9"><a href="garimpo-do-lourenço.html#cb107-9" tabindex="-1"></a>                           <span class="at">edge_depth =</span> <span class="dv">1</span>)</span>
-<span id="cb107-10"><a href="garimpo-do-lourenço.html#cb107-10" tabindex="-1"></a></span>
-<span id="cb107-11"><a href="garimpo-do-lourenço.html#cb107-11" tabindex="-1"></a><span class="co"># Organizar dados</span></span>
-<span id="cb107-12"><a href="garimpo-do-lourenço.html#cb107-12" tabindex="-1"></a><span class="co"># Dados rferentes os buffers</span></span>
-<span id="cb107-13"><a href="garimpo-do-lourenço.html#cb107-13" tabindex="-1"></a>resultados_anos <span class="ot">&lt;-</span> acesso_buffers <span class="sc">%&gt;%</span> </span>
-<span id="cb107-14"><a href="garimpo-do-lourenço.html#cb107-14" tabindex="-1"></a>  <span class="fu">left_join</span>(metricas_anos <span class="sc">%&gt;%</span></span>
-<span id="cb107-15"><a href="garimpo-do-lourenço.html#cb107-15" tabindex="-1"></a>              dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">round</span>(value,<span class="dv">2</span>), </span>
-<span id="cb107-16"><a href="garimpo-do-lourenço.html#cb107-16" tabindex="-1"></a>         <span class="at">ano =</span> <span class="fu">case_when</span>(layer<span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span><span class="dv">1985</span>, </span>
-<span id="cb107-17"><a href="garimpo-do-lourenço.html#cb107-17" tabindex="-1"></a>                         layer<span class="sc">==</span><span class="dv">2</span><span class="sc">~</span><span class="dv">2003</span>, </span>
-<span id="cb107-18"><a href="garimpo-do-lourenço.html#cb107-18" tabindex="-1"></a>                         layer<span class="sc">==</span><span class="dv">3</span><span class="sc">~</span><span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb107-19"><a href="garimpo-do-lourenço.html#cb107-19" tabindex="-1"></a>              dplyr<span class="sc">::</span><span class="fu">select</span>(ano, plot_id, class, metric, value), </span>
-<span id="cb107-20"><a href="garimpo-do-lourenço.html#cb107-20" tabindex="-1"></a>            <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;raio_km&quot;</span><span class="ot">=</span><span class="st">&quot;plot_id&quot;</span>))</span>
-<span id="cb107-21"><a href="garimpo-do-lourenço.html#cb107-21" tabindex="-1"></a><span class="co"># Dados referentes os classes</span></span>
-<span id="cb107-22"><a href="garimpo-do-lourenço.html#cb107-22" tabindex="-1"></a>resultados_anos <span class="ot">&lt;-</span> resultados_anos <span class="sc">%&gt;%</span></span>
-<span id="cb107-23"><a href="garimpo-do-lourenço.html#cb107-23" tabindex="-1"></a><span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="garimpo-do-lourenço.html#cb108-1" tabindex="-1"></a><span class="co"># metricas desejados</span></span>
+<span id="cb108-2"><a href="garimpo-do-lourenço.html#cb108-2" tabindex="-1"></a>what_metricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;lsm_c_pland&quot;</span>, <span class="st">&quot;lsm_c_lpi&quot;</span>, <span class="st">&quot;lsm_c_area_mn&quot;</span>, <span class="st">&quot;lsm_c_area_sd&quot;</span>, </span>
+<span id="cb108-3"><a href="garimpo-do-lourenço.html#cb108-3" tabindex="-1"></a>                   <span class="st">&quot;lsm_c_ai&quot;</span>, <span class="st">&quot;lsm_c_cohesion&quot;</span>, <span class="st">&quot;lsm_c_np&quot;</span>, <span class="st">&quot;lsm_c_pd&quot;</span>)</span>
+<span id="cb108-4"><a href="garimpo-do-lourenço.html#cb108-4" tabindex="-1"></a><span class="co"># rodar</span></span>
+<span id="cb108-5"><a href="garimpo-do-lourenço.html#cb108-5" tabindex="-1"></a>metricas_anos <span class="ot">&lt;-</span> <span class="fu">sample_lsm</span>(<span class="at">landscape =</span> mapbiomas_85a20, </span>
+<span id="cb108-6"><a href="garimpo-do-lourenço.html#cb108-6" tabindex="-1"></a>                            <span class="at">y =</span> acesso_buffers,</span>
+<span id="cb108-7"><a href="garimpo-do-lourenço.html#cb108-7" tabindex="-1"></a>                           <span class="at">plot_id =</span> <span class="fu">data.frame</span>(acesso_buffers)[, <span class="st">&#39;raio_km&#39;</span>],</span>
+<span id="cb108-8"><a href="garimpo-do-lourenço.html#cb108-8" tabindex="-1"></a>                             <span class="at">what =</span> what_metricas, </span>
+<span id="cb108-9"><a href="garimpo-do-lourenço.html#cb108-9" tabindex="-1"></a>                           <span class="at">edge_depth =</span> <span class="dv">1</span>)</span>
+<span id="cb108-10"><a href="garimpo-do-lourenço.html#cb108-10" tabindex="-1"></a></span>
+<span id="cb108-11"><a href="garimpo-do-lourenço.html#cb108-11" tabindex="-1"></a><span class="co"># Organizar dados</span></span>
+<span id="cb108-12"><a href="garimpo-do-lourenço.html#cb108-12" tabindex="-1"></a><span class="co"># Dados rferentes os buffers</span></span>
+<span id="cb108-13"><a href="garimpo-do-lourenço.html#cb108-13" tabindex="-1"></a>resultados_anos <span class="ot">&lt;-</span> acesso_buffers <span class="sc">%&gt;%</span> </span>
+<span id="cb108-14"><a href="garimpo-do-lourenço.html#cb108-14" tabindex="-1"></a>  <span class="fu">left_join</span>(metricas_anos <span class="sc">%&gt;%</span></span>
+<span id="cb108-15"><a href="garimpo-do-lourenço.html#cb108-15" tabindex="-1"></a>              dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">round</span>(value,<span class="dv">2</span>), </span>
+<span id="cb108-16"><a href="garimpo-do-lourenço.html#cb108-16" tabindex="-1"></a>         <span class="at">ano =</span> <span class="fu">case_when</span>(layer<span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span><span class="dv">1985</span>, </span>
+<span id="cb108-17"><a href="garimpo-do-lourenço.html#cb108-17" tabindex="-1"></a>                         layer<span class="sc">==</span><span class="dv">2</span><span class="sc">~</span><span class="dv">2003</span>, </span>
+<span id="cb108-18"><a href="garimpo-do-lourenço.html#cb108-18" tabindex="-1"></a>                         layer<span class="sc">==</span><span class="dv">3</span><span class="sc">~</span><span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb108-19"><a href="garimpo-do-lourenço.html#cb108-19" tabindex="-1"></a>              dplyr<span class="sc">::</span><span class="fu">select</span>(ano, plot_id, class, metric, value), </span>
+<span id="cb108-20"><a href="garimpo-do-lourenço.html#cb108-20" tabindex="-1"></a>            <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;raio_km&quot;</span><span class="ot">=</span><span class="st">&quot;plot_id&quot;</span>))</span>
+<span id="cb108-21"><a href="garimpo-do-lourenço.html#cb108-21" tabindex="-1"></a><span class="co"># Dados referentes os classes</span></span>
+<span id="cb108-22"><a href="garimpo-do-lourenço.html#cb108-22" tabindex="-1"></a>resultados_anos <span class="ot">&lt;-</span> resultados_anos <span class="sc">%&gt;%</span></span>
+<span id="cb108-23"><a href="garimpo-do-lourenço.html#cb108-23" tabindex="-1"></a><span class="fu">left_join</span>(class_nomes, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;class&quot;</span> <span class="ot">=</span> <span class="st">&quot;aid&quot;</span>))</span></code></pre></div>
 <p>Agora grafico de barra com varios anos</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="garimpo-do-lourenço.html#cb108-1" tabindex="-1"></a><span class="co"># It&#39;s recommended to use a named vector</span></span>
-<span id="cb108-2"><a href="garimpo-do-lourenço.html#cb108-2" tabindex="-1"></a><span class="co"># Legenda nomes ordem alfabetica</span></span>
-<span id="cb108-3"><a href="garimpo-do-lourenço.html#cb108-3" tabindex="-1"></a>classe_cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Campo Alagado e Área Pantanosa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#45C2A5&quot;</span>, </span>
-<span id="cb108-4"><a href="garimpo-do-lourenço.html#cb108-4" tabindex="-1"></a><span class="st">&quot;Formação Campestre&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B8AF4F&quot;</span>, </span>
-<span id="cb108-5"><a href="garimpo-do-lourenço.html#cb108-5" tabindex="-1"></a><span class="st">&quot;Formação Florestal&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>, </span>
-<span id="cb108-6"><a href="garimpo-do-lourenço.html#cb108-6" tabindex="-1"></a><span class="st">&quot;Formação Savânica&quot;</span> <span class="ot">=</span> <span class="st">&quot;#00ff00&quot;</span>, </span>
-<span id="cb108-7"><a href="garimpo-do-lourenço.html#cb108-7" tabindex="-1"></a><span class="st">&quot;Mineração&quot;</span> <span class="ot">=</span> <span class="st">&quot;#af2a2a&quot;</span>, </span>
-<span id="cb108-8"><a href="garimpo-do-lourenço.html#cb108-8" tabindex="-1"></a><span class="st">&quot;Pastagem&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFD966&quot;</span>, </span>
-<span id="cb108-9"><a href="garimpo-do-lourenço.html#cb108-9" tabindex="-1"></a><span class="st">&quot;Rio, Lago e Oceano&quot;</span> <span class="ot">=</span> <span class="st">&quot;#0000FF&quot;</span>,</span>
-<span id="cb108-10"><a href="garimpo-do-lourenço.html#cb108-10" tabindex="-1"></a><span class="st">&quot;Outras Lavouras Temporárias&quot;</span> <span class="ot">=</span> <span class="st">&quot;#e787f8&quot;</span>) </span>
-<span id="cb108-11"><a href="garimpo-do-lourenço.html#cb108-11" tabindex="-1"></a></span>
-<span id="cb108-12"><a href="garimpo-do-lourenço.html#cb108-12" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
-<span id="cb108-13"><a href="garimpo-do-lourenço.html#cb108-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb108-14"><a href="garimpo-do-lourenço.html#cb108-14" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pland&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb108-15"><a href="garimpo-do-lourenço.html#cb108-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ano, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
-<span id="cb108-16"><a href="garimpo-do-lourenço.html#cb108-16" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="fu">aes</span>(<span class="at">fill=</span>classe_descricao)) <span class="sc">+</span> </span>
-<span id="cb108-17"><a href="garimpo-do-lourenço.html#cb108-17" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
-<span id="cb108-18"><a href="garimpo-do-lourenço.html#cb108-18" tabindex="-1"></a>  <span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="garimpo-do-lourenço.html#cb109-1" tabindex="-1"></a><span class="co"># It&#39;s recommended to use a named vector</span></span>
+<span id="cb109-2"><a href="garimpo-do-lourenço.html#cb109-2" tabindex="-1"></a><span class="co"># Legenda nomes ordem alfabetica</span></span>
+<span id="cb109-3"><a href="garimpo-do-lourenço.html#cb109-3" tabindex="-1"></a>classe_cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Campo Alagado e Área Pantanosa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#45C2A5&quot;</span>, </span>
+<span id="cb109-4"><a href="garimpo-do-lourenço.html#cb109-4" tabindex="-1"></a><span class="st">&quot;Formação Campestre&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B8AF4F&quot;</span>, </span>
+<span id="cb109-5"><a href="garimpo-do-lourenço.html#cb109-5" tabindex="-1"></a><span class="st">&quot;Formação Florestal&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>, </span>
+<span id="cb109-6"><a href="garimpo-do-lourenço.html#cb109-6" tabindex="-1"></a><span class="st">&quot;Formação Savânica&quot;</span> <span class="ot">=</span> <span class="st">&quot;#00ff00&quot;</span>, </span>
+<span id="cb109-7"><a href="garimpo-do-lourenço.html#cb109-7" tabindex="-1"></a><span class="st">&quot;Mineração&quot;</span> <span class="ot">=</span> <span class="st">&quot;#af2a2a&quot;</span>, </span>
+<span id="cb109-8"><a href="garimpo-do-lourenço.html#cb109-8" tabindex="-1"></a><span class="st">&quot;Pastagem&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFD966&quot;</span>, </span>
+<span id="cb109-9"><a href="garimpo-do-lourenço.html#cb109-9" tabindex="-1"></a><span class="st">&quot;Rio, Lago e Oceano&quot;</span> <span class="ot">=</span> <span class="st">&quot;#0000FF&quot;</span>,</span>
+<span id="cb109-10"><a href="garimpo-do-lourenço.html#cb109-10" tabindex="-1"></a><span class="st">&quot;Outras Lavouras Temporárias&quot;</span> <span class="ot">=</span> <span class="st">&quot;#e787f8&quot;</span>) </span>
+<span id="cb109-11"><a href="garimpo-do-lourenço.html#cb109-11" tabindex="-1"></a></span>
+<span id="cb109-12"><a href="garimpo-do-lourenço.html#cb109-12" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
+<span id="cb109-13"><a href="garimpo-do-lourenço.html#cb109-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-14"><a href="garimpo-do-lourenço.html#cb109-14" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pland&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb109-15"><a href="garimpo-do-lourenço.html#cb109-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ano, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
+<span id="cb109-16"><a href="garimpo-do-lourenço.html#cb109-16" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="fu">aes</span>(<span class="at">fill=</span>classe_descricao)) <span class="sc">+</span> </span>
+<span id="cb109-17"><a href="garimpo-do-lourenço.html#cb109-17" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
+<span id="cb109-18"><a href="garimpo-do-lourenço.html#cb109-18" tabindex="-1"></a>  <span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class)</span></code></pre></div>
 <p><img src="epr_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>Agora com “pland” e densidade de manchas juntos.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="garimpo-do-lourenço.html#cb109-1" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
-<span id="cb109-2"><a href="garimpo-do-lourenço.html#cb109-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb109-3"><a href="garimpo-do-lourenço.html#cb109-3" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pland&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb109-4"><a href="garimpo-do-lourenço.html#cb109-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ano, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
-<span id="cb109-5"><a href="garimpo-do-lourenço.html#cb109-5" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="fu">aes</span>(<span class="at">fill=</span>classe_descricao)) <span class="sc">+</span> </span>
-<span id="cb109-6"><a href="garimpo-do-lourenço.html#cb109-6" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
-<span id="cb109-7"><a href="garimpo-do-lourenço.html#cb109-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)) <span class="sc">+</span> </span>
-<span id="cb109-8"><a href="garimpo-do-lourenço.html#cb109-8" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1985</span>,<span class="dv">2003</span>, <span class="dv">2020</span>)) <span class="sc">+</span></span>
-<span id="cb109-9"><a href="garimpo-do-lourenço.html#cb109-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class) <span class="sc">+</span> </span>
-<span id="cb109-10"><a href="garimpo-do-lourenço.html#cb109-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
-<span id="cb109-11"><a href="garimpo-do-lourenço.html#cb109-11" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985-2020&quot;</span>,</span>
-<span id="cb109-12"><a href="garimpo-do-lourenço.html#cb109-12" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Porcentagem da paisagem&quot;</span>, </span>
-<span id="cb109-13"><a href="garimpo-do-lourenço.html#cb109-13" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;Ano&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb109-14"><a href="garimpo-do-lourenço.html#cb109-14" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>, </span>
-<span id="cb109-15"><a href="garimpo-do-lourenço.html#cb109-15" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>), </span>
-<span id="cb109-16"><a href="garimpo-do-lourenço.html#cb109-16" tabindex="-1"></a>              <span class="at">legend.text  =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>),</span>
-<span id="cb109-17"><a href="garimpo-do-lourenço.html#cb109-17" tabindex="-1"></a>              <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb109-18"><a href="garimpo-do-lourenço.html#cb109-18" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) <span class="ot">-&gt;</span> fig_pland</span>
-<span id="cb109-19"><a href="garimpo-do-lourenço.html#cb109-19" tabindex="-1"></a></span>
-<span id="cb109-20"><a href="garimpo-do-lourenço.html#cb109-20" tabindex="-1"></a><span class="co"># Densidade de manchas</span></span>
-<span id="cb109-21"><a href="garimpo-do-lourenço.html#cb109-21" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
-<span id="cb109-22"><a href="garimpo-do-lourenço.html#cb109-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb109-23"><a href="garimpo-do-lourenço.html#cb109-23" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pd&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb109-24"><a href="garimpo-do-lourenço.html#cb109-24" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(ano), <span class="at">y =</span> value)) <span class="sc">+</span> </span>
-<span id="cb109-25"><a href="garimpo-do-lourenço.html#cb109-25" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb109-26"><a href="garimpo-do-lourenço.html#cb109-26" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> classe_descricao)) <span class="sc">+</span> </span>
-<span id="cb109-27"><a href="garimpo-do-lourenço.html#cb109-27" tabindex="-1"></a><span class="fu">scale_color_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
-<span id="cb109-28"><a href="garimpo-do-lourenço.html#cb109-28" tabindex="-1"></a><span class="fu">scale_size</span>(<span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb109-29"><a href="garimpo-do-lourenço.html#cb109-29" tabindex="-1"></a><span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class) <span class="sc">+</span></span>
-<span id="cb109-30"><a href="garimpo-do-lourenço.html#cb109-30" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
-<span id="cb109-31"><a href="garimpo-do-lourenço.html#cb109-31" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985-2020&quot;</span>,</span>
-<span id="cb109-32"><a href="garimpo-do-lourenço.html#cb109-32" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Densidade de manchas (número por 100 hectares)&quot;</span>, </span>
-<span id="cb109-33"><a href="garimpo-do-lourenço.html#cb109-33" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;Ano&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb109-34"><a href="garimpo-do-lourenço.html#cb109-34" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>, </span>
-<span id="cb109-35"><a href="garimpo-do-lourenço.html#cb109-35" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>), </span>
-<span id="cb109-36"><a href="garimpo-do-lourenço.html#cb109-36" tabindex="-1"></a>              <span class="at">legend.text  =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>),</span>
-<span id="cb109-37"><a href="garimpo-do-lourenço.html#cb109-37" tabindex="-1"></a>              <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb109-38"><a href="garimpo-do-lourenço.html#cb109-38" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) <span class="ot">-&gt;</span> fig_pd</span>
-<span id="cb109-39"><a href="garimpo-do-lourenço.html#cb109-39" tabindex="-1"></a></span>
-<span id="cb109-40"><a href="garimpo-do-lourenço.html#cb109-40" tabindex="-1"></a><span class="fu">grid.arrange</span>(fig_pland, fig_pd, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="garimpo-do-lourenço.html#cb110-1" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
+<span id="cb110-2"><a href="garimpo-do-lourenço.html#cb110-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-3"><a href="garimpo-do-lourenço.html#cb110-3" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pland&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb110-4"><a href="garimpo-do-lourenço.html#cb110-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ano, <span class="at">y=</span>value)) <span class="sc">+</span> </span>
+<span id="cb110-5"><a href="garimpo-do-lourenço.html#cb110-5" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="fu">aes</span>(<span class="at">fill=</span>classe_descricao)) <span class="sc">+</span> </span>
+<span id="cb110-6"><a href="garimpo-do-lourenço.html#cb110-6" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
+<span id="cb110-7"><a href="garimpo-do-lourenço.html#cb110-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)) <span class="sc">+</span> </span>
+<span id="cb110-8"><a href="garimpo-do-lourenço.html#cb110-8" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1985</span>,<span class="dv">2003</span>, <span class="dv">2020</span>)) <span class="sc">+</span></span>
+<span id="cb110-9"><a href="garimpo-do-lourenço.html#cb110-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class) <span class="sc">+</span> </span>
+<span id="cb110-10"><a href="garimpo-do-lourenço.html#cb110-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
+<span id="cb110-11"><a href="garimpo-do-lourenço.html#cb110-11" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985-2020&quot;</span>,</span>
+<span id="cb110-12"><a href="garimpo-do-lourenço.html#cb110-12" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Porcentagem da paisagem&quot;</span>, </span>
+<span id="cb110-13"><a href="garimpo-do-lourenço.html#cb110-13" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;Ano&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb110-14"><a href="garimpo-do-lourenço.html#cb110-14" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>, </span>
+<span id="cb110-15"><a href="garimpo-do-lourenço.html#cb110-15" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>), </span>
+<span id="cb110-16"><a href="garimpo-do-lourenço.html#cb110-16" tabindex="-1"></a>              <span class="at">legend.text  =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>),</span>
+<span id="cb110-17"><a href="garimpo-do-lourenço.html#cb110-17" tabindex="-1"></a>              <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb110-18"><a href="garimpo-do-lourenço.html#cb110-18" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) <span class="ot">-&gt;</span> fig_pland</span>
+<span id="cb110-19"><a href="garimpo-do-lourenço.html#cb110-19" tabindex="-1"></a></span>
+<span id="cb110-20"><a href="garimpo-do-lourenço.html#cb110-20" tabindex="-1"></a><span class="co"># Densidade de manchas</span></span>
+<span id="cb110-21"><a href="garimpo-do-lourenço.html#cb110-21" tabindex="-1"></a>resultados_anos <span class="sc">%&gt;%</span> </span>
+<span id="cb110-22"><a href="garimpo-do-lourenço.html#cb110-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rcor =</span> <span class="fu">paste</span>(<span class="st">&quot;#&quot;</span>, hexadecimal_code, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-23"><a href="garimpo-do-lourenço.html#cb110-23" tabindex="-1"></a>  <span class="fu">filter</span>(metric<span class="sc">==</span><span class="st">&quot;pd&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb110-24"><a href="garimpo-do-lourenço.html#cb110-24" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(ano), <span class="at">y =</span> value)) <span class="sc">+</span> </span>
+<span id="cb110-25"><a href="garimpo-do-lourenço.html#cb110-25" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb110-26"><a href="garimpo-do-lourenço.html#cb110-26" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> classe_descricao)) <span class="sc">+</span> </span>
+<span id="cb110-27"><a href="garimpo-do-lourenço.html#cb110-27" tabindex="-1"></a><span class="fu">scale_color_manual</span>(<span class="st">&quot;classe&quot;</span>, <span class="at">values =</span> classe_cores) <span class="sc">+</span></span>
+<span id="cb110-28"><a href="garimpo-do-lourenço.html#cb110-28" tabindex="-1"></a><span class="fu">scale_size</span>(<span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb110-29"><a href="garimpo-do-lourenço.html#cb110-29" tabindex="-1"></a><span class="fu">facet_grid</span>(raio_km<span class="sc">~</span>type_class) <span class="sc">+</span></span>
+<span id="cb110-30"><a href="garimpo-do-lourenço.html#cb110-30" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MapBiomas cobertura da terra&quot;</span>, </span>
+<span id="cb110-31"><a href="garimpo-do-lourenço.html#cb110-31" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">&quot;Entorno do Garimpo do Lorenço 1985-2020&quot;</span>,</span>
+<span id="cb110-32"><a href="garimpo-do-lourenço.html#cb110-32" tabindex="-1"></a><span class="at">y =</span> <span class="st">&quot;Densidade de manchas (número por 100 hectares)&quot;</span>, </span>
+<span id="cb110-33"><a href="garimpo-do-lourenço.html#cb110-33" tabindex="-1"></a><span class="at">x =</span> <span class="st">&quot;Ano&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb110-34"><a href="garimpo-do-lourenço.html#cb110-34" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>, </span>
+<span id="cb110-35"><a href="garimpo-do-lourenço.html#cb110-35" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>), </span>
+<span id="cb110-36"><a href="garimpo-do-lourenço.html#cb110-36" tabindex="-1"></a>              <span class="at">legend.text  =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">3</span>),</span>
+<span id="cb110-37"><a href="garimpo-do-lourenço.html#cb110-37" tabindex="-1"></a>              <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb110-38"><a href="garimpo-do-lourenço.html#cb110-38" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">4</span>)) <span class="ot">-&gt;</span> fig_pd</span>
+<span id="cb110-39"><a href="garimpo-do-lourenço.html#cb110-39" tabindex="-1"></a></span>
+<span id="cb110-40"><a href="garimpo-do-lourenço.html#cb110-40" tabindex="-1"></a><span class="fu">grid.arrange</span>(fig_pland, fig_pd, <span class="at">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <div style="page-break-after: always;"></div>
 </div>
