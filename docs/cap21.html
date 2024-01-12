@@ -1360,14 +1360,14 @@ Uma vez instalado um pacote, não há necessidade de instalá-lo novamente. Entr
 <pre><code>## Error in colsums(dune): could not find function &quot;colsums&quot;</code></pre>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="cap21.html#cb203-1" tabindex="-1"></a><span class="do">## Soma das colunas</span></span>
 <span id="cb203-2"><a href="cap21.html#cb203-2" tabindex="-1"></a><span class="fu">colSums</span>(dune)</span></code></pre></div>
-<pre><code>## Achimill Agrostol Airaprae Alopgeni Anthodor Bellpere Bromhord Chenalbu Cirsarve 
-##       16       48        5       36       21       13       15        1        2 
-## Comapalu Eleopalu Elymrepe Empenigr Hyporadi Juncarti Juncbufo Lolipere Planlanc 
-##        4       25       26        2        9       18       13       58       26 
-##  Poaprat  Poatriv Ranuflam Rumeacet Sagiproc Salirepe Scorautu Trifprat Trifrepe 
-##       48       63       14       18       20       11       54        9       47 
-## Vicilath Bracruta Callcusp 
-##        4       49       10</code></pre>
+<pre><code>## Achimill Agrostol Airaprae Alopgeni Anthodor Bellpere Bromhord Chenalbu 
+##       16       48        5       36       21       13       15        1 
+## Cirsarve Comapalu Eleopalu Elymrepe Empenigr Hyporadi Juncarti Juncbufo 
+##        2        4       25       26        2        9       18       13 
+## Lolipere Planlanc  Poaprat  Poatriv Ranuflam Rumeacet Sagiproc Salirepe 
+##       58       26       48       63       14       18       20       11 
+## Scorautu Trifprat Trifrepe Vicilath Bracruta Callcusp 
+##       54        9       47        4       49       10</code></pre>
 <p><strong>6. Atentar para o diretório correto</strong></p>
 <p>Muitas vezes o erro é simplesmente porque o usuário(a) não definiu o diretório correto onde está o arquivo a ser importado ou exportado. Por isso é fundamental sempre verificar se o diretório foi definido corretamente, geralmente usando as funções <code>dir()</code> ou <code>list.files()</code> para listar no console a lista de arquivos no diretório. Podemos ainda usar o argumento <code>pattern</code> para listar arquivos por um padrão textual.</p>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="cap21.html#cb205-1" tabindex="-1"></a><span class="do">## Listar os arquivos do diretório definido</span></span>
@@ -1395,11 +1395,11 @@ Uma vez instalado um pacote, não há necessidade de instalá-lo novamente. Entr
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="cap21.html#cb206-1" tabindex="-1"></a><span class="do">## Atributos</span></span>
 <span id="cb206-2"><a href="cap21.html#cb206-2" tabindex="-1"></a><span class="fu">attributes</span>(dune)</span></code></pre></div>
 <pre><code>## $names
-##  [1] &quot;Achimill&quot; &quot;Agrostol&quot; &quot;Airaprae&quot; &quot;Alopgeni&quot; &quot;Anthodor&quot; &quot;Bellpere&quot; &quot;Bromhord&quot;
-##  [8] &quot;Chenalbu&quot; &quot;Cirsarve&quot; &quot;Comapalu&quot; &quot;Eleopalu&quot; &quot;Elymrepe&quot; &quot;Empenigr&quot; &quot;Hyporadi&quot;
-## [15] &quot;Juncarti&quot; &quot;Juncbufo&quot; &quot;Lolipere&quot; &quot;Planlanc&quot; &quot;Poaprat&quot;  &quot;Poatriv&quot;  &quot;Ranuflam&quot;
-## [22] &quot;Rumeacet&quot; &quot;Sagiproc&quot; &quot;Salirepe&quot; &quot;Scorautu&quot; &quot;Trifprat&quot; &quot;Trifrepe&quot; &quot;Vicilath&quot;
-## [29] &quot;Bracruta&quot; &quot;Callcusp&quot;
+##  [1] &quot;Achimill&quot; &quot;Agrostol&quot; &quot;Airaprae&quot; &quot;Alopgeni&quot; &quot;Anthodor&quot; &quot;Bellpere&quot;
+##  [7] &quot;Bromhord&quot; &quot;Chenalbu&quot; &quot;Cirsarve&quot; &quot;Comapalu&quot; &quot;Eleopalu&quot; &quot;Elymrepe&quot;
+## [13] &quot;Empenigr&quot; &quot;Hyporadi&quot; &quot;Juncarti&quot; &quot;Juncbufo&quot; &quot;Lolipere&quot; &quot;Planlanc&quot;
+## [19] &quot;Poaprat&quot;  &quot;Poatriv&quot;  &quot;Ranuflam&quot; &quot;Rumeacet&quot; &quot;Sagiproc&quot; &quot;Salirepe&quot;
+## [25] &quot;Scorautu&quot; &quot;Trifprat&quot; &quot;Trifrepe&quot; &quot;Vicilath&quot; &quot;Bracruta&quot; &quot;Callcusp&quot;
 ## 
 ## $row.names
 ##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot; &quot;15&quot;
@@ -2343,14 +2343,14 @@ Matriz ou data frame transposto
 <span id="cb364-2"><a href="cap21.html#cb364-2" tabindex="-1"></a>pinguins_raw <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins_raw</span>
 <span id="cb364-3"><a href="cap21.html#cb364-3" tabindex="-1"></a><span class="fu">head</span>(pinguins_raw)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 17
-##   studyName `Sample Number` Species           Region Island Stage `Individual ID`
-##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
-## 1 PAL0708                 1 Adelie Penguin (… Anvers Torge… Adul… N1A1           
-## 2 PAL0708                 2 Adelie Penguin (… Anvers Torge… Adul… N1A2           
-## 3 PAL0708                 3 Adelie Penguin (… Anvers Torge… Adul… N2A1           
-## 4 PAL0708                 4 Adelie Penguin (… Anvers Torge… Adul… N2A2           
-## 5 PAL0708                 5 Adelie Penguin (… Anvers Torge… Adul… N3A1           
-## 6 PAL0708                 6 Adelie Penguin (… Anvers Torge… Adul… N3A2           
+##   studyName `Sample Number` Species          Region Island Stage `Individual ID`
+##   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
+## 1 PAL0708                 1 Adelie Penguin … Anvers Torge… Adul… N1A1           
+## 2 PAL0708                 2 Adelie Penguin … Anvers Torge… Adul… N1A2           
+## 3 PAL0708                 3 Adelie Penguin … Anvers Torge… Adul… N2A1           
+## 4 PAL0708                 4 Adelie Penguin … Anvers Torge… Adul… N2A2           
+## 5 PAL0708                 5 Adelie Penguin … Anvers Torge… Adul… N3A1           
+## 6 PAL0708                 6 Adelie Penguin … Anvers Torge… Adul… N3A2           
 ## # ℹ 10 more variables: `Clutch Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;,
 ## #   `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
 ## #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;,
@@ -2363,27 +2363,27 @@ Matriz ou data frame transposto
 <span id="cb366-2"><a href="cap21.html#cb366-2" tabindex="-1"></a><span class="do">## Primeiras linhas</span></span>
 <span id="cb366-3"><a href="cap21.html#cb366-3" tabindex="-1"></a><span class="fu">head</span>(pinguins)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex  
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt;
-## 1 Adelie  Torge…           39.1          18.7               181        3750 male 
-## 2 Adelie  Torge…           39.5          17.4               186        3800 fema…
-## 3 Adelie  Torge…           40.3          18                 195        3250 fema…
-## 4 Adelie  Torge…           NA            NA                  NA          NA &lt;NA&gt; 
-## 5 Adelie  Torge…           36.7          19.3               193        3450 fema…
-## 6 Adelie  Torge…           39.3          20.6               190        3650 male 
-## # ℹ 1 more variable: year &lt;int&gt;</code></pre>
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181        3750
+## 2 Adelie  Torgersen           39.5          17.4               186        3800
+## 3 Adelie  Torgersen           40.3          18                 195        3250
+## 4 Adelie  Torgersen           NA            NA                  NA          NA
+## 5 Adelie  Torgersen           36.7          19.3               193        3450
+## 6 Adelie  Torgersen           39.3          20.6               190        3650
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="cap21.html#cb368-1" tabindex="-1"></a><span class="do">## Últimas linhas</span></span>
 <span id="cb368-2"><a href="cap21.html#cb368-2" tabindex="-1"></a><span class="fu">tail</span>(pinguins)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
-##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex  
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt;
-## 1 Chinst… Dream            45.7          17                 195        3650 fema…
-## 2 Chinst… Dream            55.8          19.8               207        4000 male 
-## 3 Chinst… Dream            43.5          18.1               202        3400 fema…
-## 4 Chinst… Dream            49.6          18.2               193        3775 male 
-## 5 Chinst… Dream            50.8          19                 210        4100 male 
-## 6 Chinst… Dream            50.2          18.7               198        3775 fema…
-## # ℹ 1 more variable: year &lt;int&gt;</code></pre>
+##   species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1 Chinstrap Dream            45.7          17                 195        3650
+## 2 Chinstrap Dream            55.8          19.8               207        4000
+## 3 Chinstrap Dream            43.5          18.1               202        3400
+## 4 Chinstrap Dream            49.6          18.2               193        3775
+## 5 Chinstrap Dream            50.8          19                 210        4100
+## 6 Chinstrap Dream            50.2          18.7               198        3775
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="cap21.html#cb370-1" tabindex="-1"></a><span class="do">## Número de linhas e colunas</span></span>
 <span id="cb370-2"><a href="cap21.html#cb370-2" tabindex="-1"></a><span class="fu">nrow</span>(pinguins)</span></code></pre></div>
 <pre><code>## [1] 344</code></pre>

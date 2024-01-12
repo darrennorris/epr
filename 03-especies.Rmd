@@ -67,14 +67,14 @@ Estas definições destacam a natureza dinâmica e dependente do contexto da esc
 
 Existem mutias exemplos de uso onde a escala de efeito foi analisado como:
 
--   Ocorrência de espécies de aves:\
-    Estudos que investigam a relação entre a cobertura florestal e a diversidade de aves frequentemente encontram diferentes escalas de efeito para diferentes espécies. Por exemplo, alguns especialistas florestais podem apresentar a resposta mais forte num raio de 1 km de manchas florestais, enquanto os generalistas podem ser influenciados pela cobertura florestal em escalas maiores (por exemplo, 5 km).
+-   Ocorrência de espécies:\
+    Estudos que investigam a relação entre a cobertura florestal e a diversidade de aves frequentemente encontram diferentes escalas de efeito para diferentes espécies [@miguet2016determines]. Por exemplo, alguns especialistas florestais podem apresentar a resposta mais forte num raio de 1 km de manchas florestais, enquanto os generalistas podem ser influenciados pela cobertura florestal em escalas maiores (por exemplo, 5 km).
 
 -   Dispersão das sementes:\
     A distância percorrida pelas sementes antes da germinação pode variar dependendo do agente dispersor, variáveis de resposta e preditor de paisagens [@san2019scale]. Por exemplo, as sementes dispersas pelo vento podem ter efeitos em escalas maiores, enquanto as sementes dispersas pelas formigas podem ser limitadas a paisagens menores.
 
 -   Dinâmica metapopulacional:\
-    A persistência de populações pequenas e fragmentadas pode depender da conectividade de manchas de habitat adequadas dentro de uma determinada escala de paisagem. Compreender a escala do efeito da dispersão entre manchas é crucial para a concepção de estratégias de conservação eficazes.
+    A persistência de populações pequenas e fragmentadas pode depender da conectividade de manchas de habitat adequadas dentro de uma determinada escala de paisagem [@frey2012rel; @foster2016planning; @saade2023landscape]. Portanto, compreender a escala do efeito da dispersão e movimento entre manchas é crucial para a concepção de estratégias de conservação eficazes.
 
 ### Como identificar a escala de efeito?
 
@@ -155,11 +155,11 @@ Os dados entrevistas tem a localização de 106 propriedades rurais no Amapá [@
 Os dados carnivoros consistem em:
 
 -   Abundâncias e ausência-presença de três espécies de carnívoros simuladas no entorno de 106 propriedades rurais no Amapá, Brasil [@Michalski2020int]. A distribuição das espécies foi simulada usando o pacote [virtualspecies](https://github.com/Farewe/virtualspecies).\
--   Uma métrica de paisagem cpland foi calculada no entorno das propriedades seguindo a metodologia no capítulo \@ref(cap02) usando o pacote [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/).
+-   Uma métrica de paisagem [cpland](https://r-spatialecology.github.io/landscapemetrics/reference/lsm_c_cpland.html) foi calculada no entorno das propriedades seguindo a metodologia no capítulo \@ref(cap02) usando o pacote [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/).
 
 As três espécies têm respostas contrastantes à cobertura florestal. Os padrões de resposta seguem aqueles conhecidos para espécies de carnívoros [@MICHALSKI2005383; @MICHALSKI2007conbio].
 
-Os dados incluem valores de uma métrica de paisagem (cpland) calculada para uma única classe de cobertura do solo - cobertura florestal ([MapBiomas](https://brasil.mapbiomas.org/) Collection 8). A cobertura florestal foi reclassificada das classes originais e inclui formações florestais e savânicas. A métrica cpland é o percentual da área central da classe em relação à área total da paisagem. A métrica cpland foi calculada em torno de cada propriedade rural em buffers com raios de 0,125, 0,25, 0,5, 1, 2, 4, 8 e 16 km. Para reduzir a influência da qualidade da imagem de satélite, os valores foram calculados como medianas de três anos: o ano de estudo, o ano anterior e o ano posterior.
+Os dados incluem valores de uma métrica de paisagem (cpland) calculada para uma única classe de cobertura do solo - cobertura florestal ([MapBiomas](https://brasil.mapbiomas.org/) Collection 8). A cobertura florestal foi reclassificada das classes originais, e inclui formações florestais e savânicas. A métrica cpland é o percentual da área central da classe em relação à área total da paisagem. A métrica cpland foi calculada em torno de cada propriedade rural em buffers com raios de 0,125, 0,25, 0,5, 1, 2, 4, 8 e 16 km. Para reduzir a influência da qualidade da imagem de satélite, os valores foram calculados como medianas de três anos: o ano de estudo, o ano anterior e o ano posterior.
 
 ### O paisagem do estudo
 
@@ -292,7 +292,7 @@ $logit( E[Y_i | X_i]) = logit(p_i) = ln(\frac{p_i}{1 - p_i}) = \beta_0 + \beta_1
 
 A notação típica da regressão linear inclui:
 
--   $Y_i$ denota a variável de resposta (ou dependente) Y para cada linha $i$; na regressão logística isso é esta é uma variável binária
+-   $Y_i$ denota a variável de resposta (ou dependente) Y para cada linha $i$; na regressão logística esta é uma variável binária
 -   $X_{1i}$ denota a variável independente ($X_1$) para cada linha $i$
 -   $\beta_0$ beta zero denota a interceptação Y quando $X$ é zero; isso não é informativo para modelos de regressão logística
 -   $\beta_1$ beta denota a declive, isso é a mudança em $Y$ com uma mudança de 1 unidade em $X$
@@ -309,9 +309,9 @@ Todos os modelos estão errados, alguns são úteis (“All models are wrong, so
 
 Devemos ter cuidado durante o processo utilizado para construir modelos, assim, não somente para fornecer uma representação robusta e útil do mundo real, mas também para representar fielmente os erros/incertezas associadas. Cada escolha feita mudará a representação dos padrões espaciais e dos processos ecológicos. Portanto, para gerar evidências científicas robustas, todas as etapas devem ser descritas detalhadamente. Um modelo é uma simplificação ou aproximação da realidade e, portanto, não refletirá toda a realidade. Embora um modelo nunca possa ser “verdadeiro”, um modelo pode ser classificado de muito útil, a útil, a algo útil e, finalmente, essencialmente inútil [@burnham2002]. Uma avaliação de modelo completa incorpora vários critérios para garantir que sua regressão logística forneça insights confiáveis sobre seus dados ecológicos.
 
-Neste exemplo, analisamos a ocorrência da espécie "sppD" em relação à cobertura florestal. Antes de construir e executar os modelos, é importante executar uma análise exploratória de dados. Aqui usamos boxplots para uma análise exploratória preliminar. Existem muitos tipos de análise exploratória de dados, que variam dependendo dos dados e do tipo de modelo. No caso de modelos de regressão logística, para as variáveis independentes contínuas como proporção de floresta ( `r kableExtra::text_spec("value_median", background = "#dedede")` ), podemos tentar gráficos de caixa (boxplots) de cada variável independente no exio "y" com a variável dependente (presença-ausencia) tratada como um fator de agrupamento no eixo "x".
+Neste exemplo, analisamos a ocorrência da espécie "sppD" em relação à cobertura florestal. Antes de construir e executar os modelos, é importante executar uma análise exploratória de dados. Aqui usamos boxplots para uma análise exploratória preliminar. Existem muitos tipos de análise exploratória de dados, que variam dependendo dos dados e do tipo de modelo. No caso de modelos de regressão logística, para as variáveis independentes contínuas como proporção de floresta ( `r kableExtra::text_spec("value_median", background = "#dedede")` ), podemos tentar gráficos de caixa ([boxplots](https://www.data-to-viz.com/caveat/boxplot.html)) de cada variável independente no exio "y" com a variável dependente (presença-ausencia) tratada como um fator de agrupamento no eixo "x".
 
-Os boxplots mostram que, onde a espécie está presente, a cobertura florestal é, em média, mais elevada do que onde a espécie está ausente. No entanto, há uma variação substancial na cobertura florestal nos locais onde a espécie está ausente. Essa variação sugere que, embora a cobertura florestal seja um fator importante que influencia a ocorrência da espécie, outros fatores também podem desempenhar um papel. Por exemplo, a espécie pode estar sujeita a outros fatores de pressão, que podem incluir a caça, limitação de recursos (comida, abrigo, etc.) e/ou a competição com outras espécies.
+O boxplot mostra a tendência central e a variabilidade dos dados, mais sobre boxplot no capítlo de visualização \@ref(#cap23). Aqui, os boxplots mostram que, onde a espécie está presente, a cobertura florestal é, em média (mediana), mais elevada do que onde a espécie está ausente. No entanto, há uma variação substancial na cobertura florestal nos locais onde a espécie está ausente. Essa variação sugere que, embora a cobertura florestal seja um fator importante que influencia a ocorrência da espécie, outros fatores também podem desempenhar um papel. Por exemplo, a espécie pode estar sujeita a outros fatores de pressão, que podem incluir a caça, limitação de recursos (comida, abrigo, etc.) e/ou a competição com outras espécies.
 
 ```{r fig-sppD, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="Gráfico para explorar as relações entre as variáveis. Boxplot comparando área central de floresta entre a presença-ausença de uma espécie em escalas diferentes (distâncias de 0.125 a 4 km)."}
 
@@ -481,7 +481,7 @@ Ajustamos modelos de regressão logística aos dados, usando a cobertura florest
 
 Esperaríamos que a escala que melhor se ajustasse aos dados fosse a que apresentasse os maiores valores de log-verossimilhança, desvio explicado e valor de AIC mais baixo. Nesse caso, descobrimos que a cobertura florestal dentro de 1 km é a que melhor se ajusta aos dados.
 
-```{r, fig-sppd-scale, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="a fazer"}
+```{r, fig-sppd-scale, echo = FALSE, warning=FALSE, message=FALSE, out.width = "80%", out.height = "80%", fig.cap="Escala do efeito da cobertura florestal na ocorrência do sppD, com base em uma análise de buffer. A probabilidade de ocorrência foi modelada como uma função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Escala do efeito identificada usando três medidas de ajuste do modelo (i) Critério de informação de Akaike (AIC). Um AIC mais baixo sugere um modelo mais útil. (ii) a proporção de desvio explicado para os modelos. Um maior desvio explicado sugere um melhor ajuste do modelo aos dados. (iii)  A verossimilhança logarítmica (logLik) para modelos de regressão logística. Uma log-verossimilhança mais alta sugere um melhor ajuste do modelo aos dados. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
 
 modelos_sppD |> 
   tidyr::unnest(glanced) |> 
@@ -511,7 +511,7 @@ Vimos nos gráficos comparando a resposta de presença-ausença de sppD em escal
 
 Para identificar se ha diferenças na relação entre a ocorrência de espécie sppD e a cobertura florestal, plotamos os valores estimados (coluna "estimate") para a variavel independente (value_median). Inclumos intervalos de confiança de diferentes modelos de regressão logística ajustados aos dados em função da cobertura florestal calculada em diferentes escalas, variando de 0.125 m a 16 km. Ao representar graficamente os termos beta em diferentes escalas, descobrimos que São todos significativamente positivos (os intervalos de confiança não se sobrepõem a zero). A força da relação com a floresta dobra entre 0,125 e 1 km, mas depois diminui. Mas há uma grande sobreposição nos intervalos de confiança. Esta incerteza é esperada porque sabemos que os modelos explicam 30 por cento ou menos do desvio global.
 
-```{r fig-sppd-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="As estimativas do parâmetro para o efeito da cobertura florestal (termo beta) na probabilidade de ocorrência de sppD usando buffers de diferentes tamanhos."}
+```{r fig-sppd-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="As estimativas do parâmetro para o efeito da cobertura florestal (termo beta) na probabilidade de ocorrência de sppD usando buffers de diferentes tamanhos. A probabilidade de ocorrência foi modelada em função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Os pontos são as estimativas médias com linhas verticais mostrando intervalos de confiança de 95%. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
 modelos_sppD |> 
   tidyr::unnest(glanced) |> 
   dplyr::mutate(dev_exp = (null.deviance - deviance)/null.deviance
@@ -579,9 +579,9 @@ eprdados::carnivoros |>
   theme(legend.position='top') + 
   scale_y_continuous(breaks = c(0, 50, 100)) +
   labs(x = "ocorrência", 
-       y = "Área central de floresta\n(porcentagem da paisagem)") -> fig_carnivoros_box
+       y = "Área central de floresta (porcentagem da paisagem)") -> fig_carnivoros_box
 
-png("figures/fig_carnivoros_box.png", width=7, height=7, 
+png("figures/fig_carnivoros_box.png", width=7, height=6, 
     units="in", res = 600)
 fig_carnivoros_box
 invisible(dev.off())
@@ -608,7 +608,7 @@ carnivoros |>
   labs(x = "Área central de floresta (porcentagem da paisagem)") -> fig_spp
 
 
-png("figures/fig_spp.png", width=7, height=7, 
+png("figures/fig_spp.png", width=7, height=6, 
     units="in", res = 600)
 fig_spp
 invisible(dev.off())
@@ -631,7 +631,7 @@ carnivoros|>
   ) -> modelos_carnivoros
 ```
 
-```{r fig-carnivoros-scale, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="a fazer"}
+```{r fig-carnivoros-scale, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="Escala do efeito da cobertura florestal na ocorrência de três espécies de carnívoros, com base em uma análise de buffer. A probabilidade de ocorrência foi modelada como uma função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Escala do efeito identificada usando três medidas de ajuste do modelo (i) Critério de informação de Akaike (AIC). Um AIC mais baixo sugere um modelo mais útil. (ii) a proporção de desvio explicado para os modelos. Um maior desvio explicado sugere um melhor ajuste do modelo aos dados. (iii)  A verossimilhança logarítmica (logLik) para modelos de regressão logística. Uma log-verossimilhança mais alta sugere um melhor ajuste do modelo aos dados. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
 
 # Holds values for plotting "best scale" for each facet.
 best_models <- modelos_carnivoros |> 
@@ -679,7 +679,7 @@ knitr::include_graphics("figures/figg_carnivoros_logLikAIC.png")
 
 Para identificar se ha diferenças na relação entre a ocorrência de espécies e a cobertura florestal, plotamos os valores estimados (coluna "estimate") para a variavel independente (value_median). Inclumos intervalos de confiança de diferentes modelos de regressão logística ajustados aos dados em função da cobertura florestal calculada em diferentes escalas, variando de 0.125 m a 16 km:
 
-```{r fig-carnivoros-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "80%", out.height = "80%", fig.cap="Estimativas para o efeito da cobertura florestal (termo beta) na ocorrência de três espécies usando buffers de diferentes tamanhos."}
+```{r fig-carnivoros-scale-est, echo = FALSE, warning=FALSE, message=FALSE, out.width = "80%", out.height = "80%", fig.cap="Estimativas para o efeito da cobertura florestal (termo beta) na ocorrência de três espécies usando buffers de diferentes tamanhos. As estimativas do parâmetro para o efeito da cobertura florestal (termo beta) na probabilidade de ocorrência de sppD usando buffers de diferentes tamanhos. A probabilidade de ocorrência foi modelada em função da porcentagem de floresta, calculada em diferentes escalas usando um buffer circular em torno de pontos (0,125–16 km). Os pontos são as estimativas médias com linhas verticais mostrando intervalos de confiança de 95%. A linha azul vertical tracejada mostra a melhor escala para cada medida de ajuste do modelo."}
 
 modelos_carnivoros |> 
   tidyr::unnest(tidied) |> 
