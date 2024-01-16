@@ -666,6 +666,8 @@ tmap_arrange(fig_250m, fig_500m, fig_1000m, fig_2000m, fig_4000m, nrow=1)
 
 ------------------------------------------------------------------------
 
+Essa foi a última pergunta.
+
 [Soluções dos exercícios:](https://darrennorris.github.io/eprsol/solutions01_escala.html) https://darrennorris.github.io/eprsol/solutions01_escala.html
 
 ## Próximos passos: repetindo para muitas amostras.

@@ -731,6 +731,8 @@ knitr::include_graphics("figures/fig_carnivoros_est.png")
 
 Essa foi a última pergunta. O que se segue é um exemplo que mostra uma abordagem alternativa.
 
+[Soluções dos exercícios:](https://darrennorris.github.io/eprsol/solutions03_especies.html) https://darrennorris.github.io/eprsol/solutions03_especies.html
+
 \newpage
 
 ## Kernels
