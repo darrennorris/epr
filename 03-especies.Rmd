@@ -37,6 +37,9 @@ Recomenda-se que você leia os capítulos anteriores antes de iniciar este. Para
 -   Michalski, F., & Peres, C. A. (2005).\
     Anthropogenic determinants of primate and carnivore local extinctions in a fragmented forest landscape of southern Amazonia. Biological Conservation, 124(3), 383-396. <https://doi.org/10.1016/j.biocon.2005.01.045>
 
+-   Regolin, et. al. (2017).    
+Forest cover influences occurrence of mammalian carnivores within Brazilian Atlantic Forest. Journal of Mammalogy, 98(6), 1721-1731. <https://doi.org/10.1093/jmammal/gyx103>
+
 Cópias dos artigos estão no Google Classroom e também podem ser baixadas [aqui](https://drive.google.com/drive/folders/13Bv_k4-fZiCNo-RlDfKDOT3qW-gJdJ6M?usp=sharing): <https://drive.google.com/drive/folders/13Bv_k4-fZiCNo-RlDfKDOT3qW-gJdJ6M?usp=sharing>
 
 Para quem está começando com o R, este capítulo pode ser desafiador. Ele requer um entendimento de conceitos como modelagem, estruturas de dados e iteração. Se você não tiver esse conhecimento, não se preocupe em entender completamente o código de R. Em vez disso, concentre-se nos resultados apresentados, que mostram como as escalas características e as escalas de efeito podem ser aplicadas na Ecologia da Paisagem.
@@ -146,7 +149,7 @@ str(carnivoros)
 
 #### Pergunta 1
 
-`r kableExtra::text_spec(enc2utf8('Verificar os dados entrevistas e carnivoros, usando funções "class()"; "str()" e ajudar "?". Descreva o conteúdo e compare as diferenças nesses dois conjuntos de dados. '), color = "blue", bold = TRUE)`
+`r kableExtra::text_spec('Verificar os dados entrevistas e carnivoros, usando funções "class()"; "str()" e ajudar "?". Descreva o conteúdo e compare as diferenças nesses dois conjuntos de dados. ', color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
@@ -157,7 +160,7 @@ Os dados carnivoros consistem em:
 -   Abundâncias e ausência-presença de três espécies de carnívoros simuladas no entorno de 106 propriedades rurais no Amapá, Brasil [@Michalski2020int]. A distribuição das espécies foi simulada usando o pacote [virtualspecies](https://github.com/Farewe/virtualspecies).\
 -   Uma métrica de paisagem [cpland](https://r-spatialecology.github.io/landscapemetrics/reference/lsm_c_cpland.html) foi calculada no entorno das propriedades seguindo a metodologia no capítulo \@ref(cap02) usando o pacote [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/).
 
-As três espécies têm respostas contrastantes à cobertura florestal. Os padrões de resposta seguem aqueles conhecidos para espécies de carnívoros [@MICHALSKI2005383; @MICHALSKI2007conbio].
+As três espécies têm respostas contrastantes à cobertura florestal. Os padrões de resposta seguem aqueles conhecidos para espécies de carnívoros [@MICHALSKI2005383; @MICHALSKI2007conbio; @regolin2017forest].
 
 Os dados incluem valores de uma métrica de paisagem (cpland) calculada para uma única classe de cobertura do solo - cobertura florestal ([MapBiomas](https://brasil.mapbiomas.org/) Collection 8). A cobertura florestal foi reclassificada das classes originais, e inclui formações florestais e savânicas. A métrica cpland é o percentual da área central da classe em relação à área total da paisagem. A métrica cpland foi calculada em torno de cada propriedade rural em buffers com raios de 0,125, 0,25, 0,5, 1, 2, 4, 8 e 16 km. Para reduzir a influência da qualidade da imagem de satélite, os valores foram calculados como medianas de três anos: o ano de estudo, o ano anterior e o ano posterior.
 
@@ -355,13 +358,13 @@ A previsão da ausência de espécies na ecologia apresenta vários desafios que
 
 #### Pergunta 3
 
-`r kableExtra::text_spec(enc2utf8('Identifique a espécie "sppD". Com base nos resultados dos boxplots e os artigos (Michalski & Peres 2005; Michalski & Peres 2007), sugerem três espécies de carnívoros que poderiam apresentar os mesmos padrões do sppD? Que informações/resultados adicionais o ajudariam a identificar a espécie sppD com maior certeza? Justifique suas escolhas de forma clara e concisa.'), color = "blue", bold = TRUE)`
+`r kableExtra::text_spec(enc2utf8('Identifique a espécie "sppD". Com base nos resultados dos boxplots e os artigos (Michalski & Peres 2005; Michalski & Peres 2007; Regolin et. al. 2017), sugerem três espécies de carnívoros que poderiam apresentar os mesmos padrões do sppD? Que informações/resultados adicionais o ajudariam a identificar a espécie sppD com maior certeza? Justifique suas escolhas de forma clara e concisa.'), color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
 Os boxplots são úteis para análises exploratórias, mas não fornecem muitas informações para a compreensão da escala do efeito. 
 
-Agora plotamos os dados, ajustando uma regressão logística para obter uma representação visual. É útil executar isso (representação visual) antes de executar os modelos, para que tenhamos uma ideia dos padrões que existem nos dados.
+Agora plotamos os dados, ajustando uma regressão logística para obter uma representação visual. É útil executar isso (representação visual) antes de executar os modelos, para que tenhamos uma ideia dos padrões que existem nos dados. Como no capítulo anterior usamos a função `stat_smooth()` para sobrepõe uma curva da regressão logística ajustada aos dados.
 
 Os graficos mostrarm a mesma padrao que os boxplots, mas com informações adicionais. Como vimos nos boxplots a probabilidade de ocorrência aumenta com a cobertura florestal. Agora podemos ver mais claramente como a forma e a força da relação com a cobertura florestal mudam em diferentes escalas. Por exemplo, observe as diferenças dos valores da cobertura florestal com 50% de probabilidade (linhas horizontais tracejadas).
 
@@ -562,7 +565,7 @@ Há evidências consistentes de que a ocorrência de sppD aumenta com a cobertur
 
 #### Pergunta 4
 
-`r kableExtra::text_spec(enc2utf8('O que sabemos sobre a espécie "sppD"?. Com base nos resultados obtidos: boxplots, graficos com a relação entre occorencia e proporção de floresta, resultados sobre escala do efeito e os artigos (Michalski & Peres 2005; Michalski & Peres 2007), forneça uma caracterização da espécie (por exemplo, especialista/generalista). Justifique a sua caracterização e interpretações com resultados específicos, destacando os resultados com maior relevância. Que informações/resultados adicionais o ajudariam a caracterizar a espécie sppD com maior certeza? Justifique suas escolhas de forma clara e concisa.'), color = "blue", bold = TRUE)`
+`r kableExtra::text_spec(enc2utf8('O que sabemos sobre a espécie "sppD"? Com base nos resultados obtidos: boxplots, graficos com a relação entre occorencia e proporção de floresta, resultados sobre escala do efeito e os artigos (Michalski & Peres 2005; Michalski & Peres 2007; Regolin et. al. 2017), forneça uma caracterização da espécie (por exemplo, especialista/generalista/sensível/resiliente). Justifique a sua caracterização e interpretações com resultados específicos, destacando os resultados com maior relevância. Que informações/resultados adicionais o ajudariam a caracterizar a espécie sppD com maior certeza? Justifique suas escolhas de forma clara e concisa.'), color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 
@@ -593,7 +596,7 @@ knitr::include_graphics("figures/fig_carnivoros_box.png")
 
 ```
 
-Agora plotamos os dados, ajustando uma regressão logística para obter uma representação visual. É útil executar isso (representação visual) antes de executar os modelos, para que tenhamos uma ideia dos padrões que existem nos dados.
+Agora plotamos os dados, ajustando uma regressão logística para obter uma representação visual. É útil executar isso (representação visual) antes de executar os modelos, para que tenhamos uma ideia dos padrões que existem nos dados. Como no capítulo anterior usamos a função `stat_smooth()` para sobrepõe uma curva da regressão logística ajustada aos dados.
 
 ```{r fig-species-logistic, echo = FALSE, warning=FALSE, message=FALSE, out.width = "90%", out.height = "90%", fig.cap="Gráfico para explorar as relações entre as variáveis. Comparando a resposta de presença-ausença de três espécies de carnívoros em escalas diferentes (distâncias de 0.125 a 16 km). Pontos mostram presença-ausência da espécie em 106 propriedades rurais. A linha azul é o ajuste de uma regressão logística. A linha horizontal tracejada é a probabilidade de ocorrência de 50%."}
 
@@ -716,7 +719,7 @@ knitr::include_graphics("figures/fig_carnivoros_est.png")
 
 #### Pergunta 5
 
-`r kableExtra::text_spec('O que sabemos sobre as três espécies de carnívoros? Com base nos resultados obtidos: boxplots, graficos com a relação entre occorencia e proporção de floresta, resultados sobre escala do efeito e os artigos (Michalski & Peres 2005; Michalski & Peres 2007), forneça uma identificação e caracterização de cada espécie (por exemplo, especialista/generalista/sensível/resiliente). Justifique a sua identificação, caracterização e interpretações com resultados específicos, destacando os resultados com maior relevância. Que informações/resultados adicionais o ajudariam a caracterizar as espécies com maior certeza? Justifique suas escolhas de forma clara e concisa.', color = "blue", bold = TRUE)`
+`r kableExtra::text_spec('O que sabemos sobre as três espécies de carnívoros? Com base nos resultados obtidos: boxplots, graficos com a relação entre occorencia e proporção de floresta, resultados sobre escala do efeito e os artigos (Michalski & Peres 2005; Michalski & Peres 2007; Regolin et. al. 2017), forneça uma identificação (nome científico e nome comum) e caracterização de cada espécie (por exemplo, especialista/generalista/sensível/resiliente). Justifique a sua identificação, caracterização e interpretações com resultados específicos, destacando os resultados com maior relevância. Que informações/resultados adicionais o ajudariam a caracterizar as espécies com maior certeza? Justifique suas escolhas de forma clara e concisa.', color = "blue", bold = TRUE)`
 
 ------------------------------------------------------------------------
 

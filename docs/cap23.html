@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -1432,16 +1426,16 @@ Figura 8.52: Gráfico de dispersão relacionando as variáveis <code>x</code> e 
 <span id="cb756-7"><a href="cap23.html#cb756-7" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## plot: [1, 1] [==&gt;----------------------------------------------] 6% est: 0s
 ## plot: [1, 2] [=====&gt;-------------------------------------------] 12% est: 1s
-## plot: [1, 3] [========&gt;----------------------------------------] 19% est: 2s
-## plot: [1, 4] [===========&gt;-------------------------------------] 25% est: 2s
-## plot: [2, 1] [==============&gt;----------------------------------] 31% est: 2s
+## plot: [1, 3] [========&gt;----------------------------------------] 19% est: 1s
+## plot: [1, 4] [===========&gt;-------------------------------------] 25% est: 1s
+## plot: [2, 1] [==============&gt;----------------------------------] 31% est: 1s
 ## plot: [2, 2] [=================&gt;-------------------------------] 38% est: 1s
 ## plot: [2, 3] [====================&gt;----------------------------] 44% est: 1s
 ## plot: [2, 4] [=======================&gt;-------------------------] 50% est: 1s
 ## plot: [3, 1] [===========================&gt;---------------------] 56% est: 1s
 ## plot: [3, 2] [==============================&gt;------------------] 62% est: 1s
 ## plot: [3, 3] [=================================&gt;---------------] 69% est: 1s
-## plot: [3, 4] [====================================&gt;------------] 75% est: 1s
+## plot: [3, 4] [====================================&gt;------------] 75% est: 0s
 ## plot: [4, 1] [=======================================&gt;---------] 81% est: 0s
 ## plot: [4, 2] [==========================================&gt;------] 88% est: 0s
 ## plot: [4, 3] [=============================================&gt;---] 94% est: 0s
@@ -1469,7 +1463,7 @@ Figura 8.53: Gráfico pareado relacionando várias variáveis contínuas para as
 ## plot: [2, 1] [===========&gt;-------------------------------------] 24% est: 2s
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
  plot: [2, 2]
-## [=============&gt;-----------------------------------] 28% est: 2s plot: [2, 3]
+## [=============&gt;-----------------------------------] 28% est: 3s plot: [2, 3]
 ## [===============&gt;---------------------------------] 32% est: 2s plot: [2, 4]
 ## [=================&gt;-------------------------------] 36% est: 2s plot: [2, 5]
 ## [===================&gt;-----------------------------] 40% est: 2s plot: [3, 1]

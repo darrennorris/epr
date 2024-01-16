@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -1369,15 +1363,19 @@ Assim sendo, com o codigo a segir, vamos informar (i) os dados, selecionando cla
 <h4><span class="header-section-number">2.4.3.2</span> Pergunta 3<a href="cap02.html#pergunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Em vez de extensão, você preciso incluir o tamanho (área do circulo) correspondente a cada raio. Incluir uma cópia do código ajustado para produzir uma figura com tamanho (área em quilômetros quadrados) no eixo x.</span></p>
 <hr />
+</div>
+<div id="pergunta-4-1" class="section level4 hasAnchor" number="2.4.3.3">
+<h4><span class="header-section-number">2.4.3.3</span> Pergunta 4<a href="cap02.html#pergunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span style=" font-weight: bold;    color: blue !important;">Por que é melhor usar métricas como proporção da área central (proportion of core area) para comparações multiescala na ecologia da paisagem? Inclua uma comparação com outras métricas, como área de mancha (patch area), para ilustrar por que as métricas expressas como proporção são mais apropriadas para comparações multiescala. Justifique a sua resposta de forma clara e concisa (menos de 500 palavras). Apoie sua resposta com exemplos da literatura científica.</span></p>
+<hr />
 <div style="page-break-after: always;"></div>
 </div>
-<div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.3.3">
-<h4><span class="header-section-number">2.4.3.3</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="faça-um-gráfico-elegante" class="section level4 hasAnchor" number="2.4.3.4">
+<h4><span class="header-section-number">2.4.3.4</span> Faça um gráfico elegante<a href="cap02.html#faça-um-gráfico-elegante" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Podemos ajustar qualquer elemento do gráfico com ggplot2.
 Agora, vamos mudar as unidades de metros para quilometros, aumentar o tamanho dos pontos, incluir uma linha reta para ilustrar a tendência geral usando a função <code>stat_smooth()</code>, colocar o titulo longo do eixo y em duas linhas, e aumentar o tamanho da fonte para o texto ficar mais claro.
-O objetivo principal de <code>stat_smooth()</code> é ajudar o olho a ver padrões nos dados plotados, ou seja, <code>stat_smooth()</code> sobrepõe uma curva ajustada aos dados.
-Se houver um agrupamento dos dados, curvas separadas poderão ser mostradas para cada grupo por exemplo por cor.
-Esta função pode traçar curvas de uma variedade de modelos diferentes, incluindo regressão linear (<code>method = "lm"</code>).</p>
+O objetivo principal de <code>stat_smooth()</code> é ajudar o olho a ver padrões nos dados plotados, ou seja, <code>stat_smooth()</code> sobrepõe uma curva ajustada aos dados.</p>
+<p>Esta função pode traçar curvas de uma variedade de modelos diferentes, incluindo regressão linear (<code>method = "lm"</code>).</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cap02.html#cb50-1" tabindex="-1"></a><span class="co"># arrumar os dados</span></span>
 <span id="cb50-2"><a href="cap02.html#cb50-2" tabindex="-1"></a>amostras_metrica <span class="sc">|&gt;</span> </span>
 <span id="cb50-3"><a href="cap02.html#cb50-3" tabindex="-1"></a>  <span class="fu">filter</span>(class<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
@@ -1400,14 +1398,14 @@ Figura 2.4: Comparação da área central de floresta em diferentes extensões.
 </p>
 </div>
 </div>
-<div id="pergunta-4-1" class="section level4 hasAnchor" number="2.4.3.4">
-<h4><span class="header-section-number">2.4.3.4</span> Pergunta 4<a href="cap02.html#pergunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-5-1" class="section level4 hasAnchor" number="2.4.3.5">
+<h4><span class="header-section-number">2.4.3.5</span> Pergunta 5<a href="cap02.html#pergunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Em menos de 200 palavras apresente a sua interpretação do gráfico em figura 2.4. Esclareça em sua resposta por que há apenas seis pontos mostrados quando sete buffers foram usados.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
 </div>
-<div id="modelos-linear-e-não-linear" class="section level4 hasAnchor" number="2.4.3.5">
-<h4><span class="header-section-number">2.4.3.5</span> Modelos linear e não linear<a href="cap02.html#modelos-linear-e-não-linear" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="modelos-linear-e-não-linear" class="section level4 hasAnchor" number="2.4.3.6">
+<h4><span class="header-section-number">2.4.3.6</span> Modelos linear e não linear<a href="cap02.html#modelos-linear-e-não-linear" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Um dos desafios mais frequentes é como melhor representar os dados observados para gerar evidências científicas robustas e informações confiáveis.
 Nós vimos que as mudancas na métrica porcentagem de área central de floresta não segue uma linha reta em relação de escala (extensão).
 Para ir além de uma descrição simplista dos padrões observados, na ecologia da paisagem uma variedade de modelos estatísticos são usados.Não vamos rodar modelos (ainda), mas é importante entender algumas das opções disponíveis ao interpretar os gráficos.</p>
@@ -1499,13 +1497,13 @@ Figura 2.6: Comparação de padrões lineares e não-lineares. Comparamos visual
 </p>
 </div>
 </div>
-<div id="pergunta-5-1" class="section level4 hasAnchor" number="2.4.3.6">
-<h4><span class="header-section-number">2.4.3.6</span> Pergunta 5<a href="cap02.html#pergunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.3.7">
+<h4><span class="header-section-number">2.4.3.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Comparar os resultados apresentados nas figuras com modelos lineares e não-lineares. Como podemos estabelecer qual seria o melhor modelo? Qual modelo seria mais adequado para identificar limiares no padrão de área central de floresta?</span></p>
 <hr />
 </div>
-<div id="pergunta-6-1" class="section level4 hasAnchor" number="2.4.3.7">
-<h4><span class="header-section-number">2.4.3.7</span> Pergunta 6<a href="cap02.html#pergunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.3.8">
+<h4><span class="header-section-number">2.4.3.8</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Aumentar o tamanho amostral na analise. Usando os exemplos de codigo anteriores, aumentar o numero de buffers entre 125 m e 16 km. i) Calcular a metrica cpland para 12 distâncias de bufferes e montar dados novas (isso é sete distâncias originais e as cinco distâncias novas) em um objeto com nome de "amostras_metrica_nova". ii) usando ggplot2 fazer um gráfico com os novos dados mostrando valores de extensão no eixo x e proporção da floresta central no eixo y. Ajustar o codigo para incluir intervalos de confiança junto com o modelo linear. Comparar os resultados apresentados nas figuras com modelos lineares sem transformação. O que aconteceu com o ajuste do modelo e os intervalos de confiançã? Foi útil incluir mais distâncias? Justifique as suas respostas de forma clara e concisa. Inclua cópias do seu código e gráficos na sua resposta. Você pode usar o printscreen para mostrar o RStudio com seu código e gráficos.</span></p>
 <hr />
 <div style="page-break-after: always;"></div>
@@ -1543,7 +1541,7 @@ Quantificam a composição da paisagem:</p>
 <ul>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">pland</span> = percentage of landscape. Percentagem da paisagem. Porcentagem de cobertura da classe na paisagem.</li>
 <li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">ed</span> = edge density . Densidade de borda que é igual à soma dos comprimentos (m) de todos os segmentos de borda que envolvem o fragmento, dividida pela área total da paisagem (m²), sendo posteriormente convertido em hectares.</li>
-<li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span> = core area percentage of landscape. Percentual de área central (“core”) na paisagem. Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à área total da paisagem. O termo “Core area” foi traduzido como área central ou área núcleo. Aqui vamos adotar área central.</li>
+<li><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dedede !important;">cpland</span> = core area percentage of landscape. Percentual de área central (“core”) na paisagem. Percentual de áreas centrais (excluídas as bordas de 30 m) em relação à área total da paisagem. O termo “Core area” foi traduzido como área central ou área núcleo. Aqui vamos adotar área central. Os índices de área central integram em uma única medida os efeitos da área do patch, formato do patch e distância do efeito de borda. Todos os índices de área central são afetados pela interação do tamanho do patch, formato do patch e profundidades de borda especificadas. Portanto, embora quantifiquem a composição da paisagem, são afetados pela configuração da paisagem. Por exemplo, se a área central for pequena, indica que há muito pouca área central disponível, mas não discrimina entre uma área pequena (efeito de área) e uma área grande com formato complexo (efeito de configuração).</li>
 </ul></li>
 <li><p>Métricas de agregação.
 Quantificam a configuração da paisagem:</p>
@@ -1958,12 +1956,12 @@ A função <span style="     border-radius: 4px; padding-right: 4px; padding-lef
 <span id="cb57-14"><a href="cap02.html#cb57-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;extensão (quilômetros)&quot;</span>, </span>
 <span id="cb57-15"><a href="cap02.html#cb57-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;metric value&quot;</span>)</span></code></pre></div>
 <p><img src="epr_files/figure-html/met-insert-fig-multiplemetrics-1.png" width="672" /></p>
-<div id="pergunta-7" class="section level4 hasAnchor" number="2.4.4.1">
-<h4><span class="header-section-number">2.4.4.1</span> Pergunta 7<a href="cap02.html#pergunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-8" class="section level4 hasAnchor" number="2.4.4.1">
+<h4><span class="header-section-number">2.4.4.1</span> Pergunta 8<a href="cap02.html#pergunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Com base nos resultados apresentados (figura e tabela) caracterisar as mudançãs na paisagem em função de extensões diferentes. Olhando os gráficos prever como seria o padrão para extensões maiores (lembrando que valores são doubrados - por exemplo raio de 250 metros gerar uma extensão de 500 metros). Seria relevante repetir incluindo calculos para extensões maiores (por exemplo 64 km e 128 km)? Justifique sua caracterização e previsões de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 </div>
-<div id="pergunta-8" class="section level4 hasAnchor" number="2.4.4.2">
-<h4><span class="header-section-number">2.4.4.2</span> Pergunta 8<a href="cap02.html#pergunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="pergunta-9" class="section level4 hasAnchor" number="2.4.4.2">
+<h4><span class="header-section-number">2.4.4.2</span> Pergunta 9<a href="cap02.html#pergunta-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span style=" font-weight: bold;    color: blue !important;">Usando como base o conteudo das aulas, leitura disponivel no Google Classroom (Base teórica 4 Dados, métricas, analises), e/ou exemplos apresentados aqui no tutorial, selecione pelo menos oito métricas de nível classe para caracterizar a paisagem de estudo e objectivos da sua projeto em grupo. Justifique sua seleção de forma clara e concisa, apoie sua escolha com exemplos da literatura científica.</span></p>
 <hr />
 <p>Essa foi a última pergunta.</p>

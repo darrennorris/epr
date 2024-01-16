@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -619,9 +613,9 @@ análises da paisagem.</p>
 para arquivos.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="garimpo-do-lourenço.html#cb75-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
 <span id="cb75-2"><a href="garimpo-do-lourenço.html#cb75-2" tabindex="-1"></a>r1985</span></code></pre></div>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7857187 419.7   14929098  797.3  14929098  797.3
-## Vcells 86542445 660.3  204473433 1560.1 204473433 1560.1</code></pre>
+<pre><code>##            used  (Mb) gc trigger  (Mb)  max used  (Mb)
+## Ncells  7727388 412.7   14818150 791.4  14818150 791.4
+## Vcells 34173925 260.8  117812810 898.9 117812605 898.9</code></pre>
 <p>Agora que o arquivo foi importado, podemos visualizá- lo.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="garimpo-do-lourenço.html#cb77-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
 <span id="cb77-2"><a href="garimpo-do-lourenço.html#cb77-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
@@ -658,9 +652,9 @@ para arquivos.</p>
 ## 1     1 landscape    NA    NA ta     160264.</code></pre>
 <p>Agora vamos ver a distância total de borda (te= “total
 edge”).</p>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7854372 419.5   14929098  797.3  14929098  797.3
-## Vcells 86540516 660.3  204473433 1560.1 204473433 1560.1</code></pre>
+<pre><code>##            used  (Mb) gc trigger  (Mb)  max used  (Mb)
+## Ncells  7728793 412.8   14818150 791.4  14818150 791.4
+## Vcells 34182513 260.8  117812810 898.9 117812605 898.9</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="garimpo-do-lourenço.html#cb84-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
 <span id="cb84-2"><a href="garimpo-do-lourenço.html#cb84-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6

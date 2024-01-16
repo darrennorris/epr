@@ -61,10 +61,6 @@
 <script src="libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/fgb.js"></script>
-<script src="libs/FlatGeoBuf-3.21.3/flatgeobuf-geojson.min.js"></script>
-<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
-<link id="rio_linhacentral___rio-1-attachment" rel="attachment" href="libs/rio_linhacentral___rio-0.0.1/rio_linhacentral___rio_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -73,8 +69,6 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link id="entrevistas-1-attachment" rel="attachment" href="libs/entrevistas-0.0.1/entrevistas_layer.fgb"/>
-<link id="rsl___rio-1-attachment" rel="attachment" href="libs/rsl___rio-0.0.1/rsl___rio_layer.fgb"/>
 
 
 <style type="text/css">
@@ -1711,10 +1705,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Para acessar a informação da data e horários atuais podemos utilizar as funções <code>lubridate::today()</code> e <code>lubridate::now()</code>.</p>
 <div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="cap22.html#cb552-1" tabindex="-1"></a><span class="do">## Extrair a data nesse instante</span></span>
 <span id="cb552-2"><a href="cap22.html#cb552-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16&quot;</code></pre>
 <div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="cap22.html#cb554-1" tabindex="-1"></a><span class="do">## Extrair a data e tempo nesse instante</span></span>
 <span id="cb554-2"><a href="cap22.html#cb554-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 17:22:10 -03&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 17:49:02 -03&quot;</code></pre>
 <p>Além dessas informações instantâneas, existem três maneiras de criar um dado de data/horário.</p>
 <ul>
 <li>De um string</li>
@@ -1763,10 +1757,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Por fim, podemos criar datas modificando entre data/horário e data, utilizando as funções <code>lubridate::as_datetime()</code> e <code>lubridate::as_date()</code>.</p>
 <div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="cap22.html#cb569-1" tabindex="-1"></a><span class="do">## Data para data-horário</span></span>
 <span id="cb569-2"><a href="cap22.html#cb569-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_datetime</span>(<span class="fu">today</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="cap22.html#cb571-1" tabindex="-1"></a><span class="do">## Data-horário para data</span></span>
 <span id="cb571-2"><a href="cap22.html#cb571-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_date</span>(<span class="fu">now</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16&quot;</code></pre>
 <p>Uma vez que entendemos como podemos criar dados de data/horário, podemos explorar funções para acessar e definir componentes individuais. Para essa tarefa existe uma grande quantidade de funções para acessar partes específicas de datas e horários.</p>
 <ul>
 <li><code>year()</code>: acessa o ano</li>
@@ -1786,11 +1780,11 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="cap22.html#cb575-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">month</span>(agora)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="cap22.html#cb577-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">day</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 16</code></pre>
 <div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="cap22.html#cb579-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">wday</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 3</code></pre>
 <div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="cap22.html#cb581-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">second</span>(agora)</span></code></pre></div>
-<pre><code>## [1] 11.20405</code></pre>
+<pre><code>## [1] 2.839929</code></pre>
 <p>Além de acessar componentes de datas e horários, podemos usar essas funções para fazer a inclusão de informações de datas e horários.</p>
 <div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="cap22.html#cb583-1" tabindex="-1"></a><span class="do">## Data</span></span>
 <span id="cb583-2"><a href="cap22.html#cb583-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">dmy_hms</span>(<span class="st">&quot;04-03-2021 01:04:56&quot;</span>)</span>
@@ -1850,10 +1844,10 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos ainda utilizar as durações para fazer operações aritméticas com datas como adição, subtração e multiplicação.</p>
 <div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="cap22.html#cb604-1" tabindex="-1"></a><span class="do">## Somando durações a datas</span></span>
 <span id="cb604-2"><a href="cap22.html#cb604-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-13&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-17&quot;</code></pre>
 <div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="cap22.html#cb606-1" tabindex="-1"></a><span class="do">## Subtraindo durações de datas</span></span>
 <span id="cb606-2"><a href="cap22.html#cb606-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">-</span> lubridate<span class="sc">::</span><span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-01-11 18:00:00 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2023-01-15 18:00:00 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="cap22.html#cb608-1" tabindex="-1"></a><span class="do">## Multiplicando durações</span></span>
 <span id="cb608-2"><a href="cap22.html#cb608-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dyears</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;126230400s (~4 years)&quot;</code></pre>
@@ -1890,15 +1884,15 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Além disso, podemos fazer operações com os períodos, somando e subtraindo.</p>
 <div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="cap22.html#cb626-1" tabindex="-1"></a><span class="do">## Somando datas</span></span>
 <span id="cb626-2"><a href="cap22.html#cb626-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-03-22&quot;</code></pre>
+<pre><code>## [1] &quot;2024-03-26&quot;</code></pre>
 <div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="cap22.html#cb628-1" tabindex="-1"></a><span class="do">## Subtraindo datas</span></span>
 <span id="cb628-2"><a href="cap22.html#cb628-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">-</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2023-11-03&quot;</code></pre>
+<pre><code>## [1] &quot;2023-11-07&quot;</code></pre>
 <div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="cap22.html#cb630-1" tabindex="-1"></a><span class="do">## Criando datas recorrentes</span></span>
 <span id="cb630-2"><a href="cap22.html#cb630-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;2024-01-12&quot; &quot;2024-01-19&quot; &quot;2024-01-26&quot; &quot;2024-02-02&quot; &quot;2024-02-09&quot;
-##  [6] &quot;2024-02-16&quot; &quot;2024-02-23&quot; &quot;2024-03-01&quot; &quot;2024-03-08&quot; &quot;2024-03-15&quot;
-## [11] &quot;2024-03-22&quot;</code></pre>
+<pre><code>##  [1] &quot;2024-01-16&quot; &quot;2024-01-23&quot; &quot;2024-01-30&quot; &quot;2024-02-06&quot; &quot;2024-02-13&quot;
+##  [6] &quot;2024-02-20&quot; &quot;2024-02-27&quot; &quot;2024-03-05&quot; &quot;2024-03-12&quot; &quot;2024-03-19&quot;
+## [11] &quot;2024-03-26&quot;</code></pre>
 <p>Por fim, intervalos são períodos de tempo limitados por duas datas, possuindo uma duração com um ponto de partida, que o faz preciso para determinar uma duração. Intervalos são objetos da classe <code>Interval</code>. Da mesma forma que para duração e períodos, há uma série de funções para realizar essas operações.</p>
 <ul>
 <li><code>interval()</code>: cria data em intervalo</li>
@@ -1930,13 +1924,13 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <span id="cb632-13"><a href="cap22.html#cb632-13" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_start</span>(r_intervalo)</span></code></pre></div>
 <pre><code>## [1] &quot;2011-11-30 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="cap22.html#cb634-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_end</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 UTC&quot;</code></pre>
 <div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="cap22.html#cb636-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_length</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] 382406400</code></pre>
+<pre><code>## [1] 382752000</code></pre>
 <div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="cap22.html#cb638-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_flip</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] 2024-01-12 UTC--2011-11-30 UTC</code></pre>
+<pre><code>## [1] 2024-01-16 UTC--2011-11-30 UTC</code></pre>
 <div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="cap22.html#cb640-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_shift</span>(r_intervalo, <span class="fu">duration</span>(<span class="at">days =</span> <span class="dv">30</span>))</span></code></pre></div>
-<pre><code>## [1] 2011-12-30 UTC--2024-02-11 UTC</code></pre>
+<pre><code>## [1] 2011-12-30 UTC--2024-02-15 UTC</code></pre>
 <p>Uma operação de destaque é verificar a sobreposição entre dois intervalos.</p>
 <div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="cap22.html#cb642-1" tabindex="-1"></a><span class="do">## Verificar sobreposição - int_overlaps</span></span>
 <span id="cb642-2"><a href="cap22.html#cb642-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">int_overlaps</span>(r_intervalo, filho_intervalo)</span></code></pre></div>
@@ -1949,21 +1943,21 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos ainda calcular quantos períodos existem dentro de um intervalo, utilizando as operações de <code>/</code> e <code>%/%</code>.</p>
 <div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="cap22.html#cb648-1" tabindex="-1"></a><span class="do">## Períodos dentro de um intervalo - anos</span></span>
 <span id="cb648-2"><a href="cap22.html#cb648-2" tabindex="-1"></a>r_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">years</span>()</span></code></pre></div>
-<pre><code>## [1] 12.11749</code></pre>
+<pre><code>## [1] 12.12842</code></pre>
 <div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="cap22.html#cb650-1" tabindex="-1"></a>r_intervalo <span class="sc">%/%</span> lubridate<span class="sc">::</span><span class="fu">years</span>()</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="cap22.html#cb652-1" tabindex="-1"></a><span class="do">## Períodos dentro de um intervalo - dias e semandas</span></span>
 <span id="cb652-2"><a href="cap22.html#cb652-2" tabindex="-1"></a>filho_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">days</span>()</span></code></pre></div>
-<pre><code>## [1] 3760</code></pre>
+<pre><code>## [1] 3764</code></pre>
 <div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="cap22.html#cb654-1" tabindex="-1"></a>filho_intervalo <span class="sc">/</span> lubridate<span class="sc">::</span><span class="fu">weeks</span>()</span></code></pre></div>
-<pre><code>## [1] 537.1429</code></pre>
+<pre><code>## [1] 537.7143</code></pre>
 <p>Ainda podemos fazer transformações dos dados para períodos e ter todas as unidades de data e tempo que o intervalo compreende.</p>
 <div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="cap22.html#cb656-1" tabindex="-1"></a><span class="do">## Tempo total estudando R</span></span>
 <span id="cb656-2"><a href="cap22.html#cb656-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as.period</span>(r_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;12y 1m 13d 0H 0M 0S&quot;</code></pre>
+<pre><code>## [1] &quot;12y 1m 17d 0H 0M 0S&quot;</code></pre>
 <div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="cap22.html#cb658-1" tabindex="-1"></a><span class="do">## Idade do meu filho</span></span>
 <span id="cb658-2"><a href="cap22.html#cb658-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as.period</span>(filho_intervalo)</span></code></pre></div>
-<pre><code>## [1] &quot;10y 3m 17d 0H 0M 0S&quot;</code></pre>
+<pre><code>## [1] &quot;10y 3m 21d 0H 0M 0S&quot;</code></pre>
 <p>Por fim, fusos horários tendem a ser um fator complicador quando precisamos analisar informações instantâneas de tempo (horário) de outras partes do planeta, ou mesmo fazer conversões dos horários. No <code>lubridate</code> há funções para ajudar nesse sentido. Para isso, podemos utilizar a função <code>lubridate::with_tz()</code> e no argumento <code>tzone</code> informar o fuso horário para a transformação do horário.</p>
 <p>Podemos descobrir o fuso horário que o R está considerando com a função <code>Sys.timezone()</code>.</p>
 <div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="cap22.html#cb660-1" tabindex="-1"></a><span class="do">## Fuso horário no R</span></span>
@@ -1979,12 +1973,12 @@ Figura 7.3: Diferentes tipos de joins, representados com um diagrama de Venn.
 <p>Podemos nos perguntar que horas são em outra parte do globo ou fazer as conversões facilmente no <em>lubridate</em>.</p>
 <div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="cap22.html#cb666-1" tabindex="-1"></a><span class="do">## Que horas são em...</span></span>
 <span id="cb666-2"><a href="cap22.html#cb666-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 20:22:12 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 20:49:03 GMT&quot;</code></pre>
 <div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="cap22.html#cb668-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">with_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;Europe/Berlin&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 21:22:12 CET&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 21:49:03 CET&quot;</code></pre>
 <div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="cap22.html#cb670-1" tabindex="-1"></a><span class="do">## Altera o fuso sem mudar a hora</span></span>
 <span id="cb670-2"><a href="cap22.html#cb670-2" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">force_tz</span>(lubridate<span class="sc">::</span><span class="fu">now</span>(), <span class="at">tzone =</span> <span class="st">&quot;GMT&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-01-12 17:22:12 GMT&quot;</code></pre>
+<pre><code>## [1] &quot;2024-01-16 17:49:03 GMT&quot;</code></pre>
 <p>Para se aprofundar no tema, recomendamos a leitura do Capítulo <a href="https://r4ds.had.co.nz/dates-and-times.html">16 Dates and times</a> de Wickham &amp; Grolemund <span class="citation">(2017)</span>.</p>
 </div>
 <div id="purrr" class="section level2 hasAnchor" number="7.11">

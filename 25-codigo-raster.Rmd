@@ -6,6 +6,10 @@
 
 Organize following: 
 https://jakubnowosad.com/posts/2020-05-26-intro-to-landscape-ecology/
+and
+https://github.com/r-spatialecology/ialena-2020
+
+Focus on methods used to make the data and analysis in the chapters.
 
 https://youtu.be/dCTOGDnDuvM  at 28 minutes
 Attribute data operations
