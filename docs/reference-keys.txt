@@ -218,6 +218,7 @@ instalação-do-r
 instalação-do-rtools
 instalação-do-rstudio
 pacotes-3
+pacotes-do-github
 dados-3
 cap21
 contextualização

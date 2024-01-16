@@ -310,7 +310,10 @@ div.csl-indent {
 <li class="chapter" data-level="5.2" data-path="cap20.html"><a href="cap20.html#instalação-do-r"><i class="fa fa-check"></i><b>5.2</b> Instalação do R</a></li>
 <li class="chapter" data-level="5.3" data-path="cap20.html"><a href="cap20.html#instalação-do-rtools"><i class="fa fa-check"></i><b>5.3</b> Instalação do Rtools</a></li>
 <li class="chapter" data-level="5.4" data-path="cap20.html"><a href="cap20.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>5.4</b> Instalação do RStudio</a></li>
-<li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-3"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a></li>
+<li class="chapter" data-level="5.5" data-path="cap20.html"><a href="cap20.html#pacotes-3"><i class="fa fa-check"></i><b>5.5</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="cap20.html"><a href="cap20.html#pacotes-do-github"><i class="fa fa-check"></i><b>5.5.1</b> Pacotes do GitHUb</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="cap20.html"><a href="cap20.html#dados-3"><i class="fa fa-check"></i><b>5.6</b> Dados</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="cap21.html"><a href="cap21.html"><i class="fa fa-check"></i><b>6</b> Introdução ao R</a>
@@ -613,9 +616,9 @@ análises da paisagem.</p>
 para arquivos.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="garimpo-do-lourenço.html#cb75-1" tabindex="-1"></a>r1985 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.choose</span>())</span>
 <span id="cb75-2"><a href="garimpo-do-lourenço.html#cb75-2" tabindex="-1"></a>r1985</span></code></pre></div>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7768404 414.9   14818150  791.4  14818150  791.4
-## Vcells 86428070 659.4  203871735 1555.5 203871693 1555.5</code></pre>
+<pre><code>##             used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells   8150278 435.3   14818150  791.4  14818150  791.4
+## Vcells 121910938 930.2  244726082 1867.2 244726069 1867.2</code></pre>
 <p>Agora que o arquivo foi importado, podemos visualizá- lo.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="garimpo-do-lourenço.html#cb77-1" tabindex="-1"></a><span class="co"># Visualizar para verificar</span></span>
 <span id="cb77-2"><a href="garimpo-do-lourenço.html#cb77-2" tabindex="-1"></a><span class="co"># Gradiente de cores padrão não corresponde </span></span>
@@ -652,9 +655,9 @@ para arquivos.</p>
 ## 1     1 landscape    NA    NA ta     160264.</code></pre>
 <p>Agora vamos ver a distância total de borda (te= “total
 edge”).</p>
-<pre><code>##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  7766316 414.8   14818150  791.4  14818150  791.4
-## Vcells 86426536 659.4  203871735 1555.5 203871693 1555.5</code></pre>
+<pre><code>##             used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells   8146183 435.1   14818150  791.4  14818150  791.4
+## Vcells 121908453 930.1  244726082 1867.2 244726069 1867.2</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="garimpo-do-lourenço.html#cb84-1" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">lsm_l_te</span>(r1985)</span>
 <span id="cb84-2"><a href="garimpo-do-lourenço.html#cb84-2" tabindex="-1"></a>te <span class="co"># 547140 metros</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 6

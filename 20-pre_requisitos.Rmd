@@ -44,7 +44,8 @@ knitr::include_graphics(path = "figures/cap03_fig01.png")
 
 ::: {.alert .alert-info}
 <strong> Importante </strong>\
-Para o Sistema Operacional (SO) Windows, alguns pacotes são dependentes da instalação separada do [Rtools](https://cran.rstudio.com/bin/windows/Rtools/). Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.
+Para o Sistema Operacional (SO) Windows, alguns pacotes, por exemplo `eprdados`, são dependentes da instalação separada do [Rtools](https://cran.rstudio.com/bin/windows/Rtools/). Ou seja antes de instalar `eprdados` você deve instalar [Rtools](https://cran.rstudio.com/bin/windows/Rtools/).
+Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.
 :::
 
 ## Instalação do Rtools
@@ -84,18 +85,19 @@ Criamos o pacote `eprdados` que contém todas as informações e dados utilizado
 Para a instalação do pacote `eprdados` no macOS, você precisará ter instalado o programa XCode que pode ser baixado [aqui](https://developer.apple.com/xcode/). Este programa é disponibilizado gratuitamente pela Apple e é necessário para compilar quaisquer programas distribuídos em código fonte (ou seja, sem um binário). Após instalar esse programa e o pacote `devtools`, você poderá instalar o eprdados utilizando as instruções abaixo.
 :::
 
-Abaixo, listamos todos os pacotes utilizados no livro. Você pode instalar os pacotes agora ou esperar para instalá-los quando ler o Capítulo \@ref(cap21) e entender o que são as funções `install.packages()`, `library()` e `install_github()`. Para fazer a instalação, você vai precisar estar conectado à internet.
+Abaixo, listamos todos os pacotes utilizados no livro. Você pode instalar os pacotes agora ou esperar para instalá-los quando ler o Capítulo \@ref(cap21) e entender o que são as funções `install.packages()`, `library()` e  `remotes::install_github()`. Para fazer a instalação, você vai precisar estar conectado à internet.
 
 ```{r eval=FALSE}
-install.packages(c("ade4", "adespatial", "ape", "bbmle", "betapart", "BiodiversityR", "car", "cati", "datasauRus", "devtools", "DHARMa", "dplyr", "ecolottery", "emmeans", "factoextra", "FactoMineR", "fasterize", "FD", "forcats", "geobr", "generalhoslem", "GGally", "ggExtra", "ggforce", "ggplot2", "ggpubr", "ggrepel", "ggspatial", "glmmTMB", "grid", "gridExtra", "here", "hillR", "iNEXT", "janitor", "kableExtra", "knitr", "labdsv", "lattice", "leaflet", "lmtest", "lsmeans", "lubridate", "mapview", "MASS", "MuMIn", "naniar", "nlme", "ordinal", "palmerpenguins", "performance", "pez", "phyloregion", "phytools", "picante", "piecewiseSEM", "purrr", "pvclust", "raster", "readr", "reshape2", "rgdal" , "Rmisc", "rnaturalearth", "RVAideMemoire", "sciplot", "sf", "sidrar", "sjPlot", "spData", "spdep", "stringr", "SYNCSA", "terra", "tibble", "tidyr", "tidyverse", "tmap", "tmaptools", "TPD", "vcd", "vegan", "viridis", "visdat", "mvabund", "rdist", "udunits2"), dependencies = TRUE)
+install.packages(c("ade4", "adespatial", "ape", "bbmle", "betapart", "BiodiversityR", "car", "cati", "datasauRus", "devtools", "DHARMa", "dplyr", "ecolottery", "emmeans", "factoextra", "FactoMineR", "fasterize", "FD", "forcats", "geobr", "generalhoslem", "GGally", "ggExtra", "ggforce", "ggplot2", "ggpubr", "ggrepel", "ggspatial", "glmmTMB", "grid", "gridExtra", "here", "hillR", "iNEXT", "janitor", "kableExtra", "knitr", "labdsv", "lattice", "leaflet", "lmtest", "lsmeans", "lubridate", "mapview", "MASS", "MuMIn", "naniar", "nlme", "ordinal", "palmerpenguins", "performance", "pez", "phyloregion", "phytools", "picante", "piecewiseSEM", "purrr", "pvclust", "raster", "readr", "remotes", "reshape2", "rgdal" , "Rmisc", "rnaturalearth", "RVAideMemoire", "sciplot", "sf", "sidrar", "sjPlot", "spData", "spdep", "stringr", "SYNCSA", "terra", "tibble", "tidyr", "tidyverse", "tmap", "tmaptools", "TPD", "vcd", "vegan", "viridis", "visdat", "mvabund", "rdist", "udunits2"), dependencies = TRUE)
 ```
 
-Diferente dos pacotes anteriores que são baixados do CRAN, alguns pacotes são baixados do GitHub dos pesquisadores responsáveis pelos pacotes. [GitHub](https://github.com/) é um repositório remoto de códigos que permite controle de versão, muito utilizado por desenvolvedores e programadores. Nestes casos, precisamos carregar o pacote `devtools` para acessar a função `install_github`. Durante as instalações destes pacotes, algumas vezes o R irá pedir para você digitar um número indicando os pacotes que você deseja fazer update. Neste caso, digite 1 para indicar que ele deve atualizar os pacotes dependentes antes de instalar os pacotes requeridos.
+### Pacotes do GitHUb
+Diferente dos pacotes anteriores que são baixados do CRAN, alguns pacotes são baixados do GitHub dos pesquisadores responsáveis pelos pacotes. [GitHub](https://github.com/) é um repositório remoto de códigos que permite controle de versão, muito utilizado por desenvolvedores e programadores. Nestes casos, precisamos carregar o pacote `remotes` para acessar a função `remotes::install_github()`. Durante as instalações destes pacotes, algumas vezes o R irá pedir para você digitar um número indicando os pacotes que você deseja fazer update. Neste caso, digite 1 para indicar que ele deve atualizar os pacotes dependentes antes de instalar os pacotes requeridos.
 
 ```{r eval=FALSE}
-library(devtools) 
-install_github("darrennorris/eprdados")
-install_github("ropensci/rnaturalearthhires")
+library(remotes) 
+remotes::install_github("darrennorris/eprdados")
+remotes::install_github("ropensci/rnaturalearthhires")
 ```
 
 ## Dados

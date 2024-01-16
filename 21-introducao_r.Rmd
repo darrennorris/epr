@@ -383,21 +383,21 @@ Vamos carregar o pacote `vegan` que instalamos anteriormente. Podemos ir na aba 
 library(vegan)
 ```
 
-Como dissemos, alguns pacotes em desenvolvimento encontram-se disponíveis em repositórios como por exemplo: [GitHub](https://github.com/), [GitLab](https://gitlab.com) e [Bioconductor](https://www.bioconductor.org/). Para instalar pacotes do GitHub, por exemplo, precisamos instalar e carregar o pacote `devtools`. Para funcionar, deve instalar "RTools" antes (https://cran.r-project.org/bin/windows/Rtools/) .
+Como dissemos, alguns pacotes em desenvolvimento encontram-se disponíveis em repositórios como por exemplo: [GitHub](https://github.com/), [GitLab](https://gitlab.com) e [Bioconductor](https://www.bioconductor.org/). Para instalar pacotes do GitHub, por exemplo, precisamos instalar e carregar o pacote `remotes`. Para funcionar, deve instalar "RTools" antes (https://cran.r-project.org/bin/windows/Rtools/) .
 
 ```{r eval=FALSE}
-## Instalar pacote devtools
-install.packages("devtools")
+## Instalar pacote remotes
+install.packages("remotes")
 
-## Carregar pacote devtools
-library(devtools)
+## Carregar pacote remotes
+library(remotes)
 ```
 
-Uma vez instalado e carregado esse pacote, podemos instalar o pacote do GitHub, utilizando a função `devtools::install_github()`. Precisamos atentar para usar essa forma "nome_usuario/nome_repositorio", retirados do link do repositório de interesse. Como exemplo, podemos instalar o pacote `eprdados` do repositório do GitHub [darrennorris/eprdados](https://github.com/darrennorris/eprdados) e depois utilizar a função `library()` para carregá-lo. Para funcionar, deve instalar "RTools" antes (https://cran.r-project.org/bin/windows/Rtools/) .
+Uma vez instalado e carregado esse pacote, podemos instalar o pacote do GitHub, utilizando a função `remotes::install_github()`. Precisamos atentar para usar essa forma "nome_usuario/nome_repositorio", retirados do link do repositório de interesse. Como exemplo, podemos instalar o pacote `eprdados` do repositório do GitHub [darrennorris/eprdados](https://github.com/darrennorris/eprdados) e depois utilizar a função `library()` para carregá-lo. Para funcionar, deve instalar "RTools" antes (https://cran.r-project.org/bin/windows/Rtools/) .
 
 ```{r eval=FALSE}
 ## Instalar pacote do github
-devtools::install_github("darrennorris/eprdados")
+remotes::install_github("darrennorris/eprdados")
 
 ## Carregar pacote do github
 library("eprdados")
@@ -429,11 +429,11 @@ update.packages(checkBuilt = TRUE, ask = FALSE)
 ```
 
 
-Destacamos e incentivamos ainda uma prática que achamos interessante para aumentar a reprodutibilidade de nossos códigos e scripts: a de chamar as funções de pacotes carregados dessa forma `pacote::função()`. Com o uso dessa prática, deixamos claro o pacote em que a função está implementada. Esta prática é importante por que com frequência pacotes diferentes criam funções com mesmo nome, mas com características internas (argumentos) diferentes. Assim, não expressar o pacote de interesse pode gerar erros na execução de suas análises. Destacamos aqui o exemplo de como instalar pacotes do GitHub do pacote `devtools`.
+Destacamos e incentivamos ainda uma prática que achamos interessante para aumentar a reprodutibilidade de nossos códigos e scripts: a de chamar as funções de pacotes carregados dessa forma `pacote::função()`. Com o uso dessa prática, deixamos claro o pacote em que a função está implementada. Esta prática é importante por que com frequência pacotes diferentes criam funções com mesmo nome, mas com características internas (argumentos) diferentes. Assim, não expressar o pacote de interesse pode gerar erros na execução de suas análises. Destacamos aqui o exemplo de como instalar pacotes do GitHub do pacote `remotes`.
 
 ```{r eval=FALSE}
 ## Pacote seguido da função implementada daquele pacote
-devtools::install_github()
+remotes::install_github()
 ```
 
 ### Ajuda (*Help*)
