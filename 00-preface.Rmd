@@ -1,8 +1,13 @@
-
 \newpage{}
 
 # Prefácio à primeira edição {.unnumbered}
 
 Há quem diga que a velocidade com que a tecnologia e a ciência avançam tende a tornar livros e manuais sobre métodos rapidamente obsoletos. A evolução dos computadores pessoais e a ampliação do acesso a estes e à Internet têm transformado o jeito como aprendemos e ensinamos. As pessoas estão cada vez mais familiarizados com a tecnologia e esperam que o ensino seja dinâmico e interativo.
 
-Portanto, um livro aberto e disponível livremente, que as pessoas possam compartilhar e contribuir torna-se uma opção cada vez mais relevante. A intenção é para o livro seja utilizado como material de referência (fornecendo informações atualizadas); Como ferramenta de aprendizagem (apresentando diferentes ideias e abordagens) e como projeto de colaboração (permitindo que pessoas trabalhem juntos para criar um recurso educacional valioso).
+Portanto, um livro aberto e disponível livremente, que as pessoas possam compartilhar e contribuir torna-se uma opção cada vez mais relevante. A intenção é para o livro seja utilizado como:
+
+-   Material de referência - fornecendo informações atualizadas.
+
+-   Ferramenta de aprendizagem - apresentando diferentes ideias e abordagens.
+
+-   Projeto de colaboração - permitindo que pessoas trabalhem juntos para criar um recurso educacional valioso.

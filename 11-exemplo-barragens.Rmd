@@ -1,0 +1,239 @@
+---
+bibliography: references.bib
+---
+
+\newpage{}
+
+# Barragens {#cap11}
+
+```{r make-data, echo=FALSE, eval=FALSE}
+# Prepare data for use in example
+
+library(tidyverse)
+library(sf)
+library(terra)
+library(tmap)
+library(mapview)
+library(eprdados)
+library(geobr)
+
+#### Reservatorios --------------------------------------
+filemassa <- "C:\\Users\\user\\Documents\\CA\\CA_2023\\EP\\vectors\\geoft_bho_massa_dagua_v2019\\geoft_bho_massa_dagua_v2019.shp"
+massadeagua <- read_sf(filemassa) |> 
+  filter(detipomass=="Artificial")
+table(massadeagua$detipomass)
+table(massadeagua$nmufe)
+AP_res_31976 <-  massadeagua |> 
+  filter(nmufe %in% c("AMAPÁ", "AMAPÁ, PARÁ"), 
+         nmgenerico == "UHE") |> 
+  st_transform(31976) |> 
+  st_make_valid()
+
+res_ferreira_gomes <-  AP_res_31976 |> 
+  filter(nmoriginal == "UHE Ferreira Gomes") 
+res_ferreira_gomes_b32km <- st_buffer(res_ferreira_gomes,
+                                        dist = 32000)
+ext_res_b32k <- ext(vect(res_ferreira_gomes_b32km))
+
+#### Barragens ----------------------------------------
+# dados de
+# ANEEL (SIGEL) Aproveitamento Hidrelétricos - AHE: 
+# <https://sigel.aneel.gov.br/portal/home/index.html>
+
+bin <- "data/vector/AHE/Aproveitamento_Hidrelétricos_-_AHE.shp"
+ahe <- read_sf(bin)
+AP_UHE_31976 <- ahe |> 
+  filter(UF_1 == "AP", 
+         TIPO_AHE == "UHE", 
+         FASE == "Operação") |> 
+  st_transform(31976)
+
+#### States  and municipalites ----------------------
+
+AP_31976 <- read_state(code_state="AP", year=2020) |> 
+  st_transform(31976)
+AP_muni_31976 <- read_municipality(code_muni = "AP", 
+                                   year = 2020) |> 
+  st_transform(31976)
+
+#### Ferreira Gomes -----------------------------------
+# Define the text string with longitude and latitude
+text_string <- "51º11’41.071ºW / 00º51’20.126ºN"
+
+# Extract longitude and latitude components
+lon_str <- str_extract(text_string,
+                       "^-?\\d+º\\d+’\\d+.\\d+º[EW]")
+lat_str <- str_extract(text_string,
+                       "\\d+º\\d+’\\d+.\\d+º[NS]$")
+
+parse_dms <- function(dms_str) {
+  parts <- str_split(dms_str, "º|’|º")[[1]]
+  degrees <- as.numeric(parts[1])
+  minutes <- as.numeric(parts[2])
+  seconds <- as.numeric(parts[3])
+  # Determine sign
+  sign <- ifelse(grepl("[WS]", dms_str), -1, 1)  
+  decimal_degrees <- (degrees + (minutes / 60) + (seconds / 3600)) * sign
+  return(decimal_degrees)
+}
+
+longitude_dd <- parse_dms(lon_str)
+latitude_dd <- parse_dms(lat_str)
+
+# Create a point geometry
+point <- st_point(c(longitude_dd, latitude_dd))
+
+# Create an sf object with a geographic CRS
+ferreira_gomes <-  st_sf(nome = "Ferreira Gomes", 
+                    geom = st_sfc(point), 
+                    crs = 4326)
+
+ferreira_gomes_31976 <- st_transform(ferreira_gomes, 31976)
+ferreira_gomes_31976_b50km <- st_buffer(ferreira_gomes_31976,
+                                        dist = 50000)
+myexent <- ext(vect(ferreira_gomes_31976_b50km))
+mapview(ferreira_gomes_31976)
+
+#### Make raster data      -----------------------
+rent <- rast("data/raster/mapbiomas/utm_cover_AP_entrevistas_85a22_noriver.tif")
+r82a22 <- crop(rent, ext_res_b32k, snap="out")
+r22 <- subset(r82a22, 38)
+writeRaster(r82a22, "utm_cover_UHEFerreiraGomes_85a22.tif",
+            datatype = "INT1U",
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+
+#### Make vector data  ---------------------------------
+# write files
+st_write(AP_res_31976, 
+         dsn = "data/vector/barragens.gpkg",
+         layer = "AP_reservatorios", delete_layer = TRUE,
+         append = TRUE)
+# UHE barragens
+st_write(AP_UHE_31976, 
+         dsn = "data/vector/barragens.gpkg",
+         layer = "AP_UHE", delete_layer = TRUE,
+         append = TRUE)
+
+# Cachoeira Caldeirão
+AP_res_31976 |> 
+  filter(nmoriginal == "UHE Cachoeira Caldeirão") |> 
+  st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "CC_reservatorio", delete_layer = TRUE, 
+         append = TRUE)
+AP_UHE_31976 |>
+  filter(NOME == "Cachoeira Caldeirão") |>
+st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "CC_ponto", delete_layer = TRUE,
+         append = TRUE)
+
+# Coaracy Nunes
+AP_res_31976 |> 
+  filter(nmoriginal == "UHE Coaracy Nunes") |> 
+  st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "CN_reservatorio", delete_layer = TRUE, 
+         append = TRUE)
+AP_UHE_31976 |>
+  filter(NOME == "Coaracy Nunes") |>
+st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "CN_ponto", delete_layer = TRUE,
+         append = TRUE)
+# Ferreria Gomes
+st_write(ferreira_gomes_31976, 
+         dsn = "data/vector/barragens.gpkg",
+         layer = "FG_ponto", delete_layer = TRUE, 
+         append = TRUE)
+st_write(res_ferreira_gomes, 
+         dsn = "data/vector/barragens.gpkg",
+         layer = "FG_reservatorio", delete_layer = TRUE, 
+         append = TRUE)
+
+# Santo Antônio do Jari 
+AP_res_31976 |> 
+  filter(nmoriginal == "UHE Santo Antônio do Jari") |>
+st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "SA_reservatorio", delete_layer = TRUE, 
+         append = TRUE)
+AP_UHE_31976 |>
+  filter(NOME == "Santo Antônio do Jari") |>
+st_write(dsn = "data/vector/barragens.gpkg",
+         layer = "SA_ponto", delete_layer = TRUE,
+         append = TRUE)
+
+#check
+st_layers("data/vector/barragens.gpkg")
+```
+
+## Apresentação
+
+Este capitulo pretende 
+
+## Pacotes
+Carregar pacotes (que deve esta instalado antes):
+
+```{r packages-barragens, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(terra)
+library(tmap)
+library(mapview)
+library(eprdados)
+
+```
+
+Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem tipo: `r kableExtra::text_spec("Error in library(nomepacote)  there is no package called nomepacote", color = "red")`. Neste caso, para instalá-los consulte o Capítulo \@ref(cap20) ou os capitulos aqui [Capitulo 4 instalação de pacotes](https://livro.curso-r.com/4-1-instala%C3%A7%C3%A3o-de-pacotes.html) e aqui [Capitulo 4 pacotes](https://analises-ecologicas.com/cap4#pacotes-1) . Prestando atenção nas diferenças para instalar um pacote como `eprdados` que vem do [GitHub](https://github.com/).
+
+Área de estudo
+A Usina Hidrelétrica (UHE) Ferreira Gomes possui uma potência instalada de 252 MW (<https://ferreiragomesenergia.com.br/usina/>). Coordenadas geográficas:
+51º11’41,071ºW / 00º51’20,126ºN.
+
+Reservatorios - Massas d'Água ANA: 
+<https://metadados.snirh.gov.br/files/7d054e5a-8cc9-403c-9f1a-085fd933610c/geoft_bho_massa_dagua_v2019.zip>
+
+ANEEL (SIGEL) Aproveitamento Hidrelétricos - AHE: 
+<https://sigel.aneel.gov.br/portal/home/index.html>
+```{r}
+
+```
+
+
+States and municipalities.
+```{r}
+
+```
+
+
+Check where Ferreira Gomes is in eprdados.....
+```{r}
+
+```
+
+Crop raster to 32 km radius around reservoir.
+```{r, echo=FALSE, eval=FALSE}
+
+```
+
+
+Now plot over raster.
+```{r}
+# Passo necessario para agilizar o processamento
+r22_modal <- as.factor(aggregate(r22, fact=10, fun="modal"))
+
+# Mapa
+tm_shape(r22_modal) +
+  tm_raster(style = "cat") + 
+tm_shape(ferreira_gomes_31976) + 
+  tm_dots(size = 2, col = "yellow")  + 
+tm_shape(res_ferreira_gomes) + 
+  tm_polygons(col="blue") + 
+tm_compass(position=c("left", "top")) +
+tm_scale_bar(breaks = c(0, 25, 50), text.size = 1, 
+             position=c("left", "bottom")) +
+tm_layout(legend.position = c("right","top"),
+          legend.bg.color="white")
+
+mapview(ferreira_gomes_31976) + 
+  mapview(r22_modal) + 
+  mapview(res_ferreira_gomes) + 
+  mapview(res_ferreira_gomes_b32km)
+```
+

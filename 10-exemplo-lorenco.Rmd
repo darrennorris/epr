@@ -1,7 +1,7 @@
 
 \newpage{}
 
-# (PART) Exemplos de caso {-}
+# (PART) Exemplos de caso: padrões de paisagem {-}
 
 \newpage{}
 
