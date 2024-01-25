@@ -19,6 +19,7 @@ rmd_files:
   - "02-metricas.Rmd"
   - "03-especies.Rmd"
   - "10-exemplo-lorenco.Rmd"
+  - "11-exemplo-mudancas.Rmd"
   - "20-pre_requisitos.Rmd"
   - "21-introducao_r.Rmd"
   - "22-tidyverse.Rmd"

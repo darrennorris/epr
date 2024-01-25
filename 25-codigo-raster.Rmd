@@ -10,6 +10,8 @@ and
 https://github.com/r-spatialecology/ialena-2020
 
 Focus on methods used to make the data and analysis in the chapters.
+Chapter on visualizations? 
+https://www.wvview.org/os_sa/10_Maps_with_tmap.html
 
 https://youtu.be/dCTOGDnDuvM  at 28 minutes
 Attribute data operations
