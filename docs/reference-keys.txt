@@ -115,9 +115,9 @@ fig:fig-plot-final-ggtheme-1
 fig:fig-plot-final-ggtheme-2
 fig:fig-plot-final-ggtheme-3
 fig:fig-plot-final-export
-fig:unnamed-chunk-251
-fig:unnamed-chunk-256
-fig:unnamed-chunk-262
+fig:unnamed-chunk-254
+fig:unnamed-chunk-259
+fig:unnamed-chunk-265
 cap01
 apresentação
 escala-breve-definação

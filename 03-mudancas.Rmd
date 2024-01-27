@@ -195,7 +195,7 @@ st_layers("data/vector/barragens.gpkg")
 
 Este capítulo apresenta uma metodologia para calcular mudanças na cobertura da terra usando o software R. 
 
-A metodologia consiste em aplicar métodos de geoprocessamento para elaborar mapas de perda de formações naturais, com base em mapas de cobertura da terra de uma região do Amapá, nos anos 1986 e 2021. A metodologia apresentada pode ser aplicada em diferentes regiões do Brasil e do mundo. Ela é uma ferramenta importante para o monitoramento da cobertura da terra e para a avaliação dos impactos das atividades humanas sobre o meio ambiente.
+A metodologia consiste em aplicar métodos de geoprocessamento para elaborar mapas de perda de formações naturais, com base em mapas de cobertura da terra de uma região do Amapá, nos anos 1986 e 2021. A metodologia é uma ferramenta importante para o monitoramento da cobertura da terra e para a avaliação dos impactos das atividades humanas sobre o meio ambiente.
 
 As principais etapas da metodologia são as seguintes:
 
@@ -221,6 +221,14 @@ Os resultados do cálculo das mudanças podem ser validados comparando-os com da
 ## Área de estudo
 
 A paisagem de estudo é a área de um raio de 32 km ao redor do reservatório da Usina Hidrelétrica Ferreira Gomes. A UHE Ferreira Gomes é uma usina hidrelétrica localizada no Amapá, com capacidade instalada de 252 MW. Coordenadas geográficas (longitude / latitude): 51º11’41,071ºW / 00º51’20,126ºN (<https://ferreiragomesenergia.com.br/usina/>). A usina foi inaugurada em etapas, com a primeira turbina entrando em operação comercial em novembro de 2014 e a terceira turbina em maio de 2015.
+
+
+Link para serie temporal (Landsat timelapse): 
+<https://earthengine.google.com/timelapse#v=0.89999,-51.42342,8.79,latLng&t=3.53&ps=50&bt=19840101&et=20221231>
+
+Link para mudanças na superfice de agua:
+<https://global-surface-water.appspot.com/map#v=0.85826,-51.1794,10,latLng&t=0.00&l=wc>
+
 
 ## Pacotes e Fontes de dados
 
@@ -455,6 +463,70 @@ Podemos ver nos mapas que as maiores mudanças ocorreram ao sul do rio Araguari 
 
 Para isso vamos comparar a área total e percentual das diferentes classes em 1986 com 2021.
 
+```{r manual-metrics}
+res_m2 <- xres(r86a21) * yres(r86a21)
+pixels_total <- ncell(r86a21)
+area_m2_agg10 <- res_m2 * pixels_total
+area_ha_agg10 <- (res_m2 * pixels_total) / 10000
+area_km2_agg10 <- (res_m2 * pixels_total) / 1000000
+
+valores <- values(r86a21)
+classe_frequencia_85a87 <- table(valores[ ,'modal_85a87'])
+df_classe_frequencia_85a87 <- data.frame(classe_frequencia_85a87)
+df_classe_frequencia_85a87 <- df_classe_frequencia_85a87 |> 
+  mutate(ano = 1986, 
+         Classe = as.numeric(as.character(Var1)), 
+         Classe_area_m2 = Freq * res_m2) |> 
+  mutate(Classe_prop = Classe_area_m2 / area_m2_agg10) |> 
+  left_join(mapbiomas_legend, 
+            by = c("Classe" = "Class_ID"))
+
+```
+
+Repetir o mesmo processo com valores de 2021.
+```{r}
+classe_frequencia_20a22 <- table(valores[ ,'modal_20a22'])
+df_classe_frequencia_20a22 <- data.frame(classe_frequencia_20a22)
+df_classe_frequencia_20a22 <- df_classe_frequencia_20a22 |> 
+  mutate(ano = 2021, 
+         Classe = as.numeric(as.character(Var1)), 
+         Classe_area_m2 = Freq * res_m2) |> 
+  mutate(Classe_prop = Classe_area_m2 / area_m2_agg10) |> 
+  left_join(mapbiomas_legend, 
+            by = c("Classe" = "Class_ID"))
+```
+
+Combinar os dados de ambos os anos em um único dataframe.
+```{r}
+
+df_classe_frequencia_anos <- bind_rows(df_classe_frequencia_85a87, 
+                                       df_classe_frequencia_20a22)
+```
+
+Podemos visualizar os resultados em um grafico:
+```{r}
+fig_anos_simples <- ggplot(df_classe_frequencia_anos, 
+       aes(x = fct_reorder(Descricao, Classe_prop, mean), 
+           y = Classe_prop)) + 
+  geom_col(aes(fill=factor(ano)), position = "dodge") + 
+  coord_flip()  + 
+  scale_fill_discrete("Ano") +
+  labs(x = "", 
+       y = "cobertura (proporção da paisagem)") + 
+  theme(legend.position = c(0.85, 0.2))
+
+png("figures/fig_anos_simples.png", width=5, height=3, 
+    units="in", res = 600)
+fig_anos_simples
+invisible(dev.off())
+knitr::include_graphics("figures/fig_anos_simples.png")
+
+```
+
+A paisagem tem uma área total de cerca `r paste0(round(area_ha,0))` hectares ou `r round(area_km2,0)` quilômetros quadrados. Assim sendo, 1% da paisagem de estudo é `r round((area_ha/100*1),0)` hectares ou `r round((area_km2/100*1), 0)` quilômetros quadrados. 
+
+E agora o mesmo processo com o pacote [landscapemetrics](https://r-spatialecology.github.io/landscapemetrics/):
+
 ```{r landscape-metrics}
 mymetrics <- c("lsm_c_pland", "lsm_c_ca")
 lmet <- landscapemetrics::calculate_lsm(r86a21, 
@@ -465,11 +537,10 @@ lmet <- landscapemetrics::calculate_lsm(r86a21,
 
 ```
 
-A paisagem tem uma área total de cerca `r paste0(round(area_ha,0))` hectares ou `r round(area_km2,0)` quilômetros quadrados. Assim sendo, 1% da paisagem de estudo é `r round((area_ha/100*1),0)` hectares ou `r round((area_km2/100*1), 0)` quilômetros quadrados. 
 
 Usando as métricas calculados podemos comparar as mudanças na paisagem entre 1986 e 2021. 
 
-Podemos apresentar os mapas juntamente com gráficos resumindo as métricas da paisagem em uma figura composta usando o pacote [patchwork](https://patchwork.data-imaginist.com/){target="_blank"}. Esta figura composta permite-nos ver a distribuição espacial das mudanças (mapas) juntamente com os valores associados (gráficos). Uma única figura composta pode transmitir as mesmas informações que várias figuras individuais, economizando espaço e reduzindo a confusão visual. Isto pode ser especialmente importante em artigos com espaço limitado para figuras ou conjuntos de dados complexos. Ao combinar dados relacionados em uma única figura, os leitores podem facilmente comparar e contrastar tendências e relações entre diferentes variáveis. Por exemplo, as figuras compostas permitem uma entendimento mais completa e unificada com seus dados. Em vez de pular entre figuras separadas, os leitores podem compreender a narrativa geral de suas descobertas em uma única imagem. Isso pode melhorar o fluxo e a coerência do seu artigo, tornando-o mais envolvente e impactante.
+Podemos apresentar os mapas juntamente com gráficos resumindo as métricas da paisagem em uma figura composta usando o pacote [patchwork](https://patchwork.data-imaginist.com/){target="_blank"}. Uma figura composta permite-nos ver a distribuição espacial das mudanças (mapas) juntamente com os valores associados (gráficos). Uma única figura composta pode transmitir as mesmas informações que várias figuras individuais, economizando espaço e reduzindo a confusão visual. Ao combinar dados relacionados em uma única figura, os leitores podem facilmente comparar e contrastar tendências e relações entre diferentes variáveis. Por exemplo, as figuras compostas permitem uma entendimento mais completa e unificada com seus dados. Em vez de pular entre figuras separadas, os leitores podem compreender a narrativa geral de suas descobertas em uma única imagem. Isso pode melhorar o fluxo e a coerência do seu texto, tornando-o mais envolvente e impactante. Isto pode ser especialmente importante em artigos com espaço limitado para figuras ou conjuntos de dados complexos.
 
 ```{r compare-metrics, echo=FALSE, warning=FALSE, fig.cap="Mudanças na paisagem de 1986 até 2021. Comparação de cobertura da terra de 1986 a 2021 no entorno da barragem Ferreira Gomes. (A) Mapeamento da classificação de cobertura da terra do MapBiomas Coleção 8 usada para quantificar as diferenças na cobertura da terra entre 1986 e 2021. (B) Comparação da percentagem das diferentes classes de cobertura da terra na paisagem. (C) Diferenças na cobertura  de cada classe entre 1986 e 2021."}
 paisagem_metricas <- lmet |> 
@@ -660,7 +731,7 @@ Para fazer isso fazemos uma grade poligonal com pixels de 1 km. Em seguida, resu
 area_m2 <- xres(r86a21res) * yres(r86a21res)
 area_ha <- area_m2 / 10000
 
-# 2) grade de 1 km
+# 2) Polígono - grade de 1 km
 v <- st_as_sf(as.polygons(f21))
 zones_1km <- st_make_grid(v, cellsize = 1000) |> 
   st_sf()
@@ -668,7 +739,8 @@ zones_1km <- zones_1km |>
   mutate(aid = 1:nrow(zones_1km))
 
 # 3) soma de mudanças hectares por km2
-# Calcular estatísticas zonais, ou seja, resumir os valores # de um raster para cada "zona" definida por um polígono.
+# Calcular estatísticas zonais, ou seja, resumir os valores da raster 
+# para cada "zona" definida por um polígono.
 # 3.1) desmatamento
 def_sum_r <- zonal(def, vect(zones_1km), 
                  "sum", na.rm=TRUE, 
@@ -688,7 +760,7 @@ names(cover_loss_rate) <- c("desmatamento",
 
 Por fim, apresente os resultados em um mapa.
 
-```{r plot-loss, fig.cap="Distribuição e taxa de mudança na cobertura da terra. Comparação da mudança de cobertura da terra de 1986 a 2021 no entorno da barragem Ferreira Gomes (ponto azul claro) ao longo do rio Araguari (linha azul) Amapá, Brasil. Classificação de cobertura da terra do MapBiomas Coleção 8 usada para identificar (A) a distribuição e (B) a taxa de mudança de cobertura da terra entre 1986 e 2021. Mudança identificada como a transição das classes de cobertura natural para antrópicas."}
+```{r plot-loss, out.width="70%", out.height="70%", fig.cap="Distribuição e taxa de mudança na cobertura da terra. Comparação da mudança de cobertura da terra de 1986 a 2021 no entorno da barragem Ferreira Gomes (ponto azul claro) ao longo do rio Araguari (linha azul) Amapá, Brasil. Classificação de cobertura da terra do MapBiomas Coleção 8 usada para identificar (A) a distribuição e (B) a taxa de mudança de cobertura da terra entre 1986 e 2021. Mudança identificada como a transição das classes de cobertura natural para antrópicas."}
 # Plot with facets
 # Deforestation
 fig_perda <- ggplot() +
@@ -704,7 +776,8 @@ fig_perda <- ggplot() +
   facet_wrap(~lyr, ncol = 2) + 
   labs(title = "(A)", 
        fill = "Perda") + 
-  theme(plot.title.position = "plot")
+  theme(plot.title.position = "plot", 
+        legend.position="bottom")
 
 # rate of natural cover loss
 fig_perda_taxa <- ggplot() +
@@ -721,14 +794,21 @@ fig_perda_taxa <- ggplot() +
                        c(-51.5, -51.3, -51.1, -50.9)) +
   labs(title = "(B) ", 
        fill = "Perda\n(ha por km2)") + 
-  theme(plot.title.position = "plot")
+  theme(plot.title.position = "plot", 
+        legend.position="bottom")
 
-fig_perda / fig_perda_taxa
+fig_taxa <- fig_perda / fig_perda_taxa
+png("figures/fig_taxa.png", width=5, height=8, 
+    units="in", res = 600)
+fig_taxa
+invisible(dev.off())
+knitr::include_graphics("figures/fig_taxa.png")
+
 ```
 
 ### Conclusão
 
-Olhando para estes resultados preliminares, fica claro que será necessária uma análise mais refinada para quantificar os impactos a jusante da UHE Ferreira Gomes na cobertura vegetal nativa. Isto envolve o estabelecimento de escalas espaciais e temporais mais detalhadas e a inclusão de técnicas que nos permitem levar em consideração a natureza linear e gradientes longitudinais associados com os rios.
+Na escala da paisagem a maior parte das mudanças ocorreu ao sul (perda de vegetação natural) e leste/amontante (desmatamento) da UHE Ferreira Gomes. Olhando para estes resultados preliminares, fica claro que será necessária uma análise mais refinada para quantificar os impactos a jusante da UHE Ferreira Gomes na cobertura vegetal nativa. Isto envolve o estabelecimento de escalas espaciais e temporais mais detalhadas e a inclusão de técnicas que nos permitem levar em consideração a natureza linear e gradientes longitudinais associados com os rios.
 
 -   Natureza linear e gradientes longitudinais:\
     Ao contrário das florestas, os rios são sistemas lineares com fortes gradientes longitudinais (por exemplo, mudanças na velocidade do fluxo, concentrações de nutrientes). A escolha da escala deve levar em conta esses gradientes para evitar interpretações errôneas. Extensões menores podem perder impactos importantes a jusante, enquanto extensões maiores podem mascarar variações localizadas.
@@ -747,10 +827,31 @@ Considerando as padrões gerais identificadas, para compreender o impacto da bar
 
 Esta metodologia descreve uma abordagem espacialmente explícita para analisar os impactos a jusante da hidrelétrica Ferreira Gomes na cobertura vegetal nativa usando mapas anuais de cobertura da terra com resolução de 30 metros do MapBiomas.
 
+Recomenda-se que você leia os capítulos anteriores antes de iniciar este. Para ajudar a acompanhar e entender os exemplos no capítulo, você deve ler os seguintes artigos:
+
+-   Erős, T., Lowe, W.H. (2019).    
+The Landscape Ecology of Rivers: from Patch-Based to Spatial Network Analyses. Current Landscape Ecology Reports  4, 103–112: <https://doi.org/10.1007/s40823-019-00044-6>
+
+-   Bishop‐Taylor, R., Tulbure, M. G., & Broich, M. (2017)    
+Surface‐water dynamics and land use influence landscape connectivity across a major dryland region. Ecological Applications, 27(4), 1124-1137:
+<https://doi.org/10.1002/eap.1507>
+
+-   Bishop-Taylor, R., Tulbure, M. G., & Broich, M. (2018).    
+Evaluating static and dynamic landscape connectivity modelling using a 25-year remote sensing time series. Landscape Ecology, 33, 625-640: <https://doi.org/10.1007/s10980-018-0624-1>
+
+-   Huang, J., & Gergel, S. E. (2023).    
+Effectiveness of landscape indicators for explaining the variability of benthic macro-invertebrates in urban streams. Journal of Environmental Management, 342, 118130: <https://doi.org/10.1016/j.jenvman.2023.118130>
+
+Cópias dos artigos estão no Google Classroom e também podem ser baixadas [aqui](https://drive.google.com/drive/folders/1oMQKn3Y1Wy3-p5L9sndBjdzCJ3adpKUw?usp=sharing): <https://drive.google.com/drive/folders/1oMQKn3Y1Wy3-p5L9sndBjdzCJ3adpKUw?usp=sharing>
+
 ### Dados:
 
 -   Mapas anuais de cobertura da terra do MapBiomas (resolução de 30 metros):\
     Esses mapas fornecem informações espaciais explícitas sobre as mudanças na cobertura da terra ao longo do tempo.
+    
+-   Mapas anuais de cobertura de agua da Global surface water:    
+<https://global-surface-water.appspot.com/> . Baixar os dados diretamente no R atraves o pacote [ecochange](https://cran.r-project.org/web/packages/ecochange/vignettes/EcochangeTutorial.html). Artigo: [ecochange: An R-package to derive ecosystem change indicators from freely available earth observation products](https://doi.org/10.1111/2041-210X.13986) :<https://doi.org/10.1111/2041-210X.13986>
+
 
 -   Dados operacionais da hidrelétrica Ferreira Gomes:\
     Datas de construção, enchimento do reservatório e quaisquer mudanças significativas no fluxo de água ou transporte de sedimentos. Inclusive:
