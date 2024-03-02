@@ -255,7 +255,7 @@ Caso os pacotes não tenham sido instalados, o R vai avisar atraves um mensagem 
 
 As etapas da metodologia requer um conjunto de dados espaciais incluindo camadas de vetor e raster.
 
-#### Arquivos de vector
+#### Arquivos de vetor
 Os dados necessários estão disponíveis no pacote `eprdados`.
 As fontes originais dos dados vetoriais foram:
 
@@ -697,7 +697,7 @@ f21 <- classify(rcxrc21, reclass_m)
 #### Distribuição espacial de mudanças
 
 Agora, vamos combinar os mapas reclassificadas de 1986 e 2021 para gerar um mapa das áreas onde a vegetação natural foi perdida/convertida para uso humano durante este período.
-Aqui usamos uma operação lógica de álgebra para identificar pixels com perda: onde as áreas  com vegetação natural em 1986 (codificadas 1 ou 2 no mapa) ficaram sem cobertura natural em 2021 (codificadas 0 no mapa). Para isso precisamos escrever uma função, incluindo a função `ifelse()`, que contém uma condição e os valores de saída no caso da condição se cumplir ou ñao, no caso de floresta: `ifelse(x == 1 & y == 0, 1, 0)`, permite obter um mapa binário das áreas desmatadas (valor de 1) entre 1986 e 2022. Para executar isso para objetos raster, usamos a função `lapp()`, que aplica uma função a raster, usando as camadas como argumentos.
+Aqui usamos uma operação lógica de álgebra para identificar pixels com perda: onde as áreas  com vegetação natural em 1986 (codificadas 1 ou 2 no mapa) ficaram sem cobertura natural em 2021 (codificadas 0 no mapa). Para isso precisamos escrever uma função, incluindo a função `ifelse()`, que contém uma condição e os valores de saída no caso da condição se cumplir ou ñao, no caso de floresta: `ifelse(x == 1 & y == 0, 1, 0)`, permite obter um mapa binário das áreas desmatadas (valor de 1) entre 1986 e 2021. Para executar isso para objetos raster, usamos a função `lapp()`, que aplica uma função a raster, usando as camadas como argumentos.
 ```{r}
 # 1) Função para duas camadas, 
 # A primeira camada é x a segunda camada é y.
@@ -723,7 +723,7 @@ names(cover_loss) <- c("desmatamento",
 ```
 
 #### Taxa de mudanças
-Taxa de desmatamento (área desmatada por km^2^). Devido ao fato da resolução espacial do mapa binário de desmatamento ser de `r round(xres(f86), 1)` metros, as células correspondem a `r round((xres(f86) * yres(f86)) / 10000, 1)` ha. Assim, é necessário multiplicar a soma das células por `r round((xres(f86) * yres(f86)) / 10000, 1)`, para obtenção de um mapa indicativo da quantidade de hectares desmatados por km^2^.
+Taxa de desmatamento (área desmatada por km^2^ por ano). Devido ao fato da resolução espacial do mapa binário de desmatamento ser de `r round(xres(f86), 1)` metros, as células correspondem a `r round((xres(f86) * yres(f86)) / 10000, 1)` ha. Assim, é necessário multiplicar a soma das células por `r round((xres(f86) * yres(f86)) / 10000, 1)`, para obtenção de um mapa indicativo da quantidade de hectares desmatados por km^2^. E depois dividir por 36 para obter a taxa anual.
 
 Para fazer isso fazemos uma grade poligonal com pixels de 1 km. Em seguida, resumimos a perda de vegetação em cada uma das “zonas” da grade de 1 km.
 ```{r}
@@ -742,13 +742,13 @@ zones_1km <- zones_1km |>
 # Calcular estatísticas zonais, ou seja, resumir os valores da raster 
 # para cada "zona" definida por um polígono.
 # 3.1) desmatamento
-def_sum_r <- zonal(def, vect(zones_1km), 
+def_sum_r <- (zonal(def, vect(zones_1km), 
                  "sum", na.rm=TRUE, 
-                 as.raster = TRUE) * area_ha
+                 as.raster = TRUE) * area_ha) / 36
 # 3.2) outras formaçoes naturais
-gloss_sum_r <- zonal(gloss, vect(zones_1km), 
+gloss_sum_r <- (zonal(gloss, vect(zones_1km), 
                  "sum", na.rm=TRUE, 
-                 as.raster = TRUE) * area_ha
+                 as.raster = TRUE) * area_ha) / 36
 
 # 4) Junte-se aos dois novos arquivos
 cover_loss_rate <- c(def_sum_r, gloss_sum_r)
@@ -808,7 +808,7 @@ knitr::include_graphics("figures/fig_taxa.png")
 
 ### Conclusão
 
-Na escala da paisagem a maior parte das mudanças ocorreu ao sul (perda de vegetação natural) e leste/amontante (desmatamento) da UHE Ferreira Gomes. Olhando para estes resultados preliminares, fica claro que será necessária uma análise mais refinada para quantificar os impactos a jusante da UHE Ferreira Gomes na cobertura vegetal nativa. Isto envolve o estabelecimento de escalas espaciais e temporais mais detalhadas e a inclusão de técnicas que nos permitem levar em consideração a natureza linear e gradientes longitudinais associados com os rios.
+Se tivéssemos simplesmente nos concentrado no desmatamento, teríamos ignorado muitas das mudanças na paisagem ao longo de três décadas. Na escala da paisagem a maior parte das mudanças ocorreu ao sul (perda de vegetação natural) e leste/amontante (desmatamento) da UHE Ferreira Gomes. Olhando para estes resultados preliminares, fica claro que será necessária uma análise mais refinada para quantificar os impactos a jusante da UHE Ferreira Gomes na cobertura vegetal nativa. Isto envolve o estabelecimento de escalas espaciais e temporais mais detalhadas e a inclusão de técnicas que nos permitem levar em consideração a natureza linear e gradientes longitudinais associados com os rios.
 
 -   Natureza linear e gradientes longitudinais:\
     Ao contrário das florestas, os rios são sistemas lineares com fortes gradientes longitudinais (por exemplo, mudanças na velocidade do fluxo, concentrações de nutrientes). A escolha da escala deve levar em conta esses gradientes para evitar interpretações errôneas. Extensões menores podem perder impactos importantes a jusante, enquanto extensões maiores podem mascarar variações localizadas.
