@@ -1,0 +1,84 @@
+
+\newpage{}
+
+# Primeiros passos com vector
+
+
+Em geral é necessário baixar alguns pacotes para que possamos fazer as nossas análises. Precisamos os seguintes pacotes, que deve esta instalado antes:
+
+-   [tidyverse](https://www.tidyverse.org/),
+-   [sf](https://r-spatial.github.io/sf/),
+-   [mapview](https://r-spatial.github.io/mapview/),
+-   [tmap](https://r-tmap.github.io/tmap-book/).
+
+Carregar pacotes:
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(tmap)
+```
+
+## Obter e carregar dados (vectores)
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+meuSIG <- "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+fs <- file.size(meuSIG)/(1024^2)
+```
+
+Precisamos carregar os dados para rios e pontos de amostragem. Baixar arquivo (vector) com os dados (formato "GPKG", tamanho `r round(fs,1)` MB). Mais sobre [dados vetoriais](https://docs.qgis.org/3.22/pt_BR/docs/gentle_gis_introduction/vector_data.html). O formato aberto [GeoPackage](https://www.geopackage.org/) é um contêiner que permite armazenar dados SIG (feições/camadas) em um único arquivo. Por exemplo, um arquivo GeoPackage pode conter vários dados (dados vetoriais e raster) em diferentes sistemas de coordenadas. Todos esses recursos permitem que você compartilhe dados facilmente e evite a duplicação de arquivos.
+
+Baixar o arquivo Link: [https://github.com/darrennorris/gisdata/blob/master/inst/vector/rivers.gpkg](https://github.com/darrennorris/gisdata/blob/master/inst/vector/rivers.gpkg){target="_blank"} . Lembrando-se de salvar o arquivo ("rivers.gpkg") em um local conhecido no seu computador.
+
+O formato "GPKG" e diferente de "tif" (raster), o processo de importação é, portanto, diferente. Primeira, avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo "rivers.GPKG":
+
+```{r echo=TRUE, eval=FALSE}
+meuSIG <- file.choose()
+```
+
+Agora vamos olhar o que tem no arquivo. Depois que voces rodar o codigo `r kableExtra::text_spec( "st_layers(meuSIG)", background = "#d3d3d3", bold = TRUE)`, o resultado mostra que o arquivo rivers.GPKG inclui camadas diferentes com pontos ("Point"), linhas ("Line String") e polígonos ("Polygon"). Alem disso, a coluna "crs_name" mostrar que a sistema de coordenadas é geográfica (WGS84, (EPSG: 4326)\[https://epsg.io/4326\], e é diferente do arquivo raster:
+
+```{r }
+sf::st_layers(meuSIG)
+```
+
+\newpage
+
+Nós só precisamos de duas dessas camadas. O código abaixo vai carregar as camadas que precisamos e criar os objetos "rsm" e "rsl". Assim, agora temos dados com: pontos cada 5 km ao longo os rios ("rsm") e a linha central de rios ("rsl").
+
+```{r }
+# pontos cada 5 km
+rsm <- sf::st_read(meuSIG, layer = "midpoints")
+# linha central de rios
+rsl <- sf::st_read(meuSIG, layer = "centerline")
+```
+
+\newpage
+
+## Visualizar os arquivos (camadas vector)
+
+Visualizar para verificar. Mapa com linha central e pontos de rios em trechos de 5km.
+
+```{r fig.width=6, fig.height=4, fig.cap="Pontos ao longo dos rios a montante das hidrelétricas no Rio Araguari."}
+ggplot(rsl) +
+  geom_sf(aes(color=rio)) +
+  geom_sf(data = rsm, shape=21, aes(fill=zone))
+```
+
+<br> Mapa interativo (funcione somente com internet). Mostrando agora com fundo de mapas "base" (OpenStreetMap/ESRI etc)
+
+```{r fig.width=4, fig.height=4, echo=TRUE, warning=FALSE, fig.cap="Linhas dos rios a montante das hidrelétricas no Rio Araguari."}
+#
+mapview(rsl, zcol = "rio") 
+
+```
+
+
+Em andamento ..............
+
+<br>
+
+
+\newpage{}
+

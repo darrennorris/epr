@@ -1,3 +1,4 @@
+\counterwithin{figure}{section}
 \renewcommand{\topfraction}{.85}
 \renewcommand{\bottomfraction}{.7}
 \renewcommand{\textfraction}{.15}

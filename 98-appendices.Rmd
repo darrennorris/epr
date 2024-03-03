@@ -1,0 +1,247 @@
+# (APPENDIX) Apêndice {-} 
+
+# Annexo 1
+
+Exemplos de código R usado para 
+-   baixar Mapbiomas, 
+-   recortar para uma região de interesse
+-   plotar com legenda
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+library(plyr)
+library(tidyverse)
+library(terra)
+library(sf)
+library(readxl)
+library(tmap)
+```
+
+## Download mapbiomas cover
+Site: https://brasil.mapbiomas.org/colecoes-mapbiomas/. 
+Any zeros are NA (NODATA). http://forum.mapbiomas.ecostage.com.br/t/pixels-com-valor-zero/170/5 . 
+And "27" “Não observado”. No exemplo os arquivos vai ficar no working directory.
+```{r mapbiomas-download, echo=TRUE, eval=FALSE}
+#Get mapbiomas data
+#
+url_text <- "https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_8/lclu/coverage/"
+layer_names <- paste("brasil_coverage_",1985:2022, sep="")
+file_type <- ".tif"
+filenames_mapbioma_8 <- paste(layer_names, file_type, sep="")
+urlnames_mapbioma_8 <- paste(url_text, layer_names, file_type, sep="")
+
+#set timeout to 20 minutes as big files and teeny tiny internet connection
+options(timeout = max((60*20), getOption("timeout")))
+# test with one year - 1985
+res <- utils::download.file(url=urlnames_mapbioma_8[1], 
+                            destfile=filenames_mapbioma_8[1], 
+                            method="auto", quiet = FALSE, mode = "wb", 
+                            cacheOK = TRUE)
+#make list
+dflist <- data.frame(layer_names = layer_names, 
+                     urls = urlnames_mapbioma_8, 
+                     filenames = filenames_mapbioma_8)
+alist <- split(dflist, f = dflist$layer_names)
+
+#make function to automatically process list elements
+get_mapbiomas <- function(x){
+res <- utils::download.file(url=x$urls, 
+                            destfile=x$filenames, 
+                            method="auto", quiet = FALSE, mode = "wb", 
+                            cacheOK = TRUE)
+res
+}
+
+#run function in blocks
+lapply(alist[2], get_mapbiomas)
+lapply(alist[3:5], get_mapbiomas)
+lapply(alist[6:8], get_mapbiomas)
+lapply(alist[9:20], get_mapbiomas)
+lapply(alist[21:30], get_mapbiomas)
+lapply(alist[31:37], get_mapbiomas)
+```
+
+## Crop mapbiomas cover
+
+Identify all tif files in a folder.
+```{r list-tif, echo=TRUE, eval=FALSE}
+#works one folder at a time
+get_files <- function(folder_name = NA) {
+  library(tidyverse)
+  folder_location <- folder_name
+  in_files <- list.files(folder_location, 
+                         pattern = ".tif", full.names = TRUE)
+  data.frame(folder_id = folder_location, file_id = in_files) |>  
+    group_by(folder_id, file_id) |>  
+    dplyr::summarise(file_count = dplyr::n()) |>  
+    ungroup() -> df_muni_tif
+  return(df_muni_tif)
+}
+
+infolder <- "E:/mapbiomas"
+df_muni_tif <- get_files(folder_name = infolder)
+#update
+df_muni_tif[1:38, ] |> 
+  dplyr::mutate(state_code = str_sub(folder_id, -2, -1), 
+         ) -> df_muni_tif
+df_muni_tif$state_code <- "AP"
+```
+
+Area of interest - format extent for use by terra.
+```{r make-extent, echo=TRUE, eval=FALSE}
+#extent from 50 km arouund river upstream of cachoeira caldeirao
+meuSIG <- file.choose()
+# "C:\\Users\\user\\Documents\\CA\\CA_2023\\EP\\vectors\\AP_rodoviario\\br156.gpkg"
+#"C:\\Users\\Darren\\Documents\\gisdata\\vector\\rivers.GPKG"
+# "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+rsl <- st_read(meuSIG, layer = "centerline")
+rsl_50km <- st_union(st_buffer(rsl, dist=50000))
+br156 <- st_read(meuSIG, layer = "extent_br156")
+myexent <- ext(vect(rsl_50km)) 
+myexent_jari <- vect(br156[1, ])
+myexent_portogrande <- vect(br156[2, ])
+```
+
+Now to crop and project to desired coordinate system (epsg:31976).
+```{r crop-reproject, echo=TRUE, eval=FALSE}
+# This function reads in file, crops and projects to new coordinate system.
+# Then exports resutl as Geotiff (.tif). 
+crop_proj <- function(x, myextent = NA, 
+                      folder_name = NA, file_name = NA, 
+                      state_id = NA, sf_state = NA) {
+  library(plyr)
+  library(tidyverse)
+  library(terra)
+  library(sf)
+  library(stringi)
+  
+  state_sigla <- x$state_code 
+  rin <- x$file_id 
+  #rin <- df_muni_tif$file_id[1]
+  rbig <- terra::rast(rin)
+  layer_name <- names(rbig)
+  layer_year <- stri_sub(layer_name,-4,-1)
+  out_name <- paste("mapbiomas_cover", layer_year, sep="_")
+  e2 <- ext(project(myextent, rbig))
+  
+  #Crop
+  rtest_mask <- crop(rbig, e2, snap="out")
+  rm("rbig") 
+  
+  #Project
+  new_crs_utm <- "epsg:31976"
+  rtest_mask <- project(rtest_mask, new_crs_utm, method = "near")
+  names(rtest_mask) <- out_name
+  
+  #Export
+  outfile_name <- paste(file_name,layer_year, ".tif", sep = "")
+  f <- file.path(folder_name, outfile_name)
+  writeRaster(rtest_mask, f, datatype = "INT1U", NAflag=27, 
+              gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+  
+  #clear temporary files
+  tmpFiles(current =TRUE, remove = TRUE) 
+  
+  endtime <- Sys.time() 
+  textout <- paste(outfile_name, ": ", endtime, sep="")
+  print(textout)
+}
+
+#run br156 jari
+plyr::a_ply(df_muni_tif[2:38, ], .margins = 1, 
+            .fun = crop_proj, myextent = myexent_jari, 
+            folder_name = "E:/mapbiomas/br156_jari", 
+            file_name = "br156_jari_")
+#run br156 Porto Grande
+plyr::a_ply(df_muni_tif[2:38, ], .margins = 1, 
+            .fun = crop_proj, myextent = myexent_portogrande, 
+            folder_name = "E:/mapbiomas/br156_portogrande", 
+            file_name = "br156_portogrande_")
+```
+
+## Plot with legend
+Combine all years into multi layer raster.
+```{r combine-years, echo=TRUE, eval=FALSE}
+# check
+rtest <- rast("E:/mapbiomas/br156_jari/br156_jari_1985.tif")
+rtest <- rast("E:/mapbiomas/br156_portogrande/br156_portogrande_1985.tif")
+plot(rtest)
+infolder_rio <- "E:/mapbiomas/AP_utm_rio"
+df_tif_rio <- get_files(folder_name = infolder_rio)
+r85a22 <- rast(df_tif_rio$file_id)
+writeRaster(r85a22, "E:/mapbiomas/utm_cover_AP_rio_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+# br156 jari
+infolder_jari <- "E:/mapbiomas/br156_jari"
+df_tif_jari <- get_files(folder_name = infolder_jari)
+r85a22 <- rast(df_tif_jari$file_id)
+writeRaster(r85a22, "E:/mapbiomas/br156_jari_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+# br156 Porto Grande
+infolder_pg <- "E:/mapbiomas/br156_portogrande"
+df_tif_pg <- get_files(folder_name = infolder_pg)
+r85a22 <- rast(df_tif_pg$file_id)
+writeRaster(r85a22, "br156_portogrande_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+# Garimpo Lorenco
+infolder_lor <- "E:/mapbiomas/garimpo_lorenco"
+df_tif_lor <- get_files(folder_name = infolder_lor)
+r85a22 <- rast(df_tif_lor$file_id)
+writeRaster(r85a22, "E:/mapbiomas/lorenco_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+# Garimpo Vila Nova
+infolder_vn <- "E:/mapbiomas/garimpo_vilanova"
+df_tif_vn <- get_files(folder_name = infolder_vn)
+r85a22 <- rast(df_tif_vn$file_id)
+writeRaster(r85a22, "E:/mapbiomas/vilanova_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+```
+
+Legend.
+```{r import-legend, echo=TRUE, eval=FALSE}
+mapbiomas8_legenda <- read.csv2("legend/Codigos-da-legenda-colecao-8.csv")
+```
+
+Plot.
+```{r plot-years, echo=TRUE, eval=FALSE}
+class_vals <- mapbiomas8_legenda$Class_ID
+class_color <- mapbiomas8_legenda$Color
+names(class_color) <-  mapbiomas8_legenda$Class_ID
+#labels
+my_label <- mapbiomas8_legenda$Descricao
+names(my_label) <- mapbiomas8_legenda$Class_ID
+
+# Plot one year to check
+tm_shape(subset(r85a22n_ag, c(1, 2, 37,38))) +
+  tm_raster(style = "cat", palette = class_color, labels = my_label, title="") + 
+  tm_scale_bar(breaks = c(0, 10), text.size = 1, 
+               position=c("right", "bottom"))
+
+# Now all years together.
+tm_shape(r85a22n_ag) +
+  tm_raster(style = "cat", palette = class_color, labels = my_label, title="") + 
+  tm_scale_bar(breaks = c(0, 10), text.size = 1, 
+               position=c("right", "bottom")) +
+  tm_facets(ncol=5) + 
+  tm_layout(legend.bg.color="white", legend.outside = TRUE,
+            legend.outside.position = "right", 
+            panel.labels = c('1985', '1986', '1987', '1988','1989', '1990',
+                             '1991',  '1992', '1993', '1994', '1995','1996', 
+                             '1997', '1998',
+                             '1999', '2000', '2001', '2002', '2003', 
+                             '2004', '2005', '2006', '2007',
+                             '2008', '2009', '2010', '2011', '2012', 
+                             '2013', '2014', '2015',
+                             '2016', '2017', '2018', '2019', 
+                             '2020', '2021', '2022')) -> figmap
+
+png("figmap.png", width=6, height=9, 
+    units="in", res = 600)
+figmap
+invisible(dev.off())
+```
+

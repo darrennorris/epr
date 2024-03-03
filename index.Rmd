@@ -1,12 +1,12 @@
 --- 
 title: "Ecologia de Paisagens com R"
-author: "Darren Norris: darren.norris@unifap.br"
+author: 'Darren Norris: darren.norris@unifap.br'
 date: "`r Sys.setlocale('LC_TIME', 'Portuguese'); format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 bibliography: references.bib
-url: 'https\://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html/' 
-cover-image: cover.jpg # relative to index
-description: "This is a minimal example."
+url: "https\\://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html/"
+cover-image: cover.jpg
+description: This is a minimal example.
 github-repo: darrennorris/epr
 toc-title: Sumário
 urlcolor: blue
@@ -30,13 +30,31 @@ Versoes:
 
 -  pdf: https://github.com/darrennorris/epr/blob/main/docs/epr.pdf
 
-Este é um material introdutório destinado principalmente a estudantes de graduação e cursos de pós-graduação em ecologia e áreas correlatas.
+Este material introdutório é direcionado principalmente a estudantes de graduação e pós-graduação em ecologia e áreas afins. Ele está sendo utilizado como interface para os materiais do curso de Ecologia da Paisagem, do [Bacharelado em Ciências Ambientais](https://www2.unifap.br/cambientais/) da Universidade Federal do Amapá, Brasil.
 
 O objetivo é de apresentar os capacidades e opções para desenvolver e integrar pesquisas na Ecologia da Paisagem no ambiente estatística de R.
 
 Esperamos que ele seja utilizado tanto por quem quer se aprofundar em análises comumente utilizadas em Ecologia da Paisagem, mesmo por quem tem poucas habilidades quantitativas. 
 
+O conteudo e organização dos capítulos esta separado em partes.
+
+-   O primeiro parte é "Apresentação".    
+o objetivo dessa parte é inclui os aspectos mais gerais sobre os componentes e da estrutura do livro e seus objetivos.
+
+-   O segundo é "Escala e Padrões".    
+Aqui, os capitulos inclui um breve introdução usando R para explorar alguns componentes chaves da Ecologia da Paisagem. 
+
+-   A terceira é "Exemplos de caso".    
+Aqui, os capítulos apresentam a aplicação de análises específicas e atualmente utilizadas em Ecologia da Paisagem.
+
+-   A quarta parte do livro é chamada de "R e RStudio".    
+Esta parte trata o funcionamento da linguagem R. Aqui, nós aprendemos desde como instalar o R e o RStudio até a manipulação e visualização de dados geoespaciais no R.
+
+-   A parte final é "Encerramento".    
+Aqui os capítulos apresentam a bibliografia e alguns apêndices (exemplos de código).
+
+
 ## Agradecimentos {.unnumbered}
 
-Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil.
+O material deste livro foi desenvolvido a partir de cursos de graduação ministrados pelos autores. Agradecemos a todos os alunos por fornecerem um suprimento ilimitado de perguntas que melhoraram o conteúdo. Este livro não é apenas o resulto dos autores. Mas é o resultado de muitas pessoas na comunidade R e Ecologia da Paisagem no Brasil. Agradecimentos especiais ao Dr. Alexandre Martensen, cujos exemplos inspiraram meu desenvolvimento de materiais de aprendizagem on-line e aos autores do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) cuja dedicação me salvou anos de trabalho.
 Muito obrigado!

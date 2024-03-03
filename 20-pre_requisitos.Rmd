@@ -1,0 +1,105 @@
+
+# (PART) R e RStudio: Codigo com certeza {-}
+
+
+\newpage{}
+
+
+# Pré-requisitos {#cap20}
+
+Conteudo copiado, com pequenas alterações e atualizações de [Capítulo 3 Pré-requisitos](https://analises-ecologicas.com/cap3), do livro [Análises Ecológicas no R](https://analises-ecologicas.com/) . O livro está licenciado sob a licença [BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) : https://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+## Introdução
+
+O objetivo deste capítulo é informar como fazer a instalação dos Programas R e RStudio, além de descrever os pacotes e dados necessários para reproduzir os exemplos do livro.
+
+### Versão do R
+
+```{r make-rversion, echo=FALSE}
+rv <- R.version
+rvv <- paste(rv$major, rv$minor, sep=".")
+rvrt <- paste(rv$major, substr(rv$minor,1,1), sep="")
+rvd <- paste(rv$day, rv$month, rv$year, sep="/")
+rvdp <- paste("(", rvd, ")", sep = "")
+rvuse <- paste(rvv, rvdp, sep=" ")
+```
+
+Todas os códigos, pacotes e análises disponibilizados no livro foram realizados no Programa R versão `r rvuse`.
+
+## Instalação do R
+
+Abaixo descrevemos os passos necessários para a instalação do programa R no seu computador. Para Windows, use link https://cran.r-project.org/bin/windows/base/ e vai para passo 6 :
+
+1.  Para começarmos a trabalhar com o R é necessário baixá-lo na página do R Project. Então, acesse esse site [http://www.r-project.org](http://www.r-project.org) 
+2.  Clique no link **download R**
+3.  Na página *CRAN Mirros (Comprehensive R Archive Network)*, escolha "0-Cloud" ou uma das páginas espelho do Brasil mais próxima de você para baixar o programa
+4.  Escolha agora o sistema operacional do seu computador (passos adicionais existem para diferentes distribuições Linux ou MacOS). Aqui faremos o exemplo com o Windows
+5.  Clique em **base** para finalmente chegar à página de download com a versão mais recente do R
+6.  Clique no arquivo **Download R (versão mais recente) for Windows** que será instalado no seu computador
+7.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa R
+
+```{r fig-r-instalacao, fig.align = 'center', out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa R no computador. "}
+knitr::include_graphics(path = "figures/cap03_fig01.png")
+```
+
+::: {.alert .alert-info}
+<strong> Importante </strong>\
+Para o Sistema Operacional (SO) Windows, alguns pacotes, por exemplo `eprdados`, são dependentes da instalação separada do [Rtools](https://cran.rstudio.com/bin/windows/Rtools/). Ou seja antes de instalar `eprdados` você deve instalar [Rtools](https://cran.rstudio.com/bin/windows/Rtools/).
+Da mesma forma, GNU/Linux e MacOS também possuem dependências de outras bibliotecas para pacotes específicos, mas que não abordaremos aqui. Essas informações de dependência geralmente são retornadas como erros e você pode procurar ajuda em fóruns específicos.
+:::
+
+## Instalação do Rtools
+
+Abaixo descrevemos os passos necessários para a instalação do Rtools no seu computador:
+
+1.  Para fazer o download do Rtools, acessamos o site [https://cran.rstudio.com/bin/windows/Rtools/](https://cran.rstudio.com/bin/windows/Rtools/) ,
+2. clique no link com o mesmo número de versão de R.    
+Por exemplo, com R versão `r rvv` você precisa RTools `r rvrt`.
+2.  Clique em  **Rtools43 installer** ,
+3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RTools.    
+Recomenda-se usar os padrões, incluindo o local de instalação padrão "C:/rtools43".
+
+## Instalação do RStudio
+
+O RStudio possui algumas características que o tornam popular: várias janelas de visualização, marcação e preenchimento automático do script, integração com controle de versão, dentre outras funcionalidades.
+
+Abaixo descrevemos os passos necessários para a instalação do RStudio no seu computador:
+
+1.  Para fazer o download do RStudio, acessamos o site [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) ,
+2.  Clique em **download...**,
+3.  Abra o arquivo que foi baixado no seu computador e siga os passos indicados para finalizar a instalação do programa RStudio.
+
+```{r fig-rstudio-instalacao, fig.align = 'center', out.width = "75%", out.height = "75%", echo = FALSE, fig.cap = "Esquema ilustrativo demonstrando os passos necessários para instalação do programa RStudio no computador."}
+knitr::include_graphics(path = "figures/cap03_fig02.png")
+```
+
+
+## Pacotes
+
+Descrevemos no Capítulo \@ref(cap21) o que são e como instalar os pacotes para realizar as análises estatísticas no R.
+
+::: {.alert .alert-info}
+<strong> Importante </strong>\
+Criamos o pacote `eprdados` que contém todas as informações e dados utilizados neste livro. Assim, recomendamos que você instale e carregue este pacote no início de cada capítulo para ter acesso aos dados necessários para executar as funções no R.
+
+Para a instalação do pacote `eprdados` no macOS, você precisará ter instalado o programa XCode que pode ser baixado [aqui](https://developer.apple.com/xcode/). Este programa é disponibilizado gratuitamente pela Apple e é necessário para compilar quaisquer programas distribuídos em código fonte (ou seja, sem um binário). Após instalar esse programa e o pacote `devtools`, você poderá instalar o eprdados utilizando as instruções abaixo.
+:::
+
+Abaixo, listamos todos os pacotes utilizados no livro. Você pode instalar os pacotes agora ou esperar para instalá-los quando ler o Capítulo \@ref(cap21) e entender o que são as funções `install.packages()`, `library()` e  `remotes::install_github()`. Para fazer a instalação, você vai precisar estar conectado à internet.
+
+```{r eval=FALSE}
+install.packages(c("ade4", "adespatial", "ape", "bbmle", "betapart", "BiodiversityR", "car", "cati", "datasauRus", "devtools", "DHARMa", "dplyr", "ecolottery", "emmeans", "factoextra", "FactoMineR", "fasterize", "FD", "forcats", "geobr", "generalhoslem", "GGally", "ggExtra", "ggforce", "ggplot2", "ggpubr", "ggrepel", "ggspatial", "glmmTMB", "grid", "gridExtra", "here", "hillR", "iNEXT", "janitor", "kableExtra", "knitr", "labdsv", "lattice", "leaflet", "lmtest", "lsmeans", "lubridate", "mapview", "MASS", "MuMIn", "naniar", "nlme", "ordinal", "palmerpenguins", "performance", "pez", "phyloregion", "phytools", "picante", "piecewiseSEM", "purrr", "pvclust", "raster", "readr", "remotes", "reshape2", "rgdal" , "Rmisc", "rnaturalearth", "RVAideMemoire", "sciplot", "sf", "sidrar", "sjPlot", "spData", "spdep", "stringr", "SYNCSA", "terra", "tibble", "tidyr", "tidyverse", "tmap", "tmaptools", "TPD", "vcd", "vegan", "viridis", "visdat", "mvabund", "rdist", "udunits2"), dependencies = TRUE)
+```
+
+### Pacotes do GitHUb
+Diferente dos pacotes anteriores que são baixados do CRAN, alguns pacotes são baixados do GitHub dos pesquisadores responsáveis pelos pacotes. [GitHub](https://github.com/) é um repositório remoto de códigos que permite controle de versão, muito utilizado por desenvolvedores e programadores. Nestes casos, precisamos carregar o pacote `remotes` para acessar a função `remotes::install_github()`. Durante as instalações destes pacotes, algumas vezes o R irá pedir para você digitar um número indicando os pacotes que você deseja fazer update. Neste caso, digite 1 para indicar que ele deve atualizar os pacotes dependentes antes de instalar os pacotes requeridos.
+
+```{r eval=FALSE}
+library(remotes) 
+remotes::install_github("darrennorris/eprdados")
+remotes::install_github("ropensci/rnaturalearthhires")
+```
+
+## Dados
+
+A maioria dos exemplos do livro utilizam dados reais extraídos de artigos científicos que já foram publicados ou dados que foram coletados por um dos autores deste livro. Todos os dados, publicados ou simulados, estão disponíveis no pacote [`eprdados`](https://darrennorris.github.io/eprdados/). Além disso, em cada capítulo fazemos uma breve descrição dos dados para facilitar a compreensão sobre  como essas variáveis estão relacionadas com as perguntas do exemplo.

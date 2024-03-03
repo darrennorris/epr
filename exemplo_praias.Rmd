@@ -1,0 +1,211 @@
+
+# 
+
+
+```{r packages-needed, echo=TRUE, eval=FALSE}
+library(plyr)
+library(tidyverse)
+library(terra)
+library(sf)
+library(readxl)
+library(tmap)
+library(landscapemetrics)
+```
+
+
+Area of interest - format extent for use by terra.
+```{r make-extent, echo=TRUE, eval=FALSE}
+#extent from 50 km arouund river upstream of cachoeira caldeirao
+meuSIG <- file.choose()
+#"C:\\Users\\Darren\\Documents\\gisdata\\vector\\rivers.GPKG"
+# "C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg"
+rsl <- st_read(meuSIG, layer = "centerline")
+rsl_50km <- st_union(st_buffer(rsl, dist=50000))
+myexent <- ext(vect(rsl_50km)) 
+```
+
+
+Load raster
+```{r load-raster, combine-years, echo=TRUE, eval=FALSE}
+rio_85a22 <- rast("data/raster/mapbiomas/utm_cover_AP_rio_85a22.tif")
+# smaller sample for code testing
+rio_ag <- aggregate(subset(rio_85a22, c(1, 38)), fact=5, fun="modal")
+
+
+```
+
+load beach coordinates and make polygon
+```{r load-beach, combine-years, echo=TRUE, eval=FALSE}
+beachfile <- "data/vector/beaches.GPKG"
+beach <- st_read(beachfile, layer = "nesting_beaches3395") |> 
+  st_transform(31976)
+# make sure is same
+st_crs(beach) <- crs(rio_85a22)
+# buffer
+buff_500 <- st_buffer(beach, dist=500) %>% 
+  mutate(buff_dist = 500, 
+         tipo = "buffer", 
+         area_m2 = st_area(geom), 
+         area_km2 = as.numeric(st_area(geom))/1000000)  |>
+  mutate(aid = paste(id_praia, buff_dist, sep="_")) |>
+  dplyr::select(aid, id_praia, buff_dist, tipo, area_m2, area_km2)
+
+buff_10km <- st_buffer(beach, dist=10000) %>% 
+  mutate(buff_dist = 10000, 
+         tipo = "buffer", 
+         area_m2 = st_area(geom), 
+         area_km2 = as.numeric(st_area(geom))/1000000)  |> 
+   mutate(aid = paste(id_praia, buff_dist, sep="_")) |>
+  dplyr::select(aid, id_praia, buff_dist, tipo, area_m2, area_km2)
+
+bind_rows(buff_500, buff_10km) |> 
+  mutate(aid = paste(id_praia, buff_dist, sep="_")) -> buff
+length(unique(buff$aid)) # 766
+```
+
+reclassify 
+```{r reclass,  echo=TRUE, eval=FALSE}
+# legend 
+#"C:\\Users\\user\\Documents\\rbooks\\epr\\data\\raster\\mapbiomas\\legend\\Codigos-da-legenda-colecao-8.csv"
+maplegend <- read.csv2("data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv")
+# two column matrix ("is", "becomes").
+class_anthro <- c(14, 15, 18, 19,39, 20, 40, 62, 41, 36, 46, 47, 35, 48, 9, 21,24,30, 31)
+new_anthro <- rep(14, length(class_anthro))
+class_water <- c(26, 33)
+new_water <- rep(26, length(class_water))
+class_forest <- c(1,3,4,6,49)
+new_forest <- rep(1, length(class_forest))
+dfclass <- data.frame(old = c(class_anthro, class_water, class_forest), 
+                new = c(new_anthro, new_water, new_forest))
+m <- as.matrix(dfclass)
+rcrio_ag <- classify(rio_ag, m)
+unique(rcrio_ag)
+plot(rcrio_ag)
+# ok apply to all
+rcrio_ag <- classify(rio_85a22, m)
+# pode demorar uns minutos.
+rcrio <- classify(rio_85a22, m)
+
+writeRaster(rcrio, "rcutm_cover_AP_rio_85a22.tif", 
+            datatype = "INT1U", NAflag=27, 
+            gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
+```
+
+
+Plot to check.
+```{r plot-years, echo=TRUE, eval=FALSE}
+class_vals <- maplegend$Class_ID
+class_color <- maplegend$Color
+names(class_color) <-  maplegend$Class_ID
+#labels
+my_label <- ifelse(maplegend$Descricao =="Agropecuária", "Antropico", 
+                   maplegend$Descricao)
+names(my_label) <- maplegend$Class_ID
+
+# Plot to check
+tm_shape(rcrio_ag) +
+  tm_raster(style = "cat", palette = class_color, labels = my_label, title="") + 
+  tm_scale_bar(breaks = c(0, 10), text.size = 1, 
+               position=c("left", "top")) +
+  tm_facets()
+
+```
+
+Calculate metrics.
+```{r calculate-metrics, echo=TRUE, eval=FALSE}
+# proportion of buffers. Not efficient.
+metricas_anos <- sample_lsm(landscape = rcrio_ag, 
+                            y = buff_500,
+                           plot_id = data.frame(buff_500)[, 'aid'],
+                             what = "lsm_c_pland")
+
+# Simple function to calculate proportion of class.
+# Using plyr to run for each point
+dfbeach <- data.frame(beach[, c('aid','id_praia')])
+
+class_prop <- function(x, adist = 10000, 
+                       rfile = "data/raster/mapbiomas/rcutm_cover_AP_rio_85a22.tif"){
+  inpoint <- x
+  mypoint <- sf::st_as_sf(inpoint)
+  myid <- paste(x$id_praia, adist, sep="_")
+  
+   mypoly <- sf::st_union(sf::st_buffer(mypoint, dist=adist)) 
+   myexent <- terra::ext(terra::vect(mypoly)) 
+   rin <- rfile
+   rbig <- terra::rast(rin)
+   #Crop
+  rcrop <- terra::crop(rbig, myexent, snap="out")
+  rm("rbig") 
+  rm("mypoly") 
+  res <- sample_lsm(landscape = rcrop, 
+             y = mypoint, 
+             size = adist, 
+             plot_id = myid, 
+             what = "lsm_c_pland")
+  # try this to be quicker
+  #res <- lsm_c_pland(landscape = rcrop
+  #           )
+  outres <- data.frame(res)
+  #clear temporary files
+  terra::tmpFiles(current =TRUE, remove = TRUE) 
+  outres
+}
+# this seems to be much faster and uses less memory.
+# 18:00. Finished withiin 30 minutes.
+mymetrics_500 <- plyr::ddply(dfbeach, .(aid), .fun=class_prop)
+# 18:40 finished by 2036
+mymetrics_10000 <- plyr::ddply(dfbeach, .(aid), .fun=class_prop)
+
+```
+
+Tidy up.
+```{r tidy-data, echo=TRUE, eval=FALSE}
+# add year
+bind_rows(mymetrics_500, mymetrics_10000) |>
+    dplyr::mutate(value = round(value,2), 
+         ano = case_when(layer==1 ~1985, 
+                         layer==2~1986, 
+                         layer==3~1987, 
+                         layer==4 ~1988, 
+                         layer==5~1989, 
+                         layer==6~1990,
+                         layer==7~1991, 
+                         layer==8~1992,
+                         layer==9~1993, 
+                         layer==10~1994,
+                         layer==11~1995, 
+                         layer==12~1996,
+                         layer==13~1997, 
+                         layer==14~1998,
+                         layer==15~1999, 
+                         layer==16~2000, 
+                         layer==17~2001, 
+                         layer==18~2002, 
+                         layer==19~2003, 
+                         layer==20~2004, 
+                         layer==21~2005, 
+                         layer==22~2006, 
+                         layer==23~2007, 
+                         layer==24~2008, 
+                         layer==25~2009, 
+                         layer==26~2010, 
+                         layer==27~2011, 
+                         layer==28~2012, 
+                         layer==29~2013, 
+                         layer==30~2014, 
+                         layer==31~2015, 
+                         layer==32~2016, 
+                         layer==33~2017, 
+                         layer==34~2018, 
+                         layer==35~2019, 
+                         layer==36~2020, 
+                         layer==37~2021, 
+                         layer==38~2022)) -> mymetrics
+
+```
+
+Export.
+```{r export-metrics, echo=TRUE, eval=FALSE}
+write.csv(mymetrics, "mapbiomas_beaches.csv", row.names = FALSE)
+```
+
