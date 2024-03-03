@@ -29,6 +29,7 @@ fig:fig-species-logistic
 fig:fig-carnivoros-scale
 fig:fig-carnivoros-scale-est
 fig:fig-kerneltypes
+fig:compare-garimpos
 fig:plot-fig-sankey
 fig:fig-r-instalacao
 fig:fig-rstudio-instalacao
@@ -170,7 +171,7 @@ apresentação-2
 pacotes-e-fontes-de-dados
 pacotes-2
 fontes-de-dados
-arquivos-de-vector
+arquivos-de-vetor
 arquivos-de-raster
 mudanças-na-paisagem-indo-além-de-desmatamento
 definação
@@ -228,6 +229,7 @@ métricas-para-as-manchas
 quais-métricas-devo-escolher
 métricas-por-classe-de-mineração
 exportar-as-métricas
+apresentando-os-resultados
 preparando-os-resultados
 uma-tabela-versatil
 reorganização
@@ -235,6 +237,7 @@ uma-figura-elegante
 gráfico-de-barra
 gráfico-de-boxplot
 comparação-entre-anos
+comparação-entre-anos-e-paisagens
 conclusões-e-próximos-passos
 cap20
 introdução-1

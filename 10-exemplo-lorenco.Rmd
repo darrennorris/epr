@@ -830,7 +830,8 @@ mapview(sf_acesso_vn) +
   mapview(sf_acesso_vn_20km)
 ```
 
-Agora dados de Mapbiomas. Cópias são fornecidas no pacote eprdados. Um arquivo para cada garimpo. Cada arquivo é um raster que inclui múltiplas camadas, uma para cada ano.
+Agora dados raster de Mapbiomas. 
+Cópias são fornecidas no pacote eprdados. Um arquivo para cada garimpo. Cada arquivo é um raster que inclui múltiplas camadas, uma para cada ano.
 ```{r load-mapbiomas-years}
 # arquivo no pacote "eprdados"
 arquivo_l <- system.file("raster/lorenco_85a22.tif", 
@@ -871,7 +872,7 @@ metricas_vilanova <- calculate_lsm(r85a22_vn_c,
 
 Acabamos de calcular quatro métricas de paisagem diferentes ao longo de 38 anos. Assim sendo, os resultados (no novo objeto metricas_lourenco) deve ter 152 linhas (4 métricas X 38 anos = 152).
 
-Aora vamos arrumar os dados para facilitar apresentação e communicação dos resutlados:
+Aora vamos arrumar os dados para facilitar apresentação e comunicação dos resultados:
 ```{r arrumar-anos-l}
 resultados_anos_lourenco <- metricas_lourenco |>
               dplyr::mutate(value = round(value,2), 

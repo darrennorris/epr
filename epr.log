@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.8)  8 JAN 2024 13:03
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.8)  3 MAR 2024 17:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -354,6 +354,97 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 Package: flafter 2021/07/31 v1.4e Standard LaTeX floats after reference (FMi)
 Applying: [2015/01/01] float order in 2-column on input line 49.
 Already applied: [0000/00/00] float order in 2-column on input line 151.
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip66
+\multirow@cntb=\count308
+\multirow@dima=\skip67
+\bigstrutjot=\dimen187
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen188
+\WF@size=\dimen189
+\c@WF@wrappedlines=\count309
+\WF@box=\box64
+\WF@everypar=\toks28
+Package: wrapfig 2003/01/31  v 3.6
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count310
+\float@exts=\toks29
+\float@box=\box65
+\@float@everytoks=\toks30
+\@floatcapt=\box66
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks31
+\minrowclearance=\skip68
+\rownum=\count311
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+)) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box67
+\sift@deathcycles=\count312
+\@vwid@loff=\dimen190
+\@vwid@roff=\dimen191
+)
+\c@taburow=\count313
+\tabu@nbcols=\count314
+\tabu@cnt=\count315
+\tabu@Xcol=\count316
+\tabu@alloc=\count317
+\tabu@nested=\count318
+\tabu@target=\dimen192
+\tabu@spreadtarget=\dimen193
+\tabu@naturalX=\dimen194
+\tabucolX=\dimen195
+\tabu@Xsum=\dimen196
+\extrarowdepth=\dimen197
+\abovetabulinesep=\dimen198
+\belowtabulinesep=\dimen199
+\tabustrutrule=\dimen256
+\tabu@thebody=\toks32
+\tabu@footnotes=\toks33
+\tabu@box=\box68
+\tabu@arstrutbox=\box69
+\tabu@hleads=\box70
+\tabu@vleads=\box71
+\tabu@cellskip=\skip69
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box72
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/threeparttablex.sty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\TPTL@width=\skip70
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box73
+\UL@hyphenbox=\box74
+\UL@skip=\skip71
+\UL@hook=\toks34
+\UL@height=\dimen257
+\UL@pe=\count319
+\UL@pixel=\dimen258
+\ULC@box=\box75
+Package: ulem 2019/11/18
+\ULdepth=\dimen259
+) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen260
+\c@nlinenum=\count320
+\TeXr@lab=\toks35
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -382,17 +473,17 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count308
+\c@section@level=\count321
 )
-\@linkdim=\dimen187
-\Hy@linkcounter=\count309
-\Hy@pagecounter=\count310
+\@linkdim=\dimen261
+\Hy@linkcounter=\count322
+\Hy@pagecounter=\count323
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-11-26 v7.01g Hyperref: PDFDocEncoding definition (HO)
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count311
+\Hy@SavedSpaceFactor=\count324
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-11-26 v7.01g Hyperref: PDF Unicode definition (HO)
 )
@@ -404,21 +495,21 @@ Package hyperref Info: Plain pages OFF on input line 4196.
 Package hyperref Info: Backreferencing OFF on input line 4201.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4448.
-\c@Hy@tempcnt=\count312
+\c@Hy@tempcnt=\count325
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4786.
-\XeTeXLinkMargin=\dimen188
+\XeTeXLinkMargin=\dimen262
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count313
-\Field@Width=\dimen189
-\Fld@charsize=\dimen190
+\Fld@menulength=\count326
+\Field@Width=\dimen263
+\Fld@charsize=\dimen264
 Package hyperref Info: Hyper figures OFF on input line 6065.
 Package hyperref Info: Link nesting OFF on input line 6070.
 Package hyperref Info: Hyper index ON on input line 6073.
@@ -430,9 +521,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6095.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count314
-\c@Item=\count315
-\c@Hfootnote=\count316
+\Hy@abspage=\count327
+\c@Item=\count328
+\c@Hfootnote=\count329
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
@@ -440,11 +531,11 @@ File: hxetex.def 2023-11-26 v7.01g Hyperref driver for XeTeX
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\pdfm@box=\box64
-\c@Hy@AnnotLevel=\count317
-\HyField@AnnotCount=\count318
-\Fld@listcount=\count319
-\c@bookmark@seq@number=\count320
+\pdfm@box=\box76
+\c@Hy@AnnotLevel=\count330
+\HyField@AnnotCount=\count331
+\Fld@listcount=\count332
+\c@bookmark@seq@number=\count333
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -455,49 +546,49 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip66
+\Hy@SectionHShift=\skip72
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count321
+\BKM@id=\count334
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 155.
+Package hyperref Info: Option `colorlinks' set `true' on input line 169.
 (./epr.aux)
 \openout1 = `epr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 161.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 161.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 161.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 161.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 161.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 161.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 175.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 161.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 175.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -523,7 +614,7 @@ Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 161.
+(Font)              scaled to size 10.0pt on input line 175.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -555,15 +646,15 @@ Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 161.
+(Font)              scaled to size 10.0pt on input line 175.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 161.
+(Font)              `operators' in the math version `normal' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 161.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 175.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 161.
+(Font)              `operators' in the math version `bold' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 161.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 175.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -642,13 +733,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 161.
+(Font)              `symbols' in the math version `normal' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 161.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 175.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 161.
+(Font)              `symbols' in the math version `bold' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 161.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 175.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -709,19 +800,19 @@ Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
 (fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 161.
+(Font)              `largesymbols' in the math version `normal' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 161.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 175.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 161.
+(Font)              `largesymbols' in the math version `bold' on input line 175.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 161.
-LaTeX Info: Redefining \microtypecontext on input line 161.
-Package microtype Info: Applying patch `item' on input line 161.
-Package microtype Info: Applying patch `toc' on input line 161.
-Package microtype Info: Applying patch `eqnum' on input line 161.
-Package microtype Info: Applying patch `footnote' on input line 161.
-Package microtype Info: Applying patch `verbatim' on input line 161.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 175.
+LaTeX Info: Redefining \microtypecontext on input line 175.
+Package microtype Info: Applying patch `item' on input line 175.
+Package microtype Info: Applying patch `toc' on input line 175.
+Package microtype Info: Applying patch `eqnum' on input line 175.
+Package microtype Info: Applying patch `footnote' on input line 175.
+Package microtype Info: Applying patch `verbatim' on input line 175.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -764,36 +855,36 @@ File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mode
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 161.
+Package hyperref Info: Link coloring ON on input line 175.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 163.
+(Font)              scaled to size 12.0pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 163.
+(Font)              scaled to size 8.0pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 163.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 163.
+(Font)              scaled to size 6.0pt on input line 177.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 177.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 163.
+(Font)              scaled to size 12.0011pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 163.
+(Font)              scaled to size 8.00073pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 163.
+(Font)              scaled to size 6.00055pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 163.
+(Font)              scaled to size 11.99872pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 163.
+(Font)              scaled to size 7.99915pt on input line 177.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 163.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 163.
+(Font)              scaled to size 5.99936pt on input line 177.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 177.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 163.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 177.
 (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/user/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -817,1596 +908,743 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 3.
 [1
 
-] [2] [3])
+]
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 3128) in paragraph at lines 82--82
+ [][] [][]\TU/lmr/m/n/10 Metodologia Espacialmente ExplÃcita para Quantificar os Impactos A Jusante da 
+ []
+
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+[2] [3] [4])
 \tf@toc=\write4
 \openout4 = `epr.toc'.
 
-[4] [5] [6] [7]
+[5]
+Underfull \hbox (badness 1024) in paragraph at lines 205--206
+[]\TU/lmr/m/n/10 Este material introdutÃ³rio Ã© direcionado principalmente a estudantes de graduaÃ§Ã£o e pÃ³s-
+ []
+
+[6] [7]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[8]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 322.
-[8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 459--461
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 345.
+[9] [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
+Underfull \hbox (badness 10000) in paragraph at lines 484--486
 
  []
 
-[12] [13] [14]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^99 (U+0099) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+[13]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[14] [15]
 File: epr_files/figure-latex/plot-ramostra-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/plot-ramostra-1.pdf>
-[15]
+[16]
 File: figures/raster_components.png Graphic file (type bmp)
 <figures/raster_components.png>
-[16]
+[17]
 File: epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/mapa-mapbiomas-cores-1.pdf>
-[17]
+[18]
 File: figures/pixel_size.png Graphic file (type bmp)
 <figures/pixel_size.png>
-[18] [19] [20]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+[19] [20] [21]
 File: epr_files/figure-latex/fig-mud-agg-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-mud-agg-1.pdf>
-[21]
+[22]
 File: epr_files/figure-latex/buffer-figure-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/buffer-figure-1.pdf>
-[22]
+[23]
 File: epr_files/figure-latex/map-pontod-rio-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/map-pontod-rio-1.pdf>
 File: epr_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-8-1.pdf>
-[23]
-Overfull \vbox (0.52036pt too high) detected at line 869
+[24]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+
+Overfull \vbox (0.52036pt too high) detected at line 892
  []
 
-[24]
+[25]
 File: epr_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-11-1.pdf>
-[25] [26]
+[26] [27]
 File: epr_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-12-1.pdf>
-[27] [28]
+[28] [29]
 File: epr_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-14-1.pdf>
 
-Overfull \hbox (0.4918pt too wide) in paragraph at lines 980--981
- \TU/lmr/bx/n/10 1.6.0.1 Pergunta 4[] []Qual é a extensão em número de pixels desse recorte (buffer.forest1.1km)?[] 
+Overfull \hbox (30.0018pt too wide) in paragraph at lines 1003--1004
+ \TU/lmr/bx/n/10 1.6.0.1 Pergunta 4[] []Qual Ã© a extensÃ£o em nÃºmero de pixels desse recorte (buffer.forest1.1km)?[] 
  []
 
-[29] [30]
+[30]
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-italic]:!
+[31]
 File: epr_files/figure-latex/mapa-exte-pontos-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/mapa-exte-pontos-1.pdf>
-[31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1174
+[32] [33]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1199
 [][][][][][][] [] [][][][][][][][] [] [][][][] [] [][][] [] [][][][][][] [] [][][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1199
 [][][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] [] [][] []
  []
 
-[33] [34] [35] [36]
-File: epr_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-23-1.pdf>
-[37] [38]
-File: epr_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-26-1.pdf>
-[39] [40] [41] [42]
-File: epr_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-30-1.pdf>
-[43] [44] [45]
+[34]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-bold]:mapping=tex-text;!
+[35]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+[36] [37]
+File: epr_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-22-1.pdf>
+[38] [39]
+File: epr_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-25-1.pdf>
+[40]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+[41] [42] [43]
+File: epr_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-29-1.pdf>
+[44]
+Underfull \hbox (badness 1097) in paragraph at lines 1583--1584
+[]\TU/lmr/m/n/10 Sendo assim, \TU/lmtt/m/n/10 mutate() \TU/lmr/m/n/10 nÃ£o precisa modificar necessariamente os dados originais, sendo que as
+ []
+
+[45] [46]
 File: www/logo_gg_lsm.png Graphic file (type bmp)
 <www/logo_gg_lsm.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 1693--1695
+Underfull \hbox (badness 10000) in paragraph at lines 1715--1717
 
  []
 
-[46]
+[47]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-regular]:!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+File: epr_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-35-1.pdf>
+[48] [49]
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-regular]:!
 File: epr_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-36-1.pdf>
-[47]
+[50]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[51]
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-regular]:!
 File: epr_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/unnamed-chunk-37-1.pdf>
-[48] [49]
-File: epr_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-38-1.pdf>
-[50]
+[52]
 File: figures/fig_comp_linear.pdf Graphic file (type pdf)
 <use figures/fig_comp_linear.pdf>
-[51] [52]
+[53] [54]
 File: epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-buffmetrics-1.pdf>
-[53] [54]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
 [55]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+[56]
+Underfull \vbox (badness 2680) detected at line 2101
+ []
+
+[57]
 File: epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/met-insert-fig-multiplemetrics-1.pdf>
-[56] [57] [58]
-Underfull \hbox (badness 10000) in paragraph at lines 2190--2192
+[58] [59] [60]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman12-bold]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^99 (U+0099) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^99 (U+0099) in font [lmroman10-regular]:mapping=tex-text;!
+[61]
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+[62]
+File: epr_files/figure-latex/plot-layers-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/plot-layers-1.pdf>
+[63]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[64] [65]
+File: figures/fig_fg_mapa.png Graphic file (type bmp)
+<figures/fig_fg_mapa.png>
+
+Overfull \hbox (252.95566pt too wide) in paragraph at lines 2508--2509
+[][] 
+ []
+
+[66] [67]
+File: figures/fig_anos_simples.png Graphic file (type bmp)
+<figures/fig_anos_simples.png>
+[68]
+File: figures/fig_fg_86a21.png Graphic file (type bmp)
+<figures/fig_fg_86a21.png>
+
+Overfull \hbox (180.70444pt too wide) in paragraph at lines 2607--2607
+[][] 
+ []
+
+[69] [70] [71] [72]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[73]
+File: figures/fig_taxa.png Graphic file (type bmp)
+<figures/fig_taxa.png>
+[74] [75]
+Missing character: There is no ^^91 (U+0091) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+[76]
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+[77] [78]
+Underfull \hbox (badness 10000) in paragraph at lines 3083--3085
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2192--2194
+Underfull \hbox (badness 10000) in paragraph at lines 3085--3087
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2194--2196
+Underfull \hbox (badness 10000) in paragraph at lines 3087--3089
 
  []
 
-[59]
-Underfull \hbox (badness 10000) in paragraph at lines 2238--2240
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^99 (U+0099) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^90 (U+0090) in font [lmroman10-regular]:mapping=tex-text;!
+[79] [80]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 3136--3138
 
  []
 
-[60] [61]
+[81] [82]
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 2320.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 3217.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2356--2358
+Underfull \hbox (badness 10000) in paragraph at lines 3253--3255
 
  []
 
 
-Underfull \hbox (badness 2478) in paragraph at lines 2367--2370
+Underfull \hbox (badness 2478) in paragraph at lines 3265--3266
 \TU/lmr/m/n/10 denados graus decimais 0.50979, -52.12023): [][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][][][][][] [] [][][] [] [][][][][][][][][] [] [] [] [] [] [][][][][][][] [][]
  []
 
-[62]
+[83]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^94 (U+0094) in font [lmroman10-regular]:mapping=tex-text;!
 File: figures/mapview_components.png Graphic file (type bmp)
 <figures/mapview_components.png>
 File: epr_files/figure-latex/map-study-area-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/map-study-area-1.pdf>
-[63] [64]
+[84] [85]
 
-LaTeX Warning: Reference `cap23' on page 65 undefined on input line 2406.
+LaTeX Warning: Reference `cap23' on page 86 undefined on input line 3316.
 
 File: figures/fig_pairs.png Graphic file (type bmp)
 <figures/fig_pairs.png>
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2431
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2431--2433
+Underfull \hbox (badness 10000) in paragraph at lines 3339--3342
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2433--2435
+Underfull \hbox (badness 10000) in paragraph at lines 3342--3345
 
  []
 
-[65]
-Underfull \hbox (badness 10000) in paragraph at lines 2479--2480
+
+Underfull \hbox (badness 10000) in paragraph at lines 3345--3348
 
  []
 
-[66]
+[86] [87]
+Underfull \hbox (badness 10000) in paragraph at lines 3392--3393
+
+ []
+
+File: www/boxquote.png Graphic file (type bmp)
+<www/boxquote.png>
+
+Overfull \hbox (94.1997pt too wide) in paragraph at lines 3419--3419
+ [] 
+ []
+
+[88]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+
+LaTeX Warning: Reference `cap23' on page 89 undefined on input line 3427.
+
 File: figures/fig_sppD_box.png Graphic file (type bmp)
 <figures/fig_sppD_box.png>
-[67] [68]
+[89] [90]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
 File: figures/fig_sppD_lr.png Graphic file (type bmp)
 <figures/fig_sppD_lr.png>
-[69]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ##   sp_name buff_dist_km data     fit   null.deviance df.null logLik   AIC   BIC deviance[] 
- []
+[91] [92] [93]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
 
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ##   <chr>          <dbl> <list>   <lis>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>[] 
- []
-
-[70]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ## 3 sppD           0.5   <tibble> <glm>          143.     105  -47.5  99.1 104.      95.1[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ## 4 sppD           1     <tibble> <glm>          143.     105  -44.6  93.2  98.5     89.2[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ## 6 sppD           2     <tibble> <glm>          143.     105  -46.8  97.7 103.      93.7[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ## 7 sppD           4     <tibble> <glm>          143.     105  -49.1 102.  108.      98.2[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2687--2687
-[]\TU/lmtt/m/n/10 ## 8 sppD           8     <tibble> <glm>          143.     105  -48.8 102.  107.      97.5[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##    sp_name buff_dist_km data     fit    glanced  term      estimate std.error statistic[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##    <chr>          <dbl> <list>   <list> <list>   <chr>        <dbl>     <dbl>     <dbl>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  1 sppD           0.125 <tibble> <glm>  <tibble> (Interce~  -1.08      0.285      -3.81[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  2 sppD           0.125 <tibble> <glm>  <tibble> value_me~   0.0419    0.0114      3.68[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  3 sppD           0.25  <tibble> <glm>  <tibble> (Interce~  -2.46      0.514      -4.79[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  4 sppD           0.25  <tibble> <glm>  <tibble> value_me~   0.0662    0.0139      4.76[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  5 sppD           0.5   <tibble> <glm>  <tibble> (Interce~  -4.66      1.03       -4.51[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  6 sppD           0.5   <tibble> <glm>  <tibble> value_me~   0.0832    0.0177      4.70[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  7 sppD           1     <tibble> <glm>  <tibble> (Interce~  -5.89      1.35       -4.36[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  8 sppD           1     <tibble> <glm>  <tibble> value_me~   0.0853    0.0185      4.62[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ##  9 sppD          16     <tibble> <glm>  <tibble> (Interce~  -4.29      0.873      -4.91[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 10 sppD          16     <tibble> <glm>  <tibble> value_me~   0.0543    0.0106      5.13[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 11 sppD           2     <tibble> <glm>  <tibble> (Interce~  -5.45      1.22       -4.48[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 12 sppD           2     <tibble> <glm>  <tibble> value_me~   0.0726    0.0154      4.72[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 13 sppD           4     <tibble> <glm>  <tibble> (Interce~  -4.88      1.07       -4.58[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 14 sppD           4     <tibble> <glm>  <tibble> value_me~   0.0624    0.0130      4.80[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 15 sppD           8     <tibble> <glm>  <tibble> (Interce~  -4.55      0.958      -4.74[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 2719--2719
-[]\TU/lmtt/m/n/10 ## 16 sppD           8     <tibble> <glm>  <tibble> value_me~   0.0575    0.0115      4.99[] 
- []
-
-[71]
-Underfull \hbox (badness 10000) in paragraph at lines 2765--2767
+Underfull \hbox (badness 10000) in paragraph at lines 3680--3682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2767--2771
+Underfull \hbox (badness 10000) in paragraph at lines 3682--3686
 
  []
 
 File: figures/figg_sppD_logLikAIC.png Graphic file (type bmp)
 <figures/figg_sppD_logLikAIC.png>
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+[94]
 File: figures/figg_sppD_scale_est.png Graphic file (type bmp)
 <figures/figg_sppD_scale_est.png>
-[72] [73]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
 File: figures/fig_carnivoros_box.png Graphic file (type bmp)
 <figures/fig_carnivoros_box.png>
-
-Overfull \vbox (1.84572pt too high) detected at line 2845
- []
-
-[74] [75]
-File: epr_files/figure-latex/fig-species-logistic-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/fig-species-logistic-1.pdf>
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+File: figures/fig_spp.png Graphic file (type bmp)
+<figures/fig_spp.png>
 File: figures/figg_carnivoros_logLikAIC.png Graphic file (type bmp)
 <figures/figg_carnivoros_logLikAIC.png>
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
 File: figures/fig_carnivoros_est.png Graphic file (type bmp)
 <figures/fig_carnivoros_est.png>
-[76] [77]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^93 (U+0093) in font [lmroman10-regular]:mapping=tex-text;!
+[95] [96] [97] [98]
 File: figures/spatialkernels.png Graphic file (type bmp)
 <figures/spatialkernels.png>
-[78] [79] [80] [81]
+[99] [100] [101] [102] [103]
+Missing character: There is no ^^81 (U+0081) in font [lmroman12-bold]:mapping=tex-text;!
 File: figures/fig_garimpo_access.png Graphic file (type bmp)
 <figures/fig_garimpo_access.png>
-[82]
+[104]
 File: figures/mapview_point_buffer.png Graphic file (type bmp)
 <figures/mapview_point_buffer.png>
-[83] [84]
+[105] [106]
 File: epr_files/figure-latex/fig-plot-raster-1.pdf Graphic file (type pdf)
 <use epr_files/figure-latex/fig-plot-raster-1.pdf>
-[85] [86] [87]
-File: epr_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-63-1.pdf>
-[88]
-File: epr_files/figure-latex/unnamed-chunk-63-2.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-63-2.pdf>
-[89] [90] [91] [92] [93] [94]
-File: epr_files/figure-latex/unnamed-chunk-72-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-72-1.pdf>
-[95] [96]
-File: epr_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-74-1.pdf>
-[97]
-File: epr_files/figure-latex/unnamed-chunk-75-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-75-1.pdf>
-[98] [99]
-Underfull \hbox (badness 2057) in paragraph at lines 3832--3833
-[]\TU/lmr/m/n/10 Verficar padrões usando poligonos/pontos dos processos de mineração (dados no SIGMINE
+[107]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[108]
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-italic]:!
+[109]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+File: epr_files/figure-latex/unnamed-chunk-71-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-71-1.pdf>
+[110]
+File: epr_files/figure-latex/unnamed-chunk-71-2.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-71-2.pdf>
+[111] [112]
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+[113] [114] [115]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^94 (U+0094) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-regular]:!
+[116]
+File: epr_files/figure-latex/unnamed-chunk-80-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-80-1.pdf>
+[117] [118]
+Missing character: There is no ^^81 (U+0081) in font [lmmono10-regular]:!
+File: epr_files/figure-latex/unnamed-chunk-82-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-82-1.pdf>
+[119]
+File: epr_files/figure-latex/unnamed-chunk-83-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-83-1.pdf>
+[120] [121]
+File: epr_files/figure-latex/check-vilanova-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/check-vilanova-1.pdf>
+[122] [123]
+Overfull \vbox (1.21996pt too high) detected at line 4884
+ []
+
+[124] [125]
+File: figures/fig_compare_garimpos.png Graphic file (type bmp)
+<figures/fig_compare_garimpos.png>
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-regular]:mapping=tex-text;!
+[126]
+Underfull \hbox (badness 1552) in paragraph at lines 4961--4964
+[][]$[][][][][] [] [] [] [][][] [] [][][] [] [][] [] [][][] [] [][] [][] [][]$[][] \TU/lmr/m/n/10 e [][]$[][][][][] [] [] [] [][][] [] [][][] [] [][][] [] [][] [] [][][][][][][][][][][][] [] [][][][][][][] [] [][][][][][][][][] []
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 3832--3833
-[][]$[][][][][] [] [] [] [][][] [] [][][] [] [][] [] [][][] [] [][] [][] [][]$[][] \TU/lmr/m/n/10 e [][]$[][][][][] [] [] [] [][][] [] [][][] [] [][][] [] [][] [] [][][][][][][][][][][][] [] [][][][][][][] [] [][][][][][][][][] []
+Overfull \hbox (3.985pt too wide) in paragraph at lines 4979--4984
+[]\TU/lmr/m/n/10 Uma forma alternativa para visualizaÃ§Ã£o as mudanÃ§as entre anos seria um diagrama “Sankey”/“Alluvial”.
  []
 
 File: figures/images_large_10.1177_19400829221127087-fig3.jpeg Graphic file (type bmp)
 <figures/images_large_10.1177_19400829221127087-fig3.jpeg>
-[100] [101]
+[127] [128]
+Underfull \hbox (badness 1337) in paragraph at lines 5015--5016
+\TU/lmr/m/n/10 Conteudo copiado, com pequenas alteraÃ§Ãµes e atualizaÃ§Ãµes de [][]CapÃtulo 3 PrÃ©-requisitos[][],
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 5015--5016
+\TU/lmr/m/n/10 do livro [][]AnÃ¡lises EcolÃ³gicas no R[][] . O livro estÃ¡ licenciado sob a licenÃ§a [][]BY-NC-ND 4.0[][] :
+ []
+
 File: figures/cap03_fig01.png Graphic file (type bmp)
 <figures/cap03_fig01.png>
-[102]
+[129]
 File: figures/cap03_fig02.png Graphic file (type bmp)
 <figures/cap03_fig02.png>
-[103] [104] [105]
+[130] [131] [132]
 File: figures/cap04_fig01.png Graphic file (type bmp)
 <figures/cap04_fig01.png>
 
-Underfull \hbox (badness 2922) in paragraph at lines 4043--4044
+Underfull \hbox (badness 2922) in paragraph at lines 5213--5214
 []\TU/lmtt/m/n/10 Tools > Global options > Code > Display > [X Show Margis] e Margin column (80)\TU/lmr/m/n/10 : com
  []
 
-[106]
+[133]
 File: figures/cap04_fig02.png Graphic file (type bmp)
 <figures/cap04_fig02.png>
-[107] [108] [109] [110] [111] [112] [113] [114] [115]
-Overfull \hbox (3.22499pt too wide) in paragraph at lines 4774--4775
-\TU/lmtt/m/n/10 devtools::install_github()\TU/lmr/m/n/10 . Precisamos atentar para usar essa forma “nome_usuario/nome_repositorio”,
- []
-
-[116] [117] [118] [119] [120]
-Overfull \hbox (3152.74498pt too wide) in paragraph at lines 5118--5118
+[134] [135]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^83 (U+0083) in font [lmroman10-regular]:mapping=tex-text;!
+[136]
+Missing character: There is no ^^81 (U+0081) in font [lmmonolt10-bold]:!
+Missing character: There is no ^^83 (U+0083) in font [lmmonolt10-bold]:!
+Missing character: There is no ^^81 (U+0081) in font [lmmonolt10-bold]:!
+[137] [138] [139] [140] [141] [142] [143]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[144]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[145]
+Overfull \hbox (3152.74498pt too wide) in paragraph at lines 6182--6182
 []\TU/lmtt/m/n/10 ##     author = {Jari Oksanen and Gavin L. Simpson and F. Guillaume Blanchet and Roeland Kindt and Pierre Legendre and Peter R. Minchin and R.B. O[]Hara and Peter Solymos and M. Henry H. Stevens and Eduard Szoecs and Helene Wagner and Matt Barbour and Michael Bedward and Ben Bolker and Daniel Borcard and Gustavo Carvalho and Michael Chirico and Miquel {De Caceres} and Sebastien Durand and Heloisa Beatriz Antoniazi Evangelista and Rich FitzJohn and Michael Friendly and Brendan Furneaux and Geoffrey Hannigan and Mark O. Hill and Leo Lahti and Dan McGlinn and Marie-Helene Ouellette and Eduardo {Ribeiro Cunha} and Tyler Smith and Adrian Stier and Cajo J.F. {Ter Braak} and James Weedon},[] 
  []
 
+[146]
 File: figures/Turing_quote_01.jpg Graphic file (type bmp)
 <figures/Turing_quote_01.jpg>
-[121] [122] [123] [124] [125]
+[147] [148] [149]
+Overfull \vbox (0.37991pt too high) detected at line 6489
+ []
+
+[150] [151]
 File: figures/cap04_fig03.png Graphic file (type bmp)
 <figures/cap04_fig03.png>
-[126] [127] [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6845--6845
-[]\TU/lmtt/m/n/10 ##   studyName []Sample Number[] Species                 Region Island Stage []Individual ID[][] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-[142]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6870--6870
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 1 Chinst~ Dream            45.7          17                 195        3650 fema~  2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 2 Chinst~ Dream            55.8          19.8               207        4000 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 3 Chinst~ Dream            43.5          18.1               202        3400 fema~  2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 4 Chinst~ Dream            49.6          18.2               193        3775 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 5 Chinst~ Dream            50.8          19                 210        4100 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 6889--6889
-[]\TU/lmtt/m/n/10 ## 6 Chinst~ Dream            50.2          18.7               198        3775 fema~  2009[] 
- []
-
-[143]
-Underfull \hbox (badness 1259) in paragraph at lines 6953--6954
-[]\TU/lmr/m/n/10 Para tanto, podemos utilizar funções de escrita de dados, como \TU/lmtt/m/n/10 write.csv()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 write.table() \TU/lmr/m/n/10 e
- []
-
-[144]
-Underfull \hbox (badness 1371) in paragraph at lines 7028--7030
-[]\TU/lmr/bx/n/10 4.4 \TU/lmr/m/n/10 Quantos pacotes existem no CRAN nesse momento? Execute essa combinação no Console:
- []
-
-[145]
-File: figures/cap05_fig01.png Graphic file (type bmp)
-<figures/cap05_fig01.png>
-[146] [147] [148] [149] [150] [151]
-File: figures/cap05_fig02.png Graphic file (type bmp)
-<figures/cap05_fig02.png>
 [152]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7554--7554
-[]\TU/lmtt/m/n/10 ##    studyName []Sample Number[] Species                Region Island Stage []Individual ID[][] 
- []
-
-[153] [154]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7664--7664
-[]\TU/lmtt/m/n/10 ## 2 PAL0708                 1 Adelie Penguin (Pygoscelis adeliae) Anvers Torgersen 1 Egg~[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7664--7664
-[]\TU/lmtt/m/n/10 ## 4 PAL0708                 2 Adelie Penguin (Pygoscelis adeliae) Anvers Torgersen 1 Egg~[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7664--7664
-[]\TU/lmtt/m/n/10 ## 6 PAL0708                 3 Adelie Penguin (Pygoscelis adeliae) Anvers Torgersen 1 Egg~[] 
- []
-
-[155]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ##   []Sample Number[] Adelie Penguin (Pygos~1 Gentoo penguin (Pygo~2 Chinstrap penguin (P~3[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ##             <dbl>                   <dbl>                  <dbl>                  <dbl>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 1               1                    3750                   4500                   3500[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 2               2                    3800                   5700                   3900[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 3               3                    3250                   4450                   3650[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 4               4                      NA                   5700                   3525[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 5               5                    3450                   5400                   3725[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7785--7785
-[]\TU/lmtt/m/n/10 ## 6               6                    3650                   4550                   3950[] 
- []
-
-[156]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ##   []Sample Number[] Species                      []Culmen Length (mm)[] []Culmen Depth (mm)[][] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ##             <dbl> <chr>                                       <dbl>               <dbl>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ## 1               1 Adelie Penguin (Pygoscelis ~                 39.1                18.7[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ## 2               2 Adelie Penguin (Pygoscelis ~                 39.5                17.4[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ## 5               5 Adelie Penguin (Pygoscelis ~                 36.7                19.3[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7808--7808
-[]\TU/lmtt/m/n/10 ## 6               6 Adelie Penguin (Pygoscelis ~                 39.3                20.6[] 
- []
-
-[157] [158]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ##   species island sex    year bill_length_mm bill_depth_mm flipper_length_mm body_mass_g[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>  <fct> <int>          <dbl>         <dbl>             <int>       <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~ male   2007           39.1          18.7               181        3750[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~ fema~  2007           39.5          17.4               186        3800[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~ fema~  2007           40.3          18                 195        3250[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~ <NA>   2007           NA            NA                  NA          NA[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~ fema~  2007           36.7          19.3               193        3450[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7960--7960
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~ male   2007           39.3          20.6               190        3650[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ##   species island sex    year bill_length_mm bill_depth_mm flipper_length_mm body_mass_g[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>  <fct> <int>          <dbl>         <dbl>             <int>       <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~ male   2007           39.1          18.7               181        3750[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~ fema~  2007           39.5          17.4               186        3800[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~ fema~  2007           40.3          18                 195        3250[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~ <NA>   2007           NA            NA                  NA          NA[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~ fema~  2007           36.7          19.3               193        3450[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 7981--7981
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~ male   2007           39.3          20.6               190        3650[] 
- []
-
-[159]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ##   SPECIES ISLAND BILL_LENGTH_MM BILL_DEPTH_MM FLIPPER_LENGTH_MM BODY_MASS_G SEX    YEAR[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8031--8031
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-[160] [161]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ##   <chr>   <chr>           <dbl>         <dbl>             <int>       <int> <chr> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8165--8165
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 1 Chinst~ Dream            46.9          16.6               192        2700 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Biscoe           36.5          16.6               181        2850 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Biscoe           36.4          17.1               184        2850 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Biscoe           34.5          18.1               187        2900 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Dream            33.1          16.1               178        2900 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8191--8191
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           38.6          17                 188        2900 fema~  2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 1 Gentoo  Biscoe           49.2          15.2               221        6300 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 2 Gentoo  Biscoe           59.6          17                 230        6050 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 3 Gentoo  Biscoe           51.1          16.3               220        6000 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 4 Gentoo  Biscoe           48.8          16.2               222        6000 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 5 Gentoo  Biscoe           45.2          16.4               223        5950 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8212--8212
-[]\TU/lmtt/m/n/10 ## 6 Gentoo  Biscoe           49.8          15.9               229        5950 male   2009[] 
- []
-
-[162]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 1 Gentoo  Biscoe           49.2          15.2               221        6300 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 2 Gentoo  Biscoe           59.6          17                 230        6050 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 3 Gentoo  Biscoe           51.1          16.3               220        6000 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 4 Gentoo  Biscoe           48.8          16.2               222        6000 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 5 Gentoo  Biscoe           45.2          16.4               223        5950 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8233--8233
-[]\TU/lmtt/m/n/10 ## 6 Gentoo  Biscoe           49.8          15.9               229        5950 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Dream            32.1          15.5               188        3050 fema~  2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Dream            33.1          16.1               178        2900 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           33.5          19                 190        3600 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Dream            34            17.1               185        3400 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           34.1          18.1               193        3475 <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8254--8254
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           34.4          18.4               184        3325 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8280--8280
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-[163]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           38.9          17.8               181        3625 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           41.1          17.6               182        3200 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8301--8301
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           36.6          17.8               185        3700 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           38.9          17.8               181        3625 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           41.1          17.6               182        3200 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8323--8323
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           36.6          17.8               185        3700 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8344--8344
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           38.9          17.8               181        3625 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-[164]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8365--8365
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           38.9          17.8               181        3625 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Dream            35.7          18                 202        3550 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Dream            41.1          18.1               205        4300 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Dream            40.8          18.9               208        4300 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Biscoe           41            20                 203        4725 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           41.4          18.5               202        3875 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8386--8386
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           44.1          18                 210        4000 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 1 Chinst~ Dream            50.6          19.4               193        3800 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 2 Chinst~ Dream            46.7          17.9               195        3300 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 3 Chinst~ Dream            52            19                 197        4150 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 4 Chinst~ Dream            50.5          18.4               200        3400 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 5 Chinst~ Dream            49.5          19                 200        3800 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8412--8412
-[]\TU/lmtt/m/n/10 ## 6 Chinst~ Dream            46.4          17.8               191        3700 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8432--8432
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-[165]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 1 Gentoo  Biscoe           49.2          15.2               221        6300 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 2 Gentoo  Biscoe           59.6          17                 230        6050 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 3 Gentoo  Biscoe           51.1          16.3               220        6000 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 4 Gentoo  Biscoe           48.8          16.2               222        6000 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 5 Gentoo  Biscoe           45.2          16.4               223        5950 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8453--8453
-[]\TU/lmtt/m/n/10 ## 6 Gentoo  Biscoe           49.8          15.9               229        5950 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Biscoe           41.3          21.1               195        4400 male   2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 2 Gentoo  Biscoe           44.5          15.7               217        4875 <NA>   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           41.4          18.5               202        3875 male   2009[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Biscoe           37.6          17                 185        3600 fema~  2008[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Dream            36            17.9               190        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8474--8474
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Biscoe           35.7          16.9               185        3150 fema~  2008[] 
- []
-
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[153] [154] [155] [156] [157] [158]
+Missing character: There is no ^^9a (U+009A) in font [lmroman10-regular]:mapping=tex-text;!
+[159] [160] [161] [162] [163] [164] [165]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
 [166]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8521--8521
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8542--8542
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
+Underfull \hbox (badness 1087) in paragraph at lines 7847--7848
+[]\TU/lmr/m/n/10 Agora podemos importar a tabela de dados com a funÃ§Ã£o \TU/lmtt/m/n/10 read.csv()\TU/lmr/m/n/10 , atribuindo ao objeto
  []
 
 [167]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
+Missing character: There is no ^^9a (U+009A) in font [lmmonolt10-boldoblique]:!
+[168] [169] [170] [171]
+Underfull \hbox (badness 2065) in paragraph at lines 8122--8123
+\TU/lmr/m/n/10 Conteudo copiado, com pequenas alteraÃ§Ãµes e atualizaÃ§Ãµes de [][]CapÃtulo 5 Tidyverse[][], do
+ []
+
+[172]
+File: figures/cap05_fig01.png Graphic file (type bmp)
+<figures/cap05_fig01.png>
+[173] [174] [175]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^87 (U+0087) in font [lmroman10-regular]:mapping=tex-text;!
+[176]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[177]
+File: figures/cap05_fig02.png Graphic file (type bmp)
+<figures/cap05_fig02.png>
+[178] [179]
+Underfull \hbox (badness 1383) in paragraph at lines 8629--8630
+\TU/lmr/m/n/10 Primeiramente, vamos exemplificar como juntar e separar colunas. Vamos utilizar a funÃ§Ã£o
+ []
+
+[180] [181] [182] [183]
+Underfull \hbox (badness 5460) in paragraph at lines 8892--8894
+[]\TU/lmr/m/n/10 ReplicaÃ§Ã£o: \TU/lmtt/m/n/10 across()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 if_any()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 if_all()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 where()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 starts_with()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 ends_with()\TU/lmr/m/n/10 ,
+ []
+
+[184] [185] [186] [187] [188] [189] [190] [191] [192] [193] [194] [195] [196]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 2213) in paragraph at lines 9825--9826
+[]\TU/lmr/m/n/10 Existem quatro tipos de junÃ§Ãµes de modificaÃ§Ãµes, que sÃ£o realizadas pelas funÃ§Ãµes:
  []
 
 
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
+Underfull \hbox (badness 1675) in paragraph at lines 9825--9826
+\TU/lmtt/m/n/10 dplyr::inner_join()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 dplyr::left_join()\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 dplyr::full_join() \TU/lmr/m/n/10 e \TU/lmtt/m/n/10 dplyr::right_join()\TU/lmr/m/n/10 , e que
  []
 
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8612--8612
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ##   <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8634--8634
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-
-Overfull \vbox (0.69574pt too high) detected at line 8650
- []
-
-[168]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8708--8708
-[]\TU/lmtt/m/n/10 ##   <chr> <fct>   <fct>           <dbl>         <dbl>             <int>       <int> <fct>[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8708--8708
-[]\TU/lmtt/m/n/10 ## 2 1     Adelie  Torge~           39.5          17.4               186        3800 fema~[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8708--8708
-[]\TU/lmtt/m/n/10 ## 3 1     Adelie  Torge~           40.3          18                 195        3250 fema~[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8708--8708
-[]\TU/lmtt/m/n/10 ## 5 1     Adelie  Torge~           36.7          19.3               193        3450 fema~[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8708--8708
-[]\TU/lmtt/m/n/10 ## 6 2     Adelie  Biscoe           39.6          17.7               186        3500 fema~[] 
- []
-
-[169]
 File: figures/cap05_fig03.png Graphic file (type bmp)
 <figures/cap05_fig03.png>
-[170]
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ##   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year[] 
+[197] [198]
+Overfull \hbox (25.209pt too wide) in paragraph at lines 10016--10017
+[]\TU/lmr/m/n/10 TambÃ©m podemos remover espaÃ§os em branco da esquerda, direita ou ambos, utilizando \TU/lmtt/m/n/10 stringr::str_trim()\TU/lmr/m/n/10 . 
  []
 
 
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ##   <fct>   <chr>           <dbl>         <dbl>             <int>       <int> <fct> <int>[] 
+Overfull \vbox (1.05978pt too high) detected at line 10056
+ []
+
+[199] [200]
+Underfull \hbox (badness 1189) in paragraph at lines 10193--10194
+\TU/lmr/m/n/10 especificar a ordem dos nÃveis, podemos fazer essa operaÃ§Ã£o manualmente com a funÃ§Ã£o
  []
 
 
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 1 Adelie  Torge~           39.1          18.7               181        3750 male   2007[] 
+Underfull \hbox (badness 1655) in paragraph at lines 10243--10244
+[]\TU/lmr/m/n/10 Por fim, podemos fazer a agregaÃ§Ã£o de nÃveis raros em um nÃvel utilizando a funÃ§Ã£o
  []
 
+[201]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
 
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 2 Adelie  Torge~           39.5          17.4               186        3800 fema~  2007[] 
+Overfull \hbox (3.18501pt too wide) in paragraph at lines 10301--10302
+[]\TU/lmr/m/n/10 Para acessar a informaÃ§Ã£o da data e horÃ¡rios atuais podemos utilizar as funÃ§Ãµes \TU/lmtt/m/n/10 lubridate::today()
  []
 
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 3 Adelie  Torge~           40.3          18                 195        3250 fema~  2007[] 
+[202] [203]
+Underfull \hbox (badness 1642) in paragraph at lines 10433--10434
+[]\TU/lmr/m/n/10 Por fim, podemos criar datas modificando entre data/horÃ¡rio e data, utilizando as funÃ§Ãµes
  []
 
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 4 Adelie  Torge~           NA            NA                  NA          NA <NA>   2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 5 Adelie  Torge~           36.7          19.3               193        3450 fema~  2007[] 
- []
-
-
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 8815--8815
-[]\TU/lmtt/m/n/10 ## 6 Adelie  Torge~           39.3          20.6               190        3650 male   2007[] 
- []
-
-[171]
-Overfull \hbox (7.699pt too wide) in paragraph at lines 8954--8955
-[]\TU/lmr/m/n/10 Também podemos remover espaços em branco da esquerda, direita ou ambos, utilizando \TU/lmtt/m/n/10 stringr::str_trim()\TU/lmr/m/n/10 . 
- []
-
-[172] [173]
-Overfull \hbox (23.74498pt too wide) in paragraph at lines 9101--9101
-[]\TU/lmtt/m/n/10 ## 3 Levels: Adelie Penguin (Pygoscelis adeliae) ... Chinstrap penguin (Pygoscelis antarctica)[] 
- []
-
-[174] [175] [176]
-Overfull \hbox (41.419pt too wide) in paragraph at lines 9371--9372
-[]\TU/lmr/m/n/10 Por fim, podemos criar datas modificando entre data/horário e data, utilizando as funções \TU/lmtt/m/n/10 lubridate::as_datetime()
- []
-
-[177] [178] [179] [180] [181]
-Underfull \hbox (badness 2486) in paragraph at lines 10005--10006
-\TU/lmr/m/n/10 instantâneas de tempo (horário) de outras partes do planeta, ou mesmo fazer conversões dos
- []
-
-[182] [183] [184] [185] [186] [187]
-File: epr_files/figure-latex/unnamed-chunk-244-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-244-1.pdf>
-[188] [189] [190]
-File: epr_files/figure-latex/unnamed-chunk-249-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-249-1.pdf>
-[191] [192] [193] [194]
-File: epr_files/figure-latex/unnamed-chunk-255-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-255-1.pdf>
-File: epr_files/figure-latex/unnamed-chunk-256-1.pdf Graphic file (type pdf)
-<use epr_files/figure-latex/unnamed-chunk-256-1.pdf>
-[195] [196] [197] [198]
-Underfull \hbox (badness 10000) in paragraph at lines 10821--10823
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214]
+File: epr_files/figure-latex/unnamed-chunk-252-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-252-1.pdf>
+[215] [216] [217]
+File: epr_files/figure-latex/unnamed-chunk-257-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-257-1.pdf>
+[218] [219] [220] [221]
+File: epr_files/figure-latex/unnamed-chunk-263-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-263-1.pdf>
+File: epr_files/figure-latex/unnamed-chunk-264-1.pdf Graphic file (type pdf)
+<use epr_files/figure-latex/unnamed-chunk-264-1.pdf>
+[222] [223] [224]
+Underfull \hbox (badness 10000) in paragraph at lines 11783--11785
 
  []
 
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^81 (U+0081) in font [lmroman10-bold]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 10849--10851
+Underfull \hbox (badness 10000) in paragraph at lines 11811--11813
 
  []
 
-[199] [200] [201] [202] [203] [204] [205] [206] [207] [208]
-Underfull \vbox (badness 10000) detected at line 11424
+[225] [226] [227] [228]
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^8d (U+008D) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[229] [230]
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+[231]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^98 (U+0098) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^99 (U+0099) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^89 (U+0089) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[232]
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9c (U+009C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^80 (U+0080) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ^^9d (U+009D) in font [lmroman10-regular]:mapping=tex-text;!
+[233] [234]
+Overfull \vbox (2.19994pt too high) detected at line 12387
  []
 
-[209] [210] (./epr.aux)
+[235] [236] [237] (./epr.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
@@ -2416,12 +1654,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21095 strings out of 476789
- 401972 string characters out of 5801437
+ 22777 strings out of 476789
+ 431708 string characters out of 5801437
  1949177 words of memory out of 5000000
- 42733 multiletter control sequences out of 15000+600000
- 564536 words of font info for 91 fonts, out of 8000000 for 9000
+ 44346 multiletter control sequences out of 15000+600000
+ 564650 words of font info for 93 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 90i,8n,120p,3200b,814s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,120p,3235b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on epr.pdf (210 pages).
+Output written on epr.pdf (237 pages).

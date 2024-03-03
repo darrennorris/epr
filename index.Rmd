@@ -1,7 +1,7 @@
 --- 
 title: "Ecologia de Paisagens com R"
 author: 'Darren Norris: darren.norris@unifap.br'
-date: "`r Sys.setlocale('LC_TIME', 'Portuguese'); format(Sys.time(), '%d %B, %Y')`"
+date: "24 Março, 2024"
 site: bookdown::bookdown_site
 bibliography: references.bib
 url: "https\\://darrennorris.github.io/epr/pref%C3%A1cio-%C3%A0-primeira-edi%C3%A7%C3%A3o.html/"
