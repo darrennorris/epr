@@ -1,38 +1,39 @@
 
 \newpage{}
 
-# (PART) Exemplos de caso: padrões de paisagem {-}
+# (PART) Exemplos de caso: padrões de paisagem {.unnumbered}
 
 \newpage{}
 
 # Garimpo do Lourenço
 
 ## Apresentação
-Mudanças na paisagem ao redor do Garimpo do Lourenço. 
-Changes in the landscape surrounding the Lourenço gold mine.
 
-<img align="right" src="www/lourenco_metrics.jpg" alt="Gold mine" width="300" style="margin-top: 20px">
+Mudanças na paisagem ao redor do Garimpo do Lourenço. Changes in the
+landscape surrounding the Lourenço gold mine.
 
-Código de [R](https://cran.r-project.org/) e dados para calcular 
-métricas de paisagem associadas com a exploração de recursos minerários. 
+<img src="www/lourenco_metrics.jpg" alt="Gold mine" align="right" width="300" style="margin-top: 20px"/>
 
-O objetivo é calcular métricas de paisagem e descrever a composição e 
-a configuração da paisagem no entorno do Garimpo do Lourenço.
+Código de [R](https://cran.r-project.org/) e dados para calcular
+métricas de paisagem associadas com a exploração de recursos minerários.
 
-As métricas de paisagem são a forma que os ecólogos de paisagem usam 
-para descrever os padrões espaciais de paisagens para depois avaliar 
-a influência destes padrões espaciais nos padrões e processos ecológicos. 
+O objetivo é calcular métricas de paisagem e descrever a composição e a
+configuração da paisagem no entorno do Garimpo do Lourenço.
 
-Nesta exemplo (https://rpubs.com/darren75/lourenco) aprenderemos sobre como analisar a cobertura da terra com métricas de paisagem em R.
+As métricas de paisagem são a forma que os ecólogos de paisagem usam
+para descrever os padrões espaciais de paisagens para depois avaliar a
+influência destes padrões espaciais nos padrões e processos ecológicos.
 
-Este exemplo tem como base teórica o modelo 
-"mancha-corredor-matriz" - uma representação da paisagem em manchas 
-de habitat (fragmentos). 
+Nesta exemplo (<https://rpubs.com/darren75/lourenco>) aprenderemos sobre
+como analisar a cobertura da terra com métricas de paisagem em R.
 
-\newpage 
+Este exemplo tem como base teórica o modelo "mancha-corredor-matriz" -
+uma representação da paisagem em manchas de habitat (fragmentos).
 
+\newpage
 
 ## Pacotes necessarios:
+
 ```{r load-packages, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(readxl)
@@ -42,33 +43,34 @@ library(landscapemetrics)
 library(mapview)
 library(knitr) 
 library(gridExtra)
+library(eprdados)
 ```
 
-
 ## Área de estudo
-Para alcançar o objetivo de caracterizar a paisagem no entorno do 
-Garimpo do Lourenço, precisamos estabelecer a extensão da área de estudo.
-Isso seria estabelicida com base nos objetivos e estudos anteriores.
-Sabemos que atividades asociados com a mineração pode aumentar a perda
-da floresta até 70 km além dos limites do processo de mineração:
-Sonter et. al. 2017.
-Mining drives extensive deforestation in the Brazilian Amazon
-https://www.nature.com/articles/s41467-017-00557-w
 
-Para visualizar um exemplo com a [Extração de bauxita na Flona Saracá-Taquera](https://cpisp.org.br/mais-uma-uc-na-amazonia-sob-risco-mineracao-ameaca-flona-saraca-taquera-no-para/):
-https://earthengine.google.com/timelapse/#v=-1.70085,-56.45017,8.939,latLng&t=2.70
+Para alcançar o objetivo de caracterizar a paisagem no entorno do
+Garimpo do Lourenço, precisamos estabelecer a extensão da área de
+estudo. Isso seria estabelicida com base nos objetivos e estudos
+anteriores. Sabemos que atividades asociados com a mineração pode
+aumentar a perda da floresta até 70 km além dos limites do processo de
+mineração: Sonter et. al. 2017. Mining drives extensive deforestation in
+the Brazilian Amazon
+<https://www.nature.com/articles/s41467-017-00557-w>
 
-E aqui com o Garimpo do Lourenço: 
-https://earthengine.google.com/timelapse#v=2.2994,-51.68423,11.382,latLng&t=0.03
+Para visualizar um exemplo com a [Extração de bauxita na Flona
+Saracá-Taquera](https://cpisp.org.br/mais-uma-uc-na-amazonia-sob-risco-mineracao-ameaca-flona-saraca-taquera-no-para/):
+<https://earthengine.google.com/timelapse/#v=-1.70085,-56.45017,8.939,latLng&t=2.70>
 
+E aqui com o Garimpo do Lourenço:
+<https://earthengine.google.com/timelapse#v=2.2994,-51.68423,11.382,latLng&t=0.03>
 
 ## Dados
 
-
 ### Ponto de referência (EPSG: 4326)
-Aqui vamos incluir um raio de 20 km além do ponto de acesso para 
-o Garimpo do Lourenço em 1985.
-Isso representa uma área quadrada de 40 x 40 km (1600 km2).
+
+Aqui vamos incluir um raio de 20 km além do ponto de acesso para o
+Garimpo do Lourenço em 1985. Isso representa uma área quadrada de 40 x
+40 km (1600 km2).
 
 ```{r access-point}
 # Tabela de dados com coordenados de acesso em 1985.
@@ -85,6 +87,7 @@ sf_acesso <- st_as_sf(acesso,
 ```
 
 Visualizar para verificar.
+
 ```{r show-fig-map, eval=FALSE}
 # 
 plot(sf_acesso) # teste basica
@@ -96,31 +99,34 @@ knitr::include_graphics("figures/fig_garimpo_access.png")
 ```
 
 ### Ponto de referência (EPSG: 31976)
-As análises da paisagem com o modelo "mancha-corredor-matriz" depende 
-de uma classificação categórica. Portanto, deve 
-optar para uma sistema de coordenados projetados, com pixels de 
-área igual e com unidade em metros. Temos um raio de 20 km, que é um area geografica onde o retângulo envolvente é menor que um fuso [UTM](https://forest-gis.com/2016/06/um-pouco-sobre-a-projecao-utm.html/).
-Assim sendo, vamos adotar a sistema de coordenados projetados de 
-datum SIRGAS 2000, especificamente EPSG:31976 (SIRGAS 2000/UTM zone 22N).
 
-Precisamos então reprojetar o objeto original (em coordenados geográficas) 
-para a sistema de coordenados projetados. Em seguida, vamos produzir 
-um polígono com raio de 20 km no entorno do ponto.
+As análises da paisagem com o modelo "mancha-corredor-matriz" depende de
+uma classificação categórica. Portanto, deve optar para uma sistema de
+coordenados projetados, com pixels de área igual e com unidade em
+metros. Temos um raio de 20 km, que é um area geografica onde o
+retângulo envolvente é menor que um fuso
+[UTM](https://forest-gis.com/2016/06/um-pouco-sobre-a-projecao-utm.html/).
+Assim sendo, vamos adotar a sistema de coordenados projetados de datum
+SIRGAS 2000, especificamente EPSG:31976 (SIRGAS 2000/UTM zone 22N).
+
+Precisamos então reprojetar o objeto original (em coordenados
+geográficas) para a sistema de coordenados projetados. Em seguida, vamos
+produzir um polígono com raio de 20 km no entorno do ponto.
 
 ```{r crs-reproject}
 # Reprojetar o ponto.
 sf_acesso_utm <- st_transform(sf_acesso, crs = 31976)
 # Polígono com raio de 500 metros no entorno do ponto.
-sf_acesso_500m <- st_buffer(sf_acesso_utm, dist=500) %>% 
+sf_acesso_500m <- st_buffer(sf_acesso_utm, dist=500) |> 
   mutate(raio_km = 0.5)
 # Polígono com raio de 1 km no entorno do ponto.
-sf_acesso_1km <- st_buffer(sf_acesso_utm, dist=1000) %>% 
+sf_acesso_1km <- st_buffer(sf_acesso_utm, dist=1000) |> 
   mutate(raio_km = 1)
 # Polígono com raio de 2 km no entorno do ponto.
-sf_acesso_2km <- st_buffer(sf_acesso_utm, dist=2000) %>% 
+sf_acesso_2km <- st_buffer(sf_acesso_utm, dist=2000) |> 
   mutate(raio_km = 2)
 # Polígono com raio de 4 km no entorno do ponto.
-sf_acesso_4km <- st_buffer(sf_acesso_utm, dist=4000) %>% 
+sf_acesso_4km <- st_buffer(sf_acesso_utm, dist=4000) |> 
   mutate(raio_km = 4)
 # Polígono com raio de 20 km no entorno do ponto.
 sf_acesso_20km <- st_buffer(sf_acesso_utm, dist=20000)
@@ -130,6 +136,7 @@ acesso_buffers <- bind_rows(sf_acesso_500m, sf_acesso_1km,
 ```
 
 ### Verificar com mapa de base (OpenStreetMap).
+
 ```{r show-fig-reproject, eval=FALSE}
 # 
 mapview(sf_acesso_20km) + 
@@ -142,28 +149,27 @@ knitr::include_graphics("figures/mapview_point_buffer.png")
 
 ### Dados: MapBiomas cobertura da terra
 
-Agora vamos olhar cobertura e uso da terra no espaco que preciso (área de estudo). 
-Para isso, vamos utilizar um arquivo de raster do projeto [MapBiomas](https://mapbiomas.org/) 
-com cobertura de terra ao redor do Garimpo do Lourenço em 1985. 
-Este arquivo no formato raster, tem apenas valores inteiros, em que 
-cada célula/pixel representa uma área considerada homogênea, 
-como uso do solo ou tipo de vegetação. 
-Arquivo ".tif" disponível aqui: [utm_cover_AP_lorenco_1985.tif](https://github.com/darrennorris/Amapa-mine/blob/main/data/raster/Mapbiomas_cover_lourenco_utm/utm_cover_AP_lorenco_1985.tif)
+Agora vamos olhar cobertura e uso da terra no espaco que preciso (área
+de estudo). Para isso, vamos utilizar um arquivo de raster do projeto
+[MapBiomas](https://mapbiomas.org/) com cobertura de terra ao redor do
+Garimpo do Lourenço em 1985. Este arquivo no formato raster, tem apenas
+valores inteiros, em que cada célula/pixel representa uma área
+considerada homogênea, como uso do solo ou tipo de vegetação. Arquivo
+".tif" disponível aqui:
+[utm_cover_AP_lorenco_1985.tif](https://github.com/darrennorris/Amapa-mine/blob/main/data/raster/Mapbiomas_cover_lourenco_utm/utm_cover_AP_lorenco_1985.tif)
 
-Não vamos construir mapas, portanto os cores nas visualizações 
-não corresponde ao mundo real (por exemplo, verde não é floresta).
-Para visualizar em QGIS preciso baixar um arquivo com a legenda e cores 
-para Coleção¨6 (https://mapbiomas.org/codigos-de-legenda) e 
-segue tutoriais: https://www.youtube.com/watch?v=WtyotodHK8E .
+Não vamos construir mapas, portanto os cores nas visualizações não
+corresponde ao mundo real (por exemplo, verde não é floresta). Para
+visualizar em QGIS preciso baixar um arquivo com a legenda e cores para
+Coleção¨6 (<https://mapbiomas.org/codigos-de-legenda>) e segue
+tutoriais: <https://www.youtube.com/watch?v=WtyotodHK8E> .
 
-Este vez, a entrada de dados espaciais seria atraves a importação de 
-um raster (arquivo de .tif). Lembre-se, para facilitar, os arquivos deve 
-ficar no mesmo diretório do seu código 
-(verifique com <code>getwd()</code>). 
-Como nós já sabemos a sistema de coordenados desejadas, 
-o geoprocessamento da raster foi concluído antes de começar com as 
-análises da paisagem.
-
+Este vez, a entrada de dados espaciais seria atraves a importação de um
+raster (arquivo de .tif). Lembre-se, para facilitar, os arquivos deve
+ficar no mesmo diretório do seu código (verifique com
+<code>getwd()</code>). Como nós já sabemos a sistema de coordenados
+desejadas, o geoprocessamento da raster foi concluído antes de começar
+com as análises da paisagem.
 
 ```{r , eval=FALSE}
 r1985 <- rast("utm_cover_AP_lorenco_1985.tif")
@@ -180,14 +186,14 @@ r1985
 #max value   :                  33 
 
 ```
-Ou use o função <code>file.choose()</code>, que faz a busca 
-para arquivos. 
+
+Ou use o função <code>file.choose()</code>, que faz a busca para
+arquivos.
 
 ```{r, eval=FALSE}
 r1985 <- rast(file.choose())
 r1985
 ```
-
 
 ```{r, echo=FALSE}
 
@@ -206,7 +212,6 @@ gc()
 
 Agora que o arquivo foi importado, podemos visualizá- lo.
 
-
 ```{r fig-plot-raster, warning = FALSE, message=FALSE}
 # Visualizar para verificar
 # Gradiente de cores padrão não corresponde 
@@ -221,17 +226,18 @@ plot(sf_acesso_utm, add = TRUE, cex = 2, pch = 19, color = "black")
 
 Vamos olhar alguns exemplos de métricas para cada nível da análise:
 
-
- * landscape (métricas para a paisagem como um todo).
- * class (métricas por classe ou tipo de habiat).
- * patch (para a mancha ou fragmento).
+-   landscape (métricas para a paisagem como um todo).
+-   class (métricas por classe ou tipo de habiat).
+-   patch (para a mancha ou fragmento).
 
 Primeiro, pecisamos verificar se o raster está no formato correto.
+
 ```{r, warning = FALSE}
 check_landscape(r1985)
 #  layer crs    units   class n_classes OK
 #  1  projected   m   integer         7  v
 ```
+
 Tudo certo (veja a coluna do "OK")!
 
 ### Métricas para a paisagem
@@ -242,8 +248,8 @@ Vamos começar avaliando a área total da paisagem (área) de estudo.
 area.total <- lsm_l_ta(r1985) 
 area.total #160264 Hectares
 ```
-Agora vamos ver a distância total de borda (te= “total
-edge”).
+
+Agora vamos ver a distância total de borda (te= “total edge”).
 
 ```{r, echo = FALSE}
 gc()
@@ -253,22 +259,22 @@ gc()
 te <- lsm_l_te(r1985)
 te # 547140 metros
 ```
-Total de borda mede a configuração da paisagem porque uma paisagem 
-altamente fragmentada terá muitas bordas. No entanto, a borda total 
-é uma medida absoluta, dificultando comparações entre paisagens com  
-áreas totais diferentes. Mas pode ser aplicado para comparar a 
-configuração na mesma paisagem em anos diferentes. 
 
-Agora vamos ver a densidade de Borda (“Edge Density”). 
-Densidade de Borda mede a configuração da paisagem porque uma paisagem 
-altamente fragmentada terá valores mais altas. "Densidade" é uma medida 
-adequado para comparacoes de paisagens com áreas totais diferentes.
+Total de borda mede a configuração da paisagem porque uma paisagem
+altamente fragmentada terá muitas bordas. No entanto, a borda total é
+uma medida absoluta, dificultando comparações entre paisagens com\
+áreas totais diferentes. Mas pode ser aplicado para comparar a
+configuração na mesma paisagem em anos diferentes.
+
+Agora vamos ver a densidade de Borda (“Edge Density”). Densidade de
+Borda mede a configuração da paisagem porque uma paisagem altamente
+fragmentada terá valores mais altas. "Densidade" é uma medida adequado
+para comparacoes de paisagens com áreas totais diferentes.
 
 ```{r, warning = FALSE}
 ed <- lsm_l_ed(r1985) 
 ed #3.41 metros por hectare
 ```
-
 
 ### Métricas para as classes
 
@@ -278,16 +284,18 @@ Area de cada classe em hectares.
 lsm_c_ca(r1985) 
 
 ```
-Como tem varios classes é dificil de interpretar os resultados porque 
-os numeros (3, 4, 11.....) não tem uma referncia do mundo real.
-Para entender os resultados, precisamos acrescentar nomes para os valores. 
-Ou seja incluir uma coluna de legenda com os nomes para cada classe. Para isso 
-precisamos outro arquivo com os nomes.
 
+Como tem varios classes é dificil de interpretar os resultados porque os
+numeros (3, 4, 11.....) não tem uma referncia do mundo real. Para
+entender os resultados, precisamos acrescentar nomes para os valores. Ou
+seja incluir uma coluna de legenda com os nomes para cada classe. Para
+isso precisamos outro arquivo com os nomes.
 
-Baixar a arquivo de legenda:  [mapbiomas_6_legend.xlsx](https://github.com/darrennorris/Amapa-mine/blob/main/data/raster/Mapbiomas_cover_lourenco_utm/mapbiomas_6_legend.xlsx).
+Baixar a arquivo de legenda:
+[mapbiomas_6_legend.xlsx](https://github.com/darrennorris/Amapa-mine/blob/main/data/raster/Mapbiomas_cover_lourenco_utm/mapbiomas_6_legend.xlsx).
 
 Agora carregar o arquivo com o codigo a seguir.
+
 ```{r, eval=FALSE, warning = FALSE}
 class_nomes <- read_excel(file.choose())
 
@@ -298,19 +306,19 @@ class_nomes <- read_excel("C:\\Users\\user\\Documents\\Articles\\gis_layers\\gis
 
 ```
 
-Agora rodar de novo, com os resultados juntos com a legenda 
-de cada classe. Nos resultados acima, os valores na coluna "class" 
-são as mesmas que tem na coluna "aid" no objeto "class_nomes", onde também 
-tem os nomes . Assim, podemos repetir, mas agora incluindo os nomes 
-para cada valor de class, com base na ligação (join) entre as colunas. 
+Agora rodar de novo, com os resultados juntos com a legenda de cada
+classe. Nos resultados acima, os valores na coluna "class" são as mesmas
+que tem na coluna "aid" no objeto "class_nomes", onde também tem os
+nomes . Assim, podemos repetir, mas agora incluindo os nomes para cada
+valor de class, com base na ligação (join) entre as colunas.
 
 ```{r, eval=FALSE, warning = FALSE}
 # Área de cada classe em hectares, incluindo os nomes para cada classe
-lsm_c_ca(r1985) %>% 
+lsm_c_ca(r1985) |> 
   left_join(class_nomes, by = c("class" = "aid"))
   
 # Numero de fragmentos (manchas)
-lsm_c_np(r1985) %>% 
+lsm_c_np(r1985) |> 
   left_join(class_nomes, by = c("class" = "aid"))
   
 # Maior numero de manchas em classes de cobertura classificadas como 
@@ -327,8 +335,8 @@ lsm_c_np(r1985) %>%
   
 ```
 
-
 ### Métricas para as manchas
+
 Vamos calcular o tamanho de cada mancha agora.
 
 ```{r, warning = FALSE, eval=FALSE}
@@ -336,12 +344,13 @@ mancha_area <- lsm_p_area(r1985) # 630 manchas
 mancha_area
 
 ```
-Agora queremos saber o tamanho da maior mancha em cada class, e 
-portanto o tamanho da maior mancha de mineração.
+
+Agora queremos saber o tamanho da maior mancha em cada class, e portanto
+o tamanho da maior mancha de mineração.
 
 ```{r, warning = FALSE, eval=FALSE}
-mancha_area %>% 
-group_by(class) %>% 
+mancha_area |> 
+group_by(class) |> 
 summarise(max_ha = max(value))
 # 30.8 hectares (class 15 = mineração)
 
@@ -350,20 +359,20 @@ summarise(max_ha = max(value))
 ### Quais métricas devo escolher?
 
 A decisão deve ser tomada com base em uma combinação de fatores.
-Incluindo tais fatores como: base teórica, considerações estatísticas, 
-relevância para o objetivo/hipótese e a escala e heterogeneidade 
-na paisagem de estudo.
+Incluindo tais fatores como: base teórica, considerações estatísticas,
+relevância para o objetivo/hipótese e a escala e heterogeneidade na
+paisagem de estudo.
 
-Queremos caracterizar áreas de mineração na paisagem, e aqui vamos 
-olhar somente uma paisagem, em um momento do tempo. Então as métricas 
-para a paisagem como todo não tem relevância.
+Queremos caracterizar áreas de mineração na paisagem, e aqui vamos olhar
+somente uma paisagem, em um momento do tempo. Então as métricas para a
+paisagem como todo não tem relevância.
 
-Estamos olhando uma classe (mineração), portanto vamos incluir as 
-métricas para classes. Alem disso, as métricas de paisagem em nível de 
-classe são mais eficazes na definição de processos ecológicos 
-(Tischendorf, L. Can landscape indices predict ecological processes 
-consistently?. Landscape Ecology 16, 235–254 (2001). 
-https://doi.org/10.1023/A:1011112719782.).
+Estamos olhando uma classe (mineração), portanto vamos incluir as
+métricas para classes. Alem disso, as métricas de paisagem em nível de
+classe são mais eficazes na definição de processos ecológicos
+(Tischendorf, L. Can landscape indices predict ecological processes
+consistently?. Landscape Ecology 16, 235–254 (2001).
+<https://doi.org/10.1023/A:1011112719782>.).
 
 ```{r, warning = FALSE, eval=FALSE}
 # métricas de composição para a paisagem por classes
@@ -374,10 +383,10 @@ list_lsm(level = "class", type = "aggregation metric")
 
 ```
 
-
 ### Métricas por classe de mineração
 
-Aqui vamos calcular todos as métricas por classe (função <code>calculate_lsm()</code>)).
+Aqui vamos calcular todos as métricas por classe (função
+<code>calculate_lsm()</code>)).
 
 ```{r, warning = FALSE}
 # métricas de composição para a paisagem por classes
@@ -388,8 +397,8 @@ metrics_config <- calculate_lsm(r1985, level = "class", type = "aggregation metr
 
 ```
 
-E aqui, calcular correlações entre todos as métricas por classe 
-(função <code>show_correlation()</code>)).
+E aqui, calcular correlações entre todos as métricas por classe (função
+<code>show_correlation()</code>)).
 
 ```{r, warning = FALSE}
 
@@ -399,28 +408,30 @@ show_correlation(data = metrics_config, method = "pearson", labels = TRUE)
 
 ```
 
-Temos muitos valores e muitas métricas. 
-Este se chama um "tiro no escuro", algo cujo resultado se desconhece 
-ou é imprevisível. Isso não é recomendado. 
-Para fazer uma escolha melhor (mais robusta), seguindo princípios 
-básicos da ciência, precisamos ler os estudos anteriores 
-(artigos) para obter as métricas mais relevantes para nosso objetivo e 
-a hipótese a ser testada. Com base em os estudos anteriores e os 
-objetivos vamos incluir 8 métricas nos resultados. 
-
+Temos muitos valores e muitas métricas. Este se chama um "tiro no
+escuro", algo cujo resultado se desconhece ou é imprevisível. Isso não é
+recomendado. Para fazer uma escolha melhor (mais robusta), seguindo
+princípios básicos da ciência, precisamos ler os estudos anteriores
+(artigos) para obter as métricas mais relevantes para nosso objetivo e a
+hipótese a ser testada. Com base em os estudos anteriores e os objetivos
+vamos incluir 8 métricas nos resultados.
 
 ### Exportar as métricas
-O próximo passo é comunicar os resultados obtidos. Para isso 
-precisamos resumir e apresentar as métricas selecionadas em tabelas e 
-figuras. Agora já fizemos os cálculos, as tabelas e 
-figuras podem ser feitas no R ([figuras](https://www.youtube.com/watch?v=0RxEDDiRzQY)), tanto quanto 
-em aplicativos diferentes 
-(por exemplo tabelas atraves ["tabelas dinamicas"] no [Microsoft Excel](https://www.techtudo.com.br/dicas-e-tutoriais/2018/10/como-fazer-tabela-dinamica-no-excel.ghtml) ou [LibreOffice calc](https://www.youtube.com/watch?v=Mqi5BJwzAzo)).
-Mas por isso, primeiramente precisamos exportar os resultados 
-(veja mais exemplos aqui: [Introdução ao R import-export](https://www.lampada.uerj.br/arquivosdb/_book2/importexport.html). 
 
-O arquivo vai sai no mesmo diretório do seu código 
-(verifique com <code>getwd()</code>).
+O próximo passo é comunicar os resultados obtidos. Para isso precisamos
+resumir e apresentar as métricas selecionadas em tabelas e figuras.
+Agora já fizemos os cálculos, as tabelas e figuras podem ser feitas no R
+([figuras](https://www.youtube.com/watch?v=0RxEDDiRzQY)), tanto quanto
+em aplicativos diferentes (por exemplo tabelas atraves ["tabelas
+dinamicas"] no [Microsoft
+Excel](https://www.techtudo.com.br/dicas-e-tutoriais/2018/10/como-fazer-tabela-dinamica-no-excel.ghtml)
+ou [LibreOffice calc](https://www.youtube.com/watch?v=Mqi5BJwzAzo)). Mas
+por isso, primeiramente precisamos exportar os resultados (veja mais
+exemplos aqui: [Introdução ao R
+import-export](https://www.lampada.uerj.br/arquivosdb/_book2/importexport.html).
+
+O arquivo vai sai no mesmo diretório do seu código (verifique com
+<code>getwd()</code>).
 
 ```{r, warning = FALSE, eval=FALSE}
 
@@ -429,19 +440,22 @@ write.csv2(metricas_1985, "metricas_lourenco_1985.csv", row.names=FALSE)
 
 ```
 
+## Apresentando os resultados
 
-## Preparando os resultados
-A entrada de dados seria com as métricas da paisagem calculados 
-anteriormente.  
+### Preparando os resultados
 
-Vocês devem baixar o arquivo de Excel [metricas_lourenco_1985.xlsx](https://github.com/darrennorris/Amapa-mine/blob/main/data/metricas_lourenco_1985.xlsx).
-Lembre-se, para facilitar, os dados deve ficar no 
-mesmo diretório do seu código (verifique com <code>getwd()</code>).
+A entrada de dados seria com as métricas da paisagem calculados
+anteriormente.
 
-No caso de um arquivo de Excel simples, a importação poderia ser 
-feita através menu de "Import Dataset" na janela/panel "Environment" 
-de Rstudio.
-Ou com linhas de código: 
+Vocês devem baixar o arquivo de Excel
+[metricas_lourenco_1985.xlsx](https://github.com/darrennorris/Amapa-mine/blob/main/data/metricas_lourenco_1985.xlsx).
+Lembre-se, para facilitar, os dados deve ficar no mesmo diretório do seu
+código (verifique com <code>getwd()</code>).
+
+No caso de um arquivo de Excel simples, a importação poderia ser feita
+através menu de "Import Dataset" na janela/panel "Environment" de
+Rstudio. Ou com linhas de código:
+
 ```{r eval=FALSE}
 metricas_1985 <- read_excel("metricas_lourenco_1985.xlsx")
 metricas_1985
@@ -453,8 +467,8 @@ metricas_1985
 #     1 class    11 NA    area_cv   71.2  
 ```
 
-Ou use o função <code>file.choose()</code>, que faz a busca 
-para arquivos. 
+Ou use o função <code>file.choose()</code>, que faz a busca para
+arquivos.
 
 ```{r, eval=FALSE}
 
@@ -463,38 +477,41 @@ metricas_1985
 
 ```
 
-
 ```{r, echo=FALSE}
 excel_in <- "data/metricas_lourenco_1985.xlsx"
 metricas_1985 <- read_excel(excel_in)
 metricas_1985
 ```
-Os dados são padronizados ("tidy"), mas ainda não parece adequados para apresentação em tabelas ou figuras.
-Temos muitos valores e muitas métricas (listadas na coluna "metric"). 
-Com base em os estudos anteriores e os objetivos vamos incluir 8 métricas 
-(4 de composição e 4 de configuração).
+
+Os dados são padronizados ("tidy"), mas ainda não parece adequados para
+apresentação em tabelas ou figuras. Temos muitos valores e muitas
+métricas (listadas na coluna "metric"). Com base em os estudos
+anteriores e os objetivos vamos incluir 8 métricas (4 de composição e 4
+de configuração).
 
 Métricas de composição:
 
-
-* mean patch area (<code>lsm_c_area_mn</code>) Área médio das manchas por classe.
-* SD patch area (<code>lsm_c_area_sd</code>) Desvio padrão das áreas dos manchas por classe.
-* class area percentage of landscape (<code>lsm_c_pland</code>) Porcentagem de área na paisagem por classe.
-* largest patch index (<code>lsm_c_lpi</code>) Índice de maior mancha (proporção da paisagem).
+-   mean patch area (<code>lsm_c_area_mn</code>) Área médio das manchas
+    por classe.
+-   SD patch area (<code>lsm_c_area_sd</code>) Desvio padrão das áreas
+    dos manchas por classe.
+-   class area percentage of landscape (<code>lsm_c_pland</code>)
+    Porcentagem de área na paisagem por classe.
+-   largest patch index (<code>lsm_c_lpi</code>) Índice de maior mancha
+    (proporção da paisagem).
 
 Métricas de configuração:
 
+-   aggregation index (<code>lsm_c_ai</code>) Índice de agregação.
+-   patch cohesion index (<code>lsm_c_cohesion</code>) Índice de coesão
+    das manchas.
+-   number of patches (<code>lsm_c_np</code>) Número de manchas.
+-   patch density (<code>lsm_c_pd</code>) Densidade de manchas.
 
-* aggregation index (<code>lsm_c_ai</code>) Índice de agregação.
-* patch cohesion index (<code>lsm_c_cohesion</code>) Índice de coesão das manchas.
-* number of patches (<code>lsm_c_np</code>) Número de manchas.
-* patch density (<code>lsm_c_pd</code>) Densidade de manchas.
-
-Escolheremos (atraves um filtro) as métricas que queremos para obter uma 
-tabela de dados. Mantendo os dados originais, 
-assim sendo para acresentar mais métricas nos resultados, 
-preciso somente acrescentar mais no codigo.
-
+Escolheremos (atraves um filtro) as métricas que queremos para obter uma
+tabela de dados. Mantendo os dados originais, assim sendo para
+acresentar mais métricas nos resultados, preciso somente acrescentar
+mais no codigo.
 
 ```{r}
 # Arquivo com os nomes das classes
@@ -507,77 +524,75 @@ met_conf <- c("ai", "cohesion", "np", "pd")
 met_todos <- c(met_comp, met_conf)
 
 # Escholer métricas desejados do conjunto completo
-metricas_1985 %>% 
-filter(metric %in% met_todos) %>% 
+metricas_1985 |> 
+filter(metric %in% met_todos) |> 
 left_join(class_nomes, by = c("class" = "aid")) -> metricas_nomes
 ```
 
 \newpage
 
+### Uma tabela versatil
 
-## Uma tabela versatil
-Mas, ainda não tem uma coluna com os nomes das métricas. 
-Portanto, solução simples é de exportar no formato de .csv e 
-finalizar/editar no Excel / calc. 
+Mas, ainda não tem uma coluna com os nomes das métricas. Portanto,
+solução simples é de exportar no formato de .csv e finalizar/editar no
+Excel / calc.
 
-Outra opção que pode facilitar, particularmente quando pode há mudanças 
-e revisões, é produzir a tabela no R. Aqui vamos repetir no R os 
-passos que vocês conhecem com as ferramentas de Excel (arraste e solte, 
+Outra opção que pode facilitar, particularmente quando pode há mudanças
+e revisões, é produzir a tabela no R. Aqui vamos repetir no R os passos
+que vocês conhecem com as ferramentas de Excel (arraste e solte,
 copiar-colar, filtro, tabela dinâmica).
 
+### Reorganização
 
-## Reorganização
-Escolhendo as colunas desejadas (<code>select</code>), reorganizando para as 
-métricas ficam nas colunas (<code>pivot_wider</code>) e colocando as colunas novas na sequência desejada (<code>select</code>).
+Escolhendo as colunas desejadas (<code>select</code>), reorganizando
+para as métricas ficam nas colunas (<code>pivot_wider</code>) e
+colocando as colunas novas na sequência desejada (<code>select</code>).
 
 ```{r}
-metricas_nomes %>% 
+metricas_nomes |> 
 # Escholer métricas desejados do conjunto completo de métricas.
 dplyr::select(c(type_class, classe_descricao, hexadecimal_code, 
-metric, value)) %>% 
+metric, value)) |> 
 # reorganizando
 pivot_wider(names_from = metric, values_from = value) -> metricas_tab
 
 ```
 
-
 \newpage
 
-## Uma figura elegante 
-Uma imagem vale mais que mil palavras. 
-Portanto, gráficos/figuras/imagens são uma das mais importantes formas 
-de comunicar a ciência. 
+### Uma figura elegante
 
-Como exemplo ilustrativo, aqui vamos produzir 
-gráficos comparando métricas de composição e configuração da paisagem 
-ao redor do Garimpo do Lourenço.
+Uma imagem vale mais que mil palavras. Portanto,
+gráficos/figuras/imagens são uma das mais importantes formas de
+comunicar a ciência.
 
-É uma boa ideia gastar bastante tempo para tornar figuras científicas 
-as mais informativas e atraentes possíveis. Escusado será dizer que a 
-precisão empírica é primordial. E por isso, o que fica excluído/omitido 
-é tão importante quanto o que foi incluído. Para ajudar, você deve se 
-perguntar o seguinte ao criar uma figura: eu apresentaria essa figura 
-em uma apresentação para um grupo de colegas? Eu o apresentaria a um 
-público de não especialistas? Eu gostaria que essa figura aparecesse 
-em um artigo de notícias sobre meu trabalho? É claro que todos esses 
-locais exigem diferentes graus de precisão, complexidade e estética, 
-mas uma boa figura deve servir para educar simultaneamente públicos 
-muito diferentes.
+Como exemplo ilustrativo, aqui vamos produzir gráficos comparando
+métricas de composição e configuração da paisagem ao redor do Garimpo do
+Lourenço.
 
+É uma boa ideia gastar bastante tempo para tornar figuras científicas as
+mais informativas e atraentes possíveis. Escusado será dizer que a
+precisão empírica é primordial. E por isso, o que fica excluído/omitido
+é tão importante quanto o que foi incluído. Para ajudar, você deve se
+perguntar o seguinte ao criar uma figura: eu apresentaria essa figura em
+uma apresentação para um grupo de colegas? Eu o apresentaria a um
+público de não especialistas? Eu gostaria que essa figura aparecesse em
+um artigo de notícias sobre meu trabalho? É claro que todos esses locais
+exigem diferentes graus de precisão, complexidade e estética, mas uma
+boa figura deve servir para educar simultaneamente públicos muito
+diferentes.
 
-Tabelas versus gráficos — A primeira pergunta que você deve se fazer 
-é se você pode transformar aquela tabela (chata e feia) em algum tipo 
-de gráfico. Você realmente precisa dessa tabela no texto principal? 
-Você não pode simplesmente traduzir as entradas das células em um 
-gráfico de barras/colunas/xy? Se você pode, você deve. Quando uma 
-tabela não pode ser facilmente traduzida em uma figura, na maioria 
-das vezes a provavelmente pertence às 
-Informações Suplementares/Anexos/Apêndices.
+Tabelas versus gráficos — A primeira pergunta que você deve se fazer é
+se você pode transformar aquela tabela (chata e feia) em algum tipo de
+gráfico. Você realmente precisa dessa tabela no texto principal? Você
+não pode simplesmente traduzir as entradas das células em um gráfico de
+barras/colunas/xy? Se você pode, você deve. Quando uma tabela não pode
+ser facilmente traduzida em uma figura, na maioria das vezes a
+provavelmente pertence às Informações Suplementares/Anexos/Apêndices.
 
+#### Gráfico de barra
 
-### Gráfico de barra
-
-Primeiramente, vamos produzir uma gráfico de barra comparando a 
+Primeiramente, vamos produzir uma gráfico de barra comparando a
 proporção que cada classe representa na paisagem.
 
 ```{r}
@@ -594,10 +609,11 @@ classe_cores <- c("Campo Alagado e Área Pantanosa" = "#45C2A5",
 ```
 
 E agora o grafico.......
+
 ```{r, eval=FALSE}
 # Grafico de barra basica
-metricas_tab %>% 
-mutate(class_prop = pland) %>% 
+metricas_tab |> 
+mutate(class_prop = pland) |> 
 ggplot(aes(x = classe_descricao, y = class_prop)) +
 geom_col()
 
@@ -607,8 +623,8 @@ geom_col()
 # Com cores conforme legenda da Mapbiomas Coleção 6
 # Corrigindo texto dos eixos.
 # Mudar posição da leganda para o texto com nomes longas encaixar.
-metricas_tab %>% 
-mutate(class_prop = pland) %>% 
+metricas_tab |> 
+mutate(class_prop = pland) |> 
 ggplot(aes(x = type_class, y = class_prop, 
 fill = classe_descricao)) + 
 scale_fill_manual("classe", values = classe_cores) +
@@ -625,19 +641,17 @@ guides(fill = guide_legend(nrow = 4))
 
 Uma imagem vale mais que mil palavras:
 
-<img src="figures/fig_cobertura.png" alt="cobertura" width="680" height="300">
+<img src="figures/fig_cobertura.png" alt="cobertura" width="680" height="300"/>
 
-Mas existe uma separação grande na faixa de valores e ainda é 
-difícil de ver todas as classes. Temos uma distribuição com valores 
-muito mais altos comparada com os outros. 
-extremos. Uma solução seria uma transformação (por exemplo "log"), 
-assim os valores ficarem mais proximos.
+Mas existe uma separação grande na faixa de valores e ainda é difícil de
+ver todas as classes. Temos uma distribuição com valores muito mais
+altos comparada com os outros. extremos. Uma solução seria uma
+transformação (por exemplo "log"), assim os valores ficarem mais
+proximos.
 
+#### Gráfico de boxplot
 
-### Gráfico de boxplot
-
-Agora com uma métrica de configuração: 
-
+Agora com uma métrica de configuração:
 
 ```{r}
 # Métrica de configuração: Densidade de manchas (coluna "pd").
@@ -647,7 +661,7 @@ Agora com uma métrica de configuração:
 # Tamanho dos pontos proporcional o numero de manchas
 # Corrigindo texto dos eixos.
 # Mudar posição da leganda para o texto com nomes longas encaixar.
-metricas_tab %>% 
+metricas_tab |> 
 ggplot(aes(x = type_class, y = pd)) + 
 geom_boxplot(colour = "grey50") +
 geom_point(aes(size = np, colour = classe_descricao)) + 
@@ -666,6 +680,7 @@ guides(col = guide_legend(nrow = 4))
 ## Comparação entre anos
 
 Calcular as métricas para 3 anos.
+
 ```{r}
 # metricas desejados
 what_metricas <- c("lsm_c_pland", "lsm_c_lpi", "lsm_c_area_mn", "lsm_c_area_sd", 
@@ -679,16 +694,16 @@ metricas_anos <- sample_lsm(landscape = mapbiomas_85a20,
 
 # Organizar dados
 # Dados rferentes os buffers
-resultados_anos <- acesso_buffers %>% 
-  left_join(metricas_anos %>%
+resultados_anos <- acesso_buffers |> 
+  left_join(metricas_anos |>
               dplyr::mutate(value = round(value,2), 
          ano = case_when(layer==1 ~1985, 
                          layer==2~2003, 
-                         layer==3~2020)) %>%
+                         layer==3~2020)) |>
               dplyr::select(ano, plot_id, class, metric, value), 
             by=c("raio_km"="plot_id"))
 # Dados referentes os classes
-resultados_anos <- resultados_anos %>%
+resultados_anos <- resultados_anos |>
 left_join(class_nomes, by = c("class" = "aid"))
 ```
 
@@ -706,9 +721,9 @@ classe_cores <- c("Campo Alagado e Área Pantanosa" = "#45C2A5",
 "Rio, Lago e Oceano" = "#0000FF",
 "Outras Lavouras Temporárias" = "#e787f8") 
 
-resultados_anos %>% 
-  mutate(rcor = paste("#", hexadecimal_code, sep="")) %>% 
-  filter(metric=="pland") %>%
+resultados_anos |> 
+  mutate(rcor = paste("#", hexadecimal_code, sep="")) |> 
+  filter(metric=="pland") |>
   ggplot(aes(x=ano, y=value)) + 
   geom_col(position="stack", aes(fill=classe_descricao)) + 
   scale_fill_manual(values = classe_cores) +
@@ -719,9 +734,9 @@ Agora com "pland" e densidade de manchas juntos.
 
 ```{r}
 
-resultados_anos %>% 
-  mutate(rcor = paste("#", hexadecimal_code, sep="")) %>% 
-  filter(metric=="pland") %>%
+resultados_anos |> 
+  mutate(rcor = paste("#", hexadecimal_code, sep="")) |> 
+  filter(metric=="pland") |>
   ggplot(aes(x=ano, y=value)) + 
   geom_col(position="stack", aes(fill=classe_descricao)) + 
   scale_fill_manual("classe", values = classe_cores) +
@@ -739,9 +754,9 @@ theme(legend.position="bottom",
 guides(fill = guide_legend(nrow = 4)) -> fig_pland
 
 # Densidade de manchas
-resultados_anos %>% 
-  mutate(rcor = paste("#", hexadecimal_code, sep="")) %>% 
-  filter(metric=="pd") %>%
+resultados_anos |> 
+  mutate(rcor = paste("#", hexadecimal_code, sep="")) |> 
+  filter(metric=="pd") |>
 ggplot(aes(x = factor(ano), y = value)) + 
 geom_boxplot(colour = "grey50") + 
 geom_point(aes(colour = classe_descricao)) + 
@@ -764,30 +779,250 @@ grid.arrange(fig_pland, fig_pd, nrow=1)
 
 \newpage
 
+## Comparação entre anos e paisagens
+
+Aqui compararemos as mudanças na cobertura e uso da terra entre dois
+garimpos: Garimpo do Lourenço e Garimpo do Vila Nova. Como eles estão separados por aproximadamente 200 quilômetros em linha reta, iremos processar os dois separadamente e depois combinar os resultados.
+
+Para Vila Nova, vamos incluir buffers com os mesmos raios do que fizemos para Garimpo do Lourenço. 
+
+```{r vilanova-buffers}
+# Tabela de dados com coordenados.
+acesso_vn <- data.frame(nome = "garimpo do Vila Nova", 
+           coord_x = -51.735512, 
+           coord_y = 0.402381)
+           
+# Converter para objeto espacial, com sistema de coordenados geográfica.
+sf_acesso_vn <- st_as_sf(acesso_vn, 
+               coords = c("coord_x", "coord_y"),
+            crs = 4326)
+
+# Agora fazer os buffers
+# Reprojetar o ponto.
+sf_acesso_vn_utm <- st_transform(sf_acesso_vn, crs = 31976)
+# Polígono com raio de 500 metros no entorno do ponto.
+sf_acesso_vn_500m <- st_buffer(sf_acesso_vn_utm, dist=500) |>
+  mutate(raio_km = 0.5)
+# Polígono com raio de 1 km no entorno do ponto.
+sf_acesso_vn_1km <- st_buffer(sf_acesso_vn_utm, dist=1000) |>
+  mutate(raio_km = 1)
+# Polígono com raio de 2 km no entorno do ponto.
+sf_acesso_vn_2km <- st_buffer(sf_acesso_vn_utm, dist=2000) |>
+  mutate(raio_km = 2)
+# Polígono com raio de 4 km no entorno do ponto.
+sf_acesso_vn_4km <- st_buffer(sf_acesso_vn_utm, dist=4000) |>
+  mutate(raio_km = 4)
+# Polígono com raio de 20 km no entorno do ponto.
+sf_acesso_vn_20km <- st_buffer(sf_acesso_vn_utm, 
+                               dist=20000) |> 
+  mutate(raio_km = 20)
+
+acesso_buffers_vn <- bind_rows(sf_acesso_vn_500m, 
+                               sf_acesso_vn_1km, 
+                            sf_acesso_vn_2km, 
+                            sf_acesso_vn_4km)
+
+```
+
+Verificar:
+```{r check-vilanova}
+mapview(sf_acesso_vn) + 
+  mapview(sf_acesso_vn_20km)
+```
+
+Agora dados de Mapbiomas. Cópias são fornecidas no pacote eprdados. Um arquivo para cada garimpo. Cada arquivo é um raster que inclui múltiplas camadas, uma para cada ano.
+```{r load-mapbiomas-years}
+# arquivo no pacote "eprdados"
+arquivo_l <- system.file("raster/lorenco_85a22.tif", 
+                       package = "eprdados")
+arquivo_vn <- system.file("raster/vilanova_85a22.tif", 
+                       package = "eprdados")
+# carregar
+r85a22_l <- rast(arquivo_l)
+r85a22_vn <- rast(arquivo_vn)
+```
+
+A expectativa é que se houvesse mudanças na paisagem (por exemplo, novas classes que poderiam incluir usos humanos, como mineração e áreas urbanas), então métricas como a diversidade da paisagem deveriam aumentar significativamente.
+
+Tome cuidado, pois se for executado em grandes paisagens, isso pode levar algum tempo (horas). Para este exemplo, primeiro cortamos o raster para uma extensão menor de quatro quilômetros usando o buffer que fizemos anteriormente.
+```{r metrics-l_compare}
+# Cortar
+r85a22_l_c <- crop(r85a22_l, sf_acesso_4km, snap="out")
+r85a22_vn_c <- crop(r85a22_vn, sf_acesso_vn_4km, snap="out")
+# Métricas
+# lsm_l_joinent = Complexity of a landscape pattern. 
+# An overall spatio-thematic complexity metric.
+# lsm_l_ent = diversity 
+# (thematic complexity) of landscape classes.
+# lsm_l_condent = geometric intricacy 
+# (configurational complexity) of a landscape pattern.
+# lsm_l_shdi = Shannon diversity
+mymetrics <- c("lsm_l_joinent", "lsm_l_ent", 
+          "lsm_l_condent", "lsm_l_shdi")
+# Métricas para toda a paisagem de 4 quilometros 
+# acerca do Garimpo do Lourenço.
+# Lourenço
+metricas_lourenco <- calculate_lsm(r85a22_l_c, 
+                                   what = mymetrics)
+# Vila Nova
+metricas_vilanova <- calculate_lsm(r85a22_vn_c, 
+                                   what = mymetrics)
+```
+
+Acabamos de calcular quatro métricas de paisagem diferentes ao longo de 38 anos. Assim sendo, os resultados (no novo objeto metricas_lourenco) deve ter 152 linhas (4 métricas X 38 anos = 152).
+
+Aora vamos arrumar os dados para facilitar apresentação e communicação dos resutlados:
+```{r arrumar-anos-l}
+resultados_anos_lourenco <- metricas_lourenco |>
+              dplyr::mutate(value = round(value,2), 
+                            onde = "Garimpo do Lourenço",
+                            ano = case_when(layer==1~1985, 
+                        layer==2~1986, 
+                        layer==3~1987,
+                        layer==4~1988,
+                       layer==5~1989, 
+                       layer==6~1990, 
+                        layer==7~1991, 
+                        layer==8~1992, 
+                        layer==9~1993, 
+                        layer==10~1994, 
+                        layer==11~1995, 
+                        layer==12~1996, 
+                        layer == 13 ~ 1997, 
+                        layer == 14 ~ 1998, 
+                        layer == 15 ~ 1999, 
+                        layer == 16 ~ 2000, 
+                        layer == 17 ~ 2001, 
+                        layer == 18 ~ 2002, 
+                        layer == 19 ~ 2003, 
+                        layer == 20 ~ 2004, 
+                        layer == 21 ~ 2005, 
+                        layer == 22 ~ 2006, 
+                        layer == 23 ~ 2007, 
+                        layer == 24 ~ 2008, 
+                      layer == 25 ~ 2009, 
+                       layer == 26 ~ 2010, 
+                      layer == 27 ~ 2011, 
+                      layer == 28 ~ 2012, 
+                      layer == 29 ~ 2013, 
+                       layer == 30 ~ 2014, 
+                       layer == 31 ~ 2015, 
+                        layer == 32 ~ 2016, 
+                      layer == 33 ~ 2017, 
+                       layer == 34 ~ 2018, 
+                      layer == 35 ~ 2019, 
+                        layer == 36 ~ 2020, 
+                       layer == 37 ~ 2021, 
+                       layer == 38 ~ 2022))
+
+```
+
+E agora para Vila Nova.
+```{r arrumar-anos-vn}
+resultados_anos_vilanova <- metricas_vilanova |>
+              dplyr::mutate(value = round(value,2), 
+                            onde = "Garimpo do Vila Nova",
+                            ano = case_when(
+                        layer==1 ~ 1985, 
+                        layer==2 ~ 1986, 
+                        layer==3 ~ 1987,
+                        layer==4 ~ 1988, 
+                        layer==5 ~ 1989, 
+                        layer==6 ~ 1990, 
+                        layer==7 ~ 1991, 
+                        layer==8 ~ 1992, 
+                        layer==9 ~ 1993, 
+                        layer==10 ~ 1994, 
+                        layer==11 ~ 1995, 
+                        layer==12 ~ 1996, 
+                        layer == 13 ~ 1997, 
+                        layer == 14 ~ 1998, 
+                        layer == 15 ~ 1999, 
+                        layer == 16 ~ 2000, 
+                        layer == 17 ~ 2001, 
+                        layer == 18 ~ 2002, 
+                        layer == 19 ~ 2003, 
+                        layer == 20 ~ 2004, 
+                        layer == 21 ~ 2005, 
+                        layer == 22 ~ 2006, 
+                        layer == 23 ~ 2007, 
+                        layer == 24 ~ 2008, 
+                        layer == 25 ~ 2009, 
+                        layer == 26 ~ 2010, 
+                        layer == 27 ~ 2011, 
+                        layer == 28 ~ 2012, 
+                        layer == 29 ~ 2013, 
+                        layer == 30 ~ 2014, 
+                        layer == 31 ~ 2015, 
+                        layer == 32 ~ 2016, 
+                        layer == 33 ~ 2017, 
+                        layer == 34 ~ 2018, 
+                        layer == 35 ~ 2019, 
+                        layer == 36 ~ 2020, 
+                        layer == 37 ~ 2021, 
+                        layer == 38 ~ 2022
+                        )
+                         )
+
+```
+
+Apresentar os resultados em um gráfico.
+```{r compare-garimpos, echo=FALSE, out.width="80%", out.height="80%", fig.cap="Comparação da diversidade da paisagem em torno de dois garimpos. CComparação de mudanças dentro de quatro quilômetros de Garimpo do Lourenço e garimpo do Vila Nova entre 1985 a 2022.  Classificação de cobertura da terra do MapBiomas Coleção 8 usada para quantificar a diversidade representado por quatro métricas de paisagem (condent: Entropia condicional; ent: Entropia marginal; joinent: Entropia conjunta; shdi: Índice de diversidade de Shannon). "}
+compare_garimpos <- bind_rows(resultados_anos_lourenco, 
+          resultados_anos_vilanova) |> 
+  ggplot(aes(x = ano, y = value)) + 
+  geom_point() + 
+  stat_smooth(method = "gam") + 
+  facet_grid(onde ~ metric) + 
+  labs(y = "valor")
+
+png("figures/fig_compare_garimpos.png", width=7, height=4, 
+    units="in", res = 600)
+compare_garimpos
+invisible(dev.off())
+knitr::include_graphics("figures/fig_compare_garimpos.png")
+  
+```
+
+Esses resultados mostram mudanças na diversidade da paisagem ao longo do tempo que diferem entre os garimpos. Como podemos ver que os valores de diversidade diferem (Lourenço tende a ter maior diversidade desde o início) seria útil comparar a dinâmica calculada como taxas de mudanças ao longo do tempo. Além disso, agora que sabemos que houve mudanças, faz sentido investigar mais a fundo. Para compreender as mudanças, é necessária uma análise mais aprofundada que compare as métricas de nível de classe em diferentes escalas. Isto permitir-nos-á compreender exactamente que tipos de cobertura do solo mudaram e como essas mudanças estão relacionadas com a mineração e outros usos, como o desenvolvimento urbano.
+
+\newpage
+
 ## Conclusões e próximos passos
 
-Os resultados apresentados na figura anterior não segam os resultados esperados que a cobertura de classes antrópicos ia aumentar ao longo do tempo.
-Para entender melhor os padores, precisamos: 
+Para entender melhor os padores, precisamos:
 
- * Verficar padrões nas outras metricas calculados
- * Verficar padrões com mais anos 
- * Verficar padrões usando poligonos/pontos dos processos de mineração (dados no SIGMINE https://www.gov.br/anm/pt-br e https://app.anm.gov.br/dadosabertos/SIGMINE/PROCESSOS_MINERARIOS/) 
- 
- 
-Alem disso, seria relevante buscar complementar os dados de MapBiomas com uma classificação supervisionado usando imagens de Sentinel-2 (exemplo com QGIS Semi-Automatic Classification plugin  aqui: https://fromgistors.blogspot.com/2016/09/basic-tutorial-2.html). Assim para aumentar a precisão dos resultados.
+-   Verficar padrões nas outras metricas calculados
+-   Verficar padrões usando poligonos/pontos dos processos de mineração
+    (dados no SIGMINE <https://www.gov.br/anm/pt-br> e
+    <https://app.anm.gov.br/dadosabertos/SIGMINE/PROCESSOS_MINERARIOS/>)
 
-Uma forma alternativa para visualização as mudanças entre anos seria um diagrama "Sankey"/"Alluvial". Como exemplo, veja figura 3 no artigo "Rapid land use conversion in the Cerrado has affected water transparency in a hotspot of ecotourism, Bonito, Brazil" https://doi.org/10.1177/19400829221127087 . 
+Alem disso, para aumentar a precisão dos resultados seria relevante buscar complementar os resultados obtidos com:
+
+1.  Imagens com uma classificação do satélite Sentinel-2 com resolução espacial de 10 metros. A Coleção BETA do MapBiomas 10 metros inclui mapas anuais de cobertura e uso da terra para o período de 2016 a 2022 (período de disponibilidade de imagens do satélite Sentinel-2): <https://brasil.mapbiomas.org/mapbiomas-cobertura-10m/> .  
+
+2.  Imagens com uma classificação supervisionado usando imagens de
+    Sentinel-2 (exemplo com QGIS Semi-Automatic Classification plugin
+    aqui:
+    <https://fromgistors.blogspot.com/2016/09/basic-tutorial-2.html>).
+    
+
+Uma forma alternativa para visualização as mudanças entre anos seria um
+diagrama "Sankey"/"Alluvial". Como exemplo, veja figura 3 no artigo
+"Rapid land use conversion in the Cerrado has affected water
+transparency in a hotspot of ecotourism, Bonito, Brazil"
+<https://doi.org/10.1177/19400829221127087> .
 
 ```{r plot-fig-sankey, echo=FALSE, warning=FALSE, message=FALSE, out.width="50%", out.height="50%", fig.align='center',fig.cap= "Diagrama Sankey mostrando a mudança de uso da terra na bacia do rio Prata entre 2010 (lado esquerdo) e 2020 (lado direto). Fonte: Figura 3. Chiaravalloti et. al. 2022. Tropical Conservation Science. doi:10.1177/19400829221127087"}
 knitr::include_graphics("figures/images_large_10.1177_19400829221127087-fig3.jpeg")
 ```
 
-No R pode fazer com o pacote "networkD3" segue tutoriais: 
+No R pode fazer com o pacote "networkD3" segue tutoriais:
 
-* https://www.displayr.com/sankey-diagrams-r/
+-   <https://www.displayr.com/sankey-diagrams-r/>
 
-* https://epirhandbook.com/en/diagrams-and-charts.html#alluvialsankey-diagrams
+-   <https://epirhandbook.com/en/diagrams-and-charts.html#alluvialsankey-diagrams>
 
-* https://rpubs.com/droach/CPP526-codethrough
+-   <https://rpubs.com/droach/CPP526-codethrough>
 
 \newpage

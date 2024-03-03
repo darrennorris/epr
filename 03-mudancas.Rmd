@@ -319,7 +319,10 @@ r85a22 <- rast(rfile)
 # Mapbiomas legend
 mfile <- "C:\\Users\\user\\Documents\\rbooks\\epr\\data\\raster\\mapbiomas\\legend\\Codigos-da-legenda-colecao-8.csv"
 # load legend and shorten long descriptions
-mapbiomas_legend <- read.csv2(mfile, as.is = TRUE) |> 
+# read.csv2 adding X.. to column name.
+#mapbiomas_legend <- read.csv2(mfile, as.is = TRUE) 
+
+mapbiomas_legend <- read_delim(mfile, delim = ";", escape_double = FALSE, trim_ws = TRUE)|> 
   mutate(Descricao_novo = case_when(Descricao == "Campo Alagado e Área Pantanosa" ~ "Campo Alagado", 
                                     Descricao == "Outras Lavouras Temporárias" ~ "Outras Lavouras")) |> 
   mutate(Descricao = coalesce(Descricao_novo, Descricao))

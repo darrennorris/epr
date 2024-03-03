@@ -1,8 +1,13 @@
 # bookdown
 library(bookdown)
 library(knitr)
-bookdown::render_book("index.Rmd", "bookdown::html_document2")
-bookdown::render_book("index.Rmd", "bookdown::gitbook")
+# works but turns figure captions into garbage
+bookdown::render_book("index.Rmd", "bookdown::html_document2", encoding = 'UTF-8')
+bookdown::render_book("index.Rmd", "bookdown::gitbook", encoding = 'UTF-8')
+# error 3/3/2024
+#[WARNING] This document format requires a nonempty <title> element.
+#Defaulting to 'epr.knit' as the title.
+#To specify a title, use 'title' in metadata or --metadata title="...".
 
 # check
 browseURL("docs/index.html")
