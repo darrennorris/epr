@@ -201,9 +201,146 @@ writeRaster(r85a22, "E:/mapbiomas/vilanova_85a22.tif",
             gdal=c("COMPRESS=DEFLATE"), overwrite = TRUE)
 ```
 
+Sample for BR156. Processed in QGIS to get same extent.
+Downloaded from IBGE, Bases cartográficas contínuas 
+Brasil - 1:250 000, versão 2023:
+<https://www.ibge.gov.br/geociencias/downloads-geociencias.html?caminho=cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2023/>
+
+Need buffers and sample points.
+```{r br156-vector}
+vin <- "C:\\Users\\user\\Documents\\CA\\CA_2023\\EP\\vectors\\AP_rodoviario\\br156.gpkg"
+st_layers(vin)
+extents <- st_read(vin, layer = "extent_br156") |> st_transform(31976)
+br156 <- st_read(vin, layer = "BR156_jari_portogrande") |> st_transform(31976)
+br156_j <- br156 |> filter(layer == "BR156_mazagao_jari")
+br156_p <- br156 |> filter(layer != "BR156_mazagao_jari")
+ext_j <- extents |> filter(trecho == "Jari_Mazagao")
+ext_p <- extents |> filter(trecho != "Jari_Mazagao")
+# buffers roads
+j_b250 <- st_buffer(st_union(br156_j), dist = 250 ) |> 
+  st_as_sf() |> mutate(buff_dist = 250)
+j_b500 <- st_buffer(st_union(br156_j), dist = 500 ) |> 
+  st_as_sf() |> mutate(buff_dist = 500)
+j_b1000 <- st_buffer(st_union(br156_j), dist = 1000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 1000)
+j_b2000 <- st_buffer(st_union(br156_j), dist = 2000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 2000)
+j_b4000 <- st_buffer(st_union(br156_j), dist = 4000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 4000)
+j_b8000 <- st_buffer(st_union(br156_j), dist = 8000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 8000)
+p_b250 <- st_buffer(st_union(br156_p), dist = 250 ) |> 
+  st_as_sf() |> mutate(buff_dist = 250)
+p_b500 <- st_buffer(st_union(br156_p), dist = 500 ) |> 
+  st_as_sf() |> mutate(buff_dist = 500)
+p_b1000 <- st_buffer(st_union(br156_p), dist = 1000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 1000)
+p_b2000 <- st_buffer(st_union(br156_p), dist = 2000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 2000)
+p_b4000 <- st_buffer(st_union(br156_p), dist = 4000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 4000)
+p_b8000 <- st_buffer(st_union(br156_p), dist = 8000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 8000)
+# bind together
+jari_buff <- bind_rows(j_b250, j_b500, j_b1000, j_b2000, j_b4000, j_b8000) |> 
+  mutate(trecho = "Jari") |> st_crop(ext_j)
+porto_buff <- bind_rows(p_b250, p_b500, p_b1000, p_b2000, p_b4000, p_b8000) |> 
+  mutate(trecho = "Porto Grande") |> st_crop(ext_p)
+road_buff <- bind_rows(jari_buff, porto_buff)
+
+# sample points density of one every 3 km
+j_line <- br156_j |>
+  st_sf() |> 
+  st_combine() |> 
+  st_sf() |> 
+  st_line_merge() |>
+  st_cast("LINESTRING") 
+# 49
+j_points <- st_line_sample(j_line, 
+                           density = units::set_units(0.3, 1/km)) |> 
+   st_cast("POINT") |> data.frame() |> st_as_sf() |> 
+  mutate(trecho = "Jari")
+#Porto Grande
+p_line <- br156_p |>
+  st_sf() |> 
+  st_combine() |> 
+  st_sf() |> 
+  st_line_merge() |>
+  st_cast("LINESTRING") 
+# 37
+p_points <- st_line_sample(p_line, 
+                           density = units::set_units(0.3, 1/km)) |> 
+   st_cast("POINT") |> data.frame() |> st_as_sf() |> 
+  mutate(trecho = "Porto Grande")
+
+# Point buffers
+br156_points <- bind_rows(j_points, p_points)
+br156_points$aid <- rank(-st_coordinates(br156_points)[,2]) 
+# length(unique(br156_points$aid)) # 86
+points_b250 <- st_buffer(br156_points, dist = 250 ) |> 
+  st_as_sf() |> mutate(buff_dist = 250)
+points_b500 <- st_buffer(br156_points, dist = 500 ) |> 
+  st_as_sf() |> mutate(buff_dist = 500)
+points_b1000 <- st_buffer(br156_points, dist = 1000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 1000)
+points_b2000 <- st_buffer(br156_points, dist = 2000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 2000)
+points_b4000 <- st_buffer(br156_points, dist = 4000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 4000)
+points_b8000 <- st_buffer(br156_points, dist = 8000 ) |> 
+  st_as_sf() |> mutate(buff_dist = 8000)
+# bind
+point_buff_all <- bind_rows(points_b250, points_b500, points_b1000, 
+                            points_b2000, points_b4000, points_b8000) |> 
+  mutate(aid = paste(trecho, aid, buff_dist, sep="_")) |> 
+  st_crop(extents)
+#length(unique(point_buff_all$aid)) # 516
+point_buff_j <- st_crop(point_buff_all, ext_j)
+point_buff_p <- st_crop(point_buff_all, ext_p)
+point_buff_all <- bind_rows(point_buff_j, point_buff_p)
+
+# Export
+outfile <- "C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg"
+# roads
+st_write(extents, dsn = outfile, 
+         layer = "extents_br156", delete_layer = TRUE, append = TRUE)
+st_write(ext_j, dsn = outfile, 
+         layer = "extent_jari", delete_layer = TRUE, append = TRUE)
+st_write(ext_p, dsn = outfile, 
+         layer = "extent_porto", delete_layer = TRUE, append = TRUE)
+st_write(br156, dsn = outfile, 
+         layer = "br156_jari_portogrande", delete_layer = TRUE, append = TRUE)
+st_write(j_line, dsn = outfile, 
+         layer = "br156_jari_mazagao", delete_layer = TRUE, append = TRUE)
+st_write(p_line, dsn = outfile, 
+         layer = "br156_portogrande_itaubal", delete_layer = TRUE, append = TRUE)
+st_write(road_buff, dsn = outfile, 
+         layer = "br156_buffers", delete_layer = TRUE, append = TRUE)
+st_write(jari_buff, dsn = outfile, 
+         layer = "br156_buffers_jari", delete_layer = TRUE, append = TRUE)
+st_write(porto_buff, dsn = outfile, 
+         layer = "br156_buffers_portogrande", delete_layer = TRUE, append = TRUE)
+st_write(br156_points, dsn = outfile, 
+         layer = "br156_points", delete_layer = TRUE, append = TRUE)
+st_write(j_points, dsn = outfile, 
+         layer = "br156_points_jari", delete_layer = TRUE, append = TRUE)
+st_write(p_points, dsn = outfile, 
+         layer = "br156_points_portogrande", delete_layer = TRUE, append = TRUE)
+st_write(point_buff_all, dsn = outfile, 
+         layer = "br156_points_buffers", delete_layer = TRUE, append = TRUE)
+st_write(point_buff_j, dsn = outfile, 
+         layer = "br156_points_buffers_jari", delete_layer = TRUE, append = TRUE)
+st_write(point_buff_p, dsn = outfile, 
+         layer = "br156_points_buffers_porto", delete_layer = TRUE, append = TRUE)
+# check layers
+st_layers(outfile)
+```
+
+ 
 Legend.
 ```{r import-legend, echo=TRUE, eval=FALSE}
-mapbiomas8_legenda <- read.csv2("legend/Codigos-da-legenda-colecao-8.csv")
+lf <- "data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv"
+mapbiomas8_legenda <- read.csv2(lf, as.is = TRUE)
 ```
 
 Plot.
