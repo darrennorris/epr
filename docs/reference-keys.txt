@@ -116,9 +116,9 @@ fig:fig-plot-final-ggtheme-1
 fig:fig-plot-final-ggtheme-2
 fig:fig-plot-final-ggtheme-3
 fig:fig-plot-final-export
-fig:unnamed-chunk-254
-fig:unnamed-chunk-259
-fig:unnamed-chunk-265
+fig:unnamed-chunk-261
+fig:unnamed-chunk-266
+fig:unnamed-chunk-272
 cap01
 apresentação
 escala-breve-definação
@@ -238,6 +238,14 @@ gráfico-de-barra
 gráfico-de-boxplot
 comparação-entre-anos
 comparação-entre-anos-e-paisagens
+dados-anos
+dados-vetor-anos
+dados-raster-anos
+mapa.
+mapa-lourenço
+mapa-vila-nova
+métricas
+métricas-diversidade-da-paisagem
 conclusões-e-próximos-passos
 cap20
 introdução-1
