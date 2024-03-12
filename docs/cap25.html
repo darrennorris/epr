@@ -331,6 +331,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.8.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-anos"><i class="fa fa-check"></i><b>5.8.1</b> Dados: anos</a></li>
 <li class="chapter" data-level="5.8.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#mapa."><i class="fa fa-check"></i><b>5.8.2</b> Mapa.</a></li>
 <li class="chapter" data-level="5.8.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas"><i class="fa fa-check"></i><b>5.8.3</b> Métricas</a></li>
+<li class="chapter" data-level="5.8.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#comparar-classes"><i class="fa fa-check"></i><b>5.8.4</b> Comparar classes</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#conclusões-e-próximos-passos"><i class="fa fa-check"></i><b>5.9</b> Conclusões e próximos passos</a></li>
 </ul></li>
@@ -546,24 +547,24 @@ Attribute data operations
 <li><a href="https://r-tmap.github.io/tmap-book/">tmap</a>.</li>
 </ul>
 <p>Carregar pacotes:</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="cap25.html#cb835-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb835-2"><a href="cap25.html#cb835-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb835-3"><a href="cap25.html#cb835-3" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb835-4"><a href="cap25.html#cb835-4" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
-<span id="cb835-5"><a href="cap25.html#cb835-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="cap25.html#cb839-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb839-2"><a href="cap25.html#cb839-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb839-3"><a href="cap25.html#cb839-3" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb839-4"><a href="cap25.html#cb839-4" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb839-5"><a href="cap25.html#cb839-5" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
 <p>Inicialmente iremos gerar uma raster representando uma paisagem bem simples, de 6 por 6 pixels. Você já deve saber que pixel é a unidade básica de uma imagem (lembra da camera do seu celular, 10Mb ou algo assim?!). Vocês devem ter visto sobre pixels e resolução no mesmo em aulas de geoprocessamento. Aqui podemos tratar o pixel como a resolução. Vamos dizer que temos um pixel de 10 metros (res=10 no bloco de código), ou seja, uma quadrado de 10 por 10m, sendo essa, a menor unidade mapeável. Assim sendo, a resolução tambem tem ligação com escala cartográfica!</p>
 <p>Vamos gerar e plotar uma paisagem simples em 4 passos. Primeiramente, a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(211, 211, 211, 255) !important;">rast</span> cria um objeto do tipo raster. E depois a função <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(211, 211, 211, 255) !important;">values</span> atribui valores, e na sequencia vamos visualisar os valores com <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(211, 211, 211, 255) !important;">plot</span> e <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(211, 211, 211, 255) !important;">text</span> .</p>
-<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="cap25.html#cb836-1" tabindex="-1"></a><span class="co">#Função &quot;rast&quot; gera a paisagem virtual (paisagem simulado)</span></span>
-<span id="cb836-2"><a href="cap25.html#cb836-2" tabindex="-1"></a>pai_sim <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">ncols=</span><span class="dv">6</span>, <span class="at">nrows=</span><span class="dv">6</span>, </span>
-<span id="cb836-3"><a href="cap25.html#cb836-3" tabindex="-1"></a>                <span class="at">xmin=</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">60</span>, </span>
-<span id="cb836-4"><a href="cap25.html#cb836-4" tabindex="-1"></a>                <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">60</span>, </span>
-<span id="cb836-5"><a href="cap25.html#cb836-5" tabindex="-1"></a>                <span class="at">res=</span><span class="dv">10</span>) </span>
-<span id="cb836-6"><a href="cap25.html#cb836-6" tabindex="-1"></a><span class="co">#E essa atribui valores (&quot;values&quot;) para os pixels criados acima</span></span>
-<span id="cb836-7"><a href="cap25.html#cb836-7" tabindex="-1"></a><span class="fu">values</span>(pai_sim) <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb836-8"><a href="cap25.html#cb836-8" tabindex="-1"></a><span class="fu">plot</span>(pai_sim) <span class="co">#Essa plota</span></span>
-<span id="cb836-9"><a href="cap25.html#cb836-9" tabindex="-1"></a><span class="fu">text</span>(pai_sim) <span class="co">#Essa coloca os valores dos pixels</span></span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-261"></span>
-<img src="epr_files/figure-html/unnamed-chunk-261-1.png" alt="Paisagem simples de 36 pixels." width="384" />
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="cap25.html#cb840-1" tabindex="-1"></a><span class="co">#Função &quot;rast&quot; gera a paisagem virtual (paisagem simulado)</span></span>
+<span id="cb840-2"><a href="cap25.html#cb840-2" tabindex="-1"></a>pai_sim <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">ncols=</span><span class="dv">6</span>, <span class="at">nrows=</span><span class="dv">6</span>, </span>
+<span id="cb840-3"><a href="cap25.html#cb840-3" tabindex="-1"></a>                <span class="at">xmin=</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">60</span>, </span>
+<span id="cb840-4"><a href="cap25.html#cb840-4" tabindex="-1"></a>                <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">60</span>, </span>
+<span id="cb840-5"><a href="cap25.html#cb840-5" tabindex="-1"></a>                <span class="at">res=</span><span class="dv">10</span>) </span>
+<span id="cb840-6"><a href="cap25.html#cb840-6" tabindex="-1"></a><span class="co">#E essa atribui valores (&quot;values&quot;) para os pixels criados acima</span></span>
+<span id="cb840-7"><a href="cap25.html#cb840-7" tabindex="-1"></a><span class="fu">values</span>(pai_sim) <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb840-8"><a href="cap25.html#cb840-8" tabindex="-1"></a><span class="fu">plot</span>(pai_sim) <span class="co">#Essa plota</span></span>
+<span id="cb840-9"><a href="cap25.html#cb840-9" tabindex="-1"></a><span class="fu">text</span>(pai_sim) <span class="co">#Essa coloca os valores dos pixels</span></span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-263"></span>
+<img src="epr_files/figure-html/unnamed-chunk-263-1.png" alt="Paisagem simples de 36 pixels." width="384" />
 <p class="caption">
 Figura 10.1: Paisagem simples de 36 pixels.
 </p>
@@ -572,9 +573,9 @@ Figura 10.1: Paisagem simples de 36 pixels.
 <div id="obter-e-carregar-dados-raster-1" class="section level3 hasAnchor" number="10.0.1">
 <h3><span class="header-section-number">10.0.1</span> Obter e carregar dados (raster)<a href="cap25.html#obter-e-carregar-dados-raster-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mais uma vez vamos aproveitar os dados de MapBiomas. Agora baixar arquivo raster com cobertura de terra no entorno dos rios em 2020, (formato “.tif”, tamanho 3.3 MB). Link: <a href="https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif" target="_blank">https://github.com/darrennorris/gisdata/blob/master/inst/raster/mapbiomas_AP_utm_rio/utm_cover_AP_rio_2020.tif</a> . Lembrando-se de salvar o arquivo (“utm_cover_AP_rio_2020.tif”) em um local conhecido no seu computador. Agora avisar R sobre onde ficar o arquivo. O código abaixo vai abrir uma nova janela, e você deve buscar e selecionar o arquivo “utm_cover_AP_rio_2020.tif”:</p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="cap25.html#cb837-1" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="cap25.html#cb841-1" tabindex="-1"></a>meuSIGr <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
 <p>O código abaixo vai carregar os dados e criar o objeto “mapbiomas_2020”.</p>
-<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="cap25.html#cb838-1" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="cap25.html#cb842-1" tabindex="-1"></a>mapbiomas_2020 <span class="ot">&lt;-</span> <span class="fu">rast</span>(meuSIGr)</span></code></pre></div>
 <p><br></p>
 <div style="page-break-after: always;"></div>
 </div>
@@ -582,28 +583,28 @@ Figura 10.1: Paisagem simples de 36 pixels.
 <h3><span class="header-section-number">10.0.2</span> Reclassificação<a href="cap25.html#reclassificação-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><br></p>
 <p>Para simplificar nossa avaliação de escala, reclassificamos a camada mapbiomas_2020 em uma camada binária de floresta/não-floresta. Essa tarefa de geoprocessamento pode ser realizada anteriormente usando SIG (<a href="https://docs.qgis.org/3.22/pt_BR/docs/training_manual/rasters/terrain_analysis.html#moderate-fa-reclassifying-the-raster">QGIS</a>). Aqui vamos reclassificar as categorias de cobertura da terra (agrupando diferentes áreas de cobertura florestal tipos) usando alguns comandos genéricos do R para criar uma nova camada com a cobertura de floresta em toda a região de estudo. Para isso, criamos um mapa do mesmo resolução e extensão, e então podemos redefinir os valores do mapa. Neste caso, queremos agrupar a cobertura da terra categorias 3 e 4 (Formação Florestal e Formação Savânica, respectivamente).</p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="cap25.html#cb839-1" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
-<span id="cb839-2"><a href="cap25.html#cb839-2" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
-<span id="cb839-3"><a href="cap25.html#cb839-3" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
-<span id="cb839-4"><a href="cap25.html#cb839-4" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb839-5"><a href="cap25.html#cb839-5" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
-<span id="cb839-6"><a href="cap25.html#cb839-6" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="cap25.html#cb843-1" tabindex="-1"></a><span class="co"># criar uma nova camada de floresta</span></span>
+<span id="cb843-2"><a href="cap25.html#cb843-2" tabindex="-1"></a>floresta_2020 <span class="ot">&lt;-</span> mapbiomas_2020</span>
+<span id="cb843-3"><a href="cap25.html#cb843-3" tabindex="-1"></a><span class="co"># Com valor de 0</span></span>
+<span id="cb843-4"><a href="cap25.html#cb843-4" tabindex="-1"></a><span class="fu">values</span>(floresta_2020) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb843-5"><a href="cap25.html#cb843-5" tabindex="-1"></a><span class="co"># Atualizar categorias florestais agrupados com valor de 1</span></span>
+<span id="cb843-6"><a href="cap25.html#cb843-6" tabindex="-1"></a>floresta_2020[mapbiomas_2020<span class="sc">==</span><span class="dv">3</span> <span class="sc">|</span> mapbiomas_2020<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>Vizualizar para verificar.</p>
-<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="cap25.html#cb840-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
-<span id="cb840-2"><a href="cap25.html#cb840-2" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
-<span id="cb840-3"><a href="cap25.html#cb840-3" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb840-4"><a href="cap25.html#cb840-4" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
-<span id="cb840-5"><a href="cap25.html#cb840-5" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
-<span id="cb840-6"><a href="cap25.html#cb840-6" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
-<span id="cb840-7"><a href="cap25.html#cb840-7" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb840-8"><a href="cap25.html#cb840-8" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
-<span id="cb840-9"><a href="cap25.html#cb840-9" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
-<span id="cb840-10"><a href="cap25.html#cb840-10" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
-<span id="cb840-11"><a href="cap25.html#cb840-11" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb840-12"><a href="cap25.html#cb840-12" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-266"></span>
-<img src="epr_files/figure-html/unnamed-chunk-266-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="cap25.html#cb844-1" tabindex="-1"></a><span class="co"># Passo necessario para agilizar o processamento</span></span>
+<span id="cb844-2"><a href="cap25.html#cb844-2" tabindex="-1"></a>floresta_2020_modal<span class="ot">&lt;-</span><span class="fu">aggregate</span>(floresta_2020, <span class="at">fact=</span><span class="dv">10</span>, <span class="at">fun=</span><span class="st">&quot;modal&quot;</span>)</span>
+<span id="cb844-3"><a href="cap25.html#cb844-3" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb844-4"><a href="cap25.html#cb844-4" tabindex="-1"></a><span class="fu">tm_shape</span>(floresta_2020_modal) <span class="sc">+</span></span>
+<span id="cb844-5"><a href="cap25.html#cb844-5" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, </span>
+<span id="cb844-6"><a href="cap25.html#cb844-6" tabindex="-1"></a>            <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span><span class="st">&quot;#129912&quot;</span>), </span>
+<span id="cb844-7"><a href="cap25.html#cb844-7" tabindex="-1"></a>            <span class="at">legend.show =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb844-8"><a href="cap25.html#cb844-8" tabindex="-1"></a>  <span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;não-floresta&quot;</span>, <span class="st">&quot;floresta&quot;</span>),</span>
+<span id="cb844-9"><a href="cap25.html#cb844-9" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#E974ED&quot;</span>, <span class="st">&quot;#129912&quot;</span>), <span class="at">title =</span> <span class="st">&quot;Classe&quot;</span>) <span class="sc">+</span></span>
+<span id="cb844-10"><a href="cap25.html#cb844-10" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb844-11"><a href="cap25.html#cb844-11" tabindex="-1"></a>             <span class="at">text.color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb844-12"><a href="cap25.html#cb844-12" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>),<span class="at">legend.bg.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-268"></span>
+<img src="epr_files/figure-html/unnamed-chunk-268-1.png" alt="Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio." width="480" />
 <p class="caption">
 Figura 10.2: Floresta ao redor do Rio Araguari. MapBiomas 2020 reclassificado em floresta e não-floresta. Mostrando os pontos de amostragem (pontos amarelas) cada 5 quilômetros ao longo do rio.
 </p>

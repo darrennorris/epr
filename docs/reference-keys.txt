@@ -116,9 +116,9 @@ fig:fig-plot-final-ggtheme-1
 fig:fig-plot-final-ggtheme-2
 fig:fig-plot-final-ggtheme-3
 fig:fig-plot-final-export
-fig:unnamed-chunk-261
-fig:unnamed-chunk-266
-fig:unnamed-chunk-272
+fig:unnamed-chunk-263
+fig:unnamed-chunk-268
+fig:unnamed-chunk-274
 cap01
 apresentação
 escala-breve-definação
@@ -246,6 +246,7 @@ mapa-lourenço
 mapa-vila-nova
 métricas
 métricas-diversidade-da-paisagem
+comparar-classes
 conclusões-e-próximos-passos
 cap20
 introdução-1

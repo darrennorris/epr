@@ -37,7 +37,7 @@ library(knitr)
 library(gridExtra)
 library(eprdados)
 library(tidyterra)
-library(ggspatial)
+library(patchwork)
 ```
 
 ## Área de estudo
@@ -731,6 +731,15 @@ mapbiomas_legend <- read.csv2(legendfile, as.is = TRUE) |>
                                     Descricao == "Outras Lavouras Temporárias" ~ "Outras Lavouras")) |> 
   mutate(Descricao = coalesce(Descricao_novo, Descricao))
 
+# Nova coluna para identificar classes antroopicos:
+ antropico <- c("Agropecuária", "Pastagem", "Agricultura", 
+                "Lavoura Temporária", "Soja",  "Cana", 
+                "Arroz", "Algodão (beta)",  "Outras Lavouras" ,
+                "Lavoura Perene", "Café", "Citrus", "Dendê (beta)", 
+                "Outras Lavouras Perenes", "Silvicultura", "Mosaico de Usos", 
+                "Área Urbanizada", "Mineração", "Aquicultura")
+ mapbiomas_legend$tipo <- ifelse(mapbiomas_legend$Descricao %in% antropico, 
+                          "antropico", "natural")
 ```
 
 ```{r lor-get-legend-show, echo = TRUE, eval=FALSE, message=FALSE, warning=FALSE}
@@ -742,6 +751,15 @@ mapbiomas_legend <- read.csv2(file.choose(), as.is = TRUE) |>
                                     Descricao == "Outras Lavouras Temporárias" ~ "Outras Lavouras")) |> 
   mutate(Descricao = coalesce(Descricao_novo, Descricao))
 
+# Nova coluna para identificar classes antroopicos:
+ antropico <- c("Agropecuária", "Pastagem", "Agricultura", 
+                "Lavoura Temporária", "Soja",  "Cana", 
+                "Arroz", "Algodão (beta)",  "Outras Lavouras" ,
+                "Lavoura Perene", "Café", "Citrus", "Dendê (beta)", 
+                "Outras Lavouras Perenes", "Silvicultura", "Mosaico de Usos", 
+                "Área Urbanizada", "Mineração", "Aquicultura")
+ mapbiomas_legend$tipo <- ifelse(mapbiomas_legend$Descricao %in% antropico, 
+                          "antropico", "natural")
 ```
 
 
@@ -848,10 +866,10 @@ Fazer legenda para rasters de 86 e 21.
 classes_r86a21 <- sort(unique(c(as.numeric(unlist(unique(r86_agg10_mod))), 
                                 as.numeric(unlist(unique(r21_agg10_mod))) 
                                 )))
-classes_l <- mapbiomas_legend |>
+classes_vn <- mapbiomas_legend |>
   filter(Class_ID %in% classes_r86a21) |> 
   arrange(Class_ID)
-mybreaks <- as.character(classes_r86a21)
+mybreaks_vn <- as.character(classes_r86a21)
 ```
 
 Agora fazer a mapa.
@@ -862,9 +880,9 @@ fig_mapa_vilanova <- ggplot() +
         fill = "transparent", 
         linetype = "longdash",
         colour = "white", size = 0.7) +
-  scale_fill_manual("Classe", breaks= mybreaks,
-                      labels= classes_l$Descricao, 
-                      values = classes_l$Color) + 
+  scale_fill_manual("Classe", breaks= mybreaks_vn,
+                      labels= classes_vn$Descricao, 
+                      values = classes_vn$Color) + 
     scale_x_continuous(breaks = 
                        c(-51.9, -51.8, -51.7, -51.6)) + 
   facet_wrap(~lyr, ncol = 2) +
@@ -1038,7 +1056,7 @@ Esses resultados mostram mudanças na diversidade da paisagem ao longo do tempo 
 Poderia ser mais informativo combinar os mapas com os gráficos para que possamos ver padrões espaciais e temporais ao mesmo tempo.
 ```{r patch_map_graph}
 
-diversidade_lourenco <-   ggplot(resultados_anos_lourenco, 
+diversidade_lourenco <- ggplot(resultados_anos_lourenco, 
                                  aes(x = ano, y = value)) + 
   geom_point() + 
   stat_smooth(method = "gam") + 
@@ -1051,12 +1069,87 @@ fig_combo_lourenco <- fig_mapa_lourenco / diversidade_lourenco  +
 fig_combo_lourenco
 ```
 
-Salvar.
+Para obter uma imagem mais clara podemos especificar as proporções 
+relativas (comprimento e largura) e exportar.
+Exportar.
 ```{r echo=TRUE, eval=FALSE}
 png("fig_combo_lourenco.png", width=7, height=8, 
     units="in", res = 600)
 fig_combo_lourenco
 dev.off()
+```
+
+\newpage
+
+### Comparar classes
+Podemos comparar entre as diferentes classes para compreender como o
+uso antropogénico da terra mudou ao longo do tempo.
+```{r classes-lourenco}
+minha_metricas <- c("lsm_c_cpland")
+lourenco_cpland <-  sample_lsm(r85a22_l, acesso_buffers, 
+                               what = minha_metricas, 
+                               plot_id = data.frame(acesso_buffers)[, 'raio_km'])
+```
+
+Arrumar os dados e compare a proporção de floresta e mineração ao longo do tempo. 
+```{r}
+lourenco_cpland_anos <- lourenco_cpland |>
+              dplyr::mutate(value = round(value,2), 
+                            onde = "Garimpo do Lourenço",
+                            ano = case_when(layer==1~1985, 
+                        layer==2~1986, 
+                        layer==3~1987,
+                        layer==4~1988,
+                       layer==5~1989, 
+                       layer==6~1990, 
+                        layer==7~1991, 
+                        layer==8~1992, 
+                        layer==9~1993, 
+                        layer==10~1994, 
+                        layer==11~1995, 
+                        layer==12~1996, 
+                        layer == 13 ~ 1997, 
+                        layer == 14 ~ 1998, 
+                        layer == 15 ~ 1999, 
+                        layer == 16 ~ 2000, 
+                        layer == 17 ~ 2001, 
+                        layer == 18 ~ 2002, 
+                        layer == 19 ~ 2003, 
+                        layer == 20 ~ 2004, 
+                        layer == 21 ~ 2005, 
+                        layer == 22 ~ 2006, 
+                        layer == 23 ~ 2007, 
+                        layer == 24 ~ 2008, 
+                      layer == 25 ~ 2009, 
+                       layer == 26 ~ 2010, 
+                      layer == 27 ~ 2011, 
+                      layer == 28 ~ 2012, 
+                      layer == 29 ~ 2013, 
+                       layer == 30 ~ 2014, 
+                       layer == 31 ~ 2015, 
+                        layer == 32 ~ 2016, 
+                      layer == 33 ~ 2017, 
+                       layer == 34 ~ 2018, 
+                      layer == 35 ~ 2019, 
+                        layer == 36 ~ 2020, 
+                       layer == 37 ~ 2021, 
+                       layer == 38 ~ 2022))
+```
+
+Gráfico:
+```{r}
+lourenco_cpland_anos |> 
+  left_join(mapbiomas_legend, by = c('class'='Class_ID')) |>
+  rename("raio" = "plot_id") |>
+  filter(Descricao %in% c("Formação Florestal", "Mineração")) |> 
+  ggplot(aes(x = ano, y = value)) + 
+  geom_point() +
+  scale_color_discrete("raio (km)") +
+  stat_smooth(method = "gam", 
+              aes(colour = factor(raio))) + 
+    facet_grid(raio ~ Descricao) 
+  
+  
 ```
 
 \newpage

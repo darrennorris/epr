@@ -331,6 +331,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.8.1" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#dados-anos"><i class="fa fa-check"></i><b>5.8.1</b> Dados: anos</a></li>
 <li class="chapter" data-level="5.8.2" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#mapa."><i class="fa fa-check"></i><b>5.8.2</b> Mapa.</a></li>
 <li class="chapter" data-level="5.8.3" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#métricas"><i class="fa fa-check"></i><b>5.8.3</b> Métricas</a></li>
+<li class="chapter" data-level="5.8.4" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#comparar-classes"><i class="fa fa-check"></i><b>5.8.4</b> Comparar classes</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="garimpo-do-lourenço.html"><a href="garimpo-do-lourenço.html#conclusões-e-próximos-passos"><i class="fa fa-check"></i><b>5.9</b> Conclusões e próximos passos</a></li>
 </ul></li>
@@ -513,199 +514,199 @@ div.csl-indent {
 - baixar Mapbiomas,
 - recortar para uma região de interesse
 - plotar com legenda</p>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="annexo-1.html#cb851-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb851-2"><a href="annexo-1.html#cb851-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb851-3"><a href="annexo-1.html#cb851-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb851-4"><a href="annexo-1.html#cb851-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb851-5"><a href="annexo-1.html#cb851-5" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb851-6"><a href="annexo-1.html#cb851-6" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="annexo-1.html#cb855-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb855-2"><a href="annexo-1.html#cb855-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb855-3"><a href="annexo-1.html#cb855-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb855-4"><a href="annexo-1.html#cb855-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb855-5"><a href="annexo-1.html#cb855-5" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb855-6"><a href="annexo-1.html#cb855-6" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
 <div id="download-mapbiomas-cover" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">A.1</span> Download mapbiomas cover<a href="annexo-1.html#download-mapbiomas-cover" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Site: <a href="https://brasil.mapbiomas.org/colecoes-mapbiomas/" class="uri">https://brasil.mapbiomas.org/colecoes-mapbiomas/</a>.
 Any zeros are NA (NODATA). <a href="http://forum.mapbiomas.ecostage.com.br/t/pixels-com-valor-zero/170/5" class="uri">http://forum.mapbiomas.ecostage.com.br/t/pixels-com-valor-zero/170/5</a> .
 And “27” “Não observado”. No exemplo os arquivos vai ficar no working directory.</p>
-<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="annexo-1.html#cb852-1" tabindex="-1"></a><span class="co">#Get mapbiomas data</span></span>
-<span id="cb852-2"><a href="annexo-1.html#cb852-2" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb852-3"><a href="annexo-1.html#cb852-3" tabindex="-1"></a>url_text <span class="ot">&lt;-</span> <span class="st">&quot;https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_8/lclu/coverage/&quot;</span></span>
-<span id="cb852-4"><a href="annexo-1.html#cb852-4" tabindex="-1"></a>layer_names <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;brasil_coverage_&quot;</span>,<span class="dv">1985</span><span class="sc">:</span><span class="dv">2022</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb852-5"><a href="annexo-1.html#cb852-5" tabindex="-1"></a>file_type <span class="ot">&lt;-</span> <span class="st">&quot;.tif&quot;</span></span>
-<span id="cb852-6"><a href="annexo-1.html#cb852-6" tabindex="-1"></a>filenames_mapbioma_8 <span class="ot">&lt;-</span> <span class="fu">paste</span>(layer_names, file_type, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb852-7"><a href="annexo-1.html#cb852-7" tabindex="-1"></a>urlnames_mapbioma_8 <span class="ot">&lt;-</span> <span class="fu">paste</span>(url_text, layer_names, file_type, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb852-8"><a href="annexo-1.html#cb852-8" tabindex="-1"></a></span>
-<span id="cb852-9"><a href="annexo-1.html#cb852-9" tabindex="-1"></a><span class="co">#set timeout to 20 minutes as big files and teeny tiny internet connection</span></span>
-<span id="cb852-10"><a href="annexo-1.html#cb852-10" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout =</span> <span class="fu">max</span>((<span class="dv">60</span><span class="sc">*</span><span class="dv">20</span>), <span class="fu">getOption</span>(<span class="st">&quot;timeout&quot;</span>)))</span>
-<span id="cb852-11"><a href="annexo-1.html#cb852-11" tabindex="-1"></a><span class="co"># test with one year - 1985</span></span>
-<span id="cb852-12"><a href="annexo-1.html#cb852-12" tabindex="-1"></a>res <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">download.file</span>(<span class="at">url=</span>urlnames_mapbioma_8[<span class="dv">1</span>], </span>
-<span id="cb852-13"><a href="annexo-1.html#cb852-13" tabindex="-1"></a>                            <span class="at">destfile=</span>filenames_mapbioma_8[<span class="dv">1</span>], </span>
-<span id="cb852-14"><a href="annexo-1.html#cb852-14" tabindex="-1"></a>                            <span class="at">method=</span><span class="st">&quot;auto&quot;</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>, </span>
-<span id="cb852-15"><a href="annexo-1.html#cb852-15" tabindex="-1"></a>                            <span class="at">cacheOK =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb852-16"><a href="annexo-1.html#cb852-16" tabindex="-1"></a><span class="co">#make list</span></span>
-<span id="cb852-17"><a href="annexo-1.html#cb852-17" tabindex="-1"></a>dflist <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">layer_names =</span> layer_names, </span>
-<span id="cb852-18"><a href="annexo-1.html#cb852-18" tabindex="-1"></a>                     <span class="at">urls =</span> urlnames_mapbioma_8, </span>
-<span id="cb852-19"><a href="annexo-1.html#cb852-19" tabindex="-1"></a>                     <span class="at">filenames =</span> filenames_mapbioma_8)</span>
-<span id="cb852-20"><a href="annexo-1.html#cb852-20" tabindex="-1"></a>alist <span class="ot">&lt;-</span> <span class="fu">split</span>(dflist, <span class="at">f =</span> dflist<span class="sc">$</span>layer_names)</span>
-<span id="cb852-21"><a href="annexo-1.html#cb852-21" tabindex="-1"></a></span>
-<span id="cb852-22"><a href="annexo-1.html#cb852-22" tabindex="-1"></a><span class="co">#make function to automatically process list elements</span></span>
-<span id="cb852-23"><a href="annexo-1.html#cb852-23" tabindex="-1"></a>get_mapbiomas <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb852-24"><a href="annexo-1.html#cb852-24" tabindex="-1"></a>res <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">download.file</span>(<span class="at">url=</span>x<span class="sc">$</span>urls, </span>
-<span id="cb852-25"><a href="annexo-1.html#cb852-25" tabindex="-1"></a>                            <span class="at">destfile=</span>x<span class="sc">$</span>filenames, </span>
-<span id="cb852-26"><a href="annexo-1.html#cb852-26" tabindex="-1"></a>                            <span class="at">method=</span><span class="st">&quot;auto&quot;</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>, </span>
-<span id="cb852-27"><a href="annexo-1.html#cb852-27" tabindex="-1"></a>                            <span class="at">cacheOK =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb852-28"><a href="annexo-1.html#cb852-28" tabindex="-1"></a>res</span>
-<span id="cb852-29"><a href="annexo-1.html#cb852-29" tabindex="-1"></a>}</span>
-<span id="cb852-30"><a href="annexo-1.html#cb852-30" tabindex="-1"></a></span>
-<span id="cb852-31"><a href="annexo-1.html#cb852-31" tabindex="-1"></a><span class="co">#run function in blocks</span></span>
-<span id="cb852-32"><a href="annexo-1.html#cb852-32" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">2</span>], get_mapbiomas)</span>
-<span id="cb852-33"><a href="annexo-1.html#cb852-33" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], get_mapbiomas)</span>
-<span id="cb852-34"><a href="annexo-1.html#cb852-34" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>], get_mapbiomas)</span>
-<span id="cb852-35"><a href="annexo-1.html#cb852-35" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">9</span><span class="sc">:</span><span class="dv">20</span>], get_mapbiomas)</span>
-<span id="cb852-36"><a href="annexo-1.html#cb852-36" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>], get_mapbiomas)</span>
-<span id="cb852-37"><a href="annexo-1.html#cb852-37" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">31</span><span class="sc">:</span><span class="dv">37</span>], get_mapbiomas)</span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="annexo-1.html#cb856-1" tabindex="-1"></a><span class="co">#Get mapbiomas data</span></span>
+<span id="cb856-2"><a href="annexo-1.html#cb856-2" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb856-3"><a href="annexo-1.html#cb856-3" tabindex="-1"></a>url_text <span class="ot">&lt;-</span> <span class="st">&quot;https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_8/lclu/coverage/&quot;</span></span>
+<span id="cb856-4"><a href="annexo-1.html#cb856-4" tabindex="-1"></a>layer_names <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;brasil_coverage_&quot;</span>,<span class="dv">1985</span><span class="sc">:</span><span class="dv">2022</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb856-5"><a href="annexo-1.html#cb856-5" tabindex="-1"></a>file_type <span class="ot">&lt;-</span> <span class="st">&quot;.tif&quot;</span></span>
+<span id="cb856-6"><a href="annexo-1.html#cb856-6" tabindex="-1"></a>filenames_mapbioma_8 <span class="ot">&lt;-</span> <span class="fu">paste</span>(layer_names, file_type, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb856-7"><a href="annexo-1.html#cb856-7" tabindex="-1"></a>urlnames_mapbioma_8 <span class="ot">&lt;-</span> <span class="fu">paste</span>(url_text, layer_names, file_type, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb856-8"><a href="annexo-1.html#cb856-8" tabindex="-1"></a></span>
+<span id="cb856-9"><a href="annexo-1.html#cb856-9" tabindex="-1"></a><span class="co">#set timeout to 20 minutes as big files and teeny tiny internet connection</span></span>
+<span id="cb856-10"><a href="annexo-1.html#cb856-10" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout =</span> <span class="fu">max</span>((<span class="dv">60</span><span class="sc">*</span><span class="dv">20</span>), <span class="fu">getOption</span>(<span class="st">&quot;timeout&quot;</span>)))</span>
+<span id="cb856-11"><a href="annexo-1.html#cb856-11" tabindex="-1"></a><span class="co"># test with one year - 1985</span></span>
+<span id="cb856-12"><a href="annexo-1.html#cb856-12" tabindex="-1"></a>res <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">download.file</span>(<span class="at">url=</span>urlnames_mapbioma_8[<span class="dv">1</span>], </span>
+<span id="cb856-13"><a href="annexo-1.html#cb856-13" tabindex="-1"></a>                            <span class="at">destfile=</span>filenames_mapbioma_8[<span class="dv">1</span>], </span>
+<span id="cb856-14"><a href="annexo-1.html#cb856-14" tabindex="-1"></a>                            <span class="at">method=</span><span class="st">&quot;auto&quot;</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>, </span>
+<span id="cb856-15"><a href="annexo-1.html#cb856-15" tabindex="-1"></a>                            <span class="at">cacheOK =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb856-16"><a href="annexo-1.html#cb856-16" tabindex="-1"></a><span class="co">#make list</span></span>
+<span id="cb856-17"><a href="annexo-1.html#cb856-17" tabindex="-1"></a>dflist <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">layer_names =</span> layer_names, </span>
+<span id="cb856-18"><a href="annexo-1.html#cb856-18" tabindex="-1"></a>                     <span class="at">urls =</span> urlnames_mapbioma_8, </span>
+<span id="cb856-19"><a href="annexo-1.html#cb856-19" tabindex="-1"></a>                     <span class="at">filenames =</span> filenames_mapbioma_8)</span>
+<span id="cb856-20"><a href="annexo-1.html#cb856-20" tabindex="-1"></a>alist <span class="ot">&lt;-</span> <span class="fu">split</span>(dflist, <span class="at">f =</span> dflist<span class="sc">$</span>layer_names)</span>
+<span id="cb856-21"><a href="annexo-1.html#cb856-21" tabindex="-1"></a></span>
+<span id="cb856-22"><a href="annexo-1.html#cb856-22" tabindex="-1"></a><span class="co">#make function to automatically process list elements</span></span>
+<span id="cb856-23"><a href="annexo-1.html#cb856-23" tabindex="-1"></a>get_mapbiomas <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb856-24"><a href="annexo-1.html#cb856-24" tabindex="-1"></a>res <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">download.file</span>(<span class="at">url=</span>x<span class="sc">$</span>urls, </span>
+<span id="cb856-25"><a href="annexo-1.html#cb856-25" tabindex="-1"></a>                            <span class="at">destfile=</span>x<span class="sc">$</span>filenames, </span>
+<span id="cb856-26"><a href="annexo-1.html#cb856-26" tabindex="-1"></a>                            <span class="at">method=</span><span class="st">&quot;auto&quot;</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>, <span class="at">mode =</span> <span class="st">&quot;wb&quot;</span>, </span>
+<span id="cb856-27"><a href="annexo-1.html#cb856-27" tabindex="-1"></a>                            <span class="at">cacheOK =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb856-28"><a href="annexo-1.html#cb856-28" tabindex="-1"></a>res</span>
+<span id="cb856-29"><a href="annexo-1.html#cb856-29" tabindex="-1"></a>}</span>
+<span id="cb856-30"><a href="annexo-1.html#cb856-30" tabindex="-1"></a></span>
+<span id="cb856-31"><a href="annexo-1.html#cb856-31" tabindex="-1"></a><span class="co">#run function in blocks</span></span>
+<span id="cb856-32"><a href="annexo-1.html#cb856-32" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">2</span>], get_mapbiomas)</span>
+<span id="cb856-33"><a href="annexo-1.html#cb856-33" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], get_mapbiomas)</span>
+<span id="cb856-34"><a href="annexo-1.html#cb856-34" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>], get_mapbiomas)</span>
+<span id="cb856-35"><a href="annexo-1.html#cb856-35" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">9</span><span class="sc">:</span><span class="dv">20</span>], get_mapbiomas)</span>
+<span id="cb856-36"><a href="annexo-1.html#cb856-36" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>], get_mapbiomas)</span>
+<span id="cb856-37"><a href="annexo-1.html#cb856-37" tabindex="-1"></a><span class="fu">lapply</span>(alist[<span class="dv">31</span><span class="sc">:</span><span class="dv">37</span>], get_mapbiomas)</span></code></pre></div>
 </div>
 <div id="crop-mapbiomas-cover" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">A.2</span> Crop mapbiomas cover<a href="annexo-1.html#crop-mapbiomas-cover" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Identify all tif files in a folder.</p>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="annexo-1.html#cb853-1" tabindex="-1"></a><span class="co">#works one folder at a time</span></span>
-<span id="cb853-2"><a href="annexo-1.html#cb853-2" tabindex="-1"></a>get_files <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">folder_name =</span> <span class="cn">NA</span>) {</span>
-<span id="cb853-3"><a href="annexo-1.html#cb853-3" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span>
-<span id="cb853-4"><a href="annexo-1.html#cb853-4" tabindex="-1"></a>  folder_location <span class="ot">&lt;-</span> folder_name</span>
-<span id="cb853-5"><a href="annexo-1.html#cb853-5" tabindex="-1"></a>  in_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(folder_location, </span>
-<span id="cb853-6"><a href="annexo-1.html#cb853-6" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;.tif&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb853-7"><a href="annexo-1.html#cb853-7" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">folder_id =</span> folder_location, <span class="at">file_id =</span> in_files) <span class="sc">|&gt;</span>  </span>
-<span id="cb853-8"><a href="annexo-1.html#cb853-8" tabindex="-1"></a>    <span class="fu">group_by</span>(folder_id, file_id) <span class="sc">|&gt;</span>  </span>
-<span id="cb853-9"><a href="annexo-1.html#cb853-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">file_count =</span> dplyr<span class="sc">::</span><span class="fu">n</span>()) <span class="sc">|&gt;</span>  </span>
-<span id="cb853-10"><a href="annexo-1.html#cb853-10" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> df_muni_tif</span>
-<span id="cb853-11"><a href="annexo-1.html#cb853-11" tabindex="-1"></a>  <span class="fu">return</span>(df_muni_tif)</span>
-<span id="cb853-12"><a href="annexo-1.html#cb853-12" tabindex="-1"></a>}</span>
-<span id="cb853-13"><a href="annexo-1.html#cb853-13" tabindex="-1"></a></span>
-<span id="cb853-14"><a href="annexo-1.html#cb853-14" tabindex="-1"></a>infolder <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas&quot;</span></span>
-<span id="cb853-15"><a href="annexo-1.html#cb853-15" tabindex="-1"></a>df_muni_tif <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder)</span>
-<span id="cb853-16"><a href="annexo-1.html#cb853-16" tabindex="-1"></a><span class="co">#update</span></span>
-<span id="cb853-17"><a href="annexo-1.html#cb853-17" tabindex="-1"></a>df_muni_tif[<span class="dv">1</span><span class="sc">:</span><span class="dv">38</span>, ] <span class="sc">|&gt;</span> </span>
-<span id="cb853-18"><a href="annexo-1.html#cb853-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">state_code =</span> <span class="fu">str_sub</span>(folder_id, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
-<span id="cb853-19"><a href="annexo-1.html#cb853-19" tabindex="-1"></a>         ) <span class="ot">-&gt;</span> df_muni_tif</span>
-<span id="cb853-20"><a href="annexo-1.html#cb853-20" tabindex="-1"></a>df_muni_tif<span class="sc">$</span>state_code <span class="ot">&lt;-</span> <span class="st">&quot;AP&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="annexo-1.html#cb857-1" tabindex="-1"></a><span class="co">#works one folder at a time</span></span>
+<span id="cb857-2"><a href="annexo-1.html#cb857-2" tabindex="-1"></a>get_files <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">folder_name =</span> <span class="cn">NA</span>) {</span>
+<span id="cb857-3"><a href="annexo-1.html#cb857-3" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span>
+<span id="cb857-4"><a href="annexo-1.html#cb857-4" tabindex="-1"></a>  folder_location <span class="ot">&lt;-</span> folder_name</span>
+<span id="cb857-5"><a href="annexo-1.html#cb857-5" tabindex="-1"></a>  in_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(folder_location, </span>
+<span id="cb857-6"><a href="annexo-1.html#cb857-6" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;.tif&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb857-7"><a href="annexo-1.html#cb857-7" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">folder_id =</span> folder_location, <span class="at">file_id =</span> in_files) <span class="sc">|&gt;</span>  </span>
+<span id="cb857-8"><a href="annexo-1.html#cb857-8" tabindex="-1"></a>    <span class="fu">group_by</span>(folder_id, file_id) <span class="sc">|&gt;</span>  </span>
+<span id="cb857-9"><a href="annexo-1.html#cb857-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">file_count =</span> dplyr<span class="sc">::</span><span class="fu">n</span>()) <span class="sc">|&gt;</span>  </span>
+<span id="cb857-10"><a href="annexo-1.html#cb857-10" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> df_muni_tif</span>
+<span id="cb857-11"><a href="annexo-1.html#cb857-11" tabindex="-1"></a>  <span class="fu">return</span>(df_muni_tif)</span>
+<span id="cb857-12"><a href="annexo-1.html#cb857-12" tabindex="-1"></a>}</span>
+<span id="cb857-13"><a href="annexo-1.html#cb857-13" tabindex="-1"></a></span>
+<span id="cb857-14"><a href="annexo-1.html#cb857-14" tabindex="-1"></a>infolder <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas&quot;</span></span>
+<span id="cb857-15"><a href="annexo-1.html#cb857-15" tabindex="-1"></a>df_muni_tif <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder)</span>
+<span id="cb857-16"><a href="annexo-1.html#cb857-16" tabindex="-1"></a><span class="co">#update</span></span>
+<span id="cb857-17"><a href="annexo-1.html#cb857-17" tabindex="-1"></a>df_muni_tif[<span class="dv">1</span><span class="sc">:</span><span class="dv">38</span>, ] <span class="sc">|&gt;</span> </span>
+<span id="cb857-18"><a href="annexo-1.html#cb857-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">state_code =</span> <span class="fu">str_sub</span>(folder_id, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
+<span id="cb857-19"><a href="annexo-1.html#cb857-19" tabindex="-1"></a>         ) <span class="ot">-&gt;</span> df_muni_tif</span>
+<span id="cb857-20"><a href="annexo-1.html#cb857-20" tabindex="-1"></a>df_muni_tif<span class="sc">$</span>state_code <span class="ot">&lt;-</span> <span class="st">&quot;AP&quot;</span></span></code></pre></div>
 <p>Area of interest - format extent for use by terra.</p>
-<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="annexo-1.html#cb854-1" tabindex="-1"></a><span class="co">#extent from 50 km arouund river upstream of cachoeira caldeirao</span></span>
-<span id="cb854-2"><a href="annexo-1.html#cb854-2" tabindex="-1"></a>meuSIG <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span>
-<span id="cb854-3"><a href="annexo-1.html#cb854-3" tabindex="-1"></a><span class="co"># &quot;C:\\Users\\user\\Documents\\CA\\CA_2023\\EP\\vectors\\AP_rodoviario\\br156.gpkg&quot;</span></span>
-<span id="cb854-4"><a href="annexo-1.html#cb854-4" tabindex="-1"></a><span class="co">#&quot;C:\\Users\\Darren\\Documents\\gisdata\\vector\\rivers.GPKG&quot;</span></span>
-<span id="cb854-5"><a href="annexo-1.html#cb854-5" tabindex="-1"></a><span class="co"># &quot;C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg&quot;</span></span>
-<span id="cb854-6"><a href="annexo-1.html#cb854-6" tabindex="-1"></a>rsl <span class="ot">&lt;-</span> <span class="fu">st_read</span>(meuSIG, <span class="at">layer =</span> <span class="st">&quot;centerline&quot;</span>)</span>
-<span id="cb854-7"><a href="annexo-1.html#cb854-7" tabindex="-1"></a>rsl_50km <span class="ot">&lt;-</span> <span class="fu">st_union</span>(<span class="fu">st_buffer</span>(rsl, <span class="at">dist=</span><span class="dv">50000</span>))</span>
-<span id="cb854-8"><a href="annexo-1.html#cb854-8" tabindex="-1"></a>br156 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(meuSIG, <span class="at">layer =</span> <span class="st">&quot;extent_br156&quot;</span>)</span>
-<span id="cb854-9"><a href="annexo-1.html#cb854-9" tabindex="-1"></a>myexent <span class="ot">&lt;-</span> <span class="fu">ext</span>(<span class="fu">vect</span>(rsl_50km)) </span>
-<span id="cb854-10"><a href="annexo-1.html#cb854-10" tabindex="-1"></a>myexent_jari <span class="ot">&lt;-</span> <span class="fu">vect</span>(br156[<span class="dv">1</span>, ])</span>
-<span id="cb854-11"><a href="annexo-1.html#cb854-11" tabindex="-1"></a>myexent_portogrande <span class="ot">&lt;-</span> <span class="fu">vect</span>(br156[<span class="dv">2</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="annexo-1.html#cb858-1" tabindex="-1"></a><span class="co">#extent from 50 km arouund river upstream of cachoeira caldeirao</span></span>
+<span id="cb858-2"><a href="annexo-1.html#cb858-2" tabindex="-1"></a>meuSIG <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span>
+<span id="cb858-3"><a href="annexo-1.html#cb858-3" tabindex="-1"></a><span class="co"># &quot;C:\\Users\\user\\Documents\\CA\\CA_2023\\EP\\vectors\\AP_rodoviario\\br156.gpkg&quot;</span></span>
+<span id="cb858-4"><a href="annexo-1.html#cb858-4" tabindex="-1"></a><span class="co">#&quot;C:\\Users\\Darren\\Documents\\gisdata\\vector\\rivers.GPKG&quot;</span></span>
+<span id="cb858-5"><a href="annexo-1.html#cb858-5" tabindex="-1"></a><span class="co"># &quot;C:\\Users\\user\\Documents\\Articles\\gis_layers\\gisdata\\inst\\vector\\rivers.gpkg&quot;</span></span>
+<span id="cb858-6"><a href="annexo-1.html#cb858-6" tabindex="-1"></a>rsl <span class="ot">&lt;-</span> <span class="fu">st_read</span>(meuSIG, <span class="at">layer =</span> <span class="st">&quot;centerline&quot;</span>)</span>
+<span id="cb858-7"><a href="annexo-1.html#cb858-7" tabindex="-1"></a>rsl_50km <span class="ot">&lt;-</span> <span class="fu">st_union</span>(<span class="fu">st_buffer</span>(rsl, <span class="at">dist=</span><span class="dv">50000</span>))</span>
+<span id="cb858-8"><a href="annexo-1.html#cb858-8" tabindex="-1"></a>br156 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(meuSIG, <span class="at">layer =</span> <span class="st">&quot;extent_br156&quot;</span>)</span>
+<span id="cb858-9"><a href="annexo-1.html#cb858-9" tabindex="-1"></a>myexent <span class="ot">&lt;-</span> <span class="fu">ext</span>(<span class="fu">vect</span>(rsl_50km)) </span>
+<span id="cb858-10"><a href="annexo-1.html#cb858-10" tabindex="-1"></a>myexent_jari <span class="ot">&lt;-</span> <span class="fu">vect</span>(br156[<span class="dv">1</span>, ])</span>
+<span id="cb858-11"><a href="annexo-1.html#cb858-11" tabindex="-1"></a>myexent_portogrande <span class="ot">&lt;-</span> <span class="fu">vect</span>(br156[<span class="dv">2</span>, ])</span></code></pre></div>
 <p>Now to crop and project to desired coordinate system (epsg:31976).</p>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="annexo-1.html#cb855-1" tabindex="-1"></a><span class="co"># This function reads in file, crops and projects to new coordinate system.</span></span>
-<span id="cb855-2"><a href="annexo-1.html#cb855-2" tabindex="-1"></a><span class="co"># Then exports resutl as Geotiff (.tif). </span></span>
-<span id="cb855-3"><a href="annexo-1.html#cb855-3" tabindex="-1"></a>crop_proj <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">myextent =</span> <span class="cn">NA</span>, </span>
-<span id="cb855-4"><a href="annexo-1.html#cb855-4" tabindex="-1"></a>                      <span class="at">folder_name =</span> <span class="cn">NA</span>, <span class="at">file_name =</span> <span class="cn">NA</span>, </span>
-<span id="cb855-5"><a href="annexo-1.html#cb855-5" tabindex="-1"></a>                      <span class="at">state_id =</span> <span class="cn">NA</span>, <span class="at">sf_state =</span> <span class="cn">NA</span>) {</span>
-<span id="cb855-6"><a href="annexo-1.html#cb855-6" tabindex="-1"></a>  <span class="fu">library</span>(plyr)</span>
-<span id="cb855-7"><a href="annexo-1.html#cb855-7" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span>
-<span id="cb855-8"><a href="annexo-1.html#cb855-8" tabindex="-1"></a>  <span class="fu">library</span>(terra)</span>
-<span id="cb855-9"><a href="annexo-1.html#cb855-9" tabindex="-1"></a>  <span class="fu">library</span>(sf)</span>
-<span id="cb855-10"><a href="annexo-1.html#cb855-10" tabindex="-1"></a>  <span class="fu">library</span>(stringi)</span>
-<span id="cb855-11"><a href="annexo-1.html#cb855-11" tabindex="-1"></a>  </span>
-<span id="cb855-12"><a href="annexo-1.html#cb855-12" tabindex="-1"></a>  state_sigla <span class="ot">&lt;-</span> x<span class="sc">$</span>state_code </span>
-<span id="cb855-13"><a href="annexo-1.html#cb855-13" tabindex="-1"></a>  rin <span class="ot">&lt;-</span> x<span class="sc">$</span>file_id </span>
-<span id="cb855-14"><a href="annexo-1.html#cb855-14" tabindex="-1"></a>  <span class="co">#rin &lt;- df_muni_tif$file_id[1]</span></span>
-<span id="cb855-15"><a href="annexo-1.html#cb855-15" tabindex="-1"></a>  rbig <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(rin)</span>
-<span id="cb855-16"><a href="annexo-1.html#cb855-16" tabindex="-1"></a>  layer_name <span class="ot">&lt;-</span> <span class="fu">names</span>(rbig)</span>
-<span id="cb855-17"><a href="annexo-1.html#cb855-17" tabindex="-1"></a>  layer_year <span class="ot">&lt;-</span> <span class="fu">stri_sub</span>(layer_name,<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb855-18"><a href="annexo-1.html#cb855-18" tabindex="-1"></a>  out_name <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;mapbiomas_cover&quot;</span>, layer_year, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb855-19"><a href="annexo-1.html#cb855-19" tabindex="-1"></a>  e2 <span class="ot">&lt;-</span> <span class="fu">ext</span>(<span class="fu">project</span>(myextent, rbig))</span>
-<span id="cb855-20"><a href="annexo-1.html#cb855-20" tabindex="-1"></a>  </span>
-<span id="cb855-21"><a href="annexo-1.html#cb855-21" tabindex="-1"></a>  <span class="co">#Crop</span></span>
-<span id="cb855-22"><a href="annexo-1.html#cb855-22" tabindex="-1"></a>  rtest_mask <span class="ot">&lt;-</span> <span class="fu">crop</span>(rbig, e2, <span class="at">snap=</span><span class="st">&quot;out&quot;</span>)</span>
-<span id="cb855-23"><a href="annexo-1.html#cb855-23" tabindex="-1"></a>  <span class="fu">rm</span>(<span class="st">&quot;rbig&quot;</span>) </span>
-<span id="cb855-24"><a href="annexo-1.html#cb855-24" tabindex="-1"></a>  </span>
-<span id="cb855-25"><a href="annexo-1.html#cb855-25" tabindex="-1"></a>  <span class="co">#Project</span></span>
-<span id="cb855-26"><a href="annexo-1.html#cb855-26" tabindex="-1"></a>  new_crs_utm <span class="ot">&lt;-</span> <span class="st">&quot;epsg:31976&quot;</span></span>
-<span id="cb855-27"><a href="annexo-1.html#cb855-27" tabindex="-1"></a>  rtest_mask <span class="ot">&lt;-</span> <span class="fu">project</span>(rtest_mask, new_crs_utm, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span>
-<span id="cb855-28"><a href="annexo-1.html#cb855-28" tabindex="-1"></a>  <span class="fu">names</span>(rtest_mask) <span class="ot">&lt;-</span> out_name</span>
-<span id="cb855-29"><a href="annexo-1.html#cb855-29" tabindex="-1"></a>  </span>
-<span id="cb855-30"><a href="annexo-1.html#cb855-30" tabindex="-1"></a>  <span class="co">#Export</span></span>
-<span id="cb855-31"><a href="annexo-1.html#cb855-31" tabindex="-1"></a>  outfile_name <span class="ot">&lt;-</span> <span class="fu">paste</span>(file_name,layer_year, <span class="st">&quot;.tif&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb855-32"><a href="annexo-1.html#cb855-32" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="fu">file.path</span>(folder_name, outfile_name)</span>
-<span id="cb855-33"><a href="annexo-1.html#cb855-33" tabindex="-1"></a>  <span class="fu">writeRaster</span>(rtest_mask, f, <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb855-34"><a href="annexo-1.html#cb855-34" tabindex="-1"></a>              <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb855-35"><a href="annexo-1.html#cb855-35" tabindex="-1"></a>  </span>
-<span id="cb855-36"><a href="annexo-1.html#cb855-36" tabindex="-1"></a>  <span class="co">#clear temporary files</span></span>
-<span id="cb855-37"><a href="annexo-1.html#cb855-37" tabindex="-1"></a>  <span class="fu">tmpFiles</span>(<span class="at">current =</span><span class="cn">TRUE</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb855-38"><a href="annexo-1.html#cb855-38" tabindex="-1"></a>  </span>
-<span id="cb855-39"><a href="annexo-1.html#cb855-39" tabindex="-1"></a>  endtime <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>() </span>
-<span id="cb855-40"><a href="annexo-1.html#cb855-40" tabindex="-1"></a>  textout <span class="ot">&lt;-</span> <span class="fu">paste</span>(outfile_name, <span class="st">&quot;: &quot;</span>, endtime, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb855-41"><a href="annexo-1.html#cb855-41" tabindex="-1"></a>  <span class="fu">print</span>(textout)</span>
-<span id="cb855-42"><a href="annexo-1.html#cb855-42" tabindex="-1"></a>}</span>
-<span id="cb855-43"><a href="annexo-1.html#cb855-43" tabindex="-1"></a></span>
-<span id="cb855-44"><a href="annexo-1.html#cb855-44" tabindex="-1"></a><span class="co">#run br156 jari</span></span>
-<span id="cb855-45"><a href="annexo-1.html#cb855-45" tabindex="-1"></a>plyr<span class="sc">::</span><span class="fu">a_ply</span>(df_muni_tif[<span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>, ], <span class="at">.margins =</span> <span class="dv">1</span>, </span>
-<span id="cb855-46"><a href="annexo-1.html#cb855-46" tabindex="-1"></a>            <span class="at">.fun =</span> crop_proj, <span class="at">myextent =</span> myexent_jari, </span>
-<span id="cb855-47"><a href="annexo-1.html#cb855-47" tabindex="-1"></a>            <span class="at">folder_name =</span> <span class="st">&quot;E:/mapbiomas/br156_jari&quot;</span>, </span>
-<span id="cb855-48"><a href="annexo-1.html#cb855-48" tabindex="-1"></a>            <span class="at">file_name =</span> <span class="st">&quot;br156_jari_&quot;</span>)</span>
-<span id="cb855-49"><a href="annexo-1.html#cb855-49" tabindex="-1"></a><span class="co">#run br156 Porto Grande</span></span>
-<span id="cb855-50"><a href="annexo-1.html#cb855-50" tabindex="-1"></a>plyr<span class="sc">::</span><span class="fu">a_ply</span>(df_muni_tif[<span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>, ], <span class="at">.margins =</span> <span class="dv">1</span>, </span>
-<span id="cb855-51"><a href="annexo-1.html#cb855-51" tabindex="-1"></a>            <span class="at">.fun =</span> crop_proj, <span class="at">myextent =</span> myexent_portogrande, </span>
-<span id="cb855-52"><a href="annexo-1.html#cb855-52" tabindex="-1"></a>            <span class="at">folder_name =</span> <span class="st">&quot;E:/mapbiomas/br156_portogrande&quot;</span>, </span>
-<span id="cb855-53"><a href="annexo-1.html#cb855-53" tabindex="-1"></a>            <span class="at">file_name =</span> <span class="st">&quot;br156_portogrande_&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="annexo-1.html#cb859-1" tabindex="-1"></a><span class="co"># This function reads in file, crops and projects to new coordinate system.</span></span>
+<span id="cb859-2"><a href="annexo-1.html#cb859-2" tabindex="-1"></a><span class="co"># Then exports resutl as Geotiff (.tif). </span></span>
+<span id="cb859-3"><a href="annexo-1.html#cb859-3" tabindex="-1"></a>crop_proj <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">myextent =</span> <span class="cn">NA</span>, </span>
+<span id="cb859-4"><a href="annexo-1.html#cb859-4" tabindex="-1"></a>                      <span class="at">folder_name =</span> <span class="cn">NA</span>, <span class="at">file_name =</span> <span class="cn">NA</span>, </span>
+<span id="cb859-5"><a href="annexo-1.html#cb859-5" tabindex="-1"></a>                      <span class="at">state_id =</span> <span class="cn">NA</span>, <span class="at">sf_state =</span> <span class="cn">NA</span>) {</span>
+<span id="cb859-6"><a href="annexo-1.html#cb859-6" tabindex="-1"></a>  <span class="fu">library</span>(plyr)</span>
+<span id="cb859-7"><a href="annexo-1.html#cb859-7" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span>
+<span id="cb859-8"><a href="annexo-1.html#cb859-8" tabindex="-1"></a>  <span class="fu">library</span>(terra)</span>
+<span id="cb859-9"><a href="annexo-1.html#cb859-9" tabindex="-1"></a>  <span class="fu">library</span>(sf)</span>
+<span id="cb859-10"><a href="annexo-1.html#cb859-10" tabindex="-1"></a>  <span class="fu">library</span>(stringi)</span>
+<span id="cb859-11"><a href="annexo-1.html#cb859-11" tabindex="-1"></a>  </span>
+<span id="cb859-12"><a href="annexo-1.html#cb859-12" tabindex="-1"></a>  state_sigla <span class="ot">&lt;-</span> x<span class="sc">$</span>state_code </span>
+<span id="cb859-13"><a href="annexo-1.html#cb859-13" tabindex="-1"></a>  rin <span class="ot">&lt;-</span> x<span class="sc">$</span>file_id </span>
+<span id="cb859-14"><a href="annexo-1.html#cb859-14" tabindex="-1"></a>  <span class="co">#rin &lt;- df_muni_tif$file_id[1]</span></span>
+<span id="cb859-15"><a href="annexo-1.html#cb859-15" tabindex="-1"></a>  rbig <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(rin)</span>
+<span id="cb859-16"><a href="annexo-1.html#cb859-16" tabindex="-1"></a>  layer_name <span class="ot">&lt;-</span> <span class="fu">names</span>(rbig)</span>
+<span id="cb859-17"><a href="annexo-1.html#cb859-17" tabindex="-1"></a>  layer_year <span class="ot">&lt;-</span> <span class="fu">stri_sub</span>(layer_name,<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb859-18"><a href="annexo-1.html#cb859-18" tabindex="-1"></a>  out_name <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;mapbiomas_cover&quot;</span>, layer_year, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb859-19"><a href="annexo-1.html#cb859-19" tabindex="-1"></a>  e2 <span class="ot">&lt;-</span> <span class="fu">ext</span>(<span class="fu">project</span>(myextent, rbig))</span>
+<span id="cb859-20"><a href="annexo-1.html#cb859-20" tabindex="-1"></a>  </span>
+<span id="cb859-21"><a href="annexo-1.html#cb859-21" tabindex="-1"></a>  <span class="co">#Crop</span></span>
+<span id="cb859-22"><a href="annexo-1.html#cb859-22" tabindex="-1"></a>  rtest_mask <span class="ot">&lt;-</span> <span class="fu">crop</span>(rbig, e2, <span class="at">snap=</span><span class="st">&quot;out&quot;</span>)</span>
+<span id="cb859-23"><a href="annexo-1.html#cb859-23" tabindex="-1"></a>  <span class="fu">rm</span>(<span class="st">&quot;rbig&quot;</span>) </span>
+<span id="cb859-24"><a href="annexo-1.html#cb859-24" tabindex="-1"></a>  </span>
+<span id="cb859-25"><a href="annexo-1.html#cb859-25" tabindex="-1"></a>  <span class="co">#Project</span></span>
+<span id="cb859-26"><a href="annexo-1.html#cb859-26" tabindex="-1"></a>  new_crs_utm <span class="ot">&lt;-</span> <span class="st">&quot;epsg:31976&quot;</span></span>
+<span id="cb859-27"><a href="annexo-1.html#cb859-27" tabindex="-1"></a>  rtest_mask <span class="ot">&lt;-</span> <span class="fu">project</span>(rtest_mask, new_crs_utm, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span>
+<span id="cb859-28"><a href="annexo-1.html#cb859-28" tabindex="-1"></a>  <span class="fu">names</span>(rtest_mask) <span class="ot">&lt;-</span> out_name</span>
+<span id="cb859-29"><a href="annexo-1.html#cb859-29" tabindex="-1"></a>  </span>
+<span id="cb859-30"><a href="annexo-1.html#cb859-30" tabindex="-1"></a>  <span class="co">#Export</span></span>
+<span id="cb859-31"><a href="annexo-1.html#cb859-31" tabindex="-1"></a>  outfile_name <span class="ot">&lt;-</span> <span class="fu">paste</span>(file_name,layer_year, <span class="st">&quot;.tif&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb859-32"><a href="annexo-1.html#cb859-32" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="fu">file.path</span>(folder_name, outfile_name)</span>
+<span id="cb859-33"><a href="annexo-1.html#cb859-33" tabindex="-1"></a>  <span class="fu">writeRaster</span>(rtest_mask, f, <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb859-34"><a href="annexo-1.html#cb859-34" tabindex="-1"></a>              <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb859-35"><a href="annexo-1.html#cb859-35" tabindex="-1"></a>  </span>
+<span id="cb859-36"><a href="annexo-1.html#cb859-36" tabindex="-1"></a>  <span class="co">#clear temporary files</span></span>
+<span id="cb859-37"><a href="annexo-1.html#cb859-37" tabindex="-1"></a>  <span class="fu">tmpFiles</span>(<span class="at">current =</span><span class="cn">TRUE</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb859-38"><a href="annexo-1.html#cb859-38" tabindex="-1"></a>  </span>
+<span id="cb859-39"><a href="annexo-1.html#cb859-39" tabindex="-1"></a>  endtime <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>() </span>
+<span id="cb859-40"><a href="annexo-1.html#cb859-40" tabindex="-1"></a>  textout <span class="ot">&lt;-</span> <span class="fu">paste</span>(outfile_name, <span class="st">&quot;: &quot;</span>, endtime, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb859-41"><a href="annexo-1.html#cb859-41" tabindex="-1"></a>  <span class="fu">print</span>(textout)</span>
+<span id="cb859-42"><a href="annexo-1.html#cb859-42" tabindex="-1"></a>}</span>
+<span id="cb859-43"><a href="annexo-1.html#cb859-43" tabindex="-1"></a></span>
+<span id="cb859-44"><a href="annexo-1.html#cb859-44" tabindex="-1"></a><span class="co">#run br156 jari</span></span>
+<span id="cb859-45"><a href="annexo-1.html#cb859-45" tabindex="-1"></a>plyr<span class="sc">::</span><span class="fu">a_ply</span>(df_muni_tif[<span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>, ], <span class="at">.margins =</span> <span class="dv">1</span>, </span>
+<span id="cb859-46"><a href="annexo-1.html#cb859-46" tabindex="-1"></a>            <span class="at">.fun =</span> crop_proj, <span class="at">myextent =</span> myexent_jari, </span>
+<span id="cb859-47"><a href="annexo-1.html#cb859-47" tabindex="-1"></a>            <span class="at">folder_name =</span> <span class="st">&quot;E:/mapbiomas/br156_jari&quot;</span>, </span>
+<span id="cb859-48"><a href="annexo-1.html#cb859-48" tabindex="-1"></a>            <span class="at">file_name =</span> <span class="st">&quot;br156_jari_&quot;</span>)</span>
+<span id="cb859-49"><a href="annexo-1.html#cb859-49" tabindex="-1"></a><span class="co">#run br156 Porto Grande</span></span>
+<span id="cb859-50"><a href="annexo-1.html#cb859-50" tabindex="-1"></a>plyr<span class="sc">::</span><span class="fu">a_ply</span>(df_muni_tif[<span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>, ], <span class="at">.margins =</span> <span class="dv">1</span>, </span>
+<span id="cb859-51"><a href="annexo-1.html#cb859-51" tabindex="-1"></a>            <span class="at">.fun =</span> crop_proj, <span class="at">myextent =</span> myexent_portogrande, </span>
+<span id="cb859-52"><a href="annexo-1.html#cb859-52" tabindex="-1"></a>            <span class="at">folder_name =</span> <span class="st">&quot;E:/mapbiomas/br156_portogrande&quot;</span>, </span>
+<span id="cb859-53"><a href="annexo-1.html#cb859-53" tabindex="-1"></a>            <span class="at">file_name =</span> <span class="st">&quot;br156_portogrande_&quot;</span>)</span></code></pre></div>
 </div>
 <div id="plot-with-legend" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">A.3</span> Plot with legend<a href="annexo-1.html#plot-with-legend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Combine all years into multi layer raster.</p>
-<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="annexo-1.html#cb856-1" tabindex="-1"></a><span class="co"># check</span></span>
-<span id="cb856-2"><a href="annexo-1.html#cb856-2" tabindex="-1"></a>rtest <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;E:/mapbiomas/br156_jari/br156_jari_1985.tif&quot;</span>)</span>
-<span id="cb856-3"><a href="annexo-1.html#cb856-3" tabindex="-1"></a>rtest <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;E:/mapbiomas/br156_portogrande/br156_portogrande_1985.tif&quot;</span>)</span>
-<span id="cb856-4"><a href="annexo-1.html#cb856-4" tabindex="-1"></a><span class="fu">plot</span>(rtest)</span>
-<span id="cb856-5"><a href="annexo-1.html#cb856-5" tabindex="-1"></a>infolder_rio <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/AP_utm_rio&quot;</span></span>
-<span id="cb856-6"><a href="annexo-1.html#cb856-6" tabindex="-1"></a>df_tif_rio <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_rio)</span>
-<span id="cb856-7"><a href="annexo-1.html#cb856-7" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_rio<span class="sc">$</span>file_id)</span>
-<span id="cb856-8"><a href="annexo-1.html#cb856-8" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/utm_cover_AP_rio_85a22.tif&quot;</span>, </span>
-<span id="cb856-9"><a href="annexo-1.html#cb856-9" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb856-10"><a href="annexo-1.html#cb856-10" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb856-11"><a href="annexo-1.html#cb856-11" tabindex="-1"></a><span class="co"># br156 jari</span></span>
-<span id="cb856-12"><a href="annexo-1.html#cb856-12" tabindex="-1"></a>infolder_jari <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/br156_jari&quot;</span></span>
-<span id="cb856-13"><a href="annexo-1.html#cb856-13" tabindex="-1"></a>df_tif_jari <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_jari)</span>
-<span id="cb856-14"><a href="annexo-1.html#cb856-14" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_jari<span class="sc">$</span>file_id)</span>
-<span id="cb856-15"><a href="annexo-1.html#cb856-15" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/br156_jari_85a22.tif&quot;</span>, </span>
-<span id="cb856-16"><a href="annexo-1.html#cb856-16" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb856-17"><a href="annexo-1.html#cb856-17" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb856-18"><a href="annexo-1.html#cb856-18" tabindex="-1"></a><span class="co"># br156 Porto Grande</span></span>
-<span id="cb856-19"><a href="annexo-1.html#cb856-19" tabindex="-1"></a>infolder_pg <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/br156_portogrande&quot;</span></span>
-<span id="cb856-20"><a href="annexo-1.html#cb856-20" tabindex="-1"></a>df_tif_pg <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_pg)</span>
-<span id="cb856-21"><a href="annexo-1.html#cb856-21" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_pg<span class="sc">$</span>file_id)</span>
-<span id="cb856-22"><a href="annexo-1.html#cb856-22" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;br156_portogrande_85a22.tif&quot;</span>, </span>
-<span id="cb856-23"><a href="annexo-1.html#cb856-23" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb856-24"><a href="annexo-1.html#cb856-24" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb856-25"><a href="annexo-1.html#cb856-25" tabindex="-1"></a><span class="co"># Garimpo Lorenco</span></span>
-<span id="cb856-26"><a href="annexo-1.html#cb856-26" tabindex="-1"></a>infolder_lor <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/garimpo_lorenco&quot;</span></span>
-<span id="cb856-27"><a href="annexo-1.html#cb856-27" tabindex="-1"></a>df_tif_lor <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_lor)</span>
-<span id="cb856-28"><a href="annexo-1.html#cb856-28" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_lor<span class="sc">$</span>file_id)</span>
-<span id="cb856-29"><a href="annexo-1.html#cb856-29" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/lorenco_85a22.tif&quot;</span>, </span>
-<span id="cb856-30"><a href="annexo-1.html#cb856-30" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb856-31"><a href="annexo-1.html#cb856-31" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb856-32"><a href="annexo-1.html#cb856-32" tabindex="-1"></a><span class="co"># Garimpo Vila Nova</span></span>
-<span id="cb856-33"><a href="annexo-1.html#cb856-33" tabindex="-1"></a>infolder_vn <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/garimpo_vilanova&quot;</span></span>
-<span id="cb856-34"><a href="annexo-1.html#cb856-34" tabindex="-1"></a>df_tif_vn <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_vn)</span>
-<span id="cb856-35"><a href="annexo-1.html#cb856-35" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_vn<span class="sc">$</span>file_id)</span>
-<span id="cb856-36"><a href="annexo-1.html#cb856-36" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/vilanova_85a22.tif&quot;</span>, </span>
-<span id="cb856-37"><a href="annexo-1.html#cb856-37" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
-<span id="cb856-38"><a href="annexo-1.html#cb856-38" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="annexo-1.html#cb860-1" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb860-2"><a href="annexo-1.html#cb860-2" tabindex="-1"></a>rtest <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;E:/mapbiomas/br156_jari/br156_jari_1985.tif&quot;</span>)</span>
+<span id="cb860-3"><a href="annexo-1.html#cb860-3" tabindex="-1"></a>rtest <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;E:/mapbiomas/br156_portogrande/br156_portogrande_1985.tif&quot;</span>)</span>
+<span id="cb860-4"><a href="annexo-1.html#cb860-4" tabindex="-1"></a><span class="fu">plot</span>(rtest)</span>
+<span id="cb860-5"><a href="annexo-1.html#cb860-5" tabindex="-1"></a>infolder_rio <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/AP_utm_rio&quot;</span></span>
+<span id="cb860-6"><a href="annexo-1.html#cb860-6" tabindex="-1"></a>df_tif_rio <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_rio)</span>
+<span id="cb860-7"><a href="annexo-1.html#cb860-7" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_rio<span class="sc">$</span>file_id)</span>
+<span id="cb860-8"><a href="annexo-1.html#cb860-8" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/utm_cover_AP_rio_85a22.tif&quot;</span>, </span>
+<span id="cb860-9"><a href="annexo-1.html#cb860-9" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb860-10"><a href="annexo-1.html#cb860-10" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb860-11"><a href="annexo-1.html#cb860-11" tabindex="-1"></a><span class="co"># br156 jari</span></span>
+<span id="cb860-12"><a href="annexo-1.html#cb860-12" tabindex="-1"></a>infolder_jari <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/br156_jari&quot;</span></span>
+<span id="cb860-13"><a href="annexo-1.html#cb860-13" tabindex="-1"></a>df_tif_jari <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_jari)</span>
+<span id="cb860-14"><a href="annexo-1.html#cb860-14" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_jari<span class="sc">$</span>file_id)</span>
+<span id="cb860-15"><a href="annexo-1.html#cb860-15" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/br156_jari_85a22.tif&quot;</span>, </span>
+<span id="cb860-16"><a href="annexo-1.html#cb860-16" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb860-17"><a href="annexo-1.html#cb860-17" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb860-18"><a href="annexo-1.html#cb860-18" tabindex="-1"></a><span class="co"># br156 Porto Grande</span></span>
+<span id="cb860-19"><a href="annexo-1.html#cb860-19" tabindex="-1"></a>infolder_pg <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/br156_portogrande&quot;</span></span>
+<span id="cb860-20"><a href="annexo-1.html#cb860-20" tabindex="-1"></a>df_tif_pg <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_pg)</span>
+<span id="cb860-21"><a href="annexo-1.html#cb860-21" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_pg<span class="sc">$</span>file_id)</span>
+<span id="cb860-22"><a href="annexo-1.html#cb860-22" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;br156_portogrande_85a22.tif&quot;</span>, </span>
+<span id="cb860-23"><a href="annexo-1.html#cb860-23" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb860-24"><a href="annexo-1.html#cb860-24" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb860-25"><a href="annexo-1.html#cb860-25" tabindex="-1"></a><span class="co"># Garimpo Lorenco</span></span>
+<span id="cb860-26"><a href="annexo-1.html#cb860-26" tabindex="-1"></a>infolder_lor <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/garimpo_lorenco&quot;</span></span>
+<span id="cb860-27"><a href="annexo-1.html#cb860-27" tabindex="-1"></a>df_tif_lor <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_lor)</span>
+<span id="cb860-28"><a href="annexo-1.html#cb860-28" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_lor<span class="sc">$</span>file_id)</span>
+<span id="cb860-29"><a href="annexo-1.html#cb860-29" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/lorenco_85a22.tif&quot;</span>, </span>
+<span id="cb860-30"><a href="annexo-1.html#cb860-30" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb860-31"><a href="annexo-1.html#cb860-31" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb860-32"><a href="annexo-1.html#cb860-32" tabindex="-1"></a><span class="co"># Garimpo Vila Nova</span></span>
+<span id="cb860-33"><a href="annexo-1.html#cb860-33" tabindex="-1"></a>infolder_vn <span class="ot">&lt;-</span> <span class="st">&quot;E:/mapbiomas/garimpo_vilanova&quot;</span></span>
+<span id="cb860-34"><a href="annexo-1.html#cb860-34" tabindex="-1"></a>df_tif_vn <span class="ot">&lt;-</span> <span class="fu">get_files</span>(<span class="at">folder_name =</span> infolder_vn)</span>
+<span id="cb860-35"><a href="annexo-1.html#cb860-35" tabindex="-1"></a>r85a22 <span class="ot">&lt;-</span> <span class="fu">rast</span>(df_tif_vn<span class="sc">$</span>file_id)</span>
+<span id="cb860-36"><a href="annexo-1.html#cb860-36" tabindex="-1"></a><span class="fu">writeRaster</span>(r85a22, <span class="st">&quot;E:/mapbiomas/vilanova_85a22.tif&quot;</span>, </span>
+<span id="cb860-37"><a href="annexo-1.html#cb860-37" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">&quot;INT1U&quot;</span>, <span class="at">NAflag=</span><span class="dv">27</span>, </span>
+<span id="cb860-38"><a href="annexo-1.html#cb860-38" tabindex="-1"></a>            <span class="at">gdal=</span><span class="fu">c</span>(<span class="st">&quot;COMPRESS=DEFLATE&quot;</span>), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Sample for BR156. Processed in QGIS to get same extent.
 Downloaded from IBGE, Bases cartográficas contínuas
 Brasil - 1:250 000, versão 2023:
 <a href="https://www.ibge.gov.br/geociencias/downloads-geociencias.html?caminho=cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2023/" class="uri">https://www.ibge.gov.br/geociencias/downloads-geociencias.html?caminho=cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2023/</a></p>
 <p>Need buffers and sample points.</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="annexo-1.html#cb857-1" tabindex="-1"></a>vin <span class="ot">&lt;-</span> <span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">user</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">CA</span><span class="sc">\\</span><span class="st">CA_2023</span><span class="sc">\\</span><span class="st">EP</span><span class="sc">\\</span><span class="st">vectors</span><span class="sc">\\</span><span class="st">AP_rodoviario</span><span class="sc">\\</span><span class="st">br156.gpkg&quot;</span></span>
-<span id="cb857-2"><a href="annexo-1.html#cb857-2" tabindex="-1"></a><span class="fu">st_layers</span>(vin)</span></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="annexo-1.html#cb861-1" tabindex="-1"></a>vin <span class="ot">&lt;-</span> <span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">user</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">CA</span><span class="sc">\\</span><span class="st">CA_2023</span><span class="sc">\\</span><span class="st">EP</span><span class="sc">\\</span><span class="st">vectors</span><span class="sc">\\</span><span class="st">AP_rodoviario</span><span class="sc">\\</span><span class="st">br156.gpkg&quot;</span></span>
+<span id="cb861-2"><a href="annexo-1.html#cb861-2" tabindex="-1"></a><span class="fu">st_layers</span>(vin)</span></code></pre></div>
 <pre><code>## Driver: GPKG 
 ## Available layers:
 ##               layer_name     geometry_type features fields    crs_name
 ## 1           extent_br156     Multi Polygon        2      7      WGS 84
 ## 2 BR156_jari_portogrande Multi Line String       35     21 SIRGAS 2000</code></pre>
-<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="annexo-1.html#cb859-1" tabindex="-1"></a>extents <span class="ot">&lt;-</span> <span class="fu">st_read</span>(vin, <span class="at">layer =</span> <span class="st">&quot;extent_br156&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="dv">31976</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="annexo-1.html#cb863-1" tabindex="-1"></a>extents <span class="ot">&lt;-</span> <span class="fu">st_read</span>(vin, <span class="at">layer =</span> <span class="st">&quot;extent_br156&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="dv">31976</span>)</span></code></pre></div>
 <pre><code>## Reading layer `extent_br156&#39; from data source 
 ##   `C:\Users\user\Documents\CA\CA_2023\EP\vectors\AP_rodoviario\br156.gpkg&#39; 
 ##   using driver `GPKG&#39;
@@ -714,7 +715,7 @@ Brasil - 1:250 000, versão 2023:
 ## Dimension:     XY
 ## Bounding box:  xmin: -52.50101 ymin: -0.8184735 xmax: -50.67069 ymax: 1.540734
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="annexo-1.html#cb861-1" tabindex="-1"></a>br156 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(vin, <span class="at">layer =</span> <span class="st">&quot;BR156_jari_portogrande&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="dv">31976</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb865-1"><a href="annexo-1.html#cb865-1" tabindex="-1"></a>br156 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(vin, <span class="at">layer =</span> <span class="st">&quot;BR156_jari_portogrande&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="dv">31976</span>)</span></code></pre></div>
 <pre><code>## Reading layer `BR156_jari_portogrande&#39; from data source 
 ##   `C:\Users\user\Documents\CA\CA_2023\EP\vectors\AP_rodoviario\br156.gpkg&#39; 
 ##   using driver `GPKG&#39;
@@ -723,178 +724,178 @@ Brasil - 1:250 000, versão 2023:
 ## Dimension:     XY
 ## Bounding box:  xmin: -52.50101 ymin: -0.8184735 xmax: -50.88881 ymax: 1.539533
 ## Geodetic CRS:  SIRGAS 2000</code></pre>
-<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="annexo-1.html#cb863-1" tabindex="-1"></a>br156_j <span class="ot">&lt;-</span> br156 <span class="sc">|&gt;</span> <span class="fu">filter</span>(layer <span class="sc">==</span> <span class="st">&quot;BR156_mazagao_jari&quot;</span>)</span>
-<span id="cb863-2"><a href="annexo-1.html#cb863-2" tabindex="-1"></a>br156_p <span class="ot">&lt;-</span> br156 <span class="sc">|&gt;</span> <span class="fu">filter</span>(layer <span class="sc">!=</span> <span class="st">&quot;BR156_mazagao_jari&quot;</span>)</span>
-<span id="cb863-3"><a href="annexo-1.html#cb863-3" tabindex="-1"></a>ext_j <span class="ot">&lt;-</span> extents <span class="sc">|&gt;</span> <span class="fu">filter</span>(trecho <span class="sc">==</span> <span class="st">&quot;Jari_Mazagao&quot;</span>)</span>
-<span id="cb863-4"><a href="annexo-1.html#cb863-4" tabindex="-1"></a>ext_p <span class="ot">&lt;-</span> extents <span class="sc">|&gt;</span> <span class="fu">filter</span>(trecho <span class="sc">!=</span> <span class="st">&quot;Jari_Mazagao&quot;</span>)</span>
-<span id="cb863-5"><a href="annexo-1.html#cb863-5" tabindex="-1"></a><span class="co"># buffers roads</span></span>
-<span id="cb863-6"><a href="annexo-1.html#cb863-6" tabindex="-1"></a>j_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-7"><a href="annexo-1.html#cb863-7" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
-<span id="cb863-8"><a href="annexo-1.html#cb863-8" tabindex="-1"></a>j_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-9"><a href="annexo-1.html#cb863-9" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
-<span id="cb863-10"><a href="annexo-1.html#cb863-10" tabindex="-1"></a>j_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-11"><a href="annexo-1.html#cb863-11" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
-<span id="cb863-12"><a href="annexo-1.html#cb863-12" tabindex="-1"></a>j_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-13"><a href="annexo-1.html#cb863-13" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
-<span id="cb863-14"><a href="annexo-1.html#cb863-14" tabindex="-1"></a>j_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-15"><a href="annexo-1.html#cb863-15" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
-<span id="cb863-16"><a href="annexo-1.html#cb863-16" tabindex="-1"></a>j_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-17"><a href="annexo-1.html#cb863-17" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
-<span id="cb863-18"><a href="annexo-1.html#cb863-18" tabindex="-1"></a>p_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-19"><a href="annexo-1.html#cb863-19" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
-<span id="cb863-20"><a href="annexo-1.html#cb863-20" tabindex="-1"></a>p_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-21"><a href="annexo-1.html#cb863-21" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
-<span id="cb863-22"><a href="annexo-1.html#cb863-22" tabindex="-1"></a>p_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-23"><a href="annexo-1.html#cb863-23" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
-<span id="cb863-24"><a href="annexo-1.html#cb863-24" tabindex="-1"></a>p_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-25"><a href="annexo-1.html#cb863-25" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
-<span id="cb863-26"><a href="annexo-1.html#cb863-26" tabindex="-1"></a>p_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-27"><a href="annexo-1.html#cb863-27" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
-<span id="cb863-28"><a href="annexo-1.html#cb863-28" tabindex="-1"></a>p_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb863-29"><a href="annexo-1.html#cb863-29" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
-<span id="cb863-30"><a href="annexo-1.html#cb863-30" tabindex="-1"></a><span class="co"># bind together</span></span>
-<span id="cb863-31"><a href="annexo-1.html#cb863-31" tabindex="-1"></a>jari_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(j_b250, j_b500, j_b1000, j_b2000, j_b4000, j_b8000) <span class="sc">|&gt;</span> </span>
-<span id="cb863-32"><a href="annexo-1.html#cb863-32" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Jari&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_crop</span>(ext_j)</span></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="annexo-1.html#cb867-1" tabindex="-1"></a>br156_j <span class="ot">&lt;-</span> br156 <span class="sc">|&gt;</span> <span class="fu">filter</span>(layer <span class="sc">==</span> <span class="st">&quot;BR156_mazagao_jari&quot;</span>)</span>
+<span id="cb867-2"><a href="annexo-1.html#cb867-2" tabindex="-1"></a>br156_p <span class="ot">&lt;-</span> br156 <span class="sc">|&gt;</span> <span class="fu">filter</span>(layer <span class="sc">!=</span> <span class="st">&quot;BR156_mazagao_jari&quot;</span>)</span>
+<span id="cb867-3"><a href="annexo-1.html#cb867-3" tabindex="-1"></a>ext_j <span class="ot">&lt;-</span> extents <span class="sc">|&gt;</span> <span class="fu">filter</span>(trecho <span class="sc">==</span> <span class="st">&quot;Jari_Mazagao&quot;</span>)</span>
+<span id="cb867-4"><a href="annexo-1.html#cb867-4" tabindex="-1"></a>ext_p <span class="ot">&lt;-</span> extents <span class="sc">|&gt;</span> <span class="fu">filter</span>(trecho <span class="sc">!=</span> <span class="st">&quot;Jari_Mazagao&quot;</span>)</span>
+<span id="cb867-5"><a href="annexo-1.html#cb867-5" tabindex="-1"></a><span class="co"># buffers roads</span></span>
+<span id="cb867-6"><a href="annexo-1.html#cb867-6" tabindex="-1"></a>j_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-7"><a href="annexo-1.html#cb867-7" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
+<span id="cb867-8"><a href="annexo-1.html#cb867-8" tabindex="-1"></a>j_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-9"><a href="annexo-1.html#cb867-9" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
+<span id="cb867-10"><a href="annexo-1.html#cb867-10" tabindex="-1"></a>j_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-11"><a href="annexo-1.html#cb867-11" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
+<span id="cb867-12"><a href="annexo-1.html#cb867-12" tabindex="-1"></a>j_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-13"><a href="annexo-1.html#cb867-13" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
+<span id="cb867-14"><a href="annexo-1.html#cb867-14" tabindex="-1"></a>j_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-15"><a href="annexo-1.html#cb867-15" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
+<span id="cb867-16"><a href="annexo-1.html#cb867-16" tabindex="-1"></a>j_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_j), <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-17"><a href="annexo-1.html#cb867-17" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
+<span id="cb867-18"><a href="annexo-1.html#cb867-18" tabindex="-1"></a>p_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-19"><a href="annexo-1.html#cb867-19" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
+<span id="cb867-20"><a href="annexo-1.html#cb867-20" tabindex="-1"></a>p_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-21"><a href="annexo-1.html#cb867-21" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
+<span id="cb867-22"><a href="annexo-1.html#cb867-22" tabindex="-1"></a>p_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-23"><a href="annexo-1.html#cb867-23" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
+<span id="cb867-24"><a href="annexo-1.html#cb867-24" tabindex="-1"></a>p_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-25"><a href="annexo-1.html#cb867-25" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
+<span id="cb867-26"><a href="annexo-1.html#cb867-26" tabindex="-1"></a>p_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-27"><a href="annexo-1.html#cb867-27" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
+<span id="cb867-28"><a href="annexo-1.html#cb867-28" tabindex="-1"></a>p_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="fu">st_union</span>(br156_p), <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb867-29"><a href="annexo-1.html#cb867-29" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
+<span id="cb867-30"><a href="annexo-1.html#cb867-30" tabindex="-1"></a><span class="co"># bind together</span></span>
+<span id="cb867-31"><a href="annexo-1.html#cb867-31" tabindex="-1"></a>jari_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(j_b250, j_b500, j_b1000, j_b2000, j_b4000, j_b8000) <span class="sc">|&gt;</span> </span>
+<span id="cb867-32"><a href="annexo-1.html#cb867-32" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Jari&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_crop</span>(ext_j)</span></code></pre></div>
 <pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all geometries</code></pre>
-<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb865-1"><a href="annexo-1.html#cb865-1" tabindex="-1"></a>porto_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(p_b250, p_b500, p_b1000, p_b2000, p_b4000, p_b8000) <span class="sc">|&gt;</span> </span>
-<span id="cb865-2"><a href="annexo-1.html#cb865-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Porto Grande&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_crop</span>(ext_p)</span></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="annexo-1.html#cb869-1" tabindex="-1"></a>porto_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(p_b250, p_b500, p_b1000, p_b2000, p_b4000, p_b8000) <span class="sc">|&gt;</span> </span>
+<span id="cb869-2"><a href="annexo-1.html#cb869-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Porto Grande&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">st_crop</span>(ext_p)</span></code></pre></div>
 <pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all geometries</code></pre>
-<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="annexo-1.html#cb867-1" tabindex="-1"></a>road_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(jari_buff, porto_buff)</span>
-<span id="cb867-2"><a href="annexo-1.html#cb867-2" tabindex="-1"></a></span>
-<span id="cb867-3"><a href="annexo-1.html#cb867-3" tabindex="-1"></a><span class="co"># sample points density of one every 3 km</span></span>
-<span id="cb867-4"><a href="annexo-1.html#cb867-4" tabindex="-1"></a>j_line <span class="ot">&lt;-</span> br156_j <span class="sc">|&gt;</span></span>
-<span id="cb867-5"><a href="annexo-1.html#cb867-5" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-6"><a href="annexo-1.html#cb867-6" tabindex="-1"></a>  <span class="fu">st_combine</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-7"><a href="annexo-1.html#cb867-7" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-8"><a href="annexo-1.html#cb867-8" tabindex="-1"></a>  <span class="fu">st_line_merge</span>() <span class="sc">|&gt;</span></span>
-<span id="cb867-9"><a href="annexo-1.html#cb867-9" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;LINESTRING&quot;</span>) </span>
-<span id="cb867-10"><a href="annexo-1.html#cb867-10" tabindex="-1"></a><span class="co"># 49</span></span>
-<span id="cb867-11"><a href="annexo-1.html#cb867-11" tabindex="-1"></a>j_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(j_line, </span>
-<span id="cb867-12"><a href="annexo-1.html#cb867-12" tabindex="-1"></a>                           <span class="at">density =</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="fl">0.3</span>, <span class="dv">1</span><span class="sc">/</span>km)) <span class="sc">|&gt;</span> </span>
-<span id="cb867-13"><a href="annexo-1.html#cb867-13" tabindex="-1"></a>   <span class="fu">st_cast</span>(<span class="st">&quot;POINT&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">data.frame</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-14"><a href="annexo-1.html#cb867-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Jari&quot;</span>)</span>
-<span id="cb867-15"><a href="annexo-1.html#cb867-15" tabindex="-1"></a><span class="co">#Porto Grande</span></span>
-<span id="cb867-16"><a href="annexo-1.html#cb867-16" tabindex="-1"></a>p_line <span class="ot">&lt;-</span> br156_p <span class="sc">|&gt;</span></span>
-<span id="cb867-17"><a href="annexo-1.html#cb867-17" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-18"><a href="annexo-1.html#cb867-18" tabindex="-1"></a>  <span class="fu">st_combine</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-19"><a href="annexo-1.html#cb867-19" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-20"><a href="annexo-1.html#cb867-20" tabindex="-1"></a>  <span class="fu">st_line_merge</span>() <span class="sc">|&gt;</span></span>
-<span id="cb867-21"><a href="annexo-1.html#cb867-21" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;LINESTRING&quot;</span>) </span>
-<span id="cb867-22"><a href="annexo-1.html#cb867-22" tabindex="-1"></a><span class="co"># 37</span></span>
-<span id="cb867-23"><a href="annexo-1.html#cb867-23" tabindex="-1"></a>p_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(p_line, </span>
-<span id="cb867-24"><a href="annexo-1.html#cb867-24" tabindex="-1"></a>                           <span class="at">density =</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="fl">0.3</span>, <span class="dv">1</span><span class="sc">/</span>km)) <span class="sc">|&gt;</span> </span>
-<span id="cb867-25"><a href="annexo-1.html#cb867-25" tabindex="-1"></a>   <span class="fu">st_cast</span>(<span class="st">&quot;POINT&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">data.frame</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb867-26"><a href="annexo-1.html#cb867-26" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Porto Grande&quot;</span>)</span>
-<span id="cb867-27"><a href="annexo-1.html#cb867-27" tabindex="-1"></a></span>
-<span id="cb867-28"><a href="annexo-1.html#cb867-28" tabindex="-1"></a><span class="co"># Point buffers</span></span>
-<span id="cb867-29"><a href="annexo-1.html#cb867-29" tabindex="-1"></a>br156_points <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(j_points, p_points)</span>
-<span id="cb867-30"><a href="annexo-1.html#cb867-30" tabindex="-1"></a>br156_points<span class="sc">$</span>aid <span class="ot">&lt;-</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="fu">st_coordinates</span>(br156_points)[,<span class="dv">2</span>]) </span>
-<span id="cb867-31"><a href="annexo-1.html#cb867-31" tabindex="-1"></a><span class="co"># length(unique(br156_points$aid)) # 86</span></span>
-<span id="cb867-32"><a href="annexo-1.html#cb867-32" tabindex="-1"></a>points_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-33"><a href="annexo-1.html#cb867-33" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
-<span id="cb867-34"><a href="annexo-1.html#cb867-34" tabindex="-1"></a>points_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-35"><a href="annexo-1.html#cb867-35" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
-<span id="cb867-36"><a href="annexo-1.html#cb867-36" tabindex="-1"></a>points_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-37"><a href="annexo-1.html#cb867-37" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
-<span id="cb867-38"><a href="annexo-1.html#cb867-38" tabindex="-1"></a>points_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-39"><a href="annexo-1.html#cb867-39" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
-<span id="cb867-40"><a href="annexo-1.html#cb867-40" tabindex="-1"></a>points_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-41"><a href="annexo-1.html#cb867-41" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
-<span id="cb867-42"><a href="annexo-1.html#cb867-42" tabindex="-1"></a>points_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb867-43"><a href="annexo-1.html#cb867-43" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
-<span id="cb867-44"><a href="annexo-1.html#cb867-44" tabindex="-1"></a><span class="co"># bind</span></span>
-<span id="cb867-45"><a href="annexo-1.html#cb867-45" tabindex="-1"></a>point_buff_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(points_b250, points_b500, points_b1000, </span>
-<span id="cb867-46"><a href="annexo-1.html#cb867-46" tabindex="-1"></a>                            points_b2000, points_b4000, points_b8000) <span class="sc">|&gt;</span> </span>
-<span id="cb867-47"><a href="annexo-1.html#cb867-47" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aid =</span> <span class="fu">paste</span>(trecho, aid, buff_dist, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb867-48"><a href="annexo-1.html#cb867-48" tabindex="-1"></a>  <span class="fu">st_crop</span>(extents)</span></code></pre></div>
+<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="annexo-1.html#cb871-1" tabindex="-1"></a>road_buff <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(jari_buff, porto_buff)</span>
+<span id="cb871-2"><a href="annexo-1.html#cb871-2" tabindex="-1"></a></span>
+<span id="cb871-3"><a href="annexo-1.html#cb871-3" tabindex="-1"></a><span class="co"># sample points density of one every 3 km</span></span>
+<span id="cb871-4"><a href="annexo-1.html#cb871-4" tabindex="-1"></a>j_line <span class="ot">&lt;-</span> br156_j <span class="sc">|&gt;</span></span>
+<span id="cb871-5"><a href="annexo-1.html#cb871-5" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-6"><a href="annexo-1.html#cb871-6" tabindex="-1"></a>  <span class="fu">st_combine</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-7"><a href="annexo-1.html#cb871-7" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-8"><a href="annexo-1.html#cb871-8" tabindex="-1"></a>  <span class="fu">st_line_merge</span>() <span class="sc">|&gt;</span></span>
+<span id="cb871-9"><a href="annexo-1.html#cb871-9" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;LINESTRING&quot;</span>) </span>
+<span id="cb871-10"><a href="annexo-1.html#cb871-10" tabindex="-1"></a><span class="co"># 49</span></span>
+<span id="cb871-11"><a href="annexo-1.html#cb871-11" tabindex="-1"></a>j_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(j_line, </span>
+<span id="cb871-12"><a href="annexo-1.html#cb871-12" tabindex="-1"></a>                           <span class="at">density =</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="fl">0.3</span>, <span class="dv">1</span><span class="sc">/</span>km)) <span class="sc">|&gt;</span> </span>
+<span id="cb871-13"><a href="annexo-1.html#cb871-13" tabindex="-1"></a>   <span class="fu">st_cast</span>(<span class="st">&quot;POINT&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">data.frame</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-14"><a href="annexo-1.html#cb871-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Jari&quot;</span>)</span>
+<span id="cb871-15"><a href="annexo-1.html#cb871-15" tabindex="-1"></a><span class="co">#Porto Grande</span></span>
+<span id="cb871-16"><a href="annexo-1.html#cb871-16" tabindex="-1"></a>p_line <span class="ot">&lt;-</span> br156_p <span class="sc">|&gt;</span></span>
+<span id="cb871-17"><a href="annexo-1.html#cb871-17" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-18"><a href="annexo-1.html#cb871-18" tabindex="-1"></a>  <span class="fu">st_combine</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-19"><a href="annexo-1.html#cb871-19" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-20"><a href="annexo-1.html#cb871-20" tabindex="-1"></a>  <span class="fu">st_line_merge</span>() <span class="sc">|&gt;</span></span>
+<span id="cb871-21"><a href="annexo-1.html#cb871-21" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;LINESTRING&quot;</span>) </span>
+<span id="cb871-22"><a href="annexo-1.html#cb871-22" tabindex="-1"></a><span class="co"># 37</span></span>
+<span id="cb871-23"><a href="annexo-1.html#cb871-23" tabindex="-1"></a>p_points <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(p_line, </span>
+<span id="cb871-24"><a href="annexo-1.html#cb871-24" tabindex="-1"></a>                           <span class="at">density =</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="fl">0.3</span>, <span class="dv">1</span><span class="sc">/</span>km)) <span class="sc">|&gt;</span> </span>
+<span id="cb871-25"><a href="annexo-1.html#cb871-25" tabindex="-1"></a>   <span class="fu">st_cast</span>(<span class="st">&quot;POINT&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">data.frame</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb871-26"><a href="annexo-1.html#cb871-26" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trecho =</span> <span class="st">&quot;Porto Grande&quot;</span>)</span>
+<span id="cb871-27"><a href="annexo-1.html#cb871-27" tabindex="-1"></a></span>
+<span id="cb871-28"><a href="annexo-1.html#cb871-28" tabindex="-1"></a><span class="co"># Point buffers</span></span>
+<span id="cb871-29"><a href="annexo-1.html#cb871-29" tabindex="-1"></a>br156_points <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(j_points, p_points)</span>
+<span id="cb871-30"><a href="annexo-1.html#cb871-30" tabindex="-1"></a>br156_points<span class="sc">$</span>aid <span class="ot">&lt;-</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="fu">st_coordinates</span>(br156_points)[,<span class="dv">2</span>]) </span>
+<span id="cb871-31"><a href="annexo-1.html#cb871-31" tabindex="-1"></a><span class="co"># length(unique(br156_points$aid)) # 86</span></span>
+<span id="cb871-32"><a href="annexo-1.html#cb871-32" tabindex="-1"></a>points_b250 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">250</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-33"><a href="annexo-1.html#cb871-33" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">250</span>)</span>
+<span id="cb871-34"><a href="annexo-1.html#cb871-34" tabindex="-1"></a>points_b500 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">500</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-35"><a href="annexo-1.html#cb871-35" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">500</span>)</span>
+<span id="cb871-36"><a href="annexo-1.html#cb871-36" tabindex="-1"></a>points_b1000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">1000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-37"><a href="annexo-1.html#cb871-37" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">1000</span>)</span>
+<span id="cb871-38"><a href="annexo-1.html#cb871-38" tabindex="-1"></a>points_b2000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">2000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-39"><a href="annexo-1.html#cb871-39" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">2000</span>)</span>
+<span id="cb871-40"><a href="annexo-1.html#cb871-40" tabindex="-1"></a>points_b4000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">4000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-41"><a href="annexo-1.html#cb871-41" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">4000</span>)</span>
+<span id="cb871-42"><a href="annexo-1.html#cb871-42" tabindex="-1"></a>points_b8000 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(br156_points, <span class="at">dist =</span> <span class="dv">8000</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb871-43"><a href="annexo-1.html#cb871-43" tabindex="-1"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">buff_dist =</span> <span class="dv">8000</span>)</span>
+<span id="cb871-44"><a href="annexo-1.html#cb871-44" tabindex="-1"></a><span class="co"># bind</span></span>
+<span id="cb871-45"><a href="annexo-1.html#cb871-45" tabindex="-1"></a>point_buff_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(points_b250, points_b500, points_b1000, </span>
+<span id="cb871-46"><a href="annexo-1.html#cb871-46" tabindex="-1"></a>                            points_b2000, points_b4000, points_b8000) <span class="sc">|&gt;</span> </span>
+<span id="cb871-47"><a href="annexo-1.html#cb871-47" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aid =</span> <span class="fu">paste</span>(trecho, aid, buff_dist, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb871-48"><a href="annexo-1.html#cb871-48" tabindex="-1"></a>  <span class="fu">st_crop</span>(extents)</span></code></pre></div>
 <pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all geometries</code></pre>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="annexo-1.html#cb869-1" tabindex="-1"></a><span class="co">#length(unique(point_buff_all$aid)) # 516</span></span>
-<span id="cb869-2"><a href="annexo-1.html#cb869-2" tabindex="-1"></a>point_buff_j <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(point_buff_all, ext_j)</span></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="annexo-1.html#cb873-1" tabindex="-1"></a><span class="co">#length(unique(point_buff_all$aid)) # 516</span></span>
+<span id="cb873-2"><a href="annexo-1.html#cb873-2" tabindex="-1"></a>point_buff_j <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(point_buff_all, ext_j)</span></code></pre></div>
 <pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all geometries</code></pre>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="annexo-1.html#cb871-1" tabindex="-1"></a>point_buff_p <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(point_buff_all, ext_p)</span></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="annexo-1.html#cb875-1" tabindex="-1"></a>point_buff_p <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(point_buff_all, ext_p)</span></code></pre></div>
 <pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all geometries</code></pre>
-<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="annexo-1.html#cb873-1" tabindex="-1"></a>point_buff_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(point_buff_j, point_buff_p)</span>
-<span id="cb873-2"><a href="annexo-1.html#cb873-2" tabindex="-1"></a></span>
-<span id="cb873-3"><a href="annexo-1.html#cb873-3" tabindex="-1"></a><span class="co"># Export</span></span>
-<span id="cb873-4"><a href="annexo-1.html#cb873-4" tabindex="-1"></a>outfile <span class="ot">&lt;-</span> <span class="st">&quot;C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&quot;</span></span>
-<span id="cb873-5"><a href="annexo-1.html#cb873-5" tabindex="-1"></a><span class="co"># roads</span></span>
-<span id="cb873-6"><a href="annexo-1.html#cb873-6" tabindex="-1"></a><span class="fu">st_write</span>(extents, <span class="at">dsn =</span> outfile, </span>
-<span id="cb873-7"><a href="annexo-1.html#cb873-7" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extents_br156&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="annexo-1.html#cb877-1" tabindex="-1"></a>point_buff_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(point_buff_j, point_buff_p)</span>
+<span id="cb877-2"><a href="annexo-1.html#cb877-2" tabindex="-1"></a></span>
+<span id="cb877-3"><a href="annexo-1.html#cb877-3" tabindex="-1"></a><span class="co"># Export</span></span>
+<span id="cb877-4"><a href="annexo-1.html#cb877-4" tabindex="-1"></a>outfile <span class="ot">&lt;-</span> <span class="st">&quot;C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&quot;</span></span>
+<span id="cb877-5"><a href="annexo-1.html#cb877-5" tabindex="-1"></a><span class="co"># roads</span></span>
+<span id="cb877-6"><a href="annexo-1.html#cb877-6" tabindex="-1"></a><span class="fu">st_write</span>(extents, <span class="at">dsn =</span> outfile, </span>
+<span id="cb877-7"><a href="annexo-1.html#cb877-7" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extents_br156&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `extents_br156&#39; using driver `GPKG&#39;
 ## Updating layer `extents_br156&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 2 features with 7 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="annexo-1.html#cb875-1" tabindex="-1"></a><span class="fu">st_write</span>(ext_j, <span class="at">dsn =</span> outfile, </span>
-<span id="cb875-2"><a href="annexo-1.html#cb875-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extent_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="annexo-1.html#cb879-1" tabindex="-1"></a><span class="fu">st_write</span>(ext_j, <span class="at">dsn =</span> outfile, </span>
+<span id="cb879-2"><a href="annexo-1.html#cb879-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extent_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `extent_jari&#39; using driver `GPKG&#39;
 ## Updating layer `extent_jari&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 1 features with 7 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="annexo-1.html#cb877-1" tabindex="-1"></a><span class="fu">st_write</span>(ext_p, <span class="at">dsn =</span> outfile, </span>
-<span id="cb877-2"><a href="annexo-1.html#cb877-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extent_porto&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="annexo-1.html#cb881-1" tabindex="-1"></a><span class="fu">st_write</span>(ext_p, <span class="at">dsn =</span> outfile, </span>
+<span id="cb881-2"><a href="annexo-1.html#cb881-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;extent_porto&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `extent_porto&#39; using driver `GPKG&#39;
 ## Updating layer `extent_porto&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 1 features with 7 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="annexo-1.html#cb879-1" tabindex="-1"></a><span class="fu">st_write</span>(br156, <span class="at">dsn =</span> outfile, </span>
-<span id="cb879-2"><a href="annexo-1.html#cb879-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_jari_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="annexo-1.html#cb883-1" tabindex="-1"></a><span class="fu">st_write</span>(br156, <span class="at">dsn =</span> outfile, </span>
+<span id="cb883-2"><a href="annexo-1.html#cb883-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_jari_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_jari_portogrande&#39; using driver `GPKG&#39;
 ## Updating layer `br156_jari_portogrande&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 35 features with 21 fields and geometry type Multi Line String.</code></pre>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="annexo-1.html#cb881-1" tabindex="-1"></a><span class="fu">st_write</span>(j_line, <span class="at">dsn =</span> outfile, </span>
-<span id="cb881-2"><a href="annexo-1.html#cb881-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_jari_mazagao&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="annexo-1.html#cb885-1" tabindex="-1"></a><span class="fu">st_write</span>(j_line, <span class="at">dsn =</span> outfile, </span>
+<span id="cb885-2"><a href="annexo-1.html#cb885-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_jari_mazagao&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_jari_mazagao&#39; using driver `GPKG&#39;
 ## Updating layer `br156_jari_mazagao&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 1 features with 0 fields and geometry type Line String.</code></pre>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="annexo-1.html#cb883-1" tabindex="-1"></a><span class="fu">st_write</span>(p_line, <span class="at">dsn =</span> outfile, </span>
-<span id="cb883-2"><a href="annexo-1.html#cb883-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_portogrande_itaubal&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="annexo-1.html#cb887-1" tabindex="-1"></a><span class="fu">st_write</span>(p_line, <span class="at">dsn =</span> outfile, </span>
+<span id="cb887-2"><a href="annexo-1.html#cb887-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_portogrande_itaubal&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_portogrande_itaubal&#39; using driver `GPKG&#39;
 ## Updating layer `br156_portogrande_itaubal&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 1 features with 0 fields and geometry type Line String.</code></pre>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="annexo-1.html#cb885-1" tabindex="-1"></a><span class="fu">st_write</span>(road_buff, <span class="at">dsn =</span> outfile, </span>
-<span id="cb885-2"><a href="annexo-1.html#cb885-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="annexo-1.html#cb889-1" tabindex="-1"></a><span class="fu">st_write</span>(road_buff, <span class="at">dsn =</span> outfile, </span>
+<span id="cb889-2"><a href="annexo-1.html#cb889-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_buffers&#39; using driver `GPKG&#39;
 ## Updating layer `br156_buffers&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 12 features with 2 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="annexo-1.html#cb887-1" tabindex="-1"></a><span class="fu">st_write</span>(jari_buff, <span class="at">dsn =</span> outfile, </span>
-<span id="cb887-2"><a href="annexo-1.html#cb887-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="annexo-1.html#cb891-1" tabindex="-1"></a><span class="fu">st_write</span>(jari_buff, <span class="at">dsn =</span> outfile, </span>
+<span id="cb891-2"><a href="annexo-1.html#cb891-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_buffers_jari&#39; using driver `GPKG&#39;
 ## Updating layer `br156_buffers_jari&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 6 features with 2 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="annexo-1.html#cb889-1" tabindex="-1"></a><span class="fu">st_write</span>(porto_buff, <span class="at">dsn =</span> outfile, </span>
-<span id="cb889-2"><a href="annexo-1.html#cb889-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="annexo-1.html#cb893-1" tabindex="-1"></a><span class="fu">st_write</span>(porto_buff, <span class="at">dsn =</span> outfile, </span>
+<span id="cb893-2"><a href="annexo-1.html#cb893-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_buffers_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_buffers_portogrande&#39; using driver `GPKG&#39;
 ## Updating layer `br156_buffers_portogrande&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 6 features with 2 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="annexo-1.html#cb891-1" tabindex="-1"></a><span class="fu">st_write</span>(br156_points, <span class="at">dsn =</span> outfile, </span>
-<span id="cb891-2"><a href="annexo-1.html#cb891-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="annexo-1.html#cb895-1" tabindex="-1"></a><span class="fu">st_write</span>(br156_points, <span class="at">dsn =</span> outfile, </span>
+<span id="cb895-2"><a href="annexo-1.html#cb895-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 86 features with 2 fields and geometry type Point.</code></pre>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="annexo-1.html#cb893-1" tabindex="-1"></a><span class="fu">st_write</span>(j_points, <span class="at">dsn =</span> outfile, </span>
-<span id="cb893-2"><a href="annexo-1.html#cb893-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="annexo-1.html#cb897-1" tabindex="-1"></a><span class="fu">st_write</span>(j_points, <span class="at">dsn =</span> outfile, </span>
+<span id="cb897-2"><a href="annexo-1.html#cb897-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points_jari&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points_jari&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 49 features with 1 fields and geometry type Point.</code></pre>
-<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="annexo-1.html#cb895-1" tabindex="-1"></a><span class="fu">st_write</span>(p_points, <span class="at">dsn =</span> outfile, </span>
-<span id="cb895-2"><a href="annexo-1.html#cb895-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb899-1"><a href="annexo-1.html#cb899-1" tabindex="-1"></a><span class="fu">st_write</span>(p_points, <span class="at">dsn =</span> outfile, </span>
+<span id="cb899-2"><a href="annexo-1.html#cb899-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_portogrande&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points_portogrande&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points_portogrande&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 37 features with 1 fields and geometry type Point.</code></pre>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="annexo-1.html#cb897-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_all, <span class="at">dsn =</span> outfile, </span>
-<span id="cb897-2"><a href="annexo-1.html#cb897-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="annexo-1.html#cb901-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_all, <span class="at">dsn =</span> outfile, </span>
+<span id="cb901-2"><a href="annexo-1.html#cb901-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points_buffers&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points_buffers&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 516 features with 3 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb899-1"><a href="annexo-1.html#cb899-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_j, <span class="at">dsn =</span> outfile, </span>
-<span id="cb899-2"><a href="annexo-1.html#cb899-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="annexo-1.html#cb903-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_j, <span class="at">dsn =</span> outfile, </span>
+<span id="cb903-2"><a href="annexo-1.html#cb903-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers_jari&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points_buffers_jari&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points_buffers_jari&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 294 features with 3 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="annexo-1.html#cb901-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_p, <span class="at">dsn =</span> outfile, </span>
-<span id="cb901-2"><a href="annexo-1.html#cb901-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers_porto&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="annexo-1.html#cb905-1" tabindex="-1"></a><span class="fu">st_write</span>(point_buff_p, <span class="at">dsn =</span> outfile, </span>
+<span id="cb905-2"><a href="annexo-1.html#cb905-2" tabindex="-1"></a>         <span class="at">layer =</span> <span class="st">&quot;br156_points_buffers_porto&quot;</span>, <span class="at">delete_layer =</span> <span class="cn">TRUE</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Deleting layer `br156_points_buffers_porto&#39; using driver `GPKG&#39;
 ## Updating layer `br156_points_buffers_porto&#39; to data source `C:/Users/user/Documents/Articles/gis_layers/gisdata/inst/vector/br156.gpkg&#39; using driver `GPKG&#39;
 ## Writing 222 features with 3 fields and geometry type Polygon.</code></pre>
-<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="annexo-1.html#cb903-1" tabindex="-1"></a><span class="co"># check layers</span></span>
-<span id="cb903-2"><a href="annexo-1.html#cb903-2" tabindex="-1"></a><span class="fu">st_layers</span>(outfile)</span></code></pre></div>
+<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="annexo-1.html#cb907-1" tabindex="-1"></a><span class="co"># check layers</span></span>
+<span id="cb907-2"><a href="annexo-1.html#cb907-2" tabindex="-1"></a><span class="fu">st_layers</span>(outfile)</span></code></pre></div>
 <pre><code>## Driver: GPKG 
 ## Available layers:
 ##                    layer_name     geometry_type features fields                   crs_name
@@ -914,44 +915,44 @@ Brasil - 1:250 000, versão 2023:
 ## 14  br156_points_buffers_jari           Polygon      294      3 SIRGAS 2000 / UTM zone 22N
 ## 15 br156_points_buffers_porto           Polygon      222      3 SIRGAS 2000 / UTM zone 22N</code></pre>
 <p>Legend.</p>
-<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="annexo-1.html#cb905-1" tabindex="-1"></a>lf <span class="ot">&lt;-</span> <span class="st">&quot;data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv&quot;</span></span>
-<span id="cb905-2"><a href="annexo-1.html#cb905-2" tabindex="-1"></a>mapbiomas8_legenda <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(lf, <span class="at">as.is =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb909-1"><a href="annexo-1.html#cb909-1" tabindex="-1"></a>lf <span class="ot">&lt;-</span> <span class="st">&quot;data/raster/mapbiomas/legend/Codigos-da-legenda-colecao-8.csv&quot;</span></span>
+<span id="cb909-2"><a href="annexo-1.html#cb909-2" tabindex="-1"></a>mapbiomas8_legenda <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(lf, <span class="at">as.is =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Plot.</p>
-<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="annexo-1.html#cb906-1" tabindex="-1"></a>class_vals <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
-<span id="cb906-2"><a href="annexo-1.html#cb906-2" tabindex="-1"></a>class_color <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Color</span>
-<span id="cb906-3"><a href="annexo-1.html#cb906-3" tabindex="-1"></a><span class="fu">names</span>(class_color) <span class="ot">&lt;-</span>  mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
-<span id="cb906-4"><a href="annexo-1.html#cb906-4" tabindex="-1"></a><span class="co">#labels</span></span>
-<span id="cb906-5"><a href="annexo-1.html#cb906-5" tabindex="-1"></a>my_label <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Descricao</span>
-<span id="cb906-6"><a href="annexo-1.html#cb906-6" tabindex="-1"></a><span class="fu">names</span>(my_label) <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
-<span id="cb906-7"><a href="annexo-1.html#cb906-7" tabindex="-1"></a></span>
-<span id="cb906-8"><a href="annexo-1.html#cb906-8" tabindex="-1"></a><span class="co"># Plot one year to check</span></span>
-<span id="cb906-9"><a href="annexo-1.html#cb906-9" tabindex="-1"></a><span class="fu">tm_shape</span>(<span class="fu">subset</span>(r85a22n_ag, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">37</span>,<span class="dv">38</span>))) <span class="sc">+</span></span>
-<span id="cb906-10"><a href="annexo-1.html#cb906-10" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, <span class="at">palette =</span> class_color, <span class="at">labels =</span> my_label, <span class="at">title=</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb906-11"><a href="annexo-1.html#cb906-11" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
-<span id="cb906-12"><a href="annexo-1.html#cb906-12" tabindex="-1"></a>               <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>))</span>
-<span id="cb906-13"><a href="annexo-1.html#cb906-13" tabindex="-1"></a></span>
-<span id="cb906-14"><a href="annexo-1.html#cb906-14" tabindex="-1"></a><span class="co"># Now all years together.</span></span>
-<span id="cb906-15"><a href="annexo-1.html#cb906-15" tabindex="-1"></a><span class="fu">tm_shape</span>(r85a22n_ag) <span class="sc">+</span></span>
-<span id="cb906-16"><a href="annexo-1.html#cb906-16" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, <span class="at">palette =</span> class_color, <span class="at">labels =</span> my_label, <span class="at">title=</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb906-17"><a href="annexo-1.html#cb906-17" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
-<span id="cb906-18"><a href="annexo-1.html#cb906-18" tabindex="-1"></a>               <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb906-19"><a href="annexo-1.html#cb906-19" tabindex="-1"></a>  <span class="fu">tm_facets</span>(<span class="at">ncol=</span><span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb906-20"><a href="annexo-1.html#cb906-20" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>, <span class="at">legend.outside =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb906-21"><a href="annexo-1.html#cb906-21" tabindex="-1"></a>            <span class="at">legend.outside.position =</span> <span class="st">&quot;right&quot;</span>, </span>
-<span id="cb906-22"><a href="annexo-1.html#cb906-22" tabindex="-1"></a>            <span class="at">panel.labels =</span> <span class="fu">c</span>(<span class="st">&#39;1985&#39;</span>, <span class="st">&#39;1986&#39;</span>, <span class="st">&#39;1987&#39;</span>, <span class="st">&#39;1988&#39;</span>,<span class="st">&#39;1989&#39;</span>, <span class="st">&#39;1990&#39;</span>,</span>
-<span id="cb906-23"><a href="annexo-1.html#cb906-23" tabindex="-1"></a>                             <span class="st">&#39;1991&#39;</span>,  <span class="st">&#39;1992&#39;</span>, <span class="st">&#39;1993&#39;</span>, <span class="st">&#39;1994&#39;</span>, <span class="st">&#39;1995&#39;</span>,<span class="st">&#39;1996&#39;</span>, </span>
-<span id="cb906-24"><a href="annexo-1.html#cb906-24" tabindex="-1"></a>                             <span class="st">&#39;1997&#39;</span>, <span class="st">&#39;1998&#39;</span>,</span>
-<span id="cb906-25"><a href="annexo-1.html#cb906-25" tabindex="-1"></a>                             <span class="st">&#39;1999&#39;</span>, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;2001&#39;</span>, <span class="st">&#39;2002&#39;</span>, <span class="st">&#39;2003&#39;</span>, </span>
-<span id="cb906-26"><a href="annexo-1.html#cb906-26" tabindex="-1"></a>                             <span class="st">&#39;2004&#39;</span>, <span class="st">&#39;2005&#39;</span>, <span class="st">&#39;2006&#39;</span>, <span class="st">&#39;2007&#39;</span>,</span>
-<span id="cb906-27"><a href="annexo-1.html#cb906-27" tabindex="-1"></a>                             <span class="st">&#39;2008&#39;</span>, <span class="st">&#39;2009&#39;</span>, <span class="st">&#39;2010&#39;</span>, <span class="st">&#39;2011&#39;</span>, <span class="st">&#39;2012&#39;</span>, </span>
-<span id="cb906-28"><a href="annexo-1.html#cb906-28" tabindex="-1"></a>                             <span class="st">&#39;2013&#39;</span>, <span class="st">&#39;2014&#39;</span>, <span class="st">&#39;2015&#39;</span>,</span>
-<span id="cb906-29"><a href="annexo-1.html#cb906-29" tabindex="-1"></a>                             <span class="st">&#39;2016&#39;</span>, <span class="st">&#39;2017&#39;</span>, <span class="st">&#39;2018&#39;</span>, <span class="st">&#39;2019&#39;</span>, </span>
-<span id="cb906-30"><a href="annexo-1.html#cb906-30" tabindex="-1"></a>                             <span class="st">&#39;2020&#39;</span>, <span class="st">&#39;2021&#39;</span>, <span class="st">&#39;2022&#39;</span>)) <span class="ot">-&gt;</span> figmap</span>
-<span id="cb906-31"><a href="annexo-1.html#cb906-31" tabindex="-1"></a></span>
-<span id="cb906-32"><a href="annexo-1.html#cb906-32" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;figmap.png&quot;</span>, <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">9</span>, </span>
-<span id="cb906-33"><a href="annexo-1.html#cb906-33" tabindex="-1"></a>    <span class="at">units=</span><span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">600</span>)</span>
-<span id="cb906-34"><a href="annexo-1.html#cb906-34" tabindex="-1"></a>figmap</span>
-<span id="cb906-35"><a href="annexo-1.html#cb906-35" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">dev.off</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb910"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb910-1"><a href="annexo-1.html#cb910-1" tabindex="-1"></a>class_vals <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
+<span id="cb910-2"><a href="annexo-1.html#cb910-2" tabindex="-1"></a>class_color <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Color</span>
+<span id="cb910-3"><a href="annexo-1.html#cb910-3" tabindex="-1"></a><span class="fu">names</span>(class_color) <span class="ot">&lt;-</span>  mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
+<span id="cb910-4"><a href="annexo-1.html#cb910-4" tabindex="-1"></a><span class="co">#labels</span></span>
+<span id="cb910-5"><a href="annexo-1.html#cb910-5" tabindex="-1"></a>my_label <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Descricao</span>
+<span id="cb910-6"><a href="annexo-1.html#cb910-6" tabindex="-1"></a><span class="fu">names</span>(my_label) <span class="ot">&lt;-</span> mapbiomas8_legenda<span class="sc">$</span>Class_ID</span>
+<span id="cb910-7"><a href="annexo-1.html#cb910-7" tabindex="-1"></a></span>
+<span id="cb910-8"><a href="annexo-1.html#cb910-8" tabindex="-1"></a><span class="co"># Plot one year to check</span></span>
+<span id="cb910-9"><a href="annexo-1.html#cb910-9" tabindex="-1"></a><span class="fu">tm_shape</span>(<span class="fu">subset</span>(r85a22n_ag, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">37</span>,<span class="dv">38</span>))) <span class="sc">+</span></span>
+<span id="cb910-10"><a href="annexo-1.html#cb910-10" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, <span class="at">palette =</span> class_color, <span class="at">labels =</span> my_label, <span class="at">title=</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb910-11"><a href="annexo-1.html#cb910-11" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb910-12"><a href="annexo-1.html#cb910-12" tabindex="-1"></a>               <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>))</span>
+<span id="cb910-13"><a href="annexo-1.html#cb910-13" tabindex="-1"></a></span>
+<span id="cb910-14"><a href="annexo-1.html#cb910-14" tabindex="-1"></a><span class="co"># Now all years together.</span></span>
+<span id="cb910-15"><a href="annexo-1.html#cb910-15" tabindex="-1"></a><span class="fu">tm_shape</span>(r85a22n_ag) <span class="sc">+</span></span>
+<span id="cb910-16"><a href="annexo-1.html#cb910-16" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">style =</span> <span class="st">&quot;cat&quot;</span>, <span class="at">palette =</span> class_color, <span class="at">labels =</span> my_label, <span class="at">title=</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb910-17"><a href="annexo-1.html#cb910-17" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">text.size =</span> <span class="dv">1</span>, </span>
+<span id="cb910-18"><a href="annexo-1.html#cb910-18" tabindex="-1"></a>               <span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb910-19"><a href="annexo-1.html#cb910-19" tabindex="-1"></a>  <span class="fu">tm_facets</span>(<span class="at">ncol=</span><span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb910-20"><a href="annexo-1.html#cb910-20" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.bg.color=</span><span class="st">&quot;white&quot;</span>, <span class="at">legend.outside =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb910-21"><a href="annexo-1.html#cb910-21" tabindex="-1"></a>            <span class="at">legend.outside.position =</span> <span class="st">&quot;right&quot;</span>, </span>
+<span id="cb910-22"><a href="annexo-1.html#cb910-22" tabindex="-1"></a>            <span class="at">panel.labels =</span> <span class="fu">c</span>(<span class="st">&#39;1985&#39;</span>, <span class="st">&#39;1986&#39;</span>, <span class="st">&#39;1987&#39;</span>, <span class="st">&#39;1988&#39;</span>,<span class="st">&#39;1989&#39;</span>, <span class="st">&#39;1990&#39;</span>,</span>
+<span id="cb910-23"><a href="annexo-1.html#cb910-23" tabindex="-1"></a>                             <span class="st">&#39;1991&#39;</span>,  <span class="st">&#39;1992&#39;</span>, <span class="st">&#39;1993&#39;</span>, <span class="st">&#39;1994&#39;</span>, <span class="st">&#39;1995&#39;</span>,<span class="st">&#39;1996&#39;</span>, </span>
+<span id="cb910-24"><a href="annexo-1.html#cb910-24" tabindex="-1"></a>                             <span class="st">&#39;1997&#39;</span>, <span class="st">&#39;1998&#39;</span>,</span>
+<span id="cb910-25"><a href="annexo-1.html#cb910-25" tabindex="-1"></a>                             <span class="st">&#39;1999&#39;</span>, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;2001&#39;</span>, <span class="st">&#39;2002&#39;</span>, <span class="st">&#39;2003&#39;</span>, </span>
+<span id="cb910-26"><a href="annexo-1.html#cb910-26" tabindex="-1"></a>                             <span class="st">&#39;2004&#39;</span>, <span class="st">&#39;2005&#39;</span>, <span class="st">&#39;2006&#39;</span>, <span class="st">&#39;2007&#39;</span>,</span>
+<span id="cb910-27"><a href="annexo-1.html#cb910-27" tabindex="-1"></a>                             <span class="st">&#39;2008&#39;</span>, <span class="st">&#39;2009&#39;</span>, <span class="st">&#39;2010&#39;</span>, <span class="st">&#39;2011&#39;</span>, <span class="st">&#39;2012&#39;</span>, </span>
+<span id="cb910-28"><a href="annexo-1.html#cb910-28" tabindex="-1"></a>                             <span class="st">&#39;2013&#39;</span>, <span class="st">&#39;2014&#39;</span>, <span class="st">&#39;2015&#39;</span>,</span>
+<span id="cb910-29"><a href="annexo-1.html#cb910-29" tabindex="-1"></a>                             <span class="st">&#39;2016&#39;</span>, <span class="st">&#39;2017&#39;</span>, <span class="st">&#39;2018&#39;</span>, <span class="st">&#39;2019&#39;</span>, </span>
+<span id="cb910-30"><a href="annexo-1.html#cb910-30" tabindex="-1"></a>                             <span class="st">&#39;2020&#39;</span>, <span class="st">&#39;2021&#39;</span>, <span class="st">&#39;2022&#39;</span>)) <span class="ot">-&gt;</span> figmap</span>
+<span id="cb910-31"><a href="annexo-1.html#cb910-31" tabindex="-1"></a></span>
+<span id="cb910-32"><a href="annexo-1.html#cb910-32" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;figmap.png&quot;</span>, <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">9</span>, </span>
+<span id="cb910-33"><a href="annexo-1.html#cb910-33" tabindex="-1"></a>    <span class="at">units=</span><span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">600</span>)</span>
+<span id="cb910-34"><a href="annexo-1.html#cb910-34" tabindex="-1"></a>figmap</span>
+<span id="cb910-35"><a href="annexo-1.html#cb910-35" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">dev.off</span>())</span></code></pre></div>
 
 </div>
 </div>
